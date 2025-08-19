@@ -11,7 +11,7 @@
     - Install core dependencies (Tailwind, TypeScript, Zustand, React Query, Framer Motion)
     - Configure development environment and scripts
 
-- [ ] **supabase-setup** - Initialize Supabase project and configure database with core tables  
+- [X] **supabase-setup** - Initialize Supabase project and configure database with core tables  
   - Dependencies: project-setup
   - Estimated Time: 2-3 hours
   - Tasks:
@@ -19,7 +19,7 @@
     - Set up environment variables
     - Configure database connection
 
-- [ ] **project-structure** - Create organized folder structure and configure development environment
+- [X] **project-structure** - Create organized folder structure and configure development environment
   - Dependencies: project-setup
   - Estimated Time: 1-2 hours
   - Tasks:
