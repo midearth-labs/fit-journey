@@ -33,7 +33,7 @@
   - Dependencies: supabase-setup, project-structure
   - Estimated Time: 3-4 hours
   - Tasks:
-    - Configure Supabase Auth providers
+    - Configure Supabase Auth providers (Google OAuth and Email based auth only)
     - Create auth context and hooks
     - Build login/signup UI components
     - Implement protected routes
