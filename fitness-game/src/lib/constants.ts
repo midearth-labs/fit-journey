@@ -1,6 +1,9 @@
 import type { GameType } from '@/types';
 
-export const GAME_TYPES: Record<GameType, { name: string; description: string; emoji: string }> = {
+export const GAME_TYPES: Record<
+  GameType,
+  { name: string; description: string; emoji: string }
+> = {
   equipment: {
     name: 'Equipment ID',
     description: 'Identify gym equipment and their uses',
@@ -39,9 +42,9 @@ export const AVATAR_STATES = {
   'muscular-strong': 'Muscular & Strong',
   'lean-fit': 'Lean & Fit',
   'unfit-weak': 'Unfit & Weak',
-  'injured': 'Injured',
-  'energetic': 'Energetic',
-  'tired': 'Tired',
+  injured: 'Injured',
+  energetic: 'Energetic',
+  tired: 'Tired',
 } as const;
 
 export const SCORING = {

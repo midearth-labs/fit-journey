@@ -1,5 +1,4 @@
-import type { NextConfig } from "next";
-import withPWA from 'next-pwa';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
@@ -18,9 +17,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withPWA({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
-})(nextConfig);
+// Temporarily disable PWA for development to avoid TypeScript issues
+// Will be re-enabled in PWA setup phase
+export default nextConfig;

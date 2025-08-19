@@ -3,7 +3,7 @@
 ## Phase 1: Core Foundation (Weeks 1-2)
 
 ### 🏗️ Project Setup & Infrastructure
-- [ ] **project-setup** - Set up Next.js 14 project with TypeScript, Tailwind CSS, and essential dependencies
+- [X] **project-setup** - Set up Next.js 14 project with TypeScript, Tailwind CSS, and essential dependencies
   - Dependencies: None
   - Estimated Time: 2-3 hours
   - Tasks:
@@ -25,6 +25,7 @@
   - Tasks:
     - Set up app directory structure (components, lib, types, etc.)
     - Configure TypeScript paths and imports
+    - Configure TurboPack
     - Set up development tooling (ESLint, Prettier)
 
 ### 🔐 Authentication & Database

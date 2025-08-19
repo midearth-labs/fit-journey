@@ -1,9 +1,9 @@
 // Game Types
-export type GameType = 
-  | 'equipment' 
-  | 'form' 
-  | 'nutrition' 
-  | 'injury-prevention' 
+export type GameType =
+  | 'equipment'
+  | 'form'
+  | 'nutrition'
+  | 'injury-prevention'
   | 'anatomy';
 
 export interface Question {
@@ -18,18 +18,18 @@ export interface Question {
 }
 
 // Avatar Types
-export type AvatarDemographic = 
-  | 'young-male' 
-  | 'young-female' 
-  | 'old-male' 
+export type AvatarDemographic =
+  | 'young-male'
+  | 'young-female'
+  | 'old-male'
   | 'old-female';
 
-export type AvatarState = 
-  | 'muscular-strong' 
-  | 'lean-fit' 
-  | 'unfit-weak' 
-  | 'injured' 
-  | 'energetic' 
+export type AvatarState =
+  | 'muscular-strong'
+  | 'lean-fit'
+  | 'unfit-weak'
+  | 'injured'
+  | 'energetic'
   | 'tired';
 
 export interface AvatarAsset {
@@ -37,7 +37,7 @@ export interface AvatarAsset {
   category: AvatarDemographic;
   state: AvatarState;
   imageUrl: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 // User Types
