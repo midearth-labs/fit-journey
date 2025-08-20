@@ -29,7 +29,7 @@
     - Set up development tooling (ESLint, Prettier)
 
 ### 🔐 Authentication & Database
-- [ ] **auth-system** - Implement Supabase authentication with social login options
+- [X] **auth-system** - Implement Supabase authentication with social login options
   - Dependencies: supabase-setup, project-structure
   - Estimated Time: 3-4 hours
   - Tasks:
@@ -38,14 +38,18 @@
     - Build login/signup UI components
     - Implement protected routes
 
-- [ ] **database-schema** - Create database schema with Drizzle ORM for users, profiles, and game sessions
+- [ ] **database-schema** - Create database schema with Drizzle ORM for SQL entities, and JSON/typescript entities for Static content.
   - Dependencies: supabase-setup, auth-system
   - Estimated Time: 3-4 hours
   - Tasks:
     - Define Drizzle schema for core tables
     - Set up database migrations
-    - Create user profiles, game sessions, and leaderboards tables
+    - Create table models
+    - Create or update static content types correctly.
     - Implement Row Level Security policies
+    - Implement Foreign Keys for relationships where both entities are to be modelled as SQL
+    - Implement code comments or some other mechanism for relationships where one of the entities is static content/typescript entities.
+    - Implement triggers to automatically copy row from supabase auth.users table to app's user table 
 
 ### 📝 Content & Game Engine
 - [ ] **content-generation** - Generate initial quiz questions (50 per game type) and basic avatar assets (3 states per demographic)

@@ -98,45 +98,6 @@
 - **Vitest** (faster than Jest, built-in TypeScript support)
 - **Playwright** (end-to-end testing when needed)
 
-## Database Schema Design
-
-### Core Models
-```sql
--- Users table (managed by Supabase Auth)
--- Game_Sessions table (user quiz attempts)
--- User_Profiles table (avatar state, preferences)
--- Leaderboards table (weekly competitions)
--- Waitlist table (post-1K user management)
-```
-- Questions table (pre-generated content)
-- Avatar assets table.
-
-### Content Management
-use the below format to infer the models for questions and avatar_assets, my instruction though is that these content be stored in the repository as json files, committed to git.
-```sql
--- Questions table structure
-CREATE TABLE questions (
-  id UUID PRIMARY KEY,
-  game_type TEXT NOT NULL, -- 'equipment', 'form', 'nutrition', etc.
-  difficulty INTEGER, -- 1-5 scale
-  question_text TEXT NOT NULL,
-  options JSONB NOT NULL, -- Array of answer options
-  correct_answer INTEGER NOT NULL,
-  explanation TEXT NOT NULL,
-  image_url TEXT, -- For visual questions
-  created_at TIMESTAMP DEFAULT NOW()
-);
-
--- Avatar assets table
-CREATE TABLE avatar_assets (
-  id UUID PRIMARY KEY,
-  category TEXT NOT NULL, -- 'young-male', 'old-female', etc.
-  state TEXT NOT NULL, -- 'muscular-strong', 'lean-injured', etc.
-  image_url TEXT NOT NULL,
-  metadata JSONB -- Additional styling/positioning data
-);
-```
-
 ## Development Workflow
 
 ### Initial Setup Commands
