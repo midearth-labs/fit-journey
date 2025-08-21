@@ -1,5 +1,8 @@
+Extract this out from PRD.md
+
 Affiliate Links
 
+Sharing / 
 Social graphs
 
 Ads
