@@ -1,46 +1,89 @@
 # Phase 1 - Structured Requirements
 
-## R1: Database Schema & Content Management
+## R1: Database Schema & Static Content Generation
 
 ### R1.1: Database Structure
 **Dependencies**: None
 ```
 WHEN the application initializes
-THE SYSTEM SHALL create all required database tables matching the entity models (User, UserProfile, GameType, Question, PassageSet, AvatarAsset, DailyChallenge, GameSession, QuestionAttempt, StreakLog, StreakHistory, Achievement, UserAchievement, NotificationQueue)
+THE SYSTEM SHALL create all required SQL tables matching the entity models as defined in entities.md
 ```
 
-### R1.2: Content Seeding
-**Dependencies**: R1.1
+### R1.2: Static Content Creation
+**Dependencies**: None
 ```
-WHEN the database is initialized
-THE SYSTEM SHALL seed GameType data with all supported game categories (Equipment Identification, Form Check, Nutrition Myths vs Facts, Injury Prevention, Body Mechanics, Foundational Movements, Exercise Identification)
-```
-
-```
-WHEN the database is initialized
-THE SYSTEM SHALL seed Achievement data with Phase 1 achievements (7-day streak, 14-day streak, first quiz completion, 50 questions answered, clean eating for 3 days, workout logging for 7 days)
+WHEN content generation is initiated
+THE SYSTEM SHALL accept GameType input definitions and use them as the foundation for generating all related content e.g. (Equipment Identification, Form Check, Nutrition Myths vs Facts, Injury Prevention, Body Mechanics, Foundational Movements, Exercise Identification)
 ```
 
 ```
-WHEN the database is initialized
-THE SYSTEM SHALL seed AvatarAsset data with basic avatar combinations (young-male/female, old-male/female each with states: fit-healthy, lean-tired, injured-recovering)
-```
-
-### R1.3: Question Import System
-**Dependencies**: R1.1, R1.2
-```
-WHEN pre-generated standalone questions are ready for import
-THE SYSTEM SHALL provide a bulk import mechanism for Question entities with validation for required fields (question_text, options array with 2-4 items, correct_answer_index, explanation, game_type_id, difficulty_level, is_standalone: true, passage_set_id: null)
+WHEN generating static content
+THE SYSTEM SHALL create Achievement data as a JSON file with Phase 1 achievements (7-day streak, 14-day streak, first quiz completion, 50 questions answered, clean eating for 3 days, workout logging for 7 days) stored in the repository
 ```
 
 ```
-WHEN pre-generated passage sets are ready for import
-THE SYSTEM SHALL provide a bulk import mechanism for PassageSet entities and associated Question entities with is_standalone: false and proper passage_set_id references
+WHEN generating static content
+THE SYSTEM SHALL create StreakType data as a JSON file with values as in the entity comments
 ```
 
 ```
-WHEN importing passage-based questions
-THE SYSTEM SHALL validate that each question references a valid PassageSet and that the PassageSet.question_count matches the number of associated questions
+WHEN generating static content
+THE SYSTEM SHALL create UserState data as a JSON file with user supplied combinations e.g. (fit-healthy, lean-tired, injured-recovering, fit-injured) and corresponding default unlock conditions, stored in the repository
+```
+
+```
+WHEN generating static content
+THE SYSTEM SHALL create AvatarAsset data as a JSON file with all defined avatar gender/age_range combinations (male_teen, female_young-adult) stored in the repository.
+THE SYSTEM SHALL compose LLM prompts to be used to call an Image generation LLM to create the images for each combination 
+```
+
+### R1.3: LLM Content Generation
+**Dependencies**: R1.2
+```
+WHEN generating Questions using LLM
+THE SYSTEM SHALL create coherent standalone questions as JSON files following the Question entity format with proper validation for required fields (question_text, options array with 2-4 items, correct_answer_index, explanation, game_type_id, difficulty_level, is_standalone: true, passage_set_id: null). Group and store questions for each game types and name each game type file accordingly e.g. ${GameType.slug}.json
+```
+
+```
+WHEN generating PassageSet content using LLM
+THE SYSTEM SHALL create PassageSet entities and associated Question entities as JSON files with is_standalone: false and proper passage_set_id references, ensuring content coherence across all related entities. Group and store questions for each game types and name each game type file accordingly e.g. ${GameType.slug}.json
+```
+
+```
+WHEN generating passage-based questions using LLM
+THE SYSTEM SHALL ensure each question properly references a valid PassageSet and that the PassageSet.question_count matches the number of associated questions in the generated JSON files
+```
+
+```
+WHEN using LLM for content generation
+THE SYSTEM SHALL generate KnowledgeBase entities as JSON files that are thematically and conceptually aligned with the corresponding Questions and PassageSets to ensure educational coherence. Group and store questions for each game types and name each game type file accordingly e.g. ${GameType.slug}.json
+```
+
+### R1.4: LLM-Generated DailyChallenge Creation
+**Dependencies**: R1.2, R1.3
+```
+WHEN generating DailyChallenge content using LLM
+THE SYSTEM SHALL create DailyChallenge entities as a JSON file with proper validation for required fields (day, game_type, challenge_structure, total_questions, theme) ensuring thematic coherence with previously generated Questions and PassageSets
+```
+
+```
+WHEN generating daily challenges using LLM
+THE SYSTEM SHALL ensure all referenced question_ids and passage_set_ids in the challenge_structure correspond to previously generated JSON content files
+```
+
+```
+WHEN generating daily challenges using LLM
+THE SYSTEM SHALL validate that the total_questions field matches the actual count of questions in the challenge_structure within the generated JSON files
+```
+
+```
+WHEN generating daily challenges using LLM
+THE SYSTEM SHALL ensure that challenge_structure maintains proper difficulty distribution (3 easy, 4 medium, 3 hard) across all questions and maintains educational progression throughout the challenge series
+```
+
+```
+WHEN using LLM for DailyChallenge generation
+THE SYSTEM SHALL generate challenges that reference and build upon the KnowledgeBase content to create a cohesive learning experience across all generated entities
 ```
 
 ## R2: User Profile Management
@@ -49,67 +92,38 @@ THE SYSTEM SHALL validate that each question references a valid PassageSet and t
 **Dependencies**: R1.1 (Authentication assumed in place)
 ```
 WHEN a new user completes authentication
-THE SYSTEM SHALL create a UserProfile with default values (avatar_category based on user selection, avatar_state "fit-healthy", total_coins 0, current_streak 0, longest_streak 0)
+THE SYSTEM SHALL create a User with values (email based on authentication data)
 ```
 
-### R2.2: Avatar Selection
+```
+WHEN a new user completes authentication
+THE SYSTEM SHALL present the user with a profile setup view so they can set up their profile
+```
+
+```
+WHEN a user tries to access any authenticated part of the app e.g. daily challenges etc and they haven't setup their profile (i.e. having a valid User.display_name)
+THE SYSTEM SHALL prompt the user to setup their profile first.
+```
+
+### R2.2: Profile Setup
 **Dependencies**: R2.1, R1.2
 ```
 WHEN a new user accesses profile setup
-THE SYSTEM SHALL display available avatar categories (young-male, young-female, old-male, old-female) for selection
+THE SYSTEM SHALL display fields to input their display name, and optionally their avatar gender, avatar age_range, and timezone, 
 ```
 
 ```
-WHEN a user selects an avatar category
-THE SYSTEM SHALL update their UserProfile.avatar_category and display the corresponding avatar image
-```
-
-### R2.3: Avatar Progression
-**Dependencies**: R2.1, R1.2
-```
-WHEN a user's current_streak reaches a milestone (7, 14, 21, 30 days)
-THE SYSTEM SHALL automatically update their avatar_state to reflect improved fitness level
-```
-
-```
-WHEN a user answers form-related questions incorrectly (>50% wrong in a session)
-THE SYSTEM SHALL temporarily set avatar_state to "injured-recovering" for 24 hours
+WHEN a user submits profile information
+THE SYSTEM SHALL update their UserProfile accordingly and also update the corresponding avatar image
 ```
 
 ## R3: Daily Challenge System
 
-### R3.1: Challenge Generation
-**Dependencies**: R1.1, R1.2, R1.3
-```
-WHEN the system runs daily at midnight UTC
-THE SYSTEM SHALL generate a DailyChallenge for the current date with 10 questions total, selecting a mix of standalone questions and passage-based question groups, ensuring difficulty distribution (3 easy, 4 medium, 3 hard) across all questions
-```
-
-```
-WHEN generating a daily challenge structure
-THE SYSTEM SHALL create a challenge_structure array that defines the sequence of questions, supporting patterns like: standalone question, passage set (2-5 questions), standalone question, another passage set, etc.
-```
-
-```
-WHEN selecting passage sets for daily challenges
-THE SYSTEM SHALL ensure that each selected PassageSet contributes 2-5 questions to maintain the total of 10 questions per challenge
-```
-
-```
-WHEN generating a daily challenge
-THE SYSTEM SHALL ensure no question (standalone or passage-based) is repeated within a 7-day window for any user
-```
-
-```
-WHEN generating a daily challenge
-THE SYSTEM SHALL ensure no PassageSet is repeated within a 14-day window for any user
-```
-
-### R3.2: Challenge Access
-**Dependencies**: R3.1
+### R3.1: Challenge Access
+**Dependencies**: R1.4
 ```
 WHEN a user accesses the app
-THE SYSTEM SHALL display the current day's challenge prominently on the home screen
+THE SYSTEM SHALL retrieve and display the current day's pre-generated challenge prominently on the home screen
 ```
 
 ```
@@ -117,8 +131,13 @@ WHEN a user has completed the daily challenge
 THE SYSTEM SHALL show completion status and next day's challenge availability
 ```
 
-### R3.3: Challenge Completion
-**Dependencies**: R3.1, R3.2
+```
+WHEN the current day's challenge is not available in the static content files
+THE SYSTEM SHALL display a fallback message indicating that new challenges will be available soon
+```
+
+### R3.2: Challenge Completion
+**Dependencies**: R3.1
 ```
 WHEN a user starts a daily challenge
 THE SYSTEM SHALL create a GameSession record and present questions according to the challenge_structure sequence
@@ -136,13 +155,13 @@ THE SYSTEM SHALL record a QuestionAttempt with selected answer, correctness, tim
 
 ```
 WHEN a user completes all questions in a daily challenge
-THE SYSTEM SHALL mark the GameSession as completed, calculate coins earned (base 10 + 2 per correct answer), and update UserProfile.total_coins
+THE SYSTEM SHALL mark the GameSession as completed
 ```
 
 ## R4: Individual Game Sessions
 
 ### R4.1: Game Type Selection
-**Dependencies**: R1.2, R1.3
+**Dependencies**: R1.2, R1.3, R1.4
 ```
 WHEN a user accesses the games section
 THE SYSTEM SHALL display all available GameType options with icons, descriptions, and question counts
@@ -157,7 +176,7 @@ THE SYSTEM SHALL start a practice session with 5 random questions from that cate
 **Dependencies**: R4.1
 ```
 WHEN a user starts a practice session
-THE SYSTEM SHALL create a GameSession record with session_type "practice" and select 5 questions (mix of standalone and passage-based as available)
+THE SYSTEM SHALL select 5 questions (mix of standalone and passage-based as available). A practice session is ephemeral and never persisted as a GameSession.
 ```
 
 ```
@@ -172,64 +191,98 @@ THE SYSTEM SHALL immediately show the correct answer and explanation before proc
 
 ```
 WHEN a user completes a practice session
-THE SYSTEM SHALL show performance summary (X/5 correct, time taken, coins earned: 1 per correct answer)
+THE SYSTEM SHALL show performance summary (X/5 correct, time taken)
 ```
 
 ## R5: Streak Management
 
-### R5.1: Streak Tracking
-**Dependencies**: R3.3, R4.2
+### R5.1: Multi-Type Streak Tracking
+**Dependencies**: R3.2, R6.1
 ```
 WHEN a user completes their first daily challenge
-THE SYSTEM SHALL set UserProfile.current_streak to 1 and create a StreakHistory record with is_current true
+THE SYSTEM SHALL create a StreakHistory record with streak_type "quiz_completed", streak_length 1, started_date as today, ended_date null, and update UserProfile.current_streak_ids.quiz_completed to reference this StreakHistory record
 ```
 
 ```
 WHEN a user completes a daily challenge on consecutive days
-THE SYSTEM SHALL increment UserProfile.current_streak by 1
+THE SYSTEM SHALL increment the current StreakHistory.streak_length for streak_type "quiz_completed" by 1
 ```
 
 ```
 WHEN a user misses a daily challenge (no completion by 11:59 PM in their timezone)
-THE SYSTEM SHALL reset UserProfile.current_streak to 0, set current StreakHistory.is_current to false with ended_date, and create a new StreakHistory record if they resume
+THE SYSTEM SHALL set the current StreakHistory.ended_date to yesterday for streak_type "quiz_completed", remove the reference from UserProfile.current_streak_ids.quiz_completed, and create a new StreakHistory record when they resume
 ```
 
-### R5.2: Streak Milestones
+```
+WHEN a user logs any habit completion in StreakLog
+THE SYSTEM SHALL check for consecutive days of that habit and create/update corresponding StreakHistory records for each streak_type (workout_completed, ate_clean, slept_well, hydrated)
+```
+
+```
+WHEN a user completes all habits in a single day (all entries in StreakLog.entries are true)
+THE SYSTEM SHALL create/update a StreakHistory record for streak_type "all" representing a "Perfect Day" streak
+```
+
+### R5.2: Streak Milestones & Records
 **Dependencies**: R5.1
 ```
-WHEN a user's current_streak reaches a milestone value (7, 14, 30 days)
-THE SYSTEM SHALL check for and award corresponding achievements
+WHEN any StreakHistory.streak_length reaches a milestone value (7, 14, 30 days) for any streak_type
+THE SYSTEM SHALL check for and award corresponding achievements specific to that streak type
 ```
 
 ```
-WHEN a user's current_streak exceeds their longest_streak
-THE SYSTEM SHALL update UserProfile.longest_streak to the current value
+WHEN any current streak length exceeds the corresponding longest streak
+THE SYSTEM SHALL update UserProfile.longest_streaks object with the StreakHistory ID for that streak_type
 ```
+
+```
+WHEN displaying user progress
+THE SYSTEM SHALL retrieve current streak lengths by reading StreakHistory records for all the values in UserProfile.current_streak_ids
+```
+
+### R5.3: User State Progression
+**Dependencies**: R5.1
+```
+WHEN a user completes a daily quiz, or the user's current_streak properties changes
+THE SYSTEM SHALL automatically compute the UserState to reflect improved fitness level based on milestones and quiz answers e.g. state could be injured if form-related questions are answered incorrectly (>50% wrong in a session)
+```
+
+```
+WHEN a user's state changes from a prior state,
+THE SYSTEM SHALL automatically create the new state as a new entry in UserState
+THE SYSTEM shall update this new value into UserProfile.current_state 
+```
+
 
 ## R6: Habit Logging
 
 ### R6.1: Daily Habit Interface
-**Dependencies**: R1.1
+**Dependencies**: R1.1, R1.2
 ```
 WHEN a user accesses the daily habits section
-THE SYSTEM SHALL display toggle buttons for "Workout Completed" and "Ate Clean Today" with current day's status
+THE SYSTEM SHALL display toggle buttons for all habit types defined in StreakType ("Workout Completed", "Clean Eating", "Quality Sleep", "Hydration Goal") with current day's status from StreakLog.entries
 ```
 
 ```
 WHEN a user toggles a habit status
-THE SYSTEM SHALL update or create today's StreakLog record with the new values
-```
-
-### R6.2: Habit Rewards
-**Dependencies**: R6.1
-```
-WHEN a user logs both workout_completed and ate_clean as true for the same day
-THE SYSTEM SHALL award 3 bonus coins and update UserProfile.total_coins
+THE SYSTEM SHALL update or create today's StreakLog record with the new values in the entries object using StreakType IDs as keys (workout_completed, ate_clean, slept_well, hydrated)
 ```
 
 ```
-WHEN a user maintains both habits for 7 consecutive days
-THE SYSTEM SHALL check for and award the "Consistent Habits" achievement
+WHEN a user marks any habit as completed
+THE SYSTEM SHALL trigger streak calculation for that specific habit type and update corresponding StreakHistory records
+```
+
+### R6.2: Multi-Habit Streak Rewards
+**Dependencies**: R6.1, R5.1
+```
+WHEN a user maintains any single habit type for 7 consecutive days
+THE SYSTEM SHALL check for and award achievements specific to that habit type ("7-Day Workout Streak", "7-Day Clean Eating Streak", etc.)
+```
+
+```
+WHEN a user maintains all habit types (perfect days) for 7 consecutive days
+THE SYSTEM SHALL check for and award the "Perfect Week" achievement based on the "all" streak_type
 ```
 
 ## R7: Achievement System
@@ -237,13 +290,13 @@ THE SYSTEM SHALL check for and award the "Consistent Habits" achievement
 ### R7.1: Achievement Checking
 **Dependencies**: R1.2, R5.2, R6.2
 ```
-WHEN any user action updates streaks, coins, or completion counts
+WHEN any user action updates streaks, or completion counts
 THE SYSTEM SHALL check all applicable achievements for unlock conditions
 ```
 
 ```
 WHEN an achievement unlock condition is met
-THE SYSTEM SHALL create a UserAchievement record and award any associated coin rewards
+THE SYSTEM SHALL create a UserAchievement record
 ```
 
 ### R7.2: Achievement Display
@@ -295,25 +348,25 @@ THE SYSTEM SHALL request permission for push notifications with clear benefit ex
 
 ```
 WHEN a user grants notification permission
-THE SYSTEM SHALL update their UserProfile.notification_preferences
+THE SYSTEM SHALL update their User.notification_preferences and preferred_reminder_time
 ```
 
 ### R9.2: Daily Reminders
 **Dependencies**: R9.1
 ```
-WHEN a user has not completed their daily challenge by 7 PM in their timezone
+WHEN a user has not completed their daily challenge by time {User.preferred_reminder_time or default "19:00"} in their timezone { User.timezone or default "UTC-7" }
 THE SYSTEM SHALL send a push notification "Your daily fitness knowledge challenge is waiting!"
 ```
 
 ```
-WHEN a user has a streak of 3+ days and hasn't completed today's challenge by 9 PM
+WHEN a user has a streak of 3+ days and hasn't completed today's challenge by "21:00""
 THE SYSTEM SHALL send a push notification "Don't break your X-day streak!"
 ```
 
 ## R10: Social Sharing
 
 ### R10.1: Result Sharing
-**Dependencies**: R3.3, R4.2
+**Dependencies**: R3.2, R4.2
 ```
 WHEN a user completes any game session
 THE SYSTEM SHALL display a "Share Result" button with pre-formatted text "I scored X/10 on today's fitness knowledge challenge - can you beat me?"
@@ -339,7 +392,7 @@ THE SYSTEM SHALL show their score compared to the original challenger's score
 ## R11: Mixed Question Type UI
 
 ### R11.1: Passage Display
-**Dependencies**: R3.3, R4.2
+**Dependencies**: R3.2, R4.2
 ```
 WHEN a user reaches a passage-based question section
 THE SYSTEM SHALL display the passage title and text in a prominent, easily readable format above the questions
@@ -370,7 +423,7 @@ THE SYSTEM SHALL provide a brief transition screen before moving to the next sec
 ## R12: Performance & Analytics
 
 ### R12.1: Session Tracking
-**Dependencies**: R3.3, R4.2
+**Dependencies**: R3.2, R4.2
 ```
 WHEN any game session is completed
 THE SYSTEM SHALL record total_questions, correct_answers, and time_spent_seconds for analytics
@@ -385,8 +438,14 @@ THE SYSTEM SHALL record time_spent_seconds per question for difficulty calibrati
 **Dependencies**: R12.1
 ```
 WHEN a user accesses their profile
-THE SYSTEM SHALL display progress statistics (total questions answered, average accuracy, longest streak, total coins earned)
+THE SYSTEM SHALL display progress statistics (total questions answered, average accuracy, longest streak, current streak, achievements, current state/avatar, state/avatar history etc)
 ```
+
+```
+WHEN displaying avatar
+THE SYSTEM SHALL display using the "average" UserState if the user doesn't have a UserProfile.valid current_state
+```
+
 
 ```
 WHEN a user views game type selection
@@ -413,8 +472,8 @@ THE SYSTEM SHALL validate against expected formats and ranges before database op
 ```
 
 ```
-WHEN importing content data
-THE SYSTEM SHALL validate all required fields and relationships before committing to database
+WHEN building the application
+THE SYSTEM SHALL load static content and validate all required fields and relationships before succeeding the application build.
 ```
 
 ### CR3: Performance
@@ -426,4 +485,5 @@ THE SYSTEM SHALL respond within 200ms for cached data and 1 second for server re
 ```
 WHEN the daily challenge loads
 THE SYSTEM SHALL preload all question images to ensure smooth progression
+```
 ```

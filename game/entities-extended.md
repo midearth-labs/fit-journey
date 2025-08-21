@@ -12,9 +12,6 @@
   // Extensible for Phase 2/3
   subscription_status: string?, // null, "premium", "cancelled"
   subscription_expires_at: timestamp?,
-  timezone: string?,
-  preferred_reminder_time: string?, // "19:00"
-  notification_preferences: object? // {daily: true, social: false, achievements: true}
 }
 ```
 

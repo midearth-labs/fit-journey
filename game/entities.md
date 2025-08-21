@@ -8,6 +8,12 @@
 {
   id: string,
   email: string,
+  display_name: string?,
+  avatar_gender: string?, // male, female, non-binary
+  avatar_age_range: string?, // child (5-12), teen (13-19), young-adult (20-39), middle-age (40-59), senior (60+)
+  timezone: string?, // e.g. UTC, UTC+1, UTC-8
+  preferred_reminder_time: string?, //  e.g. "19:00"
+  notification_preferences: object? // {daily: true, social: false, achievements: true}
   created_at: timestamp,
   updated_at: timestamp,
 }
@@ -19,11 +25,10 @@
 {
   id: string,
   user_id: string, // FK to User
-  display_name: string?,
-  current_avatar_id: string, // FK to AvatarAsset
-  current_streak_ids: object, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", } // each value is a FK to StreakHistory
-  longest_streak_ids: number, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", } // each value is a FK to StreakHistory
-  last_activity_date: date, // default to date of registration
+  current_state: string? // FK to UserStateHistory
+  current_streak_ids: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", } // each value is a FK to StreakHistory
+  longest_streaks: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", } // each value is a FK to StreakHistory
+  last_activity_date: date?, // update this based on completion of daily quiz or logging of habits 
   created_at: timestamp,
   updated_at: timestamp,
 }
@@ -104,17 +109,48 @@
 }
 ```
 
+### StreakType
+#### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
+// Streak Type Keys and Titles:
+// workout_completed = "Daily Workout"
+// ate_clean = "Clean Eating"
+// slept_well = "Quality Sleep" 
+// hydrated = "Hydration Goal"
+// quiz_completed = "Daily Quiz"
+// all = "Perfect Day"
+```json
+{
+  id: string, // "workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed", "all"
+  title: string,
+  description: string,
+  sort_order: number, // for display ordering
+  created_at: timestamp,
+}
+```
+
+
 ## Avatar System
+#### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
+### UserState
+```json
+{
+  id: string,  // "average" "fit-healthy", "muscular-strong", "lean-injured"
+  unlock_condition: object, // {type: "streak", value: 7} or {type: "coins", value: 100}
+  eval_order: number,
+  created_at: timestamp,
+  updated_at: timestamp,
+}
+```
+
 #### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
 ### AvatarAsset
 ```json
 {
   id: string,
-  category: string, // "young-male", "old-female", "teen-nonbinary"
-  state: string, // "fit-healthy", "muscular-strong", "lean-injured"
+  state_id: string, // FK to UserState
+  gender: string,
+  age_range: string,
   image_url: string,
-  unlock_condition: object, // {type: "streak", value: 7} or {type: "coins", value: 100}
-  sort_order: number,
   created_at: timestamp,
   updated_at: timestamp,
 }
@@ -142,7 +178,7 @@
 {
   id: string,
   user_id: string, // FK to User
-  challenge_id: string, // FK to DailyChallenge if applicable
+  challenge_id: string, // FK to DailyChallenge
   started_at: timestamp,
   completed_at: timestamp?,
   is_completed: boolean,
@@ -191,10 +227,11 @@
   streak_length: number,
   started_date: date,
   ended_date: date?, // null if current streak
-  streak_type: string, // "workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed", "all"
+  streak_type: string, // FK to StreakType
   created_at: timestamp,
 }
 ```
+
 
 ### Achievement
 #### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
@@ -205,7 +242,6 @@
   description: string,
   icon_name: string,
   unlock_condition: object, // {type: "streak", value: 30} or {type: "questions", value: 100}
-  reward_avatar_asset_id: string?, // FK to AvatarAsset
   is_hidden: boolean, // default false (for surprise achievements)
   category: string?, // "streaks", "knowledge", "social", "habits"
   created_at: timestamp,
@@ -221,12 +257,12 @@
   unlocked_at: timestamp,
 }
 
-### UserAvatarHistory
+### UserStateHistory
 ```json
 {
   id: string,
   user_id: string, // FK to User
-  avatar_id: string, // FK to AvatarAsset
+  state_id: string, // FK to UserState
   unlocked_at: timestamp,
 }
 ```
