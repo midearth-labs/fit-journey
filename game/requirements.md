@@ -13,7 +13,12 @@ THE SYSTEM SHALL create all required SQL tables matching the entity models as de
 **Dependencies**: None
 ```
 WHEN content generation is initiated
-THE SYSTEM SHALL accept GameType input definitions and use them as the foundation for generating all related content e.g. (Equipment Identification, Form Check, Nutrition Myths vs Facts, Injury Prevention, Body Mechanics, Foundational Movements, Exercise Identification)
+THE SYSTEM SHALL accept ContentCategory input definitions and use them as the foundation for generating all related content e.g. (Equipment Identification, Form Check, Nutrition Myths vs Facts, Injury Prevention, Body Mechanics, Foundational Movements, Exercise Identification)
+```
+
+```
+WHEN storing static content
+THE SYSTEM SHALL save JSON files in an appropriately named sub-directory by the entity name under the static content directory
 ```
 
 ```
@@ -41,12 +46,12 @@ THE SYSTEM SHALL compose LLM prompts to be used to call an Image generation LLM 
 **Dependencies**: R1.2
 ```
 WHEN generating Questions using LLM
-THE SYSTEM SHALL create coherent standalone questions as JSON files following the Question entity format with proper validation for required fields (question_text, options array with 2-4 items, correct_answer_index, explanation, game_type_id, difficulty_level, is_standalone: true, passage_set_id: null). Group and store questions for each game types and name each game type file accordingly e.g. ${GameType.slug}.json
+THE SYSTEM SHALL create coherent standalone questions as JSON files following the Question entity format with proper validation for required fields (question_text, options array with 2-4 items, correct_answer_index, explanation, content_category_id, difficulty_level, is_standalone: true, passage_set_id: null). Group and store questions for each content categories and name each content category file accordingly e.g. ${ContentCategory.id}.json
 ```
 
 ```
 WHEN generating PassageSet content using LLM
-THE SYSTEM SHALL create PassageSet entities and associated Question entities as JSON files with is_standalone: false and proper passage_set_id references, ensuring content coherence across all related entities. Group and store questions for each game types and name each game type file accordingly e.g. ${GameType.slug}.json
+THE SYSTEM SHALL create PassageSet entities and associated Question entities as JSON files with is_standalone: false and proper passage_set_id references, ensuring content coherence across all related entities. Group and store questions for each content categories and name each content category file accordingly e.g. ${ContentCategory.id}.json
 ```
 
 ```
@@ -56,14 +61,14 @@ THE SYSTEM SHALL ensure each question properly references a valid PassageSet and
 
 ```
 WHEN using LLM for content generation
-THE SYSTEM SHALL generate KnowledgeBase entities as JSON files that are thematically and conceptually aligned with the corresponding Questions and PassageSets to ensure educational coherence. Group and store questions for each game types and name each game type file accordingly e.g. ${GameType.slug}.json
+THE SYSTEM SHALL generate KnowledgeBase entities as JSON files that are thematically and conceptually aligned with the corresponding Questions and PassageSets to ensure educational coherence. Group and store questions for each content categories and name each content category file accordingly e.g. ${ContentCategory.id}.json
 ```
 
 ### R1.4: LLM-Generated DailyChallenge Creation
 **Dependencies**: R1.2, R1.3
 ```
 WHEN generating DailyChallenge content using LLM
-THE SYSTEM SHALL create DailyChallenge entities as a JSON file with proper validation for required fields (day, game_type, challenge_structure, total_questions, theme) ensuring thematic coherence with previously generated Questions and PassageSets
+THE SYSTEM SHALL create DailyChallenge entities as a JSON file with proper validation for required fields (day, content_category_id, challenge_structure, total_questions, theme) ensuring thematic coherence with previously generated Questions and PassageSets
 ```
 
 ```
@@ -164,11 +169,11 @@ THE SYSTEM SHALL mark the GameSession as completed
 **Dependencies**: R1.2, R1.3, R1.4
 ```
 WHEN a user accesses the games section
-THE SYSTEM SHALL display all available GameType options with icons, descriptions, and question counts
+THE SYSTEM SHALL display all available ContentCategory options with icons, descriptions, and question counts
 ```
 
 ```
-WHEN a user selects a specific game type
+WHEN a user selects a specific content category
 THE SYSTEM SHALL start a practice session with 5 random questions from that category
 ```
 
@@ -243,7 +248,7 @@ THE SYSTEM SHALL retrieve current streak lengths by reading StreakHistory record
 ### R5.3: User State Progression
 **Dependencies**: R5.1
 ```
-WHEN a user completes a daily quiz, or the user's current_streak properties changes
+WHEN a user completes a daily quiz, or the user's current_streak_ids properties changes
 THE SYSTEM SHALL automatically compute the UserState to reflect improved fitness level based on milestones and quiz answers e.g. state could be injured if form-related questions are answered incorrectly (>50% wrong in a session)
 ```
 
@@ -438,18 +443,129 @@ THE SYSTEM SHALL record time_spent_seconds per question for difficulty calibrati
 **Dependencies**: R12.1
 ```
 WHEN a user accesses their profile
-THE SYSTEM SHALL display progress statistics (total questions answered, average accuracy, longest streak, current streak, achievements, current state/avatar, state/avatar history etc)
+THE SYSTEM SHALL display progress statistics (total questions answered, average accuracy, longest streak, current streak, achievements, current state/avatar, state/avatar history, last_activity_date etc)
 ```
 
 ```
 WHEN displaying avatar
-THE SYSTEM SHALL display using the "average" UserState if the user doesn't have a UserProfile.valid current_state
+THE SYSTEM SHALL display using the "average" UserState if the user doesn't have a valid UserProfile.current_state
 ```
 
-
 ```
-WHEN a user views game type selection
+WHEN a user views content category selection
 THE SYSTEM SHALL show their personal best score and accuracy percentage for each category
+```
+
+## R13: Challenge Retry System
+
+### R13.1: Daily Challenge Attempts
+**Dependencies**: R3.2
+```
+WHEN a user fails to answer all questions correctly in a daily challenge before the current day ends
+THE SYSTEM SHALL allow the user to retry the challenge up to 3 times total (attempt_count maximum of 3)
+```
+
+```
+WHEN a user starts a retry attempt for a daily challenge
+THE SYSTEM SHALL increment the GameSession.attempt_count by 1 and present the same questions in the same order
+```
+
+```
+WHEN a user reaches the maximum attempt count (3) for a daily challenge
+THE SYSTEM SHALL prevent further attempts for that day and mark the challenge as failed for streak calculation purposes
+```
+
+```
+WHEN a user successfully completes a daily challenge on any attempt (1, 2, or 3)
+THE SYSTEM SHALL mark the GameSession as completed and count it as a successful day for streak purposes
+```
+
+## R14: User Authentication Integration
+
+### R14.1: Supabase Auth Synchronization
+**Dependencies**: R1.1
+```
+WHEN the application initializes with Supabase
+THE SYSTEM SHALL create a database trigger to automatically populate the User table from Supabase's Auth table using the pattern documented at https://supabase.com/docs/guides/auth/managing-user-data
+```
+
+```
+WHEN a new user signs up through Supabase Auth
+THE SYSTEM SHALL automatically create a corresponding User record with email from the auth data and default null values for optional fields
+```
+
+## R15: Activity Tracking
+
+### R15.1: Last Activity Updates
+**Dependencies**: R3.2, R6.1
+```
+WHEN a user completes a daily quiz
+THE SYSTEM SHALL update UserProfile.last_activity_date to the current date
+```
+
+```
+WHEN a user logs any habit in StreakLog
+THE SYSTEM SHALL update UserProfile.last_activity_date to the current date
+```
+
+```
+WHEN displaying user engagement metrics
+THE SYSTEM SHALL use UserProfile.last_activity_date to determine user activity status and engagement levels
+```
+
+## R16: User State Evaluation System
+
+### R16.1: State Unlock Conditions
+**Dependencies**: R1.2, R5.1
+```
+WHEN generating UserState static content
+THE SYSTEM SHALL define unlock_condition objects with supported types: "streak" (with value for days), score for quizes, and other extensible condition types
+```
+
+```
+WHEN evaluating user state progression
+THE SYSTEM SHALL process UserState records in order of their eval_order field to determine the highest applicable state for the user
+```
+
+```
+WHEN a user's statistics change (streaks, quiz performance, etc.)
+THE SYSTEM SHALL re-evaluate all UserState unlock conditions in eval_order sequence and update to the highest unlocked state
+```
+
+### R16.2: Performance-Based State Changes
+**Dependencies**: R16.1, R3.2
+```
+WHEN a user answers form-related questions incorrectly more than 50% in a single GameSession
+THE SYSTEM SHALL consider transitioning the user to an "injured" state if such a state exists and unlock conditions are met
+```
+
+```
+WHEN a user maintains high accuracy (>80%) across multiple quiz categories for 7+ days
+THE SYSTEM SHALL consider transitioning the user to a "fit-healthy" state if unlock conditions are met
+```
+
+## R17: Achievement Unlock Conditions
+
+### R17.1: Condition Types Validation
+**Dependencies**: R1.2, R7.1
+```
+WHEN generating Achievement static content
+THE SYSTEM SHALL support unlock_condition objects with types: "streak" (with value for consecutive days), "questions" (with value for total questions answered), and other extensible condition types
+```
+
+```
+WHEN checking achievement unlock conditions
+THE SYSTEM SHALL validate that all referenced condition types are supported and have valid value ranges before processing
+```
+
+```
+WHEN an achievement has unlock_condition type "streak"
+THE SYSTEM SHALL check against the appropriate StreakHistory records for the specified streak_type and minimum streak_length value
+```
+
+```
+WHEN an achievement has unlock_condition type "questions"
+THE SYSTEM SHALL count total QuestionAttempt records for the user and compare against the specified value threshold
 ```
 
 ## Cross-Cutting Requirements
@@ -486,4 +602,5 @@ THE SYSTEM SHALL respond within 200ms for cached data and 1 second for server re
 WHEN the daily challenge loads
 THE SYSTEM SHALL preload all question images to ensure smooth progression
 ```
-```
+
+

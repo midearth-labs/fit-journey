@@ -21,7 +21,6 @@
 
 ### UserProfile
 ```json
- // TODO for requirements for current_avatar_id, current_streak_ids, longest_streak_ids
 {
   id: string,
   user_id: string, // FK to User
@@ -36,12 +35,11 @@
 
 ## Content Management
 #### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
-### GameType
+### ContentCategory
 ```json
 {
-  id: string,
+  id: string,  // "equipment", "form", "nutrition" etc
   name: string, // "Equipment Identification", "Form Check", etc.
-  slug: string, // "equipment", "form", "nutrition"
   description: string,
   icon_name: string, // for UI icons
   is_active: boolean, // default true
@@ -55,7 +53,7 @@
 ```json
 {
   id: string,
-  game_type_id: string, // FK to GameType
+  content_category_id: string, // FK to ContentCategory
   knowledge_base_id: string, // FK to KnowledgeBase
   question_text: string,
   question_type: string, // "multiple_choice", "passage_based", "true_false"
@@ -79,6 +77,7 @@
 ```json
 {
   id: string,
+  content_category_id: string, // FK to ContentCategory
   title: string,
   description: string, // markdown content
   tags: Array<string>, // ["squats", "form", "beginner", "legs", "nutrition", "recovery"]
@@ -96,7 +95,7 @@
 ```json
 {
   id: string,
-  game_type_id: string, // FK to GameType
+  content_category_id: string, // FK to ContentCategory
   title: string,
   passage_text: string,
   difficulty_level: number, // 1-5 scale
@@ -116,11 +115,12 @@
 // ate_clean = "Clean Eating"
 // slept_well = "Quality Sleep" 
 // hydrated = "Hydration Goal"
-// quiz_completed = "Daily Quiz"
+// quiz_completed = "Daily Quiz Completed"
+// quiz_passed = "Daily Quiz Passed"
 // all = "Perfect Day"
 ```json
 {
-  id: string, // "workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed", "all"
+  id: string, // "workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed", "quiz_passed", "all"
   title: string,
   description: string,
   sort_order: number, // for display ordering
@@ -163,7 +163,7 @@
 ```json
 {
   id: string,
-  game_type: string, // FK to GameType
+  content_category_id: string, // FK to ContentCategory
   day: number, // 1, 2, 3, ..., till challenge ends
   challenge_structure: Array<object>, // [{type: "standalone", question_id: "q1"}, {type: "passage", passage_set_id: "p1", question_ids: ["q2", "q3", "q4"]}, {type: "standalone", question_id: "q5"}]
   total_questions: number,
@@ -185,7 +185,7 @@
   total_questions: number,
   correct_answers: number,
   time_spent_seconds: number?,
-  // TODO attempt_count: number
+  attempt_count: number, // default: 1, Only if a user doesn't answer all questions correctly before the current day ends, they can try again up to 3 times.
 }
 ```
 
@@ -206,7 +206,6 @@
 ## Habit Tracking
 
 ### StreakLog
- // TODO for requirements
 ```json
 {
   id: string,
