@@ -18,23 +18,23 @@ Week 13-16: Phase 4 - Polish & Launch
 ### Week 1: Project Setup & Database Foundation
 
 #### Day 1-2: Project Initialization
-- [ ] **Initialize Next.js 14 project** with TypeScript and Tailwind CSS
-- [ ] **Configure Drizzle ORM** with PostgreSQL connection
-- [ ] **Set up Supabase project** and configure environment variables
-- [ ] **Install and configure** all required dependencies
-- [ ] **Set up development environment** with proper linting and formatting
+- [X] **Initialize Next.js 14 project** with TypeScript and Tailwind CSS
+- [X] **Configure Drizzle ORM** with PostgreSQL connection
+- [X] **Set up Supabase project** and configure environment variables
+- [X] **Install and configure** all required dependencies
+- [X] **Set up development environment** with proper linting and formatting
 
 #### Day 3-4: Database Schema Implementation
-- [ ] **Create database schema** using Drizzle ORM (users, user_profiles, game_sessions, etc.)
+- [ ] **Create database schema** using Drizzle ORM (users, user_profiles, game_sessions, etc.). Infer useful indexes and add a comment for the reasoning behind it and for review.
 - [ ] **Implement database migrations** and seed data
 - [ ] **Set up Row Level Security** policies in Supabase
 - [ ] **Create database connection utilities** and connection pooling
-- [ ] **Test database connectivity** and basic CRUD operations
+- [X] **Test database connectivity** and basic CRUD operations
 
 #### Day 5-7: Authentication Foundation
-- [ ] **Implement Supabase Auth integration** with Next.js
-- [ ] **Create authentication context** and providers
-- [ ] **Build login and signup forms** with proper validation
+- [X] **Implement Supabase Auth integration** with Next.js
+- [X] **Create authentication context** and providers
+- [X] **Build login and signup forms** with proper validation
 - [ ] **Implement protected routes** and authentication middleware
 - [ ] **Set up user profile creation** on first signup
 
@@ -91,7 +91,7 @@ Week 13-16: Phase 4 - Polish & Launch
 ### Week 5: Daily Challenge System
 
 #### Day 1-3: Challenge Engine
-- [ ] **Implement daily challenge system** with date-based logic
+- [ ] **Implement daily challenge system** with date and timezone based logic
 - [ ] **Build challenge structure parser** for mixed question types
 - [ ] **Create challenge progression logic** with proper state management
 - [ ] **Implement challenge completion tracking**
@@ -287,7 +287,7 @@ Week 13-16: Phase 4 - Polish & Launch
 ## Technical Milestones & Deliverables
 
 ### Phase 1 Deliverables
-- [ ] **Working authentication system** with Supabase
+- [X] **Working authentication system** with Supabase
 - [ ] **Complete database schema** with proper relationships
 - [ ] **Basic UI component library** with responsive design
 - [ ] **Static content management system** with validation
