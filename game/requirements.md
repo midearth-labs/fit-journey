@@ -163,6 +163,60 @@ WHEN a user completes all questions in a daily challenge
 THE SYSTEM SHALL mark the GameSession as completed
 ```
 
+### R3.3: Challenge Retry System
+**Dependencies**: R3.2
+```
+WHEN a user fails to answer all questions correctly in a daily challenge before the current day ends
+THE SYSTEM SHALL allow the user to retry the challenge up to 3 times total (attempt_count maximum of 3)
+```
+
+```
+WHEN a user starts a retry attempt for a daily challenge
+THE SYSTEM SHALL increment the GameSession.attempt_count by 1 and present the same questions in the same order
+```
+
+```
+WHEN a user reaches the maximum attempt count (3) for a daily challenge
+THE SYSTEM SHALL prevent further attempts for that day and mark the challenge as failed for streak calculation purposes
+```
+
+```
+WHEN a user successfully completes a daily challenge on any attempt (1, 2, or 3)
+THE SYSTEM SHALL mark the GameSession as completed and count it as a successful day for streak purposes
+```
+
+### R3.4: Session Timezone Locking
+**Dependencies**: R3.1, R3.2
+```
+WHEN a user starts a daily challenge
+THE SYSTEM SHALL store the user's current timezone as session_timezone in the GameSession record
+```
+
+```
+WHEN calculating daily boundaries for challenge completion
+THE SYSTEM SHALL use the session_timezone stored in GameSession, not the user's current profile timezone
+```
+
+```
+WHEN calculating streaks and daily statistics
+THE SYSTEM SHALL use the session_timezone from each individual GameSession for date calculations
+```
+
+```
+WHEN a user changes their profile timezone
+THE SYSTEM SHALL only affect future GameSessions, leaving existing sessions unchanged
+```
+
+```
+WHEN determining if a challenge can still be completed
+THE SYSTEM SHALL compare the current server time (converted to session_timezone) against the challenge start day
+```
+
+```
+WHEN a user attempts to manipulate their timezone to extend challenge windows
+THE SYSTEM SHALL prevent completion by enforcing the locked session_timezone for all calculations
+```
+
 ## R4: Individual Game Sessions
 
 ### R4.1: Game Type Selection
@@ -181,7 +235,7 @@ THE SYSTEM SHALL start a practice session with 5 random questions from that cate
 **Dependencies**: R4.1
 ```
 WHEN a user starts a practice session
-THE SYSTEM SHALL select 5 questions (mix of standalone and passage-based as available). A practice session is ephemeral and never persisted as a GameSession.
+THE SYSTEM SHALL select 10 questions (mix of standalone and passage-based as available). A practice session is ephemeral and never persisted as a GameSession.
 ```
 
 ```
@@ -202,7 +256,7 @@ THE SYSTEM SHALL show performance summary (X/5 correct, time taken)
 ## R5: Streak Management
 
 ### R5.1: Multi-Type Streak Tracking
-**Dependencies**: R3.2, R6.1
+**Dependencies**: R3.4, R6.1
 ```
 WHEN a user completes their first daily challenge
 THE SYSTEM SHALL create a StreakHistory record with streak_type "quiz_completed", streak_length 1, started_date as today, ended_date null, and update UserProfile.current_streak_ids.quiz_completed to reference this StreakHistory record
@@ -459,30 +513,6 @@ THE SYSTEM SHALL display a generic default Icon if the user doesn't have a valid
 ```
 WHEN a user views content category selection
 THE SYSTEM SHALL show their personal best score and accuracy percentage for each category
-```
-
-## R13: Challenge Retry System
-
-### R13.1: Daily Challenge Attempts
-**Dependencies**: R3.2
-```
-WHEN a user fails to answer all questions correctly in a daily challenge before the current day ends
-THE SYSTEM SHALL allow the user to retry the challenge up to 3 times total (attempt_count maximum of 3)
-```
-
-```
-WHEN a user starts a retry attempt for a daily challenge
-THE SYSTEM SHALL increment the GameSession.attempt_count by 1 and present the same questions in the same order
-```
-
-```
-WHEN a user reaches the maximum attempt count (3) for a daily challenge
-THE SYSTEM SHALL prevent further attempts for that day and mark the challenge as failed for streak calculation purposes
-```
-
-```
-WHEN a user successfully completes a daily challenge on any attempt (1, 2, or 3)
-THE SYSTEM SHALL mark the GameSession as completed and count it as a successful day for streak purposes
 ```
 
 ## R14: User Authentication Integration

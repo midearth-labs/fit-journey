@@ -9,7 +9,7 @@
   id: string,
   email: string,
   display_name: string?,
-  avatar_gender: string?, // male, female, non-binary
+  avatar_gender: string?, // male, female
   avatar_age_range: string?, // child (5-12), teen (13-19), young-adult (20-39), middle-age (40-59), senior (60+)
   timezone: string?, // e.g. UTC, UTC+1, UTC-8
   preferred_reminder_time: string?, //  e.g. "19:00"
@@ -179,6 +179,7 @@
   id: string,
   user_id: string, // FK to User
   challenge_id: string, // FK to DailyChallenge
+  session_timezone: string, // NEW: Store timezone when session starts e.g. UTC-7
   started_at: timestamp,
   completed_at: timestamp?,
   is_completed: boolean,
