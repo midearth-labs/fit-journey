@@ -1,4 +1,4 @@
-# Fitness AI Game - Product Requirements Document
+# FitJourney Game - Product Requirements Document
 
 ## Executive Summary
 

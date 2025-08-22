@@ -22,3 +22,5 @@ Analytics/Research:
 Mixpanel - User behavior tracking setup
 Hotjar - User session recordings and heatmaps
 Google Analytics with AI insights - Traffic and conversion optimization
+
+Legal: TOS, Privacy Policy, etc.

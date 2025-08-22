@@ -1,4 +1,4 @@
-# Fitness AI Game - Modern Tech Stack Guide
+# FitJourney Game - Modern Tech Stack Guide
 
 ## Architecture Overview
 

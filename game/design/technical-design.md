@@ -1,8 +1,8 @@
-# Fitness AI Game - Technical Design Document
+# FitJourney Game - Technical Design Document
 
 ## Overview
 
-This document provides the detailed technical implementation plan for the Fitness AI Game, covering database schema, API design, component architecture, and implementation details.
+This document provides the detailed technical implementation plan for the FitJourney Game, covering database schema, API design, component architecture, and implementation details.
 
 ## Database Schema Implementation
 
@@ -877,7 +877,7 @@ async function syncOfflineData() {
 ```json
 // public/manifest.json
 {
-  "name": "Fitness AI Game",
+  "name": "FitJourney Game",
   "short_name": "FitGame",
   "description": "Learn fitness through daily AI-powered challenges",
   "start_url": "/",

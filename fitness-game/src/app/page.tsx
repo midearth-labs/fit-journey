@@ -10,7 +10,7 @@ export default function Home() {
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">🏋️</span>
           </div>
-          <h1 className="text-xl font-bold text-gray-900">Fitness AI Game</h1>
+          <h1 className="text-xl font-bold text-gray-900">FitJourney Game</h1>
         </div>
         <AuthButton />
       </header>
@@ -119,7 +119,7 @@ export default function Home() {
       <footer className="bg-white border-t mt-16">
         <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center text-gray-600">
-            <p>&copy; 2024 Fitness AI Game. Train smarter, not harder.</p>
+            <p>&copy; 2024 FitJourney Game. Train smarter, not harder.</p>
           </div>
         </div>
       </footer>

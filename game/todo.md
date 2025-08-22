@@ -1,4 +1,4 @@
-# Fitness AI Game - Development Todo List
+# FitJourney Game - Development Todo List
 
 ## Phase 1: Core Foundation (Weeks 1-2)
 

@@ -36,7 +36,7 @@ export function SignupForm({ onSuccess, className }: SignupFormProps) {
     <div className={`w-full max-w-md space-y-6 ${className}`}>
       <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-900">Create Account</h2>
-        <p className="text-gray-600 mt-2">Join Fitness AI Game today</p>
+        <p className="text-gray-600 mt-2">Join FitJourney Game today</p>
       </div>
 
       {error && (

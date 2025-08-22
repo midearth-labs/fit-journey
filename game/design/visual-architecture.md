@@ -1,4 +1,4 @@
-# Fitness AI Game - Visual Architecture Diagrams
+# FitJourney Game - Visual Architecture Diagrams
 
 ## System Overview Diagram
 
@@ -50,7 +50,7 @@ graph TB
 
 ```mermaid
 journey
-    title Fitness Game User Journey
+    title FitJourney Game User Journey
     section Onboarding
       User visits app: 5: User
       User signs up: 4: User
@@ -681,4 +681,4 @@ graph TD
     L --> P
 ```
 
-These visual diagrams provide a comprehensive understanding of the Fitness AI Game architecture, showing how all components interact, how data flows through the system, and how the application scales from MVP to enterprise levels. Each diagram focuses on a specific aspect of the system, making it easier to understand the complex relationships and dependencies.
+These visual diagrams provide a comprehensive understanding of the FitJourney Game architecture, showing how all components interact, how data flows through the system, and how the application scales from MVP to enterprise levels. Each diagram focuses on a specific aspect of the system, making it easier to understand the complex relationships and dependencies.

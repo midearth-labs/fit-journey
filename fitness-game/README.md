@@ -1,4 +1,4 @@
-# Fitness AI Game 🏋️‍♀️🧠
+# FitJourney Game 🏋️‍♀️🧠
 
 > Master fitness, nutrition, and anatomy through fun interactive quizzes. Train your avatar and compete with friends!
 

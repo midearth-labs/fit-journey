@@ -114,7 +114,7 @@ THE SYSTEM SHALL prompt the user to setup their profile first.
 **Dependencies**: R2.1, R1.2
 ```
 WHEN a new user accesses profile setup
-THE SYSTEM SHALL display fields to input their display name, and optionally their avatar gender, avatar age_range, and timezone, 
+THE SYSTEM SHALL display fields to input a required field like the display name, and also optional fields like their avatar gender, avatar age_range, and timezone, 
 ```
 
 ```
@@ -449,6 +449,11 @@ THE SYSTEM SHALL display progress statistics (total questions answered, average 
 ```
 WHEN displaying avatar
 THE SYSTEM SHALL display using the "average" UserState if the user doesn't have a valid UserProfile.current_state
+```
+
+```
+WHEN displaying avatar
+THE SYSTEM SHALL display a generic default Icon if the user doesn't have a valid avatar age range and gender defined on their profile.
 ```
 
 ```

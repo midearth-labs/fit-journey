@@ -56,7 +56,7 @@ Based on the current setup, here's your step-by-step guide to implement the auth
    - Enable GitHub provider
    - Go to GitHub: Settings → Developer settings → OAuth Apps → New OAuth App
    - **Settings:**
-     - Application name: "Fitness AI Game"
+     - Application name: "FitJourney Game"
      - Homepage URL: `http://localhost:3090` (dev) / your production URL
      - Authorization callback URL: `https://pkftjntcnjevfchkcywi.supabase.co/auth/v1/callback`
      - Copy Client ID and Client Secret to Supabase
@@ -596,7 +596,7 @@ export function LoginForm({ onSuccess, className }: LoginFormProps) {
     <div className={`w-full max-w-md space-y-6 ${className}`}>
       <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-900">Sign In</h2>
-        <p className="text-gray-600 mt-2">Welcome back to Fitness AI Game</p>
+        <p className="text-gray-600 mt-2">Welcome back to FitJourney Game</p>
       </div>
 
       {error && (
@@ -768,7 +768,7 @@ export function SignupForm({ onSuccess, className }: SignupFormProps) {
     <div className={`w-full max-w-md space-y-6 ${className}`}>
       <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-900">Create Account</h2>
-        <p className="text-gray-600 mt-2">Join Fitness AI Game today</p>
+        <p className="text-gray-600 mt-2">Join FitJourney Game today</p>
       </div>
 
       {error && (
@@ -1349,7 +1349,7 @@ export default function Home() {
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">🏋️</span>
           </div>
-          <h1 className="text-xl font-bold text-gray-900">Fitness AI Game</h1>
+          <h1 className="text-xl font-bold text-gray-900">FitJourney Game</h1>
         </div>
         <AuthButton />
       </header>
@@ -1502,7 +1502,7 @@ export default function Home() {
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">🏋️</span>
           </div>
-          <h1 className="text-xl font-bold text-gray-900">Fitness AI Game</h1>
+          <h1 className="text-xl font-bold text-gray-900">FitJourney Game</h1>
         </div>
         <AuthButton />
       </header>
@@ -1593,7 +1593,7 @@ export default function Home() {
       <footer className="bg-white border-t mt-16">
         <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center text-gray-600">
-            <p>&copy; 2024 Fitness AI Game. Train smarter, not harder.</p>
+            <p>&copy; 2024 FitJourney Game. Train smarter, not harder.</p>
           </div>
         </div>
       </footer>
@@ -2156,7 +2156,7 @@ export default function Home() {
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">🏋️</span>
           </div>
-          <h1 className="text-xl font-bold text-gray-900">Fitness AI Game</h1>
+          <h1 className="text-xl font-bold text-gray-900">FitJourney Game</h1>
         </div>
         <AuthButton />
       </header>
@@ -2265,7 +2265,7 @@ export default function Home() {
       <footer className="bg-white border-t mt-16">
         <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center text-gray-600">
-            <p>&copy; 2024 Fitness AI Game. Train smarter, not harder.</p>
+            <p>&copy; 2024 FitJourney Game. Train smarter, not harder.</p>
           </div>
         </div>
       </footer>

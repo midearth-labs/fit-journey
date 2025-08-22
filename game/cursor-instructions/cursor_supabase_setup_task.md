@@ -781,7 +781,7 @@ export default function Home() {
 Now let me update the todo.md file to mark the supabase-setup task as completed:
 
 ```markdown
-# Fitness AI Game - Development Todo List
+# FitJourney Game - Development Todo List
 
 ## Phase 1: Core Foundation (Weeks 1-2)
 

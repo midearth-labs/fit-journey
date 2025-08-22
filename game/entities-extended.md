@@ -1,4 +1,4 @@
-# Fitness Game - Entity Models
+# FitJourney Game - Entity Models
 
 
 

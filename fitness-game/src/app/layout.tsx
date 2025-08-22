@@ -14,24 +14,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Fitness AI Game - Train Your Fitness Knowledge',
+  title: 'FitJourney Game - Train Your Fitness Knowledge',
   description:
     'Master fitness, nutrition, and anatomy through fun interactive quizzes. Train your avatar and compete with friends!',
   keywords: ['fitness', 'quiz', 'education', 'nutrition', 'exercise', 'game'],
-  authors: [{ name: 'Fitness AI Game' }],
-  creator: 'Fitness AI Game',
+  authors: [{ name: 'FitJourney Game' }],
+  creator: 'FitJourney Game',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_APP_URL,
-    title: 'Fitness AI Game - Train Your Fitness Knowledge',
+    title: 'FitJourney Game - Train Your Fitness Knowledge',
     description:
       'Master fitness, nutrition, and anatomy through fun interactive quizzes. Train your avatar and compete with friends!',
-    siteName: 'Fitness AI Game',
+    siteName: 'FitJourney Game',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fitness AI Game - Train Your Fitness Knowledge',
+    title: 'FitJourney Game - Train Your Fitness Knowledge',
     description:
       'Master fitness, nutrition, and anatomy through fun interactive quizzes. Train your avatar and compete with friends!',
     creator: '@fitnessaigame',

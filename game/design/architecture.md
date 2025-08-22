@@ -1,8 +1,8 @@
-# Fitness AI Game - High-Level Architecture
+# FitJourney Game - High-Level Architecture
 
 ## Executive Summary
 
-The Fitness AI Game is a Progressive Web Application (PWA) that combines gamified fitness education with habit tracking. The system uses pre-generated AI content to provide engaging daily challenges while maintaining low operational costs and high performance.
+The FitJourney Game is a Progressive Web Application (PWA) that combines gamified fitness education with habit tracking. The system uses pre-generated AI content to provide engaging daily challenges while maintaining low operational costs and high performance.
 
 ## System Overview
 
