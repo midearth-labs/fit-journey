@@ -12,14 +12,117 @@ The architecture follows a modern web application pattern with Next.js frontend,
 The system addresses the challenge of making fitness education engaging and habit-forming through gamification. Success is measured by user engagement (daily challenge completion rates), habit formation (streak maintenance), and knowledge retention (quiz performance improvements).
 
 ### System Boundaries
-**In Scope**: User authentication, daily challenges, habit tracking, streak management, achievement system, avatar progression, offline PWA functionality, social sharing, basic notifications.
+- **In Scope**: User authentication, daily challenges, habit tracking, streak management, achievement system, avatar progression, offline PWA functionality, social sharing, basic notifications.
 
-**Out of Scope**: Real-time multiplayer features, advanced analytics, payment processing (Phase 1), complex AI content generation at runtime.
+- **Out of Scope**: Real-time multiplayer features, advanced analytics, payment processing (Phase 1), complex AI content generation at runtime.
 
 ### Key Stakeholders
 - **Primary Users**: Fitness enthusiasts, beginners learning about fitness, users building healthy habits
 - **Business Owners**: Fitness education platform operators
 - **Content Creators**: AI tools and human reviewers for content generation
+
+## Core User Journeys
+
+### User Onboarding Journey
+**Purpose**: Guide new users through initial setup and first engagement
+**Flow**: 
+1. **Authentication** → Supabase Auth integration
+2. **Profile Setup** → Required display_name, optional avatar preferences
+3. **First Daily Challenge** → Introduction to quiz format and scoring
+4. **Achievement Unlock** → First completion achievement celebration
+5. **Habit Introduction** → Brief tutorial on habit logging system
+
+**Architecture Impact**: 
+- Auth middleware ensures profile completion before feature access
+- Static content provides onboarding guidance and first challenge
+- Achievement system triggers immediate engagement feedback
+
+### Daily Challenge Journey
+**Purpose**: Core engagement loop for daily fitness knowledge testing
+**Flow**:
+1. **Challenge Access** → Home screen displays current day's challenge
+2. **Session Creation** → GameSession record with timezone locking
+3. **Question Progression** → Mixed standalone and passage-based questions
+4. **Retry Logic** → Up to 3 attempts if needed before day ends
+5. **Completion & Streak Update** → Streak calculation and achievement checks
+6. **Habit Update** -> Habit Tracking Journey
+6. **Social Sharing** → Optional result sharing with challenge URLs
+
+**Architecture Impact**:
+- Game Session Engine manages state and progression
+- Timezone locking prevents manipulation attempts
+- Streak Management System updates user progress
+- Achievement System checks unlock conditions
+
+### Habit Tracking Journey
+**Purpose**: Build healthy fitness habits through daily logging
+**Flow**:
+1. **Habit Interface** → Toggle buttons for all habit types
+2. **Daily Logging** → StreakLog entries with timestamp validation
+3. **Streak Calculation** → Multi-type streak tracking and milestones
+4. **Perfect Day Detection** → "All" streak type for complete habit days
+5. **Achievement Rewards** → Habit-specific and perfect day achievements
+
+**Architecture Impact**:
+- Streak Management System handles multi-type calculations
+- Event-driven updates trigger achievement checks
+- User State evaluation considers habit patterns
+
+### Practice Session Journey
+**Purpose**: Allow users to practice specific content categories
+**Flow**:
+1. **Category Selection** → Browse available ContentCategory options
+2. **Session Initiation** → 10-question practice session (ephemeral)
+3. **Mixed Content** → Standalone and passage-based questions
+4. **Immediate Feedback** → Show correct answers and explanations
+5. **Performance Summary** → Score, accuracy, and time metrics
+
+**Architecture Impact**:
+- Content Management System provides category-specific questions
+- No persistent GameSession records (ephemeral sessions)
+- Performance tracking for analytics and difficulty calibration
+
+### Achievement & Progress Journey
+**Purpose**: Maintain long-term engagement through milestone recognition
+**Flow**:
+1. **Progress Monitoring** → Track streaks, quiz performance, habit completion
+2. **Achievement Checking** → Automatic unlock condition evaluation
+3. **Celebration Display** → Modal with achievement details and rewards
+4. **Profile Updates** → Avatar progression and state changes
+5. **Social Recognition** → Share achievements and progress milestones
+
+**Architecture Impact**:
+- Achievement System continuously monitors unlock conditions
+- Avatar Progression System evaluates user state changes
+- Event-driven architecture ensures real-time updates
+
+### Offline Engagement Journey
+**Purpose**: Provide continuity when users are offline
+**Flow**:
+1. **Content Caching** → PWA caches previously viewed content
+2. **Offline Viewing** → Access cached questions and avatar status
+3. **Action Queuing** → Queue offline actions (habit logging, quiz attempts)
+4. **Sync on Reconnection** → Process queued actions and update server
+5. **Conflict Resolution** → Handle any data conflicts using timestamp logic
+
+**Architecture Impact**:
+- PWA features provide offline content access
+- Sync Engine handles offline data synchronization
+- Conflict resolution maintains data integrity
+
+### Social Sharing Journey
+**Purpose**: Increase engagement through social interaction
+**Flow**:
+1. **Result Generation** → Create shareable challenge results
+2. **URL Generation** → Unique challenge URLs for direct access
+3. **Social Platform Integration** → Native sharing to social media
+4. **Challenge Acceptance** → Other users access shared challenges
+5. **Score Comparison** → Display performance comparison
+
+**Architecture Impact**:
+- Social sharing APIs integrate with challenge results
+- Unique URL generation for challenge accessibility
+- Performance comparison requires data aggregation
 
 ## Architectural Vision
 
@@ -117,50 +220,50 @@ graph TB
 - **CQRS-like**: Separate read (content display) and write (user progress) operations
 
 ### Technology Stack
-**Frontend/Presentation Tier**
+#### **Frontend/Presentation Tier**
 - **Next.js 14**: Server-side rendering, PWA support, and API routes
 - **Tailwind CSS**: Rapid UI development with consistent design system
 - **Framer Motion**: Smooth animations for avatar progression and transitions
 
-**Application Tier**
+#### **Application Tier**
 - **Next.js API Routes**: Backend logic and game mechanics
 - **Zustand**: Lightweight state management for client-side state
 - **React Query**: Server state management and caching
 
-**Data Tier**
+#### **Data Tier**
 - **Supabase**: PostgreSQL database, authentication, and file storage
 - **Drizzle ORM**: Type-safe database operations and migrations
 
-**Infrastructure & Platform**
+#### **Infrastructure & Platform**
 - **Vercel**: Next.js optimized hosting with edge functions
 - **Supabase**: Managed database and authentication platform
 
 ## Core Components
 
 ### Content Management System
-**Purpose**: Manages all pre-generated fitness knowledge content including questions, passages, and knowledge base articles
-**Key Responsibilities**: Content validation, versioning, and distribution to frontend
-**Technology Approach**: JSON file-based storage with build-time validation
+- **Purpose**: Manages all pre-generated fitness knowledge content including questions, passages, and knowledge base articles
+- **Key Responsibilities**: Content validation, versioning, and distribution to frontend
+- **Technology Approach**: JSON file-based storage with build-time validation
 
 ### Game Session Engine
-**Purpose**: Orchestrates daily challenges, practice sessions, and tracks user progress
-**Key Responsibilities**: Session management, question sequencing, timezone handling, retry logic
-**Technology Approach**: State machine pattern with persistent session storage
+- **Purpose**: Orchestrates daily challenges, practice sessions, and tracks user progress
+- **Key Responsibilities**: Session management, question sequencing, timezone handling, retry logic
+- **Technology Approach**: State machine pattern with persistent session storage
 
 ### Streak Management System
-**Purpose**: Tracks user progress across multiple habit types and quiz completion
-**Key Responsibilities**: Multi-type streak calculation, milestone detection, streak history
-**Technology Approach**: Event-driven updates with timezone-aware date calculations
+- **Purpose**: Tracks user progress across multiple habit types and quiz completion
+- **Key Responsibilities**: Multi-type streak calculation, milestone detection, streak history
+- **Technology Approach**: Event-driven updates with timezone-aware date calculations
 
 ### Achievement System
-**Purpose**: Rewards user milestones and maintains engagement through unlockable achievements
-**Key Responsibilities**: Condition checking, achievement unlocking, celebration display
-**Technology Approach**: Rule engine pattern with extensible unlock conditions
+- **Purpose**: Rewards user milestones and maintains engagement through unlockable achievements
+- **Key Responsibilities**: Condition checking, achievement unlocking, celebration display
+- **Technology Approach**: Rule engine pattern with extensible unlock conditions
 
 ### Avatar Progression System
-**Purpose**: Visual representation of user fitness state and progress
-**Key Responsibilities**: State evaluation, avatar selection, progression visualization
-**Technology Approach**: Rule-based state machine with visual asset management
+- **Purpose**: Visual representation of user fitness state and progress
+- **Key Responsibilities**: State evaluation, avatar selection, progression visualization
+- **Technology Approach**: Rule-based state machine with visual asset management
 
 ## Data Architecture
 
@@ -204,10 +307,10 @@ flowchart TD
 ```
 
 ### Data Strategy
-**Data Sources**: AI-generated content, user interactions, habit logging, quiz attempts
-**Data Storage**: PostgreSQL for user data, JSON files for static content, Supabase Storage for images
-**Data Processing**: Real-time streak calculations, batch achievement processing, offline data sync resolution
-**Data Access**: Drizzle ORM for database operations, direct JSON loading for static content
+- **Data Sources**: AI-generated content, user interactions, habit logging, quiz attempts
+- **Data Storage**: PostgreSQL for user data, JSON files for static content, Supabase Storage for images
+- **Data Processing**: Real-time streak calculations, batch achievement processing, offline data sync resolution
+- **Data Access**: Drizzle ORM for database operations, direct JSON loading for static content
 
 ## Integration Architecture
 
@@ -224,24 +327,24 @@ flowchart TD
 ## Cross-Cutting Concerns
 
 ### Security Architecture
-**Authentication & Authorization**: Supabase Auth with JWT tokens and row-level security
-**Data Protection**: Encrypted data transmission, user data isolation, timezone manipulation prevention
-**Network Security**: HTTPS enforcement, API rate limiting, input validation
+- **Authentication & Authorization**: Supabase Auth with JWT tokens and row-level security
+- **Data Protection**: Encrypted data transmission, user data isolation, timezone manipulation prevention
+- **Network Security**: HTTPS enforcement, API rate limiting, input validation
 
 ### Observability Strategy
-**Monitoring Approach**: Vercel Analytics for performance, Supabase dashboard for database metrics
-**Logging Strategy**: Structured logging for user actions and system events
-**Analytics & Metrics**: User engagement, streak patterns, content performance
+- **Monitoring Approach**: Vercel Analytics for performance, Supabase dashboard for database metrics
+- **Logging Strategy**: Structured logging for user actions and system events
+- **Analytics & Metrics**: User engagement, streak patterns, content performance
 
 ### Performance & Scalability
-**Scalability Strategy**: Horizontal scaling through Vercel edge functions, database read replicas
-**Performance Requirements**: <200ms for cached data, <1s for server requests
-**Caching Strategy**: Static content caching, user data caching with React Query, PWA offline fallback caching
+- **Scalability Strategy**: Horizontal scaling through Vercel edge functions, database read replicas
+- **Performance Requirements**: <200ms for cached data, <1s for server requests
+- **Caching Strategy**: Static content caching, user data caching with React Query, PWA offline fallback caching
 
 ### Reliability & Resilience
-**Availability Requirements**: 99.9% uptime target with graceful degradation
-**Fault Tolerance**: Graceful error handling, data validation, offline fallback for content viewing
-**Backup & Recovery**: Supabase automated backups, static content version control
+- **Availability Requirements**: 99.9% uptime target with graceful degradation
+- **Fault Tolerance**: Graceful error handling, data validation, offline fallback for content viewing
+- **Backup & Recovery**: Supabase automated backups, static content version control
 
 ## Deployment Architecture
 
@@ -268,9 +371,9 @@ flowchart TD
 - **Content Validation**: Build-time checks for static content integrity
 
 ### Testing Strategy
-**Test Pyramid**: Unit tests for business logic, integration tests for API endpoints, E2E tests for critical user flows
-**Quality Gates**: Automated content validation, database schema checks, performance budgets
-**Performance Testing**: Lighthouse CI for PWA metrics, load testing for API endpoints
+- **Test Pyramid**: Unit tests for business logic, integration tests for API endpoints, E2E tests for critical user flows
+- **Quality Gates**: Automated content validation, database schema checks, performance budgets
+- **Performance Testing**: Lighthouse CI for PWA metrics, load testing for API endpoints
 
 ### Release Management
 - **Content Updates**: Manual content generation and review process

@@ -15,6 +15,17 @@
 ### Key Stakeholders
 {Primary users, business owners, and system consumers}
 
+
+## Core User Journeys
+
+### {Journey 1}
+**Purpose**: {Journey Purpose}
+**Flow**: 
+1. **{Flow 1}** → {Concise detail}
+
+**Architecture Impact**: 
+- {Impact 1}
+
 ## Architectural Vision
 
 ### Core Architecture Principles
@@ -35,38 +46,38 @@
 {Primary architectural patterns used - microservices, event-driven, layered, etc.}
 
 ### Technology Stack
-**Frontend/Presentation Tier**
+#### **Frontend/Presentation Tier**
 - {Technology}: {Rationale for choice}
 - {Technology}: {Rationale for choice}
 
-**Application Tier**
+#### **Application Tier**
 - {Technology}: {Rationale for choice}
 - {Technology}: {Rationale for choice}
 
-**Data Tier**
+#### **Data Tier**
 - {Technology}: {Rationale for choice}
 - {Technology}: {Rationale for choice}
 
-**Infrastructure & Platform**
+#### **Infrastructure & Platform**
 - {Technology}: {Rationale for choice}
 - {Technology}: {Rationale for choice}
 
 ## Core Components
 
 ### {Component 1 Name}
-**Purpose**: {What this component does and why it exists}
-**Key Responsibilities**: {Primary functions}
-**Technology Approach**: {High-level implementation approach}
+- **Purpose**: {What this component does and why it exists}
+- **Key Responsibilities**: {Primary functions}
+- **Technology Approach**: {High-level implementation approach}
 
 ### {Component 2 Name}
-**Purpose**: {What this component does and why it exists}
-**Key Responsibilities**: {Primary functions}
-**Technology Approach**: {High-level implementation approach}
+- **Purpose**: {What this component does and why it exists}
+- **Key Responsibilities**: {Primary functions}
+- **Technology Approach**: {High-level implementation approach}
 
 ### {Component 3 Name}
-**Purpose**: {What this component does and why it exists}
-**Key Responsibilities**: {Primary functions}
-**Technology Approach**: {High-level implementation approach}
+- **Purpose**: {What this component does and why it exists}
+- **Key Responsibilities**: {Primary functions}
+- **Technology Approach**: {High-level implementation approach}
 
 ## Data Architecture
 
@@ -74,10 +85,10 @@
 {DataFlowDiagram using mermaid - showing how data moves through the system}
 
 ### Data Strategy
-**Data Sources**: {Primary data inputs and origins}
-**Data Storage**: {Storage patterns and technologies}
-**Data Processing**: {How data is transformed and processed}
-**Data Access**: {How different components access data}
+- **Data Sources**: {Primary data inputs and origins}
+- **Data Storage**: {Storage patterns and technologies}
+- **Data Processing**: {How data is transformed and processed}
+- **Data Access**: {How different components access data}
 
 ## Integration Architecture
 
@@ -90,24 +101,24 @@
 ## Cross-Cutting Concerns
 
 ### Security Architecture
-**Authentication & Authorization**: {High-level approach}
-**Data Protection**: {Encryption, privacy, compliance approach}
-**Network Security**: {Security boundaries and controls}
+- **Authentication & Authorization**: {High-level approach}
+- **Data Protection**: {Encryption, privacy, compliance approach}
+- **Network Security**: {Security boundaries and controls}
 
 ### Observability Strategy
-**Monitoring Approach**: {What will be monitored and how}
-**Logging Strategy**: {Centralized logging approach}
-**Analytics & Metrics**: {Business and technical metrics}
+- **Monitoring Approach**: {What will be monitored and how}
+- **Logging Strategy**: {Centralized logging approach}
+- **Analytics & Metrics**: {Business and technical metrics}
 
 ### Performance & Scalability
-**Scalability Strategy**: {How the system will scale}
-**Performance Requirements**: {Key performance targets}
-**Caching Strategy**: {Caching layers and approach}
+- **Scalability Strategy**: {How the system will scale}
+- **Performance Requirements**: {Key performance targets}
+- **Caching Strategy**: {Caching layers and approach}
 
 ### Reliability & Resilience
-**Availability Requirements**: {Uptime targets and approach}
-**Fault Tolerance**: {How system handles failures}
-**Backup & Recovery**: {Data protection and disaster recovery}
+- **Availability Requirements**: {Uptime targets and approach}
+- **Fault Tolerance**: {How system handles failures}
+- **Backup & Recovery**: {Data protection and disaster recovery}
 
 ## Deployment Architecture
 
@@ -126,9 +137,9 @@
 {Build, test, deployment pipeline approach}
 
 ### Testing Strategy
-**Test Pyramid**: {Unit, integration, e2e testing approach}
-**Quality Gates**: {Automated quality checks}
-**Performance Testing**: {Load testing strategy}
+- **Test Pyramid**: {Unit, integration, e2e testing approach}
+- **Quality Gates**: {Automated quality checks}
+- **Performance Testing**: {Load testing strategy}
 
 ### Release Management
 {How releases are planned, executed, and monitored}
