@@ -2,7 +2,7 @@
 
 ## Architecture Overview
 
-**Pre-Generated Content Strategy**: All knowledge base, quiz questions and avatar images are generated offline using AI tools, reviewed by agents/humans, and stored in database. No runtime AI generation to minimize costs and latency.
+**Pre-Generated Content Strategy**: All knowledge base, quiz questions and avatar images are generated offline using AI tools, reviewed by agents/humans, and stored in database. No runtime AI generation to minimize costs and latency. Users primarily interact online with offline fallback for content viewing.
 
 ## Frontend Stack
 
@@ -22,12 +22,12 @@
 ### PWA Features
 - **next-pwa** for service worker and manifest generation
 - **Web Push API** for notifications (no third-party service needed initially)
-- **Cache API** for offline quiz availability
+- **Cache API** for offline content viewing fallback
 
 ### State Management
 - **Zustand** (lightweight, TypeScript-first)
 - **React Query/TanStack Query** for server state and caching
-- **LocalStorage** for offline progress persistence
+- **LocalStorage** for offline progress persistence and sync when online
 
 ## Backend Stack
 
@@ -152,7 +152,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3090
 ### Caching Strategy
 - **Static Generation** for quiz pages (ISR for updates)
 - **SWR/React Query** for user-specific data
-- **Service Worker** for offline quiz caching
+- **Service Worker** for offline content viewing fallback
 - **CDN caching** for static assets
 
 ### Bundle Optimization

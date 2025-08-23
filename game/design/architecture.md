@@ -1,593 +1,330 @@
-# FitJourney Game - High-Level Architecture
+# FitJourney Game High-Level Architecture Document
 
 ## Executive Summary
 
-The FitJourney Game is a Progressive Web Application (PWA) that combines gamified fitness education with habit tracking. The system uses pre-generated AI content to provide engaging daily challenges while maintaining low operational costs and high performance.
+FitJourney is a gamified fitness knowledge platform that combines daily quiz challenges, habit tracking, and avatar progression to motivate users to learn about fitness while building healthy habits. The system uses pre-generated AI content to minimize runtime costs while providing engaging, personalized experiences through streak tracking, achievements, and social sharing.
 
-## System Overview
+The architecture follows a modern web application pattern with Next.js frontend, Supabase backend, and enhanced offline capabilities through PWA features. Content is generated offline using AI tools and stored as static JSON files, ensuring fast performance and low operational costs. Users primarily interact online with offline fallback for content viewing.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              FITNESS AI GAME                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  Frontend (Next.js 14)  │  Backend (Supabase)  │  Content Pipeline      │
-│  • PWA Support          │  • PostgreSQL DB     │  • AI Generation       │
-│  • Offline Capability   │  • Real-time Auth    │  • Human Review        │
-│  • Social Sharing       │  • Row Level Security│  • Static JSON Files   │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+## System Context
 
-## Core Architecture Principles
+### Business Context
+The system addresses the challenge of making fitness education engaging and habit-forming through gamification. Success is measured by user engagement (daily challenge completion rates), habit formation (streak maintenance), and knowledge retention (quiz performance improvements).
 
-1. **Pre-Generated Content**: All quiz questions and avatar images are generated offline using AI tools, reviewed, and stored as static JSON files
-2. **Progressive Web App**: Full offline capability with service worker and local storage
-3. **Real-time Updates**: Supabase real-time subscriptions for live streak and achievement updates
-4. **Scalable Foundation**: Built on modern web technologies with clear separation of concerns
+### System Boundaries
+**In Scope**: User authentication, daily challenges, habit tracking, streak management, achievement system, avatar progression, offline PWA functionality, social sharing, basic notifications.
 
-## High-Level System Architecture
+**Out of Scope**: Real-time multiplayer features, advanced analytics, payment processing (Phase 1), complex AI content generation at runtime.
+
+### Key Stakeholders
+- **Primary Users**: Fitness enthusiasts, beginners learning about fitness, users building healthy habits
+- **Business Owners**: Fitness education platform operators
+- **Content Creators**: AI tools and human reviewers for content generation
+
+## Architectural Vision
+
+### Core Architecture Principles
+- **Pre-Generated Content First**: All knowledge content generated offline to minimize runtime costs and ensure quality
+- **Progressive Web App Enhanced**: PWA features built-in from day one for offline fallback and mobile experience
+- **Data Integrity by Design**: Timezone locking, streak validation, and audit trails prevent gaming the system
+- **Scalable Foundation**: Modern tech stack that can grow from MVP to enterprise scale
+
+### Quality Attributes & Trade-offs
+- **Performance vs. Content Freshness**: Static content ensures fast loading but requires manual updates
+- **Offline Capability vs. Data Consistency**: Offline fallback approach may lead to sync conflicts requiring resolution
+- **Security vs. User Experience**: Timezone locking prevents manipulation but adds complexity to user flows
+
+## System Architecture
+
+### High-Level System Diagram
 
 ```mermaid
 graph TB
     subgraph "Client Layer"
-        A[Mobile Browser] --> B[PWA App]
-        C[Desktop Browser] --> B
-        B --> D[Service Worker]
-        B --> E[Local Storage]
+        Web[Web Browser]
+        Mobile[Mobile Browser]
+        PWA[PWA App]
     end
     
     subgraph "Frontend Layer"
-        B --> F[Next.js App Router]
-        F --> G[React Components]
-        G --> H[State Management]
-        H --> I[Zustand Store]
-        H --> J[React Query]
+        NextJS[Next.js 14 App]
+        PWAFeatures[PWA Features]
+        OfflineCache[Offline Cache]
     end
     
     subgraph "Backend Layer"
-        K[Supabase] --> L[PostgreSQL]
-        K --> M[Auth Service]
-        K --> N[Real-time API]
-        K --> O[Storage API]
+        APIRoutes[Next.js API Routes]
+        AuthMiddleware[Auth Middleware]
+        GameLogic[Game Logic Engine]
+        StreakEngine[Streak Management]
+        AchievementEngine[Achievement System]
+    end
+    
+    subgraph "Data Layer"
+        Supabase[Supabase Platform]
+        PostgreSQL[(PostgreSQL)]
+        Storage[Supabase Storage]
+        Auth[Supabase Auth]
     end
     
     subgraph "Content Layer"
-        P[Static JSON Files] --> Q[Questions]
-        P --> R[Passage Sets]
-        P --> S[Daily Challenges]
-        P --> T[User States]
-        P --> U[Achievements]
+        StaticContent[Static JSON Content]
+        ContentGen[AI Content Generation]
+        HumanReview[Human Review Process]
     end
     
     subgraph "External Services"
-        V[Push Notifications]
-        W[Social Sharing APIs]
+        PushAPI[Web Push API]
+        SocialShare[Social Platforms]
     end
     
-    F --> K
-    F --> P
-    F --> V
-    F --> W
+    Web --> NextJS
+    Mobile --> NextJS
+    PWA --> NextJS
+    
+    NextJS --> PWAFeatures
+    PWAFeatures --> OfflineCache
+    
+    NextJS --> APIRoutes
+    APIRoutes --> AuthMiddleware
+    APIRoutes --> GameLogic
+    APIRoutes --> StreakEngine
+    APIRoutes --> AchievementEngine
+    
+    GameLogic --> Supabase
+    StreakEngine --> Supabase
+    AchievementEngine --> Supabase
+    
+    Supabase --> PostgreSQL
+    Supabase --> Storage
+    Supabase --> Auth
+    
+    ContentGen --> StaticContent
+    HumanReview --> StaticContent
+    StaticContent --> NextJS
+    
+    NextJS --> PushAPI
+    NextJS --> SocialShare
+    
+    NextJS --> OfflineCache
+    OfflineCache --> StaticContent
 ```
 
-## Data Flow Architecture
+### Architecture Patterns
+- **Layered Architecture**: Clear separation between presentation, business logic, and data layers
+- **Event-Driven**: Streak and achievement systems respond to user actions
+- **Repository Pattern**: Static content management through JSON files
+- **CQRS-like**: Separate read (content display) and write (user progress) operations
+
+### Technology Stack
+**Frontend/Presentation Tier**
+- **Next.js 14**: Server-side rendering, PWA support, and API routes
+- **Tailwind CSS**: Rapid UI development with consistent design system
+- **Framer Motion**: Smooth animations for avatar progression and transitions
+
+**Application Tier**
+- **Next.js API Routes**: Backend logic and game mechanics
+- **Zustand**: Lightweight state management for client-side state
+- **React Query**: Server state management and caching
+
+**Data Tier**
+- **Supabase**: PostgreSQL database, authentication, and file storage
+- **Drizzle ORM**: Type-safe database operations and migrations
+
+**Infrastructure & Platform**
+- **Vercel**: Next.js optimized hosting with edge functions
+- **Supabase**: Managed database and authentication platform
+
+## Core Components
+
+### Content Management System
+**Purpose**: Manages all pre-generated fitness knowledge content including questions, passages, and knowledge base articles
+**Key Responsibilities**: Content validation, versioning, and distribution to frontend
+**Technology Approach**: JSON file-based storage with build-time validation
+
+### Game Session Engine
+**Purpose**: Orchestrates daily challenges, practice sessions, and tracks user progress
+**Key Responsibilities**: Session management, question sequencing, timezone handling, retry logic
+**Technology Approach**: State machine pattern with persistent session storage
+
+### Streak Management System
+**Purpose**: Tracks user progress across multiple habit types and quiz completion
+**Key Responsibilities**: Multi-type streak calculation, milestone detection, streak history
+**Technology Approach**: Event-driven updates with timezone-aware date calculations
+
+### Achievement System
+**Purpose**: Rewards user milestones and maintains engagement through unlockable achievements
+**Key Responsibilities**: Condition checking, achievement unlocking, celebration display
+**Technology Approach**: Rule engine pattern with extensible unlock conditions
+
+### Avatar Progression System
+**Purpose**: Visual representation of user fitness state and progress
+**Key Responsibilities**: State evaluation, avatar selection, progression visualization
+**Technology Approach**: Rule-based state machine with visual asset management
+
+## Data Architecture
+
+### Data Flow Diagram
 
 ```mermaid
-sequenceDiagram
-    participant U as User
-    participant PWA as PWA App
-    participant SW as Service Worker
-    participant LS as Local Storage
-    participant FE as Frontend
-    participant SB as Supabase
-    participant DB as PostgreSQL
-    participant SC as Static Content
-    
-    U->>PWA: Opens App
-    PWA->>SW: Register Service Worker
-    PWA->>FE: Load App
-    FE->>SC: Load Static Content
-    FE->>SB: Authenticate User
-    SB->>DB: Create/Get User Record
-    
-    U->>FE: Start Daily Challenge
-    FE->>SC: Get Challenge Questions
-    FE->>LS: Cache Questions Offline
-    
-    loop Question Answering
-        U->>FE: Answer Question
-        FE->>LS: Store Progress
-        FE->>SB: Sync Progress
-        SB->>DB: Store QuestionAttempt
+flowchart TD
+    subgraph "Content Generation"
+        AI[AI Tools] --> ContentGen[Content Generation]
+        ContentGen --> Validation[Human Review]
+        Validation --> StaticJSON[Static JSON Files]
     end
     
-    FE->>SB: Complete Challenge
-    SB->>DB: Update Streaks & Achievements
-    SB->>FE: Real-time Updates
-    FE->>U: Show Results & Rewards
-```
-
-## Component Architecture
-
-### Frontend Component Hierarchy
-
-```
-App (Layout)
-├── AuthProvider
-│   ├── LoginForm
-│   ├── SignupForm
-│   └── ProtectedRoute
-├── GameProvider
-│   ├── DailyChallenge
-│   │   ├── QuestionRenderer
-│   │   ├── PassageRenderer
-│   │   └── ProgressTracker
-│   ├── PracticeMode
-│   │   ├── CategorySelector
-│   │   └── QuestionSet
-│   └── ResultsDisplay
-├── ProfileProvider
-│   ├── UserProfile
-│   ├── AvatarDisplay
-│   ├── StreakTracker
-│   └── AchievementShowcase
-├── HabitProvider
-│   ├── HabitLogger
-│   ├── StreakCalendar
-│   └── ProgressCharts
-└── PWAProvider
-    ├── InstallPrompt
-    ├── OfflineIndicator
-    └── NotificationManager
-```
-
-### State Management Architecture
-
-```mermaid
-graph LR
-    subgraph "Global State (Zustand)"
-        A[AuthStore]
-        B[GameStore]
-        C[ProfileStore]
-        D[HabitStore]
-        E[PWAStore]
+    subgraph "User Interaction"
+        User[User] --> Auth[Authentication]
+        Auth --> Profile[Profile Setup]
+        Profile --> DailyChallenge[Daily Challenge]
+        DailyChallenge --> GameSession[Game Session]
+        GameSession --> QuestionAttempt[Question Attempts]
     end
     
-    subgraph "Server State (React Query)"
-        F[UserQueries]
-        G[GameQueries]
-        H[StreakQueries]
-        I[AchievementQueries]
+    subgraph "Progress Tracking"
+        QuestionAttempt --> StreakCalc[Streak Calculation]
+        HabitLog[Habit Logging] --> StreakCalc
+        StreakCalc --> AchievementCheck[Achievement Check]
+        StreakCalc --> StateEval[State Evaluation]
     end
     
-    subgraph "Local State (React)"
-        J[Form State]
-        K[UI State]
-        L[Animation State]
+    subgraph "Data Storage"
+        StaticJSON --> NextJS[Next.js App]
+        GameSession --> PostgreSQL[(PostgreSQL)]
+        QuestionAttempt --> PostgreSQL
+        StreakCalc --> PostgreSQL
+        StateEval --> PostgreSQL
     end
     
-    A --> F
-    B --> G
-    C --> H
-    D --> I
-    E --> J
-```
-
-## Database Architecture
-
-### Core Tables Structure
-
-```mermaid
-erDiagram
-    User ||--|| UserProfile : has
-    User ||--o{ GameSession : creates
-    User ||--o{ QuestionAttempt : makes
-    User ||--o{ StreakLog : logs
-    User ||--o{ StreakHistory : maintains
-    User ||--o{ UserAchievement : unlocks
-    User ||--o{ UserStateHistory : progresses
-    
-    GameSession ||--o{ QuestionAttempt : contains
-    DailyChallenge ||--o{ GameSession : generates
-    
-    ContentCategory ||--o{ Question : categorizes
-    ContentCategory ||--o{ PassageSet : categorizes
-    ContentCategory ||--o{ DailyChallenge : themes
-    
-    PassageSet ||--o{ Question : contains
-    KnowledgeBase ||--o{ Question : supports
-```
-
-### Static Content Organization
-
-```
-static-content/
-├── content-categories/
-│   ├── equipment.json
-│   ├── form.json
-│   ├── nutrition.json
-│   └── injury-prevention.json
-├── questions/
-│   ├── equipment.json
-│   ├── form.json
-│   ├── nutrition.json
-│   └── injury-prevention.json
-├── passage-sets/
-│   ├── equipment.json
-│   ├── form.json
-│   ├── nutrition.json
-│   └── injury-prevention.json
-├── daily-challenges/
-│   ├── challenge-1.json
-│   ├── challenge-2.json
-│   └── challenge-30.json
-├── user-states/
-│   ├── average.json
-│   ├── fit-healthy.json
-│   ├── lean-tired.json
-│   └── injured-recovering.json
-├── achievements/
-│   ├── streak-achievements.json
-│   ├── knowledge-achievements.json
-│   └── habit-achievements.json
-└── avatar-assets/
-    ├── male-teen/
-    ├── female-young-adult/
-    └── non-binary-middle-age/
-```
-
-## API Architecture
-
-### RESTful Endpoints
-
-```typescript
-// Authentication
-POST   /api/auth/login
-POST   /api/auth/signup
-POST   /api/auth/logout
-GET    /api/auth/user
-
-// Game Sessions
-GET    /api/challenges/daily
-POST   /api/sessions/start
-POST   /api/sessions/:id/complete
-POST   /api/questions/:id/attempt
-
-// User Profile
-GET    /api/profile
-PUT    /api/profile
-GET    /api/profile/avatar
-PUT    /api/profile/avatar
-
-// Streaks & Habits
-GET    /api/streaks/current
-POST   /api/habits/log
-GET    /api/streaks/history
-
-// Achievements
-GET    /api/achievements
-GET    /api/achievements/unlocked
-
-// Practice Mode
-GET    /api/categories
-GET    /api/categories/:id/questions
-```
-
-### Real-time Subscriptions
-
-```typescript
-// Supabase Real-time Channels
-const channels = {
-  userProfile: `user:${userId}:profile`,
-  streaks: `user:${userId}:streaks`,
-  achievements: `user:${userId}:achievements`,
-  gameProgress: `user:${userId}:game-progress`
-};
-```
-
-## Security Architecture
-
-### Authentication Flow
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant FE as Frontend
-    participant SB as Supabase Auth
-    participant DB as Database
-    participant MW as Middleware
-    
-    U->>FE: Login Request
-    FE->>SB: Authenticate
-    SB->>FE: JWT Token
-    FE->>DB: Create User Record
-    FE->>MW: Set Auth Cookie
-    
-    Note over FE,MW: Subsequent Requests
-    FE->>MW: Include Auth Header
-    MW->>SB: Verify Token
-    MW->>FE: Allow/Deny Access
-```
-
-### Data Protection Layers
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              SECURITY LAYERS                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. Row Level Security (RLS) in Supabase                                   │
-│ 2. JWT Token Validation                                                   │
-│ 3. Input Validation with Zod Schemas                                      │
-│ 4. Rate Limiting on API Endpoints                                         │
-│ 5. CORS Configuration                                                     │
-│ 6. XSS Prevention via React Security                                      │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-## Performance Architecture
-
-### Caching Strategy
-
-```mermaid
-graph TB
-    subgraph "Client-Side Caching"
-        A[Service Worker] --> B[Static Assets]
-        A --> C[Quiz Questions]
-        A --> D[User Progress]
-    end
-    
-    subgraph "Server-Side Caching"
-        E[Next.js ISR] --> F[Static Pages]
-        E --> G[API Responses]
-    end
-    
-    subgraph "Database Caching"
-        H[Supabase] --> I[Query Results]
-        H --> J[Connection Pooling]
-    end
-    
-    subgraph "CDN Caching"
-        K[Vercel Edge] --> L[Global Assets]
-        K --> M[Avatar Images]
+    subgraph "Offline Fallback"
+        OfflineData[Offline Data] --> Sync[Sync Engine]
+        Sync --> PostgreSQL
     end
 ```
 
-### Offline-First Strategy
+### Data Strategy
+**Data Sources**: AI-generated content, user interactions, habit logging, quiz attempts
+**Data Storage**: PostgreSQL for user data, JSON files for static content, Supabase Storage for images
+**Data Processing**: Real-time streak calculations, batch achievement processing, offline data sync resolution
+**Data Access**: Drizzle ORM for database operations, direct JSON loading for static content
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              OFFLINE STRATEGY                              │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. Service Worker caches all static content                               │
-│ 2. Local Storage stores user progress                                     │
-│ 3. IndexedDB for larger offline datasets                                  │
-│ 4. Background sync when connection restored                                │
-│ 5. Conflict resolution for offline changes                                │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+## Integration Architecture
+
+### External Integrations
+- **Web Push API**: Browser-based notifications for daily reminders
+- **Social Sharing APIs**: Native sharing for challenge results
+- **Image Generation APIs**: DALL-E/Midjourney for avatar creation (offline process)
+
+### Internal Communication
+- **Synchronous**: API calls for immediate user actions
+- **Event-Driven**: Streak updates trigger achievement checks
+- **State Management**: Centralized state for UI consistency
+
+## Cross-Cutting Concerns
+
+### Security Architecture
+**Authentication & Authorization**: Supabase Auth with JWT tokens and row-level security
+**Data Protection**: Encrypted data transmission, user data isolation, timezone manipulation prevention
+**Network Security**: HTTPS enforcement, API rate limiting, input validation
+
+### Observability Strategy
+**Monitoring Approach**: Vercel Analytics for performance, Supabase dashboard for database metrics
+**Logging Strategy**: Structured logging for user actions and system events
+**Analytics & Metrics**: User engagement, streak patterns, content performance
+
+### Performance & Scalability
+**Scalability Strategy**: Horizontal scaling through Vercel edge functions, database read replicas
+**Performance Requirements**: <200ms for cached data, <1s for server requests
+**Caching Strategy**: Static content caching, user data caching with React Query, PWA offline fallback caching
+
+### Reliability & Resilience
+**Availability Requirements**: 99.9% uptime target with graceful degradation
+**Fault Tolerance**: Graceful error handling, data validation, offline fallback for content viewing
+**Backup & Recovery**: Supabase automated backups, static content version control
 
 ## Deployment Architecture
 
-### Infrastructure Components
+### Environment Strategy
+- **Development**: Local development with Supabase local instance
+- **Staging**: Vercel preview deployments with staging database
+- **Production**: Vercel production with production Supabase instance
 
-```mermaid
-graph TB
-    subgraph "Frontend Hosting"
-        A[Vercel] --> B[Next.js App]
-        A --> C[Static Assets]
-        A --> D[Edge Functions]
-    end
-    
-    subgraph "Backend Services"
-        E[Supabase] --> F[PostgreSQL]
-        E --> G[Auth Service]
-        E --> H[Storage]
-        E --> I[Real-time API]
-    end
-    
-    subgraph "External Services"
-        J[Push Notifications]
-        K[Social Sharing]
-        L[Analytics]
-    end
-    
-    B --> E
-    B --> J
-    B --> K
-    B --> L
-```
+### Deployment Model
+- **Frontend**: Vercel automatic deployments from Git
+- **Database**: Supabase managed PostgreSQL with Drizzle migrations
+- **Static Content**: Git-based versioning with build-time validation
 
-### CI/CD Pipeline
+### Infrastructure Requirements
+- **Compute**: Vercel serverless functions and edge functions
+- **Storage**: Supabase PostgreSQL (500MB free tier), Supabase Storage (1GB free tier)
+- **CDN**: Vercel edge network for global performance
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              CI/CD PIPELINE                                │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. GitHub Actions for automated testing                                    │
-│ 2. Drizzle Kit for database migrations                                     │
-│ 3. Vercel for automatic deployments                                        │
-│ 4. Supabase for database schema updates                                    │
-│ 5. Content validation before deployment                                    │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+## Development & Operations
 
-## Content Generation Pipeline
+### CI/CD Strategy
+- **GitHub Integration**: Automatic deployments to Vercel
+- **Database Migrations**: Drizzle Kit for schema changes
+- **Content Validation**: Build-time checks for static content integrity
 
-### AI Content Workflow
+### Testing Strategy
+**Test Pyramid**: Unit tests for business logic, integration tests for API endpoints, E2E tests for critical user flows
+**Quality Gates**: Automated content validation, database schema checks, performance budgets
+**Performance Testing**: Lighthouse CI for PWA metrics, load testing for API endpoints
 
-```mermaid
-graph LR
-    A[Content Requirements] --> B[AI Generation]
-    B --> C[Structured JSON]
-    C --> D[AI Review]
-    D --> E[Human Validation]
-    E --> F[Content Approval]
-    F --> G[Static File Creation]
-    G --> H[Database Import]
-    H --> I[Live Deployment]
-```
+### Release Management
+- **Content Updates**: Manual content generation and review process
+- **Feature Releases**: Git-based deployment with feature flags
+- **Rollback Strategy**: Vercel instant rollbacks, database migration rollbacks
 
-### Content Validation Rules
-
-```typescript
-// Content validation schemas
-const questionSchema = z.object({
-  id: z.string().uuid(),
-  content_category_id: z.string(),
-  question_text: z.string().min(10),
-  options: z.array(z.string()).min(2).max(4),
-  correct_answer_index: z.number().min(0).max(3),
-  explanation: z.string().min(20),
-  difficulty_level: z.number().min(1).max(5),
-  is_standalone: z.boolean(),
-  passage_set_id: z.string().uuid().optional()
-});
-
-const dailyChallengeSchema = z.object({
-  id: z.string().uuid(),
-  day: z.number().min(1),
-  content_category_id: z.string(),
-  challenge_structure: z.array(z.object({
-    type: z.enum(['standalone', 'passage']),
-    question_id: z.string().uuid().optional(),
-    passage_set_id: z.string().uuid().optional(),
-    question_ids: z.array(z.string().uuid()).optional()
-  })),
-  total_questions: z.number().min(1),
-  theme: z.string().optional()
-});
-```
-
-## Monitoring & Analytics
-
-### Key Metrics
-
-```typescript
-// User Engagement Metrics
-const metrics = {
-  dailyActiveUsers: 'DAU tracking',
-  challengeCompletionRate: 'Daily challenge success rate',
-  streakRetention: 'User streak continuation',
-  habitAdoption: 'Habit logging frequency',
-  socialSharing: 'Challenge sharing rate',
-  offlineUsage: 'PWA offline engagement'
-};
-
-// Performance Metrics
-const performance = {
-  pageLoadTime: 'Core Web Vitals',
-  offlineAvailability: 'Service worker effectiveness',
-  databaseResponseTime: 'Supabase performance',
-  cacheHitRate: 'Static content caching',
-  errorRate: 'System reliability'
-};
-```
-
-### Error Handling Strategy
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              ERROR HANDLING                                │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. Global Error Boundary for React errors                                 │
-│ 2. API error handling with user-friendly messages                         │
-│ 3. Offline error handling with retry mechanisms                           │
-│ 4. Database error logging and monitoring                                  │
-│ 5. Graceful degradation for missing content                               │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-## Scalability Considerations
-
-### Horizontal Scaling
-
-```mermaid
-graph TB
-    subgraph "Current Architecture"
-        A[Single Vercel Instance]
-        B[Single Supabase Instance]
-    end
-    
-    subgraph "Future Scaling"
-        C[Multiple Vercel Regions]
-        D[Supabase Read Replicas]
-        E[CDN Edge Locations]
-        F[Database Sharding]
-    end
-    
-    A --> C
-    B --> D
-    C --> E
-    D --> F
-```
-
-### Performance Optimization
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              PERFORMANCE                                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. Image optimization with Next.js Image component                        │
-│ 2. Code splitting and lazy loading                                        │
-│ 3. Database query optimization                                            │
-│ 4. Service worker caching strategies                                      │
-│ 5. Edge computing for global performance                                  │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-## Risk Mitigation
+## Risk Assessment
 
 ### Technical Risks
+- **Content Quality**: Mitigation through human review process and AI content validation
+- **Offline Sync Conflicts**: Mitigation through timestamp-based conflict resolution
+- **Timezone Complexity**: Mitigation through comprehensive testing and validation
 
-1. **Content Generation Quality**: Implement multi-stage review process
-2. **Offline Sync Conflicts**: Use timestamp-based conflict resolution
-3. **Database Performance**: Monitor and optimize queries, implement caching
-4. **PWA Compatibility**: Progressive enhancement and fallback strategies
+### Operational Risks
+- **Content Generation Delays**: Mitigation through automated pipelines and content versioning
+- **Database Performance**: Mitigation through proper indexing and read replica scaling
+- **PWA Compatibility**: Mitigation through progressive enhancement and fallback strategies
 
-### Business Risks
+### Compliance & Regulatory
+- **Data Privacy**: GDPR compliance through Supabase data controls
+- **User Consent**: Clear notification preferences and data usage transparency
 
-1. **User Engagement**: Gamification mechanics and social features
-2. **Content Freshness**: Regular content updates and seasonal themes
-3. **Platform Dependencies**: Vendor lock-in mitigation strategies
-4. **Scalability Costs**: Monitor usage and implement cost controls
+## Migration & Evolution
 
-## Success Metrics
+### Migration Strategy
+- **Phase 1**: Core MVP with basic features and content
+- **Phase 2**: Advanced analytics, payment integration, expanded content
+- **Phase 3**: Social features, advanced gamification, AI-powered personalization
 
-### Technical KPIs
+### Future Considerations
+- **Real-time Features**: WebSocket support for live multiplayer challenges
+- **Advanced AI**: Runtime content personalization and adaptive difficulty
+- **Mobile Apps**: Native iOS/Android apps with shared backend
 
-- **Performance**: Page load time < 2 seconds, offline functionality > 95%
-- **Reliability**: 99.9% uptime, error rate < 0.1%
-- **Scalability**: Support 10K+ concurrent users without degradation
+### Technical Debt & Improvements
+- **Content Management**: Move to headless CMS for easier content updates
+- **Testing Coverage**: Increase automated testing coverage for business logic
+- **Performance Monitoring**: Implement real user monitoring and performance budgets
 
-### Business KPIs
+## Appendices
 
-- **User Engagement**: Daily active users, challenge completion rate
-- **Retention**: 7-day, 30-day, and 90-day retention rates
-- **Growth**: User acquisition, social sharing, viral coefficient
+### Glossary
+- **PWA**: Progressive Web App - web application with native app-like features
+- **Streak**: Consecutive days of completing a specific habit or activity
+- **GameSession**: Individual user session for completing a daily challenge
+- **UserState**: Current fitness level and avatar state based on user progress
 
-## Implementation Roadmap
+### References
+- Supabase Documentation: https://supabase.com/docs
+- Next.js PWA Documentation: https://nextjs.org/docs
+- Drizzle ORM Documentation: https://orm.drizzle.team
 
-### Phase 1: Core Foundation (Weeks 1-4)
-- [ ] Database schema implementation
-- [ ] Authentication system
-- [ ] Basic UI components
-- [ ] Static content generation
-
-### Phase 2: Game Mechanics (Weeks 5-8)
-- [ ] Daily challenge system
-- [ ] Question rendering engine
-- [ ] Streak tracking
-- [ ] Achievement system
-
-### Phase 3: PWA Features (Weeks 9-12)
-- [ ] Service worker implementation
-- [ ] Offline functionality
-- [ ] Push notifications
-- [ ] Social sharing
-
-### Phase 4: Polish & Launch (Weeks 13-16)
-- [ ] Performance optimization
-- [ ] User testing
-- [ ] Content refinement
-- [ ] Production deployment
-
-This architecture provides a solid foundation for building a scalable, engaging fitness game that meets all the specified requirements while maintaining performance and cost efficiency.
+### Decision Log
+- **Next.js 14**: Chosen for built-in PWA support and server-side rendering capabilities
+- **Supabase**: Selected for managed PostgreSQL, authentication, and file storage in single platform
+- **Static Content Strategy**: Pre-generated content approach to minimize runtime costs and ensure quality
+- **Timezone Locking**: Session-based timezone storage to prevent manipulation and ensure fair play
