@@ -2,7 +2,7 @@
 
 ## Architecture Overview
 
-**Pre-Generated Content Strategy**: All quiz questions and avatar images are generated offline using AI tools, reviewed by agents/humans, and stored in database. No runtime AI generation to minimize costs and latency.
+**Pre-Generated Content Strategy**: All knowledge base, quiz questions and avatar images are generated offline using AI tools, reviewed by agents/humans, and stored in database. No runtime AI generation to minimize costs and latency.
 
 ## Frontend Stack
 

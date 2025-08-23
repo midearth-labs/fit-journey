@@ -6,3 +6,6 @@ Things that needs work for production
 
 
 Extract product-marketing-requirements.md out from PRD.md 
+
+
+Make sure static content files are generated as per the requirement instructions e.g. "THE SYSTEM SHALL create Achievement data as a JSON file", or "Group and store questions for each content categories and name each content category file accordingly e.g. ${ContentCategory.id}.json" 

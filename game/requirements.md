@@ -23,22 +23,22 @@ THE SYSTEM SHALL save JSON files in an appropriately named sub-directory by the 
 
 ```
 WHEN generating static content
-THE SYSTEM SHALL create Achievement data as a JSON file with Phase 1 achievements (7-day streak, 14-day streak, first quiz completion, 50 questions answered, clean eating for 3 days, workout logging for 7 days) stored in the repository
+THE SYSTEM SHALL create Achievement data as a single JSON file with Phase 1 achievements (7-day streak, 14-day streak, first quiz completion, 50 questions answered, clean eating for 3 days, workout logging for 7 days) stored in the repository
 ```
 
 ```
 WHEN generating static content
-THE SYSTEM SHALL create StreakType data as a JSON file with values as in the entity comments
+THE SYSTEM SHALL create StreakType data as a single JSON file with values as in the entity comments
 ```
 
 ```
 WHEN generating static content
-THE SYSTEM SHALL create UserState data as a JSON file with user supplied combinations e.g. (fit-healthy, lean-tired, injured-recovering, fit-injured) and corresponding default unlock conditions, stored in the repository
+THE SYSTEM SHALL create UserState data as a single JSON file with user supplied combinations e.g. (fit-healthy, lean-tired, injured-recovering, fit-injured) and corresponding default unlock conditions, stored in the repository
 ```
 
 ```
 WHEN generating static content
-THE SYSTEM SHALL create AvatarAsset data as a JSON file with all defined avatar gender/age_range combinations (male_teen, female_young-adult) stored in the repository.
+THE SYSTEM SHALL create AvatarAsset data as a single JSON file with all defined avatar gender/age_range combinations (male_teen, female_young-adult) stored in the repository.
 THE SYSTEM SHALL compose LLM prompts to be used to call an Image generation LLM to create the images for each combination 
 ```
 
@@ -68,7 +68,7 @@ THE SYSTEM SHALL generate KnowledgeBase entities as JSON files that are thematic
 **Dependencies**: R1.2, R1.3
 ```
 WHEN generating DailyChallenge content using LLM
-THE SYSTEM SHALL create DailyChallenge entities as a JSON file with proper validation for required fields (day, content_category_id, challenge_structure, total_questions, theme) ensuring thematic coherence with previously generated Questions and PassageSets
+THE SYSTEM SHALL create DailyChallenge entities as a single JSON file with proper validation for required fields (day, content_category_id, challenge_structure, total_questions, theme) ensuring thematic coherence with previously generated Questions and PassageSets
 ```
 
 ```
