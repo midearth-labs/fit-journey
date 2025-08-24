@@ -25,6 +25,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### User Onboarding Journey
 **Purpose**: Guide new users through initial setup and first engagement
+
 **Flow**: 
 1. **Authentication** → Supabase Auth integration
 2. **Profile Setup** → Required display_name, optional avatar preferences
@@ -39,6 +40,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### Daily Challenge Journey
 **Purpose**: Core engagement loop for daily fitness knowledge testing
+
 **Flow**:
 1. **Challenge Access** → Home screen displays current day's challenge
 2. **Session Creation** → GameSession record with timezone locking
@@ -56,6 +58,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### Habit Tracking Journey
 **Purpose**: Build healthy fitness habits through daily logging
+
 **Flow**:
 1. **Habit Interface** → Toggle buttons for all habit types
 2. **Daily Logging** → StreakLog entries with timestamp validation
@@ -70,6 +73,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### Practice Session Journey
 **Purpose**: Allow users to practice specific content categories
+
 **Flow**:
 1. **Category Selection** → Browse available ContentCategory options
 2. **Session Initiation** → 10-question practice session (ephemeral)
@@ -84,6 +88,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### Achievement & Progress Journey
 **Purpose**: Maintain long-term engagement through milestone recognition
+
 **Flow**:
 1. **Progress Monitoring** → Track streaks, quiz performance, habit completion
 2. **Achievement Checking** → Automatic unlock condition evaluation
@@ -98,6 +103,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### Offline Engagement Journey
 **Purpose**: Provide continuity when users are offline
+
 **Flow**:
 1. **Content Caching** → PWA caches previously viewed content
 2. **Offline Viewing** → Access cached questions and avatar status
@@ -112,6 +118,7 @@ The system addresses the challenge of making fitness education engaging and habi
 
 ### Social Sharing Journey
 **Purpose**: Increase engagement through social interaction
+
 **Flow**:
 1. **Result Generation** → Create shareable challenge results
 2. **URL Generation** → Unique challenge URLs for direct access
@@ -265,6 +272,11 @@ graph TB
 - **Key Responsibilities**: State evaluation, avatar selection, progression visualization
 - **Technology Approach**: Rule-based state machine with visual asset management
 
+### Mobile Enabled User Interface
+**Purpose**: Provide native app-like experience across all devices with responsive design and PWA capabilities
+**Key Responsibilities**: Responsive layout, touch-optimized interactions, PWA installation, offline content access, mobile-first design patterns
+**Technology Approach**: Progressive Web App with responsive Tailwind CSS, Framer Motion animations, and mobile-optimized component library
+
 ## Data Architecture
 
 ### Data Flow Diagram
@@ -371,7 +383,7 @@ flowchart TD
 - **Content Validation**: Build-time checks for static content integrity
 
 ### Testing Strategy
-- **Test Pyramid**: Unit tests for business logic, integration tests for API endpoints, E2E tests for critical user flows
+- **Test Pyramid**: Unit tests for business logic, integration tests for API endpoints, E2E tests for critical user flows. Use Playwright for UI/E2E tests. Vitest for other applicable testing.
 - **Quality Gates**: Automated content validation, database schema checks, performance budgets
 - **Performance Testing**: Lighthouse CI for PWA metrics, load testing for API endpoints
 

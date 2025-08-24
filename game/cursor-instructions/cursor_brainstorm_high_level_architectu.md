@@ -151,4 +151,74 @@ The system is **"online-first with offline fallback"** where:
 - The "offline" aspect refers to AI content generation, not user experience
 
 This aligns with the actual requirements which specify offline content viewing as a fallback capability, not a core architectural principle.
+---
 
+**User**
+
+Add a section in @architecture.md for the "Core User Journeys"
+
+---
+
+**Cursor**
+
+I'll add a "Core User Journeys" section to the architecture document. This section will outline the key user flows and how they map to the system architecture.
+
+Perfect! I've added a comprehensive "Core User Journeys" section to the architecture document. This section covers the seven key user journeys that are central to the FitJourney game:
+
+## **Added User Journeys:**
+
+1. **User Onboarding Journey** - New user setup and first engagement
+2. **Daily Challenge Journey** - Core daily quiz engagement loop
+3. **Habit Tracking Journey** - Daily habit logging and streak building
+4. **Practice Session Journey** - Category-specific practice sessions
+5. **Achievement & Progress Journey** - Long-term engagement through milestones
+6. **Offline Engagement Journey** - PWA offline capabilities and sync
+7. **Social Sharing Journey** - Social interaction and challenge sharing
+
+## **Key Features of This Section:**
+
+- **Clear Purpose** for each journey
+- **Step-by-step Flow** showing user progression
+- **Architecture Impact** explaining how each journey affects system components
+- **Mapping to Requirements** - each journey directly supports specific requirements from the source documents
+- **Technology Alignment** - shows how the chosen tech stack supports user needs
+
+This section bridges the gap between the technical architecture and user experience, making it clear how the system components work together to deliver the intended user journeys. It also helps developers understand the user context when implementing specific features.
+
+---
+
+**User**
+
+Can the Mobile Enabled User interface be considered a core component also?
+
+---
+
+**Cursor**
+
+Yes, absolutely! The **Mobile Enabled User Interface** should definitely be considered a core component. Looking at the requirements and architecture, mobile experience is fundamental to the system's success. Let me add it to the Core Components section.
+
+Perfect! I've added the **Mobile Enabled User Interface** as a core component. This makes complete sense because:
+
+## **Why Mobile UI is a Core Component:**
+
+1. **PWA-First Strategy**: The requirements specifically call out PWA features as essential
+2. **Mobile Engagement**: Fitness apps are primarily used on mobile devices
+3. **Cross-Platform Consistency**: Ensures the same experience across web and mobile
+4. **Offline Capabilities**: Mobile users need offline access more than desktop users
+
+## **Key Responsibilities Added:**
+
+- **Responsive Layout**: Adapts to all screen sizes
+- **Touch-Optimized Interactions**: Mobile-first interaction patterns
+- **PWA Installation**: Home screen installation and app-like experience
+- **Offline Content Access**: Critical for mobile users on-the-go
+- **Mobile-First Design Patterns**: Prioritizes mobile user experience
+
+## **Technology Approach:**
+
+- **Progressive Web App**: Core PWA functionality
+- **Responsive Tailwind CSS**: Mobile-first responsive design
+- **Framer Motion**: Smooth mobile animations
+- **Mobile-Optimized Component Library**: Touch-friendly UI components
+
+This component is essential because it's not just about making the web app work on mobile - it's about creating a native app-like experience that users expect from fitness applications. The PWA capabilities, offline access, and mobile-optimized interactions are fundamental to the system's success and user engagement.

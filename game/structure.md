@@ -94,7 +94,7 @@
 - **Stripe** (simple pricing, good TypeScript support)
 - **@stripe/stripe-js** and **@stripe/react-stripe-js**
 
-### Testing (Optional for MVP)
+### Testing
 - **Vitest** (faster than Jest, built-in TypeScript support)
 - **Playwright** (end-to-end testing when needed)
 

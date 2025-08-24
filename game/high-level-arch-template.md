@@ -20,6 +20,7 @@
 
 ### {Journey 1}
 **Purpose**: {Journey Purpose}
+
 **Flow**: 
 1. **{Flow 1}** → {Concise detail}
 
