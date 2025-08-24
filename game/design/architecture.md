@@ -329,7 +329,8 @@ flowchart TD
 ### External Integrations
 - **Web Push API**: Browser-based notifications for daily reminders
 - **Social Sharing APIs**: Native sharing for challenge results
-- **Image Generation APIs**: DALL-E/Midjourney for avatar creation (offline process)
+- **Content Generation**: Use Claude/Gemini to generate textual content via API/Manual process. Include descriptive placeholder prompts for Images.
+- **Image Generation**: Gemini/DALL-E/Midjourney for avatar creation (offline process)
 
 ### Internal Communication
 - **Synchronous**: API calls for immediate user actions

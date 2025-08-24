@@ -130,7 +130,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3090
 ## Content Generation Pipeline
 
 ### Quiz Questions
-1. **AI Generation**: Use Cursor/ChatGPT to generate questions in structured JSON
+1. **AI Generation**: Use Cursor/ChatGPT to generate questions,  in structured JSON
 2. **AI Review**: Use Claude/GPT to review for accuracy and difficulty
 3. **Human Review**: Final expert validation
 4. **Database Import**: Bulk insert via Drizzle/SQL scripts
