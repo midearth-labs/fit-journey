@@ -273,9 +273,9 @@ graph TB
 - **Technology Approach**: Rule-based state machine with visual asset management
 
 ### Mobile Enabled User Interface
-**Purpose**: Provide native app-like experience across all devices with responsive design and PWA capabilities
-**Key Responsibilities**: Responsive layout, touch-optimized interactions, PWA installation, offline content access, mobile-first design patterns
-**Technology Approach**: Progressive Web App with responsive Tailwind CSS, Framer Motion animations, and mobile-optimized component library
+- **Purpose**: Provide native app-like experience across all devices with responsive design and PWA capabilities
+- **Key Responsibilities**: Responsive layout, touch-optimized interactions, PWA installation, offline content access, mobile-first design patterns
+- **Technology Approach**: Progressive Web App with responsive Tailwind CSS, Framer Motion animations, and mobile-optimized component library
 
 ## Data Architecture
 

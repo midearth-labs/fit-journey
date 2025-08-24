@@ -949,7 +949,7 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Test Case**: Screen navigation responds within performance targets
 - **Precondition**: User navigates between screens
 - **Action**: Navigate
-- **Expected Result**: Response within 200ms for cached data and 1 second for server requests
+- **Expected Result**: Response within 50ms for cached data and 200ms for server requests
 - **Coverage**: CR3
 
 #### Test CR3.2: Daily Challenge Preloading

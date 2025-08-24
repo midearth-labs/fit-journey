@@ -7,7 +7,7 @@ _Exported on 8/22/2025 at 20:57:47 PDT from Cursor (1.4.5)_
 
 @requirements.md @entities.md @structure.md @requirements.tests.md @high-level-arch-template.md 
 
-Design a high-level architecture diagram to satisfy the requirements. Think like a seasoned and tenured Software Engineer and technical writer who is familiar with modern tools and design patterns. Use mermaid for diagrams. See @high-level-arch-template.md template.  Constrain the response to just high-level, don't go into low-level design or any coding. 
+Design a high-level architecture document to satisfy the requirements. Think like a seasoned and tenured Software Engineer and technical writer who is familiar with modern tools and design patterns. Use mermaid for diagrams. See @high-level-arch-template.md template.  Constrain the response to just high-level, don't go into low-level design or any coding. 
 
 Make sure all entities  and existing technology choices are accounted for and represented in the output.
 
