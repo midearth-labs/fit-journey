@@ -145,7 +145,8 @@ THE SYSTEM SHALL display a fallback message indicating that new challenges will 
 **Dependencies**: R3.1
 ```
 WHEN a user starts a daily challenge
-THE SYSTEM SHALL create a GameSession record and present questions according to the challenge_structure sequence
+THE SYSTEM SHALL create a GameSession record and present questions according to the DailyChallenge.challenge_structure sequence, started_at to current timestamp, in_progress to true, and completed_at to null, session_date_utc to the date part of the current timestamp in UTC timezone.
+The SYSTEM SHALL update the UserProfile.latest_game_session to the ID of the new  session. 
 ```
 
 ```
@@ -154,35 +155,30 @@ THE SYSTEM SHALL display the passage text prominently and allow the user to refe
 ```
 
 ```
-WHEN a user answers a question in a daily challenge
-THE SYSTEM SHALL record a QuestionAttempt with selected answer, correctness, timestamp
-```
-
-```
-WHEN a user completes all questions in a daily challenge
-THE SYSTEM SHALL mark the GameSession as completed
+WHEN a user answers all questions and submits in a daily challenge
+THE SYSTEM shall check if the user requests GameSession id is still same as the UserProfile.latest_game_session and show the user a message to refresh if not matching.
+THE SYSTEM SHALL check if the day's session is still answerable (i.e. in_progress is true)
+THE SYSTEM SHALL update the GameSession record with in_progress as null, all_correct_answers, completed_at to current timestamp, user_answers to an array of answers to the daily challenge questions including properties like hint_used, is_correct etc
+THE SYSTEM SHALL create or update the matching days' (use logic: GameSession.session_date_utc is StreakLog.date_utc) StreakLog entry property with the quiz_completed, quiz_passed properties
 ```
 
 ### R3.3: Challenge Retry System
 **Dependencies**: R3.2
 ```
-WHEN a user fails to answer all questions correctly in a daily challenge before the current day ends
-THE SYSTEM SHALL allow the user to retry the challenge up to 3 times total (attempt_count maximum of 3)
+WHEN a user fails to answer all questions correctly in a daily challenge before the current day ends i.e. in_progress is null AND all_correct_answers is false
+THE SYSTEM SHALL allow the user to retry the challenge up to 3 times total (attempt_count maximum of 3) until 11:59 PM in the session_timezone
 ```
 
 ```
 WHEN a user starts a retry attempt for a daily challenge
-THE SYSTEM SHALL increment the GameSession.attempt_count by 1 and present the same questions in the same order
+THE SYSTEM SHALL first log the retry action and all priot data through the application logging system
+THE SYSTEM SHALL reset the current GameSession by setting in_progress to true and started_at to current_timestamp, completed_at to null, and user_answers to null, and all_correct_answers to null,
+THE SYSTEM SHALL increment the current GameSession.attempt_count by 1 and present the same questions in the same order
 ```
 
 ```
 WHEN a user reaches the maximum attempt count (3) for a daily challenge
 THE SYSTEM SHALL prevent further attempts for that day and mark the challenge as failed for streak calculation purposes
-```
-
-```
-WHEN a user successfully completes a daily challenge on any attempt (1, 2, or 3)
-THE SYSTEM SHALL mark the GameSession as completed and count it as a successful day for streak purposes
 ```
 
 ### R3.4: Session Timezone Locking
@@ -235,7 +231,7 @@ THE SYSTEM SHALL start a practice session with 5 random questions from that cate
 **Dependencies**: R4.1
 ```
 WHEN a user starts a practice session
-THE SYSTEM SHALL select 10 questions (mix of standalone and passage-based as available). A practice session is ephemeral and never persisted as a GameSession.
+THE SYSTEM SHALL select 10 questions (mix of standalone and passage-based as available). IMPORTANT: A practice session is ephemeral and never stored as a GameSession but just returned to the User API request.
 ```
 
 ```
@@ -265,6 +261,11 @@ THE SYSTEM SHALL create a StreakHistory record with streak_type "quiz_completed"
 ```
 WHEN a user completes a daily challenge on consecutive days
 THE SYSTEM SHALL increment the current StreakHistory.streak_length for streak_type "quiz_completed" by 1
+```
+
+```
+WHEN a user completes and answers all questions correctly for a daily challenge on consecutive days
+THE SYSTEM SHALL increment the current StreakHistory.streak_length for streak_type "quiz_passed" by 1
 ```
 
 ```
@@ -323,7 +324,7 @@ THE SYSTEM SHALL display toggle buttons for all habit types defined in StreakTyp
 ```
 
 ```
-WHEN a user toggles a habit status
+WHEN a user completes the habit logging form and submits
 THE SYSTEM SHALL update or create today's StreakLog record with the new values in the entries object using StreakType IDs as keys (workout_completed, ate_clean, slept_well, hydrated)
 ```
 
@@ -392,14 +393,19 @@ THE SYSTEM SHALL allow viewing of previously loaded questions and avatar status
 ```
 
 ```
-WHEN the user comes back online after answering questions offline
-THE SYSTEM SHALL sync all QuestionAttempt and progress data to the server
+WHEN the user comes back online after answering questions offline, or logging habits offline
+THE SYSTEM SHALL sync the submission attempt, and habit records and progress data to the server
 ```
 
 ## R9: Basic Notifications
 
 ### R9.1: Notification Opt-in
 **Dependencies**: R8.1
+```
+WHEN a user completes a challenge
+THE SYSTEM SHALL request permission for Browser notifications using the Notifications API with clear benefit explanation
+```
+
 ```
 WHEN a user installs the PWA
 THE SYSTEM SHALL request permission for push notifications with clear benefit explanation
@@ -485,12 +491,7 @@ THE SYSTEM SHALL provide a brief transition screen before moving to the next sec
 **Dependencies**: R3.2, R4.2
 ```
 WHEN any game session is completed
-THE SYSTEM SHALL record total_questions, correct_answers, and time_spent_seconds for analytics
-```
-
-```
-WHEN a user answers any question
-THE SYSTEM SHALL record time_spent_seconds per question for difficulty calibration
+THE SYSTEM SHALL log total_questions, correct_answers, and time_spent_seconds for analytics
 ```
 
 ### R12.2: User Progress
@@ -600,7 +601,7 @@ THE SYSTEM SHALL check against the appropriate StreakHistory records for the spe
 
 ```
 WHEN an achievement has unlock_condition type "questions"
-THE SYSTEM SHALL count total QuestionAttempt records for the user and compare against the specified value threshold
+THE SYSTEM SHALL count total GameSession.user_answers records for the user and compare against the specified value threshold
 ```
 
 ## Cross-Cutting Requirements
@@ -638,4 +639,13 @@ WHEN the daily challenge loads
 THE SYSTEM SHALL preload all question images to ensure smooth progression
 ```
 
+### CR4: System Wide Defaults
+```
+WHEN a user's timezone is not configured or invalid
+THE SYSTEM SHALL assume "UTC-7"
+```
 
+```
+WHEN a user's preferred_reminder_time is not configured or invalid
+THE SYSTEM SHALL assume "19:00"
+```

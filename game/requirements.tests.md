@@ -250,18 +250,18 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: Passage text displayed prominently, accessible for all associated questions
 - **Coverage**: R3.2
 
-#### Test R3.2.3: Question Attempt Recording
+#### Test R3.2.3: Challenge Completion Answers 
 - **Test Case**: Question attempts recorded correctly
 - **Precondition**: User answers question in daily challenge
 - **Action**: Submit answer
-- **Expected Result**: QuestionAttempt created with selected_answer, correctness, timestamp
+- **Expected Result**: user_answers array updated with question_id, answer_index, is_correct, hint_used
 - **Coverage**: R3.2
 
 #### Test R3.2.4: Challenge Completion Marking
 - **Test Case**: Completed challenges marked correctly
 - **Precondition**: User completes all questions
-- **Action**: Finish last question
-- **Expected Result**: GameSession marked as completed with completed_at timestamp
+- **Action**: Submit after answering last question
+- **Expected Result**: GameSession marked as completed by setting completed_at timestamp, setting time_spent_seconds as "completed_at - started_at", and marking in_progress as null
 - **Coverage**: R3.2
 
 ### R3.3: Challenge Retry System Tests
@@ -356,14 +356,14 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Test Case**: Session timezone stores valid format
 - **Precondition**: User starts challenge with timezone set
 - **Action**: Create GameSession
-- **Expected Result**: session_timezone stored in valid format (e.g., "America/New_York", "UTC-7")
+- **Expected Result**: session_timezone stored in valid UTC offset format (i.e., "UTC+8", "UTC-7")
 - **Coverage**: R3.4
 
 #### Test R3.4.10: Default Timezone Fallback
 - **Test Case**: Default timezone used when user timezone not set
 - **Precondition**: User has no timezone in profile
 - **Action**: Start daily challenge
-- **Expected Result**: GameSession.session_timezone set to default "UTC"
+- **Expected Result**: GameSession.session_timezone set to default "UTC-7"
 - **Coverage**: R3.4
 
 #### Test R3.4.11: DST Transition Handling
@@ -754,13 +754,6 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Precondition**: Any game session completed
 - **Action**: Complete session
 - **Expected Result**: total_questions, correct_answers, time_spent_seconds recorded
-- **Coverage**: R12.1
-
-#### Test R12.1.2: Question-Level Timing
-- **Test Case**: Individual question timing recorded
-- **Precondition**: User answers question
-- **Action**: Answer question
-- **Expected Result**: time_spent_seconds per question recorded for difficulty calibration
 - **Coverage**: R12.1
 
 ### R12.2: User Progress Tests

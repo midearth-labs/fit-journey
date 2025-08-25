@@ -24,9 +24,10 @@
 {
   id: string,
   user_id: string, // FK to User
+  latest_game_session: string? // FK to GameSession
   current_state: string? // FK to UserStateHistory
-  current_streak_ids: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", } // each value is a FK to StreakHistory
-  longest_streaks: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", } // each value is a FK to StreakHistory
+  current_streak_ids: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", quiz_passed: "abc", } // each value is a FK to StreakHistory
+  longest_streaks: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", quiz_passed: "abc", } // each value is a FK to StreakHistory
   last_activity_date: date?, // update this based on completion of daily quiz or logging of habits 
   created_at: timestamp,
   updated_at: timestamp,
@@ -178,29 +179,16 @@
 {
   id: string,
   user_id: string, // FK to User
-  challenge_id: string, // FK to DailyChallenge
+  challenge_id: string, // FK to DailyChallenge.id
   session_timezone: string, // NEW: Store timezone when session starts e.g. UTC-7
+  session_date_utc: date, // The UTC date of when the session was first started.
   started_at: timestamp,
   completed_at: timestamp?,
-  is_completed: boolean,
-  total_questions: number,
-  correct_answers: number,
+  in_progress: boolean?, // true by default, set to null when session is complete, or day is over.
+  user_answers: Array<object>?, // Array of { question_id: string, answer_index: number, is_correct: boolean, hint_used: boolean,}
+  all_correct_answers: boolean?, // Whether all questions were asnwered correctly.
   time_spent_seconds: number?,
-  attempt_count: number, // default: 1, Only if a user doesn't answer all questions correctly before the current day ends, they can try again up to 3 times.
-}
-```
-
-### QuestionAttempt
-```json
-{
-  id: string,
-  game_session_id: string, // FK to GameSession
-  question_id: string, // FK to Question
-  selected_answer_index: number,
-  is_correct: boolean,
-  time_spent_seconds: number,
-  answered_at: timestamp,
-  hint_used: boolean, // default false
+  attempt_count: number, // default: 1. If at a submission, a user doesn't answer all questions correctly, they can try again up to 3 times before the current day ends.
 }
 ```
 
@@ -211,8 +199,8 @@
 {
   id: string,
   user_id: string, // FK to User
-  date: date, // YYYY-MM-DD
-  entries: object // { workout_completed: true, ate_clean: false, slept_well: true, hydrated: true, quiz_completed: true, }
+  date_utc: date, // YYYY-MM-DD
+  entries: object // { workout_completed: true, ate_clean: false, slept_well: true, hydrated: true, quiz_completed: true, quiz_passed: true, }
   logged_at: timestamp,
 }
 ```

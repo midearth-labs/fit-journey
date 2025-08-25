@@ -208,6 +208,7 @@ export const streakLogs = pgTable('streak_logs', {
 export const userProfiles = pgTable('user_profiles', {
   id: uuid('id').primaryKey().defaultRandom(),
   user_id: uuid('user_id').notNull().references(() => users.id),
+  current_game_session: text('current_game_session').references(() => gameSessions.id),
   current_state: text('current_state').references(() => userStates.id),
   current_streak_ids: jsonb('current_streak_ids'), // { quiz_completed: "uuid", workout_completed: "uuid", ... }
   longest_streaks: jsonb('longest_streaks'), // { quiz_completed: "uuid", workout_completed: "uuid", ... }

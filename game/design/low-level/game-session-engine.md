@@ -181,7 +181,7 @@ export const gameSessions = pgTable('game_sessions', {
   session_timezone: text('session_timezone').notNull(),
   started_at: timestamp('started_at').notNull().defaultNow(),
   completed_at: timestamp('completed_at'),
-  is_completed: boolean('is_completed').notNull().default(false),
+  in_progress: boolean('in_progress').default(true),
   total_questions: integer('total_questions').notNull(),
   correct_answers: integer('correct_answers').notNull().default(0),
   time_spent_seconds: integer('time_spent_seconds'),
