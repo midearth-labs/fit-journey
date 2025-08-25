@@ -1,1 +1,0 @@
-Always separate out internal models, API input/output models, and data-layer models. Never couple them together.

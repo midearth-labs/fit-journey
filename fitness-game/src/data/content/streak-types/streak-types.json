@@ -1,0 +1,575 @@
+[
+  {
+    "id": "workout_completed",
+    "title": "Daily Workout",
+    "description": "Complete a workout session each day",
+    "sort_order": 1,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 2
+    },
+    "streak_category": "physical",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "medium",
+    "health_benefits": [
+      "Improved cardiovascular health",
+      "Increased muscle strength",
+      "Better mood and energy levels",
+      "Weight management"
+    ],
+    "motivational_messages": {
+      "short": "Keep moving!",
+      "medium": "Every workout brings you closer to your goals!",
+      "long": "Consistency is the key to transformation. Every day you complete a workout, you're building a stronger, healthier version of yourself."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Week Warrior",
+        "description": "Completed 7 consecutive days of workouts",
+        "reward": "Week Warrior Badge"
+      },
+      {
+        "days": 14,
+        "title": "Fortnight Fighter",
+        "description": "Completed 14 consecutive days of workouts",
+        "reward": "Fortnight Fighter Badge"
+      },
+      {
+        "days": 30,
+        "title": "Monthly Master",
+        "description": "Completed 30 consecutive days of workouts",
+        "reward": "Monthly Master Badge"
+      }
+    ],
+    "related_streak_types": ["ate_clean", "slept_well"],
+    "prerequisites": [],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 1,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": false,
+      "verification_method": "automatic",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 1
+    },
+    "streak_analytics": {
+      "average_streak_length": 5,
+      "longest_recorded_streak": 365,
+      "success_rate": 75,
+      "user_engagement_score": 85
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "workout_7_day",
+        "title": "7-Day Workout Challenge",
+        "description": "Complete workouts for 7 consecutive days",
+        "streak_requirement": 7,
+        "reward": "7-Day Challenge Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  },
+  {
+    "id": "ate_clean",
+    "title": "Clean Eating",
+    "description": "Maintain healthy eating habits each day",
+    "sort_order": 2,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 3
+    },
+    "streak_category": "nutrition",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "hard",
+    "health_benefits": [
+      "Better energy levels",
+      "Improved digestion",
+      "Enhanced mental clarity",
+      "Long-term health benefits"
+    ],
+    "motivational_messages": {
+      "short": "Fuel your body right!",
+      "medium": "Every healthy meal is an investment in your future!",
+      "long": "Clean eating is a lifestyle choice that pays dividends in energy, health, and longevity. Every day you choose nutritious foods, you're building a foundation for a vibrant life."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Clean Week",
+        "description": "Maintained clean eating for 7 consecutive days",
+        "reward": "Clean Week Badge"
+      },
+      {
+        "days": 21,
+        "title": "Habit Former",
+        "description": "Maintained clean eating for 21 consecutive days",
+        "reward": "Habit Former Badge"
+      }
+    ],
+    "related_streak_types": ["workout_completed", "hydrated"],
+    "prerequisites": [],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 1,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": false,
+      "verification_method": "manual",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 1
+    },
+    "streak_analytics": {
+      "average_streak_length": 3,
+      "longest_recorded_streak": 180,
+      "success_rate": 60,
+      "user_engagement_score": 70
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "clean_eating_21",
+        "title": "21-Day Clean Eating Challenge",
+        "description": "Maintain clean eating for 21 consecutive days",
+        "streak_requirement": 21,
+        "reward": "21-Day Clean Eating Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  },
+  {
+    "id": "slept_well",
+    "title": "Quality Sleep",
+    "description": "Get adequate and quality sleep each night",
+    "sort_order": 3,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 2
+    },
+    "streak_category": "wellness",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "easy",
+    "health_benefits": [
+      "Better recovery",
+      "Improved mood",
+      "Enhanced cognitive function",
+      "Stronger immune system"
+    ],
+    "motivational_messages": {
+      "short": "Rest well!",
+      "medium": "Quality sleep is the foundation of health!",
+      "long": "Sleep is when your body repairs, recovers, and prepares for the next day. Every night of quality sleep is an investment in your physical and mental well-being."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Sleep Champion",
+        "description": "Got quality sleep for 7 consecutive nights",
+        "reward": "Sleep Champion Badge"
+      },
+      {
+        "days": 30,
+        "title": "Sleep Master",
+        "description": "Got quality sleep for 30 consecutive nights",
+        "reward": "Sleep Master Badge"
+      }
+    ],
+    "related_streak_types": ["workout_completed", "ate_clean"],
+    "prerequisites": [],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 1,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": false,
+      "verification_method": "automatic",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 1
+    },
+    "streak_analytics": {
+      "average_streak_length": 7,
+      "longest_recorded_streak": 90,
+      "success_rate": 80,
+      "user_engagement_score": 75
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "sleep_30",
+        "title": "30-Day Sleep Challenge",
+        "description": "Get quality sleep for 30 consecutive nights",
+        "streak_requirement": 30,
+        "reward": "30-Day Sleep Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  },
+  {
+    "id": "hydrated",
+    "title": "Hydration Goal",
+    "description": "Meet daily hydration targets",
+    "sort_order": 4,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 1
+    },
+    "streak_category": "wellness",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "easy",
+    "health_benefits": [
+      "Better physical performance",
+      "Improved skin health",
+      "Enhanced digestion",
+      "Better energy levels"
+    ],
+    "motivational_messages": {
+      "short": "Stay hydrated!",
+      "medium": "Water is life!",
+      "long": "Hydration is essential for every function in your body. Every day you meet your hydration goals, you're supporting optimal health and performance."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Hydration Hero",
+        "description": "Met hydration goals for 7 consecutive days",
+        "reward": "Hydration Hero Badge"
+      },
+      {
+        "days": 30,
+        "title": "Hydration Master",
+        "description": "Met hydration goals for 30 consecutive days",
+        "reward": "Hydration Master Badge"
+      }
+    ],
+    "related_streak_types": ["ate_clean", "slept_well"],
+    "prerequisites": [],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 1,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": false,
+      "verification_method": "automatic",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 1
+    },
+    "streak_analytics": {
+      "average_streak_length": 10,
+      "longest_recorded_streak": 120,
+      "success_rate": 85,
+      "user_engagement_score": 80
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "hydration_30",
+        "title": "30-Day Hydration Challenge",
+        "description": "Meet hydration goals for 30 consecutive days",
+        "streak_requirement": 30,
+        "reward": "30-Day Hydration Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  },
+  {
+    "id": "quiz_completed",
+    "title": "Daily Quiz Completed",
+    "description": "Complete the daily fitness knowledge quiz",
+    "sort_order": 5,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 2
+    },
+    "streak_category": "knowledge",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "medium",
+    "health_benefits": [
+      "Improved fitness knowledge",
+      "Better decision making",
+      "Enhanced learning",
+      "Mental stimulation"
+    ],
+    "motivational_messages": {
+      "short": "Learn something new!",
+      "medium": "Knowledge is power!",
+      "long": "Every quiz you complete expands your fitness knowledge and helps you make better decisions about your health and training."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Knowledge Seeker",
+        "description": "Completed quizzes for 7 consecutive days",
+        "reward": "Knowledge Seeker Badge"
+      },
+      {
+        "days": 30,
+        "title": "Knowledge Master",
+        "description": "Completed quizzes for 30 consecutive days",
+        "reward": "Knowledge Master Badge"
+      }
+    ],
+    "related_streak_types": ["quiz_passed"],
+    "prerequisites": [],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 1,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": false,
+      "verification_method": "automatic",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 3
+    },
+    "streak_analytics": {
+      "average_streak_length": 8,
+      "longest_recorded_streak": 150,
+      "success_rate": 70,
+      "user_engagement_score": 80
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "quiz_30",
+        "title": "30-Day Quiz Challenge",
+        "description": "Complete quizzes for 30 consecutive days",
+        "streak_requirement": 30,
+        "reward": "30-Day Quiz Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  },
+  {
+    "id": "quiz_passed",
+    "title": "Daily Quiz Passed",
+    "description": "Pass the daily fitness knowledge quiz with high accuracy",
+    "sort_order": 6,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 3
+    },
+    "streak_category": "knowledge",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "hard",
+    "health_benefits": [
+      "Proven fitness knowledge",
+      "Confidence in decisions",
+      "Better training outcomes",
+      "Mental achievement"
+    ],
+    "motivational_messages": {
+      "short": "You're getting smarter!",
+      "medium": "Knowledge mastery achieved!",
+      "long": "Passing quizzes consistently shows you're building real fitness knowledge that will serve you throughout your health journey."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Quiz Champion",
+        "description": "Passed quizzes for 7 consecutive days",
+        "reward": "Quiz Champion Badge"
+      },
+      {
+        "days": 30,
+        "title": "Quiz Expert",
+        "description": "Passed quizzes for 30 consecutive days",
+        "reward": "Quiz Expert Badge"
+      }
+    ],
+    "related_streak_types": ["quiz_completed"],
+    "prerequisites": ["quiz_completed"],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 1,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": false,
+      "verification_method": "automatic",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 3
+    },
+    "streak_analytics": {
+      "average_streak_length": 5,
+      "longest_recorded_streak": 100,
+      "success_rate": 50,
+      "user_engagement_score": 75
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "quiz_pass_30",
+        "title": "30-Day Quiz Pass Challenge",
+        "description": "Pass quizzes for 30 consecutive days",
+        "streak_requirement": 30,
+        "reward": "30-Day Quiz Pass Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  },
+  {
+    "id": "all",
+    "title": "Perfect Day",
+    "description": "Complete all daily habits in a single day",
+    "sort_order": 7,
+    "created_at": "2024-01-01T00:00:00Z",
+    "metadata": {
+      "version": "1.0.0",
+      "generated_at": "2024-01-01T00:00:00Z",
+      "generator_version": "1.0.0",
+      "review_status": "approved",
+      "reviewed_by": "system",
+      "reviewed_at": "2024-01-01T00:00:00Z",
+      "quality_score": 95,
+      "difficulty_rating": 5
+    },
+    "streak_category": "composite",
+    "measurement_unit": "days",
+    "target_frequency": "daily",
+    "difficulty_level": "expert",
+    "health_benefits": [
+      "Comprehensive health improvement",
+      "Balanced lifestyle",
+      "Maximum wellness benefits",
+      "Achievement satisfaction"
+    ],
+    "motivational_messages": {
+      "short": "Perfect day achieved!",
+      "medium": "You're unstoppable!",
+      "long": "A perfect day represents the pinnacle of health and wellness commitment. Every perfect day is a testament to your dedication to living your best life."
+    },
+    "streak_milestones": [
+      {
+        "days": 7,
+        "title": "Perfect Week",
+        "description": "Achieved perfect days for 7 consecutive days",
+        "reward": "Perfect Week Badge"
+      },
+      {
+        "days": 30,
+        "title": "Perfect Month",
+        "description": "Achieved perfect days for 30 consecutive days",
+        "reward": "Perfect Month Badge"
+      }
+    ],
+    "related_streak_types": ["workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed"],
+    "prerequisites": ["workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed"],
+    "max_streak_days": null,
+    "streak_decay_rules": {
+      "grace_period_days": 0,
+      "decay_rate": 1,
+      "recovery_multiplier": 1
+    },
+    "streak_validation_rules": {
+      "requires_verification": true,
+      "verification_method": "hybrid",
+      "cooldown_period_hours": 0,
+      "max_attempts_per_day": 1
+    },
+    "streak_analytics": {
+      "average_streak_length": 2,
+      "longest_recorded_streak": 30,
+      "success_rate": 20,
+      "user_engagement_score": 90
+    },
+    "streak_challenges": [
+      {
+        "challenge_id": "perfect_week",
+        "title": "Perfect Week Challenge",
+        "description": "Achieve perfect days for 7 consecutive days",
+        "streak_requirement": 7,
+        "reward": "Perfect Week Badge"
+      }
+    ],
+    "streak_social_features": {
+      "can_share": true,
+      "can_compare": true,
+      "leaderboard_enabled": true,
+      "community_challenges": true
+    }
+  }
+]
