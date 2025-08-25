@@ -127,8 +127,12 @@ THE SYSTEM SHALL update their UserProfile accordingly and also update the corres
 ### R3.1: Challenge Access
 **Dependencies**: R1.4
 ```
-WHEN a user accesses the app
-THE SYSTEM SHALL retrieve and display the current day's pre-generated challenge prominently on the home screen
+WHEN a user accesses the app and clicks "Start Today's Challenge"
+THE SYSTEM SHALL automatically determine the next available daily challenge based on their progress:
+- If user has no previous sessions, start with day 1
+- If user has a previous session of day N but did not attempt or complete it, then clone the day N session again
+- If user's latest session was day N, provide day N+1
+- If user has completed all available challenges, show completion message
 ```
 
 ```
@@ -155,7 +159,17 @@ THE SYSTEM SHALL display the passage text prominently and allow the user to refe
 ```
 
 ```
-WHEN a user answers all questions and submits in a daily challenge
+WHEN a user answers all questions in a daily challenge
+THE SYSTEM SHALL present a "Submit Challenge" button and a VIEW that allows the user to review all answers before final submission
+```
+
+```
+WHEN a user submits the completed challenge
+THE SYSTEM SHALL validate the GameSession is still current and update the session with all user_answers, completion status, and performance metrics
+```
+
+```
+WHEN a user submits the completed challenge
 THE SYSTEM shall check if the user requests GameSession id is still same as the UserProfile.latest_game_session and show the user a message to refresh if not matching.
 THE SYSTEM SHALL check if the day's session is still answerable (i.e. in_progress is true)
 THE SYSTEM SHALL update the GameSession record with in_progress as null, all_correct_answers, completed_at to current timestamp, user_answers to an array of answers to the daily challenge questions including properties like hint_used, is_correct etc
@@ -223,8 +237,13 @@ THE SYSTEM SHALL display all available ContentCategory options with icons, descr
 ```
 
 ```
-WHEN a user selects a specific content category
-THE SYSTEM SHALL start a practice session with 5 random questions from that category
+WHEN a user selects a specific content category and clicks "Start Practice"
+THE SYSTEM SHALL return 10 random questions from that category without creating a persistent session
+```
+
+```
+WHEN a user completes a practice session
+THE SYSTEM SHALL display performance summary and return to category selection without storing session data
 ```
 
 ### R4.2: Practice Session Flow

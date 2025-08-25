@@ -214,7 +214,7 @@ This document provides comprehensive test cases for each requirement, ensuring f
 ### R3.1: Challenge Access Tests
 
 #### Test R3.1.1: Current Day Challenge Display
-- **Test Case**: Home screen shows current day's challenge
+- **Test Case**: Home screen shows current day's challenge if daily challenge started
 - **Precondition**: User accesses app, daily challenge available
 - **Action**: Navigate to home screen
 - **Expected Result**: Current day's challenge displayed prominently
@@ -234,6 +234,26 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: Fallback message indicating new challenges coming soon
 - **Coverage**: R3.1
 
+#### Test R3.1.4: Start Challenge Display
+- **Test Case**: Home screen shows "Start Challenge" button if daily challenge not started
+- **Precondition**: User accesses app, Start Daily Challenge button available
+- **Action**: Navigate to home screen
+- **Expected Result**: "Start Daily Challenge" displayed prominently
+- **Coverage**: R3.1
+
+#### Test R3.1.5: Retry Challenge Display
+- **Test Case**: Home screen shows "Retry Challenge" button if daily challenge submitted an is retryable
+- **Precondition**: User accesses app, "Retry Daily Challenge" button available
+- **Action**: Navigate to home screen
+- **Expected Result**: "Retry Daily Challenge" displayed prominently
+- **Coverage**: R3.1
+
+#### Test R3.1.6: Automatic Challenge Progression
+- **Test Case**: System automatically determines next challenge
+- **Precondition**: User has completed day 7 challenge
+- **Action**: Access daily challenge
+- **Expected Result**: Day 8 challenge automatically provided
+
 ### R3.2: Challenge Completion Tests
 
 #### Test R3.2.1: GameSession Creation
@@ -251,10 +271,10 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Coverage**: R3.2
 
 #### Test R3.2.3: Challenge Completion Answers 
-- **Test Case**: Question attempts recorded correctly
-- **Precondition**: User answers question in daily challenge
-- **Action**: Submit answer
-- **Expected Result**: user_answers array updated with question_id, answer_index, is_correct, hint_used
+- **Test Case**: User completes all questions and submits challenge as single unit
+- **Precondition**: User has answered all questions in daily challenge
+- **Action**: Click "Submit Challenge" button
+- **Expected Result**: All answers submitted together, session marked complete, performance calculated
 - **Coverage**: R3.2
 
 #### Test R3.2.4: Challenge Completion Marking
@@ -427,6 +447,12 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Action**: Finish last question
 - **Expected Result**: Performance summary displayed (X/5 correct, time taken)
 - **Coverage**: R4.2
+
+#### Test R4.2.5: Practice Session Ephemeral Nature
+- **Test Case**: Practice sessions don't persist in database
+- **Precondition**: User starts practice session
+- **Action**: Complete practice session
+- **Expected Result**: Expected Result: No GameSession record created, performance summary displayed
 
 ## R5: Streak Management
 
