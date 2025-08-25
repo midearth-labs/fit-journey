@@ -10,12 +10,12 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 **Requirements**: R1.1 (Database Structure)
 **Dependencies**: None
 
-- [ ] **1.1.1** Initialize Next.js 14 project with TypeScript and Tailwind CSS
-- [ ] **1.1.2** Install and configure Drizzle ORM with PostgreSQL
-- [ ] **1.1.3** Set up Supabase project and configure environment variables
-- [ ] **1.1.4** Create database connection and basic configuration
+- [X] **1.1.1** Initialize Next.js 14 project with TypeScript and Tailwind CSS
+- [X] **1.1.2** Install and configure Drizzle ORM with PostgreSQL
+- [X] **1.1.3** Set up Supabase project and configure environment variables
+- [X] **1.1.4** Create database connection and basic configuration
 - [ ] **1.1.5** Set up project directory structure for content management
-- [ ] **1.1.6** Install required dependencies (Zod, date-fns, uuid, etc.)
+- [ ] **1.1.6** Install any new dependencies (Zod, date-fns, uuid, etc.)
 
 ### 1.2 Database Schema Implementation
 **Requirements**: R1.1 (Database Structure), R14.1 (Supabase Auth Integration)
@@ -37,11 +37,8 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 **Dependencies**: 1.2.1-1.2.10
 **Note**: This is a dependency interface contract for components outside our scope
 
-- [ ] **1.3.1** Create authentication context interface contract
-- [ ] **1.3.2** Implement stub authentication middleware
-- [ ] **1.3.3** Create user authentication hook interface
-- [ ] **1.3.4** Set up protected route wrapper component
-- [ ] **1.3.5** Implement basic login/signup page stubs
+- [ ] **1.3.1** Update authentication middleware to expose currently logged-in user
+- [ ] **1.3.2** Add protected API routes prefix to middleware i.e. `/user/`
 
 ## Phase 2: Content Management System Implementation
 
