@@ -253,9 +253,9 @@ graph TB
 - **Technology Approach**: JSON file-based storage with build-time validation
 
 ### Game Session Engine
-- **Purpose**: Orchestrates daily challenges, practice sessions, and tracks user progress
-- **Key Responsibilities**: Session management, question sequencing, timezone handling, retry logic
-- **Technology Approach**: State machine pattern with persistent session storage
+- **Purpose**: Orchestrates daily challenges and tracks user progress through persistent sessions
+- **Key Responsibilities**: Session management, challenge progression, timezone handling, retry logic
+- **Technology Approach**: State machine pattern with persistent session storage and timezone locking
 
 ### Streak Management System
 - **Purpose**: Tracks user progress across multiple habit types and quiz completion
@@ -266,6 +266,11 @@ graph TB
 - **Purpose**: Rewards user milestones and maintains engagement through unlockable achievements
 - **Key Responsibilities**: Condition checking, achievement unlocking, celebration display
 - **Technology Approach**: Rule engine pattern with extensible unlock conditions
+
+### Practice Session Engine
+- **Purpose**: Provides ephemeral practice sessions for specific content categories without persistent storage
+- **Key Responsibilities**: Question selection, content delivery, performance tracking, immediate feedback
+- **Technology Approach**: Stateless service with content caching and performance analytics
 
 ### Avatar Progression System
 - **Purpose**: Visual representation of user fitness state and progress
