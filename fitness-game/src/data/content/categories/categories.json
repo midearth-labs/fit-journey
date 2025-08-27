@@ -17,7 +17,7 @@
       "quality_score": 95,
       "difficulty_rating": 2
     },
-    "tags": ["equipment", "fitness", "beginner"],
+    "tags": ["equipment", "fitness", "beginner", "gym-etiquette"],
     "related_categories": ["form", "foundational_movements"],
     "question_count": 0,
     "passage_count": 0,
@@ -31,7 +31,8 @@
     "learning_objectives": [
       "Identify common fitness equipment",
       "Understand equipment safety",
-      "Learn proper equipment usage"
+      "Learn proper equipment usage",
+      "Gym Etiquette"
     ],
     "prerequisites": [],
     "target_audience": "beginner",
@@ -97,7 +98,7 @@
       "quality_score": 95,
       "difficulty_rating": 2
     },
-    "tags": ["nutrition", "myths", "facts", "health"],
+    "tags": ["nutrition", "myths", "facts", "health", "weight-loss", "recovery"],
     "related_categories": ["body_mechanics", "wellness"],
     "question_count": 0,
     "passage_count": 0,

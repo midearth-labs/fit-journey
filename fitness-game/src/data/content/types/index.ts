@@ -33,16 +33,21 @@ export type ContentType =
   | 'DailyChallenge';
 
 // Content maps for efficient retrieval
-export type ContentMaps = {
-  ContentCategory: Map<string, ContentCategory>;
-  Question: Map<string, Question>;
-  KnowledgeBase: Map<string, KnowledgeBase>;
-  PassageSet: Map<string, PassageSet>;
-  StreakType: Map<string, StreakType>;
-  UserState: Map<string, UserState>;
-  AvatarAsset: Map<string, AvatarAsset>;
-  Achievement: Map<string, Achievement>;
-  DailyChallenge: Map<string, DailyChallenge>;
+export type Content = {
+  ContentCategory: MapAndList<ContentCategory>;
+  Question: MapAndList<Question>;
+  KnowledgeBase: MapAndList<KnowledgeBase>;
+  PassageSet: MapAndList<PassageSet>;
+  StreakType: MapAndList<StreakType>;
+  UserState: MapAndList<UserState>;
+  AvatarAsset: MapAndList<AvatarAsset>;
+  Achievement: MapAndList<Achievement>;
+  DailyChallenge: MapAndList<DailyChallenge>;
+};
+
+export type MapAndList<T> = {
+  map: Map<string, T>;
+  list: T[];
 };
 
 // Content loading options
@@ -80,6 +85,7 @@ export interface ValidationWarning {
 
 export interface ValidationSummary {
   totalEntities: number;
+  countsByType: Record<ContentType, number>;
   validEntities: number;
   errorCount: number;
   warningCount: number;

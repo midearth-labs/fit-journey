@@ -1,18 +1,69 @@
 // Content Validator Utility
 // Handles validation of content integrity and relationships
 
-import { ValidationResult, ValidationError, ValidationWarning, ValidationSummary } from '../types';
-import { ContentType, ContentMaps } from '../types';
+import { ValidationResult, ValidationError, ValidationWarning, ValidationSummary, ContentType, Content } from '../types';
 import { CONTENT_VALIDATION_RULES } from '../types/constants';
+import { ContentLoader } from '../utils/content-loader';
 
 export class ContentValidator {
-  private contentMaps: Partial<ContentMaps> = {};
   private validationErrors: ValidationError[] = [];
   private validationWarnings: ValidationWarning[] = [];
+  private content: Content;
 
-  constructor(contentMaps: Partial<ContentMaps>) {
-    this.contentMaps = contentMaps;
+  constructor(content: Content) {
+    this.content = content;
   }
+
+  /**
+   * Validate all content
+   */
+  static async validateContent(): Promise<ValidationResult> {
+    const contentLoader = await ContentLoader.initialize();
+    
+    const content = contentLoader.getContent();
+      
+    if (!content || Object.keys(content).length === 0) {
+      throw new Error('No content loaded for validation');
+    }
+
+    console.log('Validating content...');
+
+    const result = new ContentValidator(content).validateAllContent();
+    
+    if (result.isValid) {
+      console.log('Content validation passed successfully');
+    } else {
+      console.error(`Content validation failed with ${result.errors.length} errors and ${result.warnings.length} warnings`);
+      ContentValidator.logValidationErrors(result);
+    }
+    
+    return result;
+  }
+
+
+  /**
+   * Log validation errors
+   */
+  private static logValidationErrors(result: ValidationResult): void {
+    console.error('=== Content Validation Errors ===');
+    
+    for (const error of result.errors) {
+      console.error(`${error.entityType} ${error.entityId}: ${error.field} - ${error.message}`);
+    }
+    
+    if (result.warnings.length > 0) {
+      console.warn('=== Content Validation Warnings ===');
+      for (const warning of result.warnings) {
+        console.warn(`${warning.entityType} ${warning.entityId}: ${warning.field} - ${warning.message}`);
+        if (warning.suggestion) {
+          console.warn(`  Suggestion: ${warning.suggestion}`);
+        }
+      }
+    }
+    
+    console.error(`Validation Summary: ${result.summary.totalEntities} total entities, ${result.summary.errorCount} errors, ${result.summary.warningCount} warnings`);
+  }
+
 
   /**
    * Validate all content for integrity and relationships
@@ -52,7 +103,7 @@ export class ContentValidator {
    * Validate content categories
    */
   private validateContentCategories(): void {
-    const categories = this.contentMaps.ContentCategory;
+    const categories = this.content.ContentCategory.map;
     if (!categories) return;
 
     for (const [id, category] of categories) {
@@ -78,7 +129,7 @@ export class ContentValidator {
    * Validate questions
    */
   private validateQuestions(): void {
-    const questions = this.contentMaps.Question;
+    const questions = this.content.Question.map;
     if (!questions) return;
 
     for (const [id, question] of questions) {
@@ -120,7 +171,7 @@ export class ContentValidator {
    * Validate passage sets
    */
   private validatePassageSets(): void {
-    const passages = this.contentMaps.PassageSet;
+    const passages = this.content.PassageSet.map;
     if (!passages) return;
 
     for (const [id, passage] of passages) {
@@ -155,7 +206,7 @@ export class ContentValidator {
    * Validate knowledge base
    */
   private validateKnowledgeBase(): void {
-    const knowledgeBase = this.contentMaps.KnowledgeBase;
+    const knowledgeBase = this.content.KnowledgeBase.map;
     if (!knowledgeBase) return;
 
     for (const [id, kb] of knowledgeBase) {
@@ -179,7 +230,7 @@ export class ContentValidator {
    * Validate daily challenges
    */
   private validateDailyChallenges(): void {
-    const challenges = this.contentMaps.DailyChallenge;
+    const challenges = this.content.DailyChallenge.map;
     if (!challenges) return;
 
     for (const [id, challenge] of challenges) {
@@ -260,7 +311,7 @@ export class ContentValidator {
    * Validate achievements
    */
   private validateAchievements(): void {
-    const achievements = this.contentMaps.Achievement;
+    const achievements = this.content.Achievement.map;
     if (!achievements) return;
 
     for (const [id, achievement] of achievements) {
@@ -284,7 +335,7 @@ export class ContentValidator {
    * Validate user states
    */
   private validateUserStates(): void {
-    const userStates = this.contentMaps.UserState;
+    const userStates = this.content.UserState.map;
     if (!userStates) return;
 
     for (const [id, state] of userStates) {
@@ -305,7 +356,7 @@ export class ContentValidator {
    * Validate streak types
    */
   private validateStreakTypes(): void {
-    const streakTypes = this.contentMaps.StreakType;
+    const streakTypes = this.content.StreakType.map;
     if (!streakTypes) return;
 
     for (const [id, streakType] of streakTypes) {
@@ -326,7 +377,7 @@ export class ContentValidator {
    * Validate avatar assets
    */
   private validateAvatarAssets(): void {
-    const avatarAssets = this.contentMaps.AvatarAsset;
+    const avatarAssets = this.content.AvatarAsset.map;
     if (!avatarAssets) return;
 
     for (const [id, asset] of avatarAssets) {
@@ -398,7 +449,7 @@ export class ContentValidator {
    * Validate reference to another entity
    */
   private validateReference(sourceType: string, sourceId: string, fieldName: string, targetType: string, targetId: string): void {
-    const targetMap = this.contentMaps[targetType as keyof ContentMaps];
+    const targetMap = this.content[targetType as keyof Content].map;
     if (!targetMap || !targetMap.has(targetId)) {
       this.addError(sourceType, sourceId, fieldName, `References non-existent ${targetType} with ID: ${targetId}`);
     }
@@ -434,7 +485,7 @@ export class ContentValidator {
    * Create validation summary
    */
   private createValidationSummary(): ValidationSummary {
-    const totalEntities = Object.values(this.contentMaps).reduce((total, map) => total + (map?.size || 0), 0);
+    const totalEntities = Object.values(this.content).reduce((total, content) => total + (content?.map?.size || 0), 0);
     const validEntities = totalEntities - this.validationErrors.length;
 
     return {
@@ -442,7 +493,18 @@ export class ContentValidator {
       validEntities,
       errorCount: this.validationErrors.length,
       warningCount: this.validationWarnings.length,
-      criticalErrors: this.validationErrors.filter(e => e.severity === 'critical').length
+      criticalErrors: this.validationErrors.filter(e => e.severity === 'critical').length,
+      countsByType: {
+        ContentCategory: this.content.ContentCategory.map.size,
+        Question: this.content.Question.map.size,
+        KnowledgeBase: this.content.KnowledgeBase.map.size,
+        PassageSet: this.content.PassageSet.map.size,
+        StreakType: this.content.StreakType.map.size,
+        UserState: this.content.UserState.map.size,
+        AvatarAsset: this.content.AvatarAsset.map.size,
+        Achievement: this.content.Achievement.map.size,
+        DailyChallenge: this.content.DailyChallenge.map.size
+      }
     };
   }
 }

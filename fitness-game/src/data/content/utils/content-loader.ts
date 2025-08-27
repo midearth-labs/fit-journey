@@ -3,29 +3,23 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import { ContentType, ContentMaps, LoadOptions } from '../types';
+import { ContentType, Content, LoadOptions, MapAndList } from '../types';
 import { CONTENT_DIRECTORIES } from '../types/constants';
 
 export class ContentLoader {
-  private contentBasePath: string;
-  private contentMaps: Partial<ContentMaps> = {};
-  private isInitialized = false;
+  private content: Content;
+  private static contentBasePath: string = path.join(process.cwd(), 'src', 'data', 'content');
 
-  constructor(contentBasePath?: string) {
-    this.contentBasePath = contentBasePath || path.join(process.cwd(), 'src', 'data', 'content');
+  constructor(content: Content) {
+    this.content = content;
   }
 
   /**
    * Initialize the content loader by loading all content files
    */
-  async initialize(): Promise<void> {
-    if (this.isInitialized) {
-      return;
-    }
-
+  static async initialize(): Promise<ContentLoader> {
     try {
-      await this.loadAllContent();
-      this.isInitialized = true;
+      return new ContentLoader(await this.loadAllContent());
     } catch (error) {
       console.error('Failed to initialize content loader:', error);
       throw new Error(`Content loader initialization failed: ${error}`);
@@ -35,84 +29,83 @@ export class ContentLoader {
   /**
    * Load all content files into memory
    */
-  private async loadAllContent(): Promise<void> {
-    const contentTypes: ContentType[] = [
-      'ContentCategory',
-      'Question',
-      'KnowledgeBase',
-      'PassageSet',
-      'StreakType',
-      'UserState',
-      'AvatarAsset',
-      'Achievement',
-      'DailyChallenge'
-    ];
-
-    for (const contentType of contentTypes) {
-      try {
-        await this.loadContentType(contentType);
-      } catch (error) {
-        console.warn(`Failed to load content type ${contentType}:`, error);
-        // Continue loading other content types
+  private static async loadAllContent(): Promise<Content> {
+    try {
+      return {
+        ContentCategory: await this.loadContentType('ContentCategory'),
+        Question: await this.loadContentType('Question'),
+        KnowledgeBase: await this.loadContentType('KnowledgeBase'),
+        PassageSet: await this.loadContentType('PassageSet'),
+        StreakType: await this.loadContentType('StreakType'),
+        UserState: await this.loadContentType('UserState'),
+        AvatarAsset: await this.loadContentType('AvatarAsset'),
+        Achievement: await this.loadContentType('Achievement'),
+        DailyChallenge: await this.loadContentType('DailyChallenge')
       }
+    } catch (error) {
+      console.error(`Failed to load content`);
+      throw error;
     }
   }
 
   /**
    * Load content of a specific type
    */
-  private async loadContentType<T extends ContentType>(contentType: T): Promise<void> {
+  private static async loadContentType<T extends ContentType>(contentType: T) {
     const directoryName = this.getDirectoryName(contentType);
     const directoryPath = path.join(this.contentBasePath, directoryName);
+    console.debug(`Loading content type: ${contentType} from ${directoryPath}`);
     
     try {
       // Check if directory exists
       await fs.access(directoryPath);
     } catch {
-      console.warn(`Content directory not found: ${directoryPath}`);
-      return;
+      throw new Error(`Content ${contentType}: directory not found: ${directoryPath}`);
     }
 
     const files = await fs.readdir(directoryPath);
     const jsonFiles = files.filter(file => file.endsWith('.json'));
     
     if (jsonFiles.length === 0) {
-      console.warn(`No JSON files found in ${directoryPath}`);
-      return;
+      throw new Error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
     }
 
-    const contentMap = new Map<string, any>();
+    const contentMap: Content[T]['map'] = new Map();
+    const contentList: Content[T]['list'] = [];
     
     for (const file of jsonFiles) {
-      try {
-        const filePath = path.join(directoryPath, file);
-        const content = await this.loadContentFile(filePath);
-        
-        if (Array.isArray(content)) {
-          // Handle array-based content files
-          for (const item of content) {
-            if (item.id) {
-              contentMap.set(item.id, item);
-            }
+      console.debug(`Loading content file: ${file} `);
+      const filePath = path.join(directoryPath, file);
+      
+      const content = await this.loadContentFile(filePath);
+      
+      if (Array.isArray(content)) {
+        // Handle array-based content files
+        content.forEach((item, index) => {
+          if (!(item && typeof item === 'object' && 'id' in item)) {
+            throw new Error(`Content ${contentType}: Item is not an object with an id: ${filePath} at index ${index}`);
           }
-        } else if (content && typeof content === 'object') {
-          // Handle object-based content files
-          if (content.id) {
-            contentMap.set(content.id, content);
+          if (contentMap.has(item.id)) {
+            throw new Error(`Content ${contentType}: Item with id ${item.id} already exists: ${filePath} at index ${index}`);
           }
-        }
-      } catch (error) {
-        console.error(`Failed to load content file ${file}:`, error);
+          contentMap.set(item.id, item);
+          contentList.push(item);
+        });
+      } else {
+        throw new Error(`Content ${contentType}: File contents is not an array: ${filePath}`);
       }
     }
 
-    this.contentMaps[contentType] = contentMap;
+    return {
+      map: contentMap,
+      list: contentList
+    };
   }
 
   /**
    * Load a single content file
    */
-  private async loadContentFile(filePath: string): Promise<any> {
+  private static async loadContentFile(filePath: string): Promise<any> {
     try {
       const fileContent = await fs.readFile(filePath, 'utf-8');
       return JSON.parse(fileContent);
@@ -124,7 +117,7 @@ export class ContentLoader {
   /**
    * Get directory name for content type
    */
-  private getDirectoryName(contentType: ContentType): string {
+  private static getDirectoryName(contentType: ContentType): string {
     const directoryMap: Record<ContentType, string> = {
       ContentCategory: CONTENT_DIRECTORIES.CATEGORIES,
       Question: CONTENT_DIRECTORIES.QUESTIONS,
@@ -141,89 +134,31 @@ export class ContentLoader {
   }
 
   /**
-   * Get content of a specific type
+   * Get content map of a specific type
    */
-  getContent<T extends ContentType>(contentType: T): Map<string, any> | undefined {
-    if (!this.isInitialized) {
-      throw new Error('Content loader not initialized. Call initialize() first.');
-    }
-    
-    return this.contentMaps[contentType];
+  getContentMap<T extends ContentType>(contentType: T) {
+    return this.content[contentType].map;
   }
 
   /**
-   * Get all content maps
+   * Get all content
    */
-  getContentMaps(): Partial<ContentMaps> {
-    if (!this.isInitialized) {
-      throw new Error('Content loader not initialized. Call initialize() first.');
-    }
-    
-    return this.contentMaps;
+  getContent() {
+    return this.content;
+  }
+
+  /**
+   * Get content list of a specific type
+   */
+  getContentList<T extends ContentType>(contentType: T) {
+    return this.content[contentType].list;
   }
 
   /**
    * Get content by ID
    */
-  getContentById<T extends ContentType>(contentType: T, id: string): any | undefined {
-    const contentMap = this.getContent(contentType);
-    return contentMap?.get(id);
-  }
-
-  /**
-   * Get content by category
-   */
-  getContentByCategory<T extends ContentType>(
-    contentType: T, 
-    categoryId: string
-  ): any[] | undefined {
-    const contentMap = this.getContent(contentType);
-    if (!contentMap) return undefined;
-
-    const content = Array.from(contentMap.values());
-    return content.filter(item => item.content_category_id === categoryId);
-  }
-
-  /**
-   * Get all content of a specific type
-   */
-  getAllContent<T extends ContentType>(contentType: T): any[] | undefined {
-    const contentMap = this.getContent(contentType);
-    if (!contentMap) return undefined;
-
-    return Array.from(contentMap.values());
-  }
-
-  /**
-   * Check if content loader is initialized
-   */
-  isReady(): boolean {
-    return this.isInitialized;
-  }
-
-  /**
-   * Get content statistics
-   */
-  getContentStats(): Record<ContentType, number> {
-    const stats: Record<ContentType, number> = {} as Record<ContentType, number>;
-    
-    for (const contentType of Object.keys(this.contentMaps) as ContentType[]) {
-      const contentMap = this.contentMaps[contentType];
-      stats[contentType] = contentMap ? contentMap.size : 0;
-    }
-    
-    return stats;
-  }
-
-  /**
-   * Reload content (useful for development)
-   */
-  async reload(): Promise<void> {
-    this.isInitialized = false;
-    this.contentMaps = {};
-    await this.initialize();
+  getContentById<T extends ContentType>(contentType: T, id: string) {
+    const contentMap = this.getContentMap(contentType);
+    return contentMap.get(id);
   }
 }
-
-// Export singleton instance
-export const contentLoader = new ContentLoader();

@@ -11,7 +11,7 @@
  *   npm run build (automatically runs validation)
  */
 
-import { contentManagementSystem } from '../src/data/content/content-management-system';
+import { ContentValidator } from '@/data/content/validation/content-validator';
 import { ValidationResult } from '../src/data/content/types';
 
 async function validateContent(): Promise<void> {
@@ -19,11 +19,8 @@ async function validateContent(): Promise<void> {
   console.log('=====================================');
 
   try {
-    // Initialize the content management system
-    await contentManagementSystem.initialize();
-    
     // Get validation result
-    const validationResult = contentManagementSystem.getValidationResult();
+    const validationResult = await ContentValidator.validateContent();
     
     if (!validationResult) {
       throw new Error('No validation result available');
@@ -38,9 +35,6 @@ async function validateContent(): Promise<void> {
       console.error('Build process cannot continue until all validation errors are resolved.');
       process.exit(1);
     }
-
-    // Display system health
-    displaySystemHealth();
     
     console.log('✅ Content validation completed successfully!');
     console.log('🚀 Build process can continue...');
@@ -61,6 +55,10 @@ function displayValidationResults(result: ValidationResult): void {
   // Summary
   console.log(`📈 Total Entities: ${summary.totalEntities}`);
   console.log(`✅ Valid Entities: ${summary.validEntities}`);
+  console.log(`📊 Content Counts by Type:`);
+  for (const [type, count] of Object.entries(summary.countsByType)) {
+    console.log(`  ${type}: ${count}`);
+  }
   console.log(`❌ Errors: ${summary.errorCount}`);
   console.log(`⚠️  Warnings: ${summary.warningCount}`);
   console.log(`🚨 Critical Errors: ${summary.criticalErrors}`);
@@ -101,25 +99,6 @@ function displayValidationResults(result: ValidationResult): void {
   } else {
     console.log('💥 Content validation failed!');
   }
-}
-
-function displaySystemHealth(): void {
-  console.log('\n🏥 System Health:');
-  console.log('==================');
-  
-  const health = contentManagementSystem.getSystemHealth();
-  
-  console.log(`🔧 Initialized: ${health.isInitialized ? '✅ Yes' : '❌ No'}`);
-  console.log(`📁 Content Loaded: ${health.contentLoaded ? '✅ Yes' : '❌ No'}`);
-  console.log(`✅ Validation Passed: ${health.validationPassed ? '✅ Yes' : '❌ No'}`);
-  console.log(`📊 Content Statistics:`);
-  
-  for (const [type, count] of Object.entries(health.contentStats)) {
-    console.log(`  ${type}: ${count} entities`);
-  }
-  
-  console.log(`❌ Validation Errors: ${health.validationErrors}`);
-  console.log(`⚠️  Validation Warnings: ${health.validationWarnings}`);
 }
 
 // Run validation if this script is executed directly
