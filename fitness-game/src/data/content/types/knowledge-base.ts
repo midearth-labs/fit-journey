@@ -1,63 +1,24 @@
 // KnowledgeBase type definition
 // Based on entities.md KnowledgeBase entity
 
-import { BaseContent, LearnMoreLink, ContentTag } from './common';
+import z from 'zod';
+import { BaseContentSchema, LearnMoreLinkSchema, AffiliateLinkSchema, ImageSchema } from './common';
 
-export interface KnowledgeBase extends BaseContent {
-  id: string;
-  content_category_id: string;
-  title: string;
-  description: string; // markdown content
-  tags: string[];
-  related_knowledge_base_ids: string[];
-  learn_more_links: LearnMoreLink[];
-  is_active: boolean;
-  sort_order: number;
-  created_at: string;
-  updated_at: string;
-  // @TODO: Add affiliate links
+export const KnowledgeBaseSchema = BaseContentSchema.extend({
+  content_category_id: z.string(),
+  landing_image: ImageSchema,
+  title: z.string(),
+  description: z.string(), // markdown content containing image urls etc.
+  tags: z.array(z.string()),
+  related_knowledge_base_ids: z.array(z.string()),
+  learn_more_links: z.array(LearnMoreLinkSchema),
+  affiliate_links: z.array(AffiliateLinkSchema),
+  image_urls: z.array(ImageSchema),
   
   // Extended fields for content management
-  content_tags?: ContentTag[];
-  content_format?: 'article' | 'tutorial' | 'guide' | 'reference' | 'case_study';
-  reading_level?: 'beginner' | 'intermediate' | 'advanced';
-  estimated_read_time_minutes?: number;
-  word_count?: number;
-  key_takeaways?: string[];
-  prerequisites?: string[]; // IDs of prerequisite knowledge base articles
-  learning_outcomes?: string[];
-  content_structure?: {
-    sections: {
-      title: string;
-      content: string;
-      order: number;
-    }[];
-    summary?: string;
-    conclusion?: string;
-  };
-  visual_aids?: {
-    images: string[];
-    diagrams: string[];
-    videos: string[];
-    infographics: string[];
-  };
-  interactive_elements?: {
-    quizzes: string[]; // Question IDs
-    exercises: string[];
-    checklists: string[];
-  };
-  expert_contributors?: {
-    name: string;
-    credentials: string;
-    contribution: string;
-  }[];
-  last_updated?: string;
-  update_frequency?: 'monthly' | 'quarterly' | 'biannually' | 'annually';
-  content_quality_score?: number;
-  user_feedback?: {
-    helpful_count: number;
-    not_helpful_count: number;
-    average_rating: number;
-    review_count: number;
-  };
-}
+  estimated_read_time_minutes: z.number(),
+  word_count: z.number(),
+  key_takeaways: z.array(z.string()),
+});
+
+export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>;

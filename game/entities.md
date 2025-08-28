@@ -57,19 +57,16 @@
   content_category_id: string, // FK to ContentCategory
   knowledge_base_id: string, // FK to KnowledgeBase
   question_text: string,
-  question_type: string, // "multiple_choice", "passage_based", "true_false"
+  question_type: string, // "standalone", "passage_based"
   options: Array<string>, // ["Option A", "Option B", "Option C", "Option D"]
   correct_answer_index: number, // 0-based index
   explanation: string,
   hints: Array<string>,
-  difficulty_level: number, // 1-5 scale
-  image_url: string?,
+  image_urls: Array<object>,
   passage_set_id: string?, // FK to PassageSet (null for standalone questions)
-  is_standalone: boolean, // true for standalone, false for passage-based
   is_active: boolean, // default true
   created_at: timestamp,
   updated_at: timestamp,
-  tags: Array<string>, // ["squats", "form", "beginner"]
 }
 ```
 
@@ -79,11 +76,17 @@
 {
   id: string,
   content_category_id: string, // FK to ContentCategory
+  landing_image: object,
   title: string,
   description: string, // markdown content
   tags: Array<string>, // ["squats", "form", "beginner", "legs", "nutrition", "recovery"]
   related_knowledge_base_ids: Array<string>, // FK to KnowledgeBase
   learn_more_links: Array<object>, // [{type: "youtube_short", url: "https://...", title: "..."}, {type: "blog", url: "https://...", title: "..."}]
+  affiliate_links: Array<object>, // [{type: "amazon", url: "https://...", title: "..."}, {type: "gymshark", url: "https://...", title: "..."}]
+  image_urls: Array<object>,
+  estimated_read_time_minutes: number,
+  word_count: number,
+  key_takeaways: Array<string>,
   is_active: boolean, // default true
   sort_order: number, // for display ordering
   created_at: timestamp,
@@ -99,13 +102,11 @@
   content_category_id: string, // FK to ContentCategory
   title: string,
   passage_text: string,
-  difficulty_level: number, // 1-5 scale
-  estimated_read_time_minutes: number,
-  question_count: number, // Number of associated questions
+  image_urls: Array<object>,
+  sort_order: number,
   is_active: boolean,
   created_at: timestamp,
   updated_at: timestamp,
-  tags: Array<string>, 
 }
 ```
 
@@ -138,10 +139,20 @@
 ```json
 {
   id: string,
-  fitness_level: number, // -5 to +5 fitness level
-  gender: string,
-  age_range: string,
-  image_url: string,
+  fitness_level: {
+    "-5": {
+      image_url: string;
+    }
+    "-4": {
+      image_url: string;
+    }
+    "-3": {
+      image_url: string;
+    }
+  }
+  gender: "male" | "female",
+  age_range: "child" | "teen" | "young-adult" | "middle-age" | "senior",
+  image_urls: Array<object>,
   created_at: timestamp,
   updated_at: timestamp,
 }
@@ -157,8 +168,6 @@
   content_category_id: string, // FK to ContentCategory
   day: number, // 1, 2, 3, ..., till challenge ends
   challenge_structure: Array<object>, // [{type: "standalone", question_id: "q1"}, {type: "passage", passage_set_id: "p1", question_ids: ["q2", "q3", "q4"]}, {type: "standalone", question_id: "q5"}]
-  total_questions: number,
-  theme: string?, // "Muscle Monday", "Technique Tuesday"
   created_at: timestamp,
   updated_at: timestamp,
 }

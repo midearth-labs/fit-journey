@@ -1,30 +1,4 @@
-// Content Management Constants and Enums
 
-// Avatar Genders
-export const AVATAR_GENDERS = {
-  MALE: 'male',
-  FEMALE: 'female'
-} as const;
-
-export type AvatarGender = typeof AVATAR_GENDERS[keyof typeof AVATAR_GENDERS];
-
-// Avatar Age Ranges
-export const AVATAR_AGE_RANGES = {
-  CHILD: 'child', // 5-12
-  TEEN: 'teen', // 13-19
-  YOUNG_ADULT: 'young-adult', // 20-39
-  MIDDLE_AGE: 'middle-age', // 40-59
-  SENIOR: 'senior' // 60+
-} as const;
-
-export type AvatarAgeRange = typeof AVATAR_AGE_RANGES[keyof typeof AVATAR_AGE_RANGES];
-
-// Content File Extensions
-export const CONTENT_FILE_EXTENSIONS = {
-  JSON: '.json',
-  MARKDOWN: '.md',
-  YAML: '.yml'
-} as const;
 
 // Content Directory Names
 export const CONTENT_DIRECTORIES = {

@@ -155,10 +155,6 @@ export class ContentValidator {
       if (question.correct_answer_index >= (question.options?.length || 0)) {
         this.addError('Question', id, 'correct_answer_index', 'Correct answer index must be within options range');
       }
-      if (question.difficulty_level < CONTENT_VALIDATION_RULES.MIN_DIFFICULTY_LEVEL || 
-          question.difficulty_level > CONTENT_VALIDATION_RULES.MAX_DIFFICULTY_LEVEL) {
-        this.addError('Question', id, 'difficulty_level', `Difficulty level must be between ${CONTENT_VALIDATION_RULES.MIN_DIFFICULTY_LEVEL} and ${CONTENT_VALIDATION_RULES.MAX_DIFFICULTY_LEVEL}`);
-      }
 
       // Validate content category reference
       this.validateReference('Question', id, 'content_category_id', 'ContentCategory', question.content_category_id);
@@ -180,19 +176,8 @@ export class ContentValidator {
       if (!passage.passage_text) {
         this.addError('PassageSet', id, 'passage_text', 'Passage text is required');
       }
-      if (passage.question_count === undefined || passage.question_count === null) {
-        this.addError('PassageSet', id, 'question_count', 'Question count is required');
-      }
       if (!passage.content_category_id) {
         this.addError('PassageSet', id, 'content_category_id', 'Content category ID is required');
-      }
-
-      // Validate business rules
-      if (passage.question_count < 1) {
-        this.addError('PassageSet', id, 'question_count', 'Question count must be at least 1');
-      }
-      if (passage.estimated_read_time_minutes <= 0) {
-        this.addError('PassageSet', id, 'estimated_read_time_minutes', 'Estimated read time must be positive');
       }
 
       // Validate content category reference
@@ -242,19 +227,10 @@ export class ContentValidator {
       if (!challenge.challenge_structure || challenge.challenge_structure.length === 0) {
         this.addError('DailyChallenge', id, 'challenge_structure', 'Challenge structure is required');
       }
-      if (challenge.total_questions === undefined || challenge.total_questions === null) {
-        this.addError('DailyChallenge', id, 'total_questions', 'Total questions count is required');
-      }
 
       // Validate business rules
       if (challenge.day < 1) {
         this.addError('DailyChallenge', id, 'day', 'Day number must be at least 1');
-      }
-      if (challenge.total_questions < CONTENT_VALIDATION_RULES.MIN_QUESTIONS_PER_DAILY_CHALLENGE) {
-        this.addError('DailyChallenge', id, 'total_questions', `Must have at least ${CONTENT_VALIDATION_RULES.MIN_QUESTIONS_PER_DAILY_CHALLENGE} questions`);
-      }
-      if (challenge.total_questions > CONTENT_VALIDATION_RULES.MAX_QUESTIONS_PER_DAILY_CHALLENGE) {
-        this.addError('DailyChallenge', id, 'total_questions', `Must have at most ${CONTENT_VALIDATION_RULES.MAX_QUESTIONS_PER_DAILY_CHALLENGE} questions`);
       }
 
       // Validate content category reference
@@ -343,11 +319,7 @@ export class ContentValidator {
       if (!asset.age_range) {
         this.addError('AvatarAsset', id, 'age_range', 'Age range is required');
       }
-      if (!asset.image_url) {
-        this.addError('AvatarAsset', id, 'image_url', 'Image URL is required');
-      }
-
-      // Note: State ID validation removed as UserState is no longer supported
+      
     }
   }
 

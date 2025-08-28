@@ -27,11 +27,19 @@ export const LearnMoreLinkSchema = z.object({
   duration: z.string().optional(),
 });
 
-export const ContentTagSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  category: z.string(),
-  description: z.string().optional(),
+export const AffiliateLinkSchema = z.object({
+  type: z.enum(['amazon', 'gymshark']),
+  url: z.string(),
+  title: z.string(),
+  description: z.string(),
+});
+
+export const ImageSchema = z.object({
+  path: z.string(),
+  description: z.string(),
+  width: z.number(),
+  height: z.number(),
+  prompt_generation_string: z.string(),
 });
 
 export const ContentValidationRuleSchema = z.object({
@@ -49,5 +57,6 @@ export const ContentValidationRuleSchema = z.object({
 export type BaseContent = z.infer<typeof BaseContentSchema>;
 export type UnlockCondition = z.infer<typeof UnlockConditionSchema>;
 export type LearnMoreLink = z.infer<typeof LearnMoreLinkSchema>;
-export type ContentTag = z.infer<typeof ContentTagSchema>;
+export type AffiliateLink = z.infer<typeof AffiliateLinkSchema>;
+export type Image = z.infer<typeof ImageSchema>;
 export type ContentValidationRule = z.infer<typeof ContentValidationRuleSchema>;

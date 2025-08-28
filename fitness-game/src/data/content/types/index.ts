@@ -44,40 +44,31 @@ export type MapAndList<T> = {
   list: T[];
 };
 
-// Content loading options
-export interface LoadOptions {
-  categoryId?: string;
-  difficultyLevel?: number;
-  isActive?: boolean;
-  limit?: number;
-  offset?: number;
-}
-
 // Content validation result
-export interface ValidationResult {
+export type ValidationResult = {
   isValid: boolean;
   errors: ValidationError[];
   warnings: ValidationWarning[];
   summary: ValidationSummary;
-}
+};
 
-export interface ValidationError {
+export type ValidationError = {
   entityType: string;
   entityId: string;
   field: string;
   message: string;
   severity: 'error' | 'critical';
-}
+};
 
-export interface ValidationWarning {
+export type ValidationWarning = {
   entityType: string;
   entityId: string;
   field: string;
   message: string;
   suggestion?: string;
-}
+};
 
-export interface ValidationSummary {
+export type ValidationSummary = {
   totalEntities: number;
   countsByType: Record<ContentType, number>;
   validEntities: number;

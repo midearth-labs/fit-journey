@@ -3,7 +3,7 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import { ContentType, Content, LoadOptions, MapAndList } from '../types';
+import { ContentType, Content } from '../types';
 import { CONTENT_DIRECTORIES } from '../types/constants';
 
 export class ContentLoader {
