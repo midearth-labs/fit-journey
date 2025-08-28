@@ -1,7 +1,7 @@
 // PassageSet type definition
 // Based on entities.md PassageSet entity
 
-import { BaseContent, ContentMetadata, ContentTag } from './common';
+import { BaseContent, ContentTag } from './common';
 
 export interface PassageSet extends BaseContent {
   id: string;
@@ -17,7 +17,6 @@ export interface PassageSet extends BaseContent {
   tags: string[];
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   content_tags?: ContentTag[];
   passage_type?: 'article' | 'story' | 'case_study' | 'research_summary' | 'expert_interview';
   reading_complexity?: 'elementary' | 'middle_school' | 'high_school' | 'college' | 'professional';

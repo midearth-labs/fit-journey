@@ -67,7 +67,8 @@ export class ContentLoader {
     const jsonFiles = files.filter(file => file.endsWith('.json'));
     
     if (jsonFiles.length === 0) {
-      throw new Error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
+      console.error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
+      // @TODO throw new Error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
     }
 
     const contentMap: Content[T]['map'] = new Map();

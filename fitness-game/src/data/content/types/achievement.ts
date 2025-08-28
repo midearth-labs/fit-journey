@@ -1,7 +1,7 @@
 // Achievement type definition
 // Based on entities.md Achievement entity
 
-import { BaseContent, ContentMetadata, UnlockCondition } from './common';
+import { BaseContent, UnlockCondition } from './common';
 
 export interface Achievement extends BaseContent {
   id: string;
@@ -14,7 +14,6 @@ export interface Achievement extends BaseContent {
   created_at: string;
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   achievement_tier?: 'bronze' | 'silver' | 'gold' | 'platinum' | 'diamond';
   difficulty_rating?: 'easy' | 'medium' | 'hard' | 'expert' | 'legendary';
   rarity_level?: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';

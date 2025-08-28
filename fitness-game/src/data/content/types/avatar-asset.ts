@@ -1,7 +1,7 @@
 // AvatarAsset type definition
 // Based on entities.md AvatarAsset entity
 
-import { BaseContent, ContentMetadata } from './common';
+import { BaseContent } from './common';
 
 export interface AvatarAsset extends BaseContent {
   id: string;
@@ -13,7 +13,6 @@ export interface AvatarAsset extends BaseContent {
   updated_at: string;
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   asset_type?: 'full_body' | 'bust' | 'headshot' | 'icon' | 'animated';
   image_format?: 'png' | 'jpg' | 'webp' | 'svg' | 'gif';
   image_dimensions?: {

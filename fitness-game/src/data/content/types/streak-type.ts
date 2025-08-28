@@ -1,7 +1,7 @@
 // StreakType type definition
 // Based on entities.md StreakType entity
 
-import { BaseContent, ContentMetadata } from './common';
+import { BaseContent } from './common';
 
 export interface StreakType extends BaseContent {
   id: string; // "workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed", "quiz_passed", "all"
@@ -11,7 +11,6 @@ export interface StreakType extends BaseContent {
   created_at: string;
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   streak_category?: 'physical' | 'nutrition' | 'wellness' | 'knowledge' | 'composite';
   measurement_unit?: 'days' | 'weeks' | 'months' | 'sessions' | 'completions';
   target_frequency?: 'daily' | 'weekly' | 'monthly' | 'custom';

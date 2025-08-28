@@ -1,61 +1,53 @@
+import { z } from 'zod';
+
 // Common type definitions for content management
 
-export interface BaseContent {
-  id: string;
-  created_at: string;
-  updated_at?: string;
-}
+// Zod schemas
+export const BaseContentSchema = z.object({
+  id: z.string(),
+  created_at: z.string(),
+  updated_at: z.string(),
+  is_active: z.boolean(),
+  sort_order: z.number(),
+});
 
-export interface UnlockCondition {
-  type: 'streak' | 'questions' | 'score' | 'habits' | 'perfect_days';
-  value: number;
-  streak_type?: string;
-  content_category_id?: string;
-  additional_conditions?: Record<string, any>;
-}
+export const UnlockConditionSchema = z.object({
+  type: z.enum(['streak', 'questions', 'score', 'habits', 'perfect_days']),
+  value: z.number(),
+  streak_type: z.string().optional(),
+  content_category_id: z.string().optional(),
+  additional_conditions: z.record(z.string(), z.any()).optional(),
+});
 
-export interface LearnMoreLink {
-  type: 'youtube_short' | 'blog' | 'article' | 'video' | 'podcast';
-  url: string;
-  title: string;
-  description?: string;
-  duration?: string;
-}
+export const LearnMoreLinkSchema = z.object({
+  type: z.enum(['youtube_short', 'blog', 'article', 'video', 'podcast', 'tiktok', 'ig_content', 'app_store', 'google_play']),
+  url: z.string(),
+  title: z.string(),
+  description: z.string().optional(),
+  duration: z.string().optional(),
+});
 
-export interface ContentTag {
-  id: string;
-  name: string;
-  category: string;
-  description?: string;
-}
+export const ContentTagSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  category: z.string(),
+  description: z.string().optional(),
+});
 
-export interface ContentMetadata {
-  version: string;
-  generated_at: string;
-  generator_version: string;
-  review_status: 'pending' | 'approved' | 'rejected';
-  reviewed_by?: string;
-  reviewed_at?: string;
-  quality_score?: number;
-  difficulty_rating?: number;
-}
+export const ContentValidationRuleSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  rule_type: z.enum(['schema', 'business', 'cross_reference', 'integrity']),
+  validation_function: z.string(),
+  error_message: z.string(),
+  severity: z.enum(['warning', 'error', 'critical']),
+  is_active: z.boolean(),
+});
 
-export interface ContentRelationship {
-  source_id: string;
-  source_type: string;
-  target_id: string;
-  target_type: string;
-  relationship_type: 'references' | 'depends_on' | 'related_to' | 'prerequisite_for';
-  strength: 'weak' | 'medium' | 'strong';
-}
-
-export interface ContentValidationRule {
-  id: string;
-  name: string;
-  description: string;
-  rule_type: 'schema' | 'business' | 'cross_reference' | 'integrity';
-  validation_function: string;
-  error_message: string;
-  severity: 'warning' | 'error' | 'critical';
-  is_active: boolean;
-}
+// Inferred types from Zod schemas
+export type BaseContent = z.infer<typeof BaseContentSchema>;
+export type UnlockCondition = z.infer<typeof UnlockConditionSchema>;
+export type LearnMoreLink = z.infer<typeof LearnMoreLinkSchema>;
+export type ContentTag = z.infer<typeof ContentTagSchema>;
+export type ContentValidationRule = z.infer<typeof ContentValidationRuleSchema>;

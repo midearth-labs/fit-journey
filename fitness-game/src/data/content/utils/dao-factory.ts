@@ -45,7 +45,7 @@ export class ContentDAOFactory {
       AvatarAsset: new AvatarAssetDAO(content.AvatarAsset),
       Achievement: new AchievementDAO(content.Achievement),
       DailyChallenge: new DailyChallengeDAO(content.DailyChallenge),
-    };
+    } satisfies Record<ContentType, any>;
   }
 
   /**

@@ -1,7 +1,7 @@
 // KnowledgeBase type definition
 // Based on entities.md KnowledgeBase entity
 
-import { BaseContent, ContentMetadata, LearnMoreLink, ContentTag } from './common';
+import { BaseContent, LearnMoreLink, ContentTag } from './common';
 
 export interface KnowledgeBase extends BaseContent {
   id: string;
@@ -17,7 +17,6 @@ export interface KnowledgeBase extends BaseContent {
   updated_at: string;
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   content_tags?: ContentTag[];
   content_format?: 'article' | 'tutorial' | 'guide' | 'reference' | 'case_study';
   reading_level?: 'beginner' | 'intermediate' | 'advanced';

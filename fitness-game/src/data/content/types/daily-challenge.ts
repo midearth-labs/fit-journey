@@ -1,7 +1,7 @@
 // DailyChallenge type definition
 // Based on entities.md DailyChallenge entity
 
-import { BaseContent, ContentMetadata } from './common';
+import { BaseContent } from './common';
 
 export interface DailyChallenge extends BaseContent {
   id: string;
@@ -14,7 +14,6 @@ export interface DailyChallenge extends BaseContent {
   updated_at: string;
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   challenge_type?: 'daily' | 'weekly' | 'special' | 'seasonal' | 'event_based';
   challenge_difficulty?: 'beginner' | 'intermediate' | 'advanced' | 'expert';
   challenge_duration?: {

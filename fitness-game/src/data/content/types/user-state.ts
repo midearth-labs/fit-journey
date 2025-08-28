@@ -1,7 +1,7 @@
 // UserState type definition
 // Based on entities.md UserState entity
 
-import { BaseContent, ContentMetadata, UnlockCondition } from './common';
+import { BaseContent, UnlockCondition } from './common';
 
 export interface UserState extends BaseContent {
   id: string; // "average", "fit-healthy", "muscular-strong", "lean-injured", "injured-recovering"
@@ -11,7 +11,6 @@ export interface UserState extends BaseContent {
   updated_at: string;
   
   // Extended fields for content management
-  metadata?: ContentMetadata;
   state_category?: 'fitness' | 'health' | 'injury' | 'performance' | 'wellness';
   state_level?: 'beginner' | 'intermediate' | 'advanced' | 'expert' | 'master';
   visual_representation?: {
