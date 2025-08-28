@@ -1,10 +1,17 @@
 // Content Loader Utility
-// Handles loading and parsing of static content files
+// Handles loading and parsing of static content files with Zod schema validation
+// 
+// Features:
+// - Runtime validation using Zod schemas for each content type
+// - Type-safe content loading with proper TypeScript inference
+// - Detailed error messages for validation failures
+// - Automatic schema selection based on content type
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import { ContentType, Content } from '../types';
+import { ContentType, Content, ContentTypeToSchema } from '../types';
 import { CONTENT_DIRECTORIES } from '../types/constants';
+import z from 'zod';
 
 export class ContentLoader {
   private content: Content;
@@ -16,6 +23,8 @@ export class ContentLoader {
 
   /**
    * Initialize the content loader by loading all content files
+   * Each content item is validated against its corresponding Zod schema
+   * for runtime type safety and data integrity
    */
   static async initialize(): Promise<ContentLoader> {
     try {
@@ -71,27 +80,26 @@ export class ContentLoader {
 
     const contentMap: Content[T]['map'] = new Map();
     const contentList: Content[T]['list'] = [];
+    const schema = z.array(ContentTypeToSchema[contentType]);
     
     for (const file of jsonFiles) {
       console.debug(`Loading content file: ${file} `);
       const filePath = path.join(directoryPath, file);
-      
-      const content = await this.loadContentFile(filePath);
-      
-      if (Array.isArray(content)) {
-        // Handle array-based content files
-        content.forEach((item, index) => {
-          if (!(item && typeof item === 'object' && 'id' in item)) {
-            throw new Error(`Content ${contentType}: Item is not an object with an id: ${filePath} at index ${index}`);
-          }
+      const rawContent = await this.loadContentFile(filePath);
+
+      try {
+        const parsedContent = schema.parse(rawContent);
+        parsedContent.forEach((item, index) => {
           if (contentMap.has(item.id)) {
             throw new Error(`Content ${contentType}: Item with id ${item.id} already exists: ${filePath} at index ${index}`);
           }
+          
           contentMap.set(item.id, item);
           contentList.push(item);
         });
-      } else {
-        throw new Error(`Content ${contentType}: File contents is not an array: ${filePath}`);
+      } catch (validationError) {
+        console.error(`Content ${contentType}: Validation failed in ${filePath}: ${validationError}`);
+        throw validationError;
       }
     }
 
