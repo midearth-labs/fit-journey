@@ -1,13 +1,11 @@
 // DAO Factory
 // Creates appropriate DAO instances for each content type
 
-import { Content, ContentType, DailyChallenge, MapAndList, UserState } from '../types';
+import { Content, ContentType, DailyChallenge, MapAndList } from '../types';
 import { ContentCategoryDAO } from './daos/content-category-dao';
 import { QuestionDAO } from './daos/question-dao';
 import { KnowledgeBaseDAO } from './daos/knowledge-base-dao';
 import { PassageSetDAO } from './daos/passage-set-dao';
-import { AchievementDAO } from './daos/achievement-dao';
-import { UserStateDAO } from './daos/user-state-dao';
 import { AvatarAssetDAO } from './daos/avatar-asset-dao';
 import { StreakTypeDAO } from './daos/streak-type-dao';
 import { DailyChallengeDAO } from './daos/daily-challenge-dao';
@@ -18,9 +16,7 @@ export type ContentDaos = {
   KnowledgeBase: KnowledgeBaseDAO;
   PassageSet: PassageSetDAO;
   StreakType: StreakTypeDAO;
-  UserState: UserStateDAO;
   AvatarAsset: AvatarAssetDAO;
-  Achievement: AchievementDAO;
   DailyChallenge: DailyChallengeDAO;
 };
 
@@ -41,9 +37,7 @@ export class ContentDAOFactory {
       KnowledgeBase: new KnowledgeBaseDAO(content.KnowledgeBase),
       PassageSet: new PassageSetDAO(content.PassageSet),
       StreakType: new StreakTypeDAO(content.StreakType),
-      UserState: new UserStateDAO(content.UserState),
       AvatarAsset: new AvatarAssetDAO(content.AvatarAsset),
-      Achievement: new AchievementDAO(content.Achievement),
       DailyChallenge: new DailyChallengeDAO(content.DailyChallenge),
     } satisfies Record<ContentType, any>;
   }

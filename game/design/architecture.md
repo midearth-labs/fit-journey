@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-FitJourney is a gamified fitness knowledge platform that combines daily quiz challenges, habit tracking, and avatar progression to motivate users to learn about fitness while building healthy habits. The system uses pre-generated AI content to minimize runtime costs while providing engaging, personalized experiences through streak tracking, achievements, and social sharing.
+FitJourney is a gamified fitness knowledge platform that combines daily quiz challenges, habit tracking, and avatar progression to motivate users to learn about fitness while building healthy habits. The system uses pre-generated AI content to minimize runtime costs while providing engaging, personalized experiences through streak tracking and social sharing.
 
 The architecture follows a modern web application pattern with Next.js frontend, Supabase backend, and enhanced offline capabilities through PWA features. Content is generated offline using AI tools and stored as static JSON files, ensuring fast performance and low operational costs. Users primarily interact online with offline fallback for content viewing.
 
@@ -12,7 +12,7 @@ The architecture follows a modern web application pattern with Next.js frontend,
 The system addresses the challenge of making fitness education engaging and habit-forming through gamification. Success is measured by user engagement (daily challenge completion rates), habit formation (streak maintenance), and knowledge retention (quiz performance improvements).
 
 ### System Boundaries
-- **In Scope**: User authentication, daily challenges, habit tracking, streak management, achievement system, avatar progression, offline PWA functionality, social sharing, basic notifications.
+- **In Scope**: User authentication, daily challenges, habit tracking, streak management, avatar progression, offline PWA functionality, social sharing, basic notifications.
 
 - **Out of Scope**: Real-time multiplayer features, advanced analytics, payment processing (Phase 1), complex AI content generation at runtime.
 
@@ -30,13 +30,11 @@ The system addresses the challenge of making fitness education engaging and habi
 1. **Authentication** → Supabase Auth integration
 2. **Profile Setup** → Required display_name, optional avatar preferences
 3. **First Daily Challenge** → Introduction to quiz format and scoring
-4. **Achievement Unlock** → First completion achievement celebration
-5. **Habit Introduction** → Brief tutorial on habit logging system
+4. **Habit Introduction** → Brief tutorial on habit logging system
 
 **Architecture Impact**: 
 - Auth middleware ensures profile completion before feature access
 - Static content provides onboarding guidance and first challenge
-- Achievement system triggers immediate engagement feedback
 
 ### Daily Challenge Journey
 **Purpose**: Core engagement loop for daily fitness knowledge testing
@@ -46,7 +44,7 @@ The system addresses the challenge of making fitness education engaging and habi
 2. **Session Creation** → GameSession record with timezone locking
 3. **Question Progression** → Mixed standalone and passage-based questions
 4. **Retry Logic** → Up to 3 attempts if needed before day ends
-5. **Completion & Streak Update** → Streak calculation and achievement checks
+5. **Completion & Streak Update** → Streak calculation and fitness level updates
 6. **Habit Update** -> Habit Tracking Journey
 6. **Social Sharing** → Optional result sharing with challenge URLs
 
@@ -54,7 +52,7 @@ The system addresses the challenge of making fitness education engaging and habi
 - Game Session Engine manages state and progression
 - Timezone locking prevents manipulation attempts
 - Streak Management System updates user progress
-- Achievement System checks unlock conditions
+- Fitness Level Calculator updates user progress
 
 ### Habit Tracking Journey
 **Purpose**: Build healthy fitness habits through daily logging
@@ -64,12 +62,10 @@ The system addresses the challenge of making fitness education engaging and habi
 2. **Daily Logging** → StreakLog entries with timestamp validation
 3. **Streak Calculation** → Multi-type streak tracking and milestones
 4. **Perfect Day Detection** → "All" streak type for complete habit days
-5. **Achievement Rewards** → Habit-specific and perfect day achievements
 
 **Architecture Impact**:
 - Streak Management System handles multi-type calculations
-- Event-driven updates trigger achievement checks
-- User State evaluation considers habit patterns
+- Event-driven updates trigger fitness level calculations
 
 ### Practice Session Journey
 **Purpose**: Allow users to practice specific content categories
@@ -86,19 +82,18 @@ The system addresses the challenge of making fitness education engaging and habi
 - No persistent GameSession records (ephemeral sessions)
 - Performance tracking for analytics and difficulty calibration
 
-### Achievement & Progress Journey
-**Purpose**: Maintain long-term engagement through milestone recognition
+### Progress & Avatar Journey
+**Purpose**: Maintain long-term engagement through visual progress representation
 
 **Flow**:
 1. **Progress Monitoring** → Track streaks, quiz performance, habit completion
-2. **Achievement Checking** → Automatic unlock condition evaluation
-3. **Celebration Display** → Modal with achievement details and rewards
-4. **Profile Updates** → Avatar progression and state changes
-5. **Social Recognition** → Share achievements and progress milestones
+2. **Fitness Level Calculation** → Automatic fitness level computation
+3. **Avatar Updates** → Visual representation of fitness progress
+4. **Social Recognition** → Share progress milestones
 
 **Architecture Impact**:
-- Achievement System continuously monitors unlock conditions
-- Avatar Progression System evaluates user state changes
+- Fitness Level Calculator continuously monitors user progress
+- Avatar Progression System updates visual representation
 - Event-driven architecture ensures real-time updates
 
 ### Offline Engagement Journey
@@ -167,7 +162,7 @@ graph TB
         AuthMiddleware[Auth Middleware]
         GameLogic[Game Logic Engine]
         StreakEngine[Streak Management]
-        AchievementEngine[Achievement System]
+        FitnessLevelEngine[Fitness Level Calculator]
     end
     
     subgraph "Data Layer"
@@ -199,11 +194,11 @@ graph TB
     APIRoutes --> AuthMiddleware
     APIRoutes --> GameLogic
     APIRoutes --> StreakEngine
-    APIRoutes --> AchievementEngine
+    APIRoutes --> FitnessLevelEngine
     
     GameLogic --> Supabase
     StreakEngine --> Supabase
-    AchievementEngine --> Supabase
+    FitnessLevelEngine --> Supabase
     
     Supabase --> PostgreSQL
     Supabase --> Storage
@@ -222,7 +217,7 @@ graph TB
 
 ### Architecture Patterns
 - **Layered Architecture**: Clear separation between presentation, business logic, and data layers
-- **Event-Driven**: Streak and achievement systems respond to user actions
+- **Event-Driven**: Streak and fitness level systems respond to user actions
 - **Repository Pattern**: Static content management through JSON files
 - **CQRS-like**: Separate read (content display) and write (user progress) operations
 
@@ -262,10 +257,10 @@ graph TB
 - **Key Responsibilities**: Multi-type streak calculation, milestone detection, streak history
 - **Technology Approach**: Event-driven updates with timezone-aware date calculations
 
-### Achievement System
-- **Purpose**: Rewards user milestones and maintains engagement through unlockable achievements
-- **Key Responsibilities**: Condition checking, achievement unlocking, celebration display
-- **Technology Approach**: Rule engine pattern with extensible unlock conditions
+### Fitness Level Calculator
+- **Purpose**: Calculates user fitness level based on performance data and maintains engagement through progress tracking
+- **Key Responsibilities**: Fitness level calculation, performance assessment, progress tracking
+- **Technology Approach**: Algorithm-based calculation with configurable weights and thresholds
 
 ### Practice Session Engine
 - **Purpose**: Provides ephemeral practice sessions for specific content categories without persistent storage
@@ -273,9 +268,9 @@ graph TB
 - **Technology Approach**: Stateless service with content caching and performance analytics
 
 ### Avatar Progression System
-- **Purpose**: Visual representation of user fitness state and progress
-- **Key Responsibilities**: State evaluation, avatar selection, progression visualization
-- **Technology Approach**: Rule-based state machine with visual asset management
+- **Purpose**: Visual representation of user fitness level and progress
+- **Key Responsibilities**: Fitness level-based avatar selection, progression visualization, visual asset management
+- **Technology Approach**: Algorithm-based fitness level calculation with visual asset selection
 
 ### Mobile Enabled User Interface
 - **Purpose**: Provide native app-like experience across all devices with responsive design and PWA capabilities
@@ -305,8 +300,8 @@ flowchart TD
     subgraph "Progress Tracking"
         QuestionAttempt --> StreakCalc[Streak Calculation]
         HabitLog[Habit Logging] --> StreakCalc
-        StreakCalc --> AchievementCheck[Achievement Check]
-        StreakCalc --> StateEval[State Evaluation]
+        StreakCalc --> FitnessLevelCalc[Fitness Level Calculation]
+        StreakCalc --> AvatarUpdate[Avatar Update]
     end
     
     subgraph "Data Storage"
@@ -314,7 +309,7 @@ flowchart TD
         GameSession --> PostgreSQL[(PostgreSQL)]
         QuestionAttempt --> PostgreSQL
         StreakCalc --> PostgreSQL
-        StateEval --> PostgreSQL
+        FitnessLevelCalc --> PostgreSQL
     end
     
     subgraph "Offline Fallback"
@@ -326,7 +321,7 @@ flowchart TD
 ### Data Strategy
 - **Data Sources**: AI-generated content, user interactions, habit logging, quiz attempts
 - **Data Storage**: PostgreSQL for user data, JSON files for static content, Supabase Storage for images
-- **Data Processing**: Real-time streak calculations, batch achievement processing, offline data sync resolution
+- **Data Processing**: Real-time streak calculations, fitness level processing, offline data sync resolution
 - **Data Access**: Drizzle ORM for database operations, direct JSON loading for static content
 
 ## Integration Architecture
@@ -339,7 +334,7 @@ flowchart TD
 
 ### Internal Communication
 - **Synchronous**: API calls for immediate user actions
-- **Event-Driven**: Streak updates trigger achievement checks
+- **Event-Driven**: Streak updates trigger fitness level calculations
 - **State Management**: Centralized state for UI consistency
 
 ## Cross-Cutting Concerns
@@ -437,7 +432,7 @@ flowchart TD
 - **PWA**: Progressive Web App - web application with native app-like features
 - **Streak**: Consecutive days of completing a specific habit or activity
 - **GameSession**: Individual user session for completing a daily challenge
-- **UserState**: Current fitness level and avatar state based on user progress
+- **FitnessLevel**: Calculated fitness level (-5 to +5) based on user performance and streak data
 
 ### References
 - Supabase Documentation: https://supabase.com/docs

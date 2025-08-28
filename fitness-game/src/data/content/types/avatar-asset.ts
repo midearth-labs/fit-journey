@@ -5,7 +5,6 @@ import { BaseContent } from './common';
 
 export interface AvatarAsset extends BaseContent {
   id: string;
-  state_id: string; // FK to UserState
   gender: string; // "male", "female"
   age_range: string; // "child", "teen", "young-adult", "middle-age", "senior"
   image_url: string;
@@ -58,8 +57,6 @@ export interface AvatarAsset extends BaseContent {
     animation_smoothness: number;
   };
   content_relationships?: {
-    related_states: string[]; // UserState IDs
-    related_achievements: string[]; // Achievement IDs
     unlock_conditions: string[];
     seasonal_availability?: string[];
   };

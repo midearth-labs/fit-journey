@@ -78,8 +78,6 @@ export class ContentValidator {
     this.validatePassageSets();
     this.validateKnowledgeBase();
     this.validateDailyChallenges();
-    this.validateAchievements();
-    this.validateUserStates();
     this.validateStreakTypes();
     this.validateAvatarAssets();
 
@@ -307,50 +305,7 @@ export class ContentValidator {
     }
   }
 
-  /**
-   * Validate achievements
-   */
-  private validateAchievements(): void {
-    const achievements = this.content.Achievement.map;
-    if (!achievements) return;
 
-    for (const [id, achievement] of achievements) {
-      // Validate required fields
-      if (!achievement.name) {
-        this.addError('Achievement', id, 'name', 'Name is required');
-      }
-      if (!achievement.description) {
-        this.addError('Achievement', id, 'description', 'Description is required');
-      }
-      if (!achievement.unlock_condition) {
-        this.addError('Achievement', id, 'unlock_condition', 'Unlock condition is required');
-      }
-
-      // Validate unlock condition
-      this.validateUnlockCondition('Achievement', id, achievement.unlock_condition);
-    }
-  }
-
-  /**
-   * Validate user states
-   */
-  private validateUserStates(): void {
-    const userStates = this.content.UserState.map;
-    if (!userStates) return;
-
-    for (const [id, state] of userStates) {
-      // Validate required fields
-      if (!state.unlock_condition) {
-        this.addError('UserState', id, 'unlock_condition', 'Unlock condition is required');
-      }
-      if (state.eval_order === undefined || state.eval_order === null) {
-        this.addError('UserState', id, 'eval_order', 'Evaluation order is required');
-      }
-
-      // Validate unlock condition
-      this.validateUnlockCondition('UserState', id, state.unlock_condition);
-    }
-  }
 
   /**
    * Validate streak types
@@ -382,9 +337,6 @@ export class ContentValidator {
 
     for (const [id, asset] of avatarAssets) {
       // Validate required fields
-      if (!asset.state_id) {
-        this.addError('AvatarAsset', id, 'state_id', 'State ID is required');
-      }
       if (!asset.gender) {
         this.addError('AvatarAsset', id, 'gender', 'Gender is required');
       }
@@ -395,8 +347,7 @@ export class ContentValidator {
         this.addError('AvatarAsset', id, 'image_url', 'Image URL is required');
       }
 
-      // Validate state reference
-      this.validateReference('AvatarAsset', id, 'state_id', 'UserState', asset.state_id);
+      // Note: State ID validation removed as UserState is no longer supported
     }
   }
 
@@ -500,9 +451,7 @@ export class ContentValidator {
         KnowledgeBase: this.content.KnowledgeBase.map.size,
         PassageSet: this.content.PassageSet.map.size,
         StreakType: this.content.StreakType.map.size,
-        UserState: this.content.UserState.map.size,
         AvatarAsset: this.content.AvatarAsset.map.size,
-        Achievement: this.content.Achievement.map.size,
         DailyChallenge: this.content.DailyChallenge.map.size
       }
     };

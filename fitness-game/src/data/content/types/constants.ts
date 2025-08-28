@@ -1,16 +1,5 @@
 // Content Management Constants and Enums
 
-// User States (based on requirements.md R1.2)
-export const USER_STATES = {
-  AVERAGE: 'average',
-  FIT_HEALTHY: 'fit-healthy',
-  LEAN_TIRED: 'lean-tired',
-  INJURED_RECOVERING: 'injured-recovering',
-  FIT_INJURED: 'fit-injured'
-} as const;
-
-export type UserStateId = typeof USER_STATES[keyof typeof USER_STATES];
-
 // Avatar Genders
 export const AVATAR_GENDERS = {
   MALE: 'male',
@@ -30,27 +19,6 @@ export const AVATAR_AGE_RANGES = {
 
 export type AvatarAgeRange = typeof AVATAR_AGE_RANGES[keyof typeof AVATAR_AGE_RANGES];
 
-// Achievement Categories
-export const ACHIEVEMENT_CATEGORIES = {
-  STREAKS: 'streaks',
-  KNOWLEDGE: 'knowledge',
-  SOCIAL: 'social',
-  HABITS: 'habits'
-} as const;
-
-export type AchievementCategory = typeof ACHIEVEMENT_CATEGORIES[keyof typeof ACHIEVEMENT_CATEGORIES];
-
-// Achievement Tiers
-export const ACHIEVEMENT_TIERS = {
-  BRONZE: 'bronze',
-  SILVER: 'silver',
-  GOLD: 'gold',
-  PLATINUM: 'platinum',
-  DIAMOND: 'diamond'
-} as const;
-
-export type AchievementTier = typeof ACHIEVEMENT_TIERS[keyof typeof ACHIEVEMENT_TIERS];
-
 // Content File Extensions
 export const CONTENT_FILE_EXTENSIONS = {
   JSON: '.json',
@@ -65,8 +33,6 @@ export const CONTENT_DIRECTORIES = {
   PASSAGES: 'passages',
   KNOWLEDGE_BASE: 'knowledge-base',
   DAILY_CHALLENGES: 'daily-challenges',
-  ACHIEVEMENTS: 'achievements',
-  USER_STATES: 'user-states',
   STREAK_TYPES: 'streak-types',
   AVATAR_ASSETS: 'avatar-assets'
 } as const;
@@ -92,8 +58,6 @@ export const CONTENT_GENERATION = {
   DEFAULT_PASSAGES_PER_CATEGORY: 20,
   DEFAULT_KNOWLEDGE_BASE_PER_CATEGORY: 10,
   DEFAULT_DAILY_CHALLENGES: 30,
-  DEFAULT_ACHIEVEMENTS: 25,
-  DEFAULT_USER_STATES: 5,
   DEFAULT_STREAK_TYPES: 7,
   DEFAULT_AVATAR_ASSETS: 20
 } as const;
@@ -115,7 +79,5 @@ export const DEFAULT_VALUES = {
   STREAK_GRACE_PERIOD_DAYS: 1,
   MAX_RETRY_ATTEMPTS: 3,
   QUESTION_TIMEOUT_SECONDS: 300, // 5 minutes
-  PASSAGE_READ_TIME_MULTIPLIER: 0.5, // minutes per word
-  MIN_QUESTIONS_FOR_ACHIEVEMENT: 50,
-  MIN_STREAK_DAYS_FOR_ACHIEVEMENT: 7
+  PASSAGE_READ_TIME_MULTIPLIER: 0.5 // minutes per word
 } as const;

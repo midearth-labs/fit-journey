@@ -6,9 +6,7 @@ import { Question } from './question';
 import { KnowledgeBase } from './knowledge-base';
 import { PassageSet } from './passage-set';
 import { StreakType } from './streak-type';
-import { UserState } from './user-state';
 import { AvatarAsset } from './avatar-asset';
-import { Achievement } from './achievement';
 import { DailyChallenge } from './daily-challenge';
 
 export * from './common';
@@ -18,7 +16,7 @@ export * from './knowledge-base';
 export * from './passage-set';
 export * from './question';
 export * from './streak-type';
-export * from './user-state';
+export * from './avatar-asset';
 
 // Content type union for type safety
 export type ContentType = 
@@ -27,9 +25,7 @@ export type ContentType =
   | 'KnowledgeBase'
   | 'PassageSet'
   | 'StreakType'
-  | 'UserState'
   | 'AvatarAsset'
-  | 'Achievement'
   | 'DailyChallenge';
 
 // Content maps for efficient retrieval
@@ -39,9 +35,7 @@ export type Content = {
   KnowledgeBase: MapAndList<KnowledgeBase>;
   PassageSet: MapAndList<PassageSet>;
   StreakType: MapAndList<StreakType>;
-  UserState: MapAndList<UserState>;
   AvatarAsset: MapAndList<AvatarAsset>;
-  Achievement: MapAndList<Achievement>;
   DailyChallenge: MapAndList<DailyChallenge>;
 };
 

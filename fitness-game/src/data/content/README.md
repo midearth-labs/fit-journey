@@ -1,47 +1,60 @@
-# Content Management Directory Structure
+# Content Management System
 
-This directory contains all static content for the FitJourney game, organized by content type and category.
+This directory contains the content management system for the FitJourney fitness game. The system manages static content that is loaded at runtime and provides a consistent interface for accessing game content.
 
 ## Directory Structure
 
 ```
 src/data/content/
-├── categories/           # ContentCategory definitions
-├── questions/           # Question content by category
-├── passages/            # PassageSet content by category
-├── knowledge-base/      # KnowledgeBase articles by category
-├── daily-challenges/    # DailyChallenge definitions
-├── achievements/        # Achievement definitions
-├── user-states/         # UserState definitions
-├── streak-types/        # StreakType definitions
-├── avatar-assets/       # AvatarAsset definitions
-├── schemas/            # Zod validation schemas
-├── types/              # TypeScript type definitions
-├── utils/              # Content management utilities
-└── validation/         # Content validation logic
+├── types/              # Type definitions for all content types
+├── utils/              # Utility classes and helpers
+├── validation/         # Content validation system
+├── categories/         # ContentCategory definitions
+├── questions/          # Question definitions
+├── passages/           # PassageSet definitions
+├── knowledge-base/     # KnowledgeBase articles
+├── daily-challenges/   # DailyChallenge definitions
+├── streak-types/       # StreakType definitions
+├── avatar-assets/      # AvatarAsset definitions
+└── schemas/            # JSON schemas for validation
 ```
 
-## Content File Naming Convention
+## Content Types
 
-- **Categories**: `categories.json`
-- **Questions**: `{category-id}.json` (e.g., `equipment.json`, `form.json`)
-- **Passages**: `{category-id}-passages.json` (e.g., `equipment-passages.json`)
-- **Knowledge Base**: `{category-id}-knowledge.json` (e.g., `equipment-knowledge.json`)
-- **Daily Challenges**: `daily-challenges.json`
-- **Achievements**: `achievements.json`
-- **User States**: `user-states.json`
-- **Streak Types**: `streak-types.json`
-- **Avatar Assets**: `avatar-assets.json`
+The system supports the following content types:
 
-## Content Validation
+- **ContentCategory**: Content categorization and organization
+- **Question**: Quiz questions with multiple choice answers
+- **PassageSet**: Reading passages with associated questions
+- **KnowledgeBase**: Educational articles and fitness knowledge
+- **DailyChallenge**: Daily quiz challenges
+- **StreakType**: Habit tracking categories
+- **AvatarAsset**: User avatar visual assets
 
-All content files are validated at build time using Zod schemas to ensure:
-- Required fields are present
-- Data types are correct
-- Cross-references are valid
-- Business rules are followed
+## Usage
+
+The content management system is initialized when the application starts and provides access to all game content through a unified interface.
+
+```typescript
+// @TODO: Update this to reflect reality
+import { ContentManagementSystem } from './content-management-system';
+
+const cms = new ContentManagementSystem();
+await cms.initialize();
+
+// Access content through the system
+const questions = cms.getContentLoader().getContentList('Question');
+const categories = cms.getContentLoader().getContentList('ContentCategory');
+```
+
+## Content Loading
+
+Content is loaded from JSON files stored in the repository. Each content type has its own directory containing the JSON files. The system automatically loads all content files and provides them through a consistent API.
+
+## Validation
+
+The content validation system ensures data integrity and consistency across all content types. It validates required fields, data types, and cross-references between content entities.
 
 ## Content Generation
 
-Content is generated offline using AI tools (Google Gemini) and reviewed by humans before commit.
-No runtime content generation to minimize costs and latency.
+Content is generated offline using AI tools and stored as static JSON files. This approach minimizes runtime costs while providing engaging, personalized experiences.

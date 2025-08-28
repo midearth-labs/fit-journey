@@ -13,7 +13,7 @@
   avatar_age_range: string?, // child (5-12), teen (13-19), young-adult (20-39), middle-age (40-59), senior (60+)
   timezone: string?, // e.g. UTC, UTC+1, UTC-8
   preferred_reminder_time: string?, //  e.g. "19:00"
-  notification_preferences: object? // {daily: true, social: false, achievements: true}
+  notification_preferences: object? // {daily: true, social: false, fitness_level: true}
   created_at: timestamp,
   updated_at: timestamp,
 }
@@ -25,7 +25,7 @@
   id: string,
   user_id: string, // FK to User
   latest_game_session: string? // FK to GameSession
-  current_state: string? // FK to UserStateHistory
+  current_fitness_level: number, // -5 to +5 fitness level, default is 0.
   current_streak_ids: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", quiz_passed: "abc", } // each value is a FK to StreakHistory
   longest_streaks: object?, // { workout_completed: "foo", ate_clean: "bar", slept_well: "scxcx", hydrated: "baz", quiz_completed: "abc", quiz_passed: "abc", } // each value is a FK to StreakHistory
   last_activity_date: date?, // update this based on completion of daily quiz or logging of habits 
@@ -133,26 +133,12 @@
 }
 ```
 
-
-## Avatar System
-#### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
-### UserState
-```json
-{
-  id: string,  // "average" "fit-healthy", "muscular-strong", "lean-injured"
-  unlock_condition: object, // {type: "streak", value: 7} or {type: "coins", value: 100}
-  eval_order: number,
-  created_at: timestamp,
-  updated_at: timestamp,
-}
-```
-
 #### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
 ### AvatarAsset
 ```json
 {
   id: string,
-  state_id: string, // FK to UserState
+  fitness_level: number, // -5 to +5 fitness level
   gender: string,
   age_range: string,
   image_url: string,
@@ -209,8 +195,6 @@
 }
 ```
 
-## Streaks & Achievements
-
 ### StreakHistory
 ```json
 {
@@ -224,38 +208,13 @@
 }
 ```
 
-
-### Achievement
-#### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
-```json
-{
-  id: string,
-  name: string,
-  description: string,
-  icon_name: string,
-  unlock_condition: object, // {type: "streak", value: 30} or {type: "questions", value: 100}
-  is_hidden: boolean, // default false (for surprise achievements)
-  category: string?, // "streaks", "knowledge", "social", "habits"
-  created_at: timestamp,
-}
-```
-
-### UserAchievement
+### FitnessLevelHistory
 ```json
 {
   id: string,
   user_id: string, // FK to User
-  achievement_id: string, // FK to Achievement
-  unlocked_at: timestamp,
-}
-
-### UserStateHistory
-```json
-{
-  id: string,
-  user_id: string, // FK to User
-  state_id: string, // FK to UserState
-  unlocked_at: timestamp,
+  fitness_level: number, // -5 to +5 fitness level
+  calculated_at: timestamp,
 }
 ```
 

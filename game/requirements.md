@@ -23,17 +23,7 @@ THE SYSTEM SHALL save JSON files in an appropriately named sub-directory by the 
 
 ```
 WHEN generating static content
-THE SYSTEM SHALL create Achievement data as a single JSON file with Phase 1 achievements (7-day streak, 14-day streak, first quiz completion, 50 questions answered, clean eating for 3 days, workout logging for 7 days) stored in the repository
-```
-
-```
-WHEN generating static content
 THE SYSTEM SHALL create StreakType data as a single JSON file with values as in the entity comments
-```
-
-```
-WHEN generating static content
-THE SYSTEM SHALL create UserState data as a single JSON file with user supplied combinations e.g. (fit-healthy, lean-tired, injured-recovering, fit-injured) and corresponding default unlock conditions, stored in the repository
 ```
 
 ```
@@ -319,17 +309,17 @@ WHEN displaying user progress
 THE SYSTEM SHALL retrieve current streak lengths by reading StreakHistory records for all the values in UserProfile.current_streak_ids
 ```
 
-### R5.3: User State Progression
+### R5.3: Fitness Level Progression
 **Dependencies**: R5.1
 ```
-WHEN a user completes a daily quiz, or the user's current_streak_ids properties changes
-THE SYSTEM SHALL automatically compute the UserState to reflect improved fitness level based on milestones and quiz answers e.g. state could be injured if form-related questions are answered incorrectly (>50% wrong in a session)
+WHEN a user completes a daily quiz, or submits daily habit information
+THE SYSTEM SHALL automatically compute the fitness level (-5 to +5) based on the history of quiz results and habits
 ```
 
 ```
-WHEN a user's state changes from a prior state,
-THE SYSTEM SHALL automatically create the new state as a new entry in UserState
-THE SYSTEM shall update this new value into UserProfile.current_state 
+WHEN a user's fitness level changes from a prior level,
+THE SYSTEM SHALL automatically create the new fitness level as a new entry in FitnessLevelHistory
+THE SYSTEM shall update this new value into UserProfile.current_fitness_level 
 ```
 
 
@@ -352,43 +342,6 @@ WHEN a user marks any habit as completed
 THE SYSTEM SHALL trigger streak calculation for that specific habit type and update corresponding StreakHistory records
 ```
 
-### R6.2: Multi-Habit Streak Rewards
-**Dependencies**: R6.1, R5.1
-```
-WHEN a user maintains any single habit type for 7 consecutive days
-THE SYSTEM SHALL check for and award achievements specific to that habit type ("7-Day Workout Streak", "7-Day Clean Eating Streak", etc.)
-```
-
-```
-WHEN a user maintains all habit types (perfect days) for 7 consecutive days
-THE SYSTEM SHALL check for and award the "Perfect Week" achievement based on the "all" streak_type
-```
-
-## R7: Achievement System
-
-### R7.1: Achievement Checking
-**Dependencies**: R1.2, R5.2, R6.2
-```
-WHEN any user action updates streaks, or completion counts
-THE SYSTEM SHALL check all applicable achievements for unlock conditions
-```
-
-```
-WHEN an achievement unlock condition is met
-THE SYSTEM SHALL create a UserAchievement record
-```
-
-### R7.2: Achievement Display
-**Dependencies**: R7.1
-```
-WHEN a user unlocks an achievement
-THE SYSTEM SHALL display a celebration modal with achievement details and rewards
-```
-
-```
-WHEN a user accesses their profile
-THE SYSTEM SHALL display all unlocked achievements with unlock dates
-```
 
 ## R8: PWA Features
 
@@ -517,12 +470,12 @@ THE SYSTEM SHALL log total_questions, correct_answers, and time_spent_seconds fo
 **Dependencies**: R12.1
 ```
 WHEN a user accesses their profile
-THE SYSTEM SHALL display progress statistics (total questions answered, average accuracy, longest streak, current streak, achievements, current state/avatar, state/avatar history, last_activity_date etc)
+THE SYSTEM SHALL display progress statistics (total questions answered, average accuracy, longest streak, current streak, current fitness level, fitness level history, last_activity_date etc)
 ```
 
 ```
 WHEN displaying avatar
-THE SYSTEM SHALL display using the "average" UserState if the user doesn't have a valid UserProfile.current_state
+THE SYSTEM SHALL display using the "0" fitness level if the user doesn't have a valid UserProfile.current_fitness_level
 ```
 
 ```
@@ -568,60 +521,9 @@ WHEN displaying user engagement metrics
 THE SYSTEM SHALL use UserProfile.last_activity_date to determine user activity status and engagement levels
 ```
 
-## R16: User State Evaluation System
 
-### R16.1: State Unlock Conditions
-**Dependencies**: R1.2, R5.1
-```
-WHEN generating UserState static content
-THE SYSTEM SHALL define unlock_condition objects with supported types: "streak" (with value for days), score for quizes, and other extensible condition types
-```
 
-```
-WHEN evaluating user state progression
-THE SYSTEM SHALL process UserState records in order of their eval_order field to determine the highest applicable state for the user
-```
 
-```
-WHEN a user's statistics change (streaks, quiz performance, etc.)
-THE SYSTEM SHALL re-evaluate all UserState unlock conditions in eval_order sequence and update to the highest unlocked state
-```
-
-### R16.2: Performance-Based State Changes
-**Dependencies**: R16.1, R3.2
-```
-WHEN a user answers form-related questions incorrectly more than 50% in a single GameSession
-THE SYSTEM SHALL consider transitioning the user to an "injured" state if such a state exists and unlock conditions are met
-```
-
-```
-WHEN a user maintains high accuracy (>80%) across multiple quiz categories for 7+ days
-THE SYSTEM SHALL consider transitioning the user to a "fit-healthy" state if unlock conditions are met
-```
-
-## R17: Achievement Unlock Conditions
-
-### R17.1: Condition Types Validation
-**Dependencies**: R1.2, R7.1
-```
-WHEN generating Achievement static content
-THE SYSTEM SHALL support unlock_condition objects with types: "streak" (with value for consecutive days), "questions" (with value for total questions answered), and other extensible condition types
-```
-
-```
-WHEN checking achievement unlock conditions
-THE SYSTEM SHALL validate that all referenced condition types are supported and have valid value ranges before processing
-```
-
-```
-WHEN an achievement has unlock_condition type "streak"
-THE SYSTEM SHALL check against the appropriate StreakHistory records for the specified streak_type and minimum streak_length value
-```
-
-```
-WHEN an achievement has unlock_condition type "questions"
-THE SYSTEM SHALL count total GameSession.user_answers records for the user and compare against the specified value threshold
-```
 
 ## Cross-Cutting Requirements
 

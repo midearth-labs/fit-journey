@@ -27,8 +27,7 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 - [ ] **1.2.4** Implement GameSession table schema with timezone fields
 - [ ] **1.2.5** Implement StreakLog table schema
 - [ ] **1.2.6** Implement StreakHistory table schema
-- [ ] **1.2.7** Implement UserAchievement table schema
-- [ ] **1.2.8** Implement UserStateHistory table schema
+- [ ] **1.2.7** Implement FitnessLevelHistory table schema
 - [ ] **1.2.9** Create database migration scripts
 - [ ] **1.2.10** Set up Row Level Security (RLS) policies for Supabase
 
@@ -167,19 +166,18 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
   - [ ] **2.9.5.4** Design prompt for educational progression throughout challenge
   - [ ] **2.9.5.5** Create prompt for total question count validation
 
-- [ ] **2.9.6** Create Achievement generation prompts for gamification milestones
-  - [ ] **2.9.6.1** Design prompt for streak-based achievements (7-day, 14-day, 30-day)
-  - [ ] **2.9.6.2** Create prompt for question-based achievements (50 questions, 100 questions)
-  - [ ] **2.9.6.3** Design prompt for habit-based achievements (clean eating, workout logging)
-  - [ ] **2.9.6.4** Create prompt for achievement descriptions and unlock conditions
-  - [ ] **2.9.6.5** Design prompt for achievement categorization and icons
 
-- [ ] **2.9.7** Design UserState generation prompts for fitness progression states
-  - [ ] **2.9.7.1** Create prompt for fit-healthy state definition and unlock conditions
-  - [ ] **2.9.7.2** Design prompt for lean-tired state definition and unlock conditions
-  - [ ] **2.9.7.3** Create prompt for injured-recovering state definition and unlock conditions
-  - [ ] **2.9.7.4** Design prompt for fit-injured state definition and unlock conditions
-  - [ ] **2.9.7.5** Create prompt for average state definition and unlock conditions
+
+
+
+
+
+
+
+
+
+
+
 
 - [ ] **2.9.8** Create StreakType generation prompts for habit tracking categories
   - [ ] **2.9.8.1** Design prompt for workout_completed streak type
@@ -204,8 +202,7 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
   - [ ] **2.9.10.1** Design prompt for question-to-category relationship validation
   - [ ] **2.9.10.2** Create prompt for passage-to-question relationship validation
   - [ ] **2.9.10.3** Design prompt for knowledge-base-to-question alignment
-  - [ ] **2.9.10.4** Create prompt for achievement-to-streak relationship validation
-  - [ ] **2.9.10.5** Design prompt for user-state-to-avatar relationship validation
+
 
 ### 2.10 AI Content Generation Scripts
 **Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
@@ -251,22 +248,7 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
   - [ ] **2.10.5.6** Add total question count validation against challenge_structure
   - [ ] **2.10.5.7** Create daily challenge file saving with complete structure
 
-- [ ] **2.10.6** Create Achievement generation script with unlock conditions
-  - [ ] **2.10.6.1** Implement streak-based achievement generation (7, 14, 30 days)
-  - [ ] **2.10.6.2** Create question-based achievement generation (50, 100 questions)
-  - [ ] **2.10.6.3** Add habit-based achievement generation (clean eating, workout logging)
-  - [ ] **2.10.6.4** Implement achievement description and unlock condition generation
-  - [ ] **2.10.6.5** Create achievement categorization and icon assignment
-  - [ ] **2.10.6.6** Add achievement file saving with unlock condition validation
 
-- [ ] **2.10.7** Implement UserState generation script with progression logic
-  - [ ] **2.10.7.1** Create fit-healthy state with unlock conditions
-  - [ ] **2.10.7.2** Implement lean-tired state with unlock conditions
-  - [ ] **2.10.7.3** Add injured-recovering state with unlock conditions
-  - [ ] **2.10.7.4** Create fit-injured state with unlock conditions
-  - [ ] **2.10.7.5** Implement average state as default fallback
-  - [ ] **2.10.7.6** Add eval_order assignment for state progression
-  - [ ] **2.10.7.7** Create user state file saving with progression logic
 
 - [ ] **2.10.8** Create StreakType generation script for habit categories
   - [ ] **2.10.8.1** Implement workout_completed streak type definition
@@ -379,19 +361,7 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
   - [ ] **2.12.5.4** Save DailyChallenge.json file with complete challenge series
   - [ ] **2.12.5.5** Verify challenge progression and educational coherence
 
-- [ ] **2.12.6** Execute Achievement generation and file creation
-  - [ ] **2.12.6.1** Run Achievement generation script for all achievement types
-  - [ ] **2.12.6.2** Generate achievements with proper unlock conditions
-  - [ ] **2.12.6.3** Validate achievement unlock condition logic
-  - [ ] **2.12.6.4** Save Achievement.json file with all achievements
-  - [ ] **2.12.6.5** Verify achievement categorization and unlock conditions
 
-- [ ] **2.12.7** Execute UserState generation and file creation
-  - [ ] **2.12.7.1** Run UserState generation script for all fitness states
-  - [ ] **2.12.7.2** Generate states with proper unlock conditions and eval_order
-  - [ ] **2.12.7.3** Validate state progression logic and unlock conditions
-  - [ ] **2.12.7.4** Save UserState.json file with all states
-  - [ ] **2.12.7.5** Verify state progression order and unlock condition logic
 
 - [ ] **2.12.8** Execute StreakType generation and file creation
   - [ ] **2.12.8.1** Run StreakType generation script for all habit categories
@@ -512,6 +482,51 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 - [ ] **3.8.4** Create system health monitoring and diagnostics
 - [ ] **3.8.5** Implement game session engine tests
 
+## Phase 3.5: FitnessLevel Calculation & Storage Implementation
+
+### 3.9 FitnessLevel Calculator Implementation
+**Requirements**: R5.3 (Fitness Level Progression), R12.2 (User Progress)
+**Dependencies**: 3.2.1-3.2.6, 1.2.1-1.2.10
+
+- [ ] **3.9.1** Implement FitnessLevelCalculator class with algorithm logic
+- [ ] **3.9.2** Create fitness level calculation algorithm (-5 to +5 scale)
+- [ ] **3.9.3** Implement performance metrics aggregation from GameSessions
+- [ ] **3.9.4** Add habit pattern analysis from StreakLogs
+- [ ] **3.9.5** Create fitness level change detection and validation
+- [ ] **3.9.6** Implement calculation caching and performance optimization
+
+### 3.10 FitnessLevel Storage & History Implementation
+**Requirements**: R5.3 (Fitness Level Progression), R12.2 (User Progress)
+**Dependencies**: 3.9.1-3.9.6, 1.2.1-1.2.10
+
+- [ ] **3.10.1** Implement FitnessLevelHistory table operations
+- [ ] **3.10.2** Create fitness level change tracking and audit trail
+- [ ] **3.10.3** Implement fitness level data aggregation and analytics
+- [ ] **3.10.4** Add fitness level trend analysis and reporting
+- [ ] **3.10.5** Create fitness level data cleanup and retention policies
+- [ ] **3.10.6** Implement fitness level backup and recovery procedures
+
+### 3.11 Avatar Progression System Integration
+**Requirements**: R5.3 (Fitness Level Progression), R12.2 (User Progress)
+**Dependencies**: 3.9.1-3.9.6, 3.10.1-3.10.6
+
+- [ ] **3.11.1** Implement AvatarProgressionManager class
+- [ ] **3.11.2** Create fitness level to avatar asset mapping logic
+- [ ] **3.11.3** Implement avatar selection and fallback strategies
+- [ ] **3.11.4** Add avatar progression visualization and animations
+- [ ] **3.11.5** Create avatar progression event system and notifications
+- [ ] **3.11.6** Implement avatar progression performance monitoring
+
+### 3.12 FitnessLevel System Integration
+**Requirements**: R5.3 (Fitness Level Progression), R12.2 (User Progress)
+**Dependencies**: 3.9.1-3.9.6, 3.10.1-3.10.6, 3.11.1-3.11.6
+
+- [ ] **3.12.1** Create FitnessLevel System main class
+- [ ] **3.12.2** Implement system initialization and component integration
+- [ ] **3.12.3** Add error handling and recovery mechanisms
+- [ ] **3.12.4** Create system health monitoring and diagnostics
+- [ ] **3.12.5** Implement fitness level system tests
+
 ## Phase 4: API Layer & Integration
 
 ### 4.1 Content Management API Routes
@@ -536,9 +551,20 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 - [ ] **4.2.5** Add API route for timezone validation
 - [ ] **4.2.6** Create API route for session performance metrics
 
-### 4.3 API Integration & Testing
+### 4.3 FitnessLevel & Avatar Progression API Routes
+**Requirements**: R5.3 (Fitness Level Progression), R12.2 (User Progress)
+**Dependencies**: 3.12.1-3.12.5, 4.1.1-4.1.6
+
+- [ ] **4.3.1** Create API route for fitness level calculation and retrieval
+- [ ] **4.3.2** Implement API route for fitness level history and trends
+- [ ] **4.3.3** Create API route for avatar progression and selection
+- [ ] **4.3.4** Add API route for fitness level analytics and insights
+- [ ] **4.3.5** Implement API route for fitness level change notifications
+- [ ] **4.3.6** Create API route for avatar asset management and fallbacks
+
+### 4.4 API Integration & Testing
 **Requirements**: CR1 (Error Handling), CR2 (Data Validation), CR3 (Performance)
-**Dependencies**: 4.1.1-4.1.6, 4.2.1-4.2.6
+**Dependencies**: 4.1.1-4.1.6, 4.2.1-4.2.6, 4.3.1-4.3.6
 
 - [ ] **4.3.1** Implement API error handling and validation
 - [ ] **4.3.2** Create API rate limiting and security measures
@@ -554,9 +580,10 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 
 - [ ] **5.1.1** Create unit tests for Content Management System components
 - [ ] **5.1.2** Implement unit tests for Game Session Engine components
-- [ ] **5.1.3** Add unit tests for API routes and validation
-- [ ] **5.1.4** Create unit tests for business logic and rules
-- [ ] **5.1.5** Implement unit tests for error handling and edge cases
+- [ ] **5.1.3** Add unit tests for FitnessLevel Calculation & Storage components
+- [ ] **5.1.4** Add unit tests for API routes and validation
+- [ ] **5.1.5** Create unit tests for business logic and rules
+- [ ] **5.1.6** Implement unit tests for error handling and edge cases
 
 ### 5.2 Integration Testing Implementation
 **Requirements**: All functional and non-functional requirements
@@ -564,9 +591,10 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 
 - [ ] **5.2.1** Create integration tests for Content Management System
 - [ ] **5.2.2** Implement integration tests for Game Session Engine
-- [ ] **5.2.3** Add integration tests for API layer
-- [ ] **5.2.4** Create integration tests for database operations
-- [ ] **5.2.5** Implement integration tests for external dependencies
+- [ ] **5.2.3** Add integration tests for FitnessLevel Calculation & Storage
+- [ ] **5.2.4** Add integration tests for API layer
+- [ ] **5.2.5** Create integration tests for database operations
+- [ ] **5.2.6** Implement integration tests for external dependencies
 
 ### 5.3 End-to-End Testing Implementation
 **Requirements**: All functional and non-functional requirements
@@ -574,9 +602,11 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 
 - [ ] **5.3.1** Create E2E tests for daily challenge flow
 - [ ] **5.3.2** Implement E2E tests for session retry flow
-- [ ] **5.3.3** Add E2E tests for timezone handling
-- [ ] **5.3.4** Create E2E tests for content loading and validation
-- [ ] **5.3.5** Implement E2E tests for error scenarios and edge cases
+- [ ] **5.3.3** Add E2E tests for fitness level calculation and progression
+- [ ] **5.3.4** Create E2E tests for avatar progression and selection
+- [ ] **5.3.5** Add E2E tests for timezone handling
+- [ ] **5.3.6** Create E2E tests for content loading and validation
+- [ ] **5.3.7** Implement E2E tests for error scenarios and edge cases
 
 ## Phase 6: Documentation & Deployment
 
@@ -606,7 +636,7 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 **Note**: These components are outside the scope of Content Management System and Game Session Engine but are required for full functionality.
 
 - [ ] **ES.1** Streak Management System interface contract and stubs
-- [ ] **ES.2** Achievement System interface contract and stubs
+- [ ] **ES.2** FitnessLevel Calculation System interface contract and stubs
 - [ ] **ES.3** User Profile Management interface contract and stubs
 - [ ] **ES.4** Notification System interface contract and stubs
 - [ ] **ES.5** Analytics System interface contract and stubs
@@ -632,8 +662,18 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 - [ ] All unit and integration tests pass
 - [ ] Documentation is complete and accurate
 
+### FitnessLevel Calculation & Storage System
+- [ ] Fitness level calculation algorithm works correctly (-5 to +5 scale)
+- [ ] Performance metrics aggregation from GameSessions functions properly
+- [ ] Habit pattern analysis from StreakLogs provides accurate insights
+- [ ] Fitness level changes are tracked and stored in FitnessLevelHistory
+- [ ] Avatar progression system selects appropriate assets based on fitness level
+- [ ] Error handling provides clear feedback and recovery options
+- [ ] All unit and integration tests pass
+- [ ] Documentation is complete and accurate
+
 ### Overall System
-- [ ] Both components integrate seamlessly
+- [ ] All three components integrate seamlessly
 - [ ] API layer provides consistent interface
 - [ ] Error handling is comprehensive and user-friendly
 - [ ] Performance meets all requirements
@@ -679,10 +719,8 @@ The roadmap now includes comprehensive AI content generation using Google Gemini
 3. **PassageSet Generation** (20+ passages with 3-5 questions each)
 4. **KnowledgeBase Generation** (educational content for each category)
 5. **DailyChallenge Generation** (30+ daily challenges with proper structure)
-6. **Achievement Generation** (all achievement types with unlock conditions)
-7. **UserState Generation** (fitness progression states with unlock logic)
-8. **StreakType Generation** (habit tracking categories)
-9. **AvatarAsset Generation** (visual assets using Gemini Vision)
+6. **StreakType Generation** (habit tracking categories)
+7. **AvatarAsset Generation** (visual assets using Gemini Vision with fitness level ranges)
 
 ### AI Content Generation Phases
 

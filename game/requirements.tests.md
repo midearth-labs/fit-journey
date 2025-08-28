@@ -31,12 +31,7 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: JSON files created in appropriate subdirectories with all required fields
 - **Coverage**: R1.2
 
-#### Test R1.2.2: Achievement Data Generation
-- **Test Case**: Phase 1 achievements generate correctly
-- **Precondition**: Achievement generation initiated
-- **Action**: Generate achievement content
-- **Expected Result**: JSON file with 7-day streak, 14-day streak, first quiz completion, 50 questions answered, clean eating for 3 days, workout logging for 7 days
-- **Coverage**: R1.2
+
 
 #### Test R1.2.3: StreakType Data Generation
 - **Test Case**: StreakType values generate with correct structure
@@ -45,12 +40,7 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: JSON file with workout_completed, ate_clean, slept_well, hydrated, quiz_completed, quiz_passed, all
 - **Coverage**: R1.2
 
-#### Test R1.2.4: UserState Data Generation
-- **Test Case**: UserState combinations generate with unlock conditions
-- **Precondition**: UserState generation initiated
-- **Action**: Generate user state content
-- **Expected Result**: JSON file with fit-healthy, lean-tired, injured-recovering, fit-injured and corresponding unlock conditions
-- **Coverage**: R1.2
+
 
 #### Test R1.2.5: AvatarAsset Data Generation
 - **Test Case**: AvatarAsset combinations generate with LLM prompts
@@ -516,27 +506,27 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: Current streak lengths displayed from StreakHistory records
 - **Coverage**: R5.2
 
-### R5.3: User State Progression Tests
+### R5.3: Fitness Level Progression Tests
 
-#### Test R5.3.1: State Change on Quiz Completion
-- **Test Case**: Quiz completion triggers state evaluation
+#### Test R5.3.1: Fitness Level Change on Quiz Completion
+- **Test Case**: Quiz completion triggers fitness level evaluation
 - **Precondition**: User completes daily quiz
 - **Action**: Finish quiz
-- **Expected Result**: UserState automatically computed and updated
+- **Expected Result**: Fitness level automatically computed and updated
 - **Coverage**: R5.3
 
-#### Test R5.3.2: State Change on Streak Update
-- **Test Case**: Streak changes trigger state evaluation
-- **Precondition**: User's current_streak_ids properties change
-- **Action**: Update streaks
-- **Expected Result**: UserState automatically computed and updated
+#### Test R5.3.2: Fitness Level Change on Habit Submission
+- **Test Case**: User's daily habit submission trigger fitness level evaluation
+- **Precondition**: User submits daily habit
+- **Action**: Submit habit
+- **Expected Result**: Fitness level automatically computed and updated
 - **Coverage**: R5.3
 
-#### Test R5.3.3: New State Creation
-- **Test Case**: State changes create new UserState entries
-- **Precondition**: User's state changes from prior state
-- **Action**: State evaluation triggers
-- **Expected Result**: New UserState entry created, UserProfile.current_state updated
+#### Test R5.3.3: New Fitness Level Creation
+- **Test Case**: Fitness level changes create new FitnessLevelHistory entries
+- **Precondition**: User's fitness level changes from prior level
+- **Action**: Fitness level evaluation triggers
+- **Expected Result**: New FitnessLevelHistory entry created, UserProfile.current_fitness_level updated
 - **Coverage**: R5.3
 
 ## R6: Habit Logging
@@ -564,55 +554,7 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: Streak calculation triggered, StreakHistory records updated
 - **Coverage**: R6.1
 
-### R6.2: Multi-Habit Streak Rewards Tests
 
-#### Test R6.2.1: Single Habit Streak Achievement
-- **Test Case**: 7-day single habit streak triggers achievement
-- **Precondition**: User maintains single habit for 7 consecutive days
-- **Action**: Complete 7th day
-- **Expected Result**: Achievement awarded for specific habit type
-- **Coverage**: R6.2
-
-#### Test R6.2.2: Perfect Week Achievement
-- **Test Case**: 7-day perfect streak triggers achievement
-- **Precondition**: User maintains all habit types for 7 consecutive days
-- **Action**: Complete 7th perfect day
-- **Expected Result**: "Perfect Week" achievement awarded
-- **Coverage**: R6.2
-
-## R7: Achievement System
-
-### R7.1: Achievement Checking Tests
-
-#### Test R7.1.1: Achievement Unlock Condition Check
-- **Test Case**: User actions trigger achievement checks
-- **Precondition**: User action updates streaks or completion counts
-- **Action**: Perform action
-- **Expected Result**: All applicable achievements checked for unlock conditions
-- **Coverage**: R7.1
-
-#### Test R7.1.2: Achievement Record Creation
-- **Test Case**: Met conditions create UserAchievement records
-- **Precondition**: Achievement unlock condition met
-- **Action**: Condition met
-- **Expected Result**: UserAchievement record created
-- **Coverage**: R7.1
-
-### R7.2: Achievement Display Tests
-
-#### Test R7.2.1: Achievement Celebration Modal
-- **Test Case**: Unlocked achievements show celebration
-- **Precondition**: User unlocks achievement
-- **Action**: Unlock achievement
-- **Expected Result**: Celebration modal displayed with achievement details and rewards
-- **Coverage**: R7.2
-
-#### Test R7.2.2: Profile Achievement Display
-- **Test Case**: Profile shows all unlocked achievements
-- **Precondition**: User accesses profile
-- **Action**: View profile
-- **Expected Result**: All unlocked achievements displayed with unlock dates
-- **Coverage**: R7.2
 
 ## R8: PWA Features
 
@@ -788,14 +730,14 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Test Case**: Profile displays comprehensive progress data
 - **Precondition**: User accesses profile
 - **Action**: View profile
-- **Expected Result**: Progress statistics displayed (total questions, average accuracy, streaks, achievements, current state/avatar, etc.)
+- **Expected Result**: Progress statistics displayed (total questions, average accuracy, streaks, current fitness level, etc.)
 - **Coverage**: R12.2
 
 #### Test R12.2.2: Default Avatar Display
-- **Test Case**: Default avatar shown when no state set
-- **Precondition**: User doesn't have valid UserProfile.current_state
+- **Test Case**: Default avatar shown when no fitness level set
+- **Precondition**: User doesn't have valid UserProfile.current_fitness_level
 - **Action**: Display avatar
-- **Expected Result**: Avatar displayed using "average" UserState
+- **Expected Result**: Avatar displayed using "0" fitness level
 - **Coverage**: R12.2
 
 #### Test R12.2.3: Generic Icon Fallback
@@ -855,78 +797,9 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: UserProfile.last_activity_date used to determine activity status and engagement levels
 - **Coverage**: R15.1
 
-## R16: User State Evaluation System
 
-### R16.1: State Unlock Conditions Tests
 
-#### Test R16.1.1: State Unlock Condition Types
-- **Test Case**: UserState supports multiple unlock condition types
-- **Precondition**: UserState static content generated
-- **Action**: Generate content
-- **Expected Result**: unlock_condition objects with supported types: "streak" (with value for days), score for quizzes, and other extensible types
-- **Coverage**: R16.1
 
-#### Test R16.1.2: State Evaluation Order
-- **Test Case**: States evaluated in correct order
-- **Precondition**: User state progression evaluation
-- **Action**: Evaluate states
-- **Expected Result**: UserState records processed in order of eval_order field
-- **Coverage**: R16.1
-
-#### Test R16.1.3: Automatic State Re-evaluation
-- **Test Case**: Statistics changes trigger state re-evaluation
-- **Precondition**: User's statistics change (streaks, quiz performance, etc.)
-- **Action**: Statistics update
-- **Expected Result**: All UserState unlock conditions re-evaluated in eval_order sequence
-- **Coverage**: R16.1
-
-### R16.2: Performance-Based State Changes Tests
-
-#### Test R16.2.1: Form Question Performance State Change
-- **Test Case**: Poor form performance triggers injured state
-- **Precondition**: User answers form-related questions incorrectly >50% in single session
-- **Action**: Complete session with poor form performance
-- **Expected Result**: User transitioned to "injured" state if conditions met
-- **Coverage**: R16.2
-
-#### Test R16.2.2: High Accuracy State Progression
-- **Test Case**: High accuracy triggers fit state
-- **Precondition**: User maintains >80% accuracy across multiple categories for 7+ days
-- **Action**: Maintain high accuracy
-- **Expected Result**: User transitioned to "fit-healthy" state if conditions met
-- **Coverage**: R16.2
-
-## R17: Achievement Unlock Conditions
-
-### R17.1: Condition Types Validation Tests
-
-#### Test R17.1.1: Supported Condition Types
-- **Test Case**: Achievement supports multiple unlock condition types
-- **Precondition**: Achievement static content generated
-- **Action**: Generate content
-- **Expected Result**: unlock_condition objects with types: "streak" (with value for consecutive days), "questions" (with value for total questions answered), and other extensible types
-- **Coverage**: R17.1
-
-#### Test R17.1.2: Condition Type Validation
-- **Test Case**: Achievement unlock conditions validated
-- **Precondition**: Achievement unlock condition checking
-- **Action**: Check conditions
-- **Expected Result**: All referenced condition types supported and have valid value ranges
-- **Coverage**: R17.1
-
-#### Test R17.1.3: Streak Condition Checking
-- **Test Case**: Streak-based achievements check correct records
-- **Precondition**: Achievement has unlock_condition type "streak"
-- **Action**: Check achievement
-- **Expected Result**: Check against appropriate StreakHistory records for specified streak_type and minimum streak_length value
-- **Coverage**: R17.1
-
-#### Test R17.1.4: Questions Condition Checking
-- **Test Case**: Question-based achievements count correctly
-- **Precondition**: Achievement has unlock_condition type "questions"
-- **Action**: Check achievement
-- **Expected Result**: Count total QuestionAttempt records for user and compare against specified value threshold
-- **Coverage**: R17.1
 
 ## Cross-Cutting Requirements
 
@@ -1138,10 +1011,10 @@ This document provides comprehensive test cases for each requirement, ensuring f
 
 This test coverage document provides comprehensive testing scenarios for all requirements:
 
-- **Total Requirements Covered**: 17 main requirements + 3 cross-cutting requirements
+- **Total Requirements Covered**: 15 main requirements + 3 cross-cutting requirements
 - **Total Test Cases**: 200+ test cases covering happy paths, edge cases, and error scenarios
 - **Coverage Areas**: 
-  - Functional requirements (R1-R17)
+  - Functional requirements (R1-R6, R8-R15)
   - Cross-cutting concerns (CR1-CR3)
   - Edge cases and error handling (EC1-EC20)
   - Authentication and authorization flows

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The Avatar Progression System provides visual representation of user fitness state and progress through rule-based state evaluation and visual asset management. This component automatically evaluates user state changes based on performance metrics, streaks, and quiz results, then updates avatar representations accordingly.
+The Avatar Progression System provides visual representation of user fitness state and progress through a simple algorithm-based progression system. This component calculates user fitness level based on StreakLog and GameSession history, outputting a fitness level from -5 to +5, then selects appropriate avatar representations accordingly.
 
 ## Design Context
 
@@ -11,16 +11,16 @@ The Avatar Progression System provides visual representation of user fitness sta
 
 **Non-Functional Requirements**: Real-time state evaluation, avatar asset management, performance-based progression, visual consistency
 
-**User Journey Reference**: Achievement & Progress Journey, User Onboarding Journey, Daily Challenge Journey
+**User Journey Reference**: User Onboarding Journey, Daily Challenge Journey
 
 **Dependencies**: Streak Management System, Game Session Engine, Content Management System, User Profile System
 
 ### Scope & Boundaries
-**In Scope**: User state evaluation, avatar selection, progression visualization, state unlock conditions, avatar asset management
+**In Scope**: User fitness level calculation, avatar selection, progression visualization, avatar asset management
 
-**Out of Scope**: Avatar image generation, user authentication, content generation, achievement system
+**Out of Scope**: Avatar image generation, user authentication, content generation, complex state management
 
-**Assumptions**: Avatar assets are pre-generated, user progress data is accurate, state definitions are available
+**Assumptions**: Avatar assets are pre-generated, user progress data is accurate, fitness level algorithm is well-defined
 
 ## Detailed Component Design
 
@@ -30,27 +30,26 @@ The Avatar Progression System provides visual representation of user fitness sta
 ```mermaid
 graph TB
     subgraph "Avatar Progression System"
-        StateEvaluator[State Evaluator]
+        FitnessCalculator[Fitness Calculator]
         AvatarSelector[Avatar Selector]
         ProgressionTracker[Progression Tracker]
         AssetManager[Asset Manager]
-        StateValidator[State Validator]
     end
     
-    subgraph "User States"
-        Average[Average]
-        FitHealthy[Fit-Healthy]
-        MuscularStrong[Muscular-Strong]
-        LeanInjured[Lean-Injured]
-        InjuredRecovering[Injured-Recovering]
+    subgraph "Fitness Level Output"
+        LevelMinus5[Level -5: Very Unfit]
+        LevelMinus3[Level -3: Unfit]
+        LevelMinus1[Level -1: Below Average]
+        Level0[Level 0: Average]
+        Level1[Level 1: Above Average]
+        Level3[Level 3: Fit]
+        Level5[Level 5: Very Fit]
     end
     
-    subgraph "State Factors"
-        StreakPerformance[Streak Performance]
-        QuizAccuracy[Quiz Accuracy]
-        HabitCompletion[Habit Completion]
-        FormPerformance[Form Performance]
-        TimeConsistency[Time Consistency]
+    subgraph "Input Data Sources"
+        StreakLog[Streak Log]
+        GameSession[Game Session]
+        UserProfile[User Profile]
     end
     
     subgraph "External Dependencies"
@@ -62,60 +61,49 @@ graph TB
     end
     
     subgraph "Data Models"
-        UserState[UserState]
         AvatarAsset[AvatarAsset]
         UserProfile[UserProfile]
-        UserStateHistory[UserStateHistory]
-        StateEvaluation[State Evaluation]
+        FitnessLevelHistory[Fitness Level History]
+        FitnessCalculation[Fitness Calculation]
     end
     
-    StateEvaluator --> AvatarSelector
-    StateEvaluator --> ProgressionTracker
+    FitnessCalculator --> AvatarSelector
+    FitnessCalculator --> ProgressionTracker
     AvatarSelector --> AssetManager
-    StateValidator --> StateEvaluator
     
-    StateEvaluator --> StreakSystem
-    StateEvaluator --> GameEngine
-    StateEvaluator --> ContentSystem
-    StateEvaluator --> UserProfile
-    StateEvaluator --> Database
+    FitnessCalculator --> StreakSystem
+    FitnessCalculator --> GameEngine
+    FitnessCalculator --> ContentSystem
+    FitnessCalculator --> UserProfile
+    FitnessCalculator --> Database
     
-    UserState --> StateEvaluator
     AvatarAsset --> AvatarSelector
-    UserProfile --> StateEvaluator
-    UserStateHistory --> ProgressionTracker
-    StateEvaluation --> StateEvaluator
+    UserProfile --> FitnessCalculator
+    FitnessLevelHistory --> ProgressionTracker
+    FitnessCalculation --> FitnessCalculator
     
-    StreakPerformance --> StateEvaluator
-    QuizAccuracy --> StateEvaluator
-    HabitCompletion --> StateEvaluator
-    FormPerformance --> StateEvaluator
-    TimeConsistency --> StateEvaluator
-    
-    Average --> FitHealthy
-    Average --> LeanInjured
-    FitHealthy --> MuscularStrong
-    LeanInjured --> InjuredRecovering
-    InjuredRecovering --> Average
+    StreakLog --> FitnessCalculator
+    GameSession --> FitnessCalculator
+    UserProfile --> FitnessCalculator
 ```
 
 #### Component Responsibilities
-**StateEvaluator**
-- **Primary Responsibility**: Evaluate user state based on performance metrics and unlock conditions
-- **Secondary Responsibilities**: State calculation, condition validation, state transitions
+**FitnessCalculator**
+- **Primary Responsibility**: Calculate user fitness level based on StreakLog and GameSession history
+- **Secondary Responsibilities**: Data aggregation, algorithm execution, level determination
 - **Dependencies**: Streak System, Game Engine, Content System, User Profile
 - **Dependents**: AvatarSelector, ProgressionTracker
 
 **AvatarSelector**
-- **Primary Responsibility**: Select appropriate avatar based on user state and preferences
+- **Primary Responsibility**: Select appropriate avatar based on calculated fitness level and user preferences
 - **Secondary Responsibilities**: Avatar matching, fallback handling, preference management
-- **Dependencies**: StateEvaluator, Asset Manager, User Profile
+- **Dependencies**: FitnessCalculator, Asset Manager, User Profile
 - **Dependents**: UI Components, User Interface
 
 **ProgressionTracker**
-- **Primary Responsibility**: Track state progression and maintain state history
-- **Secondary Responsibilities**: State change logging, progression analytics, milestone tracking
-- **Dependencies**: StateEvaluator, Database, User Profile
+- **Primary Responsibility**: Track fitness level progression and maintain level history
+- **Secondary Responsibilities**: Level change logging, progression analytics, milestone tracking
+- **Dependencies**: FitnessCalculator, Database, User Profile
 - **Dependents**: Analytics System, User Profile System
 
 **AssetManager**
@@ -124,84 +112,58 @@ graph TB
 - **Dependencies**: Content Management System, Asset storage
 - **Dependents**: AvatarSelector, UI Components
 
-**StateValidator**
-- **Primary Responsibility**: Validate state definitions and unlock conditions
-- **Secondary Responsibilities**: State rule validation, condition validation, data integrity
-- **Dependencies**: State definitions, Unlock condition schemas
-- **Dependents**: StateEvaluator, ProgressionTracker
-
 ### Interface Specifications
 
 #### Public APIs
-**evaluateUserState**: State Evaluation API
+**calculateFitnessLevel**: Fitness Level Calculation API
 ```typescript
-Signature: evaluateUserState(userId: string, context?: StateEvaluationContext): Promise<StateEvaluationResult>
-Purpose: Evaluate and update user's current state based on performance metrics
-Preconditions: User authenticated, user exists, state definitions available
-Postconditions: User state evaluated, avatar updated if state changed
-Error Conditions: User not found, state evaluation failure, avatar update failure
+Signature: calculateFitnessLevel(userId: string, context?: FitnessCalculationContext): Promise<FitnessLevelResult>
+Purpose: Calculate user's current fitness level based on StreakLog and GameSession history
+Preconditions: User authenticated, user exists, progress data available
+Postconditions: Fitness level calculated, avatar updated if level changed
+Error Conditions: User not found, calculation failure, avatar update failure
 ```
 
 **getCurrentAvatar**: Current Avatar Retrieval API
 ```typescript
 Signature: getCurrentAvatar(userId: string): Promise<AvatarResult>
-Purpose: Get current avatar for user based on their state and preferences
+Purpose: Get current avatar for user based on their fitness level and preferences
 Preconditions: User authenticated, user exists, avatar assets available
-Postconditions: Current avatar returned with state information
+Postconditions: Current avatar returned with fitness level information
 Error Conditions: User not found, avatar not found, asset loading failure
 ```
 
-**updateUserState**: State Update API
+**getFitnessLevel**: Fitness Level Retrieval API
 ```typescript
-Signature: updateUserState(input: UpdateUserStateInput): Promise<UpdateUserStateResult>
-Purpose: Manually update user state (admin/override functionality)
-Preconditions: User exists, new state valid, admin privileges
-Postconditions: User state updated, avatar changed, history recorded
-Error Conditions: Invalid state, insufficient privileges, update failure
+Signature: getFitnessLevel(userId: string): Promise<FitnessLevelResult>
+Purpose: Get user's current fitness level without updating avatar
+Preconditions: User exists, progress data available
+Postconditions: Current fitness level returned with calculation details
+Error Conditions: User not found, calculation failure
 ```
 
-**getStateProgression**: State Progression API
+**getFitnessProgression**: Fitness Progression API
 ```typescript
-Signature: getStateProgression(userId: string, options?: ProgressionQueryOptions): Promise<StateProgressionResult>
-Purpose: Get user's state progression history and analytics
+Signature: getFitnessProgression(userId: string, options?: ProgressionQueryOptions): Promise<FitnessProgressionResult>
+Purpose: Get user's fitness level progression history and analytics
 Preconditions: User authenticated, user exists
 Postconditions: Progression data returned with timeline and metrics
 Error Conditions: User not found, access denied, data loading failure
 ```
 
-**validateStateDefinition**: State Definition Validation API
-```typescript
-Signature: validateStateDefinition(stateId: string): Promise<StateValidationResult>
-Purpose: Validate state definition and unlock conditions
-Preconditions: State exists, validation rules configured
-Postconditions: Validation result with any detected issues
-Error Conditions: State not found, validation rule failure, system error
-```
-
 ## Data Design
 
 ### Data Models
-**UserState** (Static Content)
-```typescript
-interface UserState {
-  id: string;
-  unlock_condition: UnlockCondition;
-  eval_order: number;
-  display_name: string;
-  description: string;
-  visual_characteristics: VisualCharacteristics;
-  created_at: string;
-  updated_at: string;
-}
-```
-
 **AvatarAsset** (Static Content)
 ```typescript
 interface AvatarAsset {
   id: string;
-  state_id: string; // References UserState.id
   gender: 'male' | 'female';
   age_range: 'child' | 'teen' | 'young-adult' | 'middle-age' | 'senior';
+  fitness_level_range: {
+    min: number; // -5 to +5
+    max: number; // -5 to +5
+  };
   image_url: string;
   thumbnail_url?: string;
   animation_data?: AnimationData;
@@ -216,7 +178,7 @@ interface AvatarAsset {
 export const userProfiles = pgTable('user_profiles', {
   id: uuid('id').primaryKey().defaultRandom(),
   user_id: uuid('user_id').notNull().references(() => users.id),
-  current_state: text('current_state').references(() => userStates.id),
+  current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5
   avatar_gender: text('avatar_gender'), // 'male' | 'female'
   avatar_age_range: text('avatar_age_range'), // 'child' | 'teen' | 'young-adult' | 'middle-age' | 'senior'
   current_streak_ids: jsonb('current_streak_ids'),
@@ -227,83 +189,67 @@ export const userProfiles = pgTable('user_profiles', {
 });
 ```
 
-**UserStateHistory** (Database Entity via Drizzle)
+**FitnessLevelHistory** (Database Entity via Drizzle)
 ```typescript
 // Drizzle schema
-export const userStateHistory = pgTable('user_state_history', {
+export const fitnessLevelHistory = pgTable('fitness_level_history', {
   id: uuid('id').primaryKey().defaultRandom(),
   user_id: uuid('user_id').notNull().references(() => users.id),
-  state_id: text('state_id').notNull(), // References static content
-  previous_state_id: text('previous_state_id'), // References static content
-  unlocked_at: timestamp('unlocked_at').notNull().defaultNow(),
-  unlock_reason: text('unlock_reason'), // 'performance', 'streak', 'manual', etc.
-  performance_metrics: jsonb('performance_metrics'), // Data that triggered state change
+  fitness_level: integer('fitness_level').notNull(), // -5 to +5
+  calculated_at: timestamp('calculated_at').notNull().defaultNow(),
   created_at: timestamp('created_at').notNull().defaultNow(),
   updated_at: timestamp('updated_at').notNull().defaultNow(),
 });
 ```
 
-**StateEvaluationContext** (Zod Schema)
+**FitnessCalculationContext** (Zod Schema)
 ```typescript
-const StateEvaluationContextSchema = z.object({
-  evaluation_type: z.enum(['automatic', 'manual', 'scheduled']),
+const FitnessCalculationContextSchema = z.object({
+  calculation_type: z.enum(['automatic', 'manual', 'scheduled']),
   trigger_action: z.enum(['quiz_completed', 'streak_updated', 'habit_logged', 'form_assessment']),
   performance_data: z.record(z.any()),
-  evaluation_timestamp: z.date(),
+  calculation_timestamp: z.date(),
   timezone: z.string(),
   metadata: z.record(z.any()).optional(),
 });
 
-type StateEvaluationContext = z.infer<typeof StateEvaluationContextSchema>;
-```
-
-**UpdateUserStateInput** (Zod Schema)
-```typescript
-const UpdateUserStateInputSchema = z.object({
-  userId: z.string().uuid(),
-  newStateId: z.string(),
-  reason: z.enum(['performance', 'streak', 'manual', 'admin_override']),
-  performanceMetrics: z.record(z.any()).optional(),
-  adminOverride: z.boolean().default(false),
-});
-
-type UpdateUserStateInput = z.infer<typeof UpdateUserStateInputSchema>;
+type FitnessCalculationContext = z.infer<typeof FitnessCalculationContextSchema>;
 ```
 
 **Business Rules**: 
-- User states are evaluated in order of eval_order field
-- State changes create new UserStateHistory entries
-- Avatar selection considers user preferences and current state
-- State evaluation happens automatically on relevant user actions
+- Fitness level ranges from -5 (very unfit) to +5 (very fit)
+- Level changes create new FitnessLevelHistory entries
+- Avatar selection considers user preferences and fitness level range
+- Fitness level calculation happens automatically on relevant user actions
 - Fallback avatars are provided when specific combinations are unavailable
 
 **Relationships**: 
-- UserProfile contains current_state reference to UserState
-- AvatarAsset references UserState for state-specific avatars
-- UserStateHistory tracks all state changes for a user
-- State evaluation considers multiple performance factors
+- UserProfile contains current_fitness_level
+- AvatarAsset has fitness_level_range for level-based selection
+- FitnessLevelHistory tracks all level changes for a user
+- Fitness calculation considers multiple performance factors
 
 **Indexing Strategy**: 
 - Primary key on UserProfile.id
-- Index on UserProfile.current_state for state-based queries
-- Index on UserStateHistory(user_id, unlocked_at) for progression queries
-- Composite index on AvatarAsset(state_id, gender, age_range) for avatar selection
+- Index on UserProfile.current_fitness_level for level-based queries
+- Index on FitnessLevelHistory(user_id, calculated_at) for progression queries
+- Composite index on AvatarAsset(fitness_level_range, gender, age_range) for avatar selection
 
 ### Data Access Patterns
-**State Evaluation Pattern**
-- **Query Pattern**: SELECT user data, evaluate conditions, UPDATE state if changed
-- **Caching Strategy**: Current state cached in UserProfile, state definitions cached
-- **Transaction Boundaries**: Single transaction for state evaluation and update
-- **Concurrency Handling**: User-level locking for state updates
+**Fitness Level Calculation Pattern**
+- **Query Pattern**: SELECT user data, calculate level, UPDATE profile if changed
+- **Caching Strategy**: Current level cached in UserProfile, calculation results cached
+- **Transaction Boundaries**: Single transaction for level calculation and update
+- **Concurrency Handling**: User-level locking for level updates
 
 **Avatar Selection Pattern**
-- **Query Pattern**: SELECT avatar based on state and preferences, fallback handling
+- **Query Pattern**: SELECT avatar based on fitness level and preferences, fallback handling
 - **Caching Strategy**: Avatar assets cached, selection results cached with TTL
 - **Transaction Boundaries**: Read-only transactions for avatar selection
 - **Concurrency Handling**: Read-only access, no concurrency issues
 
-**State Progression Pattern**
-- **Query Pattern**: SELECT state history with performance metrics and timeline
+**Fitness Progression Pattern**
+- **Query Pattern**: SELECT level history with performance metrics and timeline
 - **Caching Strategy**: Progression data cached with TTL, analytics cached separately
 - **Transaction Boundaries**: Read-only transactions for progression queries
 - **Concurrency Handling**: Read-only access, no concurrency issues
@@ -311,67 +257,72 @@ type UpdateUserStateInput = z.infer<typeof UpdateUserStateInputSchema>;
 ## Algorithm Design
 
 ### Core Algorithms
-**State Evaluation Algorithm**
+**Fitness Level Calculation Algorithm**
 ```
-Input: User ID, performance metrics, state definitions
-Output: New user state and transition information
-Complexity: Time O(n), Space O(1) where n is number of states
+Input: User ID, StreakLog data, GameSession data
+Output: Fitness level from -5 to +5
+Complexity: Time O(1), Space O(1)
 
 Pseudocode:
-1. Get current user state and performance data
-2. Sort states by eval_order
-3. For each state, evaluate unlock conditions
-4. Select highest applicable state
-5. If state changed, create history record and update profile
-6. Return state evaluation result
+1. Get user's StreakLog entries for last 30 days
+2. Get user's GameSession data for last 30 days
+3. Calculate base score from streak performance
+4. Calculate bonus/penalty from quiz performance
+5. Apply time decay factors
+6. Map final score to fitness level range (-5 to +5)
+7. Return fitness level with calculation details
 ```
 
 **Avatar Selection Algorithm**
 ```
-Input: User state, gender, age range, avatar assets
+Input: User fitness level, gender, age range, avatar assets
 Output: Selected avatar with fallback handling
 Complexity: Time O(1), Space O(1)
 
 Pseudocode:
-1. Try to find exact match (state, gender, age_range)
-2. If not found, try state match with different age_range
-3. If not found, try state match with different gender
-4. If not found, use default avatar for state
+1. Try to find exact match (fitness level range, gender, age_range)
+2. If not found, try fitness level match with different age_range
+3. If not found, try fitness level match with different gender
+4. If not found, use default avatar for fitness level
 5. Return selected avatar with fallback information
 ```
 
 **Performance Assessment Algorithm**
 ```
 Input: User performance data, assessment criteria
-Output: Performance score and state recommendation
+Output: Performance score and fitness level recommendation
 Complexity: Time O(1), Space O(1)
 
 Pseudocode:
-1. Calculate performance metrics for each category
-2. Apply weighting factors to different metrics
-3. Calculate overall performance score
-4. Map score to state recommendations
-5. Return performance assessment result
+1. Calculate streak performance metrics
+2. Calculate quiz performance metrics
+3. Apply weighting factors to different metrics
+4. Calculate overall performance score
+5. Map score to fitness level range
+6. Return fitness level recommendation
 ```
 
 **Business Logic Flows**
-**State Evaluation Flow**
+**Fitness Level Calculation Flow**
 ```mermaid
 flowchart TD
-    A[User Action] --> B[Trigger State Evaluation]
-    B --> C[Collect Performance Data]
-    C --> D[Evaluate State Conditions]
-    D --> E{State Change Needed?}
-    E -->|No| F[No Action Required]
-    E -->|Yes| G[Determine New State]
+    A[User Action] --> B[Trigger Fitness Calculation]
+    B --> C[Collect StreakLog Data]
+    C --> D[Collect GameSession Data]
+    D --> E[Calculate Base Score]
+    E --> F[Apply Performance Modifiers]
+    F --> G[Apply Time Decay]
+    G --> H[Map to Fitness Level]
+    H --> I{Level Changed?}
+    I -->|No| J[No Action Required]
+    I -->|Yes| K[Create History Record]
     
-    G --> H[Create State History Record]
-    H --> I[Update User Profile]
-    I --> J[Update Avatar]
-    J --> K[Trigger Notifications]
+    K --> L[Update User Profile]
+    L --> M[Update Avatar]
+    M --> N[Trigger Notifications]
     
-    F --> L[Return Evaluation Result]
-    K --> L
+    J --> O[Return Calculation Result]
+    N --> O
 ```
 
 **Avatar Selection Flow**
@@ -379,7 +330,7 @@ flowchart TD
 flowchart TD
     A[Avatar Request] --> B{Exact Match Available?}
     B -->|Yes| C[Return Exact Match]
-    B -->|No| D{State Match Available?}
+    B -->|No| D{Fitness Level Match Available?}
     
     D -->|Yes| E[Try Age Range Variation]
     D -->|No| F[Use Default Avatar]
@@ -401,25 +352,25 @@ flowchart TD
 **Performance Assessment Flow**
 ```mermaid
 flowchart TD
-    A[Performance Data] --> B[Calculate Quiz Accuracy]
-    B --> C[Calculate Streak Performance]
+    A[Performance Data] --> B[Calculate Streak Performance]
+    B --> C[Calculate Quiz Performance]
     C --> D[Calculate Habit Completion]
     D --> E[Calculate Form Performance]
     
     E --> F[Apply Weighting Factors]
     F --> G[Calculate Overall Score]
-    G --> H[Map Score to State]
-    H --> I[Return State Recommendation]
+    G --> H[Map Score to Fitness Level]
+    H --> I[Return Fitness Level Recommendation]
 ```
 
 ## Implementation Specifications
 
 ### Key Implementation Details
-**State Evaluation**
-- **Approach**: Rule-based evaluation with configurable unlock conditions
-- **Libraries/Frameworks**: Custom rule engine, performance calculation, validation system
-- **Configuration**: State rules, evaluation criteria, weighting factors
-- **Environment Variables**: STATE_EVALUATION_ENABLED, PERFORMANCE_WEIGHTING_FACTORS
+**Fitness Level Calculation**
+- **Approach**: Algorithm-based calculation with configurable weights and thresholds
+- **Libraries/Frameworks**: Custom calculation engine, performance metrics, validation system
+- **Configuration**: Calculation weights, thresholds, time decay factors
+- **Environment Variables**: FITNESS_CALCULATION_ENABLED, PERFORMANCE_WEIGHTING_FACTORS
 
 **Avatar Selection**
 - **Approach**: Priority-based selection with intelligent fallback handling
@@ -434,16 +385,16 @@ flowchart TD
 - **Environment Variables**: PERFORMANCE_THRESHOLDS, ASSESSMENT_WEIGHTING
 
 **Progression Tracking**
-- **Approach**: Comprehensive state change logging with performance metrics
+- **Approach**: Comprehensive level change logging with performance metrics
 - **Libraries/Frameworks**: History tracking, analytics, performance monitoring
 - **Configuration**: Tracking rules, analytics settings, performance monitoring
 - **Environment Variables**: PROGRESSION_TRACKING_ENABLED, ANALYTICS_RETENTION_DAYS
 
 ### Core Data Operations
-**State Evaluation Operation**
+**Fitness Level Calculation Operation**
 ```typescript
-async function evaluateUserState(userId: string, context?: StateEvaluationContext): Promise<StateEvaluationResult> {
-  // Get current user state and performance data
+async function calculateFitnessLevel(userId: string, context?: FitnessCalculationContext): Promise<FitnessLevelResult> {
+  // Get user's current profile and progress data
   const userProfile = await db.query.userProfiles.findFirst({
     where: eq(userProfiles.user_id, userId),
   });
@@ -452,58 +403,199 @@ async function evaluateUserState(userId: string, context?: StateEvaluationContex
     throw new Error(`User profile not found: ${userId}`);
   }
   
-  // Get all available states sorted by eval_order
-  const availableStates = await getAvailableStates();
-  const sortedStates = availableStates.sort((a, b) => a.eval_order - b.eval_order);
+  // Get StreakLog data for last 30 days
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
   
-  // Evaluate each state's unlock conditions
-  let highestApplicableState: UserState | null = null;
+  const streakLogs = await db.query.streakLogs.findMany({
+    where: and(
+      eq(streakLogs.user_id, userId),
+      gte(streakLogs.date, thirtyDaysAgo)
+    ),
+  });
   
-  for (const state of sortedStates) {
-    const conditionMet = await evaluateStateUnlockCondition(state.unlock_condition, userId, context);
-    
-    if (conditionMet) {
-      highestApplicableState = state;
-    } else {
-      // Stop at first unmet condition (states are ordered by eval_order)
-      break;
-    }
-  }
+  // Get GameSession data for last 30 days
+  const gameSessions = await db.query.gameSessions.findMany({
+    where: and(
+      eq(gameSessions.user_id, userId),
+      gte(gameSessions.started_at, thirtyDaysAgo)
+    ),
+  });
   
-  // Check if state change is needed
-  const currentStateId = userProfile.current_state;
-  const newStateId = highestApplicableState?.id || 'average'; // Default to average
+  // Calculate fitness level using algorithm
+  const fitnessLevel = await calculateFitnessLevelFromData(streakLogs, gameSessions, userProfile);
   
-  if (currentStateId !== newStateId) {
-    // State change needed
-    await updateUserState({
+  // Check if level change is needed
+  const currentLevel = userProfile.current_fitness_level;
+  
+  if (currentLevel !== fitnessLevel) {
+    // Level change needed
+    await updateFitnessLevel({
       userId,
-      newStateId,
+      newLevel: fitnessLevel,
       reason: context?.trigger_action || 'performance',
       performanceMetrics: context?.performance_data,
     });
     
     return {
-      stateChanged: true,
-      previousState: currentStateId,
-      newState: newStateId,
+      levelChanged: true,
+      previousLevel: currentLevel,
+      newLevel: fitnessLevel,
       reason: context?.trigger_action || 'performance',
-      evaluatedAt: new Date(),
+      calculatedAt: new Date(),
     };
   }
   
   return {
-    stateChanged: false,
-    currentState: currentStateId,
-    evaluatedAt: new Date(),
+    levelChanged: false,
+    currentLevel: currentLevel,
+    calculatedAt: new Date(),
   };
 }
+
+**Fitness Level Calculation Algorithm**
+```typescript
+async function calculateFitnessLevelFromData(
+  streakLogs: StreakLog[],
+  gameSessions: GameSession[],
+  userProfile: UserProfile
+): Promise<number> {
+  let fitnessScore = 0; // Start at 0 (average)
+  
+  // 1. Habit Pattern Analysis (40% weight)
+  const habitScore = calculateHabitScore(streakLogs);
+  fitnessScore += habitScore * 0.4;
+  
+  // 2. Quiz Performance Analysis (35% weight)
+  const quizScore = calculateQuizScore(gameSessions);
+  fitnessScore += quizScore * 0.35;
+  
+  // 3. Consistency Analysis (25% weight)
+  const consistencyScore = calculateConsistencyScore(streakLogs, gameSessions);
+  fitnessScore += consistencyScore * 0.25;
+  
+  // 4. Apply bounds and round to nearest integer
+  const boundedScore = Math.max(-5, Math.min(5, Math.round(fitnessScore)));
+  
+  return boundedScore;
+}
+
+function calculateHabitScore(streakLogs: StreakLog[]): number {
+  if (streakLogs.length === 0) return 0;
+  
+  let totalScore = 0;
+  let totalDays = 0;
+  
+  for (const log of streakLogs) {
+    const dayScore = calculateDayScore(log.entries);
+    totalScore += dayScore;
+    totalDays++;
+  }
+  
+  return totalDays > 0 ? totalScore / totalDays : 0;
+}
+
+function calculateDayScore(entries: Record<string, boolean>): number {
+  const habitWeights = {
+    workout_completed: 0.3,
+    ate_clean: 0.25,
+    slept_well: 0.25,
+    hydrated: 0.2
+  };
+  
+  let dayScore = 0;
+  let totalWeight = 0;
+  
+  for (const [habit, completed] of Object.entries(entries)) {
+    if (habit in habitWeights) {
+      dayScore += completed ? habitWeights[habit as keyof typeof habitWeights] : 0;
+      totalWeight += habitWeights[habit as keyof typeof habitWeights];
+    }
+  }
+  
+  // Normalize to -2 to +2 range
+  return totalWeight > 0 ? (dayScore / totalWeight - 0.5) * 4 : 0;
+}
+
+function calculateQuizScore(gameSessions: GameSession[]): number {
+  if (gameSessions.length === 0) return 0;
+  
+  let totalScore = 0;
+  let totalSessions = 0;
+  
+  for (const session of gameSessions) {
+    if (session.all_correct_answers !== null) {
+      const sessionScore = session.all_correct_answers ? 1 : -0.5;
+      totalScore += sessionScore;
+      totalSessions++;
+    }
+  }
+  
+  // Normalize to -2 to +2 range
+  return totalSessions > 0 ? (totalScore / totalSessions) * 2 : 0;
+}
+
+function calculateConsistencyScore(streakLogs: StreakLog[], gameSessions: GameSession[]): number {
+  if (streakLogs.length === 0 && gameSessions.length === 0) return 0;
+  
+  // Calculate streak consistency
+  const habitConsistency = calculateHabitConsistency(streakLogs);
+  const quizConsistency = calculateQuizConsistency(gameSessions);
+  
+  // Average the consistency scores
+  const avgConsistency = (habitConsistency + quizConsistency) / 2;
+  
+  // Normalize to -2 to +2 range
+  return avgConsistency * 2;
+}
+
+function calculateHabitConsistency(streakLogs: StreakLog[]): number {
+  if (streakLogs.length < 7) return 0; // Need at least a week of data
+  
+  let consecutiveDays = 0;
+  let maxConsecutive = 0;
+  
+  for (let i = 0; i < streakLogs.length; i++) {
+    const log = streakLogs[i];
+    const dayScore = calculateDayScore(log.entries);
+    
+    if (dayScore > 0.5) { // Good day
+      consecutiveDays++;
+      maxConsecutive = Math.max(maxConsecutive, consecutiveDays);
+    } else {
+      consecutiveDays = 0;
+    }
+  }
+  
+  // Normalize to 0 to 1 range based on max consecutive days
+  return Math.min(1, maxConsecutive / 14); // 14 days = perfect consistency
+}
+
+function calculateQuizConsistency(gameSessions: GameSession[]): number {
+  if (gameSessions.length < 3) return 0; // Need at least 3 sessions
+  
+  let consecutiveCorrect = 0;
+  let maxConsecutive = 0;
+  
+  for (const session of gameSessions) {
+    if (session.all_correct_answers) {
+      consecutiveCorrect++;
+      maxConsecutive = Math.max(maxConsecutive, consecutiveCorrect);
+    } else {
+      consecutiveCorrect = 0;
+    }
+  }
+  
+  // Normalize to 0 to 1 range based on max consecutive correct
+  return Math.min(1, maxConsecutive / 7); // 7 days = perfect consistency
+}
+```
 ```
 
 **Avatar Selection Operation**
 ```typescript
 async function getCurrentAvatar(userId: string): Promise<AvatarResult> {
-  // Get user profile and current state
+  // Get user profile and current fitness level
   const userProfile = await db.query.userProfiles.findFirst({
     where: eq(userProfiles.user_id, userId),
   });
@@ -512,32 +604,32 @@ async function getCurrentAvatar(userId: string): Promise<AvatarResult> {
     throw new Error(`User profile not found: ${userId}`);
   }
   
-  const { current_state, avatar_gender, avatar_age_range } = userProfile;
+  const { current_fitness_level, avatar_gender, avatar_age_range } = userProfile;
   
   // Try exact match first
-  let avatar = await findAvatarAsset(current_state, avatar_gender, avatar_age_range);
+  let avatar = await findAvatarAssetByFitnessLevel(current_fitness_level, avatar_gender, avatar_age_range);
   
   if (avatar) {
     return {
       avatar,
       matchType: 'exact',
-      stateId: current_state,
+      fitnessLevel: current_fitness_level,
       gender: avatar_gender,
       ageRange: avatar_age_range,
     };
   }
   
-  // Try state match with different age range
+  // Try fitness level match with different age range
   if (avatar_age_range) {
     const alternativeAgeRanges = getAlternativeAgeRanges(avatar_age_range);
     
     for (const ageRange of alternativeAgeRanges) {
-      avatar = await findAvatarAsset(current_state, avatar_gender, ageRange);
+      avatar = await findAvatarAssetByFitnessLevel(current_fitness_level, avatar_gender, ageRange);
       if (avatar) {
         return {
           avatar,
           matchType: 'age_range_fallback',
-          stateId: current_state,
+          fitnessLevel: current_fitness_level,
           gender: avatar_gender,
           ageRange,
           originalAgeRange: avatar_age_range,
@@ -546,16 +638,16 @@ async function getCurrentAvatar(userId: string): Promise<AvatarResult> {
     }
   }
   
-  // Try state match with different gender
+  // Try fitness level match with different gender
   if (avatar_gender) {
     const alternativeGender = avatar_gender === 'male' ? 'female' : 'male';
-    avatar = await findAvatarAsset(current_state, alternativeGender, avatar_age_range);
+          avatar = await findAvatarAssetByFitnessLevel(current_fitness_level, alternativeGender, avatar_age_range);
     
     if (avatar) {
       return {
         avatar,
         matchType: 'gender_fallback',
-        stateId: current_state,
+        fitnessLevel: current_fitness_level,
         gender: alternativeGender,
         ageRange: avatar_age_range,
         originalGender: avatar_gender,
@@ -563,28 +655,27 @@ async function getCurrentAvatar(userId: string): Promise<AvatarResult> {
     }
   }
   
-  // Use default avatar for state
-  const defaultAvatar = await getDefaultAvatarForState(current_state);
+  // Use default avatar for fitness level
+  const defaultAvatar = await getDefaultAvatarForFitnessLevel(current_fitness_level);
   
   return {
     avatar: defaultAvatar,
     matchType: 'default',
-    stateId: current_state,
+    fitnessLevel: current_fitness_level,
     gender: null,
     ageRange: null,
   };
 }
 ```
 
-**State Update Operation**
+**Fitness Level Update Operation**
 ```typescript
-async function updateUserState(input: UpdateUserStateInput): Promise<UpdateUserStateResult> {
-  const { userId, newStateId, reason, performanceMetrics, adminOverride } = input;
+async function updateFitnessLevel(input: UpdateFitnessLevelInput): Promise<UpdateFitnessLevelResult> {
+  const { userId, newLevel, reason, performanceMetrics } = input;
   
-  // Validate new state exists
-  const newState = await getState(newStateId);
-  if (!newState) {
-    throw new Error(`State not found: ${newStateId}`);
+  // Validate new level is within range
+  if (newLevel < -5 || newLevel > 5) {
+    throw new Error(`Invalid fitness level: ${newLevel}. Must be between -5 and 5.`);
   }
   
   // Get current user profile
@@ -596,66 +687,66 @@ async function updateUserState(input: UpdateUserStateInput): Promise<UpdateUserS
     throw new Error(`User profile not found: ${userId}`);
   }
   
-  const previousStateId = userProfile.current_state;
+  const previousLevel = userProfile.current_fitness_level;
   
-  // Create state history record
-  await db.insert(userStateHistory).values({
+  // Create fitness level history record
+  await db.insert(fitnessLevelHistory).values({
     user_id: userId,
-    state_id: newStateId,
-    previous_state_id: previousStateId,
-    unlock_reason: reason,
+    fitness_level: newLevel,
+    previous_level: previousLevel,
+    calculation_reason: reason,
     performance_metrics: performanceMetrics,
-    unlocked_at: new Date(),
+    calculated_at: new Date(),
   });
   
   // Update user profile
   await db.update(userProfiles)
     .set({
-      current_state: newStateId,
+      current_fitness_level: newLevel,
       updated_at: new Date(),
     })
     .where(eq(userProfiles.user_id, userId));
   
   // Trigger avatar update
-  await updateUserAvatar(userId, newStateId);
+  await updateUserAvatar(userId, newLevel);
   
   return {
     success: true,
     userId,
-    previousState: previousStateId,
-    newState: newStateId,
+    previousLevel: previousLevel,
+    newLevel: newLevel,
     reason,
     updatedAt: new Date(),
   };
 }
 ```
 
-**Parameters**: User ID, state data, performance metrics, avatar preferences, evaluation context
+**Parameters**: User ID, streak data, game session data, avatar preferences, calculation context
 
-**Performance**: O(n) for state evaluation, O(1) for avatar selection, O(1) for state updates
+**Performance**: O(1) for fitness level calculation, O(1) for avatar selection, O(1) for level updates
 
-**Indexes Required**: Index on current_state, composite index on (state_id, gender, age_range), index on (user_id, unlocked_at)
+**Indexes Required**: Index on current_fitness_level, composite index on (fitness_level_range, gender, age_range), index on (user_id, calculated_at)
 
 ## Error Handling & Validation
 
 ### Error Scenarios
-**State Evaluation Errors**
-- **Trigger Conditions**: Invalid performance data, state definition errors, evaluation failure
+**Fitness Level Calculation Errors**
+- **Trigger Conditions**: Invalid performance data, calculation failure, algorithm errors
 - **Error Response**: Specific error messages with error codes and recovery suggestions
-- **Recovery Strategy**: Retry with exponential backoff, fallback to last known state
-- **Logging Requirements**: User ID, evaluation context, error details, stack trace
+- **Recovery Strategy**: Retry with exponential backoff, fallback to last known level
+- **Logging Requirements**: User ID, calculation context, error details, stack trace
 
 **Avatar Selection Errors**
-- **Trigger Conditions**: Missing avatar assets, asset loading failure, invalid state references
+- **Trigger Conditions**: Missing avatar assets, asset loading failure, invalid fitness level references
 - **Error Response**: Avatar error with fallback avatar provided
 - **Recovery Strategy**: Fallback to default avatars, asset reload, error logging
 - **Logging Requirements**: Avatar request details, fallback actions, asset availability
 
-**State Update Errors**
-- **Trigger Conditions**: Invalid state transitions, database update failure, avatar update failure
-- **Error Response**: State update error with specific failure reason
-- **Recovery Strategy**: Rollback to previous state, retry update, manual intervention
-- **Logging Requirements**: State change details, failure reason, recovery actions
+**Fitness Level Update Errors**
+- **Trigger Conditions**: Invalid level transitions, database update failure, avatar update failure
+- **Error Response**: Level update error with specific failure reason
+- **Recovery Strategy**: Rollback to previous level, retry update, manual intervention
+- **Logging Requirements**: Level change details, failure reason, recovery actions
 
 **Performance Assessment Errors**
 - **Trigger Conditions**: Invalid performance data, calculation errors, metric validation failure
@@ -664,11 +755,11 @@ async function updateUserState(input: UpdateUserStateInput): Promise<UpdateUserS
 - **Logging Requirements**: Performance data details, calculation errors, fallback actions
 
 ### Business Rule Validation
-**State Transition Validation**
-- **Rule Description**: State transitions must follow valid progression rules
-- **Validation Logic**: Check state transition validity and progression order
-- **Error Message**: "Invalid state transition from {currentState} to {targetState}"
-- **System Behavior**: State transition rejected, user remains in current state
+**Fitness Level Range Validation**
+- **Rule Description**: Fitness level must be within valid range (-5 to +5)
+- **Validation Logic**: Check level value is integer between -5 and 5
+- **Error Message**: "Invalid fitness level: {level}. Must be between -5 and 5."
+- **System Behavior**: Level update rejected, user remains at current level
 
 **Avatar Preference Validation**
 - **Rule Description**: Avatar preferences must be valid and supported
@@ -682,60 +773,106 @@ async function updateUserState(input: UpdateUserStateInput): Promise<UpdateUserS
 - **Error Message**: "Invalid performance metric: {metricDetails}"
 - **System Behavior**: Use default metrics, log validation failure
 
-**State Definition Validation**
-- **Rule Description**: State definitions must have valid unlock conditions
-- **Validation Logic**: Validate unlock condition structure and logic
-- **Error Message**: "Invalid state definition: {definitionDetails}"
-- **System Behavior**: State evaluation skipped, error logged
+**Calculation Context Validation**
+- **Rule Description**: Calculation context must have valid structure
+- **Validation Logic**: Validate context structure and required fields
+- **Error Message**: "Invalid calculation context: {contextDetails}"
+- **System Behavior**: Calculation skipped, error logged
 
 ## Testing Specifications
 
 ### Integration Test Scenarios
-**State Evaluation Integration**
-- **Components Involved**: StateEvaluator, Streak System, Game Engine, Database
-- **Test Flow**: Trigger state evaluation, verify condition checking, check state updates
-- **Mock Requirements**: Mock performance data, mock state definitions, mock unlock conditions
-- **Assertion Points**: State evaluation accuracy, condition checking, state transitions
+**Fitness Level Calculation Integration**
+- **Components Involved**: FitnessCalculator, Streak System, Game Engine, Database
+- **Test Flow**: Trigger fitness calculation, verify data collection, check level updates
+- **Mock Requirements**: Mock streak data, mock game session data, mock calculation algorithm
+- **Assertion Points**: Calculation accuracy, data collection, level transitions
 
 **Avatar Selection Integration**
-- **Components Involved**: AvatarSelector, Asset Manager, State Evaluator, User Profile
+- **Components Involved**: AvatarSelector, Asset Manager, Fitness Calculator, User Profile
 - **Test Flow**: Request avatar, verify selection logic, check fallback handling
-- **Mock Requirements**: Mock avatar assets, mock user preferences, mock state data
+- **Mock Requirements**: Mock avatar assets, mock user preferences, mock fitness level data
 - **Assertion Points**: Avatar selection accuracy, fallback handling, preference management
 
-**State Progression Integration**
-- **Components Involved**: ProgressionTracker, State Evaluator, Database, Analytics
-- **Test Flow**: Track state changes, verify history recording, check progression analytics
-- **Mock Requirements**: Mock state changes, mock performance data, mock analytics system
+**Fitness Progression Integration**
+- **Components Involved**: ProgressionTracker, Fitness Calculator, Database, Analytics
+- **Test Flow**: Track level changes, verify history recording, check progression analytics
+- **Mock Requirements**: Mock level changes, mock performance data, mock analytics system
 - **Assertion Points**: Progression tracking, history recording, analytics accuracy
 
 **Performance Assessment Integration**
-- **Components Involved**: State Evaluator, Performance Metrics, Assessment Engine
-- **Test Flow**: Calculate performance, verify assessment logic, check state mapping
+- **Components Involved**: Fitness Calculator, Performance Metrics, Assessment Engine
+- **Test Flow**: Calculate performance, verify assessment logic, check level mapping
 - **Mock Requirements**: Mock performance data, mock assessment criteria, mock weighting factors
-- **Assertion Points**: Performance calculation, assessment accuracy, state mapping
+- **Assertion Points**: Performance calculation, assessment accuracy, level mapping
 
 ### Edge Cases & Boundary Tests
 **Missing Avatar Assets**
-- **Scenario**: Avatar assets missing for specific state/gender/age combinations
+- **Scenario**: Avatar assets missing for specific fitness level/gender/age combinations
 - **Input Values**: Missing asset combinations, incomplete asset sets
 - **Expected Behavior**: Graceful fallback to available assets, error logging
 - **Validation**: Fallback handling, error reporting, asset availability
 
-**Invalid State Transitions**
-- **Scenario**: Attempts to transition to invalid or non-existent states
-- **Input Values**: Invalid state IDs, invalid transition paths, corrupted state data
-- **Expected Behavior**: State transition rejected, error reporting, state validation
-- **Validation**: Transition validation, error handling, state integrity
+**Invalid Fitness Level Transitions**
+- **Scenario**: Attempts to set invalid fitness levels
+- **Input Values**: Invalid level values, out-of-range levels, corrupted level data
+- **Expected Behavior**: Level update rejected, error reporting, level validation
+- **Validation**: Level validation, error handling, data integrity
 
 **Performance Data Corruption**
-- **Scenario**: Corrupted or invalid performance data during state evaluation
+- **Scenario**: Corrupted or invalid performance data during fitness calculation
 - **Input Values**: Invalid metrics, corrupted data, missing performance information
 - **Expected Behavior**: Graceful error handling, fallback to valid data, error logging
 - **Validation**: Data validation, error handling, fallback mechanisms
 
-**Concurrent State Updates**
-- **Scenario**: Multiple simultaneous state update attempts for the same user
-- **Input Values**: Concurrent API calls, race conditions, simultaneous evaluations
-- **Expected Behavior**: Consistent state, no data corruption, proper locking
+**Concurrent Level Updates**
+- **Scenario**: Multiple simultaneous fitness level update attempts for the same user
+- **Input Values**: Concurrent API calls, race conditions, simultaneous calculations
+- **Expected Behavior**: Consistent level, no data corruption, proper locking
 - **Validation**: Data consistency, race condition handling, error prevention
+
+## Implementation Details
+
+### Avatar Asset Selection Function
+```typescript
+async function findAvatarAssetByFitnessLevel(
+  fitnessLevel: number,
+  gender?: string,
+  ageRange?: string
+): Promise<AvatarAsset | null> {
+  // Build query conditions
+  const conditions = [];
+  
+  // Add fitness level range condition
+  conditions.push(
+    and(
+      lte(avatarAssets.fitness_level_range_min, fitnessLevel),
+      gte(avatarAssets.fitness_level_range_max, fitnessLevel)
+    )
+  );
+  
+  // Add gender condition if specified
+  if (gender) {
+    conditions.push(eq(avatarAssets.gender, gender));
+  }
+  
+  // Add age range condition if specified
+  if (ageRange) {
+    conditions.push(eq(avatarAssets.age_range, ageRange));
+  }
+  
+  // Find matching avatar asset
+  const avatar = await db.query.avatarAssets.findFirst({
+    where: and(...conditions),
+    orderBy: [
+      // Prioritize exact fitness level match
+      sql`ABS(${avatarAssets.fitness_level_range_min} + ${avatarAssets.fitness_level_range_max}) / 2 - ${fitnessLevel})`,
+      // Then by gender/age range specificity
+      desc(avatarAssets.gender),
+      desc(avatarAssets.age_range)
+    ]
+  });
+  
+  return avatar || null;
+}
+```

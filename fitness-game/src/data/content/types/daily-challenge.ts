@@ -56,7 +56,6 @@ export interface DailyChallenge extends BaseContent {
   challenge_rewards?: {
     experience_points: number;
     streak_bonus: number;
-    special_achievements: string[];
     unlock_content: string[];
     social_recognition: string[];
   };

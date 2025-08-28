@@ -15,6 +15,7 @@ export interface KnowledgeBase extends BaseContent {
   sort_order: number;
   created_at: string;
   updated_at: string;
+  // @TODO: Add affiliate links
   
   // Extended fields for content management
   content_tags?: ContentTag[];

@@ -37,9 +37,7 @@ export class ContentLoader {
         KnowledgeBase: await this.loadContentType('KnowledgeBase'),
         PassageSet: await this.loadContentType('PassageSet'),
         StreakType: await this.loadContentType('StreakType'),
-        UserState: await this.loadContentType('UserState'),
         AvatarAsset: await this.loadContentType('AvatarAsset'),
-        Achievement: await this.loadContentType('Achievement'),
         DailyChallenge: await this.loadContentType('DailyChallenge')
       }
     } catch (error) {
@@ -118,6 +116,7 @@ export class ContentLoader {
   /**
    * Get directory name for content type
    */
+  // @ TODO: Create a map of ContentType to replace CONTENT_DIRECTORIES
   private static getDirectoryName(contentType: ContentType): string {
     const directoryMap: Record<ContentType, string> = {
       ContentCategory: CONTENT_DIRECTORIES.CATEGORIES,
@@ -125,9 +124,7 @@ export class ContentLoader {
       KnowledgeBase: CONTENT_DIRECTORIES.KNOWLEDGE_BASE,
       PassageSet: CONTENT_DIRECTORIES.PASSAGES,
       StreakType: CONTENT_DIRECTORIES.STREAK_TYPES,
-      UserState: CONTENT_DIRECTORIES.USER_STATES,
       AvatarAsset: CONTENT_DIRECTORIES.AVATAR_ASSETS,
-      Achievement: CONTENT_DIRECTORIES.ACHIEVEMENTS,
       DailyChallenge: CONTENT_DIRECTORIES.DAILY_CHALLENGES
     };
 

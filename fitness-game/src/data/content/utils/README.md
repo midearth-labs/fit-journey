@@ -1,81 +1,81 @@
-# Content Management System - DAO Architecture
+# Content Management Utilities
 
-## Overview
+This directory contains utility classes and helpers for the Content Management System.
 
-This directory contains the refactored content management system using a DAO (Data Access Object) pattern. The new architecture provides better type safety, separation of concerns, and maintainability.
+## DAO Classes
 
-## Architecture
+The Data Access Object (DAO) pattern is used to provide a consistent interface for accessing different content types:
 
-### Base Classes
+- **`ContentCategoryDAO`** - Content categories with filtering and sorting
+- **`QuestionDAO`** - Questions with category and difficulty filtering
+- **`KnowledgeBaseDAO`** - Knowledge base articles with search capabilities
+- **`PassageSetDAO`** - Reading passages with category filtering
+- **`AvatarAssetDAO`** - Avatar visual assets with demographic filtering
+- **`StreakTypeDAO`** - Habit tracking categories with progression logic
+- **`DailyChallengeDAO`** - Daily challenges with difficulty distribution
 
-- **`BaseContentDAO<T>`** - Abstract base class with common functionality:
-  - Caching with TTL
-  - Basic CRUD operations (getAll, getById, getByIds, getCount, exists)
-  - Random selection and shuffling utilities
-  - Cache management
+## Base Classes
 
-- **`BaseFilterableDAO<T>`** - Extends base DAO for content types that support filtering:
-  - Category-based filtering
-  - Difficulty level filtering
-  - Active status filtering
-  - Pagination support (limit/offset)
+- **`BaseContentDAO<T>`** - Abstract base class providing common DAO functionality:
+  - Generic content type support
+  - Caching mechanisms
+  - Filtering and sorting
+  - Error handling
 
-- **`BaseSearchableDAO<T>`** - Extends base DAO for content types that support text search:
-  - Text search across multiple fields
-  - Category-restricted search
-  - Configurable searchable fields
+## Factory Pattern
 
-### Specialized DAOs
+- **`ContentDAOFactory`** - Creates and manages DAO instances for all content types
+  - Centralized DAO creation
+  - Consistent interface across content types
+  - Easy access to all DAOs
 
-Each content type has its own specialized DAO that extends the appropriate base class:
+## Content Loader
 
-- **`ContentCategoryDAO`** - Simple content type, extends `BaseContentDAO`
-- **`QuestionDAO`** - Filterable content, extends `BaseFilterableDAO`
-- **`KnowledgeBaseDAO`** - Both filterable and searchable, extends `BaseFilterableDAO`
-- **`PassageSetDAO`** - Filterable content, extends `BaseFilterableDAO`
-- **`AchievementDAO`** - Filterable content, extends `BaseFilterableDAO`
-- **`UserStateDAO`** - Ordered content, extends `BaseContentDAO`
-- **`AvatarAssetDAO`** - Filterable content, extends `BaseFilterableDAO`
-- **`StreakTypeDAO`** - Ordered content, extends `BaseContentDAO`
-- **`DailyChallengeDAO`** - Day-based content, extends `BaseContentDAO`
+- **`ContentLoader`** - Handles loading and parsing of static content files
+  - Automatic file discovery
+  - JSON parsing and validation
+  - Memory management and caching
 
-### Factory Pattern
+## Usage Examples
 
-- **`ContentDAOFactory`** - Creates and manages DAO instances:
-  - Automatic DAO instantiation based on available content
-  - Type-safe DAO retrieval
-  - Cache management across all DAOs
-  - Statistics and health monitoring
-
-### Refactored Components
-
-- **`ContentDistributor`** - Now orchestrates multiple DAOs instead of handling all content types generically
-- **`ContentManagementSystem`** - Updated to work with the new DAO system
-
-## Benefits
-
-1. **Type Safety** - Each DAO knows exactly what type it's working with
-2. **Single Responsibility** - Each DAO handles only its content type
-3. **Code Reuse** - Common functionality in base classes
-4. **Easy Extension** - New content types just need a new DAO
-5. **Clean Interfaces** - Each DAO exposes only relevant methods
-6. **Better Testing** - Can test each DAO independently
-7. **Maintainability** - Clear separation of concerns
-
-## Usage Example
-
+### Creating DAOs
 ```typescript
-// Get a specific DAO
-const questionDAO = daoFactory.getDAO('Question') as QuestionDAO;
+import { ContentDAOFactory } from './dao-factory';
 
-// Use DAO-specific methods
-const easyQuestions = questionDAO.getByDifficulty(1, { categoryId: 'fitness' });
-const randomQuestions = questionDAO.getRandom(5);
-
-// Search functionality (if supported)
-const searchResults = questionDAO.search('exercise', { limit: 10 });
+const factory = new ContentDAOFactory(content);
+const questionDAO = factory.getDAO('Question');
+const categoryDAO = factory.getDAO('ContentCategory');
 ```
 
-## Migration Notes
+### Using Base DAO Features
+```typescript
+import { QuestionDAO } from './daos/question-dao';
 
-The refactoring maintains backward compatibility with the existing `ContentManagementSystem` interface while providing a more robust and maintainable internal architecture.
+const questionDAO = new QuestionDAO(content.Question);
+
+// Get all questions
+const allQuestions = questionDAO.getAll();
+
+// Get questions by category
+const equipmentQuestions = questionDAO.getByCategory('equipment');
+
+// Get questions by difficulty
+const easyQuestions = questionDAO.getByDifficulty(1);
+```
+
+### Content Loading
+```typescript
+import { ContentLoader } from './content-loader';
+
+const loader = await ContentLoader.initialize();
+const questions = loader.getContentList('Question');
+const categories = loader.getContentMap('ContentCategory');
+```
+
+## Architecture Benefits
+
+- **Separation of Concerns**: Each DAO handles a specific content type
+- **Code Reuse**: Common functionality in base classes
+- **Type Safety**: Full TypeScript support throughout
+- **Performance**: Efficient caching and indexing
+- **Maintainability**: Clear structure and easy to extend

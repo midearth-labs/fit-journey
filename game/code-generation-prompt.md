@@ -230,3 +230,23 @@ The system is now ready for:
 6. **Reliability**: Comprehensive error handling and recovery mechanisms
 
 The Content Management System foundation is now complete and provides a robust, scalable, and maintainable solution for managing fitness knowledge content. The system successfully validates content integrity, provides fast access to content, and integrates seamlessly with the build process.
+
+
+
+
+## Partial Change Code generation
+## Prompt 1
+```
+Look through the existing codebase and design docs and remove the "Achievement" feature and UserState. There will be no more Achievement feature in this phase, and also, the Avatar progression will just be calculated simply within code as a progression based on an algorithm that outputs a fitness level of -5 to +5 based on user StreakLog and GameSession history.
+```
+
+## Prompt 2
+```
+Look also into the @design/ directory for more changes you need to make. Pay special attention to @architecture.md  and @implementation-roadmap.md and @entities.mdand @requirements.md and @requirements.tests.md  
+```
+
+## Prompt 3
+```
+Add FitnessLevel calculation and storage related tasks to @implementation-roadmap.md , 
+Update the AvatarAsset entity and the calculateFitnessLevel algorithm to match reality based on the version in @entities.md 
+```
