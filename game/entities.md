@@ -123,9 +123,13 @@
 {
   id: string, // "workout_completed", "ate_clean", "slept_well", "hydrated", "quiz_completed", "quiz_passed", "all"
   title: string,
+  habit: string,
   description: string,
   sort_order: number, // for display ordering
   created_at: timestamp,
+  updated_at: timestamp,
+  health_benefits: string[];  // a list of 3 to 5 relevant health benefits to streak consistency
+  motivational_messages: [{      short: string;      medium: string;      long: string;   }]
 }
 ```
 

@@ -1,29 +1,5 @@
 // Content Management Constants and Enums
 
-// Streak Types (based on entities.md)
-export const STREAK_TYPES = {
-  WORKOUT_COMPLETED: 'workout_completed',
-  ATE_CLEAN: 'ate_clean',
-  SLEPT_WELL: 'slept_well',
-  HYDRATED: 'hydrated',
-  QUIZ_COMPLETED: 'quiz_completed',
-  QUIZ_PASSED: 'quiz_passed',
-  ALL: 'all'
-} as const;
-
-export type StreakTypeId = typeof STREAK_TYPES[keyof typeof STREAK_TYPES];
-
-// Streak Type Names
-export const STREAK_TYPE_NAMES: Record<StreakTypeId, string> = {
-  [STREAK_TYPES.WORKOUT_COMPLETED]: 'Daily Workout',
-  [STREAK_TYPES.ATE_CLEAN]: 'Clean Eating',
-  [STREAK_TYPES.SLEPT_WELL]: 'Quality Sleep',
-  [STREAK_TYPES.HYDRATED]: 'Hydration Goal',
-  [STREAK_TYPES.QUIZ_COMPLETED]: 'Daily Quiz Completed',
-  [STREAK_TYPES.QUIZ_PASSED]: 'Daily Quiz Passed',
-  [STREAK_TYPES.ALL]: 'Perfect Day'
-};
-
 // User States (based on requirements.md R1.2)
 export const USER_STATES = {
   AVERAGE: 'average',
