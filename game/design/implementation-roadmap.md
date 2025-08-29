@@ -125,279 +125,104 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 - [X] **2.7.2** Implement content validation in CI/CD pipeline
 - [X] **2.7.3** Add content validation error reporting
 
-### 2.8 AI Content Generation System Implementation
+### 2.8 AI Content Generation System Setup
 **Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
-**Dependencies**: 2.1.1-2.1.5, 2.2.1-2.2.5
+**Dependencies**: 2.1.1-2.1.5
 
 - [ ] **2.8.1** Set up Google Gemini API integration and configuration
-- [ ] **2.8.2** Create content generation orchestration system
-- [ ] **2.8.3** Implement content generation error handling and retry logic
-- [ ] **2.8.4** Add content generation progress tracking and monitoring
-- [ ] **2.8.5** Create content generation validation and quality checks
-- [ ] **2.8.6** Implement content generation rollback and recovery mechanisms
+- [ ] **2.8.2** Create base Gemini client wrapper with error handling and retry logic
+- [ ] **2.8.3** Set up content generation temporary output directory structure for content review
 
-### 2.9 Content Generation Prompt Engineering
+### 2.9 LLM Prompt Engineering
 **Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
-**Dependencies**: 2.1.1-2.1.5, 2.8.1-2.8.6
+**Dependencies**: 2.8.1-2.8.3
 
-- [ ] **2.9.1** Design ContentCategory generation prompts for fitness knowledge categories
-  - [ ] **2.9.1.1** Create prompt for equipment identification category
-  - [ ] **2.9.1.2** Design prompt for form check and technique category
-  - [ ] **2.9.1.3** Create prompt for nutrition myths vs facts category
-  - [ ] **2.9.1.4** Design prompt for injury prevention category
-  - [ ] **2.9.1.5** Create prompt for body mechanics category
-  - [ ] **2.9.1.6** Design prompt for foundational movements category
-  - [ ] **2.9.1.7** Create prompt for exercise identification category
+- [ ] **2.9.1** Design Content Category generation prompt
+  - Include questions for user clarification (e.g., "What are the categories?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
-- [ ] **2.9.2** Create Question generation prompts for standalone multiple-choice questions
-  - [ ] **2.9.2.1** Design prompt for easy difficulty questions (1-2 scale)
-  - [ ] **2.9.2.2** Create prompt for medium difficulty questions (3-4 scale)
-  - [ ] **2.9.2.3** Design prompt for hard difficulty questions (5 scale)
-  - [ ] **2.9.2.4** Create prompt for question explanation generation
-  - [ ] **2.9.2.5** Design prompt for hint generation (2-3 hints per question)
+- [ ] **2.9.2** Design AvatarAsset generation prompt (fitness level ranges)
+  - Include questions for user clarification (e.g., "What age/gender combinations?", "What fitness states?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
-- [ ] **2.9.3** Design PassageSet generation prompts for fitness-related reading passages
-  - [ ] **2.9.3.1** Create prompt for passage title and content generation
-  - [ ] **2.9.3.2** Design prompt for passage difficulty assessment
-  - [ ] **2.9.3.3** Create prompt for estimated reading time calculation
-  - [ ] **2.9.3.4** Design prompt for passage-based question generation
-  - [ ] **2.9.3.5** Create prompt for question count validation
+- [ ] **2.9.3** Design StreakType generation prompt (habit categories)
+  - Include questions for user clarification (e.g., "What habit categories?", "What descriptions?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
-- [ ] **2.9.4** Create KnowledgeBase generation prompts for educational fitness content
-  - [ ] **2.9.4.1** Design prompt for knowledge base title and description
-  - [ ] **2.9.2.2** Create prompt for tag generation and categorization
-  - [ ] **2.9.4.3** Design prompt for related knowledge base identification
-  - [ ] **2.9.4.4** Create prompt for learn more links generation
-  - [ ] **2.9.4.5** Design prompt for content sorting and organization
+- [ ] **2.9.4** Design KnowledgeBase generation prompt with content category context
+  - Include full ContentCategory definition to help LLM understand context
+  - Specify multi-part output structure: {Topic Part 1}, {Topic Part 2}, etc. in natural learning progression order
+  - Include questions for user clarification (e.g., "How detailed should articles be?", "What tone/style?", "How many parts per topic?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
-- [ ] **2.9.5** Design DailyChallenge generation prompts for structured daily quizzes
-  - [ ] **2.9.5.1** Create prompt for challenge theme generation (e.g., "Muscle Monday")
-  - [ ] **2.9.5.2** Design prompt for challenge structure creation (standalone + passage-based mix)
-  - [ ] **2.9.5.3** Create prompt for difficulty distribution (3 easy, 4 medium, 3 hard)
-  - [ ] **2.9.5.4** Design prompt for educational progression throughout challenge
-  - [ ] **2.9.5.5** Create prompt for total question count validation
+- [ ] **2.9.5** Design PassageSet generation prompt with knowledge base and content category context
+  - Include full ContentCategory definition and KnowledgeBase parts for context
+  - Specify that passages should align with specific KnowledgeBase parts (primary dependency)
+  - Include secondary context from previous KnowledgeBase parts for continuity
+  - Specify 3-5 questions per passage
+  - Include questions for user clarification (e.g., "How many passages per KnowledgeBase part?", "What reading level?", "How should passages relate to KnowledgeBase progression?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
+- [ ] **2.9.6** Design standalone Question generation prompt with knowledge base and content category context
+  - Include full ContentCategory definition and KnowledgeBase parts for context
+  - Specify that questions should be linked to specific KnowledgeBase parts (primary dependency)
+  - Include secondary context from content category definition
+  - Specify difficulty distribution (3 easy, 4 medium, 3 hard per category)
+  - Include questions for user clarification (e.g., "How many questions per KnowledgeBase part?", "What difficulty distribution?", "How should questions test KnowledgeBase understanding?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
+- [ ] **2.9.7** Design passage-based Question generation prompt with passage, knowledge base, and content category context
+  - Include associated Passage definition, KnowledgeBase parts, and ContentCategory definition for context
+  - Specify that questions should test comprehension of the specific passage (primary dependency)
+  - Include secondary context from related KnowledgeBase parts
+  - Include tertiary context from content category definition
+  - Specify 3-5 questions per passage
+  - Include questions for user clarification (e.g., "How should questions test passage comprehension?", "What balance of factual vs. inferential questions?", "How should questions relate to KnowledgeBase learning objectives?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
+- [ ] **2.9.8** Design DailyChallenge generation prompt with question/passage references
+  - Include sample Questions and Passages to help LLM understand available content
+  - Specify difficulty distribution (3 easy, 4 medium, 3 hard)
+  - Include questions for user clarification (e.g., "How many challenges?", "What themes?", "How should challenges balance different content types?")
+  - Instruct the model via the Prompt to use the JSON response structure to match the entity type structure
 
-
-
-
-
-
-
-
-
-
-
-- [ ] **2.9.8** Create StreakType generation prompts for habit tracking categories
-  - [ ] **2.9.8.1** Design prompt for workout_completed streak type
-  - [ ] **2.9.8.2** Create prompt for ate_clean streak type
-  - [ ] **2.9.8.3** Design prompt for slept_well streak type
-  - [ ] **2.9.8.4** Create prompt for hydrated streak type
-  - [ ] **2.9.8.5** Design prompt for quiz_completed and quiz_passed streak types
-  - [ ] **2.9.8.6** Create prompt for "all" perfect day streak type
-
-- [ ] **2.9.9** Design AvatarAsset image generation prompts for visual assets
-  - [ ] **2.9.9.1** Create prompt for male_teen avatar with fit-healthy state
-  - [ ] **2.9.9.2** Design prompt for female_young-adult avatar with fit-healthy state
-  - [ ] **2.9.9.3** Create prompt for male_teen avatar with lean-tired state
-  - [ ] **2.9.9.4** Design prompt for female_young-adult avatar with lean-tired state
-  - [ ] **2.9.9.5** Create prompt for male_teen avatar with injured-recovering state
-  - [ ] **2.9.9.6** Design prompt for female_young-adult avatar with injured-recovering state
-  - [ ] **2.9.9.7** Create prompt for male_teen avatar with fit-injured state
-  - [ ] **2.9.9.8** Design prompt for female_young-adult avatar with fit-injured state
-  - [ ] **2.9.9.9** Create prompt for generic average state avatars
-
-- [ ] **2.9.10** Create content relationship and cross-reference prompts
-  - [ ] **2.9.10.1** Design prompt for question-to-category relationship validation
-  - [ ] **2.9.10.2** Create prompt for passage-to-question relationship validation
-  - [ ] **2.9.10.3** Design prompt for knowledge-base-to-question alignment
-
-
-### 2.10 AI Content Generation Scripts
+### 2.10 Content Generation Scripts
 **Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
-**Dependencies**: 2.8.1-2.8.6, 2.9.1-2.9.10
+**Dependencies**: 2.8.1-2.8.3, 2.9.1-2.9.8
 
-- [ ] **2.10.1** Implement ContentCategory generation script using Gemini API
-  - [ ] **2.10.1.1** Create Gemini API client configuration and authentication
-  - [ ] **2.10.1.2** Implement content category prompt execution
-  - [ ] **2.10.1.3** Add JSON response parsing and validation
-  - [ ] **2.10.1.4** Create content category file saving logic
-  - [ ] **2.10.1.5** Add error handling and retry mechanisms
+- [ ] **2.10.1** Create ContentCategory generation script
+- [ ] **2.10.2** Create AvatarAsset generation script
+- [ ] **2.10.3** Create StreakType generation script
+- [ ] **2.10.4** Create KnowledgeBase generation script (with content category context)
+- [ ] **2.10.5** Create PassageSet generation script (with knowledge base and content category context)
+- [ ] **2.10.6** Create standalone Question generation script (with knowledge base and content category context)
+- [ ] **2.10.7** Create passage-based Question generation script (with passage, knowledge base, and content category context)
+- [ ] **2.10.8** Create DailyChallenge generation script (with question/passage references)
 
-- [ ] **2.10.2** Create Question generation script with difficulty distribution (3 easy, 4 medium, 3 hard)
-  - [ ] **2.10.2.1** Implement easy difficulty question generation (1-2 scale)
-  - [ ] **2.10.2.2** Create medium difficulty question generation (3-4 scale)
-  - [ ] **2.10.2.3** Implement hard difficulty question generation (5 scale)
-  - [ ] **2.10.2.4** Add question explanation and hint generation
-  - [ ] **2.10.2.5** Create question file organization by category and difficulty
-  - [ ] **2.10.2.6** Implement question count validation and distribution checking
-
-- [ ] **2.10.3** Implement PassageSet generation script with associated question creation
-  - [ ] **2.10.3.1** Create passage content generation using Gemini API
-  - [ ] **2.10.3.2** Implement passage difficulty assessment and reading time calculation
-  - [ ] **2.10.3.3** Add passage-based question generation (3-5 questions per passage)
-  - [ ] **2.10.3.4** Create question count validation against passage.question_count
-  - [ ] **2.10.3.5** Implement passage and question relationship validation
-  - [ ] **2.10.3.6** Add passage file saving with associated questions
-
-- [ ] **2.10.4** Create KnowledgeBase generation script for educational content
-  - [ ] **2.10.4.1** Implement knowledge base content generation using Gemini API
-  - [ ] **2.10.4.2** Add tag generation and categorization logic
-  - [ ] **2.10.4.3** Create related knowledge base identification
-  - [ ] **2.10.4.4** Implement learn more links generation
-  - [ ] **2.10.4.5** Add content sorting and organization by category
-  - [ ] **2.10.4.6** Create knowledge base file saving with metadata
-
-- [ ] **2.10.5** Implement DailyChallenge generation script with challenge structure
-  - [ ] **2.10.5.1** Create challenge theme generation (e.g., "Muscle Monday", "Technique Tuesday")
-  - [ ] **2.10.5.2** Implement challenge structure creation with standalone and passage-based mix
-  - [ ] **2.10.5.3** Add difficulty distribution enforcement (3 easy, 4 medium, 3 hard)
-  - [ ] **2.10.5.4** Create educational progression throughout challenge series
-  - [ ] **2.10.5.5** Implement question and passage reference validation
-  - [ ] **2.10.5.6** Add total question count validation against challenge_structure
-  - [ ] **2.10.5.7** Create daily challenge file saving with complete structure
-
-
-
-- [ ] **2.10.8** Create StreakType generation script for habit categories
-  - [ ] **2.10.8.1** Implement workout_completed streak type definition
-  - [ ] **2.10.8.2** Create ate_clean streak type definition
-  - [ ] **2.10.8.3** Add slept_well streak type definition
-  - [ ] **2.10.8.4** Implement hydrated streak type definition
-  - [ ] **2.10.8.5** Create quiz_completed and quiz_passed streak types
-  - [ ] **2.10.8.6** Add "all" perfect day streak type definition
-  - [ ] **2.10.8.7** Implement streak type file saving with sort order
-
-- [ ] **2.10.9** Implement AvatarAsset image generation script using Gemini Vision
-  - [ ] **2.10.9.1** Create Gemini Vision API client for image generation
-  - [ ] **2.10.9.2** Implement male_teen avatar generation for all states
-  - [ ] **2.10.9.3** Add female_young-adult avatar generation for all states
-  - [ ] **2.10.9.4** Create generic average state avatar generation
-  - [ ] **2.10.9.5** Implement image quality and style consistency
-  - [ ] **2.10.9.6** Add image file saving and metadata generation
-  - [ ] **2.10.9.7** Create avatar asset file with image_url references
-
-- [ ] **2.10.10** Create content validation and relationship checking scripts
-  - [ ] **2.10.10.1** Implement question-to-category relationship validation
-  - [ ] **2.10.10.2** Add passage-to-question relationship validation
-  - [ ] **2.10.10.3** Create knowledge-base-to-question alignment checking
-  - [ ] **2.10.10.4** Implement achievement-to-streak relationship validation
-  - [ ] **2.10.10.5** Add user-state-to-avatar relationship validation
-  - [ ] **2.10.10.6** Create cross-reference integrity checking
-  - [ ] **2.10.10.7** Implement content validation reporting and error logging
-
-### 2.11 Content Generation Pipeline & Automation
+### 2.11 Content Generation Execution
 **Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
-**Dependencies**: 2.10.1-2.10.10
+**Dependencies**: 2.10.1-2.10.8
 
-- [ ] **2.11.1** Implement batch content generation pipeline
-  - [ ] **2.11.1.1** Create content generation orchestration system
-  - [ ] **2.11.1.2** Implement parallel content generation for different types
-  - [ ] **2.11.1.3** Add dependency management between content types
-  - [ ] **2.11.1.4** Create content generation progress tracking
-  - [ ] **2.11.1.5** Implement batch failure handling and recovery
+- [ ] **2.11.1** Execute ContentCategory generation (7 categories)
+- [ ] **2.11.2** Execute AvatarAsset generation (visual assets with fitness level ranges)
+- [ ] **2.11.3** Execute StreakType generation (habit categories)
+- [ ] **2.11.4** Execute KnowledgeBase generation (educational content per category with multi-part structure)
+- [ ] **2.11.5** Execute PassageSet generation (20+ per category, aligned with KnowledgeBase parts)
+- [ ] **2.11.6** Execute standalone Question generation (50+ per category, linked to KnowledgeBase parts)
+- [ ] **2.11.7** Execute passage-based Question generation (3-5 questions per passage)
+- [ ] **2.11.8** Execute DailyChallenge generation (30+ challenges with proper structure)
 
-- [ ] **2.11.2** Create content generation scheduling and automation
-  - [ ] **2.11.2.1** Implement cron-based scheduling for content updates
-  - [ ] **2.11.2.2** Add manual trigger capabilities for content regeneration
-  - [ ] **2.11.2.3** Create content generation queue management
-  - [ ] **2.11.2.4** Implement content generation priority system
-  - [ ] **2.11.2.5** Add content generation notification system
+### 2.12 Content Validation & Integration
+**Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation), CR2
+**Dependencies**: 2.11.1-2.11.8
 
-- [ ] **2.11.3** Add content generation quality assurance checks
-  - [ ] **2.11.3.1** Implement content validation before file saving
-  - [ ] **2.11.3.2** Create content quality scoring and assessment
-  - [ ] **2.11.3.3** Add content duplication detection and prevention
-  - [ ] **2.11.3.4** Implement content consistency checking across types
-  - [ ] **2.11.3.5** Create content quality reporting and metrics
-
-- [ ] **2.11.4** Implement content generation performance monitoring
-  - [ ] **2.11.4.1** Create content generation timing metrics
-  - [ ] **2.11.4.2** Add API rate limiting and quota management
-  - [ ] **2.11.4.3** Implement content generation cost tracking
-  - [ ] **2.11.4.4** Create performance optimization recommendations
-  - [ ] **2.11.4.5** Add content generation performance alerts
-
-- [ ] **2.11.5** Create content generation rollback and versioning
-  - [ ] **2.11.5.1** Implement content version control system
-  - [ ] **2.11.5.2** Add content rollback capabilities for failed generations
-  - [ ] **2.11.5.3** Create content backup and restore procedures
-  - [ ] **2.11.5.4** Implement content change tracking and history
-  - [ ] **2.11.5.5** Add content rollback validation and testing
-
-- [ ] **2.11.6** Add content generation audit logging and reporting
-  - [ ] **2.11.6.1** Create comprehensive audit logging system
-  - [ ] **2.11.6.2** Implement content generation success/failure reporting
-  - [ ] **2.11.6.3** Add content quality metrics and trends
-  - [ ] **2.11.6.4** Create content generation cost analysis reports
-  - [ ] **2.11.6.5** Implement content generation performance dashboards
-
-### 2.12 Content Generation Execution & File Management
-**Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
-**Dependencies**: 2.8.1-2.8.6, 2.9.1-2.9.10, 2.10.1-2.10.10, 2.11.1-2.11.6
-
-- [ ] **2.12.1** Execute ContentCategory generation and file creation
-  - [ ] **2.12.1.1** Run ContentCategory generation script with all 7 fitness categories
-  - [ ] **2.12.1.2** Validate generated content against schema requirements
-  - [ ] **2.12.1.3** Save ContentCategory.json file to content directory
-  - [ ] **2.12.1.4** Verify file structure and content integrity
-
-- [ ] **2.12.2** Execute Question generation and file creation
-  - [ ] **2.12.2.1** Run Question generation script for each content category
-  - [ ] **2.12.2.2** Generate 50+ questions per category with difficulty distribution
-  - [ ] **2.12.2.3** Validate question relationships and cross-references
-  - [ ] **2.12.2.4** Save Question files organized by category (e.g., equipment.json, form.json)
-  - [ ] **2.12.2.5** Verify question count and difficulty distribution compliance
-
-- [ ] **2.12.3** Execute PassageSet generation and file creation
-  - [ ] **2.12.3.1** Run PassageSet generation script for each content category
-  - [ ] **2.12.3.2** Generate 20+ passage sets with 3-5 questions each
-  - [ ] **2.12.3.3** Validate passage-question relationships and question counts
-  - [ ] **2.12.3.4** Save PassageSet files organized by category
-  - [ ] **2.12.3.5** Verify passage structure and question alignment
-
-- [ ] **2.12.4** Execute KnowledgeBase generation and file creation
-  - [ ] **2.12.4.1** Run KnowledgeBase generation script for educational content
-  - [ ] **2.12.4.2** Generate comprehensive knowledge base articles for each category
-  - [ ] **2.12.4.3** Validate knowledge base relationships and cross-references
-  - [ ] **2.12.4.4** Save KnowledgeBase files organized by category
-  - [ ] **2.12.4.5** Verify knowledge base content quality and alignment
-
-- [ ] **2.12.5** Execute DailyChallenge generation and file creation
-  - [ ] **2.12.5.1** Run DailyChallenge generation script for 30+ daily challenges
-  - [ ] **2.12.5.2** Generate challenges with proper difficulty distribution (3 easy, 4 medium, 3 hard)
-  - [ ] **2.12.5.3** Validate challenge structure and question/passage references
-  - [ ] **2.12.5.4** Save DailyChallenge.json file with complete challenge series
-  - [ ] **2.12.5.5** Verify challenge progression and educational coherence
-
-
-
-- [ ] **2.12.8** Execute StreakType generation and file creation
-  - [ ] **2.12.8.1** Run StreakType generation script for all habit categories
-  - [ ] **2.12.8.2** Generate streak types with proper descriptions and sort order
-  - [ ] **2.12.8.3** Validate streak type definitions and categorization
-  - [ ] **2.12.8.4** Save StreakType.json file with all streak types
-  - [ ] **2.12.8.5** Verify streak type organization and descriptions
-
-- [ ] **2.12.9** Execute AvatarAsset generation and file creation
-  - [ ] **2.12.9.1** Run AvatarAsset image generation script using Gemini Vision
-  - [ ] **2.12.9.2** Generate avatar images for all state/gender/age combinations
-  - [ ] **2.12.9.3** Save avatar images to appropriate storage location
-  - [ ] **2.12.9.4** Create AvatarAsset.json file with image references
-  - [ ] **2.12.9.5** Verify avatar asset relationships and image accessibility
-
-- [ ] **2.12.10** Execute content validation and relationship checking
-  - [ ] **2.12.10.1** Run comprehensive content validation scripts
-  - [ ] **2.12.10.2** Validate all cross-references and relationships
-  - [ ] **2.12.10.3** Check content integrity and consistency
-  - [ ] **2.12.10.4** Generate content validation report
-  - [ ] **2.12.10.5** Fix any validation errors and regenerate content if needed
+- [ ] **2.12.1** Run build-time content validation to ensure all generated content is valid
+- [ ] **2.12.2** Verify content relationships and cross-references are maintained
+- [ ] **2.12.3** Fix any validation errors and regenerate content if needed
 
 ### 2.13 Content Management System Integration
 **Requirements**: R1.2 (Static Content Creation), R1.3 (LLM Content Generation), R1.4 (DailyChallenge Creation)
-**Dependencies**: 2.3.1-2.3.6, 2.4.1-2.4.6, 2.5.1-2.5.6, 2.6.1-2.6.5, 2.8.1-2.8.6, 2.9.1-2.9.10, 2.10.1-2.10.10, 2.11.1-2.11.6, 2.12.1-2.12.10
+**Dependencies**: 2.3.1-2.3.6, 2.4.1-2.4.6, 2.5.1-2.5.6, 2.6.1-2.6.5, 2.8.1-2.8.3, 2.9.1-2.9.8, 2.10.1-2.10.8, 2.11.1-2.11.8, 2.12.1-2.12.3
 
 - [X] **2.13.1** Create Content Management System main class
 - [X] **2.13.2** Implement system initialization and startup
@@ -726,20 +551,21 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 The roadmap now includes comprehensive AI content generation using Google Gemini for:
 
 1. **ContentCategory Generation** (7 fitness categories)
-2. **Question Generation** (50+ questions per category with difficulty distribution)
-3. **PassageSet Generation** (20+ passages with 3-5 questions each)
-4. **KnowledgeBase Generation** (educational content for each category)
-5. **DailyChallenge Generation** (30+ daily challenges with proper structure)
-6. **StreakType Generation** (habit tracking categories)
-7. **AvatarAsset Generation** (visual assets using Gemini Vision with fitness level ranges)
+2. **AvatarAsset Generation** (visual assets using Gemini Vision with fitness level ranges)
+3. **StreakType Generation** (habit tracking categories)
+4. **KnowledgeBase Generation** (educational content for each category with multi-part structure)
+5. **PassageSet Generation** (20+ passages aligned with KnowledgeBase parts)
+6. **Standalone Question Generation** (50+ questions per category linked to KnowledgeBase parts)
+7. **Passage-based Question Generation** (3-5 questions per passage)
+8. **DailyChallenge Generation** (30+ daily challenges with proper structure)
 
 ### AI Content Generation Phases
 
 - **Phase 2.8**: AI Content Generation System Setup
-- **Phase 2.9**: Prompt Engineering for All Content Types
-- **Phase 2.10**: AI Content Generation Scripts Implementation
-- **Phase 2.11**: Content Generation Pipeline & Automation
-- **Phase 2.12**: Content Generation Execution & File Management
+- **Phase 2.9**: LLM Prompt Engineering for All Content Types
+- **Phase 2.10**: Content Generation Scripts Implementation
+- **Phase 2.11**: Content Generation Execution & File Management
+- **Phase 2.12**: Content Validation & Integration
 
 ### Content Generation Requirements Met
 
@@ -748,4 +574,27 @@ The roadmap now includes comprehensive AI content generation using Google Gemini
 - **R1.4**: DailyChallenge Creation ✓
 - **CR2**: Data Validation at Build Time ✓
 
-This roadmap provides a comprehensive path to implement both the Content Management System and Game Session Engine components while ensuring all requirements are met and quality standards are maintained. The AI content generation tasks ensure that all required static content is created using Google Gemini before the system goes live.
+### Content Generation Order & Dependencies
+
+The generation follows this logical order:
+1. **ContentCategory** (independent)
+2. **AvatarAsset** (independent)
+3. **StreakType** (independent)
+4. **KnowledgeBase** (depends on ContentCategory for context)
+5. **PassageSet** (depends on KnowledgeBase parts primarily, previous KnowledgeBase parts secondarily, ContentCategory tertiarily)
+6. **Standalone Questions** (depends on KnowledgeBase parts primarily, ContentCategory secondarily)
+7. **Passage-based Questions** (depends on associated Passage primarily, KnowledgeBase parts secondarily, ContentCategory tertiarily)
+8. **DailyChallenge** (depends on Questions and Passages)
+
+### LLM Prompt Structure
+
+Each prompt will include:
+- Clear entity definition and requirements
+- Primary dependency context (e.g., KnowledgeBase parts for Passages)
+- Secondary dependency context (e.g., previous KnowledgeBase parts for continuity)
+- Tertiary dependency context (e.g., ContentCategory definition for overall context)
+- Expected response structure (JSON schema)
+- Example output format
+- Questions for user clarification (e.g., "How many parts per topic?", "How should passages relate to KnowledgeBase progression?")
+
+This approach ensures proper content dependencies are maintained while generating comprehensive, interconnected fitness content that follows natural learning progression.

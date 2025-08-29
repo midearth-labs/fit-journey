@@ -6,6 +6,7 @@ import { BaseContentSchema, ImageSchema } from './common';
 
 export const PassageSetSchema = BaseContentSchema.extend({
   content_category_id: z.string(),
+  knowledge_base_id: z.string(),
   landing_image: ImageSchema,
   title: z.string(),
   passage_text: z.string(),

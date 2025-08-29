@@ -144,149 +144,24 @@ Error Conditions: Challenge not found, invalid day number
 ## Data Design
 
 ### Data Models
-**ContentCategory** (Static Content)
-```typescript
-interface ContentCategory {
-  id: string;
-  name: string;
-  description: string;
-  icon_name: string;
-  is_active: boolean;
-  sort_order: number;
-  created_at: string;
-}
-```
-
-**Question** (Static Content)
-```typescript
-interface Question {
-  id: string;
-  content_category_id: string;
-  knowledge_base_id: string;
-  question_text: string;
-  question_type: 'multiple_choice' | 'passage_based' | 'true_false';
-  options: string[];
-  correct_answer_index: number;
-  explanation: string;
-  hints: string[];
-  difficulty_level: number;
-  image_url?: string;
-  passage_set_id?: string;
-  is_standalone: boolean;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-  tags: string[];
-}
-```
-
-**KnowledgeBase** (Static Content)
-```typescript
-interface KnowledgeBase {
-  id: string;
-  content_category_id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  related_knowledge_base_ids: string[];
-  learn_more_links: LearnMoreLink[];
-  is_active: boolean;
-  sort_order: number;
-  created_at: string;
-  updated_at: string;
-}
-```
-
-**PassageSet** (Static Content)
-```typescript
-interface PassageSet {
-  id: string;
-  content_category_id: string;
-  title: string;
-  passage_text: string;
-  difficulty_level: number;
-  estimated_read_time_minutes: number;
-  question_count: number;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-  tags: string[];
-}
-```
-
-**StreakType** (Static Content)
-```typescript
-interface StreakType {
-  id: string;
-  title: string;
-  description: string;
-  sort_order: number;
-  created_at: string;
-}
-```
-
-**UserState** (Static Content)
-```typescript
-interface UserState {
-  id: string;
-  unlock_condition: UnlockCondition;
-  eval_order: number;
-  created_at: string;
-  updated_at: string;
-}
-```
-
-**AvatarAsset** (Static Content)
-```typescript
-interface AvatarAsset {
-  id: string;
-  state_id: string;
-  gender: string;
-  age_range: string;
-  image_url: string;
-  created_at: string;
-  updated_at: string;
-}
-```
-
-**Achievement** (Static Content)
-```typescript
-interface Achievement {
-  id: string;
-  name: string;
-  description: string;
-  icon_name: string;
-  unlock_condition: UnlockCondition;
-  is_hidden: boolean;
-  category?: string;
-  created_at: string;
-}
-```
-
-**DailyChallenge** (Static Content)
-```typescript
-interface DailyChallenge {
-  id: string;
-  content_category_id: string;
-  day: number;
-  challenge_structure: ChallengeStructure[];
-  total_questions: number;
-  theme?: string;
-  created_at: string;
-  updated_at: string;
-}
-```
 
 **Business Rules**: 
 - All content must have valid IDs and required fields
 - Cross-references must point to existing entities
 - Content relationships must maintain referential integrity
 - Content must pass schema validation before distribution
+- KnowledgeBase parts must maintain sequential ordering
+- PassageSet must reference valid KnowledgeBase parts
+- Standalone Questions must reference valid KnowledgeBase parts
+- Passage-based Questions must reference valid PassageSets
+- Content progression must follow natural learning order
 
 **Relationships**: 
 - Questions reference ContentCategory, KnowledgeBase, and optionally PassageSet
-- KnowledgeBase references ContentCategory and related KnowledgeBase entities
-- PassageSet references ContentCategory and associated Questions
+- Standalone Questions reference ContentCategory, KnowledgeBase, and specific KnowledgeBase parts
+- Passage-based Questions reference ContentCategory, KnowledgeBase, and specific PassageSet
+- KnowledgeBase references ContentCategory and related KnowledgeBase entities (multi-part structure)
+- PassageSet references ContentCategory, specific KnowledgeBase parts, and associated Questions
 - AvatarAsset references UserState
 - DailyChallenge references ContentCategory and includes Question/PassageSet references
 
@@ -294,6 +169,30 @@ interface DailyChallenge {
 - Content loaded into memory with Map-based indexing by ID
 - Category-based indexing for efficient content retrieval
 - Tag-based indexing for content discovery
+- KnowledgeBase part-based indexing for content progression tracking
+
+**Content Generation Dependencies & Ordering**:
+The content generation follows a specific dependency order to ensure proper relationships:
+
+1. **Independent Content** (no dependencies):
+   - ContentCategory: Defines fitness categories
+   - AvatarAsset: Visual assets for different fitness levels
+   - StreakType: Habit tracking categories
+
+2. **Primary Dependencies**:
+   - KnowledgeBase: Depends on ContentCategory for context
+   - PassageSet: Depends on KnowledgeBase parts for alignment
+   - Standalone Questions: Depend on KnowledgeBase parts for content
+   - Passage-based Questions: Depend on specific Passages
+
+3. **Secondary Dependencies**:
+   - PassageSet: Also references previous KnowledgeBase parts for continuity
+   - Questions: Also reference ContentCategory for overall context
+
+4. **Tertiary Dependencies**:
+   - All content types reference ContentCategory for categorization
+
+This ordering ensures that content maintains proper referential integrity and follows natural learning progression.
 
 ### Data Access Patterns
 **Content Loading Pattern**

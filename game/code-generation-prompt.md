@@ -641,3 +641,28 @@ Update the AvatarAsset entity and the calculateFitnessLevel algorithm to match r
 ```
 Change the logic for loading JSON files in loadContentType to using the corresponding Zod schemas and zod.parse so I can get runtime validation and static typing out of the box, You might need to declare a new property that maps each ContentType to the appropriate ZodSchema
 ```
+
+## Prompt 5
+```
+The content generation task breakdown is too granular and is not even practical. The simple idea is that for each static entitiy, to have a task that generates an LLM prompt that can be used in Gemini to then generate the actual entity content, a script to execute the LLM prompt with the expected response structure using Gemini AI models, and then save the LLM response into the appropriate directory. That's all.
+
+Of course there are a bit more nuance, like any entity that has content_category_id should include the full definition of the content category to help the LLM think better.  Also, the LLM prompt should include questions with answer placeholders that the user might need to clarify 
+
+Another thing is that the generation of the Knowledge Base, Passages, Questions, and DailyChallenge is linked. And might need to be generated in order.
+
+Propose a more reasonable task breakdown and update the roadmap. 
+```
+
+## Prompt 6
+```
+The prompt generation ordering is wrong, at the top are content category and avatar and streaktypes as it doesn't depend on anything. 
+
+But after then, KnowledgeBase depends on content category, so the full definition of the category is needed in the KnowledgeBase generation prompt. The KnowledgeBase could be a multi-part output i.e. {Topic Part 1}, {Topic Part 2} etc, in a natural learning progression order 
+Similarly, a passage is dependent on Knowledge base part N primarily, and secondarily on  all previous N-1 parts secondarily for context, and tertiarily on the category definition.
+
+Then, standalone questions prompts are also based on it's linked 
+knowledge-base, and secondarily on the category definition.
+Then, passage based questions prompts are based on the associated passage and primary knowledge-base and category definition.
+
+Update the roadmap to reflect this order, also update any relevant @design/ docs
+```

@@ -10,7 +10,11 @@ export const KnowledgeBaseSchema = BaseContentSchema.extend({
   title: z.string(),
   description: z.string(), // markdown content containing image urls etc.
   tags: z.array(z.string()),
-  related_knowledge_base_ids: z.array(z.string()),
+  // @ TODO: Implement all cross-reference checks for all entities
+  related_knowledge_base_ids: z.object({
+    previous: z.string().optional(),
+    next: z.string().optional(),
+  }),
   learn_more_links: z.array(LearnMoreLinkSchema),
   affiliate_links: z.array(AffiliateLinkSchema),
   image_urls: z.array(ImageSchema),
