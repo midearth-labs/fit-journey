@@ -3,20 +3,6 @@
 ## **Project Overview**
 A Duolingo-style fitness, health and wellness learning and quiz app targeting people still deciding if they are interested in fitness and absolute beginners. This is NOT for advanced users. The app features 9 core categories with 1,050 total questions distributed as approximately 140 questions per category.
 
-## **Content Categories Structure**
-9 core categories with the following progression:
-1. **Fitness Foundation & Getting Started** - Essential fitness basics for absolute beginners
-2. **Exercise Fundamentals & Form** - Proper technique and movement patterns
-3. **Equipment & Gym Basics** - Equipment identification and gym navigation
-4. **Nutrition Essentials** - Basic nutrition for fitness support
-5. **Exercise Types & Goal Setting** - Different exercise types and goal-setting strategies
-6. **Body Mechanics & Movement** - How the body moves and functions
-7. **Recovery & Injury Prevention** - Rest, recovery, and injury prevention
-8. **Mindset & Motivation** - Mental tools for fitness success
-9. **Health & Lifestyle Integration** - Connecting fitness to daily life and overall health
-
-Each category contains expanded learning objectives.
-
 ---
 
 # **1. Knowledge Base Articles Design**
@@ -26,7 +12,7 @@ Each category contains expanded learning objectives.
 - **Specific article distribution per category** (6 articles for "Fitness Foundation & Getting Started", 12 for "Nutrition Essentials", 6 for "Recovery & Injury Prevention", 12 for "Health & Lifestyle Integration", 6 for "Mindset & Motivation", 6 for "Body Mechanics & Movement", 6 for "Exercise Types & Goal Setting", 10 for "Equipment & Gym Basics", 6 for "Exercise Fundamentals & Form")
 - **Natural learning progression** within each category that introduces new concepts meaningfully
 - **Articles form a meaningful whole** together when completed
-- **Single-part or multi-part articles** depending on content volume, a single topic might be divided into not more than 3 parts.
+- **Single-part or multi-part articles** depending on content volume, a single topic might be divided into not more than 3 parts. In this case, the title could be "Article Name (Part 1/N)"
 - **Maximum 5-minute reading time** per single article
 
 ## **Journey-Solution Method**
@@ -99,7 +85,7 @@ Create knowledge base articles that follow the natural progression of a beginner
 - **Journey:** Bodyweight basics → DIY equipment → Maximizing free resources
 
 ## **Passage Structure Requirements**
-- **1-minute reading time maximum**
+- **30 seconds reading time maximum**
 - **Linked to specific Knowledge Base articles** (1-2 concepts per passage)
 - **Features 1-3 archetypes** in realistic scenarios
 - **3-5 questions derive from each passage**
@@ -116,6 +102,7 @@ Questions derived from passages should feel natural to the story context and tes
 ---
 
 # **3. Questions Design**
+Think deeply and ensure each question in an article is not too similar to another.
 
 ## **Core Structure Requirements**
 - **Questions per Knowledge Article:** Exactly 15 questions
@@ -187,56 +174,50 @@ Questions derived from passages should feel natural to the story context and tes
 
 ---
 
-# **4. Daily Game Sessions Design**
-
-## **Core Structure Requirements**
-- **Total Sessions:** 84 sessions over 12 weeks (7 sessions per week)
-- **Questions Per Session:** Exactly 15 questions (all questions related to that day's knowledge article)
-- **Session Format:** M standalone questions + Passage 1 (N questions) + Passage 2 (O questions) + etc. where M+N+O = 15
-- **Content Source:** 1 knowledge-base article per session with all linked standalone and passage questions
-
 ## **6-Phase Learning Progression Strategy**
+Use the algorithm described below to assign the day number property to the knowledge-base topics.
 
 ### **Phase 1: Foundation Building**
-- **Categories:** ALL "Fitness Foundation & Getting Started" articles
+- **Categories:** ALL 6 "Fitness Foundation & Getting Started" articles
 - **Purpose:** Essential knowledge base before specialized topics
 - **Goal:** Establish fundamental understanding and confidence
 
 ### **Phase 2: Core Knowledge Introduction**
 - **Categories:** 
-  - ALL "Nutrition Essentials" articles
-  - FIRST HALF of "Exercise Types & Goal Setting" articles
-  - FIRST HALF of "Body Mechanics & Movement" articles
+  - FIRST 6 of "Nutrition Essentials" articles
+  - FIRST 6 of "Health & Lifestyle Integration" articles
+  - FIRST 3 of "Exercise Types & Goal Setting" articles
+  - FIRST 3 of "Body Mechanics & Movement" articles
 - **Focus:** Practical application foundations
 - **Goal:** Build practical knowledge for immediate application
 
 ### **Phase 3: Movement Mastery**
 - **Categories:**
-  - SECOND HALF of "Exercise Types & Goal Setting" articles
-  - SECOND HALF of "Body Mechanics & Movement" articles
-- **Focus:** Advanced movement literacy and goal refinement
-- **Goal:** Develop sophisticated understanding of movement and goal achievement
+  - SECOND 6 of "Nutrition Essentials" articles
+  - SECOND 6 of "Health & Lifestyle Integration" articles
+  - SECOND 3 of "Exercise Types & Goal Setting" articles
+  - SECOND 3 of "Body Mechanics & Movement" articles
+- **Focus:** Advanced nutrition, movement literacy and goal refinement
+- **Goal:** Develop sophisticated understanding of nutrition, movement and goal achievement
 
 ### **Phase 4: Practical Application**
 - **Categories:**
-  - ALL "Equipment & Gym Basics" articles
-  - ALL "Exercise Fundamentals & Form" articles
+  - 10 "Equipment & Gym Basics" articles
+  - 6 "Exercise Fundamentals & Form" articles
 - **Focus:** Hands-on implementation and technique mastery
 - **Goal:** Bridge knowledge to practical gym and exercise application
 
 ### **Phase 5: Integration Foundation**
 - **Categories:**
-  - FIRST HALF of "Recovery & Injury Prevention" articles
-  - FIRST HALF of "Mindset & Motivation" articles
-  - FIRST HALF of "Health & Lifestyle Integration" articles
+  - FIRST 3 of "Recovery & Injury Prevention" articles
+  - FIRST 3 of "Mindset & Motivation" articles
 - **Focus:** Holistic wellness introduction
 - **Goal:** Introduce comprehensive wellness concepts
 
 ### **Phase 6: Mastery & Sustainability**
 - **Categories:**
-  - SECOND HALF of "Recovery & Injury Prevention" articles
-  - SECOND HALF of "Mindset & Motivation" articles
-  - SECOND HALF of "Health & Lifestyle Integration" articles
+  - SECOND 3 of "Recovery & Injury Prevention" articles
+  - SECOND 3 of "Mindset & Motivation" articles
 - **Focus:** Long-term success and lifestyle integration
 - **Goal:** Achieve mastery and sustainable lifestyle integration
 

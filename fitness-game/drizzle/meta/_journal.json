@@ -15,6 +15,13 @@
       "when": 1756431378877,
       "tag": "0001_custom-ddl",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1756548907828,
+      "tag": "0002_numerous_nightmare",
+      "breakpoints": true
     }
   ]
 }
