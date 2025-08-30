@@ -1,15 +1,25 @@
+// Content type union for type safety
+export const ContentTypes = [
+  'ContentCategory',
+  'Question',
+  'KnowledgeBase',
+  'StreakType',
+  'AvatarAsset'
+] as const;
+
+
+// Content type union for type safety
+export type ContentType = typeof ContentTypes[number];
 
 
 // Content Directory Names
 export const CONTENT_DIRECTORIES = {
-  CATEGORIES: 'categories',
-  QUESTIONS: 'questions',
-  PASSAGES: 'passages',
-  KNOWLEDGE_BASE: 'knowledge-base',
-  DAILY_CHALLENGES: 'daily-challenges',
-  STREAK_TYPES: 'streak-types',
-  AVATAR_ASSETS: 'avatar-assets'
-} as const;
+  ContentCategory: 'categories',
+  Question: 'questions',
+  KnowledgeBase: 'knowledge-base',
+  StreakType: 'streak-types',
+  AvatarAsset: 'avatar-assets'
+} as const satisfies Record<ContentType, string>;
 
 // Content Validation Rules
 export const CONTENT_VALIDATION_RULES = {

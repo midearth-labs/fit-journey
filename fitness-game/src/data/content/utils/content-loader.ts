@@ -9,8 +9,8 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import { ContentType, Content, ContentTypeToSchema } from '../types';
-import { CONTENT_DIRECTORIES } from '../types/constants';
+import { Content, ContentTypeToSchema } from '../types';
+import { CONTENT_DIRECTORIES, ContentType } from '../types/constants';
 import z from 'zod';
 
 export class ContentLoader {
@@ -44,10 +44,8 @@ export class ContentLoader {
         ContentCategory: await this.loadContentType('ContentCategory'),
         Question: await this.loadContentType('Question'),
         KnowledgeBase: await this.loadContentType('KnowledgeBase'),
-        PassageSet: await this.loadContentType('PassageSet'),
         StreakType: await this.loadContentType('StreakType'),
         AvatarAsset: await this.loadContentType('AvatarAsset'),
-        DailyChallenge: await this.loadContentType('DailyChallenge')
       }
     } catch (error) {
       console.error(`Failed to load content`);
@@ -126,17 +124,7 @@ export class ContentLoader {
    */
   // @ TODO: Create a map of ContentType to replace CONTENT_DIRECTORIES
   private static getDirectoryName(contentType: ContentType): string {
-    const directoryMap: Record<ContentType, string> = {
-      ContentCategory: CONTENT_DIRECTORIES.CATEGORIES,
-      Question: CONTENT_DIRECTORIES.QUESTIONS,
-      KnowledgeBase: CONTENT_DIRECTORIES.KNOWLEDGE_BASE,
-      PassageSet: CONTENT_DIRECTORIES.PASSAGES,
-      StreakType: CONTENT_DIRECTORIES.STREAK_TYPES,
-      AvatarAsset: CONTENT_DIRECTORIES.AVATAR_ASSETS,
-      DailyChallenge: CONTENT_DIRECTORIES.DAILY_CHALLENGES
-    };
-
-    return directoryMap[contentType];
+    return CONTENT_DIRECTORIES[contentType];
   }
 
   /**

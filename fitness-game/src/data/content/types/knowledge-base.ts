@@ -6,6 +6,7 @@ import { BaseContentSchema, LearnMoreLinkSchema, AffiliateLinkSchema, ImageSchem
 
 export const KnowledgeBaseSchema = BaseContentSchema.extend({
   content_category_id: z.string(),
+  day: z.number().min(1).max(70),
   landing_image: ImageSchema,
   title: z.string(),
   description: z.string(), // markdown content containing image urls etc.
@@ -23,6 +24,12 @@ export const KnowledgeBaseSchema = BaseContentSchema.extend({
   estimated_read_time_minutes: z.number(),
   word_count: z.number(),
   key_takeaways: z.array(z.string()),
+  passages: z.array(z.object({
+    id: z.string(),
+    title: z.string(),
+    passage_text: z.string(),
+    image_urls: z.array(ImageSchema),
+  })),
 });
 
 export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>;

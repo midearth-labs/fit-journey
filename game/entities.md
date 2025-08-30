@@ -54,7 +54,6 @@
 ```json
 {
   id: string,
-  content_category_id: string, // FK to ContentCategory
   knowledge_base_id: string, // FK to KnowledgeBase
   question_text: string,
   question_type: string, // "standalone", "passage_based"
@@ -76,46 +75,26 @@
 {
   id: string,
   content_category_id: string, // FK to ContentCategory
+  day: number, // 1, 2, 3, ..., till challenge ends
   landing_image: object,
   title: string,
   description: string, // markdown content
   tags: Array<string>, // ["squats", "form", "beginner", "legs", "nutrition", "recovery"]
-  related_knowledge_base_ids: Array<string>, // FK to KnowledgeBase
+  related_knowledge_base_ids: Array<object>, // FK to KnowledgeBase
   learn_more_links: Array<object>, // [{type: "youtube_short", url: "https://...", title: "..."}, {type: "blog", url: "https://...", title: "..."}]
   affiliate_links: Array<object>, // [{type: "amazon", url: "https://...", title: "..."}, {type: "gymshark", url: "https://...", title: "..."}]
   image_urls: Array<object>,
   estimated_read_time_minutes: number,
   word_count: number,
   key_takeaways: Array<string>,
-  is_active: boolean, // default true
-  sort_order: number, // for display ordering
-  passage: {
+  passages: [{
     id: string,
-    content_category_id: string, // FK to ContentCategory
     title: string,
     passage_text: string,
     image_urls: Array<object>,
-    sort_order: number,
-    is_active: boolean,
-    created_at: timestamp,
-    updated_at: timestamp,
-  }
-  created_at: timestamp,
-  updated_at: timestamp,
-}
-```
-
-### PassageSet
-#### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
-```json
-{
-  id: string,
-  content_category_id: string, // FK to ContentCategory
-  title: string,
-  passage_text: string,
-  image_urls: Array<object>,
-  sort_order: number,
-  is_active: boolean,
+  }],
+  is_active: boolean, // default true
+  sort_order: number, // for display ordering
   created_at: timestamp,
   updated_at: timestamp,
 }

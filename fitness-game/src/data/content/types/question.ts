@@ -5,7 +5,6 @@ import z from 'zod';
 import { BaseContentSchema, ImageSchema } from './common';
 
 export const QuestionSchema = BaseContentSchema.extend({
-  content_category_id: z.string(),
   knowledge_base_id: z.string(),
   question_text: z.string(),
   question_type: z.enum(['standalone', 'passage_based']),
