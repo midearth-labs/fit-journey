@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
 // Enums
@@ -58,13 +58,14 @@ export const userProfiles = pgTable('user_profiles', {
 export const gameSessions = pgTable('game_sessions', {
   id: uuid('id').primaryKey().defaultRandom(),
   user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  challenge_id: text('challenge_id').notNull(), // FK to DailyChallenge.id (stored as JSON file)
+  day: integer('day').notNull(), // FK to KnowledgeBase.day (stored as JSON file)
   session_timezone: text('session_timezone').notNull(), // Store timezone when session starts e.g. UTC-7
   session_date_utc: date('session_date_utc').notNull(), // The UTC date of when the session was first started
   started_at: timestamp('started_at').defaultNow().notNull(),
   completed_at: timestamp('completed_at'),
   //@TODO: add index on in_progress/user_id
   in_progress: boolean('in_progress').default(true), // true by default, set to null when session is complete, or day is over
+  active_partition_key: integer('active_partition_key'), // Used for partitioning the table into 24 partitions using a hashcode of the user_id. A session is only active for a day. Partition is removed after the day is over.
   user_answers: jsonb('user_answers').$type<Array<{
     question_id: string;
     answer_index: number;
@@ -74,7 +75,11 @@ export const gameSessions = pgTable('game_sessions', {
   all_correct_answers: boolean('all_correct_answers'), // Whether all questions were answered correctly
   time_spent_seconds: integer('time_spent_seconds'),
   attempt_count: integer('attempt_count').notNull().default(1), // default: 1. If at a submission, a user doesn't answer all questions correctly, they can try again up to 3 times before the current day ends
-});
+}, (table) => ({
+  // Composite index for efficient querying of active sessions by partition and date
+  // Used for daily cleanup operations and partition management
+  activePartitionDateIdx: index('active_partition_date_idx').on(table.active_partition_key, table.session_date_utc),
+}));
 
 // StreakLog table
 export const streakLogs = pgTable('streak_logs', {

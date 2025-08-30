@@ -1,8 +1,9 @@
 import { db } from '../index';
 import { gameSessions } from '../schema';
-import { eq, and, desc, gte, lte } from 'drizzle-orm';
+import { eq, and, desc, gte, lte, isNull } from 'drizzle-orm';
 import type { GameSession, NewGameSession } from '../schema';
 
+// @TODO: transaction use in multi-step DAOS.
 export class GameSessionDAO {
   /**
    * Get user's current game session
@@ -57,19 +58,39 @@ export class GameSessionDAO {
   }
 
   /**
+   * Get active sessions by date and partition key for cleanup operations
+   */
+  async getActiveSessionsByDate(sessionDateUtc: string, partitionKey: number): Promise<GameSession[]> {
+    return await db.query.gameSessions.findMany({
+      where: and(
+        eq(gameSessions.session_date_utc, sessionDateUtc),
+        eq(gameSessions.active_partition_key, partitionKey),
+      ),
+    });
+  }
+
+  /**
    * Create new game session
    */
   async createSession(sessionData: {
     user_id: string;
-    challenge_id: string;
+    day: number;
+    challenge_id: string
     session_timezone: string;
     session_date_utc: Date;
   }): Promise<GameSession[]> {
+    // Calculate partition key: hashcode of user_id modulo 24 (1-24)
+    const partitionKey = (sessionData.user_id.split('').reduce((hash, char) => {
+      return ((hash << 5) - hash + char.charCodeAt(0)) & 0xffffffff;
+    }, 0) % 24) + 1;
+
     return await db.insert(gameSessions).values({
       ...sessionData,
+      day: sessionData.day,
       session_date_utc: sessionData.session_date_utc.toISOString().split('T')[0],
       started_at: new Date(),
       in_progress: true,
+      active_partition_key: partitionKey,
       attempt_count: 1,
     }).returning();
   }
@@ -92,7 +113,8 @@ export class GameSessionDAO {
       .set({
         ...completionData,
         completed_at: new Date(),
-        in_progress: false,
+        in_progress: null,
+        active_partition_key: null,
       })
       .where(eq(gameSessions.id, sessionId))
       .returning();
@@ -115,10 +137,13 @@ export class GameSessionDAO {
   /**
    * Update session in progress status
    */
-  async updateInProgressStatus(sessionId: string, inProgress: boolean): Promise<GameSession[]> {
+  async updateInProgressStatus(sessionId: string, inProgress: boolean | null): Promise<GameSession[]> {
     return await db
       .update(gameSessions)
-      .set({ in_progress: inProgress })
+      .set({ 
+        in_progress: inProgress,
+        active_partition_key: inProgress ? undefined : null // Keep existing partition key if setting to true, set to null if false
+      })
       .where(eq(gameSessions.id, sessionId))
       .returning();
   }
@@ -142,9 +167,9 @@ export class GameSessionDAO {
   /**
    * Get all sessions for a specific challenge
    */
-  async getSessionsByChallenge(challengeId: string): Promise<GameSession[]> {
+  async getSessionsByChallenge(day: number): Promise<GameSession[]> {
     return await db.query.gameSessions.findMany({
-      where: eq(gameSessions.challenge_id, challengeId),
+      where: eq(gameSessions.day, day),
       orderBy: desc(gameSessions.started_at),
     });
   }
@@ -160,14 +185,12 @@ export class GameSessionDAO {
   /**
    * Check if user has completed challenge for a specific date
    */
-  async hasUserCompletedChallengeForDate(userId: string, challengeId: string, date: Date): Promise<boolean> {
-    const dateString = date.toISOString().split('T')[0];
+  async hasUserCompletedChallengeForDate(userId: string, dateStringUtc: string): Promise<boolean> {
     const result = await db.query.gameSessions.findFirst({
       where: and(
         eq(gameSessions.user_id, userId),
-        eq(gameSessions.challenge_id, challengeId),
-        eq(gameSessions.session_date_utc, dateString),
-        eq(gameSessions.in_progress, false)
+        eq(gameSessions.session_date_utc, dateStringUtc),
+        isNull(gameSessions.in_progress)
       ),
     });
     return !!result;

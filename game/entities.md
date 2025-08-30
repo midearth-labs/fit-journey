@@ -62,7 +62,7 @@
   explanation: string,
   hints: Array<string>,
   image_urls: Array<object>,
-  passage_set_id: string?, // FK to PassageSet (null for standalone questions)
+  passage_set_id: string?, // FK to KnowledgeBase.passages.id (null for standalone questions)
   is_active: boolean, // default true
   created_at: timestamp,
   updated_at: timestamp,
@@ -150,30 +150,18 @@
 
 ## Game Sessions & Progress
 
-### DailyChallenge (Static Content)
-#### these static content be stored in the repository as json files, committed to git and not to be modelled as SQL tables
-```json
-{
-  id: string,
-  content_category_id: string, // FK to ContentCategory
-  day: number, // 1, 2, 3, ..., till challenge ends
-  challenge_structure: Array<object>, // [{type: "standalone", question_id: "q1"}, {type: "passage", passage_set_id: "p1", question_ids: ["q2", "q3", "q4"]}, {type: "standalone", question_id: "q5"}]
-  created_at: timestamp,
-  updated_at: timestamp,
-}
-```
-
 ### GameSession
 ```json
 {
   id: string,
   user_id: string, // FK to User
-  challenge_id: string, // FK to DailyChallenge.id
+  day: number, // Linked to KnowledgeBase.day
   session_timezone: string, // NEW: Store timezone when session starts e.g. UTC-7
   session_date_utc: date, // The UTC date of when the session was first started.
   started_at: timestamp,
   completed_at: timestamp?,
   in_progress: boolean?, // true by default, set to null when session is complete, or day is over.
+  active_partition_key: number, // Used for partitioning the table into 24 partitions using a hashcode of the user_id. A session is only active for a day. Partition is removed after the day is over.
   user_answers: Array<object>?, // Array of { question_id: string, answer_index: number, is_correct: boolean, hint_used: boolean,}
   all_correct_answers: boolean?, // Whether all questions were asnwered correctly.
   time_spent_seconds: number?,
