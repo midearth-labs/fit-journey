@@ -89,6 +89,17 @@
   key_takeaways: Array<string>,
   is_active: boolean, // default true
   sort_order: number, // for display ordering
+  passage: {
+    id: string,
+    content_category_id: string, // FK to ContentCategory
+    title: string,
+    passage_text: string,
+    image_urls: Array<object>,
+    sort_order: number,
+    is_active: boolean,
+    created_at: timestamp,
+    updated_at: timestamp,
+  }
   created_at: timestamp,
   updated_at: timestamp,
 }
