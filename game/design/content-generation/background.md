@@ -12,8 +12,9 @@ A Duolingo-style fitness, health and wellness learning and quiz app targeting pe
 - **Specific article distribution per category** (6 articles for "Fitness Foundation & Getting Started", 12 for "Nutrition Essentials", 6 for "Recovery & Injury Prevention", 12 for "Health & Lifestyle Integration", 6 for "Mindset & Motivation", 6 for "Body Mechanics & Movement", 6 for "Exercise Types & Goal Setting", 10 for "Equipment & Gym Basics", 6 for "Exercise Fundamentals & Form")
 - **Natural learning progression** within each category that introduces new concepts meaningfully
 - **Articles form a meaningful whole** together when completed
-- **Single-part or multi-part articles** depending on content volume, a single topic might be divided into not more than 3 parts. In this case, the title could be "Article Name (Part 1/N)"
-- **Maximum 5-minute reading time** per single article
+- **Single-part or multi-part articles** depending on content volume, a single topic might be divided into not more than 3 parts. In this case, the title could be "Article Name (Part 1/N)". Articles like Exercise Identification or Equipment Identification will definitely need to be split into multiple articles
+- **Article reading time** Between 3 and 5 minutes reading time per single article. 5 minutes for more information dense articles.
+- **Images/Infographics** Articles with a more visual undertone will benefit from a lot more images, these would include articles related to exercise identification/variations/forms, equipment identification and usage, and some regarding nutrition, etc.
 
 ## **Journey-Solution Method**
 Create knowledge base articles that follow the natural progression of a beginner's fitness journey while proactively addressing common obstacles or ignorance with practical solutions and knowledge.

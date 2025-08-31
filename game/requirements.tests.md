@@ -79,36 +79,6 @@ This document provides comprehensive test cases for each requirement, ensuring f
 - **Expected Result**: KnowledgeBase entities thematically aligned with corresponding questions
 - **Coverage**: R1.3
 
-### R1.4: DailyChallenge Creation Tests
-
-#### Test R1.4.1: DailyChallenge Structure Validation
-- **Test Case**: DailyChallenge generates with proper structure
-- **Precondition**: DailyChallenge generation initiated
-- **Action**: Generate daily challenges using LLM
-- **Expected Result**: JSON files with day, content_category_id, challenge_structure, total_questions, theme
-- **Coverage**: R1.4
-
-#### Test R1.4.2: Question Reference Validation
-- **Test Case**: Challenge structure references valid content
-- **Precondition**: DailyChallenge generated
-- **Action**: Validate question and passage references
-- **Expected Result**: All question_ids and passage_set_ids reference existing content
-- **Coverage**: R1.4
-
-#### Test R1.4.3: Question Count Accuracy
-- **Test Case**: Total questions match challenge structure
-- **Precondition**: DailyChallenge generated
-- **Action**: Count questions in challenge_structure
-- **Expected Result**: total_questions field matches actual question count
-- **Coverage**: R1.4
-
-#### Test R1.4.4: Difficulty Distribution
-- **Test Case**: Challenge maintains proper difficulty distribution
-- **Precondition**: DailyChallenge generated
-- **Action**: Analyze difficulty levels
-- **Expected Result**: 3 easy, 4 medium, 3 hard questions with educational progression
-- **Coverage**: R1.4
-
 ## R2: User Profile Management
 
 ### R2.1: Profile Creation Tests

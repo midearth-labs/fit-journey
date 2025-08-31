@@ -54,33 +54,6 @@ WHEN using LLM for content generation
 THE SYSTEM SHALL generate KnowledgeBase entities as JSON files that are thematically and conceptually aligned with the corresponding Questions and PassageSets to ensure educational coherence. Group and store questions for each content categories and name each content category file accordingly e.g. ${ContentCategory.id}.json
 ```
 
-### R1.4: LLM-Generated DailyChallenge Creation
-**Dependencies**: R1.2, R1.3
-```
-WHEN generating DailyChallenge content using LLM
-THE SYSTEM SHALL create DailyChallenge entities as a single JSON file with proper validation for required fields (day, content_category_id, challenge_structure, total_questions, theme) ensuring thematic coherence with previously generated Questions and PassageSets
-```
-
-```
-WHEN generating daily challenges using LLM
-THE SYSTEM SHALL ensure all referenced question_ids and passage_set_ids in the challenge_structure correspond to previously generated JSON content files
-```
-
-```
-WHEN generating daily challenges using LLM
-THE SYSTEM SHALL validate that the total_questions field matches the actual count of questions in the challenge_structure within the generated JSON files
-```
-
-```
-WHEN generating daily challenges using LLM
-THE SYSTEM SHALL ensure that challenge_structure maintains proper difficulty distribution (3 easy, 4 medium, 3 hard) across all questions and maintains educational progression throughout the challenge series
-```
-
-```
-WHEN using LLM for DailyChallenge generation
-THE SYSTEM SHALL generate challenges that reference and build upon the KnowledgeBase content to create a cohesive learning experience across all generated entities
-```
-
 ## R2: User Profile Management
 
 ### R2.1: Profile Creation

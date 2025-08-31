@@ -5,30 +5,27 @@ import z from 'zod';
 import { BaseContentSchema, LearnMoreLinkSchema, AffiliateLinkSchema, ImageSchema } from './common';
 
 export const KnowledgeBaseSchema = BaseContentSchema.extend({
-  content_category_id: z.string(),
-  day: z.number().min(1).max(70),
-  landing_image: ImageSchema,
-  title: z.string(),
-  description: z.string(), // markdown content containing image urls etc.
-  tags: z.array(z.string()),
+  slug: z.string().describe('The slug of the article. Used as part of the URL of the article and to boost SEO.'),
+  content_category_id: z.string().describe('The category ID of the article.'),
+  day: z.number().min(1).max(70).describe('The day number of the article as per the learning progression. 1-70.'),
+  lede_image: ImageSchema.describe('The image to be displayed as the lead image for the article. Must be catchy and appropriate for the article.'),
+  title: z.string().describe('The engaging title of the article.'),
+  body: z.string().describe('Article text in markdown format containing image urls etc. Between 3 to 5 minutes of reading time.'),
+  tags: z.array(z.string()).describe('Tags for the article, that could be used to categorize the article or to filter the articles. Max 5 tags.'),
   // @ TODO: Implement all cross-reference checks for all entities
-  related_knowledge_base_ids: z.object({
-    previous: z.string().optional(),
-    next: z.string().optional(),
-  }),
-  learn_more_links: z.array(LearnMoreLinkSchema),
-  affiliate_links: z.array(AffiliateLinkSchema),
-  image_urls: z.array(ImageSchema),
+  learn_more_links: z.array(LearnMoreLinkSchema).describe('Between 3 and 5 links.'),
+  affiliate_links: z.array(AffiliateLinkSchema).describe('Between 3 and 5 affiliate links.'),
+  image_urls: z.array(ImageSchema).describe('The images to be referenced in the article markdown. Between 0 to 10 images. More images are required for articles with a more visual undertone e.g. equipment and exercise identification, nutrition, etc and nutrition etc.'),
   
   // Extended fields for content management
-  estimated_read_time_minutes: z.number(),
-  word_count: z.number(),
-  key_takeaways: z.array(z.string()),
+  estimated_read_time_minutes: z.number().describe('The estimated reading time of the article in minutes between 3 and 5.'),
+  word_count: z.number().describe('The word count of the article.'),
+  key_takeaways: z.array(z.string()).describe('Up to 3 takeaways from the article.'),
   passages: z.array(z.object({
-    id: z.string(),
-    title: z.string(),
-    passage_text: z.string(),
-    image_urls: z.array(ImageSchema),
+    id: BaseContentSchema.shape.id,
+    title: z.string().describe('The title of the passage.'),
+    passage_text: z.string().describe('Passage text in markdown format containing 0 to 2 image urls. Between 30 to 40 seconds of reading time.'),
+    image_urls: z.array(ImageSchema).describe('The images to be referenced in the article markdown. Between 0 to 2 images.'),
   })),
 });
 
