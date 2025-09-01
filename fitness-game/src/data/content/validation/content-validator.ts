@@ -1,8 +1,7 @@
 // Content Validator Utility
 // Handles validation of content integrity and relationships
 
-import { ValidationResult, ValidationError, ValidationWarning, ValidationSummary, ContentType, Content } from '../types';
-import { CONTENT_VALIDATION_RULES } from '../types/constants';
+import { ValidationResult, ValidationError, ValidationWarning, ValidationSummary, Content } from '../types';
 import { ContentLoader } from '../utils/content-loader';
 
 export class ContentValidator {
@@ -73,13 +72,6 @@ export class ContentValidator {
     this.validationWarnings = [];
 
     // Validate individual content types
-    this.validateContentCategories();
-    this.validateQuestions();
-    this.validatePassageSets();
-    this.validateKnowledgeBase();
-    this.validateDailyChallenges();
-    this.validateStreakTypes();
-    this.validateAvatarAssets();
 
     // Validate cross-references
     this.validateCrossReferences();
@@ -95,232 +87,6 @@ export class ContentValidator {
       warnings: this.validationWarnings,
       summary
     };
-  }
-
-  /**
-   * Validate content categories
-   */
-  private validateContentCategories(): void {
-    const categories = this.content.ContentCategory.map;
-    if (!categories) return;
-
-    for (const [id, category] of categories) {
-      // Validate required fields
-      if (!category.name) {
-        this.addError('ContentCategory', id, 'name', 'Name is required');
-      }
-      if (!category.description) {
-        this.addError('ContentCategory', id, 'description', 'Description is required');
-      }
-      if (category.sort_order === undefined || category.sort_order === null) {
-        this.addError('ContentCategory', id, 'sort_order', 'Sort order is required');
-      }
-
-      // Validate business rules
-      if (category.sort_order < 0) {
-        this.addError('ContentCategory', id, 'sort_order', 'Sort order must be non-negative');
-      }
-    }
-  }
-
-  /**
-   * Validate questions
-   */
-  private validateQuestions(): void {
-    const questions = this.content.Question.map;
-    if (!questions) return;
-
-    for (const [id, question] of questions) {
-      // Validate required fields
-      if (!question.question_text) {
-        this.addError('Question', id, 'question_text', 'Question text is required');
-      }
-      if (!question.options || question.options.length === 0) {
-        this.addError('Question', id, 'options', 'Options are required');
-      }
-      if (question.correct_answer_index === undefined || question.correct_answer_index === null) {
-        this.addError('Question', id, 'correct_answer_index', 'Correct answer index is required');
-      }
-      if (!question.content_category_id) {
-        this.addError('Question', id, 'content_category_id', 'Content category ID is required');
-      }
-
-      // Validate business rules
-      if (question.options && question.options.length < CONTENT_VALIDATION_RULES.MIN_OPTIONS_PER_QUESTION) {
-        this.addError('Question', id, 'options', `Must have at least ${CONTENT_VALIDATION_RULES.MIN_OPTIONS_PER_QUESTION} options`);
-      }
-      if (question.options && question.options.length > CONTENT_VALIDATION_RULES.MAX_OPTIONS_PER_QUESTION) {
-        this.addError('Question', id, 'options', `Must have at most ${CONTENT_VALIDATION_RULES.MAX_OPTIONS_PER_QUESTION} options`);
-      }
-      if (question.correct_answer_index >= (question.options?.length || 0)) {
-        this.addError('Question', id, 'correct_answer_index', 'Correct answer index must be within options range');
-      }
-
-      // Validate content category reference
-      this.validateReference('Question', id, 'content_category_id', 'ContentCategory', question.content_category_id);
-    }
-  }
-
-  /**
-   * Validate passage sets
-   */
-  private validatePassageSets(): void {
-    const passages = this.content.PassageSet.map;
-    if (!passages) return;
-
-    for (const [id, passage] of passages) {
-      // Validate required fields
-      if (!passage.title) {
-        this.addError('PassageSet', id, 'title', 'Title is required');
-      }
-      if (!passage.passage_text) {
-        this.addError('PassageSet', id, 'passage_text', 'Passage text is required');
-      }
-      if (!passage.content_category_id) {
-        this.addError('PassageSet', id, 'content_category_id', 'Content category ID is required');
-      }
-
-      // Validate content category reference
-      this.validateReference('PassageSet', id, 'content_category_id', 'ContentCategory', passage.content_category_id);
-    }
-  }
-
-  /**
-   * Validate knowledge base
-   */
-  private validateKnowledgeBase(): void {
-    const knowledgeBase = this.content.KnowledgeBase.map;
-    if (!knowledgeBase) return;
-
-    for (const [id, kb] of knowledgeBase) {
-      // Validate required fields
-      if (!kb.title) {
-        this.addError('KnowledgeBase', id, 'title', 'Title is required');
-      }
-      if (!kb.description) {
-        this.addError('KnowledgeBase', id, 'description', 'Description is required');
-      }
-      if (!kb.content_category_id) {
-        this.addError('KnowledgeBase', id, 'content_category_id', 'Content category ID is required');
-      }
-
-      // Validate content category reference
-      this.validateReference('KnowledgeBase', id, 'content_category_id', 'ContentCategory', kb.content_category_id);
-    }
-  }
-
-  /**
-   * Validate daily challenges
-   */
-  private validateDailyChallenges(): void {
-    const challenges = this.content.DailyChallenge.map;
-    if (!challenges) return;
-
-    for (const [id, challenge] of challenges) {
-      // Validate required fields
-      if (!challenge.content_category_id) {
-        this.addError('DailyChallenge', id, 'content_category_id', 'Content category ID is required');
-      }
-      if (challenge.day === undefined || challenge.day === null) {
-        this.addError('DailyChallenge', id, 'day', 'Day number is required');
-      }
-      if (!challenge.challenge_structure || challenge.challenge_structure.length === 0) {
-        this.addError('DailyChallenge', id, 'challenge_structure', 'Challenge structure is required');
-      }
-
-      // Validate business rules
-      if (challenge.day < 1) {
-        this.addError('DailyChallenge', id, 'day', 'Day number must be at least 1');
-      }
-
-      // Validate content category reference
-      this.validateReference('DailyChallenge', id, 'content_category_id', 'ContentCategory', challenge.content_category_id);
-
-      // Validate challenge structure
-      this.validateChallengeStructure(id, challenge);
-    }
-  }
-
-  /**
-   * Validate challenge structure
-   */
-  private validateChallengeStructure(challengeId: string, challenge: any): void {
-    if (!challenge.challenge_structure) return;
-
-    let totalQuestions = 0;
-    const seenQuestionIds = new Set<string>();
-    const seenPassageIds = new Set<string>();
-
-    for (const structure of challenge.challenge_structure) {
-      if (structure.type === 'standalone') {
-        if (structure.question_id) {
-          totalQuestions++;
-          seenQuestionIds.add(structure.question_id);
-          this.validateReference('DailyChallenge', challengeId, 'challenge_structure.question_id', 'Question', structure.question_id);
-        }
-      } else if (structure.type === 'passage') {
-        if (structure.passage_set_id) {
-          seenPassageIds.add(structure.passage_set_id);
-          this.validateReference('DailyChallenge', challengeId, 'challenge_structure.passage_set_id', 'PassageSet', structure.passage_set_id);
-          
-          if (structure.question_ids) {
-            totalQuestions += structure.question_ids.length;
-            for (const questionId of structure.question_ids) {
-              seenQuestionIds.add(questionId);
-              this.validateReference('DailyChallenge', challengeId, 'challenge_structure.question_ids', 'Question', questionId);
-            }
-          }
-        }
-      }
-    }
-
-    // Validate total questions count
-    if (totalQuestions !== challenge.total_questions) {
-      this.addError('DailyChallenge', challengeId, 'total_questions', 
-        `Total questions count (${challenge.total_questions}) doesn't match actual questions in structure (${totalQuestions})`);
-    }
-  }
-
-
-
-  /**
-   * Validate streak types
-   */
-  private validateStreakTypes(): void {
-    const streakTypes = this.content.StreakType.map;
-    if (!streakTypes) return;
-
-    for (const [id, streakType] of streakTypes) {
-      // Validate required fields
-      if (!streakType.title) {
-        this.addError('StreakType', id, 'title', 'Title is required');
-      }
-      if (!streakType.description) {
-        this.addError('StreakType', id, 'description', 'Description is required');
-      }
-      if (streakType.sort_order === undefined || streakType.sort_order === null) {
-        this.addError('StreakType', id, 'sort_order', 'Sort order is required');
-      }
-    }
-  }
-
-  /**
-   * Validate avatar assets
-   */
-  private validateAvatarAssets(): void {
-    const avatarAssets = this.content.AvatarAsset.map;
-    if (!avatarAssets) return;
-
-    for (const [id, asset] of avatarAssets) {
-      // Validate required fields
-      if (!asset.gender) {
-        this.addError('AvatarAsset', id, 'gender', 'Gender is required');
-      }
-      if (!asset.age_range) {
-        this.addError('AvatarAsset', id, 'age_range', 'Age range is required');
-      }
-      
-    }
   }
 
   /**
@@ -421,10 +187,8 @@ export class ContentValidator {
         ContentCategory: this.content.ContentCategory.map.size,
         Question: this.content.Question.map.size,
         KnowledgeBase: this.content.KnowledgeBase.map.size,
-        PassageSet: this.content.PassageSet.map.size,
         StreakType: this.content.StreakType.map.size,
         AvatarAsset: this.content.AvatarAsset.map.size,
-        DailyChallenge: this.content.DailyChallenge.map.size
       }
     };
   }

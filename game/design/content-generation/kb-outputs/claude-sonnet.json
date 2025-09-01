@@ -1,0 +1,562 @@
+[
+    {
+      "id": "01a2b3c4-d5e6-f7g8-h9i0-j1k2l3m4n5o6",
+      "slug": "what-is-fitness-really",
+      "content_category_id": "fitness-foundation",
+      "day": 1,
+      "title": "What Is Fitness Really? Breaking Down the Basics",
+      "tags": ["fitness-basics", "beginner-guide", "health-fundamentals", "getting-started", "wellness"]
+    },
+    {
+      "id": "02b3c4d5-e6f7-g8h9-i0j1-k2l3m4n5o6p7",
+      "slug": "safety-first-essential-considerations",
+      "content_category_id": "fitness-foundation",
+      "day": 2,
+      "title": "Safety First: Essential Considerations Before You Start",
+      "tags": ["safety", "medical-clearance", "health-screening", "injury-prevention", "beginner-safety"]
+    },
+    {
+      "id": "03c4d5e6-f7g8-h9i0-j1k2-l3m4n5o6p7q8",
+      "slug": "fitness-myths-vs-facts",
+      "content_category_id": "fitness-foundation",
+      "day": 3,
+      "title": "Fitness Myths vs Facts: What Beginners Need to Know",
+      "tags": ["myths", "facts", "evidence-based", "misconceptions", "beginner-education"]
+    },
+    {
+      "id": "04d5e6f7-g8h9-i0j1-k2l3-m4n5o6p7q8r9",
+      "slug": "gradual-progression-principle",
+      "content_category_id": "fitness-foundation",
+      "day": 4,
+      "title": "The Gradual Progression Principle: Your Path to Success",
+      "tags": ["progression", "gradual-improvement", "consistency", "sustainable-fitness", "beginner-approach"]
+    },
+    {
+      "id": "05e6f7g8-h9i0-j1k2-l3m4-n5o6p7q8r9s0",
+      "slug": "fitness-meets-you-where-you-are",
+      "content_category_id": "fitness-foundation",
+      "day": 5,
+      "title": "Fitness Meets You Where You Are: Adaptable Exercise",
+      "tags": ["adaptable-fitness", "personalization", "accessibility", "inclusive-fitness", "individual-needs"]
+    },
+    {
+      "id": "06f7g8h9-i0j1-k2l3-m4n5-o6p7q8r9s0t1",
+      "slug": "consistency-over-perfection",
+      "content_category_id": "fitness-foundation",
+      "day": 6,
+      "title": "Consistency Over Perfection: Setting Realistic Expectations",
+      "tags": ["consistency", "realistic-expectations", "long-term-success", "sustainable-habits", "beginner-mindset"]
+    },
+    {
+      "id": "07g8h9i0-j1k2-l3m4-n5o6-p7q8r9s0t1u2",
+      "slug": "nutrition-fundamentals-macronutrients",
+      "content_category_id": "nutrition-essentials",
+      "day": 7,
+      "title": "Nutrition Fundamentals: Understanding Macronutrients",
+      "tags": ["macronutrients", "protein", "carbohydrates", "fats", "nutrition-basics"]
+    },
+    {
+      "id": "08h9i0j1-k2l3-m4n5-o6p7-q8r9s0t1u2v3",
+      "slug": "portion-control-serving-sizes",
+      "content_category_id": "nutrition-essentials",
+      "day": 8,
+      "title": "Portion Control and Serving Sizes: A Practical Guide",
+      "tags": ["portion-control", "serving-sizes", "meal-planning", "calorie-awareness", "practical-nutrition"]
+    },
+    {
+      "id": "09i0j1k2-l3m4-n5o6-p7q8-r9s0t1u2v3w4",
+      "slug": "healthy-eating-habits-foundation",
+      "content_category_id": "health-lifestyle",
+      "day": 9,
+      "title": "Building Healthy Eating Habits: Your Foundation",
+      "tags": ["healthy-habits", "eating-patterns", "lifestyle-nutrition", "sustainable-eating", "habit-formation"]
+    },
+    {
+      "id": "10j1k2l3-m4n5-o6p7-q8r9-s0t1u2v3w4x5",
+      "slug": "exercise-and-mental-health",
+      "content_category_id": "health-lifestyle",
+      "day": 10,
+      "title": "Exercise and Mental Health: The Connection You Need to Know",
+      "tags": ["mental-health", "exercise-benefits", "stress-relief", "mood-improvement", "psychological-wellness"]
+    },
+    {
+      "id": "11k2l3m4-n5o6-p7q8-r9s0-t1u2v3w4x5y6",
+      "slug": "cardio-vs-strength-training-basics",
+      "content_category_id": "exercise-types-goals",
+      "day": 11,
+      "title": "Cardio vs Strength Training: Understanding the Basics",
+      "tags": ["cardio", "strength-training", "exercise-types", "fitness-goals", "workout-variety"]
+    },
+    {
+      "id": "12l3m4n5-o6p7-q8r9-s0t1-u2v3w4x5y6z7",
+      "slug": "fundamental-movement-patterns",
+      "content_category_id": "body-mechanics",
+      "day": 12,
+      "title": "Fundamental Movement Patterns: The Building Blocks",
+      "tags": ["movement-patterns", "squat", "hinge", "push", "pull"]
+    },
+    {
+      "id": "13m4n5o6-p7q8-r9s0-t1u2-v3w4x5y6z7a8",
+      "slug": "hydration-and-performance",
+      "content_category_id": "nutrition-essentials",
+      "day": 13,
+      "title": "Hydration and Performance: Why Water Matters",
+      "tags": ["hydration", "water-intake", "performance", "electrolytes", "fluid-balance"]
+    },
+    {
+      "id": "14n5o6p7-q8r9-s0t1-u2v3-w4x5y6z7a8b9",
+      "slug": "movement-in-daily-life",
+      "content_category_id": "health-lifestyle",
+      "day": 14,
+      "title": "Incorporating Movement into Daily Life",
+      "tags": ["daily-movement", "lifestyle-activity", "sedentary-solutions", "active-living", "movement-integration"]
+    },
+    {
+      "id": "15o6p7q8-r9s0-t1u2-v3w4-x5y6z7a8b9c0",
+      "slug": "smart-goal-setting-fitness",
+      "content_category_id": "exercise-types-goals",
+      "day": 15,
+      "title": "SMART Goal Setting for Fitness Success",
+      "tags": ["goal-setting", "SMART-goals", "fitness-planning", "achievement", "progress-tracking"]
+    },
+    {
+      "id": "16p7q8r9-s0t1-u2v3-w4x5-y6z7a8b9c0d1",
+      "slug": "posture-and-core-basics",
+      "content_category_id": "body-mechanics",
+      "day": 16,
+      "title": "Posture and Core: Understanding the Basics",
+      "tags": ["posture", "core-stability", "spinal-health", "alignment", "body-awareness"]
+    },
+    {
+      "id": "17q8r9s0-t1u2-v3w4-x5y6-z7a8b9c0d1e2",
+      "slug": "reading-nutrition-labels",
+      "content_category_id": "nutrition-essentials",
+      "day": 17,
+      "title": "Reading Nutrition Labels: Your Practical Guide",
+      "tags": ["nutrition-labels", "food-literacy", "ingredient-awareness", "healthy-choices", "label-reading"]
+    },
+    {
+      "id": "18r9s0t1-u2v3-w4x5-y6z7-a8b9c0d1e2f3",
+      "slug": "exercise-and-sleep-quality",
+      "content_category_id": "health-lifestyle",
+      "day": 18,
+      "title": "Exercise and Sleep Quality: The Two-Way Connection",
+      "tags": ["sleep", "exercise-recovery", "sleep-hygiene", "circadian-rhythm", "rest-quality"]
+    },
+    {
+      "id": "19s0t1u2-v3w4-x5y6-z7a8-b9c0d1e2f3g4",
+      "slug": "workout-frequency-beginners",
+      "content_category_id": "exercise-types-goals",
+      "day": 19,
+      "title": "Workout Frequency for Beginners: Finding Your Rhythm",
+      "tags": ["workout-frequency", "training-schedule", "recovery-time", "beginner-programming", "consistency"]
+    },
+    {
+      "id": "20t1u2v3-w4x5-y6z7-a8b9-c0d1e2f3g4h5",
+      "slug": "flexibility-vs-mobility",
+      "content_category_id": "body-mechanics",
+      "day": 20,
+      "title": "Flexibility vs Mobility: What's the Difference?",
+      "tags": ["flexibility", "mobility", "range-of-motion", "joint-health", "movement-quality"]
+    },
+    {
+      "id": "21u2v3w4-x5y6-z7a8-b9c0-d1e2f3g4h5i6",
+      "slug": "meal-timing-around-workouts",
+      "content_category_id": "nutrition-essentials",
+      "day": 21,
+      "title": "Meal Timing Around Workouts: Fueling Your Performance",
+      "tags": ["meal-timing", "pre-workout", "post-workout", "nutrient-timing", "performance-nutrition"]
+    },
+    {
+      "id": "22v3w4x5-y6z7-a8b9-c0d1-e2f3g4h5i6j7",
+      "slug": "minimum-exercise-recommendations",
+      "content_category_id": "health-lifestyle",
+      "day": 22,
+      "title": "Minimum Exercise Recommendations for Health Benefits",
+      "tags": ["exercise-guidelines", "health-benefits", "minimum-dose", "activity-recommendations", "public-health"]
+    },
+    {
+      "id": "23w4x5y6-z7a8-b9c0-d1e2-f3g4h5i6j7k8",
+      "slug": "balanced-meal-composition",
+      "content_category_id": "nutrition-essentials",
+      "day": 23,
+      "title": "Balanced Meal Composition: Building Nutritious Plates",
+      "tags": ["balanced-meals", "meal-composition", "nutrient-density", "healthy-eating", "meal-planning"]
+    },
+    {
+      "id": "24x5y6z7-a8b9-c0d1-e2f3-g4h5i6j7k8l9",
+      "slug": "fitness-and-common-health-conditions",
+      "content_category_id": "health-lifestyle",
+      "day": 24,
+      "title": "Fitness and Common Health Conditions: What You Need to Know",
+      "tags": ["health-conditions", "medical-fitness", "diabetes", "hypertension", "therapeutic-exercise"]
+    },
+    {
+      "id": "25y6z7a8-b9c0-d1e2-f3g4-h5i6j7k8l9m0",
+      "slug": "hidden-calories-awareness",
+      "content_category_id": "nutrition-essentials",
+      "day": 25,
+      "title": "Hidden Calories: Where They Hide and How to Spot Them",
+      "tags": ["hidden-calories", "calorie-awareness", "weight-management", "food-awareness", "portion-distortion"]
+    },
+    {
+      "id": "26z7a8b9-c0d1-e2f3-g4h5-i6j7k8l9m0n1",
+      "slug": "age-appropriate-exercise",
+      "content_category_id": "health-lifestyle",
+      "day": 26,
+      "title": "Age-Appropriate Exercise: Adapting Fitness to Life Stages",
+      "tags": ["age-appropriate", "life-stages", "senior-fitness", "youth-fitness", "adaptive-exercise"]
+    },
+    {
+      "id": "27a8b9c0-d1e2-f3g4-h5i6-j7k8l9m0n1o2",
+      "slug": "calorie-energy-density-basics",
+      "content_category_id": "nutrition-essentials",
+      "day": 27,
+      "title": "Calorie Energy Density: Understanding Food Energy",
+      "tags": ["energy-density", "calories", "satiety", "volume-eating", "weight-management"]
+    },
+    {
+      "id": "28b9c0d1-e2f3-g4h5-i6j7-k8l9m0n1o2p3",
+      "slug": "preventing-muscle-loss-during-weight-loss",
+      "content_category_id": "nutrition-essentials",
+      "day": 28,
+      "title": "Preventing Muscle Loss During Weight Loss",
+      "tags": ["muscle-preservation", "weight-loss", "protein-intake", "strength-training", "body-composition"]
+    },
+    {
+      "id": "29c0d1e2-f3g4-h5i6-j7k8-l9m0n1o2p3q4",
+      "slug": "cardio-vs-diet-for-weight-loss",
+      "content_category_id": "nutrition-essentials",
+      "day": 29,
+      "title": "Cardio vs Diet for Weight Loss: Understanding the Balance",
+      "tags": ["weight-loss", "cardio", "diet", "calorie-deficit", "exercise-nutrition-balance"]
+    },
+    {
+      "id": "30d1e2f3-g4h5-i6j7-k8l9-m0n1o2p3q4r5",
+      "slug": "carbs-and-strength-training",
+      "content_category_id": "nutrition-essentials",
+      "day": 30,
+      "title": "Carbs and Strength Training: Fueling Your Workouts",
+      "tags": ["carbohydrates", "strength-training", "energy", "performance", "pre-workout-nutrition"]
+    },
+    {
+      "id": "31e2f3g4-h5i6-j7k8-l9m0-n1o2p3q4r5s6",
+      "slug": "protein-and-muscle-recovery",
+      "content_category_id": "nutrition-essentials",
+      "day": 31,
+      "title": "Protein and Muscle Recovery: The Essential Connection",
+      "tags": ["protein", "muscle-recovery", "post-workout", "muscle-building", "recovery-nutrition"]
+    },
+    {
+      "id": "32f3g4h5-i6j7-k8l9-m0n1-o2p3q4r5s6t7",
+      "slug": "satiety-and-avoiding-overeating",
+      "content_category_id": "nutrition-essentials",
+      "day": 32,
+      "title": "Achieving Satiety and Avoiding Overeating",
+      "tags": ["satiety", "hunger-management", "portion-control", "mindful-eating", "appetite-regulation"]
+    },
+    {
+      "id": "33g4h5i6-j7k8-l9m0-n1o2-p3q4r5s6t7u8",
+      "slug": "using-kitchen-scale-and-measurements",
+      "content_category_id": "health-lifestyle",
+      "day": 33,
+      "title": "Using Kitchen Scales and Measurements: Precision in Nutrition",
+      "tags": ["kitchen-scale", "food-measurement", "portion-accuracy", "nutrition-tracking", "meal-prep"]
+    },
+    {
+      "id": "34h5i6j7-k8l9-m0n1-o2p3-q4r5s6t7u8v9",
+      "slug": "nutrition-terminology-and-metabolism",
+      "content_category_id": "health-lifestyle",
+      "day": 34,
+      "title": "Nutrition Terminology and Metabolism: Key Concepts",
+      "tags": ["metabolism", "TDEE", "calorie-deficit", "calorie-surplus", "metabolic-basics"]
+    },
+    {
+      "id": "35i6j7k8-l9m0-n1o2-p3q4-r5s6t7u8v9w0",
+      "slug": "fiber-and-gut-health",
+      "content_category_id": "health-lifestyle",
+      "day": 35,
+      "title": "Fiber and Gut Health: Supporting Your Digestive System",
+      "tags": ["fiber", "gut-health", "digestive-health", "microbiome", "fiber-rich-foods"]
+    },
+    {
+      "id": "36j7k8l9-m0n1-o2p3-q4r5-s6t7u8v9w0x1",
+      "slug": "carbs-are-not-the-enemy",
+      "content_category_id": "health-lifestyle",
+      "day": 36,
+      "title": "Carbs Are Not the Enemy: Understanding Energy Sources",
+      "tags": ["carbohydrates", "energy-sources", "nutrition-myths", "balanced-diet", "carb-education"]
+    },
+    {
+      "id": "37k8l9m0-n1o2-p3q4-r5s6-t7u8v9w0x1y2",
+      "slug": "80-20-rule-balanced-eating",
+      "content_category_id": "health-lifestyle",
+      "day": 37,
+      "title": "The 80/20 Rule: Balanced Approach to Eating",
+      "tags": ["80-20-rule", "balanced-eating", "flexible-dieting", "sustainable-nutrition", "moderation"]
+    },
+    {
+      "id": "38l9m0n1-o2p3-q4r5-s6t7-u8v9w0x1y2z3",
+      "slug": "good-fats-vs-bad-fats",
+      "content_category_id": "health-lifestyle",
+      "day": 38,
+      "title": "Good Fats vs Bad Fats: Making Smart Choices",
+      "tags": ["healthy-fats", "saturated-fats", "trans-fats", "omega-3", "fat-education"]
+    },
+    {
+      "id": "39m0n1o2-p3q4-r5s6-t7u8-v9w0x1y2z3a4",
+      "slug": "managing-cravings-and-temptations",
+      "content_category_id": "health-lifestyle",
+      "day": 39,
+      "title": "Managing Cravings and Temptations: Practical Strategies",
+      "tags": ["craving-management", "temptation-control", "environment-design", "willpower", "habit-modification"]
+    },
+    {
+      "id": "40n1o2p3-q4r5-s6t7-u8v9-w0x1y2z3a4b5",
+      "slug": "sarcopenia-and-muscle-preservation",
+      "content_category_id": "health-lifestyle",
+      "day": 40,
+      "title": "Sarcopenia and Muscle Preservation: Aging and Exercise",
+      "tags": ["sarcopenia", "muscle-preservation", "aging", "strength-training", "muscle-loss"]
+    },
+    {
+      "id": "41o2p3q4-r5s6-t7u8-v9w0-x1y2z3a4b5c6",
+      "slug": "health-tracking-apps-and-wearables",
+      "content_category_id": "health-lifestyle",
+      "day": 41,
+      "title": "Health Tracking Apps and Wearables: Your Digital Health Toolkit",
+      "tags": ["health-tracking", "fitness-apps", "wearables", "data-monitoring", "health-technology"]
+    },
+    {
+      "id": "42p3q4r5-s6t7-u8v9-w0x1-y2z3a4b5c6d7",
+      "slug": "when-to-consult-healthcare-professionals",
+      "content_category_id": "health-lifestyle",
+      "day": 42,
+      "title": "When to Consult Healthcare Professionals for Exercise",
+      "tags": ["medical-clearance", "healthcare-consultation", "exercise-safety", "health-screening", "professional-guidance"]
+    },
+    {
+      "id": "43q4r5s6-t7u8-v9w0-x1y2-z3a4b5c6d7e8",
+      "slug": "gym-equipment-identification-part-1",
+      "content_category_id": "equipment-gym-basics",
+      "day": 43,
+      "title": "Gym Equipment Identification (Part 1): Cardio Machines",
+      "tags": ["gym-equipment", "cardio-machines", "equipment-identification", "gym-navigation", "machine-basics"]
+    },
+    {
+      "id": "44r5s6t7-u8v9-w0x1-y2z3-a4b5c6d7e8f9",
+      "slug": "gym-equipment-identification-part-2",
+      "content_category_id": "equipment-gym-basics",
+      "day": 44,
+      "title": "Gym Equipment Identification (Part 2): Strength Training Machines",
+      "tags": ["strength-machines", "weight-machines", "equipment-safety", "machine-setup", "gym-basics"]
+    },
+    {
+      "id": "45s6t7u8-v9w0-x1y2-z3a4-b5c6d7e8f9g0",
+      "slug": "free-weights-and-accessories",
+      "content_category_id": "equipment-gym-basics",
+      "day": 45,
+      "title": "Free Weights and Accessories: Your Complete Guide",
+      "tags": ["free-weights", "dumbbells", "barbells", "kettlebells", "weight-training"]
+    },
+    {
+      "id": "46t7u8v9-w0x1-y2z3-a4b5-c6d7e8f9g0h1",
+      "slug": "equipment-safety-and-etiquette",
+      "content_category_id": "equipment-gym-basics",
+      "day": 46,
+      "title": "Equipment Safety and Gym Etiquette",
+      "tags": ["gym-safety", "equipment-safety", "gym-etiquette", "safety-protocols", "gym-culture"]
+    },
+    {
+      "id": "47u8v9w0-x1y2-z3a4-b5c6-d7e8f9g0h1i2",
+      "slug": "equipment-setup-and-adjustment",
+      "content_category_id": "equipment-gym-basics",
+      "day": 47,
+      "title": "Equipment Setup and Adjustment Techniques",
+      "tags": ["equipment-setup", "machine-adjustment", "proper-form", "safety-setup", "equipment-basics"]
+    },
+    {
+      "id": "48v9w0x1-y2z3-a4b5-c6d7-e8f9g0h1i2j3",
+      "slug": "home-workout-equipment-alternatives",
+      "content_category_id": "equipment-gym-basics",
+      "day": 48,
+      "title": "Home Workout Equipment Alternatives",
+      "tags": ["home-workouts", "equipment-alternatives", "bodyweight-exercises", "minimal-equipment", "home-fitness"]
+    },
+    {
+      "id": "49w0x1y2-z3a4-b5c6-d7e8-f9g0h1i2j3k4",
+      "slug": "gym-layout-and-navigation",
+      "content_category_id": "equipment-gym-basics",
+      "day": 49,
+      "title": "Gym Layout and Navigation: Finding Your Way",
+      "tags": ["gym-layout", "gym-navigation", "gym-zones", "facility-orientation", "gym-basics"]
+    },
+    {
+      "id": "50x1y2z3-a4b5-c6d7-e8f9-g0h1i2j3k4l5",
+      "slug": "equipment-cleaning-and-hygiene",
+      "content_category_id": "equipment-gym-basics",
+      "day": 50,
+      "title": "Equipment Cleaning and Hygiene Practices",
+      "tags": ["gym-hygiene", "equipment-cleaning", "sanitation", "health-safety", "cleanliness"]
+    },
+    {
+      "id": "51y2z3a4-b5c6-d7e8-f9g0-h1i2j3k4l5m6",
+      "slug": "gym-wear-and-preparation",
+      "content_category_id": "equipment-gym-basics",
+      "day": 51,
+      "title": "Gym Wear and Preparation: Dressing for Success",
+      "tags": ["gym-wear", "workout-clothes", "gym-preparation", "exercise-attire", "gym-essentials"]
+    },
+    {
+      "id": "52z3a4b5-c6d7-e8f9-g0h1-i2j3k4l5m6n7",
+      "slug": "equipment-sharing-and-time-limits",
+      "content_category_id": "equipment-gym-basics",
+      "day": 52,
+      "title": "Equipment Sharing and Time Limits: Gym Courtesy",
+      "tags": ["equipment-sharing", "gym-courtesy", "time-management", "peak-hours", "gym-etiquette"]
+    },
+    {
+      "id": "53a4b5c6-d7e8-f9g0-h1i2-j3k4l5m6n7o8",
+      "slug": "breathing-techniques-during-exercise",
+      "content_category_id": "exercise-fundamentals",
+      "day": 53,
+      "title": "Breathing Techniques During Exercise",
+      "tags": ["breathing-techniques", "exercise-breathing", "oxygen-delivery", "performance-breathing", "respiratory-control"]
+    },
+    {
+      "id": "54b5c6d7-e8f9-g0h1-i2j3-k4l5m6n7o8p9",
+      "slug": "posture-and-alignment-cues",
+      "content_category_id": "exercise-fundamentals",
+      "day": 54,
+      "title": "Posture and Alignment Cues for Exercise",
+      "tags": ["posture-cues", "alignment", "body-positioning", "form-correction", "movement-quality"]
+    },
+    {
+      "id": "55c6d7e8-f9g0-h1i2-j3k4-l5m6n7o8p9q0",
+      "slug": "exercise-progression-principles",
+      "content_category_id": "exercise-fundamentals",
+      "day": 55,
+      "title": "Exercise Progression Principles: From Beginner to Intermediate",
+      "tags": ["exercise-progression", "progressive-overload", "skill-development", "advancement", "training-progression"]
+    },
+    {
+      "id": "56d7e8f9-g0h1-i2j3-k4l5-m6n7o8p9q0r1",
+      "slug": "bodyweight-movement-patterns",
+      "content_category_id": "exercise-fundamentals",
+      "day": 56,
+      "title": "Mastering Bodyweight Movement Patterns",
+      "tags": ["bodyweight-exercises", "movement-patterns", "functional-movement", "basic-movements", "no-equipment"]
+    },
+    {
+      "id": "57e8f9g0-h1i2-j3k4-l5m6-n7o8p9q0r1s2",
+      "slug": "common-form-mistakes-and-corrections",
+      "content_category_id": "exercise-fundamentals",
+      "day": 57,
+      "title": "Common Form Mistakes and How to Correct Them",
+      "tags": ["form-mistakes", "exercise-corrections", "technique-improvement", "common-errors", "form-coaching"]
+    },
+    {
+      "id": "58f9g0h1-i2j3-k4l5-m6n7-o8p9q0r1s2t3",
+      "slug": "mind-muscle-connection-and-body-awareness",
+      "content_category_id": "exercise-fundamentals",
+      "day": 58,
+      "title": "Mind-Muscle Connection and Body Awareness",
+      "tags": ["mind-muscle-connection", "body-awareness", "muscle-activation", "exercise-focus", "conscious-movement"]
+    },
+    {
+      "id": "59g0h1i2-j3k4-l5m6-n7o8-p9q0r1s2t3u4",
+      "slug": "importance-of-sleep-for-recovery",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 59,
+      "title": "The Importance of Sleep for Fitness Recovery",
+      "tags": ["sleep-recovery", "rest", "muscle-repair", "sleep-hygiene", "recovery-optimization"]
+    },
+    {
+      "id": "60h1i2j3-k4l5-m6n7-o8p9-q0r1s2t3u4v5",
+      "slug": "active-recovery-vs-complete-rest",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 60,
+      "title": "Active Recovery vs Complete Rest: When to Use Each",
+      "tags": ["active-recovery", "rest-days", "recovery-methods", "low-intensity-exercise", "complete-rest"]
+    },
+    {
+      "id": "61i2j3k4-l5m6-n7o8-p9q0-r1s2t3u4v5w6",
+      "slug": "rice-protocol-for-minor-injuries",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 61,
+      "title": "RICE Protocol for Minor Injuries: First Aid Basics",
+      "tags": ["RICE-protocol", "injury-treatment", "first-aid", "acute-injuries", "immediate-care"]
+    },
+    {
+      "id": "62j3k4l5-m6n7-o8p9-q0r1-s2t3u4v5w6x7",
+      "slug": "recognizing-overtraining-signs",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 62,
+      "title": "Recognizing Overtraining Signs: When to Rest",
+      "tags": ["overtraining", "warning-signs", "fatigue-management", "rest-importance", "training-balance"]
+    },
+    {
+      "id": "63k4l5m6-n7o8-p9q0-r1s2-t3u4v5w6x7y8",
+      "slug": "stretching-and-mobility-techniques",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 63,
+      "title": "Basic Stretching and Mobility Techniques",
+      "tags": ["stretching", "mobility-work", "flexibility-training", "movement-preparation", "injury-prevention"]
+    },
+    {
+      "id": "64l5m6n7-o8p9-q0r1-s2t3-u4v5w6x7y8z9",
+      "slug": "muscle-soreness-vs-pain-recognition",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 64,
+      "title": "Muscle Soreness vs Pain: Learning to Listen to Your Body",
+      "tags": ["muscle-soreness", "pain-recognition", "body-awareness", "injury-signs", "listening-to-body"]
+    },
+    {
+      "id": "65m6n7o8-p9q0-r1s2-t3u4-v5w6x7y8z9a0",
+      "slug": "overcoming-gym-anxiety-and-building-confidence",
+      "content_category_id": "mindset-motivation",
+      "day": 65,
+      "title": "Overcoming Gym Anxiety and Building Confidence",
+      "tags": ["gym-anxiety", "confidence-building", "mental-barriers", "social-anxiety", "self-assurance"]
+    },
+    {
+      "id": "66n7o8p9-q0r1-s2t3-u4v5-w6x7y8z9a0b1",
+      "slug": "habit-formation-and-behavior-change",
+      "content_category_id": "mindset-motivation",
+      "day": 66,
+      "title": "The Science of Habit Formation and Behavior Change",
+      "tags": ["habit-formation", "behavior-change", "psychology", "routine-building", "lifestyle-change"]
+    },
+    {
+      "id": "67o8p9q0-r1s2-t3u4-v5w6-x7y8z9a0b1c2",
+      "slug": "motivation-vs-discipline-understanding",
+      "content_category_id": "mindset-motivation",
+      "day": 67,
+      "title": "Motivation vs Discipline: Understanding the Difference",
+      "tags": ["motivation", "discipline", "consistency", "self-control", "long-term-success"]
+    },
+    {
+      "id": "68p9q0r1-s2t3-u4v5-w6x7-y8z9a0b1c2d3",
+      "slug": "handling-plateaus-and-setbacks",
+      "content_category_id": "mindset-motivation",
+      "day": 68,
+      "title": "Handling Plateaus and Setbacks Effectively",
+      "tags": ["plateaus", "setbacks", "resilience", "problem-solving", "progress-barriers"]
+    },
+    {
+      "id": "69q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3e4",
+      "slug": "social-support-and-fitness-community",
+      "content_category_id": "mindset-motivation",
+      "day": 69,
+      "title": "The Importance of Social Support in Fitness Success",
+      "tags": ["social-support", "fitness-community", "accountability", "motivation-support", "workout-partners"]
+    },
+    {
+      "id": "70r1s2t3-u4v5-w6x7-y8z9-a0b1c2d3e4f5",
+      "slug": "integrating-fitness-into-daily-routines",
+      "content_category_id": "mindset-motivation",
+      "day": 70,
+      "title": "Integrating Fitness into Daily Routines: Beyond the Gym",
+      "tags": ["daily-integration", "lifestyle-fitness", "routine-incorporation", "active-lifestyle", "movement-habits"]
+    }
+  ]

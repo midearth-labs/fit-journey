@@ -11,6 +11,7 @@ A Duolingo-style fitness, health and wellness learning and quiz app targeting pe
 - **Total Knowledge Base articles** (70 total articles across 9 categories)
 - **Specific article distribution per category** (6 articles for "Fitness Foundation & Getting Started", 12 for "Nutrition Essentials", 6 for "Recovery & Injury Prevention", 12 for "Health & Lifestyle Integration", 6 for "Mindset & Motivation", 6 for "Body Mechanics & Movement", 6 for "Exercise Types & Goal Setting", 10 for "Equipment & Gym Basics", 6 for "Exercise Fundamentals & Form")
 - **Natural learning progression** within each category that introduces new concepts meaningfully
+- **IMPORTANT: Comprehensiveness by learning objectives** All the articles content as a whole under a category should align with that category's description and **IMPORTANTLY: LEARNING OBJECTIVES**
 - **Articles form a meaningful whole** together when completed
 - **Single-part or multi-part articles** depending on content volume, a single topic might be divided into not more than 3 parts. In this case, the title could be "Article Name (Part 1/N)". Articles like Exercise Identification or Equipment Identification will definitely need to be split into multiple articles
 - **Article reading time** Between 3 and 5 minutes reading time per single article. 5 minutes for more information dense articles.
@@ -96,6 +97,7 @@ Create knowledge base articles that follow the natural progression of a beginner
 - **Conversation-driven:** Dialogue reveals knowledge naturally through character interactions
 - **Problem-solution format:** Characters face obstacles and work through them with practical solutions
 - **Progressive complexity:** Same characters appearing in increasingly sophisticated situations as the learning progresses
+- **Progressive complexity:** GENERATE 1 TO 3 PASSAGES PER ARTICLE.
 
 ## **Passage-Based Question Integration**
 Questions derived from passages should feel natural to the story context and test both knowledge recall AND practical application, including emotional/psychological elements alongside technical knowledge.

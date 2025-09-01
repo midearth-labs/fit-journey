@@ -1,0 +1,562 @@
+[
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "slug": "what-is-fitness-really",
+      "content_category_id": "fitness-foundation",
+      "day": 1,
+      "title": "What Is Fitness Really? Debunking the Instagram Myths",
+      "tags": ["beginner", "fitness-basics", "myths", "foundation", "getting-started"]
+    },
+    {
+      "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "before-you-start-safety-first",
+      "content_category_id": "fitness-foundation",
+      "day": 2,
+      "title": "Before You Start: The Safety Checklist Nobody Talks About",
+      "tags": ["safety", "health-check", "beginner", "preparation", "medical"]
+    },
+    {
+      "id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "fitness-where-you-are",
+      "content_category_id": "fitness-foundation",
+      "day": 3,
+      "title": "Fitness Can Meet You Where You Are (Yes, Even on Your Couch)",
+      "tags": ["adaptability", "mindset", "beginner", "accessibility", "motivation"]
+    },
+    {
+      "id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "gradual-progression-tortoise-wins",
+      "content_category_id": "fitness-foundation",
+      "day": 4,
+      "title": "Why the Tortoise Always Wins: The Science of Starting Slow",
+      "tags": ["progression", "consistency", "beginner", "science", "habits"]
+    },
+    {
+      "id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "fitness-language-decoded",
+      "content_category_id": "fitness-foundation",
+      "day": 5,
+      "title": "Fitness Language Decoded: From Reps to RIR Without the Confusion",
+      "tags": ["terminology", "education", "beginner", "vocabulary", "basics"]
+    },
+    {
+      "id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "when-to-get-help",
+      "content_category_id": "fitness-foundation",
+      "day": 6,
+      "title": "When to DIY vs When to Get Help: Your Fitness Support Guide",
+      "tags": ["guidance", "professional-help", "safety", "resources", "support"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "slug": "macros-101-understanding-carbs-proteins-and-fats",
+      "content_category_id": "nutrition-essentials",
+      "day": 7,
+      "title": "Macros 101: Understanding Carbs, Proteins, and Fats",
+      "tags": ["nutrition", "macros", "labels", "food", "basics"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "slug": "calories-explained-what-energy-in-energy-out-really-means",
+      "content_category_id": "nutrition-essentials",
+      "day": 8,
+      "title": "Calories Explained: What 'Energy In, Energy Out' Really Means",
+      "tags": ["calories", "CICO", "metabolism", "weight loss", "nutrition basics"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "slug": "meal-timing-around-workouts",
+      "content_category_id": "nutrition-essentials",
+      "day": 9,
+      "title": "Meal Timing Around Workouts: Fueling Your Performance",
+      "tags": ["meal-timing", "myths", "nutrition", "science", "practical"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "slug": "more-than-thirst-why-hydration-is-your-fitness-superpower",
+      "content_category_id": "nutrition-essentials",
+      "day": 10,
+      "title": "More Than Thirst: Why Hydration is Your Fitness Superpower",
+      "tags": ["hydration", "water", "performance", "health", "basics"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "slug": "reading-nutrition-labels-detective",
+      "content_category_id": "nutrition-essentials",
+      "day": 11,
+      "title": "Nutrition Label Detective: Finding Hidden Calories (Part 1/2)",
+      "tags": ["labels", "calories", "education", "practical", "awareness"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "slug": "reading-nutrition-labels-mastery",
+      "content_category_id": "nutrition-essentials",
+      "day": 12,
+      "title": "Nutrition Label Detective: Mastering Serving Sizes (Part 2/2)",
+      "tags": ["labels", "servings", "education", "practical", "skills"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+      "slug": "stress-exercise-mental-health",
+      "content_category_id": "health-lifestyle",
+      "day": 13,
+      "title": "Exercise as Medicine: The Mental Health Benefits Nobody Mentions",
+      "tags": ["mental-health", "stress", "wellness", "benefits", "holistic"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+      "slug": "sedentary-life-movement-hacks",
+      "content_category_id": "health-lifestyle",
+      "day": 14,
+      "title": "Desk Job Survival: Sneaking Movement Into Your 9-to-5",
+      "tags": ["office", "movement", "lifestyle", "practical", "daily"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+      "slug": "sleep-secret-weapon",
+      "content_category_id": "health-lifestyle",
+      "day": 15,
+      "title": "Sleep: Your Secret Fitness Weapon (That's Free)",
+      "tags": ["sleep", "recovery", "health", "performance", "wellness"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "slug": "minimum-effective-dose-exercise",
+      "content_category_id": "health-lifestyle",
+      "day": 16,
+      "title": "The Minimum Effective Dose: How Little Exercise Actually Works",
+      "tags": ["guidelines", "minimum", "efficiency", "science", "practical"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+      "slug": "sarcopenia-muscle-loss-prevention",
+      "content_category_id": "health-lifestyle",
+      "day": 17,
+      "title": "Sarcopenia: Why Your Future Self Needs You to Start Now",
+      "tags": ["aging", "muscle", "prevention", "health", "longevity"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+      "slug": "managing-health-conditions-exercise",
+      "content_category_id": "health-lifestyle",
+      "day": 18,
+      "title": "Exercise With Health Conditions: Your Personalized Playbook",
+      "tags": ["health-conditions", "medical", "adaptation", "safety", "management"]
+    },
+    {
+      "id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "cardio-vs-strength-false-choice",
+      "content_category_id": "exercise-types-goals",
+      "day": 19,
+      "title": "Cardio vs Strength: Why It's Not Actually a Competition",
+      "tags": ["cardio", "strength", "exercise-types", "balance", "education"]
+    },
+    {
+      "id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "smart-goals-fitness-reality",
+      "content_category_id": "exercise-types-goals",
+      "day": 20,
+      "title": "SMART Goals That Actually Work (Not the Ones That Sound Good)",
+      "tags": ["goals", "planning", "smart", "realistic", "motivation"]
+    },
+    {
+      "id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "beginner-workout-frequency",
+      "content_category_id": "exercise-types-goals",
+      "day": 21,
+      "title": "How Often Should Beginners Work Out? The Goldilocks Zone",
+      "tags": ["frequency", "schedule", "beginner", "balance", "recovery"]
+    },
+    {
+      "id": "9ba7b810-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "fundamental-movement-patterns",
+      "content_category_id": "body-mechanics",
+      "day": 22,
+      "title": "Fundamental Movement Patterns: Some Core Building Blocks (Push, Pull, Hinge, Squat, Rotation,)",
+      "tags": ["movement-patterns", "squat", "hinge", "push", "pull", "rotation"]
+    },
+    {
+      "id": "9ba7b811-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "what-is-your-core-and-how-do-you-engage-it",
+      "content_category_id": "body-mechanics",
+      "day": 23,
+      "title": "What is yout core, and how do you engage it? Note: it's not about going down on one knee, that's split squats :)",
+      "tags": ["core", "anatomy", "stability", "function", "training"]
+    },
+    {
+      "id": "9ba7b812-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "flexibility-vs-mobility",
+      "content_category_id": "body-mechanics",
+      "day": 24,
+      "title": "Flexibility vs Mobility: What's the Difference and Why You Need Both",
+      "tags": ["flexibility", "mobility", "movement", "stretching", "injury prevention"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "slug": "balanced-meals-building-blocks",
+      "content_category_id": "nutrition-essentials",
+      "day": 25,
+      "title": "Building Balanced Meals: The Plate Method That Actually Works",
+      "tags": ["meals", "balance", "practical", "nutrition", "planning"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440008",
+      "slug": "nutrient-dense-choices",
+      "content_category_id": "nutrition-essentials",
+      "day": 26,
+      "title": "Nutrient Dense vs Calorie Dense: The Food Quality Spectrum",
+      "tags": ["nutrients", "calories", "quality", "choices", "education"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440009",
+      "slug": "calorie-deficit-without-muscle-loss",
+      "content_category_id": "nutrition-essentials",
+      "day": 27,
+      "title": "Losing Fat, Not Muscle: The Protein Priority Principle",
+      "tags": ["protein", "muscle", "fat-loss", "nutrition", "strategy"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "slug": "hidden-calories-exposed",
+      "content_category_id": "nutrition-essentials",
+      "day": 28,
+      "title": "The Sneaky Calorie Bombs: Nuts, Drinks, and Dressings Exposed",
+      "tags": ["calories", "awareness", "tracking", "hidden", "education"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440011",
+      "slug": "kitchen-scale-game-changer",
+      "content_category_id": "nutrition-essentials",
+      "day": 29,
+      "title": "Kitchen Scale Mastery: The $20 Tool That Changes Everything",
+      "tags": ["tools", "measurement", "accuracy", "practical", "tracking"]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440012",
+      "slug": "carbs-fats-friends-not-enemies",
+      "content_category_id": "nutrition-essentials",
+      "day": 30,
+      "title": "Carbs & Fats: Why They're Friends, Not Enemies",
+      "tags": ["carbs", "fats", "myths", "nutrition", "balance"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+      "slug": "consistency-over-intensity",
+      "content_category_id": "health-lifestyle",
+      "day": 31,
+      "title": "Why Showing Up at 50% Beats 100% Once a Week",
+      "tags": ["consistency", "habits", "sustainability", "mindset", "success"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+      "slug": "lifestyle-factors-fitness-success",
+      "content_category_id": "health-lifestyle",
+      "day": 32,
+      "title": "The Lifestyle Factors That Make or Break Your Fitness",
+      "tags": ["lifestyle", "habits", "success", "holistic", "factors"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+      "slug": "age-appropriate-exercise",
+      "content_category_id": "health-lifestyle",
+      "day": 33,
+      "title": "Exercise Through the Ages: What Changes and What Doesn't",
+      "tags": ["age", "adaptation", "lifespan", "safety", "progression"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+      "slug": "disease-prevention-exercise",
+      "content_category_id": "health-lifestyle",
+      "day": 34,
+      "title": "Exercise as Prevention: The Diseases You're Avoiding Right Now",
+      "tags": ["prevention", "disease", "health", "benefits", "longevity"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+      "slug": "health-markers-tracking",
+      "content_category_id": "health-lifestyle",
+      "day": 35,
+      "title": "Beyond the Scale: Health Markers That Actually Matter",
+      "tags": ["tracking", "health-markers", "progress", "measurement", "data"]
+    },
+    {
+      "id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+      "slug": "wearables-apps-fitness-tech",
+      "content_category_id": "health-lifestyle",
+      "day": 36,
+      "title": "Fitness Tech 101: Making Wearables Work for You",
+      "tags": ["technology", "wearables", "tracking", "apps", "tools"]
+    },
+    {
+      "id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "exercise-alignment-with-goals",
+      "content_category_id": "exercise-types-goals",
+      "day": 37,
+      "title": "Matching Exercises to Goals: Your Personal Exercise Menu",
+      "tags": ["goals", "exercise-selection", "planning", "customization", "strategy"]
+    },
+    {
+      "id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "progressive-overload-explained",
+      "content_category_id": "exercise-types-goals",
+      "day": 38,
+      "title": "Progressive Overload: The Only Rule That Really Matters",
+      "tags": ["progression", "overload", "strength", "principles", "growth"]
+    },
+    {
+      "id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "tracking-fitness-progress",
+      "content_category_id": "exercise-types-goals",
+      "day": 39,
+      "title": "Tracking Progress: Numbers That Lie vs Metrics That Matter",
+      "tags": ["tracking", "progress", "metrics", "measurement", "assessment"]
+    },
+    {
+      "id": "9ba7b813-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "protect-your-back-mastering-the-hip-hinge",
+      "content_category_id": "body-mechanics",
+      "day": 40,
+      "title": "Protect Your Back: Mastering the Hip Hinge",
+      "tags": ["hip hinge", "deadlift", "back pain", "form"]
+    },
+    {
+      "id": "9ba7b814-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "balance-coordination-basics",
+      "content_category_id": "body-mechanics",
+      "day": 41,
+      "title": "Balance & Coordination: Your Injury Prevention Insurance",
+      "tags": ["balance", "coordination", "stability", "prevention", "skills"]
+    },
+    {
+      "id": "9ba7b815-9dad-11d1-80b4-00c04fd430c8",
+      "slug": "the-mind-muscle-connection-feeling-the-right-muscles-work",
+      "content_category_id": "body-mechanics",
+      "day": 42,
+      "title": "The Mind-Muscle Connection: Feeling the Right Muscles Work",
+      "tags": ["mind-muscle", "technique", "form", "body awareness"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "slug": "gym-equipment-basics-part1-cardio",
+      "content_category_id": "equipment-gym-basics",
+      "day": 43,
+      "title": "Common Gym Equipment Identification: Cardio Zone Decoded (Part 1/5)",
+      "tags": ["equipment", "cardio", "gym", "identification", "basics"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d480",
+      "slug": "gym-equipment-basics-part2-free-weights-upper-body",
+      "content_category_id": "equipment-gym-basics",
+      "day": 44,
+      "title": "Common Gym Equipment Identification: Free Weights - Upper Body (Part 2/5)",
+      "tags": ["equipment", "weights", "gym", "identification", "strength"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d481",
+      "slug": "gym-equipment-basics-part3-free-weights-lower-body",
+      "content_category_id": "equipment-gym-basics",
+      "day": 45,
+      "title": "Common Gym Equipment Identification: Free Weights - Lower Body (Part 3/5)",
+      "tags": ["equipment", "machines", "gym", "identification", "usage"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d482",
+      "slug": "home-equipment-alternatives",
+      "content_category_id": "equipment-gym-basics",
+      "day": 46,
+      "title": "No Gym? No Problem: Home Equipment Alternatives",
+      "tags": ["home", "alternatives", "equipment", "budget", "creative"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "slug": "gym-equipment-basics-part4-machines-upper-body",
+      "content_category_id": "equipment-gym-basics",
+      "day": 47,
+      "title": "Common Gym Equipment Identification: Machines - Upper Body (Part 4/5)",
+      "tags": ["equipment", "machines", "gym", "identification", "strength"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d484",
+      "slug": "gym-equipment-basics-part5-machines-lower-body",
+      "content_category_id": "equipment-gym-basics",
+      "day": 48,
+      "title": "Common Gym Equipment Identification: Machines - Lower Body (Part 5/5)",
+      "tags": ["equipment", "machines", "gym", "identification", "usage"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d485",
+      "slug": "equipment-safety-protocols-hygiene",
+      "content_category_id": "equipment-gym-basics",
+      "day": 49,
+      "title": "Gym Equipment Safety and Hygiene: The Unwritten Rules That Keep You Safe",
+      "tags": ["safety", "equipment", "hygiene", "social", "etiquette"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d486",
+      "slug": "equipment-setup-adjustment",
+      "content_category_id": "equipment-gym-basics",
+      "day": 50,
+      "title": "Machine Adjustments: Making Equipment Fit Your Body",
+      "tags": ["adjustment", "setup", "machines", "customization", "comfort"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d487",
+      "slug": "appropriate-gym-wear",
+      "content_category_id": "equipment-gym-basics",
+      "day": 51,
+      "title": "What to Wear: Gym Attire That Works (Not Just Looks Good)",
+      "tags": ["sweat-wicking", "attire", "practical", "comfort", "function"]
+    },
+    {
+      "id": "a47ac10b-58cc-4372-a567-0e02b2c3d488",
+      "slug": "equipment-sharing-peak-hours",
+      "content_category_id": "equipment-gym-basics",
+      "day": 52,
+      "title": "Gym Etiquette: Sharing Equipment Like a Pro",
+      "tags": ["sharing", "peak-hours", "etiquette", "time-management", "wiping-and-reracking"]
+    },
+    {
+      "id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "slug": "breathing-during-exercise",
+      "content_category_id": "exercise-fundamentals",
+      "day": 53,
+      "title": "Breathing 101: Why You're Probably Doing It Wrong",
+      "tags": ["breathing", "technique", "fundamentals", "oxygen", "performance"]
+    },
+    {
+      "id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+      "slug": "posture-alignment-cues",
+      "content_category_id": "exercise-fundamentals",
+      "day": 54,
+      "title": "Posture Cues That Click: Finding Your Perfect Form",
+      "tags": ["posture", "alignment", "form", "cues", "technique"]
+    },
+    {
+      "id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+      "slug": "exercise-progression-principles",
+      "content_category_id": "exercise-fundamentals",
+      "day": 55,
+      "title": "From Zero to Hero: Smart Exercise Progression Strategies",
+      "tags": ["progression", "advancement", "strategy", "development", "growth"]
+    },
+    {
+      "id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+      "slug": "bodyweight-movement-mastery",
+      "content_category_id": "exercise-fundamentals",
+      "day": 56,
+      "title": "Bodyweight Basics: The Foundation Before the Weights",
+      "tags": ["bodyweight", "foundation", "basics", "movement", "strength"]
+    },
+    {
+      "id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "slug": "common-form-mistakes",
+      "content_category_id": "exercise-fundamentals",
+      "day": 57,
+      "title": "Form Mistakes Everyone Makes (And How to Fix Them)",
+      "tags": ["form", "mistakes", "correction", "technique", "improvement"]
+    },
+    {
+      "id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+      "slug": "exercise-modifications-levels",
+      "content_category_id": "exercise-fundamentals",
+      "day": 58,
+      "title": "Exercise Modifications: Making Every Move Work for You",
+      "tags": ["modifications", "adaptations", "accessibility", "variations", "customization"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "slug": "sleep-recovery-connection",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 59,
+      "title": "Sleep & Recovery: The 8-Hour Workout You're Missing",
+      "tags": ["sleep", "recovery", "rest", "regeneration", "health"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d480",
+      "slug": "active-recovery-strategies",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 60,
+      "title": "Active Recovery: Moving to Heal, Not Just Rest",
+      "tags": ["active-recovery", "movement", "healing", "strategy", "restoration"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d481",
+      "slug": "rice-protocol-injury-basics",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 61,
+      "title": "RICE Protocol & Beyond: First Aid for Fitness",
+      "tags": ["injury", "rice", "first-aid", "treatment", "acute-care"]
+    },
+    {
+      "id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "slug": "overcoming-gym-anxiety",
+      "content_category_id": "mindset-motivation",
+      "day": 62,
+      "title": "Gym Anxiety is Real: Your Confidence-Building Toolkit",
+      "tags": ["anxiety", "confidence", "mindset", "gym", "psychology"]
+    },
+    {
+      "id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+      "slug": "habit-formation-science",
+      "content_category_id": "mindset-motivation",
+      "day": 63,
+      "title": "The 21-Day Myth: How Habits Actually Form",
+      "tags": ["habits", "behavior", "science", "consistency", "psychology"]
+    },
+    {
+      "id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+      "slug": "motivation-vs-discipline",
+      "content_category_id": "mindset-motivation",
+      "day": 64,
+      "title": "Motivation vs Discipline: Why Waiting to 'Feel Like It' Doesn't Work",
+      "tags": ["motivation", "discipline", "mindset", "consistency", "success"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d482",
+      "slug": "overtraining-warning-signs",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 65,
+      "title": "Overtraining: When More Isn't Better",
+      "tags": ["overtraining", "rest", "balance", "warning-signs", "recovery"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "slug": "recovery-nutrition-timing",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 66,
+      "title": "Recovery Nutrition: What to Eat After Your Workout",
+      "tags": ["nutrition", "recovery", "post-workout", "timing", "fuel"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d484",
+      "slug": "soreness-vs-pain-difference",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 67,
+      "title": "Soreness vs Pain: Know the Difference, Save Your Body",
+      "tags": ["pain", "soreness", "injury", "awareness", "safety"]
+    },
+    {
+      "id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+      "slug": "plateaus-setbacks-comebacks",
+      "content_category_id": "mindset-motivation",
+      "day": 68,
+      "title": "Plateaus & Setbacks: Your Comeback Strategy Guide",
+      "tags": ["plateaus", "setbacks", "resilience", "strategy", "progress"]
+    },
+    {
+      "id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "slug": "social-support-fitness-success",
+      "content_category_id": "mindset-motivation",
+      "day": 69,
+      "title": "Finding Your Fitness Tribe: Why Going Solo Is Harder",
+      "tags": ["community", "support", "social", "accountability", "success"]
+    },
+    {
+      "id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+      "slug": "long-term-fitness-sustainability",
+      "content_category_id": "mindset-motivation",
+      "day": 70,
+      "title": "Building a Fitness Life: From 'Have To' to 'Want To'",
+      "tags": ["sustainability", "lifestyle", "long-term", "mindset", "transformation"]
+    }
+]

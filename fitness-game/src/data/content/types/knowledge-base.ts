@@ -11,22 +11,22 @@ export const KnowledgeBaseSchema = BaseContentSchema.extend({
   lede_image: ImageSchema.describe('The image to be displayed as the lead image for the article. Must be catchy and appropriate for the article.'),
   title: z.string().describe('The engaging title of the article.'),
   body: z.string().describe('Article text in markdown format containing image urls etc. Between 3 to 5 minutes of reading time.'),
-  tags: z.array(z.string()).describe('Tags for the article, that could be used to categorize the article or to filter the articles. Max 5 tags.'),
+  tags: z.array(z.string()).min(1).max(5).describe('Tags for the article, that could be used to categorize the article or to filter the articles. Between 1 and 5 tags.'),
   // @ TODO: Implement all cross-reference checks for all entities
-  learn_more_links: z.array(LearnMoreLinkSchema).describe('Between 3 and 5 links.'),
-  affiliate_links: z.array(AffiliateLinkSchema).describe('Between 3 and 5 affiliate links.'),
-  image_urls: z.array(ImageSchema).describe('The images to be referenced in the article markdown. Between 0 to 10 images. More images are required for articles with a more visual undertone e.g. equipment and exercise identification, nutrition, etc and nutrition etc.'),
+  learn_more_links: z.array(LearnMoreLinkSchema).min(3).max(5).describe('Between 3 and 5 links.'),
+  affiliate_links: z.array(AffiliateLinkSchema).min(3).max(5).describe('Between 3 and 5 affiliate links.'),
+  image_urls: z.array(ImageSchema).min(0).max(10).describe('The images to be referenced in the article markdown. Between 0 to 10 images. More images are required for articles with a more visual undertone e.g. equipment and exercise identification, nutrition, etc and nutrition etc.'),
   
   // Extended fields for content management
-  estimated_read_time_minutes: z.number().describe('The estimated reading time of the article in minutes between 3 and 5.'),
+  read_time: z.number().min(3).max(5).describe('The estimated reading time of the article in minutes between 3 and 5.'),
   word_count: z.number().describe('The word count of the article.'),
-  key_takeaways: z.array(z.string()).describe('Up to 3 takeaways from the article.'),
+  key_takeaways: z.array(z.string()).min(1).max(3).describe('Between 1 and 3 takeaways from the article. This could include practical actions the reader can apply after reading the article.'),
   passages: z.array(z.object({
     id: BaseContentSchema.shape.id,
     title: z.string().describe('The title of the passage.'),
     passage_text: z.string().describe('Passage text in markdown format containing 0 to 2 image urls. Between 30 to 40 seconds of reading time.'),
-    image_urls: z.array(ImageSchema).describe('The images to be referenced in the article markdown. Between 0 to 2 images.'),
-  })),
+    image_urls: z.array(ImageSchema).min(0).max(2).describe('The images to be referenced in the article markdown. Between 0 to 2 images.'),
+  })).min(1).max(3).describe('Between 1 and 3 passages for each knowledge base article.'),
 });
 
 export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>;

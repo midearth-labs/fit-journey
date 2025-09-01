@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 // Zod schemas
 export const BaseContentSchema = z.object({
-  id: z.string().describe('The ID of the content entity. Must be unique and immutable.'),
+  id: z.string().describe('The ID of the content entity. Must be a UUID, unique and immutable.'),
   created_at: z.string().describe('The date and time the content was created.'),
   updated_at: z.string().describe('The date and time the content was last updated.'),
   is_active: z.boolean().describe('Whether the content is active and should be displayed.'),
