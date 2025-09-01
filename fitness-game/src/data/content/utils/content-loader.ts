@@ -130,7 +130,7 @@ export class ContentLoader {
   /**
    * Get content map of a specific type
    */
-  getContentMap<T extends ContentType>(contentType: T) {
+  getContentMap<T extends keyof Content>(contentType: T): Content[T]['map'] {
     return this.content[contentType].map;
   }
 
@@ -144,14 +144,14 @@ export class ContentLoader {
   /**
    * Get content list of a specific type
    */
-  getContentList<T extends ContentType>(contentType: T) {
+  getContentList<T extends keyof Content>(contentType: T): Content[T]['list'] {
     return this.content[contentType].list;
   }
 
   /**
    * Get content by ID
    */
-  getContentById<T extends ContentType>(contentType: T, id: string) {
+  getContentById<T extends keyof Content>(contentType: T, id: string) {
     const contentMap = this.getContentMap(contentType);
     return contentMap.get(id);
   }

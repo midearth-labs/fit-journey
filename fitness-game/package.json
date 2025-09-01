@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "validate:content": "tsx scripts/validate-content.ts",
+    "generate:images": "tsx scripts/gemini-image-generator.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
@@ -43,12 +44,14 @@
     "zustand": "^4.5.7"
   },
   "devDependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/next-pwa": "^5.6.9",
     "@types/node": "^20.19.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.1",
     "drizzle-kit": "^0.31.4",
     "eslint": "^9",
     "eslint-config-next": "15.4.7",
@@ -56,7 +59,6 @@
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4",
     "tsx": "^4.20.5",
-    "typescript": "^5",
-    "dotenv": "^17.2.1"
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,344 @@
+[
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z",
+      "is_active": true,
+      "sort_order": 7,
+      "slug": "macros-101-understanding-carbs-proteins-and-fats",
+      "content_category_id": "nutrition-essentials",
+      "day": 7,
+      "lede_image": {
+        "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/lede-macros-plate.jpeg",
+        "description": "A colorful balanced plate showing portions of lean protein, complex carbohydrates, and healthy fats with clear visual sections",
+        "width": 1200,
+        "height": 630,
+        "prompt_generation_string": "Professional food photography of a divided plate showing grilled chicken breast (protein section), brown rice and vegetables (carbs section), avocado and nuts (fats section), bright natural lighting, educational infographic style overlay showing macro percentages"
+      },
+      "title": "Macros 101: Understanding Carbs, Proteins, and Fats",
+      "body": "# The Three Building Blocks Your Body Actually Needs\n\nLet's clear something up right away: despite what social media might tell you, none of the three macronutrients are evil. Your body needs all of them, just like a car needs gas, oil, AND coolant to run properly. Today, we're breaking down what these mysterious \"macros\" actually do and why tracking them (even loosely) can be a game-changer.\n\n![Macronutrient Overview](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/macro-overview-infographic.jpeg)\n\n## Protein: Your Body's Construction Crew\n\n**What it does:** Think of protein as the construction workers in your body. They're constantly building, repairing, and maintaining everything from your muscles to your hair, skin, and even hormones. After a workout, protein helps repair those tiny muscle tears that make you stronger.\n\n**How much you need:** A good starting point is 0.7-1g per pound of body weight if you're active. So if you weigh 150 pounds, aim for 105-150g of protein daily. Yes, that might seem like a lot at first!\n\n**Best sources:**\n- Lean meats (chicken, turkey, lean beef)\n- Fish and seafood\n- Eggs and egg whites\n- Greek yogurt and cottage cheese\n- Beans, lentils, and tofu\n- Protein powder (when whole foods aren't convenient)\n\n**Reality check:** You don't need to chug protein shakes all day. A palm-sized portion of protein at each meal plus a protein-rich snack usually gets you there.\n\n![Protein Sources](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/protein-sources-grid.jpeg)\n\n## Carbohydrates: Your Body's Preferred Fuel\n\n**What they do:** Carbs are like the gas in your tank – they're your body's favorite source of quick energy. Your brain alone uses about 130g of carbs daily just to function normally. They also help you push through workouts and recover afterward.\n\n**How much you need:** This varies widely based on activity level, but 45-65% of your total calories is a common range. For someone eating 2000 calories, that's 225-325g of carbs.\n\n**Best sources:**\n- Whole grains (oats, quinoa, brown rice)\n- Fruits (especially berries, apples, bananas)\n- Vegetables (sweet potatoes, squash, broccoli)\n- Legumes (beans, lentils, chickpeas)\n\n**The truth about \"bad\" carbs:** Simple carbs (like candy) aren't evil – they're just less filling and don't provide many nutrients. Think of them as pocket money versus your paycheck. Fine occasionally, but you can't live on them.\n\n## Fats: Your Body's Swiss Army Knife\n\n**What they do:** Fats help absorb vitamins, produce hormones, protect organs, and yes, they're also a source of energy. Without enough fat, you might feel cold, have dry skin, or experience mood swings.\n\n**How much you need:** About 20-35% of your total calories. For that 2000-calorie diet, that's roughly 44-78g of fat daily.\n\n**Best sources:**\n- Avocados\n- Nuts and seeds\n- Olive oil and coconut oil\n- Fatty fish (salmon, mackerel)\n- Nut butters\n\n**Plot twist:** Eating fat doesn't automatically make you fat. Eating too many total calories does that, regardless of whether they come from fat, carbs, or even protein.\n\n![Healthy Fats](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/healthy-fats-sources.jpeg)\n\n## Finding Your Balance\n\nHere's where beginners often get stuck: there's no perfect macro ratio for everyone. A construction worker needs different fuel than an office worker. A marathon runner needs different ratios than a powerlifter.\n\n**Start simple:**\n1. Include a protein source at every meal\n2. Don't fear carbs – choose mostly whole food sources\n3. Add some healthy fats to keep you satisfied\n4. Pay attention to how different ratios make you feel\n\n## Common Macro Myths Busted\n\n**Myth 1:** \"Carbs after 6 PM turn straight to fat\"\n**Truth:** Your body doesn't have a clock that changes how it processes food. Total daily intake matters more than timing.\n\n**Myth 2:** \"You need protein immediately after working out\"\n**Truth:** You have a several-hour window. Don't panic if you can't slam a shake immediately.\n\n**Myth 3:** \"Fat makes you fat\"\n**Truth:** Excess calories make you gain weight, not specific macronutrients.\n\n![Macro Myths Debunked](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/myths-vs-facts.jpeg)\n\n## Your Action Plan\n\n1. **This week:** Just start noticing what you eat. No judgment, just awareness.\n2. **Next week:** Try to include all three macros at each meal.\n3. **Eventually:** Consider tracking for a few days to see where you naturally land.\n\nRemember: You don't need to be perfect. Even having a rough idea of your macro intake puts you ahead of 90% of people. The goal isn't to obsess over every gram – it's to understand what you're eating so you can make informed choices that support your goals.",
+      "tags": ["nutrition", "macros", "labels", "food", "basics"],
+      "learn_more_links": [
+        {
+          "type": "youtube_short",
+          "url": "https://youtube.com/shorts/macro_basics_explained",
+          "title": "Macros Explained in 60 Seconds",
+          "description": "Quick visual guide to understanding macronutrients",
+          "duration_seconds": 60
+        },
+        {
+          "type": "article",
+          "url": "https://examine.com/nutrition/macronutrients",
+          "title": "The Science of Macronutrients",
+          "description": "Evidence-based deep dive into macro requirements"
+        },
+        {
+          "type": "app_store",
+          "url": "https://apps.apple.com/app/myfitnesspal",
+          "title": "MyFitnessPal - Macro Tracking Made Easy",
+          "description": "Free app to track your daily macro intake"
+        }
+      ],
+      "affiliate_links": [
+        {
+          "type": "amazon",
+          "url": "https://amazon.com/dp/food-scale-digital",
+          "title": "Digital Food Scale for Accurate Tracking",
+          "description": "Precise measurements make macro tracking much easier - essential kitchen tool"
+        },
+        {
+          "type": "amazon",
+          "url": "https://amazon.com/dp/meal-prep-containers",
+          "title": "Meal Prep Containers with Portion Sections",
+          "description": "Pre-portioned containers help visualize macro balance"
+        },
+        {
+          "type": "other",
+          "url": "https://rp.diet/app",
+          "title": "RP Diet App - Automated Macro Calculator",
+          "description": "Science-based app that calculates and adjusts your macros automatically"
+        }
+      ],
+      "image_urls": [
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/macro-overview-infographic.jpeg",
+          "description": "Infographic showing the three macronutrients with their calorie values (protein 4cal/g, carbs 4cal/g, fat 9cal/g) and primary functions",
+          "width": 800,
+          "height": 600,
+          "prompt_generation_string": "Clean educational infographic showing three colored sections for protein, carbohydrates, and fats with icons, calorie values per gram, and bullet points of main functions"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/protein-sources-grid.jpeg",
+          "description": "Grid of common protein sources with gram amounts per serving",
+          "width": 800,
+          "height": 800,
+          "prompt_generation_string": "3x3 grid of protein foods with serving sizes and protein grams labeled: chicken breast (25g), Greek yogurt (20g), eggs (6g each), tofu (10g), lentils (18g), salmon (22g), cottage cheese (15g), beef (26g), protein powder scoop (25g)"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/healthy-fats-sources.jpeg",
+          "description": "Visual guide to healthy fat sources and portion sizes",
+          "width": 800,
+          "height": 600,
+          "prompt_generation_string": "Arranged display of healthy fats: whole avocado, handful of mixed nuts, tablespoon of olive oil, salmon fillet, almond butter jar, with portion size callouts"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/myths-vs-facts.jpeg",
+          "description": "Split comparison showing common macro myths on left and facts on right",
+          "width": 800,
+          "height": 600,
+          "prompt_generation_string": "Split infographic design with red 'MYTH' section on left and green 'FACT' section on right, showing 3 macro misconceptions and their truth"
+        }
+      ],
+      "read_time": 4,
+      "word_count": 750,
+      "key_takeaways": [
+        "All three macronutrients are essential - protein for building/repair, carbs for energy, fats for hormones and vitamin absorption",
+        "Start by simply including all three macros at each meal rather than obsessing over perfect ratios",
+        "Focus on whole food sources for most of your intake, with flexibility for treats"
+      ],
+      "passages": [
+        {
+          "id": "passage-1-550e8400",
+          "title": "Sarah's Macro Confusion at the Gym Cafe",
+          "passage_text": "Sarah stared at the gym cafe menu, completely overwhelmed. \"I don't get it,\" she told Emma, who'd just finished her workout. \"This protein smoothie has 40g of protein but also 50g of carbs. Is that bad?\"\n\nEmma smiled, remembering her own confusion months ago. \"Not at all! After a workout, your body actually needs both. The protein helps repair your muscles, and the carbs refill your energy stores.\"\n\n\"But Instagram keeps telling me carbs are evil,\" Sarah protested.\n\n\"Instagram also tells people to do juice cleanses,\" Emma laughed. \"Look, I aim for about 30g of protein per meal, plenty of carbs from whole foods, and some healthy fats. I stopped demonizing food groups and started feeling so much better.\"\n\nSarah pulled out her phone. \"There's an app for tracking this stuff, right?\"\n\n\"Sure, but start simple,\" Emma advised. \"Just try to get some protein at each meal first. You can get fancy with exact numbers later.\"",
+          "image_urls": []
+        },
+        {
+          "id": "passage-2-550e8400",
+          "title": "Mike's Protein Obsession Reality Check",
+          "passage_text": "Mike loaded his fifth scoop of protein powder into his shaker. His friend Jordan raised an eyebrow. \"Dude, that's like 125 grams in one shake.\"\n\n\"Gotta maximize gains,\" Mike grunted, still sore from yesterday's workout.\n\nJordan, ever the researcher, pulled up an article on his phone. \"Actually, studies show your body can only use about 25-40g of protein at once for muscle building. The rest just becomes expensive pee or gets stored as energy.\"\n\n\"But more is better, right?\"\n\n\"Not really. You're drinking 500 calories of just protein powder. You could eat a whole meal with all three macros for that,\" Jordan explained. \"Plus, where are your carbs for energy? No wonder you're dragging during workouts.\"\n\nMike looked at his shake skeptically. \"So I should eat... carbs?\"\n\n\"Your muscles literally run on glycogen, which comes from carbs. You're trying to build a house with just bricks and no mortar.\"",
+          "image_urls": []
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z",
+      "is_active": true,
+      "sort_order": 8,
+      "slug": "calories-explained-what-energy-in-energy-out-really-means",
+      "content_category_id": "nutrition-essentials",
+      "day": 8,
+      "lede_image": {
+        "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/lede-energy-balance.jpeg",
+        "description": "Simple balance scale showing food on one side and activities on the other, representing energy balance",
+        "width": 1200,
+        "height": 630,
+        "prompt_generation_string": "Clean illustration of a balance scale, left side showing colorful whole foods, right side showing icons of various activities (running, lifting weights, sleeping, working), bright and educational style"
+      },
+      "title": "Calories Explained: What 'Energy In, Energy Out' Really Means",
+      "body": "# The Energy Equation That Controls Your Weight (Simplified)\n\nHere's the truth bomb that diet companies don't want you to know: weight management really does come down to calories in versus calories out (CICO). But before you roll your eyes thinking \"I've tried counting calories and it doesn't work,\" let's talk about what this actually means and why it's both simpler AND more complex than you think.\n\n## What Even Is a Calorie?\n\nA calorie is just a unit of energy, like a gallon is a unit of volume. Specifically, it's the amount of energy needed to raise the temperature of 1 gram of water by 1 degree Celsius. Your body uses this energy for literally everything – breathing, thinking, digesting food, scrolling TikTok, and yes, exercising.\n\n![Calorie Definition](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/calorie-definition-visual.jpeg)\n\n## The Energy In Side: It's Not Just What You Eat\n\n**Energy In = All calories consumed**\n\nThis includes:\n- Everything you eat (yes, even that \"tiny\" bite of your friend's dessert)\n- Everything you drink (lattes count!)\n- The oil you cook with\n- The dressing on your \"healthy\" salad\n- That handful of nuts you grabbed while cooking\n\n**The sneaky truth:** Most people underestimate their calorie intake by 20-40%. Not because they're lying, but because portions are bigger than we think, and we forget about \"invisible\" calories.\n\n## The Energy Out Side: Your Body Is Always Burning\n\n**Energy Out = Total Daily Energy Expenditure (TDEE)**\n\nYour body burns calories through:\n\n1. **Basal Metabolic Rate (BMR) - 60-75% of calories burned**\n   - This is what you'd burn lying in bed all day\n   - Keeps your organs functioning, maintains body temperature\n   - Bigger bodies burn more at rest\n\n2. **Non-Exercise Activity Thermogenesis (NEAT) - 15-30%**\n   - Fidgeting, walking to the bathroom, doing chores\n   - Varies HUGELY between people\n   - Desk job vs. construction worker = massive difference\n\n3. **Thermic Effect of Food (TEF) - 10%**\n   - Energy needed to digest food\n   - Protein burns more to digest (20-30%)\n   - Carbs (5-10%), Fats (0-3%)\n\n4. **Exercise Activity Thermogenesis (EAT) - 5-10%**\n   - Your actual workouts\n   - Usually the smallest contributor (surprise!)\n\n![TDEE Breakdown](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/tdee-pie-chart.jpeg)\n\n## The Simple Math That Everyone Hates\n\n- **Calories In > Calories Out = Weight Gain**\n- **Calories In < Calories Out = Weight Loss**\n- **Calories In = Calories Out = Weight Maintenance**\n\nOne pound of fat = approximately 3,500 calories. So a 500-calorie daily deficit should lead to about 1 pound of weight loss per week. Simple, right?\n\n## Why It's Not Actually That Simple\n\n**Your body isn't a calculator.** It's more like a thermostat that's constantly adjusting:\n\n1. **Metabolic Adaptation:** Eat less for a while, and your body becomes more efficient (burns fewer calories)\n2. **Water Weight:** Can fluctuate 5+ pounds daily\n3. **Muscle vs. Fat:** Muscle is denser and burns more calories at rest\n4. **Hormones:** Affect hunger, energy, and where calories go\n5. **Sleep and Stress:** Poor sleep and high stress can affect weight even at the same calorie intake\n\n![Weight Fluctuation](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/weight-fluctuation-graph.jpeg)\n\n## How to Actually Use This Information\n\n### Step 1: Find Your Baseline\nTrack what you normally eat for a week without changing anything. Use an app, be honest, include everything.\n\n### Step 2: Calculate Your TDEE\nUse an online calculator for a starting estimate. It won't be perfect, but it's a beginning.\n\n### Step 3: Create a Moderate Deficit (for weight loss)\n- Start with 300-500 calories below TDEE\n- Don't go below 1,200 (women) or 1,500 (men) total calories\n- Aggressive deficits backfire through muscle loss and binge eating\n\n### Step 4: Adjust Based on Results\n- No change after 2 weeks? Reduce by another 100-200 calories\n- Losing too fast? Add some calories back\n- Track the trend, not daily fluctuations\n\n## Common CICO Mistakes to Avoid\n\n1. **Eating too little:** Leads to muscle loss, fatigue, and eventual binging\n2. **Not counting liquid calories:** That healthy smoothie might be 600 calories\n3. **Overestimating exercise calories:** That 30-minute walk didn't burn 500 calories\n4. **Ignoring portion sizes:** A \"serving\" of cereal is usually way less than what you pour\n5. **Weekend amnesia:** Saturday and Sunday calories count too\n\n![Portion Size Reality](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/portion-size-comparison.jpeg)\n\n## The Bottom Line\n\nCICO isn't the whole story of health, but it IS the whole story of weight change. You can't outsmart thermodynamics. However, the quality of your calories affects:\n- How you feel\n- Your performance\n- Your health markers\n- How sustainable your approach is\n\n**Your homework:** Don't start with a diet. Start with awareness. Track your normal eating for three days, including one weekend day. No judgment, just data. You might be surprised by what you learn.\n\nRemember: The best diet is the one you can stick to long-term. CICO gives you the framework; you get to choose how to fill it in.",
+      "tags": ["calories", "CICO", "metabolism", "weight loss", "nutrition basics"],
+      "learn_more_links": [
+        {
+          "type": "blog",
+          "url": "https://strongerbyscience.com/metabolic-adaptation",
+          "title": "Understanding Metabolic Adaptation",
+          "description": "Scientific deep-dive into how your metabolism adjusts to dieting"
+        },
+        {
+          "type": "youtube_short",
+          "url": "https://youtube.com/shorts/cico_explained",
+          "title": "CICO in 60 Seconds",
+          "description": "Quick visual explanation of energy balance",
+          "duration_seconds": 60
+        },
+        {
+          "type": "app_store",
+          "url": "https://apps.apple.com/app/loseit",
+          "title": "Lose It! - Calorie Counter",
+          "description": "User-friendly app for tracking calories with barcode scanner"
+        }
+      ],
+      "affiliate_links": [
+        {
+          "type": "amazon",
+          "url": "https://amazon.com/dp/food-scale-usb",
+          "title": "USB Rechargeable Food Scale",
+          "description": "Accurate to 0.1g for precise calorie tracking"
+        },
+        {
+          "type": "amazon",
+          "url": "https://amazon.com/dp/portion-control-plates",
+          "title": "Portion Control Plate Set",
+          "description": "Visual guides for appropriate serving sizes"
+        },
+        {
+          "type": "other",
+          "url": "https://chronicometer.com",
+          "title": "Cronometer - Detailed Nutrition Tracking",
+          "description": "Advanced tracking app that shows micronutrients too"
+        }
+      ],
+      "image_urls": [
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/calorie-definition-visual.jpeg",
+          "description": "Simple illustration explaining what a calorie is with everyday comparisons",
+          "width": 800,
+          "height": 400,
+          "prompt_generation_string": "Educational diagram showing calorie definition with relatable comparisons: 1 apple = 95 cal, 1 hour walk = 250 cal burned, lying in bed = 60 cal/hour"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/tdee-pie-chart.jpeg",
+          "description": "Pie chart showing breakdown of daily calorie expenditure",
+          "width": 800,
+          "height": 800,
+          "prompt_generation_string": "Colorful pie chart showing TDEE components: BMR 70% (blue), NEAT 20% (green), TEF 7% (yellow), Exercise 3% (red), with icons for each category"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/weight-fluctuation-graph.jpeg",
+          "description": "Line graph showing daily weight fluctuations vs overall trend",
+          "width": 800,
+          "height": 400,
+          "prompt_generation_string": "Line graph over 30 days showing daily weight (jagged gray line) fluctuating between 148-153 lbs, with smooth trend line (blue) showing gradual decrease from 152 to 150 lbs"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440002/portion-size-comparison.jpeg",
+          "description": "Visual comparison of perceived vs actual serving sizes",
+          "width": 800,
+          "height": 600,
+          "prompt_generation_string": "Side-by-side comparison: 'What we think is a serving' (large bowl of cereal) vs 'Actual serving size' (small bowl), repeated for pasta, nuts, and oil"
+        }
+      ],
+      "read_time": 5,
+      "word_count": 850,
+      "key_takeaways": [
+        "Weight change is determined by calories in vs calories out, but many factors affect both sides of the equation",
+        "Most people underestimate calories eaten and overestimate calories burned",
+        "Start by tracking your normal intake for awareness before making changes"
+      ],
+      "passages": [
+        {
+          "id": "passage-1-550e8400-002",
+          "title": "Casey's Calorie Counting Revelation",
+          "passage_text": "Casey stared at the nutrition app in disbelief. \"800 calories for that smoothie bowl? But it's all fruit and granola!\"\n\nRiley, counting pennies at the same café, nodded knowingly. \"I had the same shock when I started tracking. That 'healthy' bowl has more calories than a Big Mac.\"\n\n\"But fruits are good for you!\" Casey protested.\n\n\"They are,\" Riley agreed, \"but calories are calories for weight loss. That bowl has probably 2 tablespoons of almond butter, a cup of granola, honey, coconut flakes... it adds up fast.\"\n\nCasey frowned at the receipt. \"I've been having one every day thinking I was being healthy. No wonder the scale won't budge.\"\n\n\"Try making it at home,\" Riley suggested, pulling up a recipe. \"Use Greek yogurt instead of acai base, measure the granola, skip the honey. Same satisfaction, half the calories, quarter of the price.\"\n\n\"You track everything?\"\n\n\"Just for a few weeks until I learned portion sizes. Now I can eyeball it pretty well.\"",
+          "image_urls": []
+        },
+        {
+          "id": "passage-2-550e8400-002",
+          "title": "Taylor's Doctor Visit Reality Check",
+          "passage_text": "\"Your blood sugar is still elevated,\" Dr. Martinez said, reviewing Taylor's lab results. \"Have you made any dietary changes?\"\n\nTaylor shifted uncomfortably. \"I switched to whole grain everything and cut out desserts.\"\n\n\"That's a great start. Are you tracking your total calorie intake?\"\n\n\"Isn't that obsessive? I'm trying to be healthy, not develop an eating disorder.\"\n\nDr. Martinez smiled gently. \"Tracking temporarily isn't obsessive – it's educational. Many patients are shocked to find they're eating 3,000 calories of 'healthy' food. Your body doesn't care if excess calories come from quinoa or cookies.\"\n\n\"But counting calories seems so... diet culture.\"\n\n\"Think of it like checking your bank balance. You wouldn't spend blindly and hope for the best, right? Just track for two weeks, no changes, just awareness. Many of my patients find that awareness alone leads to natural portion control.\"\n\nTaylor pulled out their phone reluctantly. \"Two weeks. That's it.\"",
+          "image_urls": []
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z",
+      "is_active": true,
+      "sort_order": 9,
+      "slug": "meal-timing-around-workouts",
+      "content_category_id": "nutrition-essentials",
+      "day": 9,
+      "lede_image": {
+        "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/lede-meal-timing-clock.jpeg",
+        "description": "Clock face made of different foods showing pre and post workout meal timing",
+        "width": 1200,
+        "height": 630,
+        "prompt_generation_string": "Creative clock design where clock hands point to different times, with pre-workout foods (banana, oatmeal) at earlier positions and post-workout foods (chicken, rice) at later positions, athletic theme"
+      },
+      "title": "Meal Timing Around Workouts: Fueling Your Performance",
+      "body": "# When to Eat: The Truth About Workout Nutrition Timing\n\nLet's address the elephant in the gym: you've probably heard you MUST eat within 30 minutes after working out or your muscles will fall off. Spoiler alert: they won't. But that doesn't mean timing doesn't matter at all. Let's separate the myths from what actually helps your performance and recovery.\n\n## The Pre-Workout Fuel Dilemma\n\n**The big question:** Should you eat before working out?\n\n**The annoying answer:** It depends.\n\nHere's what actually matters:\n\n### If You're Working Out First Thing in the Morning\n- **Fasted is fine** for low to moderate intensity (walking, light weights, yoga)\n- **Need fuel** for high intensity (HIIT, heavy lifting, long runs)\n- Your body has glycogen from yesterday's meals, but it's limited\n\n### The 3-Hour Rule\nIf you've eaten a normal meal within 3 hours of your workout, you're probably good to go. Your body is still processing that food and has plenty of fuel available.\n\n![Pre-Workout Timing](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/pre-workout-timing-guide.jpeg)\n\n## What to Eat Before Working Out\n\n### 2-3 Hours Before: The Full Meal\n- Balanced meal with all macros\n- Example: Chicken breast, sweet potato, and veggies\n- Gives time for digestion\n\n### 1-2 Hours Before: The Light Meal\n- Easily digestible carbs + some protein\n- Example: Greek yogurt with berries and granola\n- Skip the heavy fats (they slow digestion)\n\n### 30-60 Minutes Before: The Quick Fix\n- Simple carbs for quick energy\n- Example: Banana, rice cakes, or dates\n- Avoid fiber and fat (unless you enjoy bathroom breaks mid-workout)\n\n### \"I Feel Sick When I Eat Before Exercise\"\nThen don't! Some people perform better fasted. Your performance and how you feel matter more than following arbitrary rules.\n\n## The Post-Workout Window: Anabolic Window or Anabolic Myth?\n\n**The old rule:** Slam a protein shake within 30 minutes or lose all your gains.\n\n**The truth:** You have a several-hour window, and if you've eaten before your workout, it's even longer.\n\n### What Actually Happens Post-Workout\n- Your muscles are primed to absorb nutrients\n- Protein synthesis is elevated for 24-48 hours\n- Glycogen stores need replenishing\n- But the world won't end if you wait 2 hours to eat\n\n![Post-Workout Window](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/post-workout-window-timeline.jpeg)\n\n### The Post-Workout Priority List\n\n**Within 2-4 hours:** \n- Get a meal with protein and carbs\n- 20-40g protein is plenty\n- Carbs help shuttle protein to muscles\n- Example: Chicken and rice, tuna sandwich, protein smoothie with fruit\n\n**If you're training again within 8 hours:**\n- Eat ASAP to maximize recovery\n- This is when timing actually matters\n\n**If you're not training until tomorrow:**\n- Relax, eat when convenient\n- Focus on total daily intake\n\n## Special Timing Considerations\n\n### For Weight Loss\n\"Should I avoid eating after workouts to burn more fat?\"\n\nNo! This is counterproductive. You need nutrients to:\n- Preserve muscle mass\n- Recover properly\n- Maintain workout intensity\n- Avoid binge eating later\n\n### For Muscle Building\nConsistent daily protein intake matters more than perfect timing. Hit your protein target (0.7-1g per pound of body weight) spread across the day.\n\n### For Endurance Athletes\nYou need more carbs, and timing matters more:\n- During exercise lasting >90 minutes: 30-60g carbs per hour\n- Post-workout: 1-1.2g carbs per kg body weight\n\n![Endurance Nutrition](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/endurance-fueling-strategy.jpeg)\n\n## Common Timing Mistakes\n\n1. **Eating too much right before training**\n   - Result: Nausea, cramping, sluggishness\n   - Fix: Smaller portions or more time to digest\n\n2. **Training fasted when you shouldn't**\n   - Result: Weak workouts, dizziness, poor recovery\n   - Fix: Small snack 30-60 minutes before\n\n3. **Obsessing over the \"window\"**\n   - Result: Stress, disordered eating patterns\n   - Fix: Focus on daily totals\n\n4. **Ignoring hunger cues**\n   - Result: Overeating later, poor recovery\n   - Fix: Eat when hungry, stop when satisfied\n\n## Real-World Meal Timing Examples\n\n### The Early Bird (6 AM workout)\n- 5:30 AM: Small banana or nothing\n- 6:00 AM: Workout\n- 7:30 AM: Normal breakfast with protein\n- Rest of day: Normal meals\n\n### The Lunch Break Warrior (12 PM workout)\n- 9:00 AM: Normal breakfast\n- 12:00 PM: Workout\n- 1:00 PM: Lunch with extra protein\n- Rest of day: Normal meals\n\n### The After-Work Athlete (6 PM workout)\n- 3:00 PM: Small snack (apple with peanut butter)\n- 6:00 PM: Workout\n- 7:30 PM: Dinner with protein and carbs\n- No need for special timing\n\n![Daily Timing Examples](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/daily-schedule-examples.jpeg)\n\n## The Bottom Line on Timing\n\n**What matters most (in order):**\n1. Total daily calories and macros\n2. Eating enough protein throughout the day\n3. Having energy for good workouts\n4. Post-workout nutrition within a few hours\n5. Pre-workout fuel if needed\n6. Exact timing windows\n\n**Your experiment this week:** Pay attention to how different timing affects YOUR energy and performance. Do you feel better working out fasted or fed? Do you recover better with immediate post-workout nutrition or can you wait? Your body will tell you what works.\n\nRemember: The best meal timing is the one that helps you train consistently, recover well, and stick to your nutrition goals. Everything else is just optimization.",
+      "tags": ["meal-timing", "myths", "nutrition", "science", "practical"],
+      "learn_more_links": [
+        {
+          "type": "youtube_short",
+          "url": "https://youtube.com/shorts/nutrient_timing_explained",
+          "title": "Nutrient Timing in 60 Seconds",
+          "description": "Quick breakdown of what actually matters",
+          "duration_seconds": 60
+        },
+        {
+          "type": "article",
+          "url": "https://jissn.biomedcentral.com/nutrient-timing",
+          "title": "International Society of Sports Nutrition Position Stand",
+          "description": "Evidence-based recommendations for nutrient timing"
+        },
+        {
+          "type": "blog",
+          "url": "https://renaissanceperiodization.com/nutrient-timing",
+          "title": "The Hierarchy of Nutrient Timing",
+          "description": "Dr. Mike Israetel breaks down timing priorities"
+        }
+      ],
+      "affiliate_links": [
+        {
+          "type": "amazon",
+          "url": "https://amazon.com/dp/shaker-bottle-set",
+          "title": "BlenderBottle Shaker Cup Set",
+          "description": "For convenient post-workout nutrition on the go"
+        },
+        {
+          "type": "other",
+          "url": "https://rxbar.com",
+          "title": "RXBAR Protein Bars",
+          "description": "Whole food protein bars perfect for pre/post workout"
+        },
+        {
+          "type": "amazon",
+          "url": "https://amazon.com/dp/meal-prep-bag",
+          "title": "Meal Prep Fitness Bag",
+          "description": "Keep your timed meals fresh and ready"
+        }
+      ],
+      "image_urls": [
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/pre-workout-timing-guide.jpeg",
+          "description": "Timeline showing what to eat at different times before workout",
+          "width": 800,
+          "height": 400,
+          "prompt_generation_string": "Horizontal timeline from 3 hours to 0 before workout, showing meal examples at each time point with food icons and portions getting smaller closer to workout time"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/post-workout-window-timeline.jpeg",
+          "description": "Graph showing muscle protein synthesis over 48 hours post-workout",
+          "width": 800,
+          "height": 400,
+          "prompt_generation_string": "Line graph showing elevated protein synthesis for 48 hours after workout, with shaded 'optimal' zone at 2-4 hours and 'acceptable' zone extending to 24 hours"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/endurance-fueling-strategy.jpeg",
+          "description": "Visual guide for carb intake during endurance exercise",
+          "width": 800,
+          "height": 600,
+          "prompt_generation_string": "Infographic showing runner/cyclist with timing markers: pre-workout banana, during-workout energy gels at 45min intervals, post-workout recovery meal with carb/protein ratio"
+        },
+        {
+          "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440003/daily-schedule-examples.jpeg",
+          "description": "Three daily schedules showing meal timing for different workout times",
+          "width": 800,
+          "height": 800,
+          "prompt_generation_string": "Three vertical timeline columns for morning/lunch/evening exercisers, each showing clock times with meal and workout icons, demonstrating practical meal timing for each schedule"
+        }
+      ],
+      "read_time": 5,
+      "word_count": 900,
+      "key_takeaways": [
+        "The 30-minute post-workout window is largely a myth - you have several hours to refuel effectively",
+        "Pre-workout nutrition depends on timing, intensity, and personal preference",
+        "Total daily nutrition matters more than perfect timing for most people"
+      ],
+      "passages": [
+        {
+          "id": "passage-1-550e8400-003",
+          "title": "Sarah's Pre-Workout Fuel Experiment",
+          "passage_text": "Sarah clutched her stomach during warm-up squats, regretting the protein bar she'd forced down in the parking lot. Emma noticed her discomfort immediately.\n\n\"Let me guess - ate right before working out because someone said you had to?\"\n\n\"Instagram said I need fuel for my muscles,\" Sarah groaned.\n\n\"When did you last eat a real meal?\" Emma asked.\n\n\"Lunch, like two hours ago. But I thought—\"\n\n\"You thought you needed more. Classic mistake,\" Emma interrupted gently. \"If you've eaten within 2-3 hours, you're fueled. That bar is just sitting in your stomach now.\"\n\n\"So I wasted money on these bars?\"\n\n\"Not wasted. Save them for days you haven't eaten in 4+ hours or for after really long workouts. Or honestly, just as a snack when you're hungry.\"\n\nSarah stood up straighter, feeling slightly better. \"What about after? Don't I have exactly 30 minutes?\"\n\nEmma laughed. \"Girl, no. Just eat dinner when you get home. Your muscles aren't going to disappear.\"",
+          "image_urls": []
+        },
+        {
+          "id": "passage-2-550e8400-003",
+          "title": "Mike and Alex's Post-Workout Debate",
+          "passage_text": "Mike frantically chugged his protein shake while still dripping sweat. Alex watched from the gym lobby, amused.\n\n\"Dude, you know you don't have to inhale that immediately, right?\" Alex said.\n\n\"Anabolic window, bro! Gotta maximize gains!\" Mike gasped between gulps.\n\nAlex pulled up a study on his phone. \"Actually, recent research shows the 'window' is more like a garage door. You've got hours, especially since you ate lunch before coming here.\"\n\n\"But my bodybuilding forum says—\"\n\n\"Your forum is stuck in 2005. Look, protein synthesis stays elevated for 24-48 hours after training. As long as you eat a decent meal in the next few hours, you're fine.\"\n\nMike looked at his half-empty shaker suspiciously. \"So I've been stressed about nothing?\"\n\n\"Pretty much. Plus, you're about to go eat dinner with your girlfriend in an hour anyway, right?\"\n\n\"Yeah...\"\n\n\"Then chill. Have your shake if you want, but stop treating it like a medical emergency.\"",
+          "image_urls": []
+        },
+        {
+          "id": "passage-3-550e8400-003",
+          "title": "Jordan's Morning Workout Dilemma",
+          "passage_text": "Jordan stood in the kitchen at 5:45 AM, staring at a banana with analysis paralysis. Casey walked in, already dressed for their morning run together.\n\n\"Still debating whether to eat?\" Casey asked.\n\n\"Every article says something different. Fasted cardio burns more fat, but eating gives you energy, but then digestion uses blood flow...\"\n\nCasey grabbed an apple. \"Here's what I learned from trial and error: light cardio on empty stomach is fine. Intense workout? I need something small.\"\n\n\"How do you know which is which?\"\n\n\"Easy test - can you hold a conversation during the workout? Then you can probably skip eating. Are you going all-out? Eat the banana.\"\n\nJordan considered this. \"We're doing hill sprints today.\"\n\n\"Then eat the banana. Or at least half. Your body will thank you when we're on sprint number five.\"\n\n\"What about fat burning?\"\n\n\"You know what burns fat? Consistency. And you can't be consistent if you feel terrible during workouts.\"",
+          "image_urls": []
+        }
+      ]
+    }
+]
