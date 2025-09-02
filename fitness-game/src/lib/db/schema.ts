@@ -75,11 +75,11 @@ export const gameSessions = pgTable('game_sessions', {
 }, (table) => ([
   // Composite index for efficient querying of active sessions by partition and date
   // Used for daily cleanup operations and partition management
-  index('active_partition_date_idx').on(table.active_partition_key, table.session_date_utc),
+  index('active_partition_date_idx').on(table.active_partition_key, table.session_date_utc).concurrently(),
   // Index for efficient querying of a user's sessions by date
-  index('user_sessions_date_idx').on(table.user_id, table.session_date_utc),
+  index('user_sessions_date_idx').on(table.user_id, table.session_date_utc).concurrently(),
   // Index for efficient querying of all sessions on a given day
-  index('all_sessions_on_day_idx').on(table.session_date_utc),
+  index('all_sessions_on_day_idx').on(table.session_date_utc).concurrently(),
 ]));
 
 // StreakLog table
