@@ -11,25 +11,3 @@ const client = postgres(connectionString, { prepare: false });
 
 // Create drizzle instance
 export const db = drizzle(client, { schema });
-
-// Export schema for use in other parts of the application
-export * from './schema';
-
-// Export DAOs
-export * from './daos';
-
-// Export types for convenience
-export type {
-  User,
-  NewUser,
-  UserProfile,
-  NewUserProfile,
-  GameSession,
-  NewGameSession,
-  StreakLog,
-  NewStreakLog,
-  StreakHistory,
-  NewStreakHistory,
-  FitnessLevelHistory,
-  NewFitnessLevelHistory,
-} from './schema';

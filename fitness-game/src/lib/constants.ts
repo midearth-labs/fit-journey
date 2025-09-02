@@ -75,3 +75,13 @@ export const API_ENDPOINTS = {
   LEADERBOARD: '/api/leaderboard',
   SHARE: '/api/share',
 } as const;
+
+// Default Values
+export const DEFAULT_VALUES = {
+  TIMEZONE: 'UTC-7',
+  REMINDER_TIME: '19:00',
+  STREAK_GRACE_PERIOD_DAYS: 1,
+  MAX_RETRY_ATTEMPTS: 3,
+  QUESTION_TIMEOUT_SECONDS: 300, // 5 minutes
+  PASSAGE_READ_TIME_MULTIPLIER: 0.5 // minutes per word
+} as const;

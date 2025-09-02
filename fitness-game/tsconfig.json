@@ -23,6 +23,8 @@
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
       "@/lib/*": ["./src/lib/*"],
+      "@/db/*": ["./src/lib/db/*"],
+      "@/shared/*": ["./src/shared/*"],
       "@/types/*": ["./src/types/*"],
       "@/store/*": ["./src/store/*"],
       "@/data/*": ["./src/data/*"],

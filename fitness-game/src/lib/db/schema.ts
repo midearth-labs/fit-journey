@@ -1,9 +1,17 @@
-import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
+import { InferSelectModel, InferInsertModel } from 'drizzle-orm';
 
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
+
+export type UserAnswer = {
+  question_id: string;
+  answer_index: number;
+  is_correct: boolean;
+  hint_used: boolean;
+}
 
 // User table - seeded from Supabase Auth table using trigger
 export const users = pgTable('users', {
@@ -57,29 +65,17 @@ export const gameSessions = pgTable('game_sessions', {
   id: uuid('id').primaryKey().defaultRandom(),
   user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   day: integer('day').notNull(), // FK to KnowledgeBase.day (stored as JSON file)
-  session_timezone: text('session_timezone').notNull(), // Store timezone when session starts e.g. UTC-7
-  session_date_utc: date('session_date_utc').notNull(), // The UTC date of when the session was first started
-  started_at: timestamp('started_at').defaultNow().notNull(),
-  completed_at: timestamp('completed_at'),
-  in_progress: boolean('in_progress').default(true), // true by default, set to null when session is complete, or day is over
-  active_partition_key: integer('active_partition_key'), // Used for partitioning the table into 24 partitions using a hashcode of the user_id. A session is only active for a day. Partition is removed after the day is over.
-  user_answers: jsonb('user_answers').$type<Array<{
-    question_id: string;
-    answer_index: number;
-    is_correct: boolean;
-    hint_used: boolean;
-  }>>(),
-  all_correct_answers: boolean('all_correct_answers'), // Whether all questions were answered correctly
-  time_spent_seconds: integer('time_spent_seconds'),
-  attempt_count: integer('attempt_count').notNull().default(1), // default: 1. If at a submission, a user doesn't answer all questions correctly, they can try again up to 3 times before the current day ends
+  knowledge_base_article_id: uuid('knowledge_base_article_id').notNull(),
+  started_at: timestamp('started_at', { withTimezone: true }).notNull(),
+  completed_at: timestamp('completed_at', { withTimezone: true }).notNull(),
+  user_answers: jsonb('user_answers').$type<Array<UserAnswer>>().notNull(),
+  all_correct_answers: boolean('all_correct_answers').notNull(), // Whether all questions were answered correctly
+  time_spent_seconds: integer('time_spent_seconds').notNull(),
+  attempt_count: integer('attempt_count').notNull(), // default: 1. If at a submission, a user doesn't answer all questions correctly, they can try again up to 3 times before the current day ends
+  created_at: timestamp('created_at', { withTimezone: true }).notNull(),
 }, (table) => ([
-  // Composite index for efficient querying of active sessions by partition and date
-  // Used for daily cleanup operations and partition management
-  index('active_partition_date_idx').on(table.active_partition_key, table.session_date_utc).concurrently(),
-  // Index for efficient querying of a user's sessions by date
-  index('user_sessions_date_idx').on(table.user_id, table.session_date_utc).concurrently(),
-  // Index for efficient querying of all sessions on a given day
-  index('all_sessions_on_day_idx').on(table.session_date_utc).concurrently(),
+  // Unique index for querying game sessions by user and day
+  unique('game_sessions_user_id_day_idx').on(table.user_id, table.day),
 ]));
 
 // StreakLog table
@@ -170,15 +166,15 @@ export const fitnessLevelHistoriesRelations = relations(fitnessLevelHistories, (
 }));
 
 // Export types
-export type User = typeof users.$inferSelect;
-export type NewUser = typeof users.$inferInsert;
-export type UserProfile = typeof userProfiles.$inferSelect;
-export type NewUserProfile = typeof userProfiles.$inferInsert;
-export type GameSession = typeof gameSessions.$inferSelect;
-export type NewGameSession = typeof gameSessions.$inferInsert;
-export type StreakLog = typeof streakLogs.$inferSelect;
-export type NewStreakLog = typeof streakLogs.$inferInsert;
-export type StreakHistory = typeof streakHistories.$inferSelect;
-export type NewStreakHistory = typeof streakHistories.$inferInsert;
-export type FitnessLevelHistory = typeof fitnessLevelHistories.$inferSelect;
-export type NewFitnessLevelHistory = typeof fitnessLevelHistories.$inferInsert;
+export type User = InferSelectModel<typeof users>;
+export type NewUser = InferInsertModel<typeof users>;
+export type UserProfile = InferSelectModel<typeof userProfiles>;
+export type NewUserProfile = InferInsertModel<typeof userProfiles>;
+export type GameSession = InferSelectModel<typeof gameSessions>;
+export type NewGameSession = InferInsertModel<typeof gameSessions>;
+export type StreakLog = InferSelectModel<typeof streakLogs>;
+export type NewStreakLog = InferInsertModel<typeof streakLogs>;
+export type StreakHistory = InferSelectModel<typeof streakHistories>;
+export type NewStreakHistory = InferInsertModel<typeof streakHistories>;
+export type FitnessLevelHistory = InferSelectModel<typeof fitnessLevelHistories>;
+export type NewFitnessLevelHistory = InferInsertModel<typeof fitnessLevelHistories>;
