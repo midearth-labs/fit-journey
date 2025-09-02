@@ -63,6 +63,13 @@ export type ValidationWarning = {
   suggestion?: string;
 };
 
+export type ValidationInfo = {
+  entityType: string;
+  entityId: string;
+  field: string;
+  message: string;
+};
+
 export type ValidationSummary = {
   totalEntities: number;
   countsByType: Record<ContentType, number>;

@@ -4,8 +4,6 @@ import { relations } from 'drizzle-orm';
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
-// @TODO: check how this is used
-export const questionTypeEnum = pgEnum('question_type', ['standalone', 'passage_based']);
 
 // User table - seeded from Supabase Auth table using trigger
 export const users = pgTable('users', {
@@ -63,7 +61,6 @@ export const gameSessions = pgTable('game_sessions', {
   session_date_utc: date('session_date_utc').notNull(), // The UTC date of when the session was first started
   started_at: timestamp('started_at').defaultNow().notNull(),
   completed_at: timestamp('completed_at'),
-  //@TODO: add index on in_progress/user_id
   in_progress: boolean('in_progress').default(true), // true by default, set to null when session is complete, or day is over
   active_partition_key: integer('active_partition_key'), // Used for partitioning the table into 24 partitions using a hashcode of the user_id. A session is only active for a day. Partition is removed after the day is over.
   user_answers: jsonb('user_answers').$type<Array<{
@@ -75,11 +72,15 @@ export const gameSessions = pgTable('game_sessions', {
   all_correct_answers: boolean('all_correct_answers'), // Whether all questions were answered correctly
   time_spent_seconds: integer('time_spent_seconds'),
   attempt_count: integer('attempt_count').notNull().default(1), // default: 1. If at a submission, a user doesn't answer all questions correctly, they can try again up to 3 times before the current day ends
-}, (table) => ({
+}, (table) => ([
   // Composite index for efficient querying of active sessions by partition and date
   // Used for daily cleanup operations and partition management
-  activePartitionDateIdx: index('active_partition_date_idx').on(table.active_partition_key, table.session_date_utc),
-}));
+  index('active_partition_date_idx').on(table.active_partition_key, table.session_date_utc),
+  // Index for efficient querying of a user's sessions by date
+  index('user_sessions_date_idx').on(table.user_id, table.session_date_utc),
+  // Index for efficient querying of all sessions on a given day
+  index('all_sessions_on_day_idx').on(table.session_date_utc),
+]));
 
 // StreakLog table
 export const streakLogs = pgTable('streak_logs', {

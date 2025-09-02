@@ -70,6 +70,9 @@ export class ContentLoader {
 
     const files = await fs.readdir(directoryPath);
     const jsonFiles = files.filter(file => file.endsWith('.json'));
+    if (jsonFiles.length !== files.length) {
+      console.warn(`Content ${contentType}: ${files.length - jsonFiles.length} non-JSON files found in ${directoryPath}`);
+    }
     
     if (jsonFiles.length === 0) {
       console.error(`Content ${contentType}: No JSON files found in ${directoryPath}`);

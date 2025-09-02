@@ -36,15 +36,11 @@ The system supports the following content types:
 The content management system is initialized when the application starts and provides access to all game content through a unified interface.
 
 ```typescript
-// @TODO: Update this to reflect reality
-import { ContentManagementSystem } from './content-management-system';
-
-const cms = new ContentManagementSystem();
-await cms.initialize();
+import { ContentLoader } from '@/data/content/utils/content-loader';
 
 // Access content through the system
-const questions = cms.getContentLoader().getContentList('Question');
-const categories = cms.getContentLoader().getContentList('ContentCategory');
+const questions = contentLoader.getContentList('Question');
+const categories = contentLoader.getContentList('ContentCategory');
 ```
 
 ## Content Loading

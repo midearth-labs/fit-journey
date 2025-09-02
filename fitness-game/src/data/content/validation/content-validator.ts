@@ -1,12 +1,16 @@
 // Content Validator Utility
 // Handles validation of content integrity and relationships
 
-import { ValidationResult, ValidationError, ValidationWarning, ValidationSummary, Content } from '../types';
+import { ValidationResult, ValidationError, ValidationWarning, ValidationInfo, ValidationSummary, Content } from '../types';
 import { ContentLoader } from '../utils/content-loader';
 
+type UniquenessCheckValueType = string | number | null | undefined;
+type ReferenceCheckValueType = string | null | undefined;
+
 export class ContentValidator {
-  private validationErrors: ValidationError[] = [];
-  private validationWarnings: ValidationWarning[] = [];
+    private validationErrors: ValidationError[] = [];
+    private validationWarnings: ValidationWarning[] = [];
+    private validationInfos: ValidationInfo[] = [];
   private content: Content;
 
   constructor(content: Content) {
@@ -71,13 +75,11 @@ export class ContentValidator {
     this.validationErrors = [];
     this.validationWarnings = [];
 
-    // Validate individual content types
+    // Validate business rules
+    this.validateBusinessRules();
 
     // Validate cross-references
     this.validateCrossReferences();
-
-    // Validate business rules
-    this.validateBusinessRules();
 
     const summary = this.createValidationSummary();
 
@@ -95,16 +97,173 @@ export class ContentValidator {
   private validateCrossReferences(): void {
     // This would implement more complex cross-reference validation
     // For now, basic reference validation is done in individual validation methods
+    this.validateKnowledgeBaseReferences();
   }
 
   /**
    * Validate business rules
    */
   private validateBusinessRules(): void {
-    // This would implement business rule validation
-    // For now, basic business rules are validated in individual validation methods
+    // Validate individual content types
+    this.validateKnowledgeBase();
   }
 
+  private validateKnowledgeBase(): void {
+    // Validate uniqueness of key properties
+    this.validateUniqueness('KnowledgeBase', (entity) => entity.day, 'day', false);
+    this.validateUniqueness('KnowledgeBase', (entity) => entity.slug, 'slug', false);
+    this.validateUniqueness('KnowledgeBase', (entity) => entity.title, 'title', false);
+  }
+
+  private validateKnowledgeBaseReferences(): void {
+    // Validate that all content_category_id references exist in ContentCategory
+    this.validateNonNullReference(
+      'KnowledgeBase',
+      (entity) => entity.content_category_id,
+      'content_category_id',
+      'ContentCategory'
+    );
+  }
+
+  /**
+   * Validate uniqueness of a property across all entities of a given type
+   * @param entityType - The type of content entity to validate (e.g., 'KnowledgeBase')
+   * @param valueExtractor - Function to extract the value to check for uniqueness
+   * @param fieldName - Human-readable name of the field for error messages
+   * @param skipNullUndefined - Whether to skip null/undefined values in the check
+   */
+  private validateUniqueness<T extends keyof Content>(
+    entityType: T,
+    valueExtractor: (entity: Content[T]['list'][0]) => UniquenessCheckValueType,
+    fieldName: string,
+    skipNullUndefined: boolean = true
+  ): void {
+    const entityMap = this.content[entityType].map;
+    if (!entityMap) {
+      this.addError(entityType, 'validation', fieldName, `No ${entityType} entities found for uniqueness validation`);
+      return;
+    }
+
+    const seenValues = new Map<UniquenessCheckValueType, string[]>();
+    const duplicateEntities: string[] = [];
+
+    // Collect all values and track which entities have them
+    for (const [entityId, entity] of entityMap) {
+      const value = valueExtractor(entity);
+      
+      // Skip null/undefined values if requested
+      if (skipNullUndefined && (value === null || value === undefined)) {
+        continue;
+      }
+
+      if (!seenValues.has(value)) {
+        seenValues.set(value, []);
+      }
+      seenValues.get(value)!.push(entityId);
+    }
+
+    // Check for duplicates
+    for (const [value, entityIds] of seenValues) {
+      if (entityIds.length > 1) {
+        duplicateEntities.push(...entityIds);
+        this.addError(
+          entityType,
+          entityIds.join(', '),
+          fieldName,
+          `Duplicate ${fieldName} value "${value}" found in ${entityIds.length} entities: ${entityIds.join(', ')}`
+        );
+      }
+    }
+
+    // Add summary warning if duplicates found
+    if (duplicateEntities.length > 0) {
+      this.addWarning(
+        entityType,
+        'summary',
+        fieldName,
+        `Found ${duplicateEntities.length} entities with duplicate ${fieldName} values`,
+        `Ensure all ${entityType} entities have unique ${fieldName} values for proper content management`
+      );
+    }
+  }
+
+  /**
+   * Validate that extracted values from one Content entity exist as keys in another Content entity
+   * Always skip null/undefined values in the check
+   * @param sourceEntityType - The type of content entity to validate references from
+   * @param sourceValueExtractor - Function to extract the reference value to check
+   * @param sourceFieldName - Human-readable name of the source field for error messages
+   * @param targetEntityType - The type of content entity to check references against
+   */
+  private validateNonNullReference<T extends keyof Content, U extends keyof Content>(
+    sourceEntityType: T,
+    sourceValueExtractor: (entity: Content[T]['list'][0]) => ReferenceCheckValueType,
+    sourceFieldName: string,
+    targetEntityType: U,
+  ): void {
+    const sourceEntityMap = this.content[sourceEntityType].map;
+    const targetEntityMap = this.content[targetEntityType].map;
+
+    if (!sourceEntityMap) {
+      this.addError(sourceEntityType, 'validation', sourceFieldName, `No ${sourceEntityType} entities found for reference validation`);
+      return;
+    }
+
+    if (!targetEntityMap) {
+      this.addError(targetEntityType, 'validation', sourceFieldName, `No ${targetEntityType} entities found to validate references against`);
+      return;
+    }
+
+    const invalidReferences: string[] = [];
+    const referenceCounts = new Map<string, number>();
+
+    // Check each source entity's reference value
+    for (const [entityId, entity] of sourceEntityMap) {
+      const referenceValue = sourceValueExtractor(entity);
+      
+      // Skip null/undefined values if requested
+      if (referenceValue === null || referenceValue === undefined) {
+        continue;
+      }
+
+      // Count references for summary
+      referenceCounts.set(referenceValue, (referenceCounts.get(referenceValue) || 0) + 1);
+
+      // Check if reference exists in target entity map
+      if (!targetEntityMap.has(referenceValue)) {
+        invalidReferences.push(entityId);
+        this.addError(
+          sourceEntityType,
+          entityId,
+          sourceFieldName,
+          `References non-existent ${targetEntityType} with ID: ${referenceValue}`
+        );
+      }
+    }
+
+    // Add summary warning if invalid references found
+    if (invalidReferences.length > 0) {
+      this.addWarning(
+        sourceEntityType,
+        'summary',
+        sourceFieldName,
+        `Found ${invalidReferences.length} entities with invalid ${sourceFieldName} references`,
+        `Ensure all ${sourceFieldName} values correspond to existing ${targetEntityType} entities`
+      );
+    }
+
+    // Add summary info about reference usage
+    if (referenceCounts.size > 0) {
+      const totalReferences = Array.from(referenceCounts.values()).reduce((sum, count) => sum + count, 0);
+      this.addInfo(
+        sourceEntityType,
+        'summary',
+        sourceFieldName,
+        `Found ${totalReferences} total references to ${targetEntityType} across ${referenceCounts.size} unique values`,
+      );
+    }
+  }
+  
   /**
    * Validate unlock conditions
    */
@@ -125,24 +284,22 @@ export class ContentValidator {
 
     // Validate streak type reference if applicable
     if (unlockCondition.type === 'streak' && unlockCondition.streak_type) {
-      this.validateReference(entityType, entityId, 'unlock_condition.streak_type', 'StreakType', unlockCondition.streak_type);
+      const targetMap = this.content['StreakType'].map;
+      if (!targetMap || !targetMap.has(unlockCondition.streak_type)) {
+        this.addError(entityType, entityId, 'unlock_condition.streak_type', `References non-existent StreakType with ID: ${unlockCondition.streak_type}`);
+      }
     }
 
     // Validate content category reference if applicable
     if (unlockCondition.content_category_id) {
-      this.validateReference(entityType, entityId, 'unlock_condition.content_category_id', 'ContentCategory', unlockCondition.content_category_id);
+      const targetMap = this.content['ContentCategory'].map;
+      if (!targetMap || !targetMap.has(unlockCondition.content_category_id)) {
+        this.addError(entityType, entityId, 'unlock_condition.content_category_id', `References non-existent ContentCategory with ID: ${unlockCondition.content_category_id}`);
+      }
     }
   }
 
-  /**
-   * Validate reference to another entity
-   */
-  private validateReference(sourceType: string, sourceId: string, fieldName: string, targetType: string, targetId: string): void {
-    const targetMap = this.content[targetType as keyof Content].map;
-    if (!targetMap || !targetMap.has(targetId)) {
-      this.addError(sourceType, sourceId, fieldName, `References non-existent ${targetType} with ID: ${targetId}`);
-    }
-  }
+
 
   /**
    * Add validation error
@@ -167,6 +324,18 @@ export class ContentValidator {
       field,
       message,
       suggestion
+    });
+  }
+
+  /**
+   * Add validation info
+   */
+  private addInfo(entityType: string, entityId: string, field: string, message: string): void {
+    this.validationInfos.push({
+      entityType,
+      entityId,
+      field,
+      message
     });
   }
 
