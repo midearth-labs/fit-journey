@@ -180,7 +180,7 @@
       "slug": "what-is-your-core-and-how-do-you-engage-it",
       "content_category_id": "body-mechanics",
       "day": 23,
-      "title": "What is yout core, and how do you engage it? Note: it's not about going down on one knee, that's split squats :)",
+      "title": "What is your core, and how do you engage it? Note: it's not about going down on one knee, that's split squats :)",
       "tags": ["core", "anatomy", "stability", "function", "training"]
     },
     {
@@ -464,18 +464,42 @@
       "tags": ["modifications", "adaptations", "accessibility", "variations", "customization"]
     },
     {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d483",
+      "slug": "recovery-nutrition-timing",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 59,
+      "title": "Recovery Nutrition: What to Eat After Your Workout",
+      "tags": ["nutrition", "recovery", "post-workout", "timing", "fuel"]
+    },
+    {
       "id": "c47ac10b-58cc-4372-a567-0e02b2c3d479",
       "slug": "muscle-soreness-vs-pain",
       "content_category_id": "recovery-injury-prevention",
-      "day": 59,
+      "day": 60,
       "title": "Muscle Soreness vs Pain: Learning to Listen to Your Body",
       "tags": ["pain", "soreness", "injury", "awareness", "safety"]
+    },
+    {
+      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d482",
+      "slug": "overtraining-warning-signs",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 61,
+      "title": "Overtraining: When More Isn't Better",
+      "tags": ["overtraining", "rest", "balance", "warning-signs", "recovery"]
+    },
+    {
+      "id": "c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f9",
+      "slug": "the-unsung-hero-why-quality-sleep-is-non-negotiable",
+      "content_category_id": "recovery-injury-prevention",
+      "day": 62,
+      "title": "The Unsung Hero: Why Quality Sleep is Non-Negotiable",
+      "tags": ["sleep", "recovery", "rest", "growth hormone", "performance"]
     },
     {
       "id": "c47ac10b-58cc-4372-a567-0e02b2c3d480",
       "slug": "active-recovery-strategies",
       "content_category_id": "recovery-injury-prevention",
-      "day": 60,
+      "day": 63,
       "title": "Active Recovery: Moving to Heal, Not Just Rest",
       "tags": ["active-recovery", "movement", "healing", "strategy", "restoration"]
     },
@@ -483,7 +507,7 @@
       "id": "c47ac10b-58cc-4372-a567-0e02b2c3d481",
       "slug": "rice-protocol-injury-basics",
       "content_category_id": "recovery-injury-prevention",
-      "day": 61,
+      "day": 64,
       "title": "RICE Protocol & Beyond: First Aid for Fitness",
       "tags": ["injury", "rice", "first-aid", "treatment", "acute-care"]
     },
@@ -491,7 +515,7 @@
       "id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
       "slug": "overcoming-gym-anxiety",
       "content_category_id": "mindset-motivation",
-      "day": 62,
+      "day": 65,
       "title": "Gym Anxiety is Real: Your Confidence-Building Toolkit",
       "tags": ["anxiety", "confidence", "mindset", "gym", "psychology"]
     },
@@ -499,7 +523,7 @@
       "id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
       "slug": "habit-formation-science",
       "content_category_id": "mindset-motivation",
-      "day": 63,
+      "day": 66,
       "title": "The 21-Day Myth: How Habits Actually Form",
       "tags": ["habits", "behavior", "science", "consistency", "psychology"]
     },
@@ -507,33 +531,9 @@
       "id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
       "slug": "motivation-vs-discipline",
       "content_category_id": "mindset-motivation",
-      "day": 64,
+      "day": 67,
       "title": "Motivation vs Discipline: Why Waiting to 'Feel Like It' Doesn't Work",
       "tags": ["motivation", "discipline", "mindset", "consistency", "success"]
-    },
-    {
-      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d482",
-      "slug": "overtraining-warning-signs",
-      "content_category_id": "recovery-injury-prevention",
-      "day": 65,
-      "title": "Overtraining: When More Isn't Better",
-      "tags": ["overtraining", "rest", "balance", "warning-signs", "recovery"]
-    },
-    {
-      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d483",
-      "slug": "recovery-nutrition-timing",
-      "content_category_id": "recovery-injury-prevention",
-      "day": 66,
-      "title": "Recovery Nutrition: What to Eat After Your Workout",
-      "tags": ["nutrition", "recovery", "post-workout", "timing", "fuel"]
-    },
-    {
-      "id": "c47ac10b-58cc-4372-a567-0e02b2c3d484",
-      "slug": "soreness-vs-pain-difference",
-      "content_category_id": "recovery-injury-prevention",
-      "day": 67,
-      "title": "Soreness vs Pain: Know the Difference, Save Your Body",
-      "tags": ["pain", "soreness", "injury", "awareness", "safety"]
     },
     {
       "id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
