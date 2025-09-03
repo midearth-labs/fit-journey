@@ -105,11 +105,10 @@ Questions derived from passages should feel natural to the story context and tes
 ---
 
 # **3. Questions Design**
-Think deeply and ensure each question in an article is not too similar to another.
+Think deeply and ensure each question in an article is not too similar to another question. Standalone questions must focus only on the article body and key takeaways. Passage based questions must focus on the passage text primarily, and then the article body secondarily.
 
 ## **Core Structure Requirements**
-- **Questions per Knowledge Article:** Exactly 15 questions
-- **Session format:** 11 standalone questions + 4 Passage-based questions = 15
+- **Questions per Knowledge Article:** 11 standalone questions + 4 Passage-based questions per passage i.e. if there is just one passage, we would have 15 questions, but if there is 2 passages, it will be 19 questions, and if 3 passages, 23 questions.
 - **Correct Answers:** Exactly ONE correct answer per question
 - **Answer Composition (Type 1 & Type 3):** 1 correct + 2 plausible wrong + 1 humorous wrong
 
@@ -134,7 +133,7 @@ Think deeply and ensure each question in an article is not too similar to anothe
 - **Fill-in-blank variation:** Complete sentences → Answer options provide different word pairs/combinations, only 1 correct
 - **Sequence variation:** Answer options show different sequences, only 1 correct
 
-## **Question Progression per Article (15 total questions)**
+## **Question Progression per Article**
 
 ### **Progression 1: STANDALONE - 4 questions**
 - **Type:** Type 2 (True/False with Context)
@@ -154,11 +153,13 @@ Think deeply and ensure each question in an article is not too similar to anothe
 - **Purpose:** Tests analysis, evaluation, and synthesis
 - **Difficulty:** Higher-order thinking skills
 
-### **Progression 4: PASSAGE - 4 questions**
+### **Progression 4: PASSAGE - 4 questions per individual passage**
 - Traditional 4-option format
 - **Type:** Random mix of all passage question types
 - **Features:** 1-3 character archetypes in realistic scenarios
-- **Purpose:** Tests comprehensive understanding through story context
+- **Purpose:** Tests comprehensive understanding of the associated passage through story context
+- **Total Questions:** Number of passages × 4 questions each
+- **Example:** If article has 3 passages = 12 passage-based questions total
 - **Passage Question Types Include:**
   - **Comprehension:** "What was Sarah's main concern about the squat rack?"
   - **Application:** "Based on Mike's situation, what should he prioritize?"
@@ -170,7 +171,8 @@ Think deeply and ensure each question in an article is not too similar to anothe
 - Always exactly one correct answer regardless of question complexity
 - One humorous option included for engagement (Types 1 & 3)
 - Questions test all cognitive levels: comprehension, application, analysis, evaluation, synthesis
-- Connect back to Knowledge Base learning objectives and character scenarios
+- Standalone questions must relate to Knowledge Base article body and key takeways
+- Passage based questions must relate to passage and character scenarios
 - Include emotional/psychological elements alongside technical knowledge
 - Progressive difficulty within each progression type
 - Natural integration with story context for passage questions

@@ -59,7 +59,7 @@ type KnowledgeBaseDetail = {
   key_takeaways: string[]; // Between 1 and 3 takeaways from the article. This could include practical actions the reader can apply after reading the article.
   
   passages: {
-    id: string; // The ID of the content entity. Must be unique and immutable.
+    id: string; // The ID of the passage. Must be a UUID, unique and immutable.
     title: string; // The title of the passage.
     passage_text: string; // Passage text in markdown format containing 0 to 2 image urls. Between 30 to 40 seconds of reading time.
     image_urls: {
@@ -70,4 +70,41 @@ type KnowledgeBaseDetail = {
       prompt_generation_string: string; // The prompt that will be used to generate the image.
     }[]; // The images to be referenced in the article markdown. Between 0 to 2 images.
   }[]; // Between 1 and 3 passages for each knowledge base article.
+};
+
+type Question = {
+  // The ID of the content entity. Must be a UUID, unique and immutable.
+  id: string;
+  // The date and time the content was created.
+  created_at: string;
+  // The date and time the content was last updated.
+  updated_at: string;
+  // Whether the content is active and should be displayed.
+  is_active: boolean;
+  // The order of the content in the list. Used for display ordering.
+  sort_order: number;
+  // The knowledge base ID of the article.
+  knowledge_base_id: string;
+  // The text of the question. Must be a quick read
+  question_text: string;
+  // The type of question - either standalone or passage based
+  question_type: 'standalone' | 'passage_based';
+  // The options of the question. 2 options for true/false questions. 4 options for others
+  options: string[];
+  // The index of the correct answer out of the options.
+  correct_answer_index: number;
+  // A concise explanation of the question.
+  explanation: string;
+  // A list of 1 - 2 hints that could be used to help the user answer the question.
+  hints: string[];
+  // The images to be referenced in the question or options markdown, reserve this only for rare graphical cases, maybe exercise or equipment identification or nutrition related questions. Between 0 to 10 images.
+  image_urls: {
+    path: string;
+    description: string;
+    width: number;
+    height: number;
+    prompt_generation_string: string;
+  }[];
+  // The passage set ID of the question. null for standalone questions
+  passage_set_id?: string;
 };

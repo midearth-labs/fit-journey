@@ -113,6 +113,7 @@ export class ContentValidator {
     this.validateUniqueness('KnowledgeBase', (entity) => entity.day, 'day', false);
     this.validateUniqueness('KnowledgeBase', (entity) => entity.slug, 'slug', false);
     this.validateUniqueness('KnowledgeBase', (entity) => entity.title, 'title', false);
+    this.validateUniqueness('KnowledgeBase', (entity) => entity.passages.map((passage) => passage.id), 'passage id', false);
   }
 
   private validateKnowledgeBaseReferences(): void {
@@ -134,7 +135,7 @@ export class ContentValidator {
    */
   private validateUniqueness<T extends keyof Content>(
     entityType: T,
-    valueExtractor: (entity: Content[T]['list'][0]) => UniquenessCheckValueType,
+    valueExtractor: (entity: Content[T]['list'][0]) => UniquenessCheckValueType | Array<UniquenessCheckValueType>,
     fieldName: string,
     skipNullUndefined: boolean = true
   ): void {
@@ -149,17 +150,19 @@ export class ContentValidator {
 
     // Collect all values and track which entities have them
     for (const [entityId, entity] of entityMap) {
-      const value = valueExtractor(entity);
+      const values = this.coalesceToArray(valueExtractor(entity));
       
-      // Skip null/undefined values if requested
-      if (skipNullUndefined && (value === null || value === undefined)) {
-        continue;
+      for (const value of values) {
+        // Skip null/undefined values if requested
+        if (skipNullUndefined && (value === null || value === undefined)) {
+          continue;
+        }
+  
+        if (!seenValues.has(value)) {
+          seenValues.set(value, []);
+        }
+        seenValues.get(value)!.push(entityId);
       }
-
-      if (!seenValues.has(value)) {
-        seenValues.set(value, []);
-      }
-      seenValues.get(value)!.push(entityId);
     }
 
     // Check for duplicates
@@ -185,6 +188,19 @@ export class ContentValidator {
         `Ensure all ${entityType} entities have unique ${fieldName} values for proper content management`
       );
     }
+  }
+
+  /*
+  * Coalesce a value to an array
+  * @param value - The value to coalesce to an array
+  * @returns The value as an array
+  */
+  private coalesceToArray<T>(value: T | undefined | null) {
+    // If the value is an array, return the array. Otherwise, return an array with the value.
+    if (Array.isArray(value)) {
+      return value;
+    }
+    return [value];
   }
 
   /**

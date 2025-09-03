@@ -666,3 +666,15 @@ Then, passage based questions prompts are based on the associated passage and pr
 
 Update the roadmap to reflect this order, also update any relevant @design/ docs
 ```
+
+### Prompt 7
+```
+Look through the json files in `src/data/content/knowledge-base/` search for the values of any id field under the passages array, replace anyone that's not a UUID with a unique UUID
+```
+
+### Prompt 8
+File edit prompt per type
+```
+Generate the type of QuestionSchema as if by zod.infer, flatten out any related structures so the output properties doesn't have any dependency on any ot type.
+Add the description of each field as a comment in front of each type property 
+```
