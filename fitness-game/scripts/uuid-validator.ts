@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
-import path from 'path';
 
+import fs from 'fs';
+import path from 'path';
 // UUID regex pattern (RFC 4122)
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
@@ -29,7 +29,7 @@ export function analyzeQuestionIds(filePath: string): {
   nonUuidIds: string[];
 } {
   try {
-    const fileContent = readFileSync(filePath, 'utf-8');
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
     const questions = JSON.parse(fileContent);
     
     const idSet = new Set<string>();
@@ -103,18 +103,40 @@ export function validateAllUUIDsUnique(filePath: string): boolean {
 
 // Example usage
 if (require.main === module) {
-  const filePath = process.argv[2];
-  if (!filePath) {
-    console.error('File path parameter is required');
-    process.exit(1);
-  }
+  const questionsDir = path.join(__dirname, '../src/data/content/questions');
 
-  console.log(`🔍 Analyzing question IDs in: ${filePath}\n`);
-  
   try {
-    validateAllUUIDsUnique(filePath);
+    // Get all JSON files in the questions directory
+    const files = fs.readdirSync(questionsDir).filter(file => file.endsWith('.json'));
+
+    if (files.length === 0) {
+      console.log('No JSON files found in questions directory');
+      process.exit(0);
+    }
+
+    let hasErrors = false;
+
+    // Process each JSON file
+    for (const file of files) {
+      const filePath = path.join(questionsDir, file);
+      console.log(`\n🔍 Analyzing question IDs in: ${file}\n`);
+      
+      try {
+        const isValid = validateAllUUIDsUnique(filePath);
+        if (!isValid) {
+          hasErrors = true;
+        }
+      } catch (error) {
+        console.error(`Error processing ${file}:`, error);
+        hasErrors = true;
+      }
+    }
+
+    if (hasErrors) {
+      process.exit(1);
+    }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error reading questions directory:', error);
     process.exit(1);
   }
 }

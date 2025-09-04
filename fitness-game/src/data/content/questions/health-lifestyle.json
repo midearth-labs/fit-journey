@@ -1,0 +1,2716 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440001",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Exercise increases BDNF production, which helps grow new brain cells and protects existing ones.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "BDNF (Brain-Derived Neurotrophic Factor) is like fertilizer for your brain. Exercise does increase BDNF production, which helps grow new brain cells and protects existing ones, particularly in areas related to memory and mood regulation.",
+    "hints": [
+      "Think of BDNF as brain fertilizer",
+      "The article mentions this chemical helps with memory and mood"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440002",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Just 20 minutes of moderate exercise can reduce anxiety symptoms for up to 12 hours.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research shows that just 20 minutes of moderate exercise can reduce anxiety symptoms for up to 12 hours. This makes it a better return on investment than many other stress-relief activities.",
+    "hints": [
+      "This is one of the key takeaways from the article",
+      "Think about the duration of anxiety relief mentioned"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440003",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Exercise naturally boosts serotonin and dopamine without the side effects of medications.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Exercise naturally boosts serotonin and dopamine neurotransmitters, which are often targeted by antidepressant medications. The difference is that exercise does this without side effects and with additional physical benefits.",
+    "hints": [
+      "Consider what the article says about exercise vs. medications",
+      "Think about neurotransmitters that affect mood"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440004",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Regular exercise can completely replace professional mental health care for all conditions.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "While exercise is powerful for mental health, the article clearly states it's not a replacement for professional mental health care when needed, but rather a powerful complement that everyone can access.",
+    "hints": [
+      "The article mentions exercise as a 'complement' to something",
+      "Consider the article's balanced approach to mental health treatment"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440005",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "When you exercise and feel short of breath with an increased heart rate, your brain learns these sensations aren't dangerous, which helps with:",
+    "question_type": "standalone",
+    "options": [
+      "Building cardiovascular endurance",
+      "Retraining your nervous system to be less reactive to anxiety",
+      "Improving your lung capacity",
+      "Teaching your brain to count sheep while running"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explains that when you exercise, your heart rate increases and you might feel short of breath - similar to anxiety symptoms. But in the context of exercise, your brain learns these sensations aren't dangerous, which helps retrain your nervous system to be less reactive to stress.",
+    "hints": [
+      "Think about how exercise symptoms relate to anxiety symptoms",
+      "Consider what your brain learns during exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440006",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to the article, regular exercise can be as effective as medication for:",
+    "question_type": "standalone",
+    "options": [
+      "Severe clinical depression",
+      "Mild to moderate depression",
+      "Bipolar disorder",
+      "Making you forget you ever had problems (magical amnesia mode)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Studies show that regular exercise can be as effective as medication for mild to moderate depression, providing structure, social connection, self-efficacy, and improved sleep quality.",
+    "hints": [
+      "The article mentions a specific severity level of depression",
+      "Consider the four reasons given for why exercise helps depression"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440007",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Exercise helps complete the stress response cycle because modern stress triggers are typically:",
+    "question_type": "standalone",
+    "options": [
+      "Physical threats requiring physical action",
+      "Mental/emotional stressors that don't require physical action",
+      "Always life-threatening emergencies",
+      "Caused by an overabundance of gym memberships"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explains that modern life triggers our stress response constantly through emails, traffic, and deadlines, but this system evolved for physical threats that required physical action. Exercise helps complete this stress cycle by providing the physical action component.",
+    "hints": [
+      "Think about what modern stressors are versus what our stress response evolved for",
+      "Consider emails, traffic, and deadlines versus physical threats"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440008",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Walking has been shown to increase creative output by up to what percentage?",
+    "question_type": "standalone",
+    "options": [
+      "30%",
+      "45%",
+      "60%",
+      "200% (you basically become Picasso on legs)"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "According to the article, walking has been shown to increase creative output by up to 60%, making it a powerful tool for cognitive enhancement beyond just physical health.",
+    "hints": [
+      "The article mentions a specific percentage for creativity boost",
+      "This is one of the cognitive benefits listed"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440009",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "When designing an exercise program for mental health, which sequence represents the best approach for someone struggling with low motivation?",
+    "question_type": "standalone",
+    "options": [
+      "Start with intense workouts, track calories burned, focus on weight loss",
+      "Start ridiculously small, lower the bar for 'bad' days, time it right, track mood",
+      "Only exercise when feeling motivated, maintain perfect form always, compete with others",
+      "Start by buying expensive equipment, join advanced classes, post everything on social media"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes starting ridiculously small when motivation is low, lowering the bar for difficult days, timing workouts right (like mornings), and tracking mood rather than just fitness metrics to build sustainable habits.",
+    "hints": [
+      "Think about what the article says about working with low motivation",
+      "Consider the practical tips given for when you need exercise most"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440010",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to the article, regular exercisers show what percentage reduction in both depression and anxiety risk?",
+    "question_type": "standalone",
+    "options": [
+      "10-15% reduction",
+      "20-30% reduction",
+      "40-50% reduction",
+      "100% reduction (exercise makes you invincible to all negative emotions)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that active people have 20-30% lower risk of depression and anxiety, plus 28% reduction in Alzheimer's risk, showing exercise's powerful preventive effects on mental health.",
+    "hints": [
+      "Look for the specific percentages mentioned for mental health protection",
+      "This is in the section about long-term protection"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440011",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Which combination represents the article's recommended approach to using exercise as mental health medicine?",
+    "question_type": "standalone",
+    "options": [
+      "High intensity only, weekend warrior style, compete with others, ignore consistency",
+      "Consistency over intensity, schedule like medication, find minimum effective dose, use acutely for stress",
+      "Only when feeling good, avoid during stress, focus solely on weight loss, exercise indoors only",
+      "Extreme daily workouts, ignore rest days, exercise only for appearance, never modify intensity"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's bottom line emphasizes consistency over intensity, scheduling exercise like medication, finding your minimum effective dose, and using exercise acutely when feeling anxious or stressed, plus stacking benefits with outdoor exercise.",
+    "hints": [
+      "Look at the 'Practical Integration' section of the article",
+      "Think about the five key recommendations given"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440012",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was Sarah's main concern about starting exercise for her anxiety?",
+    "question_type": "passage_based",
+    "options": [
+      "She didn't have proper workout clothes",
+      "The thought of going to a gym made her panic worse",
+      "She was worried about the cost of a membership",
+      "She was afraid people would judge her dance moves"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "In Sarah's passage, she's described as having morning anxiety and her therapist had suggested exercise, but 'the thought of going to a gym made her panic worse,' showing how anxiety can create barriers to the very activities that help it.",
+    "hints": [
+      "Focus on Sarah's initial reaction to the suggestion of exercise",
+      "Think about what made her situation worse at first"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2bb3ab01-598c-4283-85f0-a1d8da12066f"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440013",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "How did Sarah's perception of her racing heart change during her walk?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized she needed medical attention",
+      "It went from feeling like panic to feeling like power",
+      "She decided to run faster to make it race more",
+      "She discovered she had superpowers and could fly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage shows Sarah's breakthrough moment: 'Her heart was racing - but for once, it was supposed to be. As she picked up the pace slightly, something shifted. The racing heart didn't feel like panic anymore; it felt like power.'",
+    "hints": [
+      "Look for the moment when Sarah's perspective shifted",
+      "Think about how the same physical sensation felt different in context"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2bb3ab01-598c-4283-85f0-a1d8da12066f"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440014",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What did Sarah discover about the lasting effects of her walk?",
+    "question_type": "passage_based",
+    "options": [
+      "Her anxiety completely disappeared forever",
+      "Her usual evening anxiety spike wasn't as intense",
+      "She immediately became a marathon runner",
+      "She developed an addiction to sidewalk counting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah noticed that 'when her usual anxiety spike hit around dinner time, it wasn't as intense,' and remembered her therapist mentioning that exercise effects last hours, showing the extended benefits of even a simple walk.",
+    "hints": [
+      "Think about what happened later in the day after her walk",
+      "Consider what her therapist had mentioned about duration of effects"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2bb3ab01-598c-4283-85f0-a1d8da12066f"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440015",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What breakthrough did Sarah have about her anxiety sensations?",
+    "question_type": "passage_based",
+    "options": [
+      "She learned to completely avoid all racing heart sensations",
+      "She realized the same sensations felt different in different contexts",
+      "She discovered anxiety was all in her imagination",
+      "She found out that counting to ten cures everything"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's key insight was captured in her mood tracking note: 'Same sensations, different context.' She learned that the physical feelings of a racing heart during exercise weren't threatening, which helped her brain recontextualize these sensations.",
+    "hints": [
+      "Look at what Sarah wrote in her mood tracking app",
+      "Think about the main lesson she learned about physical sensations"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2bb3ab01-598c-4283-85f0-a1d8da12066f"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440016",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was Mike's original approach to dealing with work stress through exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Gentle yoga and meditation",
+      "Pushing himself to exhaustion with heavy weights",
+      "Taking long walks in nature",
+      "Doing interpretive dance to express his feelings"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage shows Mike 'slammed the weights down, his frustration evident' and was 'pushing himself to exhaustion,' believing that harder workouts meant better stress relief.",
+    "hints": [
+      "Look at Mike's behavior at the beginning of the passage",
+      "Think about his initial belief about intensity and stress relief"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22423ce8-0de5-496c-b234-0c902f8f3458"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440017",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to Taylor, what happens when they do intense workouts?",
+    "question_type": "passage_based",
+    "options": [
+      "Their anxiety decreases significantly",
+      "Their stress hormones spike and blood sugar gets unstable",
+      "They sleep better than ever",
+      "They develop the ability to lift cars above their head"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor explains that 'When I go too hard, my stress hormones spike and my blood sugar gets wonky,' showing how intense exercise can actually worsen their health conditions rather than help them.",
+    "hints": [
+      "Focus on what Taylor says about their personal response to intense exercise",
+      "Consider their health conditions (pre-diabetes and anxiety)"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22423ce8-0de5-496c-b234-0c902f8f3458"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440018",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What key insight does Taylor share about moderate exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "It's boring and ineffective",
+      "Twenty minutes gives 12 hours of reduced anxiety",
+      "It only works for people over 40",
+      "It's best combined with loud music and neon lights"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor shares the research-backed insight that 'Twenty minutes of moderate work gives me 12 hours of reduced anxiety,' highlighting the sustained benefits of moderate-intensity exercise for mental health.",
+    "hints": [
+      "Look for the specific timeframes Taylor mentions",
+      "Think about the duration of benefits from moderate exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22423ce8-0de5-496c-b234-0c902f8f3458"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440019",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What lesson does Mike learn from Taylor about exercise goals?",
+    "question_type": "passage_based",
+    "options": [
+      "Always lift the heaviest weights possible",
+      "Match your exercise to your specific goals - consistency beats intensity for mental health",
+      "Only exercise when you feel stressed",
+      "Mental health goals require special rainbow-colored equipment"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor's advice to Mike is to 'match your exercise to your goals' and that 'If mental health is one of them, consistency beats intensity every time,' teaching Mike to align his workout approach with his actual objectives.",
+    "hints": [
+      "Focus on Taylor's final advice to Mike",
+      "Think about the relationship between exercise type and specific goals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22423ce8-0de5-496c-b234-0c902f8f3458"
+  },
+  {
+    "id": "35d34c86-0e91-416a-bd74-88b70c1b383c",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "True or False: After just one hour of sitting, your body's calorie-burning drops by 90%.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true. The article explains that sitting for just one hour causes a dramatic 90% decrease in calorie-burning capacity, along with a 75% reduction in fat-breakdown enzymes. This demonstrates how quickly our metabolism responds to prolonged sitting.",
+    "hints": [
+      "Think about how dramatically sitting affects your metabolic rate",
+      "Consider what happens to your body's fat-burning enzymes during prolonged sitting"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4282ea37-3c46-42dc-8b4a-f90c57bfa9bc",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "True or False: The 20-8-2 rule for standing desks means sit for 20 minutes, stand for 8 minutes, and move for 2 minutes every 30-minute period.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is correct. The 20-8-2 rule provides a practical framework for using standing desks effectively by breaking each 30-minute period into sitting, standing, and movement phases to avoid both prolonged sitting and static standing.",
+    "hints": [
+      "Remember the specific time breakdown for optimal standing desk use",
+      "Consider how this rule balances sitting, standing, and movement"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "501aa280-250d-47ae-b0c8-226f214cc242",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "True or False: Static standing at a standing desk can be almost as harmful as sitting.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article emphasizes that simply standing without movement isn't enough - static standing can be almost as problematic as sitting. The key is to incorporate movement like weight shifting, marching in place, or using a balance board.",
+    "hints": [
+      "Think about whether just standing motionless is sufficient",
+      "Consider what the article says about the need for movement even while standing"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8a22012f-3e78-49e0-befd-bb7266eeb9cb",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "True or False: Using a small water bottle is a strategic way to increase movement throughout the workday.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article specifically mentions the 'water bottle strategy' - using a small water bottle forces you to refill it more often, creating natural movement breaks throughout the day, plus additional bathroom breaks for even more movement.",
+    "hints": [
+      "Consider how bottle size affects refill frequency",
+      "Think about the secondary effects of drinking more water"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "52e13f01-e54c-473b-bab2-da13faad09d6",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What happens to fat-breakdown enzymes after sitting for one hour?",
+    "question_type": "standalone",
+    "options": [
+      "They decrease by 75%",
+      "They increase by 25%",
+      "They stay the same but work slower",
+      "They transform into couch-potato enzymes"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Fat-breakdown enzymes decrease by 75% after just one hour of sitting. This dramatic reduction, combined with the 90% drop in calorie-burning, shows how quickly sitting affects our metabolism at the cellular level.",
+    "hints": [
+      "Think about the percentage decrease mentioned in the metabolic slowdown section",
+      "Consider how sitting affects the enzymes responsible for breaking down fat"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6835fa8d-9a3a-447c-bc6a-56cf3dfd1951",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the article, how often should you set a timer to remind yourself to move?",
+    "question_type": "standalone",
+    "options": [
+      "Every 30 minutes",
+      "Every hour",
+      "Every 15 minutes",
+      "Every time your boss isn't looking"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article recommends the '30-minute rule' - setting a timer every 30 minutes to do something that gets you moving for just 60 seconds. This frequent reminder helps break up prolonged sitting periods effectively.",
+    "hints": [
+      "Look for the specific rule mentioned about timer intervals",
+      "Consider what frequency provides the best balance between interruption and benefit"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bbfda2b4-c182-4dd5-adf3-a00e253ecb95",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What is the recommended lunch break split according to the 20-20-20 strategy?",
+    "question_type": "standalone",
+    "options": [
+      "20 minutes eating, 20 minutes walking, 20 minutes returning/prep",
+      "20 minutes working, 20 minutes eating, 20 minutes napping",
+      "20 minutes complaining about work, 20 minutes scrolling social media, 20 minutes panicking about afternoon meetings",
+      "20 minutes for each meal course"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 20-20-20 lunch split divides your lunch hour into three equal parts: 20 minutes for eating, 20 minutes for walking or physical activity, and 20 minutes for returning to your workspace and preparing for the afternoon.",
+    "hints": [
+      "Think about how to optimally divide a 60-minute lunch break",
+      "Consider what activities would best support movement and health during lunch"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ee54f12b-eb41-471c-b39d-c4ac57b70f70",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Which stealth exercises can you do at your desk without anyone noticing?",
+    "question_type": "standalone",
+    "options": [
+      "Ankle circles, glute squeezes, shoulder blade squeezes, neck rotations, core bracing",
+      "Jumping jacks, burpees, mountain climbers, high knees",
+      "Deadlifts, squats, bench press, overhead press",
+      "Interpretive dance, yoga flows, martial arts katas"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article lists these specific 'stealth exercises' that can be done discreetly at your desk: ankle circles under your desk, glute squeezes while sitting, shoulder blade squeezes, neck rotations during phone calls, and core bracing while typing.",
+    "hints": [
+      "Think about exercises that can be done while sitting that others won't notice",
+      "Consider movements that don't require standing up or obvious motion"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "86b22edb-923e-4820-adb8-b5f978936c7b",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What is the proper progression for standing desk beginners?",
+    "question_type": "standalone",
+    "options": [
+      "Start with 30 minutes daily, increase by 30 minutes weekly until you find your sweet spot",
+      "Start with 8 hours immediately to maximize benefits",
+      "Alternate every 5 minutes between sitting and standing",
+      "Stand only during meetings to assert dominance"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article recommends a gradual approach: start with just 30 minutes of standing per day, then increase by 30 minutes each week until you find your optimal balance. This prevents fatigue and allows your body to adapt slowly.",
+    "hints": [
+      "Think about gradual progression rather than immediate change",
+      "Consider what weekly increment would be sustainable for beginners"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "63802551-7f38-4fa4-9e9e-bcbd0df3d62d",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the energy management strategy, what should you do instead of having coffee during the afternoon slump?",
+    "question_type": "standalone",
+    "options": [
+      "A 2-minute exercise burst",
+      "Take a 30-minute nap",
+      "Eat a large sugary snack",
+      "Switch to decaf and pretend it's helping"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article suggests doing a 2-minute exercise burst instead of reaching for coffee during the afternoon energy slump. This natural energy boost can be more effective and healthier than caffeine.",
+    "hints": [
+      "Think about natural alternatives to caffeine for energy",
+      "Consider what brief activity could provide an energy boost"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "30184f43-b82b-4c49-9644-d5410ce28376",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What calculation demonstrates the compound effect of small movement breaks throughout the workday?",
+    "question_type": "standalone",
+    "options": [
+      "5 minutes every hour = 40 minutes daily = 200 minutes weekly = 3+ hours of movement",
+      "10 minutes every hour = 2 hours daily = 10 hours weekly",
+      "1 minute every hour = 8 minutes daily = 40 minutes weekly",
+      "Movement breaks = coffee breaks = happiness breaks = productivity breaks"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article shows this powerful calculation: 5 minutes of movement every hour equals 40 minutes daily, which totals 200 minutes weekly, adding up to over 3 hours of movement you weren't getting before. This demonstrates how small, frequent actions compound significantly.",
+    "hints": [
+      "Look for the mathematical breakdown of how small movement breaks add up",
+      "Consider the weekly and daily totals mentioned in the compound effect section"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f69c455c-28a4-4041-8e53-59467ddf5e77",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Based on Emma's story in the first passage, what was her main discovery about movement breaks?",
+    "question_type": "passage_based",
+    "options": [
+      "That small, frequent movement breaks throughout the day eliminated her back pain and increased her energy",
+      "That she needed to quit her desk job to be healthy",
+      "That expensive gym equipment was necessary for office fitness",
+      "That her fitness tracker was broken and needed replacement"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma discovered that taking movement breaks every 30 minutes - doing simple exercises like desk push-ups, walking to the water fountain, and calf raises during calls - eliminated her back pain and noticeably increased her energy levels by 5 PM.",
+    "hints": [
+      "Focus on what Emma learned from her 30-minute timer experiment",
+      "Consider the physical and energy changes she experienced"
+    ],
+    "image_urls": [],
+    "passage_set_id": "806e921c-6824-4ead-b1a7-101be8affede"
+  },
+  {
+    "id": "6eaec675-1723-44ce-a117-73cdaa76ef9a",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was the result of Emma's office movement revolution?",
+    "question_type": "passage_based",
+    "options": [
+      "Half their team was doing 3 PM plank challenges in the conference room within three weeks",
+      "She got fired for exercising at work",
+      "Her colleagues complained to HR about the disruption",
+      "Nothing changed because people are resistant to new ideas"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma's small personal rebellion against prolonged sitting inspired her colleagues. Within three weeks, half their team had joined in doing 3 PM plank challenges in the conference room, showing how individual healthy changes can positively influence workplace culture.",
+    "hints": [
+      "Think about how Emma's individual actions spread to her coworkers",
+      "Consider the timeframe and specific activity that became popular"
+    ],
+    "image_urls": [],
+    "passage_set_id": "806e921c-6824-4ead-b1a7-101be8affede"
+  },
+  {
+    "id": "8c5759d2-57ca-45bb-ad5d-cfaeab57b21a",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How did Emma's colleague respond to her increased energy levels?",
+    "question_type": "passage_based",
+    "options": [
+      "They noticed her improved mood and asked to join her walking meetings",
+      "They were jealous and tried to sabotage her efforts",
+      "They ignored the change completely",
+      "They reported her to management for being too energetic"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma's colleague noticed she seemed more upbeat than usual and was interested in joining her approach. When Emma explained her movement breaks, the colleague was receptive and wanted to participate in walking meetings.",
+    "hints": [
+      "Consider the positive reaction Emma received from her coworker",
+      "Think about how her energy change was perceived by others"
+    ],
+    "image_urls": [],
+    "passage_set_id": "806e921c-6824-4ead-b1a7-101be8affede"
+  },
+  {
+    "id": "93187286-1518-4921-90f9-219d3bc4a77d",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What specific improvement did Emma see in her daily activity by 5 PM?",
+    "question_type": "passage_based",
+    "options": [
+      "Her fitness tracker showed 5,000 steps instead of 1,500, and her back pain had disappeared",
+      "She had completed a full marathon at her desk",
+      "She had gained 10 pounds of muscle",
+      "She had developed superhuman strength from desk push-ups"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "By implementing movement breaks every 30 minutes throughout the day, Emma's fitness tracker showed a significant increase from 1,500 steps to 5,000 steps by 5 PM, and her back pain - which she had complained about in the morning - had completely disappeared.",
+    "hints": [
+      "Look for the specific step count numbers mentioned in Emma's story",
+      "Consider what happened to her back pain by the end of the day"
+    ],
+    "image_urls": [],
+    "passage_set_id": "806e921c-6824-4ead-b1a7-101be8affede"
+  },
+  {
+    "id": "06efbb81-8ae3-4741-9cea-54c334b5bccf",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was Jordan's initial approach to fitness that wasn't working?",
+    "question_type": "passage_based",
+    "options": [
+      "Planning perfect gym workouts at 6 AM but missing them due to work deadlines",
+      "Doing only weekend warrior workouts",
+      "Following a strict diet without any exercise",
+      "Trying to exercise while working 24/7"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan, the perfectionist, had planned a perfect routine of gym at 6 AM, shower, and work by 8, but project deadlines meant working all night, making the 5 AM alarm impossible. This all-or-nothing approach led to missing workouts entirely.",
+    "hints": [
+      "Think about Jordan's perfectionist tendency and planned schedule",
+      "Consider what prevented Jordan from executing the perfect plan"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7babc5da-df78-435a-b126-1bcb566c3ea0"
+  },
+  {
+    "id": "c80282a4-3755-42d4-b8b9-bc7f0aca0093",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What concept did Alex introduce to Jordan as an alternative to perfect workouts?",
+    "question_type": "passage_based",
+    "options": [
+      "Exercise snacks - brief, frequent movement breaks throughout the day",
+      "Workout sandwiches - exercising before and after meals",
+      "Fitness appetizers - tiny workouts to build up to bigger ones",
+      "Movement desserts - rewards after completing work tasks"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex introduced Jordan to the concept of 'exercise snacks' - doing different movements every hour like burpees, squats, stretches, or quick walks instead of trying to fit in one perfect workout session.",
+    "hints": [
+      "Focus on the specific term Alex used to describe brief movement breaks",
+      "Think about the food-related metaphor for small, frequent exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7babc5da-df78-435a-b126-1bcb566c3ea0"
+  },
+  {
+    "id": "733753c3-355b-4db5-aeb6-92fe5357830a",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How did Alex's productivity change after implementing exercise snacks?",
+    "question_type": "passage_based",
+    "options": [
+      "Productivity increased, and step count was higher than when doing only morning workouts",
+      "Productivity decreased due to constant interruptions",
+      "No change in productivity but better mood",
+      "Productivity stayed the same but became more tired"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex explained that productivity actually improved after each movement break, and surprisingly, the daily step count was higher with exercise snacks throughout the day than when doing only morning gym workouts.",
+    "hints": [
+      "Consider the unexpected benefits Alex experienced with frequent movement breaks",
+      "Think about how Alex's step count compared between the two approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7babc5da-df78-435a-b126-1bcb566c3ea0"
+  },
+  {
+    "id": "87f7e74c-2680-41a8-90d2-e6d43f9b4e84",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was Jordan's key realization by the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "That the best fitness plan isn't the perfect one, but the one you can actually stick to",
+      "That perfect planning is the most important aspect of fitness",
+      "That morning workouts are impossible to maintain",
+      "That coffee is better than exercise for energy"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan's perfectionist mindset was challenged when they realized that having a perfect plan that couldn't be executed was less valuable than having an imperfect but sustainable approach. The key insight was that consistency beats perfection in fitness.",
+    "hints": [
+      "Think about Jordan's shift from perfectionist thinking to practical thinking",
+      "Consider the lesson about sustainable versus perfect approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7babc5da-df78-435a-b126-1bcb566c3ea0"
+  },
+  {
+    "id": "27146f6a-8e9b-48b6-bd53-f1d9b8a487e0",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "During deep sleep, your body releases up to 70% of its daily growth hormone.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is correct. During deep sleep stages, the body releases the majority of its daily growth hormone production, which is crucial for muscle repair, fat burning, and tissue regeneration.",
+    "hints": [
+      "Growth hormone is essential for muscle recovery",
+      "Deep sleep is when most physical repair happens"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9a289f7c-2398-44e1-86de-6c593df14673",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Sleep deprivation increases leptin (fullness hormone) and decreases ghrelin (hunger hormone).",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. Sleep deprivation actually decreases leptin by 18% (making you feel less full) and increases ghrelin by 28% (making you hungrier), which is why tired people crave more food.",
+    "hints": [
+      "Think about how you feel when you're tired and hungry",
+      "Sleep loss makes appetite control harder"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b8a1017c-43e6-4fd0-8005-96b9b0ce42d4",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "People who sleep less than 6 hours lose significantly more muscle mass during weight loss compared to those who get 8 hours.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true. Studies show that inadequate sleep during weight loss leads to greater muscle loss because the body cannot properly repair and maintain muscle tissue without sufficient sleep.",
+    "hints": [
+      "Sleep is when muscle repair happens",
+      "Weight loss without adequate sleep affects body composition"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5bf7dd87-e051-4278-9911-905a390bf665",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Athletes who sleep less than 8 hours are 1.7 times more likely to get injured.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true. Research shows that sleep-deprived athletes have significantly higher injury rates due to slower reaction times, decreased accuracy, and impaired recovery.",
+    "hints": [
+      "Sleep affects reaction time and coordination",
+      "Recovery happens during sleep"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "621bdce2-3778-4869-b936-fa5b4ee23bf9",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "High-intensity exercise can delay sleep onset. How many hours before bed should you finish intense workouts?",
+    "question_type": "standalone",
+    "options": [
+      "1 hour",
+      "2-3 hours",
+      "30 minutes",
+      "Exactly at bedtime for maximum tiredness"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "High-intensity exercise raises core temperature and stress hormones, which can delay sleep by 2-3 hours. Light yoga or walking is fine closer to bedtime.",
+    "hints": [
+      "Exercise raises body temperature",
+      "Your body needs time to cool down for sleep"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "56df2f38-2f94-43f3-bb28-4a43c68fd4f0",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What's the optimal room temperature range for quality sleep?",
+    "question_type": "standalone",
+    "options": [
+      "65-68°F (18-20°C)",
+      "70-75°F (21-24°C)",
+      "60-63°F (15-17°C)",
+      "Whatever temperature makes you sweat like a medieval blacksmith"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The optimal sleep temperature is 65-68°F (18-20°C). Your body naturally drops in temperature as you fall asleep, and a cool room facilitates this process.",
+    "hints": [
+      "Your body temperature naturally drops when you sleep",
+      "Cool environments help this natural process"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4cd93753-de76-4109-838e-22d902933347",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Which supplement is mentioned as helping with both sleep and muscle recovery?",
+    "question_type": "standalone",
+    "options": [
+      "Melatonin",
+      "Magnesium glycinate",
+      "L-theanine",
+      "Crushed unicorn horn (ethically sourced)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Magnesium glycinate (200-400mg) is specifically mentioned as helping with sleep while also supporting muscle recovery, making it a dual-purpose supplement for active individuals.",
+    "hints": [
+      "Look for the supplement that has two benefits",
+      "This mineral is important for muscle function"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cdcdefc2-9bb0-457d-89b7-cbde8c42e38b",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How many extra calories per day do sleep-deprived people typically eat?",
+    "question_type": "standalone",
+    "options": [
+      "150 calories",
+      "385 calories",
+      "500 calories",
+      "All the calories in the kitchen because tired brain says 'survival mode activated'"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Studies show sleep-deprived people eat an average of 385 extra calories per day, mostly from high-fat, high-carb foods as the body seeks quick energy.",
+    "hints": [
+      "It's a significant amount that could affect weight",
+      "The body craves quick energy when tired"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "273a8eda-4335-4569-acf5-97ba09a949fa",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "The 10-3-2-1-0 sleep rule provides a timeline for better sleep. What is the correct sequence?",
+    "question_type": "standalone",
+    "options": [
+      "10 hrs: no caffeine, 3 hrs: no food/alcohol, 2 hrs: no work, 1 hr: no screens, 0: snooze hits",
+      "10 hrs: no screens, 3 hrs: no caffeine, 2 hrs: no food, 1 hr: no work, 0: snooze hits",
+      "10 hrs: no work, 3 hrs: no screens, 2 hrs: no caffeine, 1 hr: no food, 0: snooze hits",
+      "10 hrs: no exercise, 3 hrs: no thinking, 2 hrs: no breathing, 1 hr: no existing, 0: transcendence"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 10-3-2-1-0 rule is: 10 hours before bed - no more caffeine, 3 hours - no more food or alcohol, 2 hours - no more work, 1 hour - no more screens, 0 - snooze button hits.",
+    "hints": [
+      "Caffeine has the longest timeline",
+      "Screens are the last thing to avoid before bed"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d041448e-befc-43f5-a30b-5897ad0499cb",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "The 4-7-8 breathing technique for sleep involves which pattern and effect?",
+    "question_type": "standalone",
+    "options": [
+      "Inhale 4, hold 7, exhale 8 - activates parasympathetic nervous system",
+      "Inhale 8, hold 4, exhale 7 - activates sympathetic nervous system",
+      "Inhale 4, hold 8, exhale 7 - activates digestive system",
+      "Inhale 7, hold 4, exhale 8 - activates your neighbor's security system"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 4-7-8 breathing pattern (inhale for 4, hold for 7, exhale for 8) activates the parasympathetic nervous system, which promotes relaxation and sleep.",
+    "hints": [
+      "The parasympathetic system is your 'rest and digest' mode",
+      "The exhale is the longest part"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fe40809c-403f-41c7-a399-f8cec0309873",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Which combination of symptoms suggests you should see a doctor about your sleep?",
+    "question_type": "standalone",
+    "options": [
+      "Loud snoring + gasping for air + feeling exhausted despite 'enough' sleep",
+      "Occasional light snoring + feeling rested + falling asleep within 20 minutes",
+      "Quiet breathing + waking up refreshed + consistent sleep schedule",
+      "Snoring like a freight train + but sleeping like a baby + and dreaming of becoming a professional whistler"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Loud snoring, gasping for air, and feeling exhausted despite adequate sleep duration are classic signs of sleep apnea, which requires medical evaluation and treatment.",
+    "hints": [
+      "Sleep apnea involves breathing disruptions",
+      "Feeling tired despite sleeping enough is a red flag"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9a53bd8f-986f-4c60-b82c-2e7f30928811",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Based on Taylor's situation, what was the main reason their workouts weren't improving their blood pressure?",
+    "question_type": "passage_based",
+    "options": [
+      "They weren't exercising intensely enough",
+      "Their elevated cortisol from poor sleep was canceling out exercise benefits",
+      "They needed to eat more protein",
+      "They were doing the wrong type of exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The doctor explained that Taylor's elevated cortisol levels from sleep deprivation were counteracting the positive effects of exercise, keeping their body in survival mode.",
+    "hints": [
+      "The doctor mentioned cortisol levels",
+      "Sleep deprivation affects stress hormones"
+    ],
+    "image_urls": [],
+    "passage_set_id": "94c6717d-3e2f-4066-a0b8-1570c63dbd65"
+  },
+  {
+    "id": "59dbbbcc-824e-415e-9c26-36bfe5cad5a4",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What analogy did Dr. Chen use to explain Taylor's situation?",
+    "question_type": "passage_based",
+    "options": [
+      "Like running a marathon with ankle weights",
+      "Like driving a car with the parking brake on",
+      "Like swimming upstream against a current",
+      "Like trying to fill a bucket with holes in it"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen used the analogy of driving with the parking brake on, explaining that cortisol was the 'brake' that needed to be released before exercise could be effective.",
+    "hints": [
+      "The analogy involved a vehicle",
+      "It was about removing an obstacle to progress"
+    ],
+    "image_urls": [],
+    "passage_set_id": "94c6717d-3e2f-4066-a0b8-1570c63dbd65"
+  },
+  {
+    "id": "49adb717-76ab-4e03-b0cb-fe5b1a10b123",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How many hours of sleep was Taylor averaging, and what did the doctor prescribe as the minimum?",
+    "question_type": "passage_based",
+    "options": [
+      "3-4 hours average, 6 hours minimum prescribed",
+      "4-5 hours average, 7 hours minimum prescribed",
+      "5-6 hours average, 8 hours minimum prescribed",
+      "6-7 hours average, 9 hours minimum prescribed"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor was getting 4-5 hours of sleep on average, and Dr. Chen prescribed a minimum of 7 hours as non-negotiable for their health recovery.",
+    "hints": [
+      "Taylor was getting very little sleep",
+      "The doctor's prescription was firm"
+    ],
+    "image_urls": [],
+    "passage_set_id": "94c6717d-3e2f-4066-a0b8-1570c63dbd65"
+  },
+  {
+    "id": "0bf857e0-6f26-4687-b8ab-8ed9d05c1a8e",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What exercise modifications did Dr. Chen recommend for Taylor's overloaded system?",
+    "question_type": "passage_based",
+    "options": [
+      "Replace all exercise with complete rest",
+      "Replace two intense sessions with yoga or walking, plus add meditation",
+      "Increase workout intensity to overcome the cortisol",
+      "Switch to only strength training"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen recommended replacing two intense sessions with gentler activities like yoga or walking, and adding meditation to help lower cortisol levels.",
+    "hints": [
+      "The solution involved reducing intensity",
+      "Multiple changes were suggested"
+    ],
+    "image_urls": [],
+    "passage_set_id": "94c6717d-3e2f-4066-a0b8-1570c63dbd65"
+  },
+  {
+    "id": "dbb3f1d1-0916-4915-ba54-e8e10a5d687f",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Why was Casey feeling hungry at 2 AM despite being exhausted?",
+    "question_type": "passage_based",
+    "options": [
+      "They hadn't eaten enough dinner",
+      "Sleep deprivation increases ghrelin (hunger hormone) production",
+      "Late-night studying burns extra calories",
+      "The body naturally gets hungry at night"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jamie explained that sleep deprivation increases ghrelin production, the hunger hormone, as the body tries to get energy from food when it's not getting it from adequate sleep.",
+    "hints": [
+      "Jamie explained the hormonal reason",
+      "It's about the body seeking energy"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2831ec2f-cdbe-4082-9361-3178e04815de"
+  },
+  {
+    "id": "adbae9ff-384f-4786-9aff-8dfe0e7356e3",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What specific types of foods does the body crave when sleep-deprived, according to Jamie?",
+    "question_type": "passage_based",
+    "options": [
+      "High-protein, low-fat foods",
+      "High-calorie, high-carb foods like pizza",
+      "Fresh fruits and vegetables",
+      "Whatever happens to be in the refrigerator"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jamie explained that sleep-deprived people specifically crave high-calorie, high-carb foods, using Casey's pizza consumption as a perfect example of this phenomenon.",
+    "hints": [
+      "The example was pizza",
+      "The body wants quick energy"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2831ec2f-cdbe-4082-9361-3178e04815de"
+  },
+  {
+    "id": "4ecf5289-1c17-4665-9f0d-03c81667f46f",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "According to the study Jamie mentioned, how many extra calories per day do sleep-deprived people consume?",
+    "question_type": "passage_based",
+    "options": [
+      "200 extra calories",
+      "385 extra calories",
+      "500 extra calories",
+      "750 extra calories"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jamie cited a study showing that sleep-deprived people eat 385 extra calories per day, mostly from snacks like the pizza Casey was consuming.",
+    "hints": [
+      "This number matches what's mentioned in the main article",
+      "It's a specific research finding"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2831ec2f-cdbe-4082-9361-3178e04815de"
+  },
+  {
+    "id": "67b81f03-b1c0-4b0d-a8b0-793b6066fd00",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What benefits did Jamie suggest Casey would see from sleeping more?",
+    "question_type": "passage_based",
+    "options": [
+      "Better grades only",
+      "Weight loss and improved memory for studying",
+      "More energy for all-nighters",
+      "Ability to eat more pizza without consequences"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jamie suggested that more sleep would lead to natural weight loss without changing diet, plus improved memory retention for studying - addressing both Casey's health and academic concerns.",
+    "hints": [
+      "Two main benefits were mentioned",
+      "One was about weight, one about academics"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2831ec2f-cdbe-4082-9361-3178e04815de"
+  },
+  {
+    "id": "8a9c5d2f-3b1e-4a7f-9e6d-2c3f8b4e9a1c",
+    "created_at": "2024-11-15T10:15:00Z",
+    "updated_at": "2024-11-15T10:15:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "The World Health Organization recommends 150 minutes of moderate-intensity aerobic activity per week for basic health benefits.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The WHO guidelines recommend exactly 150 minutes of moderate-intensity aerobic activity per week, which breaks down to about 22 minutes per day. This is considered the minimum effective dose for significant health improvements.",
+    "hints": [
+      "Think about the basic weekly recommendation mentioned in the article",
+      "This translates to about 22 minutes of activity per day"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7f8e4d3b-2a9c-4e1f-8d7b-1a5c9f3e8b2d",
+    "created_at": "2024-11-15T10:16:00Z",
+    "updated_at": "2024-11-15T10:16:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Research shows that just 15 minutes of moderate exercise per day can reduce mortality risk by 14% and increase life expectancy by 3 years.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. This is a key finding from a landmark study published in the British Medical Journal. The research demonstrates that even minimal amounts of exercise provide substantial health benefits, with the biggest gains coming from going from zero activity to some activity.",
+    "hints": [
+      "Consider the research mentioned about going from zero to some activity",
+      "The biggest health gains come from the first bit of exercise you add"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6d5c2a8f-1e9b-4c7d-9f2e-3b8a1c5f7e9d",
+    "created_at": "2024-11-15T10:17:00Z",
+    "updated_at": "2024-11-15T10:17:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "The minimum effective dose for strength training requires daily sessions to see meaningful results.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article clearly states that strength training minimums are just 2 sessions per week, 20-30 minutes per session, with 8-10 exercises covering major muscle groups. Even just one set initially can maintain and build muscle mass, especially for beginners.",
+    "hints": [
+      "Think about how often the article says you need to strength train",
+      "The minimum is much less frequent than daily sessions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1e923a2a-fa83-4a53-ae3e-bf70507a7171",
+    "created_at": "2024-11-15T10:18:00Z",
+    "updated_at": "2024-11-15T10:18:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Exercise snacking with brief bursts of activity throughout the day provides no meaningful fitness benefits.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article extensively discusses exercise snacking as an effective approach, noting that taking stairs for 60 seconds three times per day improves cardiovascular fitness, and even 4-second all-out cycling sprints can improve fitness when done correctly.",
+    "hints": [
+      "Consider what the article says about brief bursts of activity",
+      "Think about the stair climbing example mentioned"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "22e0a796-3ed7-4576-b2b1-55fe9cfe0a3a",
+    "created_at": "2024-11-15T10:19:00Z",
+    "updated_at": "2024-11-15T10:19:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "When working with minimum effective doses of exercise, what principle becomes more important than duration?",
+    "question_type": "standalone",
+    "options": [
+      "Frequency of workouts",
+      "Intensity of effort",
+      "Type of equipment used",
+      "Wearing proper workout clothes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Intensity becomes more important than duration when working with minimum doses. The article explains that shorter durations require higher intensity, citing examples like the 4-minute Tabata protocol and 7-minute workouts that provide benefits through concentrated effort.",
+    "hints": [
+      "Think about what makes short workouts effective",
+      "The article mentions that shorter workouts require something specific to be effective"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ad842eb5-5f63-4eca-b74c-d7e55a1aab39",
+    "created_at": "2024-11-15T10:20:00Z",
+    "updated_at": "2024-11-15T10:20:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to the article, what is the most important factor for beginners when it comes to exercise frequency?",
+    "question_type": "standalone",
+    "options": [
+      "Exercising every single day without breaks",
+      "Training frequency matters more than individual session intensity",
+      "Long workout sessions once per week",
+      "Copying advanced athletes' routines exactly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically states that 'research shows that training frequency matters more than individual session intensity for beginners.' This is because your body adapts to consistent signals rather than occasional shock treatments.",
+    "hints": [
+      "Consider what the research says about beginners specifically",
+      "Think about consistency versus intensity for new exercisers"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8b4e9f2c-6d1a-3e7f-9c5b-2a6d8f4e1c7b",
+    "created_at": "2024-11-15T10:21:00Z",
+    "updated_at": "2024-11-15T10:21:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Which activity pattern would be most effective for someone just starting their fitness journey?",
+    "question_type": "standalone",
+    "options": [
+      "One 3-hour workout session per week",
+      "Daily 15-minute walks with consistency",
+      "Sporadic intense workouts when motivated",
+      "Weekend warrior approach with 2 long sessions"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Daily 15-minute walks with consistency would be most effective. The article emphasizes that consistency beats intensity for beginners, and that even 15 minutes daily provides significant health benefits while building sustainable habits.",
+    "hints": [
+      "Think about what the article says about consistency",
+      "Consider which approach is most sustainable for beginners"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5c9a3f7d-2e8b-4f1c-8d6a-9b3e7f1c5a8d",
+    "created_at": "2024-11-15T10:22:00Z",
+    "updated_at": "2024-11-15T10:22:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "The famous Tabata protocol is effective because it demonstrates that short workouts can provide benefits, but it requires very low intensity to work safely.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The Tabata protocol requires very HIGH intensity, not low intensity. It consists of 20 seconds of all-out effort followed by 10 seconds of rest, repeated 8 times. The article explains that shorter durations require higher intensity to be effective.",
+    "hints": [
+      "Consider what makes the 4-minute Tabata protocol work",
+      "Think about the relationship between duration and intensity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "333bb2a9-ac75-47db-9ce9-aa8f754b72d4",
+    "created_at": "2024-11-15T10:23:00Z",
+    "updated_at": "2024-11-15T10:23:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What should be your approach when determining your personal minimum effective dose?",
+    "question_type": "standalone",
+    "options": [
+      "Copy what works for elite athletes",
+      "Start where you are and match intensity to your current capacity and available time",
+      "Always push to maximum intensity regardless of fitness level",
+      "Follow social media fitness influencers' daily routines"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes starting where you are and matching intensity to your capacity. It states that your minimum effective dose is personal and depends on your current fitness level, health status, available time, goals, and preferences.",
+    "hints": [
+      "Think about what makes the minimum effective dose 'personal'",
+      "Consider the factors that determine your individual starting point"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3f8e1c5a-7d9b-2e4f-8c6a-4b7e9f3c1a8d",
+    "created_at": "2024-11-15T10:24:00Z",
+    "updated_at": "2024-11-15T10:24:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to the article, which combination represents the minimum strength training requirements that can still maintain muscle mass?",
+    "question_type": "standalone",
+    "options": [
+      "Daily sessions with multiple sets",
+      "5 days per week, 1 hour each session",
+      "2 sessions per week, single sets of 8-12 repetitions",
+      "3 sessions per week with only cardio equipment"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article states that twice-weekly, 20-minute strength routines with single sets of 8-12 repetitions can maintain and even build muscle mass, especially for beginners. This represents the true minimum effective dose for strength training.",
+    "hints": [
+      "Look for the specific frequency and set requirements mentioned",
+      "Consider what the article says about beginners and muscle building"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4ba9f8f2-b58c-4b60-8cbb-7f2b057c5223",
+    "created_at": "2024-11-15T10:25:00Z",
+    "updated_at": "2024-11-15T10:25:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "The minimum effective dose concept encourages people to do the least possible amount of exercise to avoid any real effort.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article clarifies that the minimum effective dose 'isn't about being lazy; it's about being strategic and realistic with your time and energy.' It's about finding the smallest amount needed for meaningful results, not about avoiding effort entirely.",
+    "hints": [
+      "Consider the article's explanation of what the minimum effective dose actually means",
+      "Think about whether this concept promotes laziness or strategic thinking"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "02adbd3e-7a97-4f38-9b5d-703ae6c39ba9",
+    "created_at": "2024-11-15T10:26:00Z",
+    "updated_at": "2024-11-15T10:26:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Sarah was feeling anxious about returning to exercise after missing nearly two weeks due to work. Her colleague Emma suggested she try 'exercise snacking' during busy periods. What is the main benefit of this approach for someone in Sarah's situation?",
+    "question_type": "passage_based",
+    "options": [
+      "It allows her to burn maximum calories in minimum time",
+      "It prevents the all-or-nothing mindset and maintains exercise momentum",
+      "It eliminates the need for any gym equipment",
+      "It guarantees immediate visible physical changes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Exercise snacking helps prevent the all-or-nothing mindset that Sarah was experiencing. Emma's approach shows that short bursts of activity can maintain fitness momentum during busy periods, preventing the feeling of 'falling off the wagon' entirely.",
+    "hints": [
+      "Think about Sarah's emotional state and her fear of having failed",
+      "Consider how Emma's approach addresses the psychological aspect of consistency"
+    ],
+    "image_urls": [],
+    "passage_set_id": "149ece10-a62c-4935-af65-d9abed9a88f6"
+  },
+  {
+    "id": "2db7f335-2703-4808-8fa4-43443d25227d",
+    "created_at": "2024-11-15T10:27:00Z",
+    "updated_at": "2024-11-15T10:27:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "When Emma suggested that Sarah's body 'doesn't know if you're in gym clothes or work clothes when you're moving,' what principle was she illustrating?",
+    "question_type": "passage_based",
+    "options": [
+      "Exercise only counts if done in proper athletic wear",
+      "Physical activity provides benefits regardless of the setting or duration",
+      "Work clothes prevent effective exercise",
+      "Only gym workouts provide real fitness benefits"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma was illustrating that physical activity provides benefits regardless of setting, clothing, or formality. This aligns with the minimum effective dose principle that any movement counts and that exercise doesn't have to be formal or lengthy to be beneficial.",
+    "hints": [
+      "Consider the broader message about what counts as exercise",
+      "Think about the minimum effective dose principle in everyday contexts"
+    ],
+    "image_urls": [],
+    "passage_set_id": "149ece10-a62c-4935-af65-d9abed9a88f6"
+  },
+  {
+    "id": "82cdb342-a07c-4cfb-ae6d-18036521ce50",
+    "created_at": "2024-11-15T10:28:00Z",
+    "updated_at": "2024-11-15T10:28:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Based on Emma's experience maintaining fitness 'through my daughter's entire toddler phase with mostly exercise snacking,' what can we conclude about consistency versus intensity?",
+    "question_type": "passage_based",
+    "options": [
+      "High-intensity workouts are required for maintaining fitness",
+      "Parents cannot maintain fitness due to time constraints",
+      "Consistent small efforts can be more sustainable than sporadic intense sessions",
+      "Exercise snacking is only effective for people without children"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma's experience demonstrates that consistent small efforts (exercise snacking) can be more sustainable than sporadic intense sessions, especially during challenging life phases. Her success maintaining fitness through parenthood illustrates the power of the minimum effective dose approach.",
+    "hints": [
+      "Consider how Emma managed to maintain fitness during a demanding life phase",
+      "Think about what this suggests about sustainable exercise approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "149ece10-a62c-4935-af65-d9abed9a88f6"
+  },
+  {
+    "id": "26997e68-0480-4476-9a6e-6ac8d513d972",
+    "created_at": "2024-11-15T10:29:00Z",
+    "updated_at": "2024-11-15T10:29:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What was the key insight Sarah gained from her conversation with Emma about exercise during busy periods?",
+    "question_type": "passage_based",
+    "options": [
+      "She needed to cancel her gym membership immediately",
+      "Perfect workout plans that can't be executed are worthless compared to imperfect but doable activities",
+      "Exercise is impossible during busy work periods",
+      "Only people with flexible schedules can maintain fitness"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's key insight was Emma's point that 'Three minutes of vigorous activity is infinitely better than zero minutes of perfect workout plans you can't execute.' This illustrates the core principle of the minimum effective dose - that doing something consistently is better than planning perfection that never happens.",
+    "hints": [
+      "Focus on Emma's mathematical comparison about minutes of activity",
+      "Consider the contrast between perfect plans and imperfect execution"
+    ],
+    "image_urls": [],
+    "passage_set_id": "149ece10-a62c-4935-af65-d9abed9a88f6"
+  },
+  {
+    "id": "2f7e9c4a-8d1b-5e3f-9c7a-4b8e2f6c9a5d",
+    "created_at": "2024-11-15T10:30:00Z",
+    "updated_at": "2024-11-15T10:30:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Jordan's perfectionist approach initially caused them to resist the trainer's suggestion of only TWO strength sessions per week. What was the trainer's main argument for this minimum approach?",
+    "question_type": "passage_based",
+    "options": [
+      "Two sessions are the maximum the human body can handle",
+      "Research shows this maintains muscle mass, and consistency beats perfect programs that don't get executed",
+      "Jordan was too out of shape for more frequent training",
+      "The gym doesn't allow members to train more than twice weekly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The trainer's argument was based on research showing that two 20-minute sessions weekly can maintain muscle mass and even allow for small gains. More importantly, the trainer emphasized that 'Two 20-minute sessions you actually do beat five perfect sessions that only exist in your spreadsheet.'",
+    "hints": [
+      "Consider what the trainer said about research on muscle maintenance",
+      "Think about the comparison between theoretical perfect programs and actual execution"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3a6bbc4f-38fc-4217-bb85-3de210c898dc"
+  },
+  {
+    "id": "a9609e34-b108-42da-9f59-1754c5fc3e02",
+    "created_at": "2024-11-15T10:31:00Z",
+    "updated_at": "2024-11-15T10:31:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What research findings did the trainer share with Jordan about the minimum effective dose for exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Single sets twice weekly maintain muscle mass, and 15 minutes daily activity reduces mortality by 14%",
+      "Only high-volume training programs produce results",
+      "Exercise must be done daily to be effective",
+      "Perfectionist approaches always yield better results"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The trainer cited two key research findings: single sets of 8-12 reps, twice weekly, maintain muscle mass; and the British Medical Journal found that 15 minutes of daily activity reduces mortality by 14%. These studies support the minimum effective dose approach.",
+    "hints": [
+      "Look for the specific research citations the trainer mentioned",
+      "Consider both the strength training and general activity findings"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3a6bbc4f-38fc-4217-bb85-3de210c898dc"
+  },
+  {
+    "id": "ecaeb179-e1d6-495f-9cf1-45192a939127",
+    "created_at": "2024-11-15T10:32:00Z",
+    "updated_at": "2024-11-15T10:32:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "How did Jordan's analytical mindset initially work against them in adopting the minimum effective dose approach?",
+    "question_type": "passage_based",
+    "options": [
+      "They couldn't understand the scientific concepts",
+      "They wanted perfect optimization with detailed periodization, but achieved zero complete workouts due to all-or-nothing thinking",
+      "They preferred emotional decision-making over data",
+      "They were too lazy to follow any program"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan's perfectionist, analytical nature led them to create elaborate programs with 'proper periodization' and detailed tracking, but this all-or-nothing approach resulted in zero completed workouts when life got busy. Their desire for optimization prevented them from taking action.",
+    "hints": [
+      "Consider how Jordan's perfectionism led to paralysis",
+      "Think about what actually got accomplished versus what was planned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3a6bbc4f-38fc-4217-bb85-3de210c898dc"
+  },
+  {
+    "id": "7e3f9c1a-5d8b-4f2c-8e6a-1b5e8f3c7a9d",
+    "created_at": "2024-11-15T10:33:00Z",
+    "updated_at": "2024-11-15T10:33:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What was the trainer's key message to Jordan about the minimum effective dose philosophy?",
+    "question_type": "passage_based",
+    "options": [
+      "Laziness is the best approach to fitness",
+      "The minimum effective dose is about being sustainable, not lazy - actual execution beats perfect planning",
+      "Only beginners should use minimum effective doses",
+      "Spreadsheets are more important than actual workouts"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The trainer emphasized that 'The minimum effective dose isn't about being lazy, it's about being sustainable.' The key message was that execution matters more than perfection - actual consistent workouts beat elaborate plans that remain theoretical.",
+    "hints": [
+      "Focus on the trainer's definition of what minimum effective dose really means",
+      "Consider the contrast between sustainability and laziness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3a6bbc4f-38fc-4217-bb85-3de210c898dc"
+  },
+  {
+    "id": "a3afe127-be66-43ca-b2a3-9b6752c54d5a",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "After age 30, most people lose 3-8% of their muscle mass per decade, and this rate doubles after 60.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is correct. Sarcopenia begins around age 30 with a 3-8% loss per decade, accelerating significantly after age 60.",
+    "hints": [
+      "Consider what the article states about when muscle loss begins",
+      "Think about how aging affects the rate of muscle deterioration"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d81bda68-a43c-4061-983e-16cc7a28ef9a",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Each pound of muscle burns approximately 50-100 calories per day at rest.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. Each pound of muscle burns about 6-10 calories per day at rest, not 50-100. This is still significant when considering losing 10+ pounds of muscle over time.",
+    "hints": [
+      "The article mentions the calorie burn rate per pound of muscle",
+      "Consider realistic metabolic numbers rather than inflated claims"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e5e7bf12-49de-461c-813e-66fd412c4c8c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "People over 50 need the same amount of protein as younger adults because muscle building capacity doesn't change with age.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. After 50, muscles become less responsive to protein (anabolic resistance), requiring more protein - 1-1.2g per pound versus 0.8-1g for younger adults.",
+    "hints": [
+      "The article discusses 'anabolic resistance' in older adults",
+      "Consider how protein requirements change with age"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "22ea0bde-c180-4d8b-b089-bc426923d0c3",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "It's too late to build muscle once you reach your 60s and beyond.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. Studies show that even people in their 90s can gain muscle with proper training. It's never too late to start strength training.",
+    "hints": [
+      "The article mentions research on very elderly individuals",
+      "Consider the 'never too late' principle discussed"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d8b1dede-21d1-4ab5-a571-dae180a53b87",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What is the most effective way to prevent sarcopenia?",
+    "question_type": "standalone",
+    "options": [
+      "Doing only cardio exercise consistently",
+      "Taking muscle-building supplements without exercise",
+      "Regular resistance training at least twice weekly",
+      "Teaching your muscles interpretive dance"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Regular resistance training at least twice weekly is the most effective prevention. While cardio is beneficial, it doesn't provide the muscle-building stimulus needed to combat sarcopenia.",
+    "hints": [
+      "Think about what type of exercise specifically builds muscle",
+      "Consider the minimum effective dose mentioned in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7b2349f4-72b8-42c1-89dd-3f5ad3ac7fd2",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Which health issue is NOT directly linked to muscle loss according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Increased diabetes risk",
+      "Higher fall risk and bone fractures",
+      "Hair color changes",
+      "Slower metabolism and weight gain"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Hair color changes are not mentioned as being linked to muscle loss. The article discusses diabetes risk, fall risk, bone health, and metabolic impacts as consequences of sarcopenia.",
+    "hints": [
+      "Review the 'domino effect' section of the article",
+      "Consider which option seems unrelated to muscle function"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c5d73b5b-3e7f-4cf5-926c-7dd69e49e5c0",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "According to the article, what should be the focus for people in their 20s and 30s regarding sarcopenia?",
+    "question_type": "standalone",
+    "options": [
+      "Begin taking preventive medications",
+      "Focus only on cardio to prepare for later strength training",
+      "Build muscle 'bank account' aggressively while young",
+      "Ignore it completely since muscle loss doesn't start until 50"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article emphasizes building a muscle 'bank account' aggressively in your 20s and 30s, comparing it to compound interest for your body's future.",
+    "hints": [
+      "The article uses a financial metaphor for young adult muscle building",
+      "Consider the 'critical investment window' concept"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c7531c71-b3e3-46c5-88db-64c724cc48f4",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Why does the article recommend eating protein throughout the day rather than all at once?",
+    "question_type": "standalone",
+    "options": [
+      "It tastes better when spread out",
+      "Muscles can't store protein for later like carbs or fat",
+      "It's easier on the digestive system",
+      "It helps you feel full all day"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Muscles can't store protein for later use like they can with carbs or fat, making distribution throughout the day important for optimal muscle protein synthesis.",
+    "hints": [
+      "Think about how the article describes protein storage capacity",
+      "Consider the difference between protein and other macronutrients"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "15d3540e-d43f-49d6-b399-be681788680b",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Which sequence correctly matches the functional exercises with their real-life applications?",
+    "question_type": "standalone",
+    "options": [
+      "Squats → picking things up, Deadlifts → getting up from chairs",
+      "Squats → getting up from chairs, Deadlifts → picking things up safely",
+      "Squats → opening doors, Deadlifts → putting items on shelves",
+      "Squats → climbing stairs, Deadlifts → walking with groceries"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Squats/sit-to-stands help with getting up from chairs and toilets, while deadlifts/hip hinges help with picking things up safely from the ground.",
+    "hints": [
+      "Think about the movement patterns involved in each exercise",
+      "Consider which daily activities match these movement patterns"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "71597479-ec78-470c-9eb4-f8431c6dfaeb",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What combination of warning signs should prompt someone to take action against sarcopenia?",
+    "question_type": "standalone",
+    "options": [
+      "Difficulty with jar lids + needing arm support to stand + avoiding stairs",
+      "Getting tired after meals + preferring warm weather + sleeping longer",
+      "Choosing different clothing styles + changing hair preferences + new hobbies",
+      "Increased appetite + better sleep + more social activities"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Struggling with jar lids (grip strength decline), needing arm support to stand, and avoiding stairs are all functional red flags indicating muscle loss and should prompt action.",
+    "hints": [
+      "Look for signs related to physical function and strength",
+      "Consider which options indicate declining physical capability"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d57b5a48-2ca2-4937-b054-0dac64e50024",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How do strength training recommendations differ across age groups according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Under 40: 1-2 sessions, 40-60: 2-3 sessions, Over 60: 3-4 sessions",
+      "Under 40: 3-4 sessions, 40-60: 2-3 sessions, Over 60: fight for every fiber",
+      "All age groups: exactly 2 sessions per week",
+      "Under 40: cardio only, 40-60: light weights, Over 60: avoid exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends 3-4 sessions for under 40 (building phase), 2-3 for 40-60 (maintenance), and emphasizes 'fighting for every fiber' over 60 (preservation).",
+    "hints": [
+      "Consider how the goals change with age: building vs maintaining vs preserving",
+      "Look at the age-specific action plan in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7387d81f-4b05-4b73-965c-919739ea4367",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "In the first passage, what made Taylor finally consider taking action against sarcopenia?",
+    "question_type": "passage_based",
+    "options": [
+      "Learning about the financial costs of muscle loss",
+      "Seeing the comparison photos and thinking about their mother's assisted living situation",
+      "Being told they needed expensive medical treatments",
+      "Realizing they were already too late to make changes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor was motivated by seeing the comparison photos of two 70-year-olds and thinking about their mother who moved to assisted living at 72 after a fall.",
+    "hints": [
+      "Focus on what personally resonated with Taylor in the passage",
+      "Consider the family connection that made the issue real"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0bbdd8de-4807-4f26-8c20-7ec07f3e22f3"
+  },
+  {
+    "id": "ee0667ec-5f82-4450-8c59-c0e2c2619794",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What specific starting recommendations did Dr. Chen give to Taylor for beginning strength training?",
+    "question_type": "passage_based",
+    "options": [
+      "Join a gym immediately and start heavy lifting",
+      "Begin with bodyweight exercises, resistance bands, and increase protein to 30g per meal",
+      "Take supplements first, then consider exercise later",
+      "Wait until blood pressure improves before starting any exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen recommended starting with bodyweight exercises, resistance bands, and increasing protein to 30g per meal as a beginner-friendly approach.",
+    "hints": [
+      "Look for the specific, actionable advice the doctor provided",
+      "Consider what would be appropriate for someone new to strength training"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0bbdd8de-4807-4f26-8c20-7ec07f3e22f3"
+  },
+  {
+    "id": "720cc075-80c3-43a1-a1c8-f980b50c066d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How did Dr. Chen reframe strength training for Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "As an optional hobby for when they have more time",
+      "As medicine and the most effective prescription for their future self",
+      "As something only young people should do",
+      "As a way to impress others at the gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen told Taylor to 'think of it as medicine' and called it 'the most effective prescription I can write for your future self.'",
+    "hints": [
+      "Focus on how the doctor positioned the importance of strength training",
+      "Look for the medical metaphor used to emphasize necessity"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0bbdd8de-4807-4f26-8c20-7ec07f3e22f3"
+  },
+  {
+    "id": "87023cd6-4c1e-4acf-b427-617f92bc608d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was Taylor's initial concern about starting strength training, and how was it addressed?",
+    "question_type": "passage_based",
+    "options": [
+      "They were worried about the cost, so the doctor recommended free alternatives",
+      "They had never lifted weights before, so the doctor suggested starting with simple exercises",
+      "They thought they were too old, so the doctor showed age isn't a barrier",
+      "They lacked time, so the doctor created a shorter program"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor said 'What if I've never lifted weights?' and Dr. Chen addressed this by suggesting they start with bodyweight exercises and resistance bands.",
+    "hints": [
+      "Identify Taylor's specific worry about their experience level",
+      "Look at how the doctor provided an accessible starting point"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0bbdd8de-4807-4f26-8c20-7ec07f3e22f3"
+  },
+  {
+    "id": "df8692f8-94df-49dd-bb62-1e3a85af5582",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "According to Sarah's research in the second passage, what does grip strength predict?",
+    "question_type": "passage_based",
+    "options": [
+      "How much someone exercises per week",
+      "Longevity better than blood pressure",
+      "Whether someone will enjoy strength training",
+      "The likelihood of developing arthritis"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah told her mother that 'grip strength predicts longevity better than blood pressure' when explaining why the jar lid struggle was concerning.",
+    "hints": [
+      "Focus on the specific statistic Sarah shared with her mother",
+      "Consider why grip strength is such an important health indicator"
+    ],
+    "image_urls": [],
+    "passage_set_id": "81217c2e-3114-4a3c-a4de-e54b8a99a26c"
+  },
+  {
+    "id": "b8181094-c1ff-4008-b606-ea404efe678d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was Margaret's motivation for strength training according to Sarah?",
+    "question_type": "passage_based",
+    "options": [
+      "To lose weight for a special event",
+      "To compete with other women her age",
+      "To add life to her years, not years to her life",
+      "To prove doctors wrong about her limitations"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Sarah quoted Margaret saying she 'doesn't strength train to add years to her life, but to add life to her years.'",
+    "hints": [
+      "Look for Margaret's personal philosophy about why she exercises",
+      "Consider the quality vs quantity of life distinction"
+    ],
+    "image_urls": [],
+    "passage_set_id": "81217c2e-3114-4a3c-a4de-e54b8a99a26c"
+  },
+  {
+    "id": "c5668668-bb5f-42da-9f96-d44f3366cc0b",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was Sarah's mother's initial excuse for not doing strength training?",
+    "question_type": "passage_based",
+    "options": [
+      "She said it was too expensive to join a gym",
+      "She believed strength training was only for young people",
+      "She claimed she was too busy with other activities",
+      "She thought her walking routine was sufficient"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's mother said 'Oh, that's for young people. I do my walking' when asked about strength training.",
+    "hints": [
+      "Look at the mother's immediate response to the strength training suggestion",
+      "Consider the age-related assumption she made"
+    ],
+    "image_urls": [],
+    "passage_set_id": "81217c2e-3114-4a3c-a4de-e54b8a99a26c"
+  },
+  {
+    "id": "436d2e26-bf41-4293-bb7f-5980c0c1bde5",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How did Sarah plan to help her mother overcome her hesitation about strength training?",
+    "question_type": "passage_based",
+    "options": [
+      "By hiring a personal trainer for her mother",
+      "By offering to do resistance band training together",
+      "By buying her mother expensive gym equipment",
+      "By showing her medical studies about strength training"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah offered 'I'll do it with you' when her mother considered trying resistance bands, providing social support and accountability.",
+    "hints": [
+      "Look for how Sarah made the activity less intimidating",
+      "Consider the power of social support in starting new habits"
+    ],
+    "image_urls": [],
+    "passage_set_id": "81217c2e-3114-4a3c-a4de-e54b8a99a26c"
+  },
+  {
+    "id": "c2036a5d-b172-48e0-91b1-5a252a73dbbd",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "Getting medical clearance before starting exercise with a health condition is just a legal formality and not medically necessary.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Medical clearance is absolutely medically necessary, not just a legal formality. It helps create a safe, effective plan tailored to your specific condition and ensures you understand what exercises to avoid and warning signs to watch for.",
+    "hints": [
+      "The article emphasizes this as your 'non-negotiable first step'",
+      "Medical clearance helps identify safe exercises and warning signs specific to your condition"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "632053e7-aef9-43af-b858-7bcf51705497",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "People with high blood pressure should completely avoid strength training because it raises blood pressure.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. People with high blood pressure can safely do strength training with modifications like using lighter weights with more repetitions and avoiding holding their breath. The key is adapting the exercise, not avoiding it entirely.",
+    "hints": [
+      "The article mentions modifications like lighter weights and more repetitions",
+      "The focus is on adapting exercise safely, not eliminating it"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "358c82a7-805a-437d-a4e7-69b3127337c2",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "Exercise can be as effective as some antidepressant medications for treating mild to moderate depression.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true. The article specifically states that exercise is proven as effective as some antidepressants for mild-moderate depression, though it emphasizes never stopping psychiatric medications without medical supervision.",
+    "hints": [
+      "The article mentions exercise effectiveness for depression treatment",
+      "Remember the importance of medical supervision for medication changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bc664f5f-0c67-4aab-ba4f-d55253fb8303",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "The 'no pain, no gain' mentality is especially important to follow when exercising with chronic health conditions.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. The article explicitly states that the 'no pain, no gain' mentality doesn't apply when you have health conditions. Discomfort is okay, but pain is not. People with health conditions need to listen more carefully to their bodies.",
+    "hints": [
+      "The article specifically warns against this mentality for people with health conditions",
+      "Think about the difference between discomfort and actual pain"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a0f2bdaf-fc67-4c4c-b5cf-20a2fd26973e",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What is the most important first step before starting an exercise program with any health condition?",
+    "question_type": "standalone",
+    "options": [
+      "Getting medical clearance from your doctor",
+      "Buying expensive adaptive equipment",
+      "Joining a specialized gym for people with health conditions",
+      "Training to become a medical exercise expert yourself"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Getting medical clearance is the most important first step. The article emphasizes this as 'non-negotiable' and helps create a safe, effective plan tailored to your specific situation.",
+    "hints": [
+      "The article calls this the 'non-negotiable first step'",
+      "This step helps ensure safety and creates a personalized plan"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ae956914-1f93-445b-ba0c-a22086a76a55",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "Which exercise modification is recommended for people with arthritis?",
+    "question_type": "standalone",
+    "options": [
+      "Only high-impact exercises to strengthen joints quickly",
+      "Low-impact activities like swimming and water aerobics",
+      "Avoiding all movement to prevent joint damage",
+      "Competitive powerlifting to build maximum strength"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Low-impact activities like swimming and water aerobics are recommended for arthritis because they reduce joint stress while still providing exercise benefits. Movement actually helps reduce joint pain and stiffness over time.",
+    "hints": [
+      "Think about activities that are gentle on the joints",
+      "The article mentions that movement actually reduces joint pain over time"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c1419d5e-e578-40d5-9c63-ac3068c064e9",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What should people with Type 2 diabetes do before, during, and after exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Take extra insulin and avoid all carbohydrates",
+      "Check blood sugar and keep fast-acting carbs handy",
+      "Only exercise in hospitals with medical supervision",
+      "Avoid exercise completely due to blood sugar risks"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "People with diabetes should check blood sugar before, during (if over 30 minutes), and after exercise, and keep fast-acting carbs like glucose tablets handy in case of low blood sugar episodes.",
+    "hints": [
+      "Think about monitoring and preparing for blood sugar changes",
+      "Consider what to have ready in case blood sugar drops too low"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c2c31fa1-3ac7-47cd-aea5-5ed8e1442bc9",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "Which warning signs during exercise require immediate medical attention for people with chronic back pain?",
+    "question_type": "standalone",
+    "options": [
+      "Mild muscle fatigue and normal sweating",
+      "Numbness, tingling, or loss of bladder control",
+      "Slight increase in heart rate during activity",
+      "Feeling energized and wanting to exercise longer"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Numbness, tingling, or loss of bladder control are serious warning signs that require immediate medical attention as they may indicate nerve involvement or serious spinal issues.",
+    "hints": [
+      "Look for symptoms that involve nerve function",
+      "These are the 'red flags' mentioned in the back pain section"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ebdfcb68-fa8c-4b6c-813b-e296cdec3dd7",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What is the correct sequence of universal adaptation principles for exercising with health conditions?",
+    "question_type": "standalone",
+    "options": [
+      "Start high, progress fast, ignore body signals, maintain rigid plans, track minimally",
+      "Start lower, progress slower, listen harder, plan for bad days, track everything initially",
+      "Start anywhere, progress randomly, listen occasionally, avoid planning, never track progress",
+      "Start with maximum intensity, progress daily, ignore discomfort, stick to one plan always, track only weight"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The five universal adaptation principles are: start lower than you think, progress slower than others, listen harder to your body, plan for bad days, and track everything initially to understand patterns.",
+    "hints": [
+      "Think about being more conservative and careful than healthy individuals",
+      "Consider the importance of planning and monitoring when managing health conditions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f98665ae-922a-4eb2-ad0a-e50b9c9a3b9a",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "Which combination of healthcare professionals would be most beneficial for someone starting exercise with multiple health conditions?",
+    "question_type": "standalone",
+    "options": [
+      "Only a personal trainer and nutritionist",
+      "Physical therapist, certified trainer with medical exercise certification, registered dietitian, and mental health professional",
+      "Just a doctor and a regular gym membership",
+      "Social media fitness influencers and online coaches only"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends building a comprehensive healthcare team including a physical therapist for movement assessment, a certified trainer with medical exercise certification, a registered dietitian, and a mental health professional for holistic support.",
+    "hints": [
+      "Think about the different aspects of health that need professional support",
+      "The article emphasizes not having to figure this out alone"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "60c803a0-ab1a-4bf6-9022-3a30c605e527",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What are the key steps in the recommended action plan for starting exercise with health conditions?",
+    "question_type": "standalone",
+    "options": [
+      "Schedule doctor appointment, track symptoms, start at 100% intensity, ignore healthcare team, jump into advanced exercises",
+      "Schedule doctor appointment, track current activity and symptoms, start at 50% capacity, establish consistency, have regular check-ins",
+      "Avoid doctors, start immediately, track only weight, work alone always, never modify the plan",
+      "See a doctor once, never track anything, start at random intensity, avoid consistency, skip follow-up appointments"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The recommended action plan includes: scheduling a doctor appointment for clearance, tracking current activity and symptoms while waiting, starting at 50% of what feels manageable, establishing consistency before increasing intensity, and having ongoing check-ins with your healthcare team.",
+    "hints": [
+      "Think about a systematic, gradual approach",
+      "Consider the importance of ongoing medical supervision"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "81644d6e-59db-4cc6-b9c5-de0a7a48d9f0",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "In Taylor's diabetes management journey, what was Marcus's key advice about exercise and blood sugar monitoring?",
+    "question_type": "passage_based",
+    "options": [
+      "Never check blood sugar, just exercise when you feel like it",
+      "Check every 30 minutes initially until you know your patterns, and carry glucose tabs, juice, and granola bars",
+      "Only check blood sugar once per week regardless of exercise",
+      "Avoid all carbohydrates before, during, and after exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus advised Taylor to check blood sugar every 30 minutes initially until patterns become clear, and to always carry glucose tablets, juice box, and granola bar for safety. He also mentioned that different exercises affect blood sugar differently.",
+    "hints": [
+      "Marcus had been managing Type 2 diabetes for five years",
+      "He emphasized learning individual patterns and always being prepared for low blood sugar"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d5e3c43e-7725-4127-8762-08d409dd2c2c"
+  },
+  {
+    "id": "7ce32b2a-fdd3-4c75-bf05-d6a7ccd85fd4",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What impressive health improvement did Marcus share with Taylor about his diabetes management?",
+    "question_type": "passage_based",
+    "options": [
+      "His weight dropped by 50 pounds in one month",
+      "His A1C dropped from 8.2 to 6.1 through exercise",
+      "He no longer needed to check his blood sugar",
+      "He could eat unlimited sugar without consequences"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus shared that his A1C (a measure of blood sugar control over 2-3 months) dropped from 8.2 to 6.1 through regular exercise, showing significant improvement in diabetes management.",
+    "hints": [
+      "A1C is a key measure of blood sugar control over time",
+      "This was Marcus's success story after managing diabetes for five years"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d5e3c43e-7725-4127-8762-08d409dd2c2c"
+  },
+  {
+    "id": "f36001e5-44c5-4e73-a663-06eb3f168ecb",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What was Taylor's initial concern about starting exercise with diabetes?",
+    "question_type": "passage_based",
+    "options": [
+      "Worried about gaining too much muscle mass",
+      "Concerned about going into low blood sugar during workouts",
+      "Afraid of exercising too intensely",
+      "Worried about eating too many carbohydrates"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor was nervous about going into low blood sugar (hypoglycemia) during workouts, which is a valid concern for people with diabetes, especially those new to exercise.",
+    "hints": [
+      "This is a common and legitimate fear for people with diabetes starting exercise",
+      "Think about what happens when blood sugar drops too low during physical activity"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d5e3c43e-7725-4127-8762-08d409dd2c2c"
+  },
+  {
+    "id": "6ddb1e67-e3ff-4214-bbf7-6ccf584a5de1",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "According to Marcus, what was the key principle for managing diabetes through exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Intensity beats frequency when managing diabetes",
+      "Consistency beats intensity when managing diabetes",
+      "Only high-intensity exercise helps with blood sugar",
+      "Exercise timing doesn't matter for diabetes management"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus emphasized that 'consistency beats intensity when you're managing diabetes,' highlighting the importance of regular exercise rather than sporadic intense workouts for blood sugar management.",
+    "hints": [
+      "This was Marcus's key advice to Taylor about exercise and diabetes",
+      "Think about what's more important for long-term health management"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d5e3c43e-7725-4127-8762-08d409dd2c2c"
+  },
+  {
+    "id": "82b98243-b71b-46d5-930f-b49ec27aa444",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "Why was water aerobics particularly beneficial for Sarah's rheumatoid arthritis?",
+    "question_type": "passage_based",
+    "options": [
+      "Water makes exercise more challenging and intense",
+      "Buoyancy reduces joint stress by up to 90% while providing resistance",
+      "Water aerobics requires no physical effort",
+      "It's the only exercise safe for people with arthritis"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Beth, the water aerobics instructor, explained that buoyancy reduces joint stress by up to 90% while the water provides resistance for strength building, making it ideal for people with arthritis.",
+    "hints": [
+      "Think about the properties of water and how it affects the body",
+      "Beth gave specific percentages about joint stress reduction"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5d61892b-1e99-40b5-a0f3-52972a445954"
+  },
+  {
+    "id": "87bce8bc-ae25-4273-a3da-a8a583e43171",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What immediate benefit did Sarah notice during her first water aerobics class?",
+    "question_type": "passage_based",
+    "options": [
+      "She could lift her arms higher than she had in months",
+      "She lost significant weight immediately",
+      "Her rheumatoid arthritis was completely cured",
+      "She could run a marathon"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah noticed during class that she could lift her arms higher than she had been able to in months, demonstrating the immediate benefit of the warm water and reduced joint stress.",
+    "hints": [
+      "This was something Sarah noticed and commented on during the class",
+      "It related to her range of motion and joint flexibility"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5d61892b-1e99-40b5-a0f3-52972a445954"
+  },
+  {
+    "id": "b745b41b-2849-455f-87b1-61014184dacd",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What was Sarah's initial concern about starting water aerobics?",
+    "question_type": "passage_based",
+    "options": [
+      "She was afraid of drowning",
+      "Her rheumatoid arthritis was flaring and land exercises hurt too much",
+      "She didn't have proper swimming attire",
+      "She thought water exercise would be too easy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah entered with her rheumatoid arthritis flaring in her hands and knees, and mentioned that land exercises hurt too much, which is why she was trying water aerobics.",
+    "hints": [
+      "Sarah was experiencing a flare-up when she arrived",
+      "She had tried other forms of exercise that caused pain"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5d61892b-1e99-40b5-a0f3-52972a445954"
+  },
+  {
+    "id": "a4b24a49-5693-4fd1-8023-6b603811303e",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "How did Sarah feel about exercise after her water aerobics experience?",
+    "question_type": "passage_based",
+    "options": [
+      "She decided exercise was still impossible with arthritis",
+      "For the first time since diagnosis, exercise felt possible and even enjoyable",
+      "She thought water aerobics was too difficult",
+      "She decided to only do land-based exercises"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states that 'For the first time since diagnosis, exercise felt possible—even enjoyable' after Sarah's positive water aerobics experience.",
+    "hints": [
+      "This was Sarah's emotional response after trying water aerobics",
+      "It represented a significant shift in her perspective on exercise with arthritis"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5d61892b-1e99-40b5-a0f3-52972a445954"
+  },
+  {
+    "id": "f064861a-ae49-4b3d-b87b-088f31a47892",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What caused Mike's initial fear about returning to weight training after his back injury?",
+    "question_type": "passage_based",
+    "options": [
+      "He was afraid of gaining too much muscle",
+      "A deadlift had triggered his back injury two years ago",
+      "He was concerned about his form being perfect",
+      "He worried about what other gym members would think"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike was frozen with fear because a deadlift had triggered his back injury two years ago, making him afraid to return to the weight rack.",
+    "hints": [
+      "Think about what specific exercise had caused his injury",
+      "This fear was keeping him from approaching the weights"
+    ],
+    "image_urls": [],
+    "passage_set_id": "403dbf71-1576-4df7-a413-e9f36f44dcff"
+  },
+  {
+    "id": "43913e7e-8cd0-49d5-862e-f5992e2e5d68",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What exercise did Alex, the medical exercise specialist, start Mike with instead of weights?",
+    "question_type": "passage_based",
+    "options": [
+      "Deadlifts with lighter weight",
+      "Bird dog exercises to build core stability",
+      "Heavy squats to strengthen his back",
+      "High-intensity cardio workouts"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex started Mike with bird dog exercises to build core stability as a foundation before progressing to weights, explaining that Mike's disc issues required core stability work first.",
+    "hints": [
+      "This was a foundational exercise to build stability",
+      "Alex explained it was necessary before adding weights"
+    ],
+    "image_urls": [],
+    "passage_set_id": "403dbf71-1576-4df7-a413-e9f36f44dcff"
+  },
+  {
+    "id": "a39e42e3-f3ec-44ef-a3ae-37c40156bc4d",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What positive change did Mike notice after three weeks of foundation exercises?",
+    "question_type": "passage_based",
+    "options": [
+      "He could deadlift his original weight again",
+      "His back hadn't hurt in four days",
+      "He gained 10 pounds of muscle",
+      "He could run a marathon"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "After three weeks of foundation exercises, Mike noticed that his back hadn't hurt in four days, which surprised him and showed the effectiveness of the core stability work.",
+    "hints": [
+      "This was a pain-related improvement Mike noticed",
+      "It happened after three weeks of doing the foundation exercises"
+    ],
+    "image_urls": [],
+    "passage_set_id": "403dbf71-1576-4df7-a413-e9f36f44dcff"
+  },
+  {
+    "id": "c6a1c9aa-95c1-4508-b385-0f479e7acb75",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "question_text": "What key lesson did Alex teach Mike about training with back issues?",
+    "question_type": "passage_based",
+    "options": [
+      "He should avoid all weight training permanently",
+      "He needs to adapt his training approach rather than avoid exercise completely",
+      "He should only do cardio exercises from now on",
+      "He needs to push through pain to get stronger"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex taught Mike that he needed to adapt his training approach rather than avoid exercise completely. This helped Mike understand that his comeback wasn't about returning to old habits, but building better, more sustainable ones.",
+    "hints": [
+      "Think about how Alex's advice changed Mike's approach to training",
+      "This lesson helped Mike understand the difference between avoiding exercise and adapting it"
+    ],
+    "image_urls": [],
+    "passage_set_id": "403dbf71-1576-4df7-a413-e9f36f44dcff"
+  }
+]
