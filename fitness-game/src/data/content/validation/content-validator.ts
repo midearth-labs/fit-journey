@@ -1,7 +1,7 @@
 // Content Validator Utility
 // Handles validation of content integrity and relationships
 
-import { ValidationResult, ValidationError, ValidationWarning, ValidationInfo, ValidationSummary, Content } from '../types';
+import { ValidationResult, ValidationError, ValidationWarning, ValidationInfo, ValidationSummary, Content, Question } from '../types';
 import { ContentLoader } from '../utils/content-loader';
 
 type UniquenessCheckValueType = string | number | null | undefined;
@@ -98,6 +98,7 @@ export class ContentValidator {
     // This would implement more complex cross-reference validation
     // For now, basic reference validation is done in individual validation methods
     this.validateKnowledgeBaseReferences();
+    this.validateQuestionReferences
   }
 
   /**
@@ -114,6 +115,49 @@ export class ContentValidator {
     this.validateUniqueness('KnowledgeBase', (entity) => entity.slug, 'slug', false);
     this.validateUniqueness('KnowledgeBase', (entity) => entity.title, 'title', false);
     this.validateUniqueness('KnowledgeBase', (entity) => entity.passages.map((passage) => passage.id), 'passage id', false);
+    this.validateKnowledgeBaseQuestionCounts();
+  }
+
+  /**
+   * Validates that each KnowledgeBase has the correct number of associated questions
+   * based on the formula: 11 + (4 * number of passages)
+   */
+  private validateKnowledgeBaseQuestionCounts(): void {
+    // Build map of questions per knowledge base
+    const questionsByKnowledgeBase = new Map<string, Map<string, Question>>();
+
+    // Populate the map with all questions
+    for (const [questionId, question] of this.content.Question.map) {
+      const knowledgeBaseId = question.knowledge_base_id;
+      if (!questionsByKnowledgeBase.has(knowledgeBaseId)) {
+        questionsByKnowledgeBase.set(knowledgeBaseId, new Map());
+      }
+      questionsByKnowledgeBase.get(knowledgeBaseId)?.set(questionId, question);
+    }
+
+    // Validate question count for each knowledge base
+    for (const [knowledgeBaseId, knowledgeBase] of this.content.KnowledgeBase.map) {
+      // @TODO: This should be removed after all content is generated
+      if (!questionsByKnowledgeBase.has(knowledgeBaseId)) {
+        console.log(`Knowledge base ${knowledgeBaseId} has no questions yet`);
+        continue;
+      }
+
+      const numPassages = knowledgeBase.passages.length;
+      const expectedQuestions = 11 + (4 * numPassages);
+      
+      const actualQuestions = questionsByKnowledgeBase.get(knowledgeBaseId)?.size || 0;
+
+      if (actualQuestions !== expectedQuestions) {
+        this.addError(
+          'KnowledgeBase',
+          knowledgeBaseId,
+          'questions',
+          `Knowledge base has ${actualQuestions} questions but should have ${expectedQuestions} ` +
+          `(11 standalone + 4 questions per passage * ${numPassages} passages)`
+        );
+      }
+    }
   }
 
   private validateKnowledgeBaseReferences(): void {
@@ -124,6 +168,18 @@ export class ContentValidator {
       'content_category_id',
       'ContentCategory'
     );
+  }
+
+  private validateQuestionReferences(): void {
+    // Validate that all content_category_id references exist in ContentCategory
+    this.validateNonNullReference(
+      'Question',
+      (entity) => entity.knowledge_base_id,
+      'knowledge_base_id',
+      'KnowledgeBase'
+    );
+
+    // @TODO: Validate that all passage_set_id references exist in PassageSet
   }
 
   /**

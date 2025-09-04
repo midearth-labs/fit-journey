@@ -83,7 +83,7 @@ type Question = {
   is_active: boolean;
   // The order of the content in the list. Used for display ordering.
   sort_order: number;
-  // The knowledge base ID of the article.
+  // The knowledge base ID of the article which this question is based on.
   knowledge_base_id: string;
   // The text of the question. Must be a quick read
   question_text: string;
@@ -105,6 +105,6 @@ type Question = {
     height: number;
     prompt_generation_string: string;
   }[];
-  // The passage set ID of the question. null for standalone questions
+  // The passage ID of the passage for which this question is based on. not defined for standalone questions
   passage_set_id?: string;
 };

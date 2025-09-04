@@ -2,10 +2,10 @@
 // Based on entities.md ContentCategory entity
 
 import { z } from 'zod';
-import { BaseContentSchema } from './common';
+import { BaseContentSchema, IDSchema } from './common';
 
 // Zod schema for ContentCategory
-export const ContentCategorySchema = BaseContentSchema.extend({
+export const ContentCategorySchema = IDSchema.extend(BaseContentSchema.shape).extend({
   name: z.string(),
   description: z.string(),
   icon_name: z.string(),

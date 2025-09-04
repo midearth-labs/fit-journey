@@ -1,0 +1,3154 @@
+[
+  {
+    "id": "b492a0c8-9599-44ff-b263-a1018419170a",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "True or False: Protein is primarily responsible for building, repairing, and maintaining muscles, hair, skin, and hormones.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Protein acts as your body's construction crew, constantly building, repairing, and maintaining everything from muscles to hair, skin, and even hormones.",
+    "hints": [
+      "Think about what happens to your muscles after a workout",
+      "Consider what protein is called in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "da177798-9795-495e-bbfc-06613b2e9029",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "True or False: Eating carbs after 6 PM causes them to automatically turn into fat.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Your body doesn't have a clock that changes how it processes food. Total daily intake matters more than timing for weight management.",
+    "hints": [
+      "Think about whether your body has an internal clock for food processing",
+      "Consider what the article says about common myths"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "79bf93aa-ba00-4ee6-b6d9-e3bd3d1d17d9",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "True or False: You must consume protein immediately after working out or you'll lose all your gains.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "You have a several-hour window for post-workout protein consumption. Don't panic if you can't have protein immediately after exercise.",
+    "hints": [
+      "Think about the urgency described in the article",
+      "Consider what happens if you wait a couple hours"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5d9719cf-db55-43ed-abf4-20865003b3e5",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "True or False: Eating fat automatically makes you gain body fat.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Eating too many total calories makes you gain weight, regardless of whether they come from fat, carbs, or protein. The source matters less than the total amount.",
+    "hints": [
+      "Consider what actually causes weight gain",
+      "Think about the relationship between calories and weight"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d746fd59-bfe8-4dbb-a4e9-e2e5a9ec2030",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "For someone who weighs 150 pounds and is active, approximately how much protein should they aim for daily?",
+    "question_type": "standalone",
+    "options": [
+      "50-75 grams",
+      "105-150 grams",
+      "200-250 grams",
+      "Whatever feels right, man. Just eat some chicken nuggets and call it a day."
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends 0.7-1g per pound of body weight for active individuals. For someone weighing 150 pounds, that's 105-150 grams daily.",
+    "hints": [
+      "Look for the formula in the article",
+      "Multiply 150 by the recommended range"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "115abdd0-2c01-47c9-a150-81b18ef0dcf0",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "How many grams of carbs does your brain use daily just to function normally?",
+    "question_type": "standalone",
+    "options": [
+      "50 grams",
+      "130 grams",
+      "200 grams",
+      "Whatever's left after the workout smoothie gets its share"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Your brain alone uses about 130g of carbs daily just to function normally, which shows how important carbohydrates are for cognitive function.",
+    "hints": [
+      "Look for the specific number mentioned about brain function",
+      "This is a substantial amount of your daily carb needs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "faba5871-b739-4094-91dc-6f0094049fc7",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What percentage of total calories should come from fats in a balanced diet?",
+    "question_type": "standalone",
+    "options": [
+      "5-10%",
+      "20-35%",
+      "50-60%",
+      "Enough to make everything taste like butter, obviously"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends about 20-35% of your total calories should come from fats for optimal health and hormone production.",
+    "hints": [
+      "Look for the percentage range mentioned for fats",
+      "This is a moderate amount, not too high or too low"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3e1bff3b-7e3b-4f5b-8fac-a103ae241d59",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "According to the article, what's the best way to start incorporating balanced macros into your diet?",
+    "question_type": "standalone",
+    "options": [
+      "Immediately start tracking every gram of every macro",
+      "Include a protein source at every meal, don't fear carbs, and add healthy fats",
+      "Eliminate one macro completely for faster results",
+      "Just eat whatever the fitness influencer with the best abs is promoting this week"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes a simple start: include protein at every meal, choose mostly whole food carbs, and add healthy fats for satisfaction.",
+    "hints": [
+      "Look for the 'start simple' section",
+      "The approach focuses on addition rather than restriction"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "055b9113-61aa-4838-9337-1ed6648d127c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "Which combination represents the best variety of protein sources mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Only chicken breast and protein powder",
+      "Chicken, fish, eggs, Greek yogurt, beans, and tofu",
+      "Just protein shakes throughout the day",
+      "Whatever's on sale at the gas station protein bar aisle"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article lists diverse protein sources including animal proteins (chicken, fish, eggs), dairy (Greek yogurt), and plant-based options (beans, tofu).",
+    "hints": [
+      "Look for the comprehensive list in the protein section",
+      "Notice the variety includes both animal and plant sources"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a98c7da1-39cb-40ba-bedc-8647e5b01e5e",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What's the main difference between simple carbs and complex carbs according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Simple carbs are always bad, complex carbs are always good",
+      "Simple carbs provide quick energy but fewer nutrients, while complex carbs provide sustained energy and more nutrients",
+      "There's no real difference between them",
+      "Simple carbs are for simple people, complex carbs are for rocket scientists"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Simple carbs provide quick energy but are less filling and nutrient-dense, while complex carbs offer sustained energy along with fiber and nutrients.",
+    "hints": [
+      "Think about the analogy comparing them to pocket money vs paycheck",
+      "Consider which ones keep you fuller longer"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "96ca188f-041a-4adf-86f1-444c70e0100d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What sequence does the article recommend for implementing macro awareness?",
+    "question_type": "standalone",
+    "options": [
+      "Track everything perfectly from day one, then maintain forever",
+      "Notice what you eat → include all macros at meals → eventually consider tracking",
+      "Start with supplements → add whole foods → eliminate processed foods",
+      "Hire a nutritionist → buy a food scale → meal prep for life"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article suggests a gradual approach: start with awareness of current eating, then focus on including all three macros, and only eventually consider detailed tracking.",
+    "hints": [
+      "Look at the action plan section",
+      "Notice the progression from simple awareness to more detailed approaches"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "209051fc-e643-4ebb-a8d7-0ac57283b3d4",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "In the gym cafe conversation, what was Sarah's main confusion about the protein smoothie?",
+    "question_type": "passage_based",
+    "options": [
+      "She didn't understand why it was so expensive",
+      "She thought carbs in the smoothie made it unhealthy",
+      "She was worried about the artificial sweeteners",
+      "She couldn't decide between vanilla or chocolate flavor"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah was confused because Instagram told her 'carbs are evil,' but the smoothie had both protein and carbs, making her question if it was bad for her.",
+    "hints": [
+      "Look at what Sarah specifically says about Instagram",
+      "Consider her concern about the 50g of carbs"
+    ],
+    "image_urls": [],
+    "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
+  },
+  {
+    "id": "4b3d3130-6f89-412c-8ea5-ea0253b6db9c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "How did Emma explain why both protein and carbs are needed after a workout?",
+    "question_type": "passage_based",
+    "options": [
+      "Protein builds muscle, carbs provide energy for the next workout",
+      "Protein helps repair muscles, carbs refill energy stores",
+      "Protein burns fat, carbs prevent muscle loss",
+      "They both taste better when combined in a smoothie"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma explained that protein helps repair muscles after the workout, while carbs refill the energy stores that were depleted during exercise.",
+    "hints": [
+      "Focus on Emma's specific explanation about post-workout needs",
+      "Think about what each macro does for recovery"
+    ],
+    "image_urls": [],
+    "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
+  },
+  {
+    "id": "c1b1b257-db44-4fdc-8abb-233f5955e37c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What approach did Emma recommend for Sarah to start with macros?",
+    "question_type": "passage_based",
+    "options": [
+      "Download multiple tracking apps and count every gram",
+      "Get some protein at each meal first, then get fancy with numbers later",
+      "Eliminate all carbs for two weeks to see results",
+      "Only eat foods that influencers recommend on social media"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma advised Sarah to 'try to get some protein at each meal first' and that she could 'get fancy with exact numbers later,' emphasizing a simple starting approach.",
+    "hints": [
+      "Look at Emma's final advice in the passage",
+      "Notice the emphasis on starting simple before getting detailed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
+  },
+  {
+    "id": "75c08c13-43a4-412e-b117-719e0f0e6d21",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What does Emma's comment about Instagram and juice cleanses suggest about social media nutrition advice?",
+    "question_type": "passage_based",
+    "options": [
+      "Instagram is the best source for nutrition information",
+      "Social media often promotes questionable health trends",
+      "Juice cleanses are always effective for everyone",
+      "You should only trust verified nutrition accounts"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's sarcastic comment that 'Instagram also tells people to do juice cleanses' suggests that social media often promotes questionable or ineffective health trends.",
+    "hints": [
+      "Consider the tone of Emma's response about Instagram",
+      "Think about what juice cleanses represent in terms of extreme approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
+  },
+  {
+    "id": "ee4f9c67-a228-4bbb-a1d5-efe411238880",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What was Mike's mistake with his protein shake according to Jordan?",
+    "question_type": "passage_based",
+    "options": [
+      "He was using the wrong brand of protein powder",
+      "He was consuming too much protein at once and missing other macros",
+      "He wasn't blending it long enough",
+      "He was having it at the wrong time of day"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan explained that Mike's body could only use 25-40g at once, the excess becomes expensive waste, and he was missing carbs for energy.",
+    "hints": [
+      "Look at Jordan's explanation about protein absorption limits",
+      "Consider what Jordan said about Mike's energy levels"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
+  },
+  {
+    "id": "f21b7f00-189a-4b4c-88fc-ced2217941e4",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "According to Jordan, what happens to excess protein that the body can't use for muscle building?",
+    "question_type": "passage_based",
+    "options": [
+      "It automatically builds more muscle",
+      "It becomes expensive urine or gets stored as energy",
+      "It stays in the muscles for later use",
+      "It turns into pure gainz, bro"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan explained that excess protein beyond what the body can use 'just becomes expensive pee or gets stored as energy.'",
+    "hints": [
+      "Look for Jordan's specific explanation about what happens to excess protein",
+      "Think about the metaphor of it being 'expensive'"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
+  },
+  {
+    "id": "a74551ec-f361-4117-a5f5-e0ab4d810789",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "Why was Mike 'dragging during workouts' according to Jordan's analysis?",
+    "question_type": "passage_based",
+    "options": [
+      "He was overtraining and needed more rest",
+      "He wasn't getting enough carbs for energy since muscles run on glycogen",
+      "His protein powder was low quality",
+      "He needed to add more caffeine to his pre-workout"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan explained that Mike was missing carbs for energy, and 'your muscles literally run on glycogen, which comes from carbs.'",
+    "hints": [
+      "Focus on Jordan's explanation about muscle fuel",
+      "Look for the connection between carbs and glycogen"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
+  },
+  {
+    "id": "3547e78f-565b-4ae0-ae36-08daf1ba77c9",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440001",
+    "question_text": "What analogy did Jordan use to explain why Mike needed both protein and carbs?",
+    "question_type": "passage_based",
+    "options": [
+      "Like a car needing both gas and oil",
+      "Like trying to build a house with just bricks and no mortar",
+      "Like a phone needing both battery and signal",
+      "Like trying to make a peanut butter sandwich with just peanut butter and no jelly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan used the analogy that Mike was 'trying to build a house with just bricks and no mortar' to explain why protein alone wasn't enough without carbs.",
+    "hints": [
+      "Look for Jordan's building/construction metaphor",
+      "Think about what bricks and mortar represent in this context"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
+  },
+  {
+    "id": "d0c279df-3e99-4a9d-9359-0ef28bb4df89",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "True or False: One pound of fat equals approximately 3,500 calories.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is a widely accepted estimate in nutrition science. A 500-calorie daily deficit should theoretically lead to about 1 pound of weight loss per week (500 × 7 days = 3,500 calories).",
+    "hints": [
+      "Think about the common weight loss recommendation of 1-2 pounds per week",
+      "Consider the math behind safe, sustainable weight loss rates"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b493a89c-d071-41ad-9cb7-ef79977fa3e9",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "True or False: Basal Metabolic Rate (BMR) accounts for 60-75% of your total daily calorie burn.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "BMR represents the calories your body burns at rest to maintain basic functions like organ function and body temperature. It's the largest component of your Total Daily Energy Expenditure (TDEE).",
+    "hints": [
+      "Consider what your body does even when you're sleeping",
+      "Think about which component of energy expenditure would be the largest"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7496a8e2-4379-4041-bad6-b636fab0e61d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "True or False: Exercise typically accounts for the largest portion of your daily calorie burn.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Exercise Activity Thermogenesis (EAT) typically accounts for only 5-10% of total daily energy expenditure. BMR and NEAT (fidgeting, daily activities) account for much more.",
+    "hints": [
+      "Think about how much time you spend exercising versus other activities",
+      "Consider what your body is doing for the other 23 hours of the day"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "711e2f62-0967-44aa-9a58-6f7f95389396",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "True or False: Most people accurately estimate their calorie intake within 10%.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Research shows most people underestimate their calorie intake by 20-40%. This happens because we forget about 'invisible' calories like cooking oils and we often underestimate portion sizes.",
+    "hints": [
+      "Think about how often people forget to count small bites or cooking oils",
+      "Consider how good humans typically are at estimating quantities"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f223345b-dbb0-4357-9166-2f01de56d1b7",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "If you want to lose weight safely, what's the recommended daily calorie deficit?",
+    "question_type": "standalone",
+    "options": [
+      "100-200 calories below TDEE",
+      "300-500 calories below TDEE",
+      "800-1000 calories below TDEE",
+      "As many calories as possible - go big or go home!"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "A moderate deficit of 300-500 calories below your TDEE promotes sustainable weight loss without triggering muscle loss, extreme hunger, or metabolic slowdown.",
+    "hints": [
+      "Think about what would be sustainable long-term",
+      "Consider the balance between results and maintaining muscle mass"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8851770e-cb8e-42a9-93b9-8e9da34de163",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What does NEAT stand for in the context of calorie expenditure?",
+    "question_type": "standalone",
+    "options": [
+      "Nutritional Energy Absorption Technique",
+      "Non-Exercise Activity Thermogenesis",
+      "Natural Exercise Activity Training",
+      "Nifty Exercise And Treats"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "NEAT represents the calories burned through all activities that aren't sleeping, eating, or sports-like exercise - things like fidgeting, maintaining posture, and daily activities.",
+    "hints": [
+      "Think about the energy you burn without formal exercise",
+      "Consider activities like fidgeting and walking to the bathroom"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e9ea90f4-239b-4125-ae09-eaac411421f5",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "Why do aggressive calorie deficits often backfire?",
+    "question_type": "standalone",
+    "options": [
+      "They cause immediate weight gain",
+      "They lead to muscle loss, fatigue, and eventual binge eating",
+      "They make you too energetic",
+      "They turn you into a hangry fitness zombie"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Extreme deficits trigger your body's survival mechanisms - it slows metabolism, breaks down muscle for energy, increases hunger hormones, and often leads to cycles of restriction and overeating.",
+    "hints": [
+      "Think about how your body responds to perceived starvation",
+      "Consider what happens when people try to be too restrictive"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c0f255c4-fb9f-46e2-bfbd-e03a203dbdf6",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What should you do if you're not losing weight after 2 weeks of tracking calories?",
+    "question_type": "standalone",
+    "options": [
+      "Give up - clearly calories don't work",
+      "Reduce by another 100-200 calories and reassess",
+      "Cut calories in half immediately",
+      "Switch to eating only air and good intentions"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Small adjustments allow you to find your true maintenance calories while avoiding the negative effects of overly aggressive deficits. Weight loss should be gradual and sustainable.",
+    "hints": [
+      "Think about making gradual adjustments rather than dramatic changes",
+      "Consider that your initial TDEE calculation might need fine-tuning"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "625f9333-acb2-429e-acb6-ea93df1c8deb",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "Which combination represents the four main components of Total Daily Energy Expenditure (TDEE)?",
+    "question_type": "standalone",
+    "options": [
+      "BMR + NEAT + TEF + EAT",
+      "BMR + Exercise + Sleep + Digestion",
+      "Calories In + Calories Out + Metabolism + Genetics",
+      "Breakfast + Lunch + Dinner + Snacks"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "TDEE consists of Basal Metabolic Rate (BMR), Non-Exercise Activity Thermogenesis (NEAT), Thermic Effect of Food (TEF), and Exercise Activity Thermogenesis (EAT).",
+    "hints": [
+      "Think about the acronyms mentioned in the article",
+      "Consider the different ways your body burns calories throughout the day"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "374bc857-d8c4-4a24-af83-1b3b28221e81",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What's the correct order of steps for implementing a calorie deficit?",
+    "question_type": "standalone",
+    "options": [
+      "Calculate TDEE → Create moderate deficit → Track results → Adjust if needed",
+      "Create huge deficit → Track everything → Calculate TDEE → Give up",
+      "Track baseline → Calculate TDEE → Create moderate deficit → Adjust based on results",
+      "Eat less → Exercise more → Hope for the best → Blame genetics"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article recommends first tracking your normal intake for baseline awareness, then calculating TDEE, creating a moderate 300-500 calorie deficit, and adjusting based on actual results after 2 weeks.",
+    "hints": [
+      "Think about the logical progression described in the action plan",
+      "Consider the importance of understanding your starting point first"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "79e50ef1-c56c-449b-970d-d8569d111b50",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "Which three factors make CICO more complex than simple math?",
+    "question_type": "standalone",
+    "options": [
+      "Metabolic adaptation + Water weight + Muscle vs fat density",
+      "Hormones + Sleep + Stress levels",
+      "Food quality + Meal timing + Exercise type",
+      "Social media + Diet culture + Unrealistic expectations"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically mentions that metabolic adaptation, water weight fluctuations (5+ pounds daily), and the difference between muscle and fat density make CICO more complex than simple calculator math.",
+    "hints": [
+      "Look for the specific factors mentioned when explaining why 'your body isn't a calculator'",
+      "Think about physiological factors that affect the energy equation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3ce4caa7-d24b-4b19-b7ed-0440298551ee",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What was Casey's main concern about the granola bars?",
+    "question_type": "passage_based",
+    "options": [
+      "They were too expensive",
+      "They weren't sweet enough",
+      "They were only 100 calories each and seemed healthy",
+      "They contained too much protein"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey thought the granola bars were a healthy, low-calorie snack at 100 calories each, not realizing that each bar was actually two servings.",
+    "hints": [
+      "Focus on what Casey initially believed about the bars",
+      "Think about the calorie count Casey was using"
+    ],
+    "image_urls": [],
+    "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
+  },
+  {
+    "id": "837caf44-6b75-4f9b-8861-087fba2d3fa9",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "How did Casey discover the true calorie content of the granola bars?",
+    "question_type": "passage_based",
+    "options": [
+      "Casey weighed them on a food scale",
+      "Casey looked up the nutrition information online",
+      "Casey's friend pointed out the serving size on the box",
+      "Casey called the manufacturer directly"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey's friend Casey picked up the box and pointed out that each bar was actually two servings, making them 200 calories instead of 100.",
+    "hints": [
+      "Think about what Casey's friend did to help",
+      "Consider what information was already available on the packaging"
+    ],
+    "image_urls": [],
+    "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
+  },
+  {
+    "id": "093c65de-8aaa-4e38-852b-1751312ad4b6",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What was Casey's total daily calorie intake from the granola bars?",
+    "question_type": "passage_based",
+    "options": [
+      "300 calories (3 bars × 100 calories)",
+      "600 calories (3 bars × 200 calories)",
+      "900 calories (3 bars × 300 calories)",
+      "150 calories (3 bars × 50 calories)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey was eating 3 bars per day, and each bar was actually 200 calories (2 servings × 100 calories per serving), totaling 600 calories.",
+    "hints": [
+      "Count how many bars Casey ate daily",
+      "Remember that each bar was 2 servings, not 1"
+    ],
+    "image_urls": [],
+    "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
+  },
+  {
+    "id": "1e62816a-03b5-4780-859e-da869cc9846b",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "Why hadn't Casey been losing weight despite 'eating clean'?",
+    "question_type": "passage_based",
+    "options": [
+      "Casey wasn't exercising enough",
+      "Casey was eating 600 calories daily from 'healthy' snacks without realizing it",
+      "Casey had a slow metabolism",
+      "Casey wasn't drinking enough water"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage reveals that Casey's three 'healthy' granola bar snacks were actually equivalent to a full meal in calories, which explains the lack of weight loss progress.",
+    "hints": [
+      "Connect Casey's surprise about total calories to the weight loss plateau",
+      "Think about how hidden calories can impact results"
+    ],
+    "image_urls": [],
+    "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
+  },
+  {
+    "id": "46bb3bf5-47e9-4992-a795-d44f29eb63b1",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What was Taylor's initial approach to managing their pre-diabetes diagnosis?",
+    "question_type": "passage_based",
+    "options": [
+      "They increased their exercise routine",
+      "They started taking medication",
+      "They switched to whole grain everything and cut out desserts",
+      "They began intermittent fasting"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Taylor told Dr. Martinez that they had switched to whole grain everything and cut out desserts in response to their pre-diabetes diagnosis.",
+    "hints": [
+      "Focus on what Taylor reported doing since their diagnosis",
+      "Think about common initial dietary changes people make"
+    ],
+    "image_urls": [],
+    "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
+  },
+  {
+    "id": "abff55b9-05ee-482e-808b-88ce576a2eb3",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "Why was Dr. Martinez suggesting calorie tracking to Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "To help Taylor develop an eating disorder",
+      "Because many patients eat 3,000 calories of 'healthy' food without realizing it",
+      "To make Taylor obsess about every calorie",
+      "Because whole grains are actually unhealthy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez explained that many patients are shocked to discover they're eating 3,000 calories of 'healthy' food, and that the body doesn't differentiate between excess calories from quinoa or cookies.",
+    "hints": [
+      "Focus on Dr. Martinez's explanation about patient experiences",
+      "Think about the key message about total calorie intake regardless of food quality"
+    ],
+    "image_urls": [],
+    "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
+  },
+  {
+    "id": "cf2791e2-ecb6-43c3-a146-821535ec90cc",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "What analogy did Dr. Martinez use to explain tracking calories?",
+    "question_type": "passage_based",
+    "options": [
+      "Like checking your car's gas gauge",
+      "Like checking your bank balance",
+      "Like monitoring your heart rate",
+      "Like weighing yourself daily"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez compared tracking calories to checking your bank balance, saying you wouldn't spend money blindly and hope for the best.",
+    "hints": [
+      "Look for the specific comparison Dr. Martinez made",
+      "Think about financial analogies for awareness and control"
+    ],
+    "image_urls": [],
+    "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
+  },
+  {
+    "id": "043d85dd-d0bc-413f-b57e-aa29b174b0ce",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440002",
+    "question_text": "How long did Dr. Martinez recommend Taylor track their food intake?",
+    "question_type": "passage_based",
+    "options": [
+      "One week",
+      "Two weeks",
+      "One month",
+      "Forever"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez specifically suggested tracking for two weeks, with no changes to eating habits, just for awareness of actual intake patterns.",
+    "hints": [
+      "Look for the specific time frame mentioned by Dr. Martinez",
+      "Focus on the temporary nature of the tracking recommendation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
+  },
+  {
+    "id": "dcb13753-fd5b-4b9e-940e-3f9e9bb026cc",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "The \"anabolic window\" requires you to consume protein within exactly 30 minutes after working out or you'll lose muscle gains.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The strict 30-minute anabolic window is largely a myth. You actually have several hours to consume protein post-workout, and if you've eaten before your workout, the window is even longer. The most important factor is total daily protein intake.",
+    "hints": [
+      "Think about what the article said about the 'anabolic window myth'",
+      "Consider how long muscle protein synthesis remains elevated after exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5d0e2f8f-3989-4ed3-b786-d33556997431",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "If you've eaten a normal meal within 3 hours of your workout, you have adequate fuel for exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true - your body is still processing food from a meal eaten within 3 hours, providing adequate glycogen stores for most workouts. You don't need additional pre-workout fuel in this scenario.",
+    "hints": [
+      "The article mentioned a specific time frame for meal digestion",
+      "Consider how long it takes your body to process and store nutrients from food"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5eefadd7-0da0-4faf-9de6-d097bcc66091",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "Training fasted is always better for fat burning than eating before exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. While fasted cardio may burn slightly more fat during the exercise, what matters most for fat loss is your total daily calorie balance. Poor workout performance from lack of fuel can actually hurt your overall fat loss goals.",
+    "hints": [
+      "Think about the article's emphasis on total daily intake vs timing",
+      "Consider what happens to workout quality when you're underfueled"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e0230643-e215-4683-9d00-65cb96e3c284",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "Muscle protein synthesis remains elevated for 24-48 hours after resistance training.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true. Resistance training elevates muscle protein synthesis for 24-48 hours post-workout, which is why the timing of a single post-workout meal is less critical than consistent daily protein intake.",
+    "hints": [
+      "The article mentioned how long the muscle-building process continues after exercise",
+      "This relates to why the anabolic window isn't as narrow as once believed"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "406ba911-eb22-407c-b0b9-cd2ff632c2d1",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What should you prioritize 30-60 minutes before a workout if you need quick energy?",
+    "question_type": "standalone",
+    "options": [
+      "Simple carbohydrates like banana or dates",
+      "A large protein shake with multiple scoops",
+      "High-fiber vegetables and beans",
+      "A full thanksgiving dinner with all the fixings"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Simple carbohydrates provide quick energy and are easily digestible close to workout time. Protein takes more time to digest, while high-fiber foods and large meals can cause digestive discomfort during exercise.",
+    "hints": [
+      "Think about what digests quickly and provides immediate energy",
+      "Consider what foods might cause stomach issues during exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "908d8e8b-44d4-48b2-9a44-336853df4ced",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "According to the article, what matters most for workout nutrition?",
+    "question_type": "standalone",
+    "options": [
+      "Eating within exactly 30 minutes post-workout",
+      "Having energy for good workouts and total daily nutrition",
+      "Only eating organic, grass-fed supplements",
+      "Consuming exactly 42.7 grams of protein every 3 hours and 17 minutes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes that having energy for quality workouts and meeting your total daily nutritional needs matters more than perfect timing. Consistency and performance trump precise timing windows.",
+    "hints": [
+      "Look at the article's bottom-line priorities",
+      "Think about what enables long-term success vs short-term optimization"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bb33cca1-c540-4514-8193-bca8c0a3bc1e",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "When is meal timing most critical according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "When you're training again within 8 hours",
+      "Only on weekends when you have more time",
+      "During full moon cycles for optimal nutrient absorption",
+      "Never - timing doesn't matter at all"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article states that timing becomes more important when you're training again within 8 hours, as you need to maximize recovery between sessions. For single daily workouts, timing is less critical.",
+    "hints": [
+      "Consider when recovery speed becomes most important",
+      "Think about scenarios where your body needs to prepare for another workout soon"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2c2bbeea-b67d-4d55-b1f4-896316ef2948",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What should endurance athletes consuming during exercise lasting longer than 90 minutes?",
+    "question_type": "standalone",
+    "options": [
+      "Nothing - fasted endurance is always better",
+      "30-60g carbs per hour",
+      "Pure protein powder mixed with coffee",
+      "A full rotisserie chicken every 45 minutes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "For endurance exercise lasting over 90 minutes, the article recommends 30-60g of carbohydrates per hour to maintain blood sugar and prevent glycogen depletion.",
+    "hints": [
+      "Think about what fuel endurance athletes need during long activities",
+      "Consider what macronutrient provides quick energy during exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8e2700ba-1e18-48fe-a5af-4ff14e8eefcd",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What is the correct sequence for the article's nutrition timing priorities from most to least important?",
+    "question_type": "standalone",
+    "options": [
+      "Total daily calories → Daily protein → Workout energy → Post-workout timing → Pre-workout fuel → Exact timing",
+      "Exact timing → Pre-workout fuel → Post-workout timing → Workout energy → Daily protein → Total daily calories",
+      "Post-workout timing → Pre-workout fuel → Daily protein → Total daily calories → Workout energy → Exact timing",
+      "Workout energy → Exact timing → Pre-workout fuel → Post-workout timing → Daily protein → Total daily calories"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article clearly lists the hierarchy: total daily intake matters most, followed by adequate protein, having energy for workouts, post-workout nutrition within a few hours, pre-workout fuel if needed, and exact timing windows last.",
+    "hints": [
+      "Look for the numbered priority list in the article's conclusion",
+      "Think about what foundations must be in place before worrying about optimization"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "05cd2fec-995f-4e79-9de6-918097b709c9",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "Which combination represents the optimal pre-workout meal timing and composition?",
+    "question_type": "standalone",
+    "options": [
+      "2-3 hours before: balanced meal with all macros + 1-2 hours before: easily digestible carbs and protein",
+      "30 minutes before: large steak dinner + 15 minutes before: fiber supplement + during workout: protein shake",
+      "24 hours before: only vegetables + 12 hours before: pure fat + 6 hours before: sugar water",
+      "Never eat before workouts + always train completely fasted + post-workout: emergency room visit"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article recommends a balanced meal 2-3 hours before for full digestion, with easily digestible carbs and protein 1-2 hours before if additional fuel is needed. This provides sustained energy without digestive issues.",
+    "hints": [
+      "Think about the different timeframes and food types mentioned for pre-workout nutrition",
+      "Consider what allows proper digestion while providing adequate fuel"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a5e70fee-1141-44ac-94c1-662aeb6cae42",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "According to the article, which factors should determine your optimal meal timing approach?",
+    "question_type": "standalone",
+    "options": [
+      "Your individual energy levels, performance, recovery, and ability to stick to your nutrition goals",
+      "Whatever the most popular fitness influencer posted this week on social media",
+      "The phase of the moon, your astrological sign, and the color of your workout clothes",
+      "Strictly following what worked for your friend's cousin's personal trainer"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that the best meal timing is highly individual and should be based on how different timing affects YOUR energy, performance, recovery, and adherence to your goals - not rigid rules or what works for others.",
+    "hints": [
+      "The article stresses individual experimentation and personal response",
+      "Think about what truly matters for sustainable, long-term success"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "64a013d5-269d-4f19-acd9-dd4f8ca4cc04",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What was Sarah's main mistake with her pre-workout nutrition?",
+    "question_type": "passage_based",
+    "options": [
+      "She forced herself to eat right before working out despite having eaten lunch 2 hours earlier",
+      "She didn't eat enough protein in her pre-workout snack",
+      "She chose the wrong brand of protein bar",
+      "She forgot to Instagram her pre-workout meal"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah ate a protein bar in the parking lot despite having eaten lunch just 2 hours earlier. Since she was already adequately fueled, the extra food just caused stomach discomfort during her workout.",
+    "hints": [
+      "Think about the timing of Sarah's last meal versus her pre-workout snack",
+      "Consider what Emma said about being already fueled"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
+  },
+  {
+    "id": "49f2c2e9-d313-41ab-a84f-36eb9b40a6e3",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "According to Emma's advice to Sarah, when should protein bars be used?",
+    "question_type": "passage_based",
+    "options": [
+      "When you haven't eaten in 4+ hours or after really long workouts, or just as a regular snack when hungry",
+      "Exactly 30 minutes before every single workout",
+      "Only on days that end in 'y'",
+      "Never - protein bars are completely useless"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma advised that protein bars are useful when you haven't eaten in 4+ hours, after really long workouts, or simply as a snack when you're actually hungry - not as a required pre-workout ritual.",
+    "hints": [
+      "Think about Emma's practical advice about when protein bars actually serve a purpose",
+      "Consider the scenarios where additional fuel would be beneficial"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
+  },
+  {
+    "id": "c18ae26f-0544-41aa-9449-06c97b208c9c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What was Sarah's biggest concern about post-workout nutrition timing?",
+    "question_type": "passage_based",
+    "options": [
+      "She believed she had exactly 30 minutes to eat after working out or she'd lose her gains",
+      "She was worried about eating too much protein",
+      "She didn't know what foods to eat post-workout",
+      "She was concerned about the cost of post-workout supplements"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah asked about the 30-minute post-workout window, showing she believed in the myth that muscles would disappear if she didn't eat immediately after exercising.",
+    "hints": [
+      "Look at Sarah's specific question about timing after the workout",
+      "Think about the common myth that was addressed in the passage"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
+  },
+  {
+    "id": "d31da783-3984-4fad-9a50-048d5e97410f",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What can we infer about Sarah's approach to fitness nutrition before this conversation?",
+    "question_type": "passage_based",
+    "options": [
+      "She was following rigid rules from social media rather than listening to her body's actual needs",
+      "She was already an expert who needed no advice",
+      "She had been working with a qualified nutritionist",
+      "She was completely ignoring all nutrition advice"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah mentioned that 'Instagram said I need fuel for my muscles,' showing she was following social media advice rather than understanding her individual needs or listening to her body's signals.",
+    "hints": [
+      "Consider where Sarah said she got her nutrition information",
+      "Think about the contrast between rigid rules and individual needs"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
+  },
+  {
+    "id": "02566463-67db-49fc-ac96-acc3416f4b28",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "Why was Mike frantically drinking his protein shake?",
+    "question_type": "passage_based",
+    "options": [
+      "He believed in the 'anabolic window' myth and thought he had to consume protein immediately after working out",
+      "He was extremely thirsty from his workout",
+      "The shake was about to expire",
+      "He was trying to win a protein shake chugging contest"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Mike was 'frantically' consuming his shake while 'still dripping sweat' because he believed in the anabolic window concept and thought he needed to 'maximize gains' by drinking it immediately.",
+    "hints": [
+      "Look at Mike's explanation about the 'anabolic window' and 'maximizing gains'",
+      "Consider the urgency in Mike's behavior"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
+  },
+  {
+    "id": "d83fb222-6407-41e9-ba20-26bc42b7ffbc",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What key point did Alex make about the anabolic window?",
+    "question_type": "passage_based",
+    "options": [
+      "The window is more like a 'garage door' lasting hours, especially since Mike had eaten lunch before his workout",
+      "The window is actually only 15 minutes, not 30",
+      "The window only applies to advanced bodybuilders",
+      "The window requires consuming exactly 50 grams of protein, no more, no less"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex explained that recent research shows the anabolic window is 'more like a garage door' lasting hours, and since Mike had eaten lunch before working out, he had even more time to consume protein.",
+    "hints": [
+      "Look for Alex's analogy about the window size",
+      "Consider what Alex said about Mike's pre-workout meal"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
+  },
+  {
+    "id": "2410d017-31dd-4871-b627-fd8ff1dbd892",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "How long does Alex say protein synthesis stays elevated after training?",
+    "question_type": "passage_based",
+    "options": [
+      "24-48 hours after training",
+      "Exactly 30 minutes",
+      "Only while you're sleeping",
+      "Forever - it never stops once you start lifting"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex mentioned that protein synthesis stays elevated for 24-48 hours after training, which is why the timing of post-workout protein isn't as critical as Mike thought.",
+    "hints": [
+      "Look for the specific timeframe Alex mentioned",
+      "Think about why this extended timeframe makes immediate post-workout nutrition less critical"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
+  },
+  {
+    "id": "c20734f5-41ac-4edd-aed3-f2a0420b571c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What practical advice did Alex give Mike about his post-workout nutrition stress?",
+    "question_type": "passage_based",
+    "options": [
+      "Relax and stop treating post-workout nutrition like a medical emergency since he'll eat dinner in an hour anyway",
+      "Start drinking two protein shakes instead of one",
+      "Set multiple alarms to remind him to drink his shake faster",
+      "Switch to a different brand of protein powder"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex told Mike to 'chill' and stop treating his protein shake 'like a medical emergency' since Mike was going to eat dinner with his girlfriend in just one hour anyway.",
+    "hints": [
+      "Look at Alex's advice about Mike's stress levels",
+      "Consider the practical reality of Mike's evening plans"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
+  },
+  {
+    "id": "97427699-5bfc-41f1-8abd-d5800800809b",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What was Jordan's main dilemma in the morning workout passage?",
+    "question_type": "passage_based",
+    "options": [
+      "Whether to eat before their workout due to conflicting information from different articles",
+      "What type of workout clothes to wear",
+      "Which gym to go to that morning",
+      "Whether to skip their workout entirely"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan was experiencing 'analysis paralysis' at 5:45 AM, saying 'Every article says something different' about eating before workouts, causing them to stand in the kitchen debating whether to eat a banana.",
+    "hints": [
+      "Look at Jordan's confusion about different advice from articles",
+      "Think about what caused Jordan to hesitate in the kitchen"
+    ],
+    "image_urls": [],
+    "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
+  },
+  {
+    "id": "00c7c851-5ec5-44c1-8937-5e039ff6d82f",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What simple test did Casey suggest for determining pre-workout nutrition needs?",
+    "question_type": "passage_based",
+    "options": [
+      "Can you hold a conversation during the workout? If yes, you can skip eating. Going all-out? Eat something.",
+      "Check your heart rate every 5 minutes during exercise",
+      "Measure your blood sugar with a glucose meter",
+      "Count how many times you blink during your warm-up"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey provided a practical rule: if you can hold a conversation during the workout, you can probably skip eating beforehand. If you're going all-out, you should eat something first.",
+    "hints": [
+      "Look for Casey's simple test based on workout intensity",
+      "Think about the conversational pace rule Casey mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
+  },
+  {
+    "id": "5024ee83-1b17-4605-a112-14116c661c86",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "Why did Casey recommend that Jordan eat the banana for their hill sprints workout?",
+    "question_type": "passage_based",
+    "options": [
+      "Because hill sprints are high-intensity and Jordan's body would need the energy by sprint number five",
+      "Because bananas are Jordan's favorite fruit",
+      "Because it was the only food available in the kitchen",
+      "Because bananas have magical fat-burning properties during hill sprints"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey specifically said that since they were doing hill sprints (high intensity), Jordan should eat the banana because 'Your body will thank you when we're on sprint number five.'",
+    "hints": [
+      "Consider the intensity level of hill sprints",
+      "Think about Casey's prediction about how Jordan would feel during the later sprints"
+    ],
+    "image_urls": [],
+    "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
+  },
+  {
+    "id": "b99025fc-052c-4172-a3d1-0d9ab5125a4d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440003",
+    "question_text": "What was Casey's philosophy about fat burning and consistency?",
+    "question_type": "passage_based",
+    "options": [
+      "Consistency burns fat better than trying to optimize every small detail, and you can't be consistent if you feel terrible during workouts",
+      "Fasted training always burns more fat regardless of how you feel",
+      "Fat burning only happens between 6-8 AM on weekdays",
+      "You must choose between fat burning and feeling good during workouts"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "When Jordan asked about fat burning, Casey replied 'You know what burns fat? Consistency. And you can't be consistent if you feel terrible during workouts.'",
+    "hints": [
+      "Look at Casey's response when Jordan asked about fat burning",
+      "Think about the relationship Casey drew between feeling good and long-term success"
+    ],
+    "image_urls": [],
+    "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
+  },
+  {
+    "id": "f674bfa6-316e-4ae7-97c9-bcebdada4215",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "Being just 2% dehydrated can decrease your strength by up to 20% and endurance by up to 30%.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research shows that even mild dehydration of just 2% can significantly impact physical performance, reducing strength by up to 20% and endurance by up to 30%.",
+    "hints": [
+      "Think about how much water makes up muscle tissue",
+      "Consider what happens to blood thickness when dehydrated"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "661a0c5a-12ad-455e-b6e7-56d72025c5af",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "Your muscles are approximately 75% water.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Muscle tissue is indeed about 75% water, which is why dehydration has such a dramatic impact on muscle function and performance.",
+    "hints": [
+      "Think about what makes muscles contract smoothly",
+      "Consider why dehydration affects strength so much"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "70996961-0f5d-4e01-9aea-745a3a089c36",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "Coffee counts toward your daily hydration needs without any adjustments.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "While coffee is mostly water, caffeine is a mild diuretic. The article recommends adding an extra glass of water for every cup of coffee you drink.",
+    "hints": [
+      "Think about caffeine's effect on the body",
+      "Consider what diuretic means"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ab15a347-9b9e-42fb-8bee-a4fb185ba271",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "The urine color test is a reliable way to monitor hydration status throughout the day.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The urine color test is described as 'your body's hydration report card' - pale yellow indicates good hydration, while dark yellow suggests dehydration.",
+    "hints": [
+      "Think about what your body is telling you",
+      "Consider the simplest hydration monitoring method"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "dd6ebf6e-a25b-4c2e-bb5a-6efe58d13192",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What should you do if you're exercising for more than 60 minutes or sweating intensely?",
+    "question_type": "standalone",
+    "options": [
+      "Stick to plain water only",
+      "Consider adding electrolytes to your hydration",
+      "Drink twice as much water as normal",
+      "Switch to energy drinks for better performance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically mentions that for workouts longer than 60 minutes or during intense sweating, you should consider adding electrolytes to replace what you lose through sweat.",
+    "hints": [
+      "Think about what you lose when you sweat heavily",
+      "Consider what plain water might be missing"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0259433d-3645-486c-9c38-f5286e793d26",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "According to the article, what's the recommended approach for pre-workout hydration?",
+    "question_type": "standalone",
+    "options": [
+      "Drink a gallon right before your workout",
+      "Drink 16-20 oz about 2-4 hours before exercising",
+      "Only drink water if you feel thirsty",
+      "Chug a protein shake mixed with pickle juice"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends drinking 16-20 oz about 2-4 hours before exercising to 'pre-load' your system, giving your body time to absorb and distribute the water properly.",
+    "hints": [
+      "Think about timing for optimal absorption",
+      "Consider what 'pre-loading' means"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cf148fca-829a-4ff2-af91-d79468ce39fd",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What's the proper post-workout hydration formula mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Drink until your urine is completely clear",
+      "For every pound lost during exercise, drink 16-24 oz",
+      "Drink exactly 32 oz regardless of workout intensity",
+      "Wait until you're thirsty, then drink a sports drink"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that for every pound lost during exercise (which is mostly water weight), you should drink 16-24 oz to properly rehydrate.",
+    "hints": [
+      "Think about replacing what you lost",
+      "Consider why some athletes weigh themselves before and after workouts"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "84ad3868-4dde-4119-aada-75dcb0cfce1a",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "Which of the following represents the best approach to daily hydration according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Drink exactly 8 glasses of water daily, no more, no less",
+      "Only drink when you're thirsty to avoid overhydration",
+      "Start with half your body weight in ounces and adjust for activity and climate",
+      "Survive solely on energy drinks and coffee for maximum performance"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article dismisses the generic '8 glasses a day' advice and recommends starting with half your body weight in ounces, then adding 12-16 oz for every hour of exercise and more for hot/humid conditions.",
+    "hints": [
+      "Think about individual needs rather than one-size-fits-all",
+      "Consider factors that increase fluid needs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5b49f525-973e-4805-8cb6-9415fbddf24d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What sequence of steps represents the best approach to building hydration habits?",
+    "question_type": "standalone",
+    "options": [
+      "Calculate needs → Track intake → Adjust based on activity → Make it automatic",
+      "Buy expensive water bottles → Drink only distilled water → Measure everything precisely",
+      "Drink coffee → Feel guilty → Promise to do better tomorrow → Repeat cycle",
+      "Wait for thirst → Panic-drink a gallon → Wonder why you feel sick"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article presents a logical progression: first understand your baseline needs, monitor your current intake, adjust for activity levels and conditions, then build automatic habits to maintain consistency.",
+    "hints": [
+      "Think about building sustainable habits step by step",
+      "Consider the logical order for behavior change"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8b80a23b-07a8-4e18-a940-1caa473eaeb0",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "According to the electrolyte information provided, which combination would make a good natural sports drink?",
+    "question_type": "standalone",
+    "options": [
+      "Banana and pinch of salt",
+      "Pure coconut water only",
+      "Watermelon with salt",
+      "All of the above are mentioned as good options"
+    ],
+    "correct_answer_index": 3,
+    "explanation": "The article mentions all three options: banana + pinch of salt (called the 'poor person's sports drink'), coconut water (nature's Gatorade), and watermelon with salt as natural electrolyte sources.",
+    "hints": [
+      "Look for the natural electrolyte sources mentioned",
+      "Think about foods that naturally contain sodium and potassium"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ba431a06-85ef-4b5e-9ff2-109f9a505f5c",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "Which hydration mistakes should beginners specifically avoid based on the article's guidance?",
+    "question_type": "standalone",
+    "options": [
+      "Drinking water only when thirsty and ignoring the 1:1 alcohol rule",
+      "Following the generic 8 glasses advice and avoiding all electrolytes",
+      "Flooding with water right before workouts and dismissing liquid calories",
+      "All of these represent common mistakes to avoid"
+    ],
+    "correct_answer_index": 3,
+    "explanation": "The article identifies multiple hydration mistakes: waiting until thirsty, the weekend warrior flood approach, dismissing boring water, and the alcohol aftermath problem (not following 1:1 rule).",
+    "hints": [
+      "Consider all the hydration mistakes mentioned in the article",
+      "Think about timing, quantity, and consistency issues"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "adbcbd96-1d6f-4f04-8e29-57cfd0013f06",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What was Mike's main problem in 'The Dehydration Disaster' passage?",
+    "question_type": "passage_based",
+    "options": [
+      "He was drinking too much water and felt bloated",
+      "He forgot his water bottle and was already dehydrated during his workout",
+      "He was only drinking sports drinks instead of water",
+      "He was drinking ice-cold water that was shocking his system"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "In the passage, Mike forgot his water bottle and told Alex he wasn't even thirsty, but Alex explained he was probably already 2-3% dehydrated, which was cutting his strength by 20%.",
+    "hints": [
+      "Focus on what Mike forgot to bring",
+      "Consider Alex's explanation about performance impact"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
+  },
+  {
+    "id": "029d7f23-c661-4f22-8503-3983d7458460",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "According to Alex in the passage, what effect was Mike's dehydration having on his workout?",
+    "question_type": "passage_based",
+    "options": [
+      "Making him sweat less and overheat",
+      "Causing him to lift with better form",
+      "Making every rep 20% harder than it needed to be",
+      "Preventing him from focusing on his technique"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex explained that being 2-3% dehydrated could cut strength by 20%, making Mike's workout unnecessarily difficult - like 'trying to bench press with a resistance band pulling the bar down.'",
+    "hints": [
+      "Think about Alex's strength percentage explanation",
+      "Consider the resistance band analogy"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
+  },
+  {
+    "id": "22351298-06d1-45d1-a173-34f2fbf07269",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What was Alex's main advice to Mike for future workouts?",
+    "question_type": "passage_based",
+    "options": [
+      "Drink a gallon of water right before working out",
+      "Only drink sports drinks during exercise, never water",
+      "Hydrate before getting to the gym, not after already struggling",
+      "Wait until you're sweating to start drinking fluids"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex's key advice was 'Hydrate before you get here, not after you're already struggling' - emphasizing the importance of pre-workout hydration rather than trying to catch up during exercise.",
+    "hints": [
+      "Think about timing of hydration",
+      "Consider Alex's advice about prevention vs. reaction"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
+  },
+  {
+    "id": "21ae78c0-f3ef-4e36-b564-9d29a0c62225",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "Why was Mike surprised by Alex's explanation about dehydration?",
+    "question_type": "passage_based",
+    "options": [
+      "He didn't realize dehydration could happen so quickly",
+      "He thought only elderly people needed to worry about hydration",
+      "He didn't know dehydration could impact strength performance so dramatically",
+      "He believed sports drinks were the only solution to dehydration"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike was shocked to learn that 20% strength reduction was possible from dehydration, comparing it to trying to bench press with a resistance band pulling the bar down - he hadn't realized the performance impact was so significant.",
+    "hints": [
+      "Focus on Mike's reaction to the 20% number",
+      "Consider what surprised him most about the explanation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
+  },
+  {
+    "id": "db1ad727-68bb-4f55-b3d0-a05f423f7157",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "In 'The Hydration Revelation,' what change did Emma make to her routine?",
+    "question_type": "passage_based",
+    "options": [
+      "She started drinking only sports drinks instead of water",
+      "She began drinking half her body weight in ounces plus extra for workouts",
+      "She switched to drinking only during meals, never between them",
+      "She eliminated all beverages except plain water"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma started the hydration challenge Sarah mentioned, drinking half her body weight in ounces plus extra for workouts, which led to dramatically improved workout performance.",
+    "hints": [
+      "Focus on the specific challenge Emma started",
+      "Think about the formula Sarah had mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
+  },
+  {
+    "id": "0c9e3a4c-0b36-46a8-b4dd-f583963334cb",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What improvements did Emma notice after changing her hydration habits?",
+    "question_type": "passage_based",
+    "options": [
+      "Same workout but heart rate 15 beats lower and not feeling tired",
+      "Ability to lift heavier weights but with worse endurance",
+      "Better sleep but no change in exercise performance",
+      "Increased appetite and more energy throughout the day"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma noticed that doing the same workout as two weeks prior, her heart rate was 15 beats lower and she wasn't even tired - demonstrating the dramatic impact of proper hydration.",
+    "hints": [
+      "Look at what Emma's fitness tracker showed",
+      "Consider the specific improvements mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
+  },
+  {
+    "id": "c173dd0d-55a4-480b-99c3-2d0457a19465",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "According to Sarah's explanation, why does proper hydration improve workout performance?",
+    "question_type": "passage_based",
+    "options": [
+      "It increases muscle mass and bone density immediately",
+      "Thinner blood means less heart work, plus better nutrient delivery and waste removal",
+      "It eliminates the need for electrolytes during exercise",
+      "It allows you to sweat more efficiently and stay cooler"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah explained that proper hydration makes blood thinner so the heart doesn't work as hard to pump it, plus muscles get nutrients faster and clear waste products better.",
+    "hints": [
+      "Focus on Sarah's explanation about blood and circulation",
+      "Think about nutrient delivery and waste removal"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
+  },
+  {
+    "id": "d1dfc75a-05c3-4a9e-a993-a180ac76933e",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440004",
+    "question_text": "What was Sarah's final point about hydration that resonated with Emma?",
+    "question_type": "passage_based",
+    "options": [
+      "Hydration is expensive but worth the investment",
+      "Hydration is basically a legal performance enhancer that people ignore because it's too simple",
+      "Hydration only works if you drink expensive electrolyte supplements",
+      "Hydration is less important than most people think"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's key insight was that hydration is essentially 'a legal performance enhancer that people ignore because it's too simple' - emphasizing how this basic need is overlooked despite its powerful effects.",
+    "hints": [
+      "Look for Sarah's comment about simplicity",
+      "Think about the 'legal performance enhancer' phrase"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
+  },
+  {
+    "id": "6fe5d221-1dfb-490f-bb77-afe1614028b1",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "True or False: Serving size should be the first thing you check when reading a nutrition label because it affects all other nutritional information.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Serving size is crucial because all nutritional information on the label is based on that specific portion size. If you eat more than the listed serving size, you need to multiply all values accordingly.",
+    "hints": [
+      "Think about what happens if you eat double the serving size",
+      "All the numbers on the label are tied to this one measurement"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "94f82fd2-a462-400b-ae7a-e98815dfdf2e",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "True or False: A product labeled 'Made with real fruit' guarantees that fruit is a major ingredient.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "'Made with real fruit' is a marketing claim that can mean as little as 1% fruit content. Always check the ingredients list to see where fruit appears - if it's near the end, there's very little in the product.",
+    "hints": [
+      "Marketing claims on packaging can be misleading",
+      "The ingredients list tells the real story about content"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9ad06832-3bb4-427c-b597-68a44a41cbdb",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "True or False: Ingredients are listed by weight from most to least, so sugar appearing third means there's less sugar than the first two ingredients.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Ingredients must be listed in descending order by weight. However, companies sometimes split sugar into multiple forms (cane sugar, honey, brown rice syrup) to push individual sugar sources lower on the list while maintaining high total sugar content.",
+    "hints": [
+      "The law requires ingredients to be listed by weight",
+      "Look for multiple sugar sources that might add up"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "37deb340-0672-4d74-b7e3-58a385759c22",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "True or False: A 'single-serve' package always contains exactly one serving according to the nutrition label.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Many 'single-serve' packages actually contain 2-3 servings according to their nutrition labels. Companies use small serving sizes to make calorie counts look lower, even when the packaging suggests it's meant to be consumed at once.",
+    "hints": [
+      "Check 'servings per container' on any package",
+      "Marketing and nutrition facts don't always align"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "079f2ae8-e961-4294-a14c-8a3bb76f38c2",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What's the most effective strategy for identifying hidden calories in packaged foods?",
+    "question_type": "standalone",
+    "options": [
+      "Focus only on the total calorie number",
+      "Check serving size first, then multiply by actual consumption",
+      "Only read the front-of-package health claims",
+      "Ask your pet hamster for nutritional advice"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Always check serving size first because it determines all other values. Most people eat more than the listed serving size, so you need to multiply the calories (and other nutrients) accordingly to know what you're actually consuming.",
+    "hints": [
+      "The first step affects everything else you calculate",
+      "Most people eat more than the tiny listed serving"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "00f95253-b57d-4f86-b6bd-44c962fbd929",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "A protein bar lists '280 calories per serving' with 'about 2 servings per container.' How many calories does the whole bar contain?",
+    "question_type": "standalone",
+    "options": [
+      "280 calories",
+      "140 calories",
+      "560 calories",
+      "Enough to fuel a small spacecraft"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "If there are 2 servings per container and each serving is 280 calories, the whole bar contains 280 × 2 = 560 calories. This is a common trick where companies list half-bar servings to make calories appear lower.",
+    "hints": [
+      "Multiply calories per serving by number of servings",
+      "Don't be fooled by fractional serving sizes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4bfebf9f-40d6-41c2-a568-3aa17947f7b1",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "Which front-of-package claims are actually meaningless for determining nutritional value?",
+    "question_type": "standalone",
+    "options": [
+      "Only 'organic' and 'natural'",
+      "Only 'fat-free' and 'sugar-free'",
+      "'Natural,' 'made with real fruit,' and 'multi-grain'",
+      "Only claims written in Comic Sans font"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "'Natural' has no legal definition, 'made with real fruit' could mean 1% fruit, and 'multi-grain' isn't the same as whole grain. These claims are designed to create a health halo without providing meaningful nutritional information.",
+    "hints": [
+      "Marketing terms often have loose or no legal definitions",
+      "The nutrition facts panel tells the real story"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0d77eb0d-d3eb-4701-ae1d-ee0ed88371c3",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What should you do when a product has multiple names for sugar in the ingredients list?",
+    "question_type": "standalone",
+    "options": [
+      "Ignore it since they're different ingredients",
+      "Add up all the sugar sources to understand total sugar content",
+      "Only count the first sugar source listed",
+      "Perform a sugar séance to communicate with the sweetness spirits"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Companies often split sugar into multiple forms (cane sugar, honey, brown rice syrup, fruit juice concentrate) to make each appear lower on the ingredients list. You should recognize all sugar sources and consider their combined impact.",
+    "hints": [
+      "Sugar has many names and forms",
+      "Companies use this trick to hide total sugar content"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "76c1f926-24d9-478a-a5e4-11fe154f2d67",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What's the correct order to read a nutrition label for maximum effectiveness?",
+    "question_type": "standalone",
+    "options": [
+      "Calories first, then serving size, then ingredients",
+      "Serving size first, then calories, then ingredients list",
+      "Ingredients first, then protein, then vitamins",
+      "Start with the barcode and work your way backwards through time"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Always start with serving size because it affects every other number on the label. Then check calories to understand the energy content. Finally, read the ingredients list to understand what you're actually eating and identify hidden sugars or additives.",
+    "hints": [
+      "The first thing you check affects everything else",
+      "Work from the foundation up to the details"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a6a3ecd5-b9b7-4b48-a31b-8d01b7fc6091",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "Which combination represents the best approach to identifying calorie density?",
+    "question_type": "standalone",
+    "options": [
+      "Check serving size, calculate calories per gram, compare portion volume",
+      "Read front claims, trust marketing, ignore back panel",
+      "Count ingredients, measure package height, check expiration date",
+      "Weigh the package, check astrological compatibility, consult fortune cookies"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Understanding calorie density requires checking serving size first, then calculating how many calories you get per gram or per visual portion. This helps you understand whether small portions pack a lot of calories or if you can eat larger volumes for fewer calories.",
+    "hints": [
+      "Calorie density is about energy per unit of food",
+      "Compare how much food you get for the calories"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f5965a1a-2ede-4786-a23f-d141e6be0321",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "To become a nutrition label detective, you should: 1) Check serving sizes 2) Ignore ingredients lists 3) Calculate total package calories 4) Read marketing claims first. Which steps are correct?",
+    "question_type": "standalone",
+    "options": [
+      "Steps 1 and 3 only",
+      "Steps 2 and 4 only",
+      "Steps 1, 3, and 4 only",
+      "All steps plus consulting a crystal ball"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The correct detective approach includes checking serving sizes first (step 1) and calculating total package calories (step 3). You should never ignore ingredients lists, and marketing claims should be the last thing you consider, not the first.",
+    "hints": [
+      "Focus on factual information, not marketing",
+      "Ingredients lists contain crucial information"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "18f42e0f-aa2d-4ce1-89d8-da7750fabad1",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What was Jordan's main shock when discovering the truth about the granola bars?",
+    "question_type": "passage_based",
+    "options": [
+      "Each bar was actually two servings, doubling the calories",
+      "The bars contained no actual granola",
+      "The bars were expired",
+      "The bars were secretly vegetables in disguise"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan discovered that each granola bar was actually two servings, meaning his '100-calorie' healthy snacks were actually 200 calories each. This meant his three daily snacks totaled 600 calories instead of the 300 he thought.",
+    "hints": [
+      "Check the passage for serving size revelations",
+      "Look at how this affected Jordan's daily calorie count"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "26e7051e-59cd-4fa2-85ef-c29ac38c6dec",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "According to Casey in the passage, how did the granola bar manufacturer make the sugar content appear healthier?",
+    "question_type": "passage_based",
+    "options": [
+      "They removed all sugar from the bars",
+      "They listed sugar under three different names in the top five ingredients",
+      "They only used natural sugars",
+      "They hired sugar ninjas to hide the sweetness"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey explained that sugar was listed three different ways in the top five ingredients, which is a common trick manufacturers use to split up sugar sources and make each individual type appear lower on the ingredients list.",
+    "hints": [
+      "Look for Casey's explanation about ingredient list manipulation",
+      "Focus on how sugar sources can be disguised"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "54cdf857-dd26-4a02-ad29-64f0bb08ed6d",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "Why hadn't Jordan been losing weight despite eating 'clean' according to the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "He wasn't exercising enough",
+      "His 'healthy' snacks were actually equivalent to eating a full meal in calories",
+      "He was eating too much protein",
+      "The granola bars were cursed by ancient grain spirits"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan realized that his three 'healthy' 200-calorie granola bars (600 calories total) were equivalent to eating a full meal in calories, which explained why he wasn't losing weight despite thinking he was eating clean.",
+    "hints": [
+      "Consider the total calorie impact of Jordan's daily snacking",
+      "Think about how hidden calories can sabotage weight loss goals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "b5a32b06-e5e8-4d0e-94b2-c793fe19ab93",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What lesson can be learned from Jordan's granola bar experience?",
+    "question_type": "passage_based",
+    "options": [
+      "Never eat granola bars",
+      "Always check serving sizes and read labels carefully before assuming foods are healthy",
+      "Only eat foods that come in single-serving packages",
+      "Granola bars should only be consumed during solar eclipses"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The key lesson is that you must check serving sizes and read labels carefully rather than assuming foods marketed as healthy are automatically low-calorie. Jordan's mistake was trusting the front-of-package marketing without checking the actual nutrition facts.",
+    "hints": [
+      "What would have prevented Jordan's calorie miscalculation?",
+      "Focus on the broader principle about label reading"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "6d196f5c-4b43-4dc3-8ad5-8c85d25b13b7",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What was Emma's initial reaction to Sarah's suggestion about measuring salad dressing?",
+    "question_type": "passage_based",
+    "options": [
+      "She immediately agreed and started measuring",
+      "She was shocked that her 'healthy' salad had more calories than a burger",
+      "She refused to change her eating habits",
+      "She decided to open a salad dressing detective agency"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma was shocked to discover that her 'healthy' salad actually contained more calories than a Big Mac meal due to the excessive amount of ranch dressing she was using (580 calories of dressing alone).",
+    "hints": [
+      "Look at Emma's emotional reaction to the calorie revelation",
+      "Focus on the comparison to other foods"
+    ],
+    "image_urls": [],
+    "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
+  },
+  {
+    "id": "4da7cc71-970e-467a-9b0c-285c73cf42e6",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "How many calories was Emma consuming just from salad dressing according to Sarah's calculation?",
+    "question_type": "passage_based",
+    "options": [
+      "145 calories",
+      "290 calories",
+      "580 calories",
+      "Enough calories to power a small village"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Sarah calculated that Emma's 4-ounce container of ranch dressing (8 tablespoons at 145 calories per 2 tablespoons) contained 580 calories, which was more than Emma's breakfast.",
+    "hints": [
+      "Look for Sarah's specific mathematical calculation",
+      "Find the total calories from the entire dressing container"
+    ],
+    "image_urls": [],
+    "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
+  },
+  {
+    "id": "bdb5edf3-9ea0-4a4d-a4e9-cc89f1ed0417",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "Why hadn't Emma been losing weight according to the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "She wasn't eating enough salads",
+      "Her 'healthy' salad contained approximately 1,200 calories, more than a Big Mac meal",
+      "She was eating too much protein",
+      "The salad greens were plotting against her weight loss goals"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma wasn't losing weight because her 'healthy' Cobb salad with extra ranch dressing totaled approximately 1,200 calories (more than a Big Mac meal), despite her thinking she was making healthy choices.",
+    "hints": [
+      "Consider the total calorie content of Emma's salad",
+      "Think about the comparison to fast food"
+    ],
+    "image_urls": [],
+    "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
+  },
+  {
+    "id": "6d087717-82a2-4cd2-987b-e9fc80616079",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440005",
+    "question_text": "What was Emma's key realization at the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "She should stop eating salads entirely",
+      "She finally understood why the scale hadn't budged despite her 'healthy' eating",
+      "She needed to eat more ranch dressing",
+      "She should become a professional salad architect"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's key realization was understanding why the scale hadn't moved despite her efforts to eat 'healthy' - she had been unknowingly consuming high-calorie meals while thinking she was making good choices.",
+    "hints": [
+      "Focus on Emma's final understanding about her weight loss plateau",
+      "Consider her emotional journey from confusion to clarity"
+    ],
+    "image_urls": [],
+    "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
+  },
+  {
+    "id": "e6898b4a-6bab-45d3-8059-bb1f479c9328",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "True or False: A 'personal-sized' package of chips is always one serving according to the nutrition label.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Personal-sized packages often contain 2-3 servings. Always check 'servings per container' on the nutrition label - manufacturers use smaller serving sizes to make calories appear lower.",
+    "hints": [
+      "Look at the 'servings per container' line on nutrition labels",
+      "Food companies use smaller serving sizes to make products appear healthier"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b6779bac-b554-4302-ab28-22b998aa45e8",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "True or False: Restaurant portions are typically 2-4 times larger than standard serving sizes.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Restaurant portions have grown 138% since the 1970s and are typically 2-4 times standard serving sizes. A restaurant pasta dish often equals 3-4 standard servings.",
+    "hints": [
+      "Restaurant portions have dramatically increased over decades",
+      "Consider sharing dishes or boxing half before you start eating"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c5375fb2-5caa-4869-893e-8a5de16ec829",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "True or False: Using measuring cups is more accurate than a kitchen scale for portioning solid foods.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Kitchen scales are more accurate for solid foods. A 'cup' of flour can vary by 50% depending on how packed it is, while weight measurements are consistent and precise.",
+    "hints": [
+      "Solid foods can be packed differently in measuring cups",
+      "Weight doesn't change based on how you scoop or pack food"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3188058f-001c-4abb-b34d-8dbbb2434458",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "True or False: The goal of learning serving sizes is to weigh and measure food forever.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The goal is developing 'scale vision' - the ability to estimate portions accurately. Most people need 2-3 months of measuring to build this skill, then can estimate effectively.",
+    "hints": [
+      "Think of measuring as temporary education, not a permanent requirement",
+      "The goal is learning what proper portions look like"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fb284923-8bb0-4318-a6ba-07d1ed1360ff",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What's the most effective strategy when a 20oz bottle shows 150 calories per serving?",
+    "question_type": "standalone",
+    "options": [
+      "Assume the whole bottle is 150 calories",
+      "Check servings per container and multiply calories accordingly",
+      "Only drink half the bottle to be safe",
+      "Train your pet hamster to read nutrition labels for you"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Always check 'servings per container' first. A 20oz bottle listing 150 calories per 8oz serving actually contains 375 calories total (150 × 2.5 servings).",
+    "hints": [
+      "Look for the 'servings per container' information on the label",
+      "Multiply the per-serving calories by total servings in the package"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9930bee9-36ec-4cc1-b8ca-bad245893776",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "Which visual portion guide is most accurate for 3oz of meat?",
+    "question_type": "standalone",
+    "options": [
+      "Size of a golf ball",
+      "Size of your fist",
+      "Size of a deck of cards or your palm",
+      "Size of a dinner plate (because meat is life)"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "3oz of meat is roughly the size of a deck of cards or the palm of your hand (not including fingers). This provides a reliable visual reference for proper protein portions.",
+    "hints": [
+      "Think about common objects similar in size to proper portions",
+      "Your palm (without fingers) is a good reference for protein portions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cbb2c121-9e34-4772-8b06-b3b3fa15491a",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What should you do when eating at restaurants to control portion sizes?",
+    "question_type": "standalone",
+    "options": [
+      "Order from the kids' menu only",
+      "Box half your meal before starting to eat",
+      "Share everything with the person next to you",
+      "Bring a magnifying glass to read the fine print on portions"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Boxing half your meal immediately prevents overeating and gives you a second meal. Restaurant portions are typically 2-4 times standard serving sizes, so this strategy helps control intake.",
+    "hints": [
+      "Remove temptation by putting excess food away before you start",
+      "Restaurant portions are much larger than standard servings"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "05886799-8ec1-4ae1-bb70-0ae1d46cd756",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "How should you handle calorie-dense foods like nuts and nut butters?",
+    "question_type": "standalone",
+    "options": [
+      "Avoid them completely",
+      "Pre-portion them into single servings immediately after buying",
+      "Only eat them on weekends",
+      "Hide them from yourself and hope you forget where they are"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Pre-portioning calorie-dense foods prevents mindless overeating. A 'handful' of nuts can easily be 3-4 servings, so portioning them into single-serving containers helps with portion control.",
+    "hints": [
+      "Prevent mindless eating by controlling portions in advance",
+      "Calorie-dense foods are easy to overeat when eaten directly from packages"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8d1de957-c36e-45d5-821b-a2e94cb8eb09",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "Which combination best represents the 'multiplication method' for calculating actual calories?",
+    "question_type": "standalone",
+    "options": [
+      "Calories per serving × your age in years",
+      "Calories per serving × number of servings you eat",
+      "Calories per serving × number of ingredients",
+      "Calories per serving × number of times you've been to the gym this week (usually zero)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The multiplication method is: Actual Calories = Calories per serving × Number of servings you eat. This helps you calculate the true caloric impact of what you consume.",
+    "hints": [
+      "Think about how many servings are actually in what you're eating",
+      "Multiply the label's per-serving information by your actual consumption"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e5fa763d-9a80-401e-b4c3-8f96ea08b2e2",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What sequence should you follow when learning proper portion control?",
+    "question_type": "standalone",
+    "options": [
+      "Measure everything → Learn visual cues → Estimate portions → Check accuracy occasionally",
+      "Guess portions → Buy bigger plates → Measure everything → Give up",
+      "Avoid all packaged foods → Eat only vegetables → Measure obsessively forever",
+      "Download 47 apps → Read every nutrition book → Become a registered dietitian → Then maybe eat something"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Start by measuring to understand actual portions, learn visual cues like hand sizes, practice estimating, then do periodic accuracy checks. This builds sustainable portion awareness skills.",
+    "hints": [
+      "Learning portion control is a skill that develops over time",
+      "Start with measuring to build awareness, then transition to visual estimation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f5b8b713-03b9-4591-a2c0-3a451bfb2760",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What's the correct order for using common quick reference multipliers?",
+    "question_type": "standalone",
+    "options": [
+      "Restaurants (×2-3), Personal packages (check label), Nuts/trail mix (×4), Ice cream (×2-4)",
+      "Everything (×10), Restaurants (×1), Personal packages (×0.5), Nuts (×100)",
+      "Restaurants (÷2), Personal packages (×1), Nuts (×1), Ice cream (×0)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Restaurant portions are typically 2-3× standard servings, personal packages vary (check the label), nuts are often eaten in 4× serving amounts, and ice cream servings are typically 2-4× what people actually eat.",
+    "hints": [
+      "Different food categories have different typical portion distortions",
+      "Restaurant and packaged food portions tend to be much larger than label servings"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c9beec42-d45e-4713-b005-f53bbbe61e1b",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What was Sarah's main discovery about her smoothie bowl?",
+    "question_type": "passage_based",
+    "options": [
+      "It contained hidden vegetables",
+      "It was actually 855 calories, not the 300 she estimated",
+      "It was perfectly portioned",
+      "Her friend Emma was secretly adding extra ingredients"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah discovered that her 'healthy' smoothie bowl contained 855 calories when she actually measured the ingredients, far more than her 300-calorie estimate. This showed her why she wasn't hungry until dinner.",
+    "hints": [
+      "Sarah was shocked by the actual calorie count when measured",
+      "She had been underestimating her breakfast calories significantly"
+    ],
+    "image_urls": [],
+    "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
+  },
+  {
+    "id": "c90eaebf-aa5f-4f2d-9170-47108389c0b8",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "How much granola was Sarah actually using compared to a standard serving?",
+    "question_type": "passage_based",
+    "options": [
+      "Exactly one serving",
+      "Half a serving",
+      "Double the serving size (½ cup vs ¼ cup standard)",
+      "She wasn't using any granola"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Sarah was using about ½ cup of granola (280 calories) when a standard serving is ¼ cup (140 calories), meaning she was eating double the serving size without realizing it.",
+    "hints": [
+      "Sarah was using more granola than the standard serving size indicated",
+      "She was pouring by visual estimation rather than measuring"
+    ],
+    "image_urls": [],
+    "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
+  },
+  {
+    "id": "330bb27c-8c4d-42b4-a1a2-efbce2fd9549",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What was Emma's main point about Sarah's breakfast discovery?",
+    "question_type": "passage_based",
+    "options": [
+      "Sarah should stop eating smoothie bowls completely",
+      "The breakfast wasn't bad, but it's good to know what you're actually eating",
+      "Sarah needed to eat more calories",
+      "Smoothie bowls are always unhealthy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma reassured Sarah that the breakfast wasn't bad per se, but emphasized the importance of understanding what you're actually consuming. Awareness helps with better food choices and portion control.",
+    "hints": [
+      "Emma was supportive and focused on awareness rather than judgment",
+      "The goal was understanding actual intake, not eliminating foods"
+    ],
+    "image_urls": [],
+    "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
+  },
+  {
+    "id": "0cb34a48-4931-4e44-9482-e7dd22095e65",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "Why was Sarah not hungry until dinner?",
+    "question_type": "passage_based",
+    "options": [
+      "She had a medical condition",
+      "She was eating two meals' worth of calories thinking it was a light breakfast",
+      "She was drinking too much water",
+      "She was too busy to notice hunger"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah wasn't hungry until dinner because her 855-calorie 'light breakfast' was actually equivalent to two meals' worth of calories, keeping her satisfied all day without her realizing why.",
+    "hints": [
+      "The high calorie content of her breakfast was providing sustained energy",
+      "She had been unknowingly eating a substantial amount of calories early in the day"
+    ],
+    "image_urls": [],
+    "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
+  },
+  {
+    "id": "303a48bb-b95e-44e3-89cb-b54862e22a73",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What was Mike's initial assumption about the protein bar?",
+    "question_type": "passage_based",
+    "options": [
+      "It was too expensive",
+      "It was one serving with 220 calories and 20g protein",
+      "It was sugar-free",
+      "It contained artificial ingredients"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike assumed the protein bar was one serving with 220 calories and 20g protein based on the front-of-package advertising, without checking that the serving size was actually half a bar.",
+    "hints": [
+      "Mike read the marketing claims on the front of the package",
+      "He didn't initially check the actual serving size information"
+    ],
+    "image_urls": [],
+    "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
+  },
+  {
+    "id": "05d6f57a-75d9-4a55-bf50-abec65437639",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What did Jordan point out about the protein bar's serving size?",
+    "question_type": "passage_based",
+    "options": [
+      "The serving size was one whole bar",
+      "The serving size was half a bar, making the whole bar 440 calories",
+      "The serving size was two bars",
+      "There was no serving size listed"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan pointed out that the serving size was half a bar, meaning the whole bar actually contained 440 calories (not 220) and 40g of protein (not 20g).",
+    "hints": [
+      "Jordan looked at the actual nutrition facts panel, not just the front claims",
+      "The serving size was smaller than what most people would naturally consume"
+    ],
+    "image_urls": [],
+    "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
+  },
+  {
+    "id": "3439f985-4894-44fb-9285-85975e2cfcdc",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What was Jordan's concern about the 40g of protein in the whole bar?",
+    "question_type": "passage_based",
+    "options": [
+      "It wasn't enough protein",
+      "It was more than Mike needed right after a workout",
+      "It would cause kidney damage",
+      "It was fake protein"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan noted that 40g of protein was probably more than Mike needed right after a workout, since the body can only process about 25-30g of protein at once for muscle building.",
+    "hints": [
+      "There's a limit to how much protein the body can effectively use at one time",
+      "Jordan was thinking about optimal protein utilization for recovery"
+    ],
+    "image_urls": [],
+    "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
+  },
+  {
+    "id": "86b89ca4-b53e-43ff-ac5b-2c66d8c65686",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440006",
+    "question_text": "What solution did Mike choose at the end?",
+    "question_type": "passage_based",
+    "options": [
+      "He decided to avoid all protein bars",
+      "He chose a different bar that was single serving with 250 calories and 20g protein",
+      "He decided to make his own protein bars",
+      "He bought ten of the original bars"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike chose a different protein bar that was genuinely single serving with 250 calories and 20g protein, avoiding the serving size confusion of the first bar.",
+    "hints": [
+      "Mike learned from the experience and made a more informed choice",
+      "He found a bar that matched his actual needs and expectations"
+    ],
+    "image_urls": [],
+    "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
+  },
+  {
+    "id": "ca139ecc-f1ca-439a-b6b2-82c7bcc67e93",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "True or False: Without adequate protein, up to 25% of weight loss can come from muscle tissue instead of fat.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research shows that without proper protein intake and resistance training, 20-25% of weight loss can indeed come from muscle tissue. This is why the Protein Priority Principle is crucial for preserving lean mass during fat loss.",
+    "hints": [
+      "Think about what happens when your body needs energy but doesn't get the right signals to preserve muscle",
+      "Consider why protein is called the muscle-preserving macronutrient"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5b8be128-cad1-4aba-8f1f-d923fc7855a0",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "True or False: Muscle tissue burns more calories at rest than fat tissue.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Muscle is metabolically active tissue that burns calories even at rest, while fat tissue is relatively inactive. This is why preserving muscle during weight loss helps maintain your metabolism.",
+    "hints": [
+      "Think about which tissue type is more 'expensive' for your body to maintain",
+      "Consider why the article compares muscle to a sports car and fat to a bicycle"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d31350d4-fb9d-4224-a5df-35371f39501e",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "True or False: The thermic effect of protein means your body burns 20-30% of protein calories just digesting it.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Protein has the highest thermic effect of all macronutrients, requiring 20-30% of its calories for digestion and processing, compared to 5-10% for carbs and 0-3% for fats. This gives protein a built-in calorie discount.",
+    "hints": [
+      "Think about which macronutrient requires the most energy to process",
+      "Consider why eating 100 calories of protein only nets you 70-80 calories"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c43cb0d7-e306-43ba-8139-703302d4fa83",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "True or False: You can only absorb 30 grams of protein at once, so eating more is wasteful.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is a common myth. While 30g may be optimal for muscle protein synthesis from a single meal, your body can absorb much more protein - it just takes longer. The 30g limit refers to optimal muscle building response, not absorption capacity.",
+    "hints": [
+      "Think about the difference between optimal muscle building and actual protein absorption",
+      "Consider that this myth confuses absorption capacity with muscle protein synthesis"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c8ea8642-96ec-4a00-996a-548645f21385",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "For a 70kg person trying to lose fat while preserving muscle, what is the optimal daily protein intake?",
+    "question_type": "standalone",
+    "options": [
+      "56 grams (0.8g per kg)",
+      "112 grams (1.6g per kg)",
+      "154 grams (2.2g per kg)",
+      "280 grams (because more is always better, right?)"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "For fat loss while preserving muscle, research shows 1.6-2.4g per kg of body weight is optimal, with 2.2g per kg (1g per pound) being the sweet spot for most people. This equals 154g for a 70kg person.",
+    "hints": [
+      "The article mentions a range of 1.6-2.4g per kg, with an optimal target",
+      "Remember that this is higher than the basic RDA because the goal is muscle preservation during a deficit"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "df4aae06-1a5e-43d3-be83-7962c69611d6",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What is the most practical way to distribute 140g of daily protein?",
+    "question_type": "standalone",
+    "options": [
+      "All at dinner to maximize convenience",
+      "25-40g at each meal with protein-rich snacks",
+      "Only in post-workout shakes for optimal timing",
+      "In one mega-smoothie to confuse your digestive system"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Distributing protein evenly throughout the day (25-40g per meal) with protein-rich snacks is most practical and effective for muscle protein synthesis, rather than trying to consume large amounts at once.",
+    "hints": [
+      "Think about what distribution pattern the article recommends for sustainability",
+      "Consider which approach would be easiest to maintain long-term"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "34698290-49e4-4f45-adae-baee0a59caff",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "Why does protein help preserve muscle during weight loss?",
+    "question_type": "standalone",
+    "options": [
+      "It prevents all hunger so you eat less",
+      "It directly signals your body to maintain muscle tissue",
+      "It automatically burns fat instead of muscle",
+      "It turns into muscle while you sleep"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Protein is unique among macronutrients because it directly signals your body to preserve and build muscle tissue. It essentially tells your body 'keep the muscle, burn the fat!' during a caloric deficit.",
+    "hints": [
+      "Think about protein's unique signaling role mentioned in the article",
+      "Consider why protein is called the muscle-preserving macronutrient"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1284ae12-2298-49e3-9c45-e142ba2a992e",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "According to the article, what happens when you create a calorie deficit without adequate protein?",
+    "question_type": "standalone",
+    "options": [
+      "You lose weight faster because protein slows metabolism",
+      "Your body breaks down both fat and muscle for energy",
+      "You only lose water weight",
+      "You enter superhero mode and gain muscle while losing fat"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Without adequate protein signals, your body doesn't discriminate between fat and muscle when it needs energy during a deficit. It will break down both tissues, which is why protein intake is crucial for preserving muscle mass.",
+    "hints": [
+      "Think about what happens when your body doesn't get the right signals about which tissue to preserve",
+      "Consider why the article emphasizes that your body doesn't automatically choose to burn only fat"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5419c026-afa1-433c-8eda-448df1865841",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "Which combination provides the best muscle preservation during fat loss?",
+    "question_type": "standalone",
+    "options": [
+      "High protein intake + resistance training",
+      "Low protein + lots of cardio",
+      "Moderate protein + no exercise"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that protein provides the building materials while resistance training acts as the construction crew. Together, they create the strongest signal for muscle preservation during a caloric deficit.",
+    "hints": [
+      "Think about the construction analogy used in the article",
+      "Consider what combination sends the strongest signal to preserve muscle"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ccbbf5a3-b9b1-47e8-b2b6-2fbf0cfd43ec",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What sequence should you follow when planning meals for muscle preservation?",
+    "question_type": "standalone",
+    "options": [
+      "Plan carbs first → add protein → include fats → add vegetables",
+      "Plan protein first → build around it → distribute throughout day",
+      "Plan calories first → worry about protein later → hope for the best"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's action plan specifically recommends planning your protein source first when designing meals, then building the rest of the meal around it. This ensures you hit your protein targets consistently.",
+    "hints": [
+      "Look at the Protein Priority Action Plan in the article",
+      "Think about which macronutrient should be the foundation of meal planning for muscle preservation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9a6e53cf-de01-4a73-89de-2dc8c21fb0f7",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "According to the article, why might your weight loss be slower when you prioritize protein and preserve muscle?",
+    "question_type": "standalone",
+    "options": [
+      "Protein makes you retain water permanently",
+      "Muscle weighs more than fat, so the scale moves slower but body composition improves",
+      "High protein automatically stops all fat loss",
+      "Your metabolism shuts down from too much protein"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explains that muscle is denser than fat, so when you preserve muscle while losing fat, the scale might move slower even though your body composition is improving significantly. The mirror and your strength will show better results than the scale alone.",
+    "hints": [
+      "Think about the density difference between muscle and fat tissue",
+      "Consider why the article mentions the mirror and strength as better indicators than just the scale"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2764186c-5688-45f2-b395-6137efa4ea41",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What was Sarah's main realization about her protein intake?",
+    "question_type": "passage_based",
+    "options": [
+      "She was eating too much protein and needed to cut back",
+      "She was eating only 40g daily when she needed 110g for her body weight",
+      "Protein would automatically make her bulk up",
+      "She should only eat protein after workouts"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "In the passage, Sarah discovered she was eating only about 40g of protein daily, but at 70kg body weight, she needed at least 110g daily to preserve muscle during weight loss.",
+    "hints": [
+      "Look at the specific numbers Emma calculated for Sarah's needs",
+      "Consider the gap between what Sarah was eating and what she actually needed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
+  },
+  {
+    "id": "134aa6ce-cf56-4e09-bd3b-74760ff7009e",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "Why was Sarah feeling weaker despite losing 10 pounds?",
+    "question_type": "passage_based",
+    "options": [
+      "She was exercising too much",
+      "She was losing muscle along with fat due to inadequate protein",
+      "She was eating too many calories",
+      "Weight loss always makes you weaker"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's weakness (like struggling to open jars) indicated she was losing muscle mass along with fat, which happens when protein intake is too low during weight loss.",
+    "hints": [
+      "Think about what Emma suggested was happening when Sarah mentioned struggling with jars",
+      "Consider the connection between low protein and muscle loss"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
+  },
+  {
+    "id": "34c13dea-7753-4aa6-8f3f-8189be6687fa",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What was Sarah's misconception about protein and muscle building?",
+    "question_type": "passage_based",
+    "options": [
+      "That protein was unnecessary for weight loss",
+      "That eating protein would make her bulk up automatically",
+      "That she only needed protein before workouts",
+      "That 40g was more than enough protein daily"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah was worried that eating more protein would make her 'bulk up,' showing a common misconception that protein automatically leads to large muscle gains, especially during a calorie deficit.",
+    "hints": [
+      "Look at Sarah's concern about the higher protein intake",
+      "Think about the common fear many people have about protein and muscle building"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
+  },
+  {
+    "id": "28659952-86d8-4232-906f-4034bb7f69f2",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "According to Emma's explanation, what gives you the 'toned' look that Sarah wanted?",
+    "question_type": "passage_based",
+    "options": [
+      "Eating less protein to avoid muscle growth",
+      "Doing more cardio and avoiding weights",
+      "Preserving muscle while losing fat",
+      "Losing weight as quickly as possible regardless of composition"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma explained that muscle is what gives you the 'toned' look, so preserving muscle while losing fat (which adequate protein helps achieve) creates the body composition most people are seeking.",
+    "hints": [
+      "Think about Emma's response to Sarah's concern about bulking up",
+      "Consider what creates the appearance most people want when they say 'toned'"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
+  },
+  {
+    "id": "8025c491-a87c-4be2-8f5f-d70f901bb7d3",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What was Mike's main mistake with his approach to weight loss?",
+    "question_type": "passage_based",
+    "options": [
+      "He was eating too much protein",
+      "He was creating too large a calorie deficit while getting inadequate protein",
+      "He was doing too much resistance training",
+      "He wasn't tracking his food intake"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike was eating only 1,200 calories daily (too low for an 85kg active male) while likely getting inadequate protein, leading to muscle loss and the 'skinny-fat' appearance Taylor identified.",
+    "hints": [
+      "Look at Mike's extreme calorie restriction and Taylor's concern about protein",
+      "Consider what Taylor meant by 'skinny-fat' appearance"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
+  },
+  {
+    "id": "8d73d729-105e-44be-8f44-3e4c8dde0de9",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What did Taylor recommend for Mike's protein intake?",
+    "question_type": "passage_based",
+    "options": [
+      "Continue with whatever protein was in his cereal",
+      "Eat at least 170 grams of protein daily (2g per kg of body weight)",
+      "Only focus on post-workout protein",
+      "Reduce protein to speed up weight loss"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor specifically recommended Mike eat at least 170 grams of protein daily, which equals 2 grams per kilogram of his 85kg body weight, to preserve muscle during weight loss.",
+    "hints": [
+      "Look at the specific calculation Taylor made for Mike's body weight",
+      "Remember that Mike weighed 85kg and Taylor used 2g per kg"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
+  },
+  {
+    "id": "72b73e3a-874b-40ec-bd8d-c71288aa9ee6",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What was Taylor's reasoning about eating more calories while trying to lose weight?",
+    "question_type": "passage_based",
+    "options": [
+      "Eating more would speed up metabolism permanently",
+      "The scale might move slower, but he'd lose mostly fat and keep muscle while feeling better",
+      "More calories would automatically build muscle",
+      "1,200 calories was actually too many"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor explained that while the scale might move slower with higher calories and protein, Mike would lose mostly fat, preserve muscle, and actually look and feel better than with his extreme restriction approach.",
+    "hints": [
+      "Think about Taylor's explanation of what would happen with a smaller deficit and adequate protein",
+      "Consider the trade-off between scale speed and body composition quality"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
+  },
+  {
+    "id": "c1ffa3de-df9c-4917-8857-fa3c2b3d3ee5",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440009",
+    "question_text": "What did Taylor mean by learning this 'the hard way'?",
+    "question_type": "passage_based",
+    "options": [
+      "Taylor had never tried to lose weight before",
+      "Taylor had made the same mistakes as Mike and experienced the negative consequences",
+      "Taylor's approach had always worked perfectly",
+      "Taylor was naturally gifted at weight loss"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor's reference to learning 'the hard way' indicates they had previously experienced the same issues as Mike - likely losing muscle along with fat due to inadequate protein and excessive calorie restriction.",
+    "hints": [
+      "Think about what 'learning the hard way' typically means",
+      "Consider why Taylor was so knowledgeable about the problems with Mike's approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
+  }
+]
