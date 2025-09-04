@@ -94,3 +94,10 @@ Here's why, broken down by the key requirements:
 5.  **Article Reading Time & Images/Infographics:** While these cannot be directly assessed from just the titles, the detailed nature of some titles in `claude-opus.json` (e.g., "Gym Equipment Identification: Cardio Zone Decoded (Part 1/3)") strongly suggests a plan for multi-part articles and the integration of visuals where appropriate.
 
 In summary, `claude-opus.json` not only meets the quantitative structural requirements (article count per category) but also excels in capturing the *qualitative* content philosophy and "Journey-Solution Method" that is central to the project's success. Its titles are compelling, empathetic, and perfectly aligned with the target audience and learning objectives for a beginner-focused fitness app.
+
+### Prompt 3 (attached is content-type.ts, background.md, and each knowledge-base )
+Generate the full details of Questions for article 1. "9ba7b810-9dad-11d1-80b4-00c04fd430c8" - "fundamental-movement-patterns" - "Fundamental Movement Patterns: Some Core Building Blocks (Push, Pull, Hinge, Squat, Rotation)" using the Question structure in "content-types.ts". 
+
+**IMPORTANT: Use the generation rules specified in "background.md" and also on each property comments in the Question structure. Calculate the number of questions correctly using the passages array in each article. Ensure you reference the right article, article 1 will be article index 0 in the  articles json file , article 12 will be article index 11 in the json file.**
+
+Output the result as a JSON artifact.

@@ -1,0 +1,3728 @@
+[
+  {
+    "id": "3aa666e4-cfaf-4e90-a7dd-2b4fa5777cc8",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "True or False: Holding your breath during weight lifting increases your strength and is recommended for all exercises.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. While holding your breath can create intra-abdominal pressure, it dramatically spikes blood pressure, stops oxygen delivery to muscles, and can cause dizziness. The only exception is the Valsalva maneuver used by experienced lifters for maximum lifts, which is a specific technique, not just breath-holding.",
+    "hints": [
+      "Think about what happens to your blood pressure when you hold your breath",
+      "Consider whether your muscles need oxygen during exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0a54c97e-ba28-4a53-970f-fc92bc280b0c",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "True or False: The golden rule of exercise breathing is to exhale during the hardest part of any movement.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The fundamental breathing rule is to exhale on exertion - the hardest part of any movement. This includes pushing weight up, standing from a squat, or pulling a cable down. This pattern optimizes oxygen delivery and maintains safe blood pressure.",
+    "hints": [
+      "Think about when your muscles are working the hardest",
+      "Consider the 'exertion' phase of any exercise movement"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d4ef733a-dfd0-4152-9fd8-798c4309b081",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "True or False: Diaphragmatic (belly) breathing uses only the top third of your lungs and is less effective than chest breathing.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. Most people are chest breathers who use only the top third of their lungs. Diaphragmatic (belly) breathing uses the full lung capacity and is much more effective for oxygen delivery during exercise.",
+    "hints": [
+      "Consider which type of breathing allows for deeper breaths",
+      "Think about which breathing pattern athletes and singers use"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e99a181b-3c3e-4779-88e4-6da0f2dc16fe",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "True or False: Proper breathing technique can improve exercise endurance by up to 15% according to some studies.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. When you master exercise breathing, endurance can increase by up to 15% in some studies. Proper breathing also improves strength output, speeds recovery between sets, and makes exercise feel easier at the same intensity.",
+    "hints": [
+      "Think about how oxygen affects muscle performance",
+      "Consider the compound benefits of efficient oxygen delivery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "28356f24-288b-4950-8db9-dc2457f8bc45",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What should you do if you feel panicky or anxious during exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Hold your breath and push through the discomfort",
+      "Stop and do 4-7-8 breathing (inhale 4, hold 7, exhale 8)",
+      "Immediately increase exercise intensity to distract yourself",
+      "Call your personal trainer to sing you a lullaby"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "If you feel panicky or anxious during exercise, stop and stand tall, then do 4-7-8 breathing (inhale for 4, hold for 7, exhale for 8). Repeat 3-4 times, then resume exercise at lower intensity. This helps reset your nervous system.",
+    "hints": [
+      "Look for the option that involves controlled breathing",
+      "Consider which response would calm your nervous system"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fc470cc7-ce7a-4a76-94b0-5e15772a39dd",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What is the recommended breathing pattern for strength training?",
+    "question_type": "standalone",
+    "options": [
+      "Hold breath for entire set, breathe only between sets",
+      "Controlled 2-2 breathing (2 counts exhale, 2 counts inhale)",
+      "Breathe as fast as possible to get maximum oxygen",
+      "Alternate between holding breath and hyperventilating"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "For strength training, use controlled 2-2 breathing: 2 counts exhale during exertion, 2 counts inhale during release. Keep it rhythmic and deliberate to maintain steady oxygen flow and safe blood pressure.",
+    "hints": [
+      "Think about controlled, rhythmic breathing patterns",
+      "Consider what would provide steady oxygen without being rushed"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4a7904ba-5eec-4c6e-8a21-c7fc0b9b62cc",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "When running or jogging, what breathing pattern is suggested for beginners?",
+    "question_type": "standalone",
+    "options": [
+      "One breath per step for maximum oxygen",
+      "Hold breath for 30 seconds, then breathe rapidly",
+      "2 steps inhale, 2 steps exhale",
+      "Breathe only through your nose while running at full speed"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "For running, beginners should try 2 steps inhale, 2 steps exhale. As fitness improves, 3-2 or 4-3 patterns can work well. The key is finding a rhythm that doesn't feel strained while providing adequate oxygen.",
+    "hints": [
+      "Look for a rhythmic pattern that matches footsteps",
+      "Consider what would be sustainable for a beginner"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "352c9e4e-14d1-4d69-8062-29aa7dd86903",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What is the main issue with breathing too fast during exercise?",
+    "question_type": "standalone",
+    "options": [
+      "It makes you too energetic and hyperactive",
+      "Hyperventilation, dizziness, and poor oxygen exchange",
+      "It burns too many calories too quickly",
+      "It makes your workout playlist sound like chipmunks"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Breathing too fast causes hyperventilation, dizziness, and poor oxygen exchange. Deeper, slower breaths deliver more oxygen than rapid shallow ones. Quality over quantity applies to breathing just as much as to exercise reps.",
+    "hints": [
+      "Think about what happens when you breathe rapidly when anxious",
+      "Consider the efficiency of deep vs shallow breaths"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "91733a99-a9dd-48eb-b0ef-66ff003c2185",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What should you do during flexibility and stretching exercises?",
+    "question_type": "standalone",
+    "options": [
+      "Quick, rapid breathing to energize the muscles",
+      "Hold your breath to create muscle tension",
+      "Slow, deep breathing with 4-6 second inhales and exhales"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "During flexibility and stretching, use slow and deep breathing with 4-6 second inhales and 4-6 second exhales. Use exhales to gradually deepen stretches, as relaxed breathing helps muscles release tension.",
+    "hints": [
+      "Think about what type of breathing promotes relaxation",
+      "Consider how breathing affects muscle tension during stretches"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7a96f46b-df88-4701-9bf5-9431de6a1126",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Which breathing technique should you practice daily to improve exercise performance?",
+    "question_type": "standalone",
+    "options": [
+      "Chest breathing while watching TV",
+      "Holding breath for as long as possible",
+      "Diaphragmatic (belly) breathing for 5 minutes daily while lying down",
+      "Rapid fire breathing while doing jumping jacks"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Practice diaphragmatic (belly) breathing for 5 minutes daily while lying down with knees bent. Place one hand on chest, one on belly - only the belly hand should rise. This builds the foundation for better exercise breathing.",
+    "hints": [
+      "Look for the technique that specifically trains the diaphragm",
+      "Consider which practice would build breathing muscle memory"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "114be379-4d4e-40fb-a18c-68ed0375521b",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "For core exercises like planks, what's the best strategy to ensure you're breathing?",
+    "question_type": "standalone",
+    "options": [
+      "Count out loud - if you can count, you're breathing",
+      "Hold your breath the entire time for maximum core engagement",
+      "Breathe only through your nose while maintaining the position",
+      "Take one deep breath at the beginning and hold it"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "For core work like planks, count out loud (\"1-Mississippi, 2-Mississippi...\"). If you can count, you're breathing. This prevents the common mistake of breath-holding during core exercises while maintaining proper engagement.",
+    "hints": [
+      "Think about a simple way to monitor your breathing",
+      "Consider what would force you to breathe regularly"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3d2e7a3d-72ad-476d-852c-6cded0d58b2c",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Sarah's main problem during her goblet squats?",
+    "question_type": "passage_based",
+    "options": [
+      "The weight was too heavy for her fitness level",
+      "She was holding her breath and getting dizzy",
+      "She was squatting too deep too quickly",
+      "Her form was perfect but she was just tired"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah was holding her breath during squats, which caused her face to turn red and made her feel dizzy. This is a common mistake beginners make when they think holding breath creates better core bracing.",
+    "hints": [
+      "Look for what Mike noticed about Sarah's breathing",
+      "Consider what was causing her face to turn red"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8736bd25-2616-45c1-a277-a32d60d1c9a0"
+  },
+  {
+    "id": "b27fe6bf-def3-42c7-bcbc-5da54ee7ed44",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to Mike's experience, what happened when he learned proper breathing?",
+    "question_type": "passage_based",
+    "options": [
+      "He had to permanently reduce his weights",
+      "Within two weeks, he could lift his original weight with more reps",
+      "He immediately increased his weights by 50%",
+      "His trainer made him switch to yoga exclusively"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike's trainer made him drop weight by half until he could breathe properly, but within two weeks he was back to his original weight and could do more reps without feeling like he was going to pass out.",
+    "hints": [
+      "Focus on Mike's progression after learning proper breathing",
+      "Consider the timeline he mentioned for getting back to original weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8736bd25-2616-45c1-a277-a32d60d1c9a0"
+  },
+  {
+    "id": "c1bb5782-6935-45d2-9c60-1eff0eb924d6",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What simple rule did Mike teach Sarah about breathing and weight selection?",
+    "question_type": "passage_based",
+    "options": [
+      "Always hold your breath when lifting heavy weights",
+      "If you can't maintain proper breathing pattern, the weight is too heavy",
+      "Only exhale when you're feeling tired",
+      "Breathing patterns don't matter as long as you're lifting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike told Sarah that if you can't maintain the proper breathing pattern (exhale up, inhale down), then the weight is too heavy. This simple rule helps ensure safe and effective training.",
+    "hints": [
+      "Look for Mike's advice about weight selection",
+      "Consider the connection between breathing ability and appropriate weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8736bd25-2616-45c1-a277-a32d60d1c9a0"
+  },
+  {
+    "id": "7498217c-b2ac-46c9-b3fe-cd104e463034",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Why did Mike's trainer make him reduce his deadlift weight when he was breath-holding?",
+    "question_type": "passage_based",
+    "options": [
+      "To embarrass him in front of other gym members",
+      "Because breath-holding made him purple-faced and unsafe",
+      "To make the workout easier and less challenging",
+      "Because deadlifts should never be done with heavy weight"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike's trainer caught him purple-faced during deadlifts due to breath-holding and made him drop the weight by half until he could breathe properly through the entire set. This was a safety intervention that ultimately made him stronger.",
+    "hints": [
+      "Consider the safety implications of turning purple during exercise",
+      "Think about why a trainer would prioritize breathing over weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8736bd25-2616-45c1-a277-a32d60d1c9a0"
+  },
+  {
+    "id": "74df09b8-4657-40a7-a949-9e0d8df4db1c",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What breathing pattern did Emma suggest to Taylor for running?",
+    "question_type": "passage_based",
+    "options": [
+      "Breathe as fast as possible to get more oxygen",
+      "Hold breath for 10 steps, then breathe rapidly",
+      "In for three steps, out for two steps",
+      "Only breathe through the nose while running"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma taught Taylor to breathe in for three steps, out for two steps (3-2 pattern). This controlled rhythm helps prevent the panic cycle of rapid shallow breathing that many new runners experience.",
+    "hints": [
+      "Look for the specific step-to-breath pattern Emma demonstrated",
+      "Consider the rhythm Emma was counting out loud"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b69a20df-a818-438e-bd82-fbce4b15c3b0"
+  },
+  {
+    "id": "f502afff-6bc9-41a2-9a84-e6f0ff29940a",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What problem was Taylor experiencing that rapid shallow breathing was causing?",
+    "question_type": "passage_based",
+    "options": [
+      "They were running too fast for their fitness level",
+      "A vicious cycle of panic that made breathing worse",
+      "Their running shoes were too tight",
+      "They were competing too intensely with Emma"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma explained that panic makes you breathe faster, which makes you more panicked - creating a vicious cycle. Controlled breathing breaks that cycle and makes running feel less panicky.",
+    "hints": [
+      "Look for Emma's explanation about the relationship between panic and breathing",
+      "Consider what controlled breathing helps break"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b69a20df-a818-438e-bd82-fbce4b15c3b0"
+  },
+  {
+    "id": "01a49232-640c-4702-8173-ce94c2926975",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Why did Emma's husband used to be able to hear her coming from a block away?",
+    "question_type": "passage_based",
+    "options": [
+      "She wore very loud running shoes",
+      "She listened to music too loudly while running",
+      "She used to sound like a steam engine when she ran due to poor breathing",
+      "She always ran with a group of chatty friends"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma mentioned that she used to sound like a steam engine when she ran, which her husband could hear from a block away. This was before she learned proper breathing patterns for running.",
+    "hints": [
+      "Focus on Emma's description of her old breathing sounds",
+      "Consider what breathing pattern would be that loud"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b69a20df-a818-438e-bd82-fbce4b15c3b0"
+  },
+  {
+    "id": "8561ab73-bbc1-443c-907f-48a0d78e5705",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What did Emma say happens when you establish a breathing rhythm during running?",
+    "question_type": "passage_based",
+    "options": [
+      "Running becomes faster and more competitive",
+      "Running becomes almost meditative",
+      "You automatically start running longer distances",
+      "You burn more calories per minute"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma told Taylor that when you establish a controlled breathing rhythm, running becomes almost meditative. This shows how proper breathing can transform the mental experience of exercise.",
+    "hints": [
+      "Look for Emma's description of what happens with rhythmic breathing",
+      "Consider the mental/emotional benefits she mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b69a20df-a818-438e-bd82-fbce4b15c3b0"
+  },
+  {
+    "id": "7e0e282d-3601-44ab-930b-8a5ce57c0775",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Jordan's main struggle with planks?",
+    "question_type": "passage_based",
+    "options": [
+      "The exercise was too easy and boring",
+      "Couldn't breathe and keep core tight at the same time",
+      "Wrist pain from improper hand placement",
+      "Comparing themselves to other people in the gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan collapsed from the plank position because they felt they couldn't breathe and keep their core tight at the same time. This is a common misconception that leads to breath-holding during core exercises.",
+    "hints": [
+      "Look for Jordan's specific complaint about planks",
+      "Consider what made Jordan collapse from the position"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22073b53-107c-4adc-a29a-2fd5646d424e"
+  },
+  {
+    "id": "d2bcf5d2-a8f9-4cdf-bdbd-7977753153f9",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What analogy did Alex use to help Jordan understand core breathing?",
+    "question_type": "passage_based",
+    "options": [
+      "Core like a steel rod that never bends",
+      "Core like a balloon that's 80% inflated",
+      "Core like a tight rubber band",
+      "Core like a brick wall that never moves"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex told Jordan to think of their core like a balloon that's 80% inflated - you can still breathe in and out a little without deflating it completely. This helps maintain core stability while still breathing.",
+    "hints": [
+      "Look for Alex's specific analogy about the core",
+      "Consider which analogy allows for some breathing movement"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22073b53-107c-4adc-a29a-2fd5646d424e"
+  },
+  {
+    "id": "298a59b2-f157-491d-bbc6-51ef60c617ef",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What exercise progression did Alex suggest to help Jordan learn plank breathing?",
+    "question_type": "passage_based",
+    "options": [
+      "Start with push-ups, then progress to planks",
+      "Practice breathing while doing wall sits first",
+      "Begin with side planks before regular planks",
+      "Use a stability ball under the belly for support"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex suggested Jordan practice breathing coordination during wall sits first, since it's easier to learn when more upright and not fighting gravity as hard. Once mastered there, planks become easier.",
+    "hints": [
+      "Look for Alex's suggested starting exercise",
+      "Consider which position would be easier for learning breathing coordination"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22073b53-107c-4adc-a29a-2fd5646d424e"
+  },
+  {
+    "id": "74d43a22-f74c-4322-97e3-d01f7d8ec995",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to Alex, why do people revert to breath-holding during stressful exercises like planks?",
+    "question_type": "passage_based",
+    "options": [
+      "Because they want to show off their strength",
+      "It's a survival mode instinct: hold breath, brace for impact",
+      "They forget they need oxygen during exercise",
+      "Most trainers teach breath-holding as the correct technique"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex explained that under stress (like planks), people revert to survival mode: hold breath, brace for impact. This instinct must be consciously overridden because most people assume breathing is automatic, but stress changes that.",
+    "hints": [
+      "Look for Alex's explanation about stress response",
+      "Consider what instinctive reaction people have under physical stress"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22073b53-107c-4adc-a29a-2fd5646d424e"
+  },
+  {
+    "id": "aea89e8c-9c40-4ffb-9d06-f7dff84c7a87",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Good posture during exercise helps distribute force evenly across your joints and muscles, preventing injury.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! Good posture acts like your body's insurance policy by ensuring forces are distributed evenly across joints and muscles, which prevents those 'tweaks' that can turn into chronic issues.",
+    "hints": [
+      "Think about how stacking blocks works - proper alignment creates stability"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1868f23a-3ab4-488e-8677-701e17438ede",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "The cue 'chest up' always creates perfect posture without any negative side effects.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False! Traditional cues like 'chest up' can create new problems when misinterpreted. Push your chest too far up and you risk creating an overarched back. The issue isn't the cue itself, but that it's incomplete and often misunderstood.",
+    "hints": [
+      "Consider what happens when you take any instruction to an extreme"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "66aed1dc-6431-4493-b154-e9c38527ffd4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "You should strain to hold perfect posture during exercise, even if it requires significant muscle effort.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False! Correct posture should feel stable with minimal effort. If you're straining to hold a position, the cue might not be right for you. Good alignment allows natural breath flow and should feel sustainable.",
+    "hints": [
+      "Think about how good posture should feel - forced or natural?"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "971cf0ab-ebc7-42ba-9e7d-d83f3bffa5dc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "The same posture cues work equally well for every person regardless of their body proportions or flexibility.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False! Not every cue works for every body. Your proportions, flexibility, and movement history all influence which cues click for you. What works for someone else might not be the right cue for your body.",
+    "hints": [
+      "Consider how people have different body types and movement capabilities"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b9c6f6e5-fd5c-4b11-90f0-480f7ed3bde0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What's the best way to find neutral pelvis position according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Pour water out of your pelvis - front, back, then find the middle",
+      "Tuck your tailbone as hard as possible",
+      "Arch your back and stick your butt out",
+      "Imagine you're sitting on a unicorn while doing the macarena"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 'pour water out of your pelvis' cue helps you find neutral pelvis position through movement rather than forcing a static position. This dynamic approach is more effective than rigid positioning.",
+    "hints": [
+      "Look for the cue that involves movement to find the middle position",
+      "Think about dynamic versus static positioning"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "dab6eb19-299a-4c3e-bd58-91133d9a8f96",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Which visualization helps create proper head position during exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Imagine a helium balloon attached to the crown of your head",
+      "Look up at the ceiling as much as possible",
+      "Crane your neck back to see behind you",
+      "Pretend you're a giraffe trying to reach the highest leaves while breakdancing"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The helium balloon visualization naturally lengthens your spine without creating tension. Your chin naturally tucks slightly, and your neck finds its neutral position without forcing it.",
+    "hints": [
+      "Think about what would naturally lengthen your spine upward",
+      "Consider which option promotes natural alignment"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8e37add8-9860-4a31-8cd8-f45ce1fb369c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "For rows, what should you focus on instead of just 'pulling shoulders back'?",
+    "question_type": "standalone",
+    "options": [
+      "Lead with your elbows and squeeze an orange between your shoulder blades",
+      "Pull your shoulders as far back as humanly possible",
+      "Focus only on moving the weight quickly",
+      "Imagine you're a chicken doing the funky chicken dance while rowing a boat"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Leading with your elbows and squeezing an orange between your shoulder blades shifts focus to the movement pattern rather than forcing a position. This creates better muscle engagement and form.",
+    "hints": [
+      "Think about movement patterns versus static positions",
+      "Consider what engages the right muscles"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f5e6bbf6-1dc2-48ee-b3ea-22aaf9755019",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What should you check if you're holding tension in your neck during exercise?",
+    "question_type": "standalone",
+    "options": [
+      "You're probably cranking your neck position",
+      "You need to add more weight immediately",
+      "This is completely normal and should be ignored",
+      "You should switch to doing neck exercises while juggling flaming torches"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "If you feel strain in your neck during any exercise, you're probably cranking it into an unnatural position. Your neck should follow your spine's natural curve and remain neutral.",
+    "hints": [
+      "Think about what neck strain indicates about positioning",
+      "Consider the connection between tension and alignment"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3fd438bf-7992-459b-8823-72e5342a84b1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to the article, good posture during squats requires which sequence of alignment?",
+    "question_type": "standalone",
+    "options": [
+      "Knees track over middle toes as you sit back into an invisible chair, then adjust depth based on your proportions",
+      "Knees must always stay behind toes regardless of body proportions, go as deep as possible always",
+      "Focus only on speed, ignore knee position completely, depth doesn't matter",
+      "Do the squat while hopping on one foot and reciting the alphabet backwards"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The knee position naturally varies based on your body proportions. Focus on the tracking pattern (knees over middle toes) and sitting back, not arbitrary rules about depth or knee position.",
+    "hints": [
+      "Think about individualized form versus universal rules",
+      "Consider what matters most - tracking pattern or rigid positioning"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "47f6f6bd-e5dd-4cba-85d1-11d704f90b86",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What combination of tools should you use to develop proper posture awareness?",
+    "question_type": "standalone",
+    "options": [
+      "Mirror test for visual feedback, effort check for sustainability, breath test for natural flow",
+      "Only use mirrors, ignore how the position feels, hold your breath to maintain position",
+      "Never look in mirrors, strain as hard as possible, breathe irregularly",
+      "Use a crystal ball, consult your horoscope, and ask a magic 8-ball while standing on your head"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The combination of mirror feedback, checking if the position feels sustainable with minimal effort, and ensuring you can breathe normally helps you find proper alignment that works for your body.",
+    "hints": [
+      "Think about multiple ways to assess good posture",
+      "Consider what makes alignment sustainable and effective"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "32a582a7-937b-4f91-a1f0-25b7116e9444",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What's the most effective way to build long-term posture awareness?",
+    "question_type": "standalone",
+    "options": [
+      "Set hourly phone reminders to check in with your body position and tension points",
+      "Try to maintain perfect posture 24/7 without any breaks or adjustments",
+      "Only think about posture during formal exercise sessions",
+      "Hire a personal posture police officer to follow you around with a whistle and clipboard"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Regular check-ins throughout the day build the mind-body connection that makes good posture automatic over time. It's about awareness and adjustment, not rigid perfection.",
+    "hints": [
+      "Consider building habits versus forcing perfection",
+      "Think about developing awareness gradually"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c2d8690d-6c25-4d08-a4a5-da34ada4e997",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What did Jordan learn about core engagement from their trainer Marcus?",
+    "question_type": "passage_based",
+    "options": [
+      "Different people need different cues - 'engage your core' didn't work, but 'brace for impact' did",
+      "Everyone should use the exact same core cue regardless of their understanding",
+      "Core engagement isn't important for planks",
+      "The best way to engage your core is to sing opera while doing planks"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Marcus helped Jordan understand that different cues work for different people. When 'engage your core' didn't make sense, the 'brace for impact' cue clicked and helped Jordan feel the right muscles working.",
+    "hints": [
+      "Think about what worked for Jordan specifically",
+      "Consider the lesson about individualized cues"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5ef0477c-3688-439f-af36-92fc5563280a"
+  },
+  {
+    "id": "438c5530-a761-4264-9144-2c4ae644a486",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "How did the plank visualization help Jordan improve their form?",
+    "question_type": "passage_based",
+    "options": [
+      "Imagining being a straight, strong board that could be used as a bridge fixed their alignment",
+      "Thinking about bridges made them want to quit exercising",
+      "The visualization had no effect on their form",
+      "They started building actual bridges instead of doing planks"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The bridge visualization helped Jordan understand the straight-line concept of a proper plank. This mental image translated into better physical alignment and made the exercise more effective.",
+    "hints": [
+      "Focus on what specific visualization helped Jordan",
+      "Think about how mental images can improve physical form"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5ef0477c-3688-439f-af36-92fc5563280a"
+  },
+  {
+    "id": "ee7941f2-f069-4a4e-a233-1808ae4f4bad",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was Jordan's main problem with understanding 'engage your core'?",
+    "question_type": "passage_based",
+    "options": [
+      "They had no idea what the instruction actually meant or how it should feel",
+      "They understood it perfectly but chose to ignore it",
+      "They thought it meant something completely different",
+      "They were too busy thinking about their favorite TV show"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan was frustrated because 'engage your core' was meaningless to them - they literally had no idea what that instruction meant or how it should feel in their body.",
+    "hints": [
+      "Think about Jordan's specific frustration with the cue",
+      "Consider the communication problem they were experiencing"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5ef0477c-3688-439f-af36-92fc5563280a"
+  },
+  {
+    "id": "03b078ab-713e-449c-b415-48f339108a02",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What key insight did Marcus share about effective coaching cues?",
+    "question_type": "passage_based",
+    "options": [
+      "Different cues work for different people - some need mechanical cues, others need imagery",
+      "Everyone should use the same cues for consistency",
+      "Cues don't matter, only effort does",
+      "The best cues involve complicated scientific terminology"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Marcus explained that everyone's brain processes movement differently - some people respond to mechanical cues while others need imagery-based cues. The key is finding what works for each individual.",
+    "hints": [
+      "Think about Marcus's philosophy on coaching different people",
+      "Consider individual differences in learning"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5ef0477c-3688-439f-af36-92fc5563280a"
+  },
+  {
+    "id": "5edba568-bdb7-4198-92ba-f22750f0494b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was Sarah's problem with her rowing exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "She could feel it in her arms but never in her back where it should be working",
+      "The weight was too heavy for her to handle",
+      "She was doing the exercise too quickly",
+      "She kept falling off the rowing machine into a pile of feathers"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah's issue was that she wasn't feeling the exercise in the target muscles (her back) but instead was compensating with her arms, indicating poor movement pattern and muscle recruitment.",
+    "hints": [
+      "Think about where Sarah was feeling the exercise versus where she should feel it",
+      "Consider what this indicates about her form"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d0173be1-fa3d-4fce-9310-558f5a7b22bc"
+  },
+  {
+    "id": "32628a18-f8e5-4a3c-bb0f-106a976fde74",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What cue combination helped Sarah fix her rowing form?",
+    "question_type": "passage_based",
+    "options": [
+      "Leading with her elbow like starting a lawnmower, plus squeezing a pencil between shoulder blades",
+      "Pulling as hard as possible with her shoulders",
+      "Focusing only on speed and ignoring form",
+      "Pretending to row while riding a unicorn through a rainbow"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex taught Sarah to focus on the elbow path (like starting a lawnmower) and squeezing a pencil between her shoulder blades. This combination helped her feel the right muscles working.",
+    "hints": [
+      "Think about the specific mechanical cues Alex provided",
+      "Consider what changed Sarah's muscle recruitment"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d0173be1-fa3d-4fce-9310-558f5a7b22bc"
+  },
+  {
+    "id": "a184536f-284c-4859-8a48-301f9f401254",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What did Sarah discover when she used Alex's rowing cues?",
+    "question_type": "passage_based",
+    "options": [
+      "She suddenly felt muscles between her shoulder blades that she didn't know existed",
+      "The exercise became much more difficult and painful",
+      "Nothing changed in how the exercise felt",
+      "She developed the ability to fly using her shoulder blades as wings"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "When Sarah focused on leading with her elbow and squeezing between her shoulder blades, she finally felt her back muscles working - muscles she didn't even know she had.",
+    "hints": [
+      "Think about Sarah's immediate physical response to the new cues",
+      "Consider what she discovered about muscle activation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d0173be1-fa3d-4fce-9310-558f5a7b22bc"
+  },
+  {
+    "id": "33d6df79-226f-48fd-aae3-47fc2e4428a2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to Alex, why don't instructors always explain exercises with effective cues?",
+    "question_type": "passage_based",
+    "options": [
+      "Because everyone's brain processes movement differently - some need mechanical cues, others imagery",
+      "Because they don't want people to succeed",
+      "Because complex explanations are always better",
+      "Because they're secretly plotting to confuse everyone with interpretive dance"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex explained that people's brains process movement information differently - some respond to mechanical/technical cues while others need visual imagery or feeling-based cues.",
+    "hints": [
+      "Think about Alex's explanation for individual differences",
+      "Consider how people learn movement differently"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d0173be1-fa3d-4fce-9310-558f5a7b22bc"
+  },
+  {
+    "id": "bfda10de-7815-4cac-a5f6-2aa959bbeeb9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What universal rule about body proportions did Mike learn from Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "Form rules are guidelines, not laws - your body knows good position when it finds it",
+      "Everyone must follow exactly the same form regardless of body type",
+      "Shorter people are always stronger than taller people",
+      "All squats must be performed while reciting the periodic table"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor taught Mike that form 'rules' like 'knees never past toes' are actually guidelines that need to be adapted to individual body proportions. Good form is what works safely for your specific body.",
+    "hints": [
+      "Think about Taylor's lesson regarding form rules",
+      "Consider the difference between guidelines and absolute laws"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b84119c0-5dfc-4b04-8684-00bfcc2d25d6"
+  },
+  {
+    "id": "934df66d-8d78-4fc1-bec7-8f63c19fbf90",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Why was Mike avoiding squats when he returned to fitness?",
+    "question_type": "passage_based",
+    "options": [
+      "His old football coach's rigid rule 'knees never past toes' made him feel like falling backward",
+      "He was afraid of the gym environment",
+      "He thought squats were too easy",
+      "He was saving his energy for his career as a professional yodeler"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Mike was following his old coach's inflexible rule about knee position, which didn't work for his body proportions and made squatting feel unstable and unsafe.",
+    "hints": [
+      "Think about what specific rule was causing Mike problems",
+      "Consider how this rule affected his squat performance"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b84119c0-5dfc-4b04-8684-00bfcc2d25d6"
+  },
+  {
+    "id": "7ea7a30b-03a2-44a4-b813-78a477f4df68",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What helped Mike find his natural squat position?",
+    "question_type": "passage_based",
+    "options": [
+      "Sitting back into an invisible chair and letting knees track over middle toes naturally",
+      "Forcing his knees to stay exactly behind his toes like his old coach said",
+      "Copying Taylor's exact squat position",
+      "Standing on one leg while juggling flaming tennis balls"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor taught Mike to focus on the movement pattern (sitting back like in a chair) and proper tracking (knees over middle toes) rather than rigid positioning rules that didn't fit his body proportions.",
+    "hints": [
+      "Think about what cue Taylor gave Mike instead of the rigid rule",
+      "Consider what made Mike's squat feel natural and balanced"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b84119c0-5dfc-4b04-8684-00bfcc2d25d6"
+  },
+  {
+    "id": "3870ec77-d8d5-431e-be1c-cc1797c9c34b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was the key difference between Mike's and Taylor's body proportions affecting their squats?",
+    "question_type": "passage_based",
+    "options": [
+      "Taylor had shorter legs and longer torso; Mike had longer legs and shorter torso",
+      "They had identical proportions but different strength levels",
+      "Taylor was much taller than Mike",
+      "Mike had three legs while Taylor had the standard two"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The passage explains that Taylor had shorter legs and a longer torso, while Mike was the opposite. This difference in proportions meant they needed different squat mechanics - what worked for Taylor's body didn't work for Mike's.",
+    "hints": [
+      "Think about how limb proportions affect exercise mechanics",
+      "Consider why one person's form might not work for another"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b84119c0-5dfc-4b04-8684-00bfcc2d25d6"
+  },
+  {
+    "id": "28b8a378-0cd6-41e5-a972-218ac6990cae",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Progressive overload means gradually increasing demands on your body over time to continue improving fitness.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Progressive overload is the fundamental principle behind all exercise progression - you must gradually increase the challenge to your body to continue seeing improvements in strength, endurance, or fitness.",
+    "hints": [
+      "Think about how you learned to read - you didn't jump straight from alphabet to Shakespeare",
+      "Your body adapts to whatever you consistently ask it to do"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "19425f2f-6026-4263-b8d1-5e388e1e01de",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the 2-week rule, you should stay at each progression level for at least 2 weeks before advancing.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 2-week rule is a safety net that prevents injury and frustration. While your muscles might be ready after one workout, your connective tissues (tendons and ligaments) adapt more slowly and need time to strengthen.",
+    "hints": [
+      "Connective tissues adapt more slowly than muscles",
+      "Better safe than sorry when it comes to injury prevention"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7fe4792e-d02c-4ce0-9af6-3dca203a05bf",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Regression (scaling back) is always a sign of failure and should be avoided at all costs.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Regression is actually progression in disguise. Sometimes scaling back is the smartest move when returning from illness, injury, or when experiencing unusual fatigue. It's taking a running start to jump even higher.",
+    "hints": [
+      "Sometimes the smartest move is backward",
+      "Think of it as taking a running start"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4ae15b7c-f4dc-4363-9940-94375581f678",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "When doing cardio progression, you should never increase more than one F.I.T.T. variable at a time.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "F.I.T.T. stands for Frequency, Intensity, Time, and Type. Increasing multiple variables simultaneously increases injury risk and makes it harder to identify what's causing progress or problems.",
+    "hints": [
+      "F.I.T.T. stands for Frequency, Intensity, Time, Type",
+      "Too many changes at once = higher injury risk"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a0ceff3a-ccb3-47f5-8b92-0d3426a7ffb8",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Sarah is doing bodyweight squats and can easily complete 3 sets of 15 with perfect form. What's the BEST next progression step?",
+    "question_type": "standalone",
+    "options": [
+      "Jump straight to barbell back squats",
+      "Add goblet squats with light weight",
+      "Do 100 bodyweight squats in one set",
+      "Switch to doing squats while juggling flaming torches"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Goblet squats are the natural next step after mastering bodyweight squats. They add resistance while maintaining the same movement pattern and allowing you to practice holding weight at your center of mass.",
+    "hints": [
+      "Follow the natural progression ladder",
+      "Add weight gradually while maintaining the same movement pattern"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5eccfdfa-d585-4840-8870-5c3cb935f886",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Mike is returning to exercise after being sick for 3 weeks. According to smart progression principles, he should:",
+    "question_type": "standalone",
+    "options": [
+      "Jump back to exactly where he left off",
+      "Start at 50% of his previous intensity and build back up",
+      "Double his previous workout to make up for lost time",
+      "Only do cardio until he feels 100% again"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 50% rule suggests returning at half your previous intensity after any break longer than a week. This allows your body to readapt safely while preventing injury from jumping back too quickly.",
+    "hints": [
+      "Your body needs time to readapt after time off",
+      "Better to start conservative and build up"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e40788e5-db5d-4447-9e3e-b39c88e995fe",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Emma wants to help her family exercise together. What's the smartest approach for different fitness levels?",
+    "question_type": "standalone",
+    "options": [
+      "Everyone does the same exercises at the same intensity",
+      "Create level-based progressions where everyone works at their appropriate difficulty",
+      "Only the fittest person should exercise while others watch",
+      "Hire a professional trainer for each family member"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Level-based progressions allow each person to work at their appropriate challenge level while doing similar movement patterns. This keeps everyone engaged and progressing safely.",
+    "hints": [
+      "One size doesn't fit all in fitness",
+      "Same movement pattern, different difficulty levels"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e87120a7-2cb9-4cd8-8461-df6d092f7699",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "For strength training progression, what should you do when you can perform 2 more reps than your target on your last set for two consecutive workouts?",
+    "question_type": "standalone",
+    "options": [
+      "Increase the weight",
+      "Decrease the weight",
+      "Keep everything the same",
+      "Switch to a completely different exercise"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 'Two-Rep Rule' indicates you're ready for progression. When you can do 2 more reps than your target on your last set for two consecutive workouts, it's time to increase the weight by the smallest increment available.",
+    "hints": [
+      "This follows the 'Two-Rep Rule' mentioned in the article",
+      "Consistent overperformance indicates readiness for progression"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9a41830d-8216-45ce-9e68-9c33a5d9d584",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Which combination represents the correct order for mastering exercise complexity progression?",
+    "question_type": "standalone",
+    "options": [
+      "Regular plank → plank variations → perfect bodyweight squats → weighted squats",
+      "Master bodyweight squats → perfect regular plank → add squat weight → try plank variations",
+      "Weighted squats → plank variations → bodyweight squats → regular plank",
+      "Try everything at once → master whatever feels easiest → abandon the rest"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Complexity progression follows the 'Master Then Advance' principle. You should perfect simple movements before adding complexity, and master bodyweight versions before adding external load.",
+    "hints": [
+      "Master the basics before advancing",
+      "Simple before complex, bodyweight before weighted"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f6ff5576-f8e5-4e9f-900c-2ee06bc7639a",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the percentage method for progression, what's the most appropriate weekly increase for a conservative approach?",
+    "question_type": "standalone",
+    "options": [
+      "25% every week for maximum gains",
+      "5% increase every 2 weeks",
+      "50% increase monthly",
+      "10% daily until you plateau"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Conservative progression calls for 5% increases every 2 weeks. This allows adequate time for adaptation while minimizing injury risk, making it ideal for beginners or those returning to exercise.",
+    "hints": [
+      "Conservative means slower and safer",
+      "The article mentions specific percentage guidelines"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7776f559-31a3-4564-803e-460d8082350c",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "The article compares fitness progression to growing a plant. What's the main lesson from this analogy?",
+    "question_type": "standalone",
+    "options": [
+      "You should water your muscles daily",
+      "Progress isn't linear - trust the process and focus on long-term trends rather than daily fluctuations",
+      "Plants and people both need sunshine to grow",
+      "Green vegetables are essential for muscle growth"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The plant analogy teaches that you don't pull up a plant daily to check its roots. Similarly, fitness progress has ups and downs, but what matters is the overall trend over months, not daily fluctuations.",
+    "hints": [
+      "Don't check the roots every day",
+      "Focus on long-term trends, not daily changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5cf91c0b-dcfb-4ee3-9dc7-a696f386203c",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "In the first passage, what was Marcus's key advice to Jordan about progressing from 15-pound to 20-pound dumbbells?",
+    "question_type": "passage_based",
+    "options": [
+      "Just keep trying 20 pounds until it gets easier",
+      "Skip 20 pounds and go straight to 25 pounds",
+      "Add reps with 15 pounds, then try 17.5 pounds, then progress to 20 pounds",
+      "Switch to a completely different exercise"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Marcus suggested a gradual progression: add 2 more reps to each set with 15 pounds for two weeks, then do regular reps with 17.5 pounds for two weeks, then try 20 pounds - which would feel manageable by then.",
+    "hints": [
+      "Marcus provided a step-by-step progression plan",
+      "The approach involved both rep increases and intermediate weights"
+    ],
+    "image_urls": [],
+    "passage_set_id": "bb80ff25-5f16-45c4-adff-781a4e30b586"
+  },
+  {
+    "id": "5661189f-11e4-4803-bb55-8dc8b6160a4f",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Why did Marcus tell Jordan that slow progression was better than jumping weight quickly?",
+    "question_type": "passage_based",
+    "options": [
+      "Because slow progressions are more impressive to others",
+      "Because people who progress slowly are still training after year one, while those who jump weight too fast are nursing injuries at home",
+      "Because gym equipment is expensive and should be treated gently",
+      "Because fast progression makes you sweat too much"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus explained from his 5 years of training experience that the people still exercising after year one are those who progressed slowly, while those who jumped weight too fast ended up with injuries.",
+    "hints": [
+      "Marcus spoke from 5 years of experience",
+      "Think about long-term success vs short-term gains"
+    ],
+    "image_urls": [],
+    "passage_set_id": "bb80ff25-5f16-45c4-adff-781a4e30b586"
+  },
+  {
+    "id": "f0fd4ddb-ed44-470e-b79b-69c322fded2a",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was Jordan's initial concern about Marcus's progressive approach?",
+    "question_type": "passage_based",
+    "options": [
+      "It would be too expensive",
+      "It would take too much time at the gym",
+      "It seemed too slow",
+      "It was too complicated to remember"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Jordan protested that Marcus's progressive approach 'seems so slow though,' showing the common beginner mindset of wanting rapid progress rather than sustainable advancement.",
+    "hints": [
+      "Jordan had a common concern about the pace of progress",
+      "Many beginners want faster results"
+    ],
+    "image_urls": [],
+    "passage_set_id": "bb80ff25-5f16-45c4-adff-781a4e30b586"
+  },
+  {
+    "id": "64fec639-b74c-4199-825a-5b02bb2628f7",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was the final outcome of Jordan following Marcus's advice?",
+    "question_type": "passage_based",
+    "options": [
+      "Jordan gave up after two weeks",
+      "Jordan got injured trying to progress too fast",
+      "Two months later, Jordan was pressing 22.5-pound dumbbells with perfect form",
+      "Jordan switched to cardio instead"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The passage concludes that two months later, Jordan was pressing 22.5-pound dumbbells with perfect form, finally understanding that small steps forward beat giant leaps backward.",
+    "hints": [
+      "Look at the end of the passage for the outcome",
+      "Jordan exceeded the original 20-pound goal"
+    ],
+    "image_urls": [],
+    "passage_set_id": "bb80ff25-5f16-45c4-adff-781a4e30b586"
+  },
+  {
+    "id": "d7d00586-55b6-489b-83f3-7c6f2a5743e4",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "In the second passage, what was Mike's internal debate when returning from illness?",
+    "question_type": "passage_based",
+    "options": [
+      "Whether to exercise at home or at the gym",
+      "Whether to jump back to where he left off or start over",
+      "Whether to do cardio or strength training",
+      "Whether to hire a personal trainer"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike debated whether to 'jump back to where he left off, or start over' after being out sick for three weeks, showing the common dilemma people face when returning to exercise.",
+    "hints": [
+      "Mike was returning from being sick",
+      "He faced a choice about where to restart"
+    ],
+    "image_urls": [],
+    "passage_set_id": "acd2c94c-2931-4e2b-8c08-f2a7b4b7f032"
+  },
+  {
+    "id": "8bc3cc91-6426-4319-a7d0-482010f06b6a",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What specific rule did Mike remember from his physical therapist?",
+    "question_type": "passage_based",
+    "options": [
+      "The 2-week rule for staying at each progression level",
+      "The 50% rule - after any break longer than a week, return at 50% of previous intensity",
+      "The 10% rule for weekly increases",
+      "The 5-minute rule for warm-ups"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike remembered his physical therapist's 'The 50% rule - after any break longer than a week, return at 50% of your previous intensity and build back up.'",
+    "hints": [
+      "This was advice from his physical therapist",
+      "It involved a specific percentage for returning after time off"
+    ],
+    "image_urls": [],
+    "passage_set_id": "acd2c94c-2931-4e2b-8c08-f2a7b4b7f032"
+  },
+  {
+    "id": "1603b701-1478-4bbf-a2ea-89caa15b045a",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How did following the comeback progression affect Mike's performance?",
+    "question_type": "passage_based",
+    "options": [
+      "He never regained his previous strength",
+      "Week 3: Back to full strength and actually feeling stronger than before",
+      "He got injured in week 2",
+      "He decided to quit exercising"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage shows Mike's progression: Week 1 felt easy, Week 2 felt normal, and by Week 3 he was back to full strength and actually feeling stronger than before his illness.",
+    "hints": [
+      "Follow Mike's progression through the three weeks",
+      "The result was better than expected"
+    ],
+    "image_urls": [],
+    "passage_set_id": "acd2c94c-2931-4e2b-8c08-f2a7b4b7f032"
+  },
+  {
+    "id": "c571514c-dbb8-4a39-b305-a63f90e2f242",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was Mike's key lesson learned from this experience?",
+    "question_type": "passage_based",
+    "options": [
+      "Exercise is overrated",
+      "Always exercise when sick",
+      "The ego wants to rush back, but the body rewards patience - regression really is progression in disguise",
+      "Physical therapists are always wrong"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike's journal entry stated: 'Lesson learned - the ego wants to rush back, but the body rewards patience. Regression really is progression in disguise.'",
+    "hints": [
+      "Look at Mike's journal entry at the end",
+      "It's about the conflict between ego and smart training"
+    ],
+    "image_urls": [],
+    "passage_set_id": "acd2c94c-2931-4e2b-8c08-f2a7b4b7f032"
+  },
+  {
+    "id": "4eae7192-1913-4377-badc-2ee57617edd0",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "In the third passage, what was Emma's daughter's initial reaction to trying a full push-up?",
+    "question_type": "passage_based",
+    "options": [
+      "She completed it easily",
+      "She was afraid to try",
+      "She said 'Mom, I can't do it!'",
+      "She laughed at the exercise"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma's 8-year-old daughter was struggling and said 'Mom, I can't do it!' when trying to do a full push-up during their family workout time.",
+    "hints": [
+      "The daughter was 8 years old",
+      "She expressed frustration with the full push-up"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a954c269-b69a-47ac-9eaf-81d5bd41312b"
+  },
+  {
+    "id": "89c59c3d-3f72-4294-9283-4edc7ba07bbb",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How did Emma turn the push-up progression into a game for her family?",
+    "question_type": "passage_based",
+    "options": [
+      "She used a scoring system",
+      "She created levels: Level 1 wall push-ups, Level 2 stairs, Level 3 knees, Level 4 full push-ups",
+      "She offered prizes for completion",
+      "She played music during the exercises"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma created a level-based game system: 'Level 1 is wall push-ups - like giving the wall a high-five. Level 2 is on the stairs. Level 3 is on your knees. Level 4 is the full push-up you're trying.'",
+    "hints": [
+      "Emma used gaming terminology",
+      "She created four distinct levels"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a954c269-b69a-47ac-9eaf-81d5bd41312b"
+  },
+  {
+    "id": "462029fd-d81e-46a2-9c86-c2be53483bc7",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was the broader lesson Emma realized she had taught her daughter beyond just push-ups?",
+    "question_type": "passage_based",
+    "options": [
+      "That exercise is only about strength",
+      "That progress isn't about being perfect today - it's about being slightly better than yesterday",
+      "That family time is more important than exercise",
+      "That only adults should do real exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma realized she'd taught her kids 'the most valuable fitness lesson: progress isn't about being perfect today - it's about being slightly better than yesterday.'",
+    "hints": [
+      "This lesson applied to fitness and beyond",
+      "It's about the process of improvement, not perfection"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a954c269-b69a-47ac-9eaf-81d5bd41312b"
+  },
+  {
+    "id": "87489228-049e-4f42-a231-67da615c413c",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How did the level-based approach change her daughter's mindset about challenges?",
+    "question_type": "passage_based",
+    "options": [
+      "She became afraid of trying new things",
+      "She now asks 'What's the Level 1 version?' when facing any challenge, fitness or otherwise",
+      "She only wanted to do the hardest level",
+      "She lost interest in exercise completely"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage concludes that Emma's daughter 'now asks, \"What's the Level 1 version?\" whenever facing any challenge, fitness or otherwise,' showing how the progression mindset transferred to other areas of life.",
+    "hints": [
+      "The daughter applied this thinking beyond fitness",
+      "She learned to look for starting points in any challenge"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a954c269-b69a-47ac-9eaf-81d5bd41312b"
+  },
+  {
+    "id": "a66dbace-b9b5-492f-92af-d0847933a6eb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Bodyweight training is automatically calibrated to provide the perfect amount of resistance for beginners.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Unlike external weights where you might choose something too heavy or too light, your body weight provides an appropriate challenge level that's naturally calibrated to your current fitness level.",
+    "hints": [
+      "Consider how your body weight relates to your current strength",
+      "Think about the difference between choosing weights versus using your own body"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "85c5d14e-b9fb-4e6a-9422-0bff8c6cf1dc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Wall push-ups are considered a legitimate form of push-up exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Wall push-ups work the same muscle groups and movement patterns as regular push-ups, just with less gravitational resistance. They're a valuable progression step, not a lesser exercise.",
+    "hints": [
+      "Consider what muscles are working during wall push-ups",
+      "Think about the article's stance on exercise progressions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "05e45494-dc78-48d2-9630-7be484fd5ad2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Glute bridges primarily wake up muscles that are often weak from sitting all day.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states that glutes are likely weak from sitting all day, and glute bridges wake them up while strengthening the entire posterior chain (backside of your body).",
+    "hints": [
+      "Think about what happens to your glutes when you sit for long periods",
+      "Consider what muscle group glute bridges target"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "87b5571a-b180-4e8f-80df-ed7b4a0b4ebd",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "You should only add external weights once you can perform 15-20 perfect reps of basic bodyweight movements.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article states you're ready to consider adding weights when you can perform 15-20 perfect reps of basic movements, your form remains consistent, and bodyweight exercises no longer feel challenging.",
+    "hints": [
+      "Look for the criteria mentioned for progressing to weights",
+      "Consider what rep range indicates mastery of bodyweight movements"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5ed0f80e-9dd5-48d8-bb37-ee76f86630c9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What is the primary reason bodyweight training should come before weights?",
+    "question_type": "standalone",
+    "options": [
+      "It teaches you to control and move your own body through space",
+      "It's easier on your joints than weight training",
+      "It burns more calories than lifting weights",
+      "It helps you become a human pretzel"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that bodyweight training teaches you how to control and move your own body through space, which is arguably the most functional strength you can develop.",
+    "hints": [
+      "Focus on what skill bodyweight training develops",
+      "Consider what the article calls 'the most functional strength'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d349c1f3-31a0-4ad4-b297-73d58677652a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Which exercise is described as teaching 'one of the most fundamental human movements'?",
+    "question_type": "standalone",
+    "options": [
+      "Push-ups",
+      "Bodyweight squats",
+      "Lunges",
+      "The funky chicken dance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically states that bodyweight squats teach one of the most fundamental human movements, as you squat every time you sit down and stand up.",
+    "hints": [
+      "Think about movements you do throughout your daily life",
+      "Consider which exercise mimics sitting and standing"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "31ccb609-2beb-4ead-9b2f-0328946a73c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "According to the article, what should you focus on if you can't maintain proper breathing during planks?",
+    "question_type": "standalone",
+    "options": [
+      "Hold your breath and power through",
+      "Count out loud to ensure you're breathing",
+      "Do the plank for longer to build endurance",
+      "Practice interpretive dance breathing"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article suggests counting out loud during core work like planks because if you can count, you're breathing. It specifically mentions trying '1-Mississippi, 2-Mississippi...'",
+    "hints": [
+      "Look for the breathing tip specifically related to planks",
+      "Consider what counting out loud proves about your breathing"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d2bcc569-a111-48f0-ad01-da8c441a7d2e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What does the article recommend for creating extra resistance in bodyweight exercises?",
+    "question_type": "standalone",
+    "options": [
+      "Moving faster through the exercises",
+      "Using a backpack with books for added weight",
+      "Doing exercises on one foot only",
+      "Wearing a weighted tutu for style points"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically mentions that 'a backpack with books adds resistance' as one of the creative ways to enhance bodyweight training without equipment.",
+    "hints": [
+      "Look for creative equipment alternatives mentioned in the article",
+      "Consider household items that can add weight"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6f2e9b48-78b9-4b52-a113-6c43621bdd09",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What is the correct push-up progression path from easiest to hardest?",
+    "question_type": "standalone",
+    "options": [
+      "Knee push-ups → Wall push-ups → Incline push-ups → Full push-ups → Diamond push-ups",
+      "Wall push-ups → Incline push-ups → Knee push-ups → Full push-ups → Diamond push-ups",
+      "Incline push-ups → Wall push-ups → Full push-ups → Knee push-ups → Diamond push-ups",
+      "Diamond push-ups → Full push-ups → Knee push-ups → Incline push-ups → Wall push-ups"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article clearly states the progression path: Wall push-ups (easiest), Incline push-ups, Knee push-ups, Full push-ups, Diamond push-ups (advanced).",
+    "hints": [
+      "Find the progression path listed in the push-up section",
+      "Consider which version requires the least strength to perform"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "13b0330f-8258-4067-a505-22428240de51",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Which combination represents the 'Big Five' bodyweight movements mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Push-ups, squats, lunges, planks, jumping jacks",
+      "Push-ups, squats, lunges, planks, glute bridges",
+      "Squats, lunges, burpees, mountain climbers, planks",
+      "Push-ups, squats, lunges, planks, jazz hands"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically identifies the 'Big Five' bodyweight movements as: Push-ups, Squats, Lunges, Planks, and Glute Bridges.",
+    "hints": [
+      "Look for the section titled 'The Big Five Bodyweight Movements'",
+      "All five exercises should be fundamental movement patterns"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f85f778f-0d82-46de-8e07-5d567214ac08",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What are the correct ways to achieve progressive overload in bodyweight training?",
+    "question_type": "standalone",
+    "options": [
+      "Increase reps, slow down tempo, add pauses, progress to harder variations",
+      "Only increase reps and reduce rest periods",
+      "Add weights immediately and increase speed",
+      "Do the same exercises but with jazz music playing"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article lists five ways to progressively overload bodyweight exercises: increase reps, slow down tempo, reduce rest, add pauses, and progress to harder variations.",
+    "hints": [
+      "Find the section on progressive overload without weights",
+      "Consider multiple ways to make exercises more challenging"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c2866082-3af8-4143-93a8-52a5bcd597bd",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What was Sarah's initial reaction to the idea of doing wall push-ups?",
+    "question_type": "passage_based",
+    "options": [
+      "She was excited to try them immediately",
+      "She was skeptical but willing to try",
+      "She refused to do them",
+      "She asked if they counted as interpretive dance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states that Sarah 'placed her hands on the wall, skeptical but willing' when Marcus showed her wall push-ups.",
+    "hints": [
+      "Look at Sarah's attitude when Marcus first demonstrated wall push-ups",
+      "Consider her emotional state before trying the exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22424f4c-2dbe-4e65-b581-58a1acd1aad5"
+  },
+  {
+    "id": "b38111c0-50d4-4a39-a64d-ceca07aaf9e6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What important shift in perspective did Sarah experience regarding push-ups?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized push-ups were impossible for her",
+      "She saw push-ups as a progression she was already part of rather than an impossible standard",
+      "She decided to avoid all upper body exercises",
+      "She became convinced push-ups were secretly a form of meditation"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage shows that 'For the first time, Sarah saw push-ups not as an impossible standard but as a progression she was already part of.'",
+    "hints": [
+      "Focus on how Sarah's view of push-ups changed during the interaction",
+      "Consider the difference between seeing something as impossible versus achievable"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22424f4c-2dbe-4e65-b581-58a1acd1aad5"
+  },
+  {
+    "id": "80344190-3616-470d-9915-9ba849f502e7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What did Marcus mean when he told Sarah 'There's no timeline but yours'?",
+    "question_type": "passage_based",
+    "options": [
+      "Sarah should rush through the progressions as fast as possible",
+      "Sarah should progress at her own pace without external pressure",
+      "Sarah should never progress beyond wall push-ups",
+      "Sarah should synchronize her workouts with the lunar calendar"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus was emphasizing that Sarah should progress at her own individual pace, without feeling pressured by arbitrary timelines or comparing herself to others.",
+    "hints": [
+      "Consider what having 'your own timeline' means for personal progress",
+      "Think about the pressure beginners often feel to advance quickly"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22424f4c-2dbe-4e65-b581-58a1acd1aad5"
+  },
+  {
+    "id": "0a697c07-06b1-4570-9a3f-f63c0cacbd49",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What action did Sarah take at the end of the passage that showed her newfound confidence?",
+    "question_type": "passage_based",
+    "options": [
+      "She signed up for a gym membership",
+      "She scheduled wall push-ups into her phone for tomorrow",
+      "She decided to become a personal trainer",
+      "She started a push-up flash mob in the gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage ends with Sarah scheduling wall push-ups into her phone for tomorrow, which the narrator describes as 'her first self-programmed workout.'",
+    "hints": [
+      "Look at the very end of the passage for Sarah's concrete action",
+      "Consider what this action represents for her fitness journey"
+    ],
+    "image_urls": [],
+    "passage_set_id": "22424f4c-2dbe-4e65-b581-58a1acd1aad5"
+  },
+  {
+    "id": "3cdab12d-a8f4-40dc-a316-947470bb1710",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What tempo method did Emma suggest to Mike for push-ups?",
+    "question_type": "passage_based",
+    "options": [
+      "One second down, three seconds up",
+      "Three seconds down, one second hold, two seconds up",
+      "Five seconds in each direction",
+      "Doing push-ups to the beat of 'Baby Shark'"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma told Mike she was trying 'three seconds down, one second hold, two seconds up' for building actual strength.",
+    "hints": [
+      "Look for the specific tempo Emma described",
+      "Focus on the numbers she mentioned for each phase of the movement"
+    ],
+    "image_urls": [],
+    "passage_set_id": "c4d297f0-f4b2-4a79-a695-aa9585e9ccd2"
+  },
+  {
+    "id": "f21fd917-a517-4a21-9ea2-12e169d175e5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What important lesson did Mike learn about quality versus quantity?",
+    "question_type": "passage_based",
+    "options": [
+      "Fifteen fast push-ups are always better than eight slow ones",
+      "Eight perfect, slow push-ups left him more fatigued than fifteen sloppy ones",
+      "Speed is the most important factor in push-ups",
+      "The number of push-ups determines the level of fabulousness achieved"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states that 'Eight perfect, slow push-ups left him more fatigued than his fifteen sloppy ones,' teaching Mike about the value of quality over quantity.",
+    "hints": [
+      "Compare how Mike felt after his fast push-ups versus the slow ones",
+      "Consider which method was actually more effective"
+    ],
+    "image_urls": [],
+    "passage_set_id": "c4d297f0-f4b2-4a79-a695-aa9585e9ccd2"
+  },
+  {
+    "id": "5ce2e638-0a1b-401d-9f6c-278a4411b08f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What principle did Emma's trainer teach her about effective training?",
+    "question_type": "passage_based",
+    "options": [
+      "Rep count is the only thing that matters",
+      "Time under tension beats rep count every time",
+      "Speed is more important than control",
+      "Push-ups should always be done while reciting poetry"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma shared that her trainer taught her 'time under tension beats rep count every time,' which is why the slow, controlled push-ups were more effective.",
+    "hints": [
+      "Look for what Emma said her trainer taught her",
+      "Consider the principle that explains why slow push-ups were harder"
+    ],
+    "image_urls": [],
+    "passage_set_id": "c4d297f0-f4b2-4a79-a695-aa9585e9ccd2"
+  },
+  {
+    "id": "887ab7a6-4969-45d5-a8b7-41710735f3cb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What realization did Mike have about going back to basics?",
+    "question_type": "passage_based",
+    "options": [
+      "It was a waste of time",
+      "Going back to basics was actually moving forward",
+      "He should have stuck with his original method",
+      "Basics are only for people who enjoy wearing leg warmers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage concludes with Mike realizing that 'going back to basics was actually moving forward,' understanding that sometimes you need to step back to progress properly.",
+    "hints": [
+      "Look at Mike's final realization in the passage",
+      "Consider what this says about the value of foundational work"
+    ],
+    "image_urls": [],
+    "passage_set_id": "c4d297f0-f4b2-4a79-a695-aa9585e9ccd2"
+  },
+  {
+    "id": "ced7a24b-8cbc-4e63-987f-8968d0bd5a8c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How did Riley turn their apartment furniture into exercise equipment?",
+    "question_type": "passage_based",
+    "options": [
+      "Used the couch for incline push-ups and coffee table for tricep dips",
+      "Only used the couch for all exercises",
+      "Rearranged everything to create more space",
+      "Painted motivational quotes on every piece of furniture"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Riley demonstrated using 'the couch as a bench for incline push-ups' and 'tricep dips on the coffee table,' showing how furniture can become exercise equipment.",
+    "hints": [
+      "Look for the specific pieces of furniture Riley used",
+      "Consider how each piece was repurposed for exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27ed15fd-5312-46ff-a5f2-142b34529081"
+  },
+  {
+    "id": "8930abe1-9d75-4ea0-957b-10679588c096",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What method did Riley use to make bodyweight exercises more challenging without equipment?",
+    "question_type": "passage_based",
+    "options": [
+      "Adding more reps",
+      "Going unilateral (removing one point of contact)",
+      "Moving faster",
+      "Doing exercises while humming show tunes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley showed Casey how to make exercises harder by 'going unilateral,' explaining 'just remove one point of contact' as demonstrated with single-leg glute bridges.",
+    "hints": [
+      "Look for Riley's technique to increase difficulty",
+      "Consider what 'unilateral' means in exercise terms"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27ed15fd-5312-46ff-a5f2-142b34529081"
+  },
+  {
+    "id": "020e65eb-001b-438b-9eae-8c08bc22617f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What creative exercises did Riley and Casey discover using their rooms?",
+    "question_type": "passage_based",
+    "options": [
+      "Only push-ups and squats",
+      "Doorframe rows using a towel, pike push-ups with feet on bed, wall sits while reading",
+      "Just cardio exercises",
+      "Exclusively dancing and interpretive movement"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage lists their creative workout including 'doorframe rows using a towel, pike push-ups with feet on the bed, wall sits while reading,' showing how any surface can become equipment.",
+    "hints": [
+      "Look for the list of creative exercises they developed",
+      "Consider how they used different parts of their rooms"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27ed15fd-5312-46ff-a5f2-142b34529081"
+  },
+  {
+    "id": "9008ed85-6fab-4970-87aa-32301f8a67f6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What important perspective shift occurred for Riley and Casey by the end of their workout?",
+    "question_type": "passage_based",
+    "options": [
+      "They decided they needed expensive gym equipment",
+      "Budget constraints had become creative opportunity",
+      "They realized home workouts were inferior",
+      "They decided to start a furniture moving business"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage concludes with Riley reflecting that 'Budget constraints had become creative opportunity,' showing how limitations can inspire innovation.",
+    "hints": [
+      "Look at the final line of the passage",
+      "Consider how their attitude toward their situation changed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27ed15fd-5312-46ff-a5f2-142b34529081"
+  },
+  {
+    "id": "fa61efd6-25ff-4cd8-b12c-7052f7335794",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Cranking your neck back to look up during squats is a correct form technique that helps maintain proper spinal alignment.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. Cranking your neck back during squats creates strain and breaks neutral spine alignment. You should keep your neck neutral, as if holding a tennis ball between your chin and chest, and look at a spot about 6 feet in front of you on the floor.",
+    "hints": [
+      "Think about what 'neutral spine' means for your entire spine, including your neck",
+      "Consider where your head should be positioned relative to the rest of your spine"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a8d3c521-31c2-4803-a1ee-3ab23b0ec11d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "When doing push-ups, your elbows should create a 'T' shape with your body for maximum power.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. Elbows flaring out to create a 'T' shape puts dangerous stress on the shoulder joints. Instead, keep elbows at about 45 degrees from your body, creating an 'arrow' shape when viewed from above.",
+    "hints": [
+      "Think about shoulder joint safety and injury risk",
+      "Consider which position would put less stress on your shoulders"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "927857cc-d7f1-4fb9-8444-675c8dbc195d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Perfect form with lighter weight will always build more muscle and strength than sloppy form with heavy weight.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is true. Perfect form ensures you're targeting the intended muscles effectively and safely, while sloppy form with heavy weight often leads to compensation patterns, reduced muscle activation, and increased injury risk.",
+    "hints": [
+      "Think about which approach leads to better muscle activation",
+      "Consider the long-term benefits of consistent good form"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "737e1d3e-0978-4c50-a449-6f4f11fedd8f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Knee valgus collapse (knees caving inward) during squats is primarily caused by tight hip flexors and requires immediate weight reduction.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This is false. While tight hip flexors can contribute, knee valgus is primarily caused by weak glutes and poor movement patterns. The solution involves glute activation exercises, proper cueing ('knees out'), and yes, often reducing weight to practice correct form.",
+    "hints": [
+      "Think about which muscles are responsible for keeping knees tracking properly",
+      "Consider what needs to be strengthened rather than just stretched"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "83886682-41b7-4bbd-a748-b0ada534a830",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "You notice your shoulders creeping up toward your ears during lat pulldowns. What's the best immediate fix?",
+    "question_type": "standalone",
+    "options": [
+      "Add more weight to force proper form",
+      "Actively pull shoulders down and back before each rep",
+      "Speed up the movement to power through",
+      "Do shoulder shrugs between sets to warm up the traps"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The best fix is to actively pull your shoulders down and back before each rep. This engages the correct muscles (lats and mid-back) and prevents the upper traps from taking over. You should also reduce weight if shrugging continues.",
+    "hints": [
+      "Think about which muscles should be working during a lat pulldown",
+      "Consider what 'shoulders down and back' would accomplish"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "db51d4c3-fbfa-46ed-90b9-4648d20d6a3d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "During overhead presses, you notice excessive lower back arch. What should you focus on first?",
+    "question_type": "standalone",
+    "options": [
+      "Lifting heavier weight to build core strength",
+      "Engaging your core and slightly tucking your pelvis",
+      "Leaning forward more to counterbalance",
+      "Practicing yoga poses to become more flexible like a pretzel"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Focus on engaging your core like someone's about to punch you in the stomach and slightly tucking your pelvis (belt buckle to belly button). This prevents excessive lumbar extension and protects your lower back.",
+    "hints": [
+      "Think about what creates that excessive arch and how to counteract it",
+      "Consider which muscles need to engage to support your spine"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b34de3a8-4c88-41e8-ac8e-5204bdf78d72",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "You're experiencing wrist pain during push-ups. What's the most practical solution?",
+    "question_type": "standalone",
+    "options": [
+      "Push through the pain to build wrist strength",
+      "Spread fingers wide, keep wrists neutral, or use push-up handles",
+      "Only do push-ups on your knuckles from now on",
+      "Switch to doing push-ups while juggling tennis balls"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The best approach is to spread your fingers wide for better stability, keep wrists in a neutral position, or use push-up handles to maintain proper wrist alignment. This prevents injury while allowing you to continue training.",
+    "hints": [
+      "Think about wrist positioning and what tools might help",
+      "Consider how to maintain proper alignment while reducing stress"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f30f2132-fa74-4286-8eb5-f042b14cfa9f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "When should you immediately reduce weight during an exercise?",
+    "question_type": "standalone",
+    "options": [
+      "When someone stronger is watching you",
+      "When your form breaks down or you feel joint pain",
+      "When you complete all planned reps successfully",
+      "When you realize you're secretly a superhero and need to hide your powers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "You should immediately reduce weight when your form breaks down or you experience joint pain (not muscle burn). These are signs that the load exceeds your current capacity to move safely and effectively.",
+    "hints": [
+      "Think about the difference between muscle fatigue and form breakdown",
+      "Consider what signals indicate the weight is too heavy for safe movement"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c91777c7-6477-489c-8e08-4c8aa95bc2eb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What is the correct sequence for the form-fixing action plan described in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Film yourself → Add heavy weight → Ignore mirrors → Increase speed",
+      "Awareness phase → Correction phase → Automation phase",
+      "Automation phase → Awareness phase → Correction phase",
+      "Heavy weight phase → Light weight phase → Bodyweight phase"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The correct sequence is Awareness phase (weeks 1-2: film yourself, use light/bodyweight), Correction phase (weeks 3-4: add light weight, use mirrors, get form checks), then Automation phase (week 5+: gradually increase weight while maintaining form).",
+    "hints": [
+      "Think about the logical progression from identifying problems to fixing them",
+      "Consider which phase should come first: awareness or correction"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a4220592-e35e-493a-b8d5-5a39dea5cd09",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Which combination of actions should you take when you notice form breaking down during a set?",
+    "question_type": "standalone",
+    "options": [
+      "Continue the set + Increase weight + Ignore the problem",
+      "Stop immediately + Reduce weight by 20-30% + Focus on the problematic area",
+      "Film yourself + Add more reps + Use heavier weight",
+      "Keep going + Speed up the movement + Hold your breath"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "When form breaks down, you should immediately reduce weight by 20-30%, focus on correcting the problematic area for 2-3 sets, and only increase weight when form becomes automatic again. Never push through bad form.",
+    "hints": [
+      "Think about safety and injury prevention as the top priority",
+      "Consider what percentage reduction is mentioned in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a3bb6e32-3a00-4669-b88b-c6fbc1ba6ff0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to the article, which breathing pattern should you follow during strength exercises?",
+    "question_type": "standalone",
+    "options": [
+      "Hold breath throughout the entire set",
+      "Inhale during work phase + Exhale during release phase",
+      "Exhale during work phase + Inhale during release phase",
+      "Breathe randomly whenever you remember"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The correct pattern is to exhale during the 'work' phase (pushing, pulling, lifting) and inhale during the 'release' phase (lowering, returning). This maintains oxygen flow while supporting proper core engagement.",
+    "hints": [
+      "Think about when your muscles are working hardest",
+      "Consider which phase requires more stability and core engagement"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a085a667-f4ad-4c26-8781-18ac7d4fe3e9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What was Jordan's main issue with their form-checking approach?",
+    "question_type": "passage_based",
+    "options": [
+      "They weren't filming from enough angles",
+      "They were trying to perfect everything at once instead of focusing on one thing",
+      "They were using too much weight",
+      "They were following the wrong exercise videos"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan was overwhelmed trying to perfect their neck position, knee tracking, and depth all at once. Alex advised focusing on just one thing per session (knees out) rather than trying to fix everything simultaneously.",
+    "hints": [
+      "Look at what Alex suggested Jordan should focus on",
+      "Consider how many things Jordan was trying to fix at the same time"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ad6859a0-a03f-4854-9f51-709ad6fcff7e"
+  },
+  {
+    "id": "0076fe3c-0b6b-4a33-bc68-6c73c1e553ab",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to Alex's advice to Jordan, what's more valuable for learning?",
+    "question_type": "passage_based",
+    "options": [
+      "Analyzing 2 reps for an hour",
+      "Doing 20 reps at 80% perfect form",
+      "Filming every single rep",
+      "Reading more form articles online"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex told Jordan that 'you learn more from doing 20 reps at 80% perfect than from analyzing 2 reps for an hour,' emphasizing the value of practice over analysis paralysis.",
+    "hints": [
+      "Think about Alex's philosophy on learning through doing",
+      "Consider what Alex said about the balance between analysis and practice"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ad6859a0-a03f-4854-9f51-709ad6fcff7e"
+  },
+  {
+    "id": "38284980-d494-44cb-a349-f7b9129283fe",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What was Jordan's emotional state regarding their form analysis?",
+    "question_type": "passage_based",
+    "options": [
+      "Confident and relaxed",
+      "Frustrated and overwhelmed",
+      "Excited and motivated",
+      "Indifferent and bored"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan was clearly frustrated, having been filming for twenty minutes and finding something wrong with every attempt. They were overwhelmed by trying to perfect multiple aspects of form simultaneously.",
+    "hints": [
+      "Look at how Jordan was described at the beginning of the passage",
+      "Consider their reaction to constantly finding problems with their form"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ad6859a0-a03f-4854-9f51-709ad6fcff7e"
+  },
+  {
+    "id": "5f2bc6e3-f581-4915-8e6e-7fa95f80cb2e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "How long had Jordan been spending on form analysis before Alex intervened?",
+    "question_type": "passage_based",
+    "options": [
+      "Five minutes",
+      "Ten minutes",
+      "Twenty minutes",
+      "One hour"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex noticed that Jordan 'had been filming for twenty minutes' when they observed Jordan's frustration with trying to perfect their form.",
+    "hints": [
+      "Look for the specific time mentioned when Alex first spoke to Jordan",
+      "Find the exact duration mentioned in the passage"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ad6859a0-a03f-4854-9f51-709ad6fcff7e"
+  },
+  {
+    "id": "c7ac52e2-783d-4bf3-a64a-919e59a2c783",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What were the two main form problems with Sarah's push-ups?",
+    "question_type": "passage_based",
+    "options": [
+      "Slow speed and shallow range of motion",
+      "Elbows flared wide and lower back sagging",
+      "Hands too close together and neck craned forward",
+      "Breathing too fast and shaking arms"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's push-ups had 'elbows flared wide, creating that classic T shape' and 'her lower back was sagging dramatically,' which were causing shoulder pain and back discomfort.",
+    "hints": [
+      "Look at how Sarah's form was described when Mike first observed her",
+      "Identify what was causing her shoulder and back pain"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ddad9679-1ceb-43e5-9e09-c436c81a0b82"
+  },
+  {
+    "id": "4706961b-7b08-4e34-b16a-5a8e8efc18c7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What visual cue did Mike give Sarah for proper elbow positioning?",
+    "question_type": "passage_based",
+    "options": [
+      "Make a T shape with your arms",
+      "Make an arrow shape instead of a T",
+      "Keep your elbows completely straight",
+      "Point your elbows toward the ceiling"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike told Sarah to 'make an arrow shape instead of a T' to correct her elbow positioning, which reduces shoulder strain and improves chest engagement.",
+    "hints": [
+      "Look for the specific shape comparison Mike used",
+      "Find what Mike suggested instead of the T shape"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ddad9679-1ceb-43e5-9e09-c436c81a0b82"
+  },
+  {
+    "id": "0b1b9139-3e02-4787-93e1-a59b874f67bb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to Mike, what was the difference in chest muscle activation between Sarah's original form and corrected form?",
+    "question_type": "passage_based",
+    "options": [
+      "From 10% to 50% activation",
+      "From 30% to 70% activation",
+      "From 50% to 90% activation",
+      "From 70% to 100% activation"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike explained that Sarah's 'ugly push-ups' were getting 'maybe 30% chest activation' while the corrected form with proper elbow positioning would give 'more like 70%' activation.",
+    "hints": [
+      "Look for the specific percentages Mike mentioned",
+      "Find the comparison between bad form and good form activation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ddad9679-1ceb-43e5-9e09-c436c81a0b82"
+  },
+  {
+    "id": "33dfc704-8b03-4ee5-958c-7fa4a4fdb013",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Why is Mike progressing faster at 35 than he did at 25?",
+    "question_type": "passage_based",
+    "options": [
+      "He has more time to work out",
+      "He's using heavier weights now",
+      "He's obsessive about proper form now",
+      "He has a better gym membership"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike attributed his faster progress at 35 to being 'obsessive about form' now, after learning from past injuries when he ignored form in his younger years.",
+    "hints": [
+      "Look for what Mike says changed about his approach to training",
+      "Find what Mike is now 'obsessive' about"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ddad9679-1ceb-43e5-9e09-c436c81a0b82"
+  },
+  {
+    "id": "bd90de00-985d-4ab8-b662-1daed04570ff",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "How long was Casey out of the gym before the deadlift scene?",
+    "question_type": "passage_based",
+    "options": [
+      "One week",
+      "Two weeks",
+      "Three weeks",
+      "One month"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "When the trainer asked Casey how long they were out after their last heavy deadlift session, Casey mumbled 'Three weeks,' indicating they had been away from training for that period.",
+    "hints": [
+      "Look for the specific time period Casey mentioned",
+      "Find Casey's response when asked about their time away from the gym"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dfb4babd-4dd2-4205-b547-8fee0ff2620c"
+  },
+  {
+    "id": "ce901620-aab6-4568-976c-e7784fbcff46",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What was Casey's initial reaction to reducing the weight?",
+    "question_type": "passage_based",
+    "options": [
+      "Excitement and gratitude",
+      "Face flushing and protesting they did this weight before",
+      "Complete agreement with the trainer",
+      "Asking for even lighter weight"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey's face flushed and they protested 'But I did this weight last month!' showing initial resistance and embarrassment about reducing the load.",
+    "hints": [
+      "Look at Casey's immediate emotional and verbal response",
+      "Find what Casey said when the trainer suggested dropping the weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dfb4babd-4dd2-4205-b547-8fee0ff2620c"
+  },
+  {
+    "id": "8ee13f06-d2a5-406f-bd8a-bf1451340cad",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What muscles did Casey finally feel working with proper form?",
+    "question_type": "passage_based",
+    "options": [
+      "Lower back and shoulders",
+      "Hamstrings and glutes",
+      "Quadriceps and calves",
+      "Arms and chest"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "With proper form and lighter weight, Casey said 'I can actually feel my hamstrings and glutes working,' which are the target muscles for deadlifts rather than relying on the lower back.",
+    "hints": [
+      "Look for what Casey specifically mentioned feeling with the corrected form",
+      "Find which muscles the trainer said should be doing the work"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dfb4babd-4dd2-4205-b547-8fee0ff2620c"
+  },
+  {
+    "id": "333d0fed-817d-4b37-b535-7bdecc1c01fb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What lesson did the trainer emphasize about restarting after breaks?",
+    "question_type": "passage_based",
+    "options": [
+      "Always start with maximum weight to get back quickly",
+      "Check your ego, perfect your form, then build back up",
+      "Take longer breaks to ensure full recovery",
+      "Switch to completely different exercises"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The trainer emphasized 'Check your ego, perfect your form, then build back up' as the approach every time someone restarts training. This prevents injury and ensures proper muscle development rather than rushing back to previous weights.",
+    "hints": [
+      "Look for the trainer's final advice about the restart process",
+      "Find the three-step approach the trainer recommended"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dfb4babd-4dd2-4205-b547-8fee0ff2620c"
+  },
+  {
+    "id": "f28b1f45-da63-4a40-9f82-307c4e7765de",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Exercise modifications are designed to make workouts accessible for your current fitness level and body limitations.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Exercise modifications are tools that adjust exercises to match your current abilities, mobility, and limitations, making fitness accessible and safe for everyone.",
+    "hints": [
+      "Think about why someone might need to adjust an exercise",
+      "Consider whether modifications help or hinder progress"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cbd57804-fdbf-45c3-a8cc-153168c3db78",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Wall push-ups are considered a legitimate exercise progression, not just a beginner's consolation prize.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Wall push-ups are part of a systematic progression that builds the same movement patterns and muscle groups as regular push-ups, making them a valuable exercise in their own right.",
+    "hints": [
+      "Consider whether wall push-ups work the same muscles as regular push-ups",
+      "Think about the concept of exercise progression"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "18d3a2cd-574e-4d45-b5a0-b3c2f8a5c8b6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "You should always perform the hardest version of an exercise possible to get maximum benefits.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The best exercise version is one you can perform with perfect form for the target rep range. Harder isn't always better if it compromises form or safety.",
+    "hints": [
+      "Think about the relationship between exercise difficulty and form quality",
+      "Consider what happens when you can't maintain proper technique"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "33ae91f0-352e-40dd-b7e5-4a6ac2628a1c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The SAFE method helps you determine appropriate exercise modifications by evaluating multiple factors.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The SAFE method (Stability, Angle, Form, Effort) provides a systematic approach to evaluate and create appropriate exercise modifications for your current abilities.",
+    "hints": [
+      "Remember what each letter in SAFE stands for",
+      "Think about how these factors work together for safe exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "186731c4-73ed-4e90-94ae-0947bdac9546",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "When experiencing joint pain during an exercise, the best approach is to:",
+    "question_type": "standalone",
+    "options": [
+      "Push through the pain to build tolerance",
+      "Skip or substitute the exercise entirely",
+      "Reduce the weight and continue",
+      "Do jumping jacks instead because they cure everything"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Joint pain (not muscle burn) is a signal to stop. You should skip the exercise or find a pain-free substitute rather than risk injury by continuing.",
+    "hints": [
+      "Distinguish between muscle burn and joint pain",
+      "Consider what joint pain signals about potential injury risk"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0d804909-0267-4a94-83eb-185ebf415dc5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Which scenario best demonstrates smart modification use?",
+    "question_type": "standalone",
+    "options": [
+      "Doing sloppy full push-ups instead of perfect knee push-ups",
+      "Using incline push-ups when you can only do 3 regular push-ups with good form",
+      "Avoiding all upper body exercises if push-ups are too hard",
+      "Doing push-ups on a trampoline while juggling"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Smart modification means finding the version that allows you to complete your target reps (8-15) with perfect form, then progressing systematically.",
+    "hints": [
+      "Think about the relationship between rep count and form quality",
+      "Consider which option maintains the exercise benefits while being appropriate"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cd8626e0-de84-4541-9830-e023bf8eafcb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "For someone with limited shoulder mobility, the best squat modification would be:",
+    "question_type": "standalone",
+    "options": [
+      "Overhead squats to stretch the shoulders",
+      "Box squats or goblet squats that don't require overhead positioning",
+      "Avoiding squats completely",
+      "Squats while doing the chicken dance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Box squats and goblet squats maintain the squat movement pattern while accommodating shoulder limitations by not requiring overhead positioning.",
+    "hints": [
+      "Consider which squat variations don't involve the shoulders",
+      "Think about maintaining the primary movement while working around limitations"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4a89fd34-d06c-4541-913e-8506679b6caa",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The best time to progress from a modified exercise to a harder version is when:",
+    "question_type": "standalone",
+    "options": [
+      "You're bored with the current version",
+      "You can perform 12-15 perfect reps of the current version",
+      "Your gym buddy is doing the harder version",
+      "Mercury is in retrograde and your horoscope says 'level up'"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Progression should be based on mastery of the current level, demonstrated by being able to perform 12-15 reps with perfect form consistently.",
+    "hints": [
+      "Think about what indicates you've mastered a movement level",
+      "Consider the relationship between rep count and readiness to progress"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2e3d98d4-cc5c-4b53-9b86-2140f981690c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What is the correct sequence for progressing squat difficulty?",
+    "question_type": "standalone",
+    "options": [
+      "Jump squats → Box squats → Bodyweight squats → Chair sits",
+      "Chair sits → Box squats → Bodyweight squats → Weighted squats",
+      "Bodyweight squats → Chair sits → Box squats → Jump squats",
+      "Hopping on one foot → Interpretive dance squats → Quantum squats"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Proper progression starts with the most supported version (chair sits) and gradually removes assistance while maintaining good form.",
+    "hints": [
+      "Think about which version provides the most support",
+      "Consider how to systematically reduce assistance"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "77c85648-903b-42a6-91d7-9ae768ca7183",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "According to the article, which combination represents the four levels of exercise modifications?",
+    "question_type": "standalone",
+    "options": [
+      "Reduced range, Assisted versions, Adjusted leverage, Alternative equipment",
+      "Easier, Moderate, Hard, Impossible",
+      "Beginner, Intermediate, Advanced, Expert",
+      "Baby level, Toddler level, Adult level, Superhero level"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The four modification levels are: reduced range of motion, assisted versions, adjusted leverage, and alternative equipment - each serving different needs and abilities.",
+    "hints": [
+      "Think about the systematic approach to modifying exercises",
+      "Consider the different ways you can make an exercise more accessible"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e9ec5849-e7cb-4141-a915-ac7129db36e9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The most important principle when using exercise modifications is prioritizing perfect form over attempting the most advanced version you can barely complete.",
+    "question_type": "standalone",
+    "options": [
+      "Reduced range → Adjusted leverage → Alternative equipment",
+      "Perfect form → Appropriate challenge → Systematic progression",
+      "Fast completion → Heavy weight → Advanced movements",
+      "Looking cool → Impressing others → Social media worthy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The key principles are maintaining perfect form, finding an appropriate challenge level, and progressing systematically through modifications rather than rushing to advanced versions.",
+    "hints": [
+      "Consider what makes exercise modifications effective and safe",
+      "Think about the long-term approach to fitness development"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a8544d1f-d95b-4425-9b72-070516325024",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "In Jordan's story, what was the main issue preventing them from doing regular push-ups successfully?",
+    "question_type": "passage_based",
+    "options": [
+      "Lack of motivation and giving up too easily",
+      "Arms shaking violently and lower back pain indicating poor form",
+      "Not having the right equipment or gym membership",
+      "Distraction from Alex arriving during the workout"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan experienced arm shaking after just two reps and lower back pain, which are clear indicators that regular push-ups were too advanced for their current strength level and form was breaking down.",
+    "hints": [
+      "Focus on the physical symptoms Jordan experienced",
+      "Consider what these symptoms indicate about exercise difficulty"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dd941cc8-76e7-4f52-a62b-cb0aadc7ec44"
+  },
+  {
+    "id": "e54a1d1b-08ff-41bf-8c85-135d68d42c8b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What progression strategy did Alex demonstrate to help Jordan?",
+    "question_type": "passage_based",
+    "options": [
+      "Starting with wall push-ups and systematically progressing through incline levels",
+      "Doing more regular push-ups until strength improved",
+      "Switching to completely different exercises like cardio",
+      "Using heavier weights to build strength faster"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex showed Jordan a systematic progression starting with wall push-ups for two months, then moving to incline push-ups on the couch arm, demonstrating proper modification strategy.",
+    "hints": [
+      "Look at Alex's personal experience and advice",
+      "Consider the step-by-step approach Alex recommended"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dd941cc8-76e7-4f52-a62b-cb0aadc7ec44"
+  },
+  {
+    "id": "a7507c50-f9fa-4265-abbf-f8e56bb6cf55",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was Jordan's key realization about the incline push-ups on the couch?",
+    "question_type": "passage_based",
+    "options": [
+      "They were too easy and not worth doing",
+      "They felt their chest muscles working without back pain",
+      "They needed to add weight to make them effective",
+      "They should do them faster for better results"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan realized they could feel their chest muscles working during the incline push-ups without experiencing the back pain they had with regular push-ups, showing proper muscle engagement.",
+    "hints": [
+      "Focus on Jordan's immediate physical response to the modification",
+      "Consider what this indicates about proper exercise selection"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dd941cc8-76e7-4f52-a62b-cb0aadc7ec44"
+  },
+  {
+    "id": "f43b937d-10db-472c-998a-9ffa4d689893",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Alex's philosophy about exercise modifications emphasized that success is measured by:",
+    "question_type": "passage_based",
+    "options": [
+      "How quickly you can progress to advanced exercises",
+      "Finding the level where you can maintain good form and actually progress",
+      "Impressing others with the difficulty of your exercises",
+      "Avoiding any exercise that feels challenging"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex emphasized that it's not about impressing anyone, but about finding the appropriate level where you can maintain good form and make actual progress over time.",
+    "hints": [
+      "Consider Alex's final advice about what really matters",
+      "Think about the purpose of exercise modifications"
+    ],
+    "image_urls": [],
+    "passage_set_id": "dd941cc8-76e7-4f52-a62b-cb0aadc7ec44"
+  },
+  {
+    "id": "5a3e8f12-d96a-447e-866d-cdc05f3ba93d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "In Emma's story, what prompted her to modify the barbell squats from her workout plan?",
+    "question_type": "passage_based",
+    "options": [
+      "She didn't have access to a barbell at home",
+      "Her two-year-old was disrupting her workout",
+      "She had an aching knee from an old injury and a toddler to supervise",
+      "Her trainer told her barbell squats were too advanced"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma needed modifications due to both her aching knee from an old injury and the practical reality of supervising her two-year-old during her workout.",
+    "hints": [
+      "Consider both Emma's physical limitations and her life circumstances",
+      "Think about what made barbell squats impractical for her situation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea3975f1-2ca4-42cf-81b6-b2dc01a7ee42"
+  },
+  {
+    "id": "dd9f8212-d3f3-4467-b71c-ee8fc9d34ba4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What creative progression did Emma's trainer suggest for adding resistance to her squats?",
+    "question_type": "passage_based",
+    "options": [
+      "Buy heavier weights and ignore her limitations",
+      "Hold her child during squats to add weight and make it fun",
+      "Do more reps at a faster pace",
+      "Switch to completely different exercises"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The trainer suggested Emma could hold her child during squats to add resistance, turning her limitation into a creative solution that both provided weight and entertainment for her toddler.",
+    "hints": [
+      "Look at the trainer's suggestion for adding resistance later",
+      "Consider how the modification turned a limitation into an advantage"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea3975f1-2ca4-42cf-81b6-b2dc01a7ee42"
+  },
+  {
+    "id": "11f6b9fa-267e-4fd1-bf0e-2642b40e74b5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How did Emma's modification turn into a positive family experience?",
+    "question_type": "passage_based",
+    "options": [
+      "Her child went to sleep and left her alone to exercise",
+      "Her toddler copied her movements and later joined in for 'Mommy squats'",
+      "She was able to complete the exact workout as written",
+      "She hired a babysitter to watch her child"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's toddler started copying her sit-to-stand movements as a game, and later participated in 'Mommy squats' when Emma held the child for added resistance, turning exercise into family bonding time.",
+    "hints": [
+      "Think about how the child responded to Emma's exercise",
+      "Consider how the modification became inclusive rather than isolating"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea3975f1-2ca4-42cf-81b6-b2dc01a7ee42"
+  },
+  {
+    "id": "718d6094-f723-4914-bb58-93b03336caea",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was Taylor's initial concern about using exercise modifications for their arthritis?",
+    "question_type": "passage_based",
+    "options": [
+      "They were worried modifications wouldn't be effective for blood pressure",
+      "They thought modifications were 'cheating' compared to regular exercises",
+      "They didn't trust their physical therapist's advice",
+      "They preferred to avoid all exercise instead"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor questioned whether using modifications was 'cheating' because fitness videos show regular exercises, revealing a common misconception about the legitimacy of modified movements.",
+    "hints": [
+      "Focus on Taylor's concern about the modifications being legitimate",
+      "Consider their comparison to what they see in fitness videos"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"
+  },
+  {
+    "id": "92713690-c170-48dd-8536-bca0318bc5e0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How did Marcus, the physical therapist, reframe Taylor's perspective on modifications?",
+    "question_type": "passage_based",
+    "options": [
+      "He agreed that modifications were inferior to regular exercises",
+      "He explained that modifications are intelligent training for long-term health goals",
+      "He suggested Taylor should push through the pain",
+      "He recommended avoiding exercise altogether"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus reframed modifications as 'intelligent training' rather than cheating, emphasizing that they're designed for Taylor's specific needs and long-term health goals.",
+    "hints": [
+      "Look at Marcus's response to Taylor's concern about cheating",
+      "Consider how he positioned modifications in terms of smart training"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"
+  },
+  {
+    "id": "2141102f-baf1-4830-8d57-7c634de87d12",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was Taylor's immediate physical response to the resistance band modification?",
+    "question_type": "passage_based",
+    "options": [
+      "They experienced the same shoulder pain as with regular exercises",
+      "They felt their chest muscles working without joint pain",
+      "They found the exercise too easy to be beneficial",
+      "They couldn't complete any repetitions"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor was able to feel their chest muscles working during the resistance band exercise without experiencing the shoulder pain that prevented them from doing traditional push-up movements.",
+    "hints": [
+      "Focus on Taylor's surprised reaction to the resistance band exercise",
+      "Consider what this demonstrated about effective modifications"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"
+  },
+  {
+    "id": "e143a48d-e37a-4e43-be3d-ac23a193a1ad",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Marcus's approach to Taylor's exercise plan emphasized:",
+    "question_type": "passage_based",
+    "options": [
+      "Pushing through pain to build tolerance over time",
+      "Adapting exercises to work safely within current limitations",
+      "Avoiding all exercises that target the affected areas",
+      "Following standard fitness video routines regardless of limitations"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus focused on finding pain-free ranges of motion and adapting exercises to work effectively within Taylor's current limitations while still achieving the health benefits they needed.",
+    "hints": [
+      "Consider Marcus's overall philosophy about working with limitations",
+      "Think about how he balanced safety with effectiveness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"
+  },
+  {
+    "id": "cb758e00-9bb1-4460-9829-433cd9897ef0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The common theme across all three passage stories is that effective exercise modifications:",
+    "question_type": "passage_based",
+    "options": [
+      "Always require expensive equipment or professional supervision",
+      "Should only be temporary until you can do 'real' exercises",
+      "Provide appropriate challenge while maintaining safety and proper form",
+      "Are only necessary for people with medical conditions"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "All three stories demonstrate that effective modifications provide an appropriate level of challenge while prioritizing safety and proper form, whether for beginners, parents, or those with medical limitations.",
+    "hints": [
+      "Look for the common outcomes across Jordan's, Emma's, and Taylor's experiences",
+      "Consider what made each modification successful"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"
+  },
+  {
+    "id": "5404225e-e593-4ab6-a707-30366c4d4fc8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Daily weight fluctuations of 3-5 pounds are completely normal and don't reflect actual fitness progress.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Weight can swing 3-5 pounds daily due to water retention, digestive contents, muscle inflammation, time of day, and hormonal changes. These fluctuations don't indicate real changes in body composition.",
+    "hints": [
+      "Think about what causes temporary changes in body weight",
+      "Consider factors like sodium intake, hydration, and digestion timing"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0a3d51ce-5a48-4c87-87df-67a678e6bfc7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "BMI is an accurate measure of individual health and fitness progress because it accounts for muscle mass.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "BMI was created in the 1830s by a mathematician for population studies, not individual assessment. It doesn't distinguish between muscle and fat, often classifying muscular athletes as overweight or obese.",
+    "hints": [
+      "Consider what BMI actually measures versus what it doesn't account for",
+      "Think about how muscle and fat differ in density and health implications"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "645f3f93-735e-4c9c-ba4e-0821629d377b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Functional fitness improvements like carrying groceries easier are more meaningful than scale changes for daily life quality.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Functional improvements directly impact your ability to perform daily activities with less effort and fatigue. These real-world capabilities matter more for quality of life than arbitrary numbers on measuring devices.",
+    "hints": [
+      "Consider what actually improves your day-to-day living experience",
+      "Think about the practical benefits of getting stronger and fitter"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ff78cf07-ff2a-4837-91dd-5b0e3bd5a71c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Consistency in tracking workout completion is more valuable than perfect adherence to complex measurement protocols.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Tracking how many workouts you complete each month provides clear, actionable feedback about your consistency - the most important factor for long-term success. Even 69% consistency (missing 4 workouts per month) beats sporadic perfect measurement.",
+    "hints": [
+      "Consider which metric directly relates to building lasting habits",
+      "Think about what drives long-term fitness success"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "00740633-1e43-4448-ab98-3f4313a7e7b9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Your friend complains they've gained 2 pounds despite working out consistently for 3 weeks. What's the most helpful response?",
+    "question_type": "standalone",
+    "options": [
+      "Tell them to cut calories immediately since they're obviously eating too much",
+      "Suggest they focus on performance gains and how they feel rather than daily weight changes",
+      "Recommend weighing themselves multiple times daily to track patterns better",
+      "Advise them to switch to unicorn-powered workouts for magical weight loss"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Short-term weight fluctuations are normal and misleading. Focusing on strength gains, energy levels, and functional improvements provides more accurate and motivating feedback about real progress.",
+    "hints": [
+      "Consider what provides the most accurate picture of fitness progress",
+      "Think about which approach supports long-term success and mental health"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4e2235b6-fd63-4d16-854d-9a300329c113",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "You want to track body composition changes effectively. What's the best approach?",
+    "question_type": "standalone",
+    "options": [
+      "Weigh yourself daily and calculate weekly averages",
+      "Take monthly body measurements with a tape measure and progress photos",
+      "Use a high-tech body composition scale for precise fat percentage readings",
+      "Judge progress based on how many compliments you receive from strangers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Monthly tape measurements and progress photos provide reliable data about actual body composition changes without the daily noise of weight fluctuations. They show real changes in body shape and size.",
+    "hints": [
+      "Consider which method shows actual body shape changes",
+      "Think about what eliminates daily fluctuation noise while providing real data"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e8113767-d2b4-46e7-95de-c3fd8cbb0f79",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "A beginner wants to create a sustainable progress tracking system. What combination works best?",
+    "question_type": "standalone",
+    "options": [
+      "Daily weigh-ins, calorie counting, step tracking, and sleep monitoring",
+      "Monthly performance tests, consistency tracking, and one body measurement",
+      "Weekly body fat scans, daily mood logs, and hourly energy assessments",
+      "Tracking only Instagram likes on workout selfies and compliments received"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "A simple system focusing on what you can do (performance), how often you show up (consistency), and one physical change (measurement) is sustainable and provides meaningful feedback without overwhelming complexity.",
+    "hints": [
+      "Consider what's sustainable long-term without becoming obsessive",
+      "Think about which metrics directly relate to fitness improvements"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "44c6d79f-7af2-483e-9a68-af8ab39481f5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "You notice someone obsessively weighing themselves multiple times daily and basing their entire mood on the results. What's the concern?",
+    "question_type": "standalone",
+    "options": [
+      "Their scale might be broken and giving inaccurate readings",
+      "They're developing an unhealthy relationship with tracking that could harm their mental health",
+      "They need a more expensive scale with better precision",
+      "They should switch to weighing themselves only on days ending in 'y'"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Multiple daily weigh-ins with mood dependency indicates an unhealthy relationship with tracking. This behavior can lead to disordered eating patterns and poor mental health outcomes.",
+    "hints": [
+      "Consider the psychological impact of obsessive measurement behaviors",
+      "Think about what constitutes a healthy versus unhealthy relationship with tracking"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "246f7c0e-215e-4995-906d-11a61c48c843",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which sequence represents the most important fitness tracking priorities according to the 80/20 rule?",
+    "question_type": "standalone",
+    "options": [
+      "Perfect nutrition tracking → Expensive fitness tech → Advanced metrics → Showing up consistently",
+      "Showing up consistently → Progressive overload → Adequate protein → Sufficient sleep",
+      "Daily weigh-ins → Body fat percentage → Heart rate zones → Calorie precision",
+      "Unicorn tears → Magic scales → Fairy dust measurements → Reality checks"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 80/20 rule shows that 80% of results come from consistency, progressive overload, adequate protein, and sufficient sleep. These fundamentals matter more than complex tracking systems.",
+    "hints": [
+      "Consider which factors have the biggest impact on results",
+      "Think about what basics drive most fitness improvements"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5c598e90-913e-42e6-81a5-289a958c40f2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What combination of tracking methods provides the most complete picture of fitness progress?",
+    "question_type": "standalone",
+    "options": [
+      "Scale weight + BMI calculation + daily calorie burn estimates",
+      "Performance metrics + body measurements + functional improvements + consistency tracking",
+      "Social media likes + mirror selfies + compliments from friends",
+      "Astrological alignment + crystal energy readings + motivational quote consumption"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Combining what you can do (performance), how your body changes (measurements), how daily life improves (functional), and how often you show up (consistency) provides comprehensive feedback without misleading metrics.",
+    "hints": [
+      "Consider which combination covers all aspects of fitness improvement",
+      "Think about metrics that complement each other rather than duplicate information"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "88055516-06ee-41f8-bde8-4b1e40c30b11",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which measurement timing strategy provides the most accurate and sustainable progress data?",
+    "question_type": "standalone",
+    "options": [
+      "Performance tests monthly → Body measurements weekly → Weight daily → Progress photos hourly",
+      "Performance tests monthly → Body measurements monthly → Weight weekly → Progress photos monthly",
+      "Performance tests daily → Body measurements daily → Weight hourly → Progress photos continuously",
+      "Performance tests never → Body measurements via telepathy → Weight by feeling → Progress photos in dreams"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Monthly performance tests show real capability changes, monthly measurements reveal body composition shifts, weekly weight provides trends without daily noise, and monthly photos capture visual progress without obsession.",
+    "hints": [
+      "Consider what frequency provides useful data without overwhelming detail",
+      "Think about which timing allows real changes to occur between measurements"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f495fbac-41a8-4c38-8b03-9ab9bf575130",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Jordan stepped off the scale frustrated, having gained a pound despite consistent workouts. What was Alex's main point about progress tracking?",
+    "question_type": "passage_based",
+    "options": [
+      "Jordan should weigh themselves more frequently to get better data",
+      "Weight fluctuates based on many factors and performance gains matter more than scale numbers",
+      "Jordan needs to cut calories immediately to see scale results",
+      "The scale is broken and needs replacement"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex pointed out that Jordan had gained strength (10 pounds added to squat) and achieved new abilities (first full push-up) while clothes fit better, showing that performance and functional improvements are better progress indicators than scale weight.",
+    "hints": [
+      "Focus on what Alex emphasized about tracking real improvements",
+      "Consider what Jordan had actually achieved despite scale frustration"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71eae5d8-36f8-4593-b74a-f411944f5308"
+  },
+  {
+    "id": "e05cf4ec-51ad-4e59-9001-5cc371da80ae",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In Jordan's situation, what evidence showed they were actually making significant progress?",
+    "question_type": "passage_based",
+    "options": [
+      "They had perfect nutrition compliance for two weeks",
+      "They increased squat weight by 10 pounds and achieved their first full push-up",
+      "Their scale weight had increased by exactly one pound",
+      "They had been attending the gym consistently"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan's real progress was demonstrated by concrete performance improvements: adding 10 pounds to their squat and completing their first unassisted full push-up, which represent actual strength and capability gains.",
+    "hints": [
+      "Look for specific performance achievements mentioned in the passage",
+      "Consider what demonstrates actual physical capability improvements"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71eae5d8-36f8-4593-b74a-f411944f5308"
+  },
+  {
+    "id": "4fc4bfd8-b8f0-4ac8-a925-e8428e446a77",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What approach did Alex recommend Jordan adopt for better progress tracking?",
+    "question_type": "passage_based",
+    "options": [
+      "Daily weigh-ins with detailed food logging",
+      "Focus on workout performance and monthly waist measurements instead of daily scale checks",
+      "Purchase a more accurate digital scale",
+      "Track only weight changes and ignore other metrics"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex recommended tracking workout performance and measuring waist monthly while stopping daily weigh-ins, emphasizing that this approach creates less stress and provides better results by focusing on meaningful changes.",
+    "hints": [
+      "Consider what specific tracking changes Alex suggested",
+      "Think about what Alex said reduces stress while improving results"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71eae5d8-36f8-4593-b74a-f411944f5308"
+  },
+  {
+    "id": "f7cba58c-42b3-4eb6-be89-8ce51844672e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Alex's philosophy, what defines real progress?",
+    "question_type": "passage_based",
+    "options": [
+      "Consistent scale weight reduction over time",
+      "Perfect adherence to workout and nutrition plans",
+      "Being able to do things you couldn't do before",
+      "Matching fitness influencer transformation timelines"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex concluded that real progress is defined by increased capabilities - being able to do things you couldn't do before. Everything else is just 'data noise' compared to actual functional improvements.",
+    "hints": [
+      "Focus on Alex's final statement about what constitutes real progress",
+      "Consider what Alex called 'data noise' versus meaningful change"
+    ],
+    "image_urls": [],
+    "passage_set_id": "71eae5d8-36f8-4593-b74a-f411944f5308"
+  },
+  {
+    "id": "3413b0be-2d89-4dcc-bc63-bc61608da9d4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What dramatic improvement in Casey's pull-up strength did Taylor help them recognize?",
+    "question_type": "passage_based",
+    "options": [
+      "They progressed from 5-second hangs to 30-second hangs in three months",
+      "They reduced assistance needed from 60 pounds to 20 pounds",
+      "They completed their first unassisted pull-up",
+      "They improved from using three resistance bands to one band"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor calculated that Casey had gained 40 pounds of functional strength by progressing from needing 60 pounds of assistance to only 20 pounds of assistance for pull-ups over three months.",
+    "hints": [
+      "Look for the specific numbers Taylor used to demonstrate Casey's progress",
+      "Consider how Taylor calculated the strength improvement"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8516848a-bad4-4e06-ba9e-6e42445f29c3"
+  },
+  {
+    "id": "c1068df1-79ad-4e53-90b2-547ef3bf166c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why was Casey initially discouraged despite making significant strength gains?",
+    "question_type": "passage_based",
+    "options": [
+      "They weren't seeing improvements in their workout performance",
+      "They were focused solely on scale weight rather than functional capabilities",
+      "They had been training inconsistently for three months",
+      "They were comparing themselves to other gym members"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey was discouraged because they weren't seeing scale movement and were ready to quit, completely missing the significant strength and functional improvements they had made over three months of consistent training.",
+    "hints": [
+      "Consider what Casey was focused on that made them want to quit",
+      "Think about what type of progress Casey was ignoring"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8516848a-bad4-4e06-ba9e-6e42445f29c3"
+  },
+  {
+    "id": "790e5fdb-c44c-4aa7-860f-1e3abe5fac65",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What key insight did Taylor help Casey understand about tracking progress?",
+    "question_type": "passage_based",
+    "options": [
+      "Scale weight is the most important fitness metric to track",
+      "Performance improvements are more valuable than weight changes",
+      "Three months isn't enough time to see any meaningful progress",
+      "Pull-ups are the only exercise worth tracking"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor helped Casey realize that their body had become literally more capable, asking 'Isn't that worth more than what a scale says?' and emphasizing that performance doesn't lie while scale weight can be misleading.",
+    "hints": [
+      "Focus on Taylor's question about what matters more",
+      "Consider what Taylor said about performance versus scale readings"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8516848a-bad4-4e06-ba9e-6e42445f29c3"
+  },
+  {
+    "id": "9d72c423-6f95-429f-a739-23be3a0ef9cc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What shift in mindset did Taylor encourage for Casey's future progress tracking?",
+    "question_type": "passage_based",
+    "options": [
+      "Track both weight and performance but prioritize weight loss",
+      "Stop all tracking and just focus on showing up to workouts",
+      "Track what you can do, not just what you weigh",
+      "Only track pull-up progress since it showed the best results"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Taylor's final advice was to 'Start tracking what you can do, not just what you weigh,' emphasizing functional capabilities and performance over scale measurements for better progress assessment.",
+    "hints": [
+      "Look at Taylor's concluding advice about tracking focus",
+      "Consider the fundamental shift in tracking philosophy Taylor recommended"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8516848a-bad4-4e06-ba9e-6e42445f29c3"
+  },
+  {
+    "id": "26b6e1e1-d01b-4c95-812a-d60b255004d1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What contrast did Emma and Sarah's conversation highlight about progress tracking approaches?",
+    "question_type": "passage_based",
+    "options": [
+      "Sarah focused on weight loss while Emma tracked functional improvements",
+      "Sarah was more consistent with tracking than Emma",
+      "Emma used technology while Sarah used traditional methods",
+      "Sarah tracked multiple metrics while Emma tracked nothing"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah proudly announced losing 5 pounds but still struggled with daily tasks like carrying groceries, while Emma had no idea what she weighed but could easily handle multiple bags and play with her kids without fatigue.",
+    "hints": [
+      "Compare what each person was proud of achieving",
+      "Consider the practical outcomes each person experienced"
+    ],
+    "image_urls": [],
+    "passage_set_id": "824bc8e1-7634-4821-ac64-27a1d1ae6f36"
+  },
+  {
+    "id": "1e591d92-9047-4456-b7d4-3e0e4fad8035",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What specific functional improvements did Emma track instead of weight?",
+    "question_type": "passage_based",
+    "options": [
+      "Calorie burn and step count improvements",
+      "Resting heart rate, activity endurance, and sleep quality",
+      "Body measurements and progress photos",
+      "Social media engagement and compliments received"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma tracked her resting heart rate drop from 75 to 62, her ability to play with kids without getting tired, and sleeping through the night - all improvements that directly affected her daily life quality.",
+    "hints": [
+      "Look for the specific metrics Emma mentioned tracking",
+      "Consider what changes Emma noticed in her daily life"
+    ],
+    "image_urls": [],
+    "passage_set_id": "824bc8e1-7634-4821-ac64-27a1d1ae6f36"
+  },
+  {
+    "id": "0ee3d83c-d8f1-433e-a12e-86b65416106d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What realization did Sarah have about her focus on weight loss?",
+    "question_type": "passage_based",
+    "options": [
+      "She needed to lose more weight to see better results",
+      "Weight loss was more important than she initially thought",
+      "She had been so focused on pounds that she missed her lack of functional improvement",
+      "She should track weight daily instead of weekly"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Sarah realized that despite losing 5 pounds, she still couldn't keep up with her kids at the playground, showing she had focused so much on scale numbers that she ignored her lack of functional fitness improvement.",
+    "hints": [
+      "Consider what Sarah admitted she hadn't noticed",
+      "Think about the gap between Sarah's tracking success and real-world capabilities"
+    ],
+    "image_urls": [],
+    "passage_set_id": "824bc8e1-7634-4821-ac64-27a1d1ae6f36"
+  },
+  {
+    "id": "162de476-e96a-4c84-8e15-7d21ad9b99c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Emma's key advice about choosing progress tracking metrics?",
+    "question_type": "passage_based",
+    "options": [
+      "Track everything possible to get complete data",
+      "Focus only on weight loss since it's most motivating",
+      "Track what matters for your life, and the rest follows",
+      "Use the most advanced technology available for accuracy"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma's final advice was to 'Track what matters for your life, and the rest follows,' emphasizing that progress metrics should be relevant to improving daily life quality rather than chasing arbitrary numbers.",
+    "hints": [
+      "Focus on Emma's concluding advice about metric selection",
+      "Consider what Emma said about prioritizing life-relevant improvements"
+    ],
+    "image_urls": [],
+    "passage_set_id": "824bc8e1-7634-4821-ac64-27a1d1ae6f36"
+  }
+]
