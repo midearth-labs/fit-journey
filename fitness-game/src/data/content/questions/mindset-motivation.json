@@ -1,0 +1,3104 @@
+[
+  {
+    "id": "0f895969-9af1-4011-a45d-824d54f9a5f9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Up to 65% of people experience some form of gym anxiety, making it a completely normal response to unfamiliar fitness environments.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article states that studies show up to 65% of people experience gym anxiety, and for beginners, that number jumps even higher. This makes it a very common and normal response.",
+    "hints": [
+      "Consider what the research statistics mentioned in the article reveal about gym anxiety prevalence",
+      "Think about whether gym anxiety is presented as unusual or common in the text"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "aafd0408-0d30-49ab-8acf-1b5ec9c11ade",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "The exposure ladder strategy recommends starting with the most challenging step first to build confidence quickly.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The exposure ladder strategy specifically recommends starting with the LEAST scary step and only moving up when you're comfortable. This gradual approach is what makes it effective for managing anxiety.",
+    "hints": [
+      "Review the exposure ladder levels described in the article",
+      "Consider whether 'graduated exposure' suggests starting easy or hard"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c0e90885-098c-4e82-a33b-95c047b956d3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "The 5-4-3-2-1 grounding technique helps manage anxiety by engaging all five senses to pull you into the present moment.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The technique involves identifying 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste. This sensory engagement pulls you out of anxious thoughts and into the present moment.",
+    "hints": [
+      "Count through the numbers in the technique name and what each represents",
+      "Think about how engaging senses might help with anxiety"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2565695e-cc18-44de-b6f2-2e2a0ea05d80",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Gym anxiety typically disappears completely after 2-3 weeks of regular attendance.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that gym anxiety usually has an expiration date around week 6-8, not 2-3 weeks. It emphasizes that the transformation takes patience and consistent showing up until the anxiety gets bored and leaves.",
+    "hints": [
+      "Look for the specific timeline mentioned in 'The Plot Twist' section",
+      "Consider whether anxiety resolution is presented as quick or gradual"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8d1823e3-50c5-48a4-ad43-b1e0f24e21c1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "When experiencing gym anxiety, what should be your primary focus during the first few visits?",
+    "question_type": "standalone",
+    "options": [
+      "Completing the most intense workout possible to prove yourself",
+      "Focusing on familiarization and just showing up consistently",
+      "Immediately using all the equipment to build confidence quickly",
+      "Challenging the biggest person in the gym to establish dominance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes that during weeks 1-2 (familiarization phase), you should focus only on showing up and staying in your comfort zone. Growth comes later after you've built familiarity with the environment.",
+    "hints": [
+      "Think about what the 'Familiarization Phase' recommends",
+      "Consider which approach would actually reduce rather than increase anxiety"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "064e39ae-6c8c-4364-9cbd-2b129010df32",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Which strategy is recommended for managing gym anxiety in real-time?",
+    "question_type": "standalone",
+    "options": [
+      "Avoiding eye contact with everyone and hiding in the bathroom",
+      "Using the invisible bubble strategy to create your personal space",
+      "Immediately asking the strongest person for workout advice",
+      "Doing jumping jacks in the parking lot until anxiety disappears"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The invisible bubble strategy involves imagining a protective bubble extending 3 feet around you. This is your space where nobody else's opinions can penetrate, helping you focus on your workout rather than worrying about others' judgments.",
+    "hints": [
+      "Look for the strategy that creates mental protection without avoidance",
+      "Consider which approach helps you stay present while feeling safe"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "56945673-3eba-4fac-a82d-ff65d57e4cf3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What is the best time for gym beginners to avoid crowds and reduce anxiety?",
+    "question_type": "standalone",
+    "options": [
+      "Monday evenings from 5-7 PM when everyone is motivated",
+      "Mid-morning weekdays or Saturday/Sunday early afternoons",
+      "Friday nights when the weekend crowd is energetic",
+      "Any time is fine since confident people don't worry about crowds"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically recommends mid-morning weekdays (typically 10-11 AM) or 2-4 PM, and Saturday/Sunday early afternoons as the best times for beginners. Monday 5-7 PM is identified as universally the busiest time to avoid.",
+    "hints": [
+      "Think about when working people would typically be at the gym",
+      "Consider which time is specifically labeled as the worst for beginners"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1a9e146c-c1e6-4094-80b8-d685e8386268",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to the article, what are most people actually thinking about at the gym?",
+    "question_type": "standalone",
+    "options": [
+      "Judging other people's form and fitness level",
+      "Their own workout details like sets remaining and nutrition plans",
+      "How to approach and give advice to beginners",
+      "Competing with everyone around them to look strongest"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article lists what people are actually thinking: 'How many sets do I have left?', 'Did I remember to record that last set?', 'What should I eat after this?', etc. Everyone is focused on their own workout, not judging others.",
+    "hints": [
+      "Look for the specific list of thoughts provided in the article",
+      "Consider whether the focus is internal or external for most gym-goers"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d78d2ed8-1ac4-4925-96ea-2d5fb47f6372",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What is the correct sequence for implementing the exposure ladder strategy?",
+    "question_type": "standalone",
+    "options": [
+      "Drive-by mission → Virtual reconnaissance → The tour → Observer mode",
+      "Virtual reconnaissance → Drive-by mission → The tour → Observer mode",
+      "The tour → Virtual reconnaissance → Drive-by mission → Observer mode",
+      "Observer mode → The tour → Drive-by mission → Virtual reconnaissance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The exposure ladder starts with Level 1: Virtual reconnaissance (looking at gym photos online), then Level 2: Drive-by mission (driving past the gym), Level 3: The tour (official gym tour), continuing through to Observer mode at Level 5.",
+    "hints": [
+      "Think about progressing from least to most direct contact with the gym",
+      "Consider what would be easiest to do from home vs. requiring physical presence"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b1a854e8-13fb-4b42-9dc8-c2a63dda9b20",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Which combination of strategies forms the complete 'Anti-Anxiety Arsenal' before going to the gym?",
+    "question_type": "standalone",
+    "options": [
+      "Game plan + Gear up + Time it right + Professional trainer",
+      "Game plan + Gear up + Time it right + Bring multiple friends",
+      "Intense workout plan + Expensive clothes + Peak hours + Protein shake",
+      "Game plan + Gear up + Time it right + Meditation retreat"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The Anti-Anxiety Arsenal includes: 1) Create your game plan, 2) Gear up for confidence, and 3) Time it right. While having a professional trainer is mentioned as a 'secret weapon,' these three form the core arsenal for preparation.",
+    "hints": [
+      "Look for the three main preparation strategies listed under 'Before You Go'",
+      "Consider which elements are about planning and preparation vs. additional support"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "56c58ee3-d96c-4a73-a388-8e8c107fdda7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to the confidence-building progression, what should happen during weeks 3-4?",
+    "question_type": "standalone",
+    "options": [
+      "Master all gym equipment and start teaching others",
+      "Try one new piece of equipment per visit and make basic social contact",
+      "Compete in the gym's fitness challenges to prove yourself",
+      "Switch to the most advanced workout programs available"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "During the Expansion Phase (weeks 3-4), you should try one new piece of equipment per visit, make eye contact and nod at one person, and ask staff one question. It's about gradual expansion of your comfort zone.",
+    "hints": [
+      "Look for what the 'Expansion Phase' specifically recommends",
+      "Think about gradual vs. dramatic changes in confidence building"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8da8498d-b2a2-4d29-89ec-58f4cf9eb266",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "In Sarah's first gym visit passage, what advice did Alex give that helped Sarah finally enter the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "Set a timer for just 10 minutes and allow yourself to leave after that",
+      "Bring a friend for moral support on the first visit",
+      "Start with the most challenging workout to build confidence quickly",
+      "Wait until you feel completely ready and motivated"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex specifically advised Sarah to set a timer for just 10 minutes, telling her that's all she had to commit to and she could leave with zero guilt afterward. This low-pressure approach helped Sarah finally get out of her car.",
+    "hints": [
+      "Focus on Alex's specific advice about time commitment",
+      "Think about what made the approach feel manageable to Sarah"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4659023-1866-4b7a-8b60-477eed9e2bc9"
+  },
+  {
+    "id": "aac01724-5366-4da2-865f-08e0ccdffa2c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Sarah's main internal struggle before entering the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "She couldn't decide which workout program to follow",
+      "She knew her fears were irrational but her brain kept imagining embarrassing scenarios",
+      "She was worried about the cost of the gym membership",
+      "She didn't have the right workout clothes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah texted her fitness group saying 'I KNOW it's irrational. I know nobody cares what I'm doing. But my brain keeps playing this highlight reel of all the ways I'll embarrass myself.' This shows her rational mind understood but her emotions were creating fear scenarios.",
+    "hints": [
+      "Look for Sarah's message to her online fitness group",
+      "Consider the conflict between what she logically knew and what she felt"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4659023-1866-4b7a-8b60-477eed9e2bc9"
+  },
+  {
+    "id": "72973164-2318-4a31-9f91-1a1d0687a921",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Why did Sarah decline Mike's offer to meet her at the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "She preferred working out alone for better focus",
+      "Their schedules didn't align properly",
+      "She didn't want him to see her struggle with basic equipment",
+      "She thought he would be too advanced for her fitness level"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The passage states that Mike had offered to meet her, but 'she'd declined—she didn't want him to see her struggle with basic equipment.' Her anxiety included shame about her beginner status being visible to someone more experienced.",
+    "hints": [
+      "Focus on Sarah's reasoning for declining the offer",
+      "Think about what specific concern she had about Mike witnessing her workout"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4659023-1866-4b7a-8b60-477eed9e2bc9"
+  },
+  {
+    "id": "a8c25295-970b-4916-b5a0-03f9e54476f7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What finally motivated Sarah to open her car door and head into the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "She saw other beginners entering and felt more confident",
+      "Her favorite motivational song came on the radio",
+      "She applied the 10-minute timer concept and decided she could do anything for that long",
+      "She received an encouraging text from her trainer"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "After reading Alex's advice about the 10-minute timer, Sarah looked at her phone timer and thought 'Ten minutes. She could do anything for ten minutes, right?' This realization gave her the courage to grab her water bottle and head in.",
+    "hints": [
+      "Look for Sarah's internal dialogue after reading Alex's advice",
+      "Consider what specific time limit made the task feel manageable"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4659023-1866-4b7a-8b60-477eed9e2bc9"
+  },
+  {
+    "id": "339d1113-517d-4191-aed5-5091d40b2230",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "In the confidence bubble technique passage, what was Jordan's initial state when they stood by the weight racks?",
+    "question_type": "passage_based",
+    "options": [
+      "Excited and ready to start lifting heavy weights",
+      "Frozen and overwhelmed by the noise and activity around them",
+      "Confident but unsure which exercises to do first",
+      "Angry about having to wait for equipment"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states 'Jordan stood frozen by the weight racks, overwhelmed by the clash of metal and grunting around them' and their trainer 'noticed the panic in their eyes.' This shows they were paralyzed by anxiety.",
+    "hints": [
+      "Look for descriptive words about Jordan's physical and emotional state",
+      "Consider what the trainer observed about Jordan's condition"
+    ],
+    "image_urls": [],
+    "passage_set_id": "be77982a-63c8-4d19-9002-76de4228dd16"
+  },
+  {
+    "id": "976a70a8-1d15-466c-ac8d-9ce8e74b0940",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "How did the bubble technique specifically help Jordan manage their anxiety?",
+    "question_type": "passage_based",
+    "options": [
+      "It made everyone in the gym disappear completely",
+      "It allowed them to focus only on what was within arm's reach while everyone else became background noise",
+      "It gave them superhuman strength to lift heavier weights",
+      "It transported them to a magical bubble dimension"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "After visualizing the protective sphere, Jordan focused 'only on what was within arm's reach: the 10-pound dumbbells, the bench, their water bottle' and described it as 'everyone just... faded into background noise.' The technique narrowed their focus to their immediate space.",
+    "hints": [
+      "Look for what Jordan focused on after applying the technique",
+      "Consider how Jordan described the change in their perception of others"
+    ],
+    "image_urls": [],
+    "passage_set_id": "be77982a-63c8-4d19-9002-76de4228dd16"
+  },
+  {
+    "id": "cc18089a-6ff5-42aa-abf1-db933c9f1fc1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Casey's situation and how did they benefit from overhearing the conversation?",
+    "question_type": "passage_based",
+    "options": [
+      "Casey was a confident gym regular offering advice to Jordan",
+      "Casey was struggling with budget constraints and gym anxiety, and planned to try the bubble technique",
+      "Casey was the personal trainer demonstrating the technique",
+      "Casey was annoyed by the conversation and moved to a different area"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage identifies Casey as 'struggling with their own budget constraints and gym anxiety on the next bench' who 'overheard the conversation' and 'made a mental note to try this bubble thing during tomorrow's terrifying venture into the free weight area.'",
+    "hints": [
+      "Look for Casey's description and their specific challenges mentioned",
+      "Consider what Casey planned to do with the information they overheard"
+    ],
+    "image_urls": [],
+    "passage_set_id": "be77982a-63c8-4d19-9002-76de4228dd16"
+  },
+  {
+    "id": "c34a20b0-c6f2-4d85-9ebf-c2349d4ccd7b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What does the bubble technique passage suggest about learning from others in the gym environment?",
+    "question_type": "passage_based",
+    "options": [
+      "You should only learn from certified personal trainers",
+      "Overhearing helpful conversations can provide valuable coping strategies for anxious gym-goers",
+      "It's rude to listen to other people's conversations at the gym",
+      "Everyone should keep their fitness techniques completely private"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey, who was struggling with similar issues, overheard the helpful technique being taught to Jordan and decided to try it themselves. This shows how the gym community can inadvertently share coping strategies that help multiple people with similar challenges.",
+    "hints": [
+      "Consider how Casey acquired a new anxiety management tool",
+      "Think about the broader message about community learning in fitness spaces"
+    ],
+    "image_urls": [],
+    "passage_set_id": "be77982a-63c8-4d19-9002-76de4228dd16"
+  },
+  {
+    "id": "fca35565-2460-46c7-bb3c-9c8b290a35e0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "The 21-day habit formation rule is based on solid scientific research.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 21-day myth originated from a 1960s observation by plastic surgeon Maxwell Maltz about patients adjusting to their new appearance after surgery, not from scientific research on habit formation.",
+    "hints": [
+      "Think about where the 21-day rule actually came from",
+      "Consider whether adjusting to physical appearance is the same as forming behavioral habits"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7e71c36a-4987-4f98-8bee-05025153c60e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to University College London research, habits form in an average of 66 days.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research from University College London found it takes an average of 66 days for a behavior to become automatic, with a range of 18 to 254 days.",
+    "hints": [
+      "Look for the specific research study mentioned in the article",
+      "Remember that this was an average, not a fixed number"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5ff50512-1626-481e-8d5c-164c197bff2b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "The habit loop consists of three components: cue, routine, and reward.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The habit loop is a neurological pattern with three parts: the cue (trigger), the routine (behavior), and the reward (payoff that reinforces the loop).",
+    "hints": [
+      "Think about the neurological pattern described in the article",
+      "Consider what makes habits stick and repeat"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "13676fb4-b3f1-4cb4-80bc-3ac963d6dd10",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Missing a single day has no impact on long-term habit formation according to research.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research shows missing a single day has no impact on long-term habit formation. It's the second consecutive miss that becomes dangerous for habit maintenance.",
+    "hints": [
+      "Consider what the article says about the 'two-day rule'",
+      "Think about the difference between missing once versus missing twice"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "07d95cac-35f5-4a5d-8f05-be49cb0d3bbc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Which factor does NOT influence how quickly a habit forms?",
+    "question_type": "standalone",
+    "options": [
+      "Complexity of the habit",
+      "Individual personality differences",
+      "The day of the week you start",
+      "Environmental factors and support system"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The day of the week you start has no impact on habit formation speed. What matters is complexity, individual differences, environmental factors, and consistency of practice.",
+    "hints": [
+      "Think about what the article lists as factors affecting habit formation",
+      "One of these options is completely unrelated to the science"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "abf11ffe-1269-4bed-b178-8a868657de30",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What's the best approach when you want to build multiple healthy habits?",
+    "question_type": "standalone",
+    "options": [
+      "Start all habits simultaneously for maximum impact",
+      "Focus on one keystone habit that naturally triggers others",
+      "Wait until you have perfect willpower",
+      "Only start habits during your birthday month for good luck"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends focusing on one keystone habit that naturally triggers others, rather than trying to change everything at once, which often leads to failure.",
+    "hints": [
+      "Consider what the article says about 'too many habits at once'",
+      "Think about which approach would be most sustainable"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3dd4e257-75f6-411f-8340-4360b215da10",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Implementation intentions increase success rates by approximately:",
+    "question_type": "standalone",
+    "options": [
+      "25%",
+      "2-3x (200-300%)",
+      "50%",
+      "They actually decrease success rates"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Using implementation intentions (\"I will [BEHAVIOR] at [TIME] in [LOCATION]\") increases success rates by 2-3x according to research cited in the article.",
+    "hints": [
+      "Look for the specific statistic mentioned about implementation intentions",
+      "Consider how much more effective specific plans are than vague goals"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3ba604d7-e89e-4cae-a2cf-1578523cd5bd",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to the article, which habit would likely form fastest?",
+    "question_type": "standalone",
+    "options": [
+      "Training for a marathon",
+      "Drinking a glass of water upon waking",
+      "Complete dietary overhaul",
+      "Becoming a morning person if you're naturally a night owl"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Drinking water upon waking is listed as an 'easy habit' that forms quickly (18-30 days) because it's simple, requires minimal effort, and easily attaches to existing routines.",
+    "hints": [
+      "Think about which habits the article categorizes as 'easy'",
+      "Consider complexity and effort required"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "dde6f48d-77da-409e-8440-666257f4d126",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What is the correct sequence for effective habit stacking?",
+    "question_type": "standalone",
+    "options": [
+      "New habit → Existing routine → Reward",
+      "Existing routine → New habit → Natural consequence",
+      "Reward → New habit → Existing routine",
+      "Meditation → Exercise → Breakfast → Success"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Habit stacking works by attaching new habits to existing ones: 'After I [existing routine], I will [new habit].' The natural consequence follows automatically.",
+    "hints": [
+      "Think about how habit stacking builds on what you already do",
+      "Consider the examples given in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4e472121-0ed4-4cb1-aed3-148d3b6277b2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Which components are essential for habit design according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Motivation, willpower, and perfect timing",
+      "Obvious cues, easy execution, and simple tracking",
+      "Expensive equipment, personal trainer, and strict schedule",
+      "Social media posts, competitive friends, and daily weigh-ins"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes making habits obvious (visible cues), easy (simple execution), and trackable (without judgment) as key design principles.",
+    "hints": [
+      "Focus on the practical strategies mentioned in the article",
+      "Think about what makes habits sustainable rather than impressive"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a439770b-f3e4-4ab7-92d7-e32e56cd2d53",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "The 'Plateau of Latent Potential' means that habits often feel like they're not working for weeks before:",
+    "question_type": "standalone",
+    "options": [
+      "They permanently fail",
+      "You need to start over completely",
+      "They suddenly click and become automatic",
+      "You realize you picked the wrong habit"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The Plateau of Latent Potential describes how effort accumulates like melting ice—nothing seems to happen until suddenly it all comes together at the breakthrough point.",
+    "hints": [
+      "Think about the ice melting analogy in the article",
+      "Consider what happens after consistent effort that seems ineffective"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "eca30453-ec53-4069-9268-8952fcff4744",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "Based on Casey's experience in the passage, what was their main habit formation mistake?",
+    "question_type": "passage_based",
+    "options": [
+      "Starting too many habits at once",
+      "Believing the 21-day myth and treating missed days as complete failures",
+      "Not having enough motivation",
+      "Choosing the wrong type of exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey repeatedly quit after missing a day around day 15-16, believing they had 'failed' the 21-day challenge, when actually they were making normal progress that takes 2-3 months.",
+    "hints": [
+      "Focus on why Casey kept restarting the same challenge",
+      "Consider what Alex taught Casey about missed days"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2b844b05-2381-4b90-a2cf-173b9d616f30"
+  },
+  {
+    "id": "83596506-fbc3-4c96-bf81-f439d25a23c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What key insight did Alex share about their own habit formation timeline?",
+    "question_type": "passage_based",
+    "options": [
+      "It took exactly 21 days to form their workout habit",
+      "It took about 70 days before they stopped arguing with themselves about going to the gym",
+      "They never struggled with motivation",
+      "They formed their habit in just one week"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex specifically mentioned it took about 70 days before they stopped having to argue with themselves about going to the gym, demonstrating the reality of longer habit formation timelines.",
+    "hints": [
+      "Look for the specific number of days Alex mentioned",
+      "Consider what changed after this time period"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2b844b05-2381-4b90-a2cf-173b9d616f30"
+  },
+  {
+    "id": "be8e5b1e-4483-4328-9f3e-b0198ed44fec",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to Alex, what's the key difference between missing one day versus missing two days?",
+    "question_type": "passage_based",
+    "options": [
+      "There's no difference - both are equally bad",
+      "Missing two days means you have to start over completely",
+      "Missing one day doesn't break a habit, but missing two days starts forming a new (wrong) pattern",
+      "Missing two days requires you to double your efforts the next day"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex explained the two-day rule: missing one day doesn't break a habit, but missing two consecutive days starts forming a new pattern of not doing the habit.",
+    "hints": [
+      "Think about what Alex called the 'two-day rule'",
+      "Consider why the second consecutive miss is more dangerous"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2b844b05-2381-4b90-a2cf-173b9d616f30"
+  },
+  {
+    "id": "38eec390-ebe2-4dd0-a8ed-6a49ccf8e949",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What realization helped Casey understand their pattern of starting and stopping?",
+    "question_type": "passage_based",
+    "options": [
+      "They needed better workout equipment",
+      "They should have tracked their habits more carefully",
+      "They were building something real but believing the wrong timeline about when it should feel automatic",
+      "They needed to find a workout partner"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey realized they 'didn't fail—they just believed the wrong timeline' and were actually building something real during those 15-16 day streaks before giving up.",
+    "hints": [
+      "Focus on Alex's explanation about what Casey had actually accomplished",
+      "Consider what the real problem was with Casey's approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2b844b05-2381-4b90-a2cf-173b9d616f30"
+  },
+  {
+    "id": "dd76b02c-100b-4d73-8892-68bfe96c5d9e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was Jordan's main frustration with their habit formation progress?",
+    "question_type": "passage_based",
+    "options": [
+      "They weren't seeing physical results",
+      "Their workout routine was too easy",
+      "Despite tracking data perfectly, they expected the habit to feel automatic by day 21 but it didn't",
+      "They were exercising too frequently"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Jordan was frustrated because they had worked out 19 of 21 days but it was 'supposed to be automatic by now' according to the 21-day myth, when they still had to force themselves.",
+    "hints": [
+      "Look at Jordan's expectations about day 21",
+      "Consider what Jordan thought should have happened by that point"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7e4969d9-911f-4b3c-b380-3149bf67a0b5"
+  },
+  {
+    "id": "d1f3668c-a170-4615-b888-82b601ca9ba8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "How did Emma help Jordan reframe their progress?",
+    "question_type": "passage_based",
+    "options": [
+      "By telling them to give up and try something easier",
+      "By comparing Jordan's complex 5 AM CrossFit routine to her simpler lunchtime walks that took 53 days to become automatic",
+      "By suggesting they track different metrics",
+      "By recommending they start over with a new habit"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma pointed out that her simple lunchtime walks took 53 days to become automatic, while Jordan was expecting their complex 5 AM CrossFit routine to be automatic in just 21 days.",
+    "hints": [
+      "Compare the complexity of Jordan's routine versus Emma's walks",
+      "Look at how long Emma's simpler habit actually took"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7e4969d9-911f-4b3c-b380-3149bf67a0b5"
+  },
+  {
+    "id": "6ee4dbe3-18e8-4b79-8b99-cfc8f9965fa1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What evidence did Emma use to show Jordan they were actually succeeding?",
+    "question_type": "passage_based",
+    "options": [
+      "Jordan's weight loss results",
+      "Jordan's own tracking data showing improvement from 3 days in week one to 5 days in week two to missing only one day in week three",
+      "Feedback from Jordan's workout partner",
+      "Jordan's improved mood and energy levels"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma used Jordan's own meticulously tracked data to show the clear pattern of improvement: week one (3 days), week two (5 days), current week (only missed one day).",
+    "hints": [
+      "Look at the specific progression Emma pointed out",
+      "Consider what Jordan's own data actually showed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7e4969d9-911f-4b3c-b380-3149bf67a0b5"
+  },
+  {
+    "id": "20d734c1-acf2-49e0-ac31-be6f2c67ec6b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What key insight did Emma provide about complex versus simple habits?",
+    "question_type": "passage_based",
+    "options": [
+      "Complex habits are impossible to form",
+      "Simple habits aren't worth the effort",
+      "Complex habits can take up to 254 days to form, so expecting Jordan's 5 AM CrossFit routine to feel easy in 21 days was unrealistic",
+      "All habits take exactly the same amount of time to form"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma referenced research showing complex habits can take up to 254 days, helping Jordan understand that comparing a 5 AM CrossFit routine to simple walking was like 'comparing apples to Olympic weightlifting.'",
+    "hints": [
+      "Think about Emma's comparison between different types of habits",
+      "Consider the research timeline Emma mentioned for complex habits"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7e4969d9-911f-4b3c-b380-3149bf67a0b5"
+  },
+  {
+    "id": "a38f6448-c918-4442-a7f4-b4f087f240d4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was Sarah's initial approach to starting a fitness habit?",
+    "question_type": "passage_based",
+    "options": [
+      "Starting with just 5 minutes of exercise daily",
+      "Going from zero to hero: signing up, buying new clothes, planning 5 days a week for an hour each time",
+      "Working with a personal trainer from day one",
+      "Focusing only on nutrition changes first"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's pattern was 'zero to hero overnight': signing up for gym memberships, buying all new workout clothes, and planning five days a week for an hour each time, which led to repeated failures.",
+    "hints": [
+      "Look at what the wellness coach identified as Sarah's mistake",
+      "Think about the 'all or nothing' approach Sarah was taking"
+    ],
+    "image_urls": [],
+    "passage_set_id": "318e6d29-b6f9-49ba-b451-714c00e2e160"
+  },
+  {
+    "id": "0d9659a9-b43b-46c8-896b-dafb51922986",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What 'minimum viable habit' did the coach suggest Sarah start with?",
+    "question_type": "passage_based",
+    "options": [
+      "Do 10 minutes of cardio every day",
+      "Just put on workout clothes every day at 6 PM without even exercising",
+      "Walk to the gym and back without working out",
+      "Do one push-up per day"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The coach suggested Sarah start by just putting on workout clothes every day at 6 PM—that's it. No exercise required, just building the habit of 'showing up' first.",
+    "hints": [
+      "Look for the coach's specific first step recommendation",
+      "Consider what the coach meant by 'minimum viable habit'"
+    ],
+    "image_urls": [],
+    "passage_set_id": "318e6d29-b6f9-49ba-b451-714c00e2e160"
+  },
+  {
+    "id": "f362e006-cb35-45aa-bdf1-c16a3a7cc68a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "According to the coach's progressive plan, what would happen by week 8?",
+    "question_type": "passage_based",
+    "options": [
+      "Sarah would be running marathons",
+      "Sarah would have given up like always",
+      "Sarah might find herself naturally progressing to actual gym workouts",
+      "Sarah would need to hire a personal trainer"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The coach outlined a progression: week 1 (change clothes), week 2 (add walking to mailbox), week 3 (walk around block), and 'by week eight, you might find yourself at the gym.'",
+    "hints": [
+      "Follow the progression the coach outlined",
+      "Think about how small habits can naturally expand over time"
+    ],
+    "image_urls": [],
+    "passage_set_id": "318e6d29-b6f9-49ba-b451-714c00e2e160"
+  },
+  {
+    "id": "87bb3f55-00c5-425d-938a-637c2a479a03",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "question_text": "What was the coach's main point about real habit formation versus the 21-day myth?",
+    "question_type": "passage_based",
+    "options": [
+      "Real habits form faster than 21 days if you try hard enough",
+      "The 21-day myth makes people think they should be running marathons in three weeks, but real habit formation is 'boringly gradual'",
+      "There's no difference between the myth and reality",
+      "Real habits never actually become automatic"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The coach emphasized that 'the 21-day myth makes people think they should be running marathons in three weeks. Real habit formation is boringly gradual' - emphasizing that sustainable habits develop slowly over time.",
+    "hints": [
+      "Look for the coach's direct quote about the 21-day myth",
+      "Consider what the coach said about the pace of real habit formation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "318e6d29-b6f9-49ba-b451-714c00e2e160"
+  },
+  {
+    "id": "85b9773d-23ed-4dcc-adcb-be6d6e5dbd27",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the article, motivation follows a predictable pattern that typically fades completely by which week?",
+    "question_type": "standalone",
+    "options": [
+      "Week 4",
+      "Week 2"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article states that motivation follows a predictable pattern where by Week 4 people think 'Maybe I'll start again next month', indicating complete fade.",
+    "hints": [
+      "Look for the specific timeline mentioned in the motivation pattern",
+      "The article compares motivation to waiting for perfect weather"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bda36550-4484-488d-8af8-4ff26e6d595e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "True or False: The article states that discipline is like a muscle that gets stronger the more you use it.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explicitly states 'Think of discipline as a muscle itself — the more you use it, the stronger it becomes.'",
+    "hints": [
+      "The article makes a direct comparison between discipline and physical muscles",
+      "Think about how both discipline and muscles respond to regular use"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5b73e925-2ee5-4197-97b3-371de9ff7dc1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "The motivation-action feedback loop described in the article suggests that action typically comes before motivation.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explicitly states this is a 'counterintuitive truth backed by behavioral psychology: action often comes before motivation, not after.'",
+    "hints": [
+      "This goes against what most people believe about the relationship",
+      "The article calls this concept 'counterintuitive'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0d4bd4f7-653a-4eae-8d60-97e033af2086",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the article, people with consistent fitness routines never have days when they don't feel like exercising.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article clearly states that 'almost nobody feels like working out most of the time' and that 'everyone who maintains a consistent fitness routine has days they don't feel like it.'",
+    "hints": [
+      "The article mentions that even professional athletes experience this",
+      "The difference is what people do despite not feeling like it"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "db068f37-e332-4625-abf0-18725234f1a3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Which strategy does the article recommend for making exercise easier to start?",
+    "question_type": "standalone",
+    "options": [
+      "Lay out workout clothes the night before",
+      "Schedule intense 2-hour workouts",
+      "Wait for the perfect weather",
+      "Join the most expensive gym in town"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically lists 'Lay out workout clothes the night before' as the first strategy under 'Lower the Activation Energy.'",
+    "hints": [
+      "Look for strategies that make starting as easy as possible",
+      "This falls under the concept of 'activation energy'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0fde50ce-9616-4770-b48a-54972b93a6dd",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What does the article suggest happens when you develop discipline around exercise?",
+    "question_type": "standalone",
+    "options": [
+      "You become obsessed with working out",
+      "You need less discipline to maintain the habit",
+      "You must work out for longer periods",
+      "You develop superhuman willpower permanently"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states 'the more you rely on discipline, the less you need it' and explains that behaviors become habits requiring less conscious effort.",
+    "hints": [
+      "The article describes this as a 'paradox of discipline'",
+      "Think about what happens when behaviors become automatic"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3d49ea21-797b-403d-b82a-d1eca834fb61",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the article, Implementation Intentions should follow which specific format?",
+    "question_type": "standalone",
+    "options": [
+      "When [situation] happens, I will [behavior]",
+      "If I feel motivated, I will exercise",
+      "I should work out more often",
+      "Exercise is important for my health"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explicitly states to use the format 'When [situation] happens, I will [behavior]' and provides specific examples following this pattern.",
+    "hints": [
+      "This is a specific psychological technique mentioned in the article",
+      "The format creates a direct link between a trigger and an action"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0aa161cb-5309-4e9f-a6e8-cf1b928f7f3a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "The article mentions that waiting for motivation to strike is like waiting for what?",
+    "question_type": "standalone",
+    "options": [
+      "Perfect weather to go grocery shopping",
+      "A lottery ticket to win",
+      "The weekend to arrive",
+      "Your favorite TV show to come on"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article states 'Waiting for motivation to strike is like waiting for perfect weather to go grocery shopping.'",
+    "hints": [
+      "This is a direct analogy used in the article",
+      "Both situations involve waiting for ideal conditions that may never come"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "278bf3be-f916-418e-ae58-98197069e549",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Which sequence correctly represents the motivation-action feedback loop described in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Forced action → Small success → Positive feelings → Increased likelihood → Eventually becomes habit",
+      "Motivation → Action → Success → More motivation → Habit",
+      "Planning → Preparation → Execution → Evaluation → Improvement",
+      "Goal setting → Training → Competition → Victory → Celebration"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article provides this exact sequence as the five steps of the motivation-action feedback loop.",
+    "hints": [
+      "The article lists these five steps in a numbered sequence",
+      "This shows how discipline creates its own momentum"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e89b7d3b-b129-4ffb-9a1a-ef42f54ae29c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What does the Two-Minute Rule involve when you really don't feel like exercising?",
+    "question_type": "standalone",
+    "options": [
+      "Commit to just two minutes and you can stop after that",
+      "Take a two-minute break before starting your full workout",
+      "Do two minutes of meditation before exercising",
+      "Wait two minutes to see if motivation appears"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains the Two-Minute Rule as committing to just two minutes of exercise when you don't feel like it, noting that starting is often the hardest part.",
+    "hints": [
+      "This rule is about overcoming the initial resistance to starting",
+      "The article mentions that you'll often continue once you begin"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9173d3f9-cde0-41d4-84d0-6c8bb8cc68c9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to the article, what is the main difference between people who exercise consistently and those who don't?",
+    "question_type": "standalone",
+    "options": [
+      "Consistent exercisers have better genetics",
+      "The difference is discipline, not motivation",
+      "Consistent people have more free time",
+      "They use more expensive equipment and supplements"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's central thesis is that 'The difference between people who exercise consistently and those who don't isn't motivation—it's discipline.'",
+    "hints": [
+      "This is the main theme and opening premise of the entire article",
+      "The article challenges the common belief about what drives consistency"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e7a79886-0c6d-4bce-a5c8-2f58296c24b3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was Casey's main problem with maintaining their workout routine?",
+    "question_type": "passage_based",
+    "options": [
+      "They kept waiting for motivation to strike before exercising",
+      "They couldn't afford a gym membership",
+      "They had no time due to work commitments",
+      "They were injured and couldn't exercise safely"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey explicitly states they 'can't work out if I'm not feeling it' and was waiting for motivation, which Jordan points out is backwards.",
+    "hints": [
+      "Casey mentions they can't work out without feeling motivated",
+      "Jordan explains why this approach is backwards"
+    ],
+    "image_urls": [],
+    "passage_set_id": "331daed0-039d-4694-9b88-34b3b026afe6"
+  },
+  {
+    "id": "c510bc1a-b9c6-4b8a-b7ed-6dcdc4984e19",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How does Jordan describe their current approach to gym attendance?",
+    "question_type": "passage_based",
+    "options": [
+      "They only go when they feel highly motivated",
+      "They go Tuesday, Thursday, Saturday at 6 AM whether they want to or not",
+      "They workout every single day without exception",
+      "They wait until afternoon when they have more energy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan specifically states 'Tuesday, Thursday, Saturday, 6 AM. Whether I want to or not' to illustrate their disciplined approach.",
+    "hints": [
+      "Jordan gives very specific days and times",
+      "They emphasize doing it regardless of feelings"
+    ],
+    "image_urls": [],
+    "passage_set_id": "331daed0-039d-4694-9b88-34b3b026afe6"
+  },
+  {
+    "id": "66ea438f-31e5-47a0-bdd1-dea3c5142828",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What suggestion does Jordan give Casey to start building discipline?",
+    "question_type": "passage_based",
+    "options": [
+      "Join an expensive personal training program",
+      "Do two minutes of exercise every day for a week, no matter how they feel",
+      "Wait until they feel completely ready to commit",
+      "Start with hour-long workouts three times per week"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan suggests 'Do two minutes of exercise every day this week, no matter how you feel. Just two minutes. But do it every single day.'",
+    "hints": [
+      "Jordan emphasizes a very small daily commitment",
+      "The key is doing it regardless of feelings"
+    ],
+    "image_urls": [],
+    "passage_set_id": "331daed0-039d-4694-9b88-34b3b026afe6"
+  },
+  {
+    "id": "ebe80f27-bc01-4777-b24c-33d464974565",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Why does Casey initially find Jordan's two-minute suggestion appealing?",
+    "question_type": "passage_based",
+    "options": [
+      "Because it sounded extremely challenging",
+      "Because two minutes seemed almost insultingly easy but was more than the zero minutes they'd been doing",
+      "Because they wanted to impress their coworkers",
+      "Because they had exactly two minutes free in their schedule"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states Casey 'considered this. Two minutes seemed almost insultingly easy. But then again, it was more than the zero minutes they'd been doing while waiting for motivation to strike.'",
+    "hints": [
+      "Casey reflects on how easy it sounds compared to their current situation",
+      "They realize it's still progress compared to doing nothing"
+    ],
+    "image_urls": [],
+    "passage_set_id": "331daed0-039d-4694-9b88-34b3b026afe6"
+  },
+  {
+    "id": "8e5aa352-4e7b-4cbd-b6ff-5cd9f1e8e60a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What was Sarah's initial feeling when she woke up at 5:45 AM for her workout?",
+    "question_type": "passage_based",
+    "options": [
+      "Energized and ready to exercise",
+      "Every cell in her body screamed to hit snooze",
+      "Excited about her yoga routine",
+      "Perfectly motivated and eager to start"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage explicitly states 'Every cell in her body screamed to hit snooze' when describing Sarah's initial feeling.",
+    "hints": [
+      "This describes the extreme reluctance Sarah felt",
+      "The passage emphasizes how much she didn't want to get up"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb853f1-ae76-4999-8be7-90ff87d6ed64"
+  },
+  {
+    "id": "267abe72-6564-43d6-b3b6-4620a08e6a17",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What change did Sarah notice during her yoga session?",
+    "question_type": "passage_based",
+    "options": [
+      "She remained miserable throughout the entire workout",
+      "By minute five, something shifted and the stiffness started melting",
+      "She immediately felt amazing as soon as she started",
+      "She decided to quit after five minutes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states 'by minute five, something shifted. The stiffness started melting. By minute ten, she was actually enjoying the flow.'",
+    "hints": [
+      "There's a specific minute mentioned when things changed",
+      "Sarah's experience improved during the workout"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb853f1-ae76-4999-8be7-90ff87d6ed64"
+  },
+  {
+    "id": "82a4cd30-16be-47cd-ba3e-078beaa40037",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What did Sarah write in her journal after completing her workout?",
+    "question_type": "passage_based",
+    "options": [
+      "Today was the worst workout ever",
+      "Motivation: 0. Discipline: 1",
+      "I need to find better workout videos",
+      "Tomorrow I'll sleep in instead"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage shows Sarah writing exactly 'Motivation: 0. Discipline: 1' in her journal to track her victory.",
+    "hints": [
+      "Sarah summarizes the lesson learned in her journal entry",
+      "She contrasts two different approaches to exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb853f1-ae76-4999-8be7-90ff87d6ed64"
+  },
+  {
+    "id": "5d05be85-aa6d-4808-9e58-246c1f5e9d37",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to Mike's response to Sarah, which workout matters most?",
+    "question_type": "passage_based",
+    "options": [
+      "The workout when you feel perfectly motivated",
+      "The one you don't want to do but do anyway",
+      "The longest and most intense workout of the week",
+      "The workout with the most expensive equipment"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike texts back that 'That's the workout that matters most. The one you don't want to do but do anyway.'",
+    "hints": [
+      "Mike emphasizes which type of workout builds the most character",
+      "This relates to doing something despite not feeling like it"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb853f1-ae76-4999-8be7-90ff87d6ed64"
+  },
+  {
+    "id": "1e1dd39c-d430-4471-8fb6-7666d9357582",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "Why does Taylor exercise despite having type 2 diabetes?",
+    "question_type": "passage_based",
+    "options": [
+      "Because they feel motivated every morning",
+      "Because their blood sugar doesn't care about their feelings",
+      "Because their doctor forced them to",
+      "Because they enjoy every minute of working out"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor states 'I have type 2 diabetes. You think I feel motivated to exercise? I do it because my blood sugar doesn't care about my feelings.'",
+    "hints": [
+      "Taylor explains that medical necessity trumps motivation",
+      "This is about health requirements rather than feelings"
+    ],
+    "image_urls": [],
+    "passage_set_id": "edc5a116-4d09-47be-b144-f809ca8f6253"
+  },
+  {
+    "id": "22389ea6-e712-431a-be42-8d417c137e91",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "How does Riley schedule their workouts?",
+    "question_type": "passage_based",
+    "options": [
+      "Whenever they feel like it throughout the week",
+      "In their calendar like a work meeting",
+      "Only on weekends when they have more time",
+      "Based on their energy levels each day"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley states 'I put it in my calendar like a work meeting. Would you skip a work meeting because you weren't motivated?'",
+    "hints": [
+      "Riley compares workouts to another type of non-negotiable appointment",
+      "This is about treating exercise with the same importance as work"
+    ],
+    "image_urls": [],
+    "passage_set_id": "edc5a116-4d09-47be-b144-f809ca8f6253"
+  },
+  {
+    "id": "085ec139-574a-45e0-b7bf-1a520bf4e549",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "According to Marcus, what's the main difference between elite performers and everyone else?",
+    "question_type": "passage_based",
+    "options": [
+      "Elite performers are naturally more motivated",
+      "They have better genetics for athletics",
+      "It's systems, routines, and discipline, not motivation",
+      "They train with more expensive equipment"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Marcus explains 'The difference between elite performers and everyone else isn't motivation. It's systems. Routines. Discipline.'",
+    "hints": [
+      "Marcus contrasts what people think creates success versus what actually does",
+      "This relates to systematic approaches rather than feelings"
+    ],
+    "image_urls": [],
+    "passage_set_id": "edc5a116-4d09-47be-b144-f809ca8f6253"
+  },
+  {
+    "id": "7c7668ff-fee3-44b3-966e-d79b3fb443aa",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "question_text": "What timeline does Marcus give for when forcing yourself to exercise stops feeling forced?",
+    "question_type": "passage_based",
+    "options": [
+      "After about two weeks of consistency",
+      "After about two months of forcing yourself",
+      "After one year of regular exercise",
+      "It never stops feeling forced"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus states 'after about two months of forcing yourself, it stops feeling forced. It becomes automatic.'",
+    "hints": [
+      "Marcus gives a specific timeframe for when discipline becomes habit",
+      "This relates to how long the transition takes"
+    ],
+    "image_urls": [],
+    "passage_set_id": "edc5a116-4d09-47be-b144-f809ca8f6253"
+  },
+  {
+    "id": "e8c56d69-03b8-40ad-8505-8ba868045962",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "A fitness plateau means your body has successfully adapted to your current training and you've gotten too good at what you're doing.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains that a plateau is actually proof that your body successfully adapted to your training. It's not failure; it's graduation. You've squeezed all the gains from your current approach.",
+    "hints": [
+      "Think about what adaptation means in fitness",
+      "The article reframes plateaus as a positive sign of progress"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "146f888c-0ff6-4000-8bfc-a80c91da0fc9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "According to the 50% rule, you should start at half your previous intensity after any setback lasting more than two weeks.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states the 50% rule: after any setback lasting more than two weeks, start at 50% of your previous intensity and increase by 10% each week. This prevents re-injury and builds sustainable momentum.",
+    "hints": [
+      "Look for the specific timeframe mentioned in the rule",
+      "Consider why starting conservatively might be beneficial"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "58e3c58d-4be7-49f3-a531-ded96caffab4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Missing one day of exercise has no impact on long-term habit formation, but missing two days in a row starts forming a new pattern.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes the two-day rule: missing a single day has no impact on long-term habit formation, but it's the second miss that's dangerous as it starts forming the wrong pattern. Never miss twice.",
+    "hints": [
+      "Consider what creates patterns vs. isolated incidents",
+      "The article mentions research about single missed days"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "47531224-8c7d-4e7e-9ea1-25bffed75fa0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "A deload week involves increasing intensity while maintaining volume to shock your muscles out of a plateau.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "A deload week is the opposite - you reduce volume by 40-50% while maintaining intensity. The article explains this counter-intuitive approach allows your body to supercompensate during recovery, not training.",
+    "hints": [
+      "Think about what 'deload' means literally",
+      "Consider which variable changes in a deload week"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "652c53a0-ae09-422b-aae6-11719f8a6f66",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "When you hit a plateau, what should you change first according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Change ONE variable at a time from your training program",
+      "Completely overhaul your entire routine immediately",
+      "Take a month off from exercise to reset your body",
+      "Switch to interpretive dance and hope for the best"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes changing ONE variable at a time when progress stalls, not everything at once. This allows you to identify what actually works and prevents overwhelming changes.",
+    "hints": [
+      "Look for the emphasis on systematic changes",
+      "Consider which approach allows you to track what's working"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4797fdea-aeb4-4d03-addd-fe39c5d2b590",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What mindset shift helps transform setbacks into learning opportunities?",
+    "question_type": "standalone",
+    "options": [
+      "From victim to strategist mindset",
+      "From beginner to expert mentality",
+      "From individual to team player approach",
+      "From human to fitness robot transformation"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically contrasts victim mindset ('This always happens to me') with strategist mindset ('This is data for my next approach'). This reframes setbacks as valuable information rather than personal failures.",
+    "hints": [
+      "Look for the mindset comparison in the article",
+      "Consider how different perspectives change your response to challenges"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ffb34935-39dd-459c-a4a7-c75ab4783c83",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "During comeback phases, what type of metrics should you focus on tracking?",
+    "question_type": "standalone",
+    "options": [
+      "Consistency, recovery quality, movement quality, and mental wins",
+      "Only weight loss and strength gains",
+      "Social media likes on your workout posts",
+      "How quickly you can return to your previous peak performance"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically recommends tracking different metrics during comebacks: consistency (days active vs. performance), recovery quality (sleep, energy levels), movement quality (form, range of motion), and mental wins (showing up when you don't feel like it).",
+    "hints": [
+      "Think about process vs. outcome metrics",
+      "Consider what's most important when rebuilding"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5d66f852-deb1-48eb-831f-628ef9020e7c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What is the main benefit of muscle memory during comeback periods?",
+    "question_type": "standalone",
+    "options": [
+      "You'll regain lost ground faster than you initially built it",
+      "You'll never lose any strength or fitness again",
+      "Your muscles will remember to work out for you automatically",
+      "You can skip the warm-up and jump straight into heavy lifting"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains that muscle memory means your body remembers how to move, engage muscles, and perform exercises, allowing you to regain lost ground faster than you initially built it.",
+    "hints": [
+      "Consider what 'muscle memory' actually refers to",
+      "Think about the difference between building new vs. rebuilding"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7b61cc55-4f1f-4194-82ab-3062c2909674",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What is the correct sequence for using the 50% comeback rule?",
+    "question_type": "standalone",
+    "options": [
+      "Start at 50% intensity → Increase by 10% each week → Focus on movement quality",
+      "Start at 80% intensity → Decrease by 10% each week → Focus on maximum effort",
+      "Start at 50% volume → Increase by 20% daily → Focus on beating previous records",
+      "Start at 50% effort → Call it quits → Focus on finding a new hobby instead"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article clearly outlines the 50% rule: start at 50% of previous intensity, increase by 10% each week, and focus on movement quality over quantity during the comeback phase.",
+    "hints": [
+      "Look for the specific percentages mentioned",
+      "Consider the gradual progression approach"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b8c9f510-c3c7-4da8-bd17-a68106106f81",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Which three plateau-breaking protocols are mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "The Deload Week, The Shock Week, and The Switch",
+      "The Intensity Week, The Volume Week, and The Rest Week",
+      "The Cardio Phase, The Strength Phase, and The Flexibility Phase",
+      "The Motivation Protocol, The Discipline Method, and The Magic Formula"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article outlines three specific plateau-breaking protocols: The Deload Week (reduce volume), The Shock Week (briefly increase intensity), and The Switch (completely change training style).",
+    "hints": [
+      "Look for the numbered protocol sections",
+      "Each protocol has a distinct approach to breaking plateaus"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2084841e-cf5a-4fa3-a938-08a01e036919",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What are the five emotional stages of setbacks mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Denial, Anger, Bargaining, Depression, Acceptance",
+      "Shock, Confusion, Motivation, Action, Success",
+      "Fear, Doubt, Hope, Determination, Victory",
+      "Surprise, Disappointment, Frustration, Resignation, and Calling Mom for Sympathy"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article references the five stages similar to grief: Denial ('This is just a bad week'), Anger ('This is BS'), Bargaining ('Maybe if I just work harder'), Depression ('What's the point?'), and Acceptance ('Okay, let's figure this out').",
+    "hints": [
+      "These stages are similar to a well-known psychological model",
+      "The article shows how each stage manifests in fitness contexts"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4ad5c7aa-4515-4c53-adfe-1fcc5af89938",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What was Casey's main emotional barrier to returning to the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "Feeling like they were starting from scratch after missing six weeks",
+      "Not having enough money to renew their gym membership",
+      "Being embarrassed about their workout clothes",
+      "Forgetting their gym locker combination"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey expressed feeling like they 'might as well be starting from scratch' after missing six weeks, and said they were 'basically starting over.' This all-or-nothing thinking was their main barrier.",
+    "hints": [
+      "Look at Casey's initial statements about their situation",
+      "Consider what Casey said about their previous squat weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "1922c199-dae5-4fcc-ab64-a3b7cf168a89"
+  },
+  {
+    "id": "8eac264d-3e5a-470b-9385-d30126d20de2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How did Marcus reframe Casey's perspective on their comeback?",
+    "question_type": "passage_based",
+    "options": [
+      "He emphasized that Casey was starting from experience, not from scratch",
+      "He told Casey to ignore their feelings and just push through",
+      "He suggested Casey should find a completely different type of exercise",
+      "He recommended Casey hire a personal trainer immediately"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Marcus specifically told Casey 'you're not starting from scratch, you're starting from experience' and explained that their body remembers more than they think.",
+    "hints": [
+      "Focus on Marcus's key reframe about experience vs. starting over",
+      "Consider what Marcus said about muscle memory"
+    ],
+    "image_urls": [],
+    "passage_set_id": "1922c199-dae5-4fcc-ab64-a3b7cf168a89"
+  },
+  {
+    "id": "a2d2f778-76d9-4799-b57e-49c2357bcb11",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "Why did Marcus recommend starting at 50% intensity rather than Casey's full routine?",
+    "question_type": "passage_based",
+    "options": [
+      "Because muscles might remember but tendons need time to catch up, and finishing strong encourages return",
+      "Because Casey was clearly out of shape and needed to be humbled",
+      "Because the gym was too crowded for a full workout",
+      "Because 50% is the maximum anyone should ever exercise"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Marcus explained that while muscles might remember, tendons need time to catch up. Plus, finishing strong today means you'll actually want to come back tomorrow, rather than being too sore to continue.",
+    "hints": [
+      "Consider the physiological reason Marcus gave",
+      "Think about the psychological benefit he mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "1922c199-dae5-4fcc-ab64-a3b7cf168a89"
+  },
+  {
+    "id": "0036b25e-f98e-4049-a14c-70ea729893b0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What principle does Marcus's advice to Casey demonstrate about sustainable comeback strategies?",
+    "question_type": "passage_based",
+    "options": [
+      "Prioritizing consistency and positive experiences over single heroic efforts",
+      "Always pushing yourself to maximum intensity to make up for lost time",
+      "Focusing purely on performance metrics rather than enjoyment",
+      "Avoiding the gym entirely when coming back from breaks"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Marcus's advice shows that sustainable comebacks prioritize consistency (finishing strong so you want to return) over single heroic efforts that might leave you too sore to continue.",
+    "hints": [
+      "Consider what makes someone likely to continue vs. quit",
+      "Think about the long-term vs. short-term approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "1922c199-dae5-4fcc-ab64-a3b7cf168a89"
+  },
+  {
+    "id": "e4820baa-230b-4e6d-a060-0048ee1a6cab",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How long had Jordan been stuck at the same bench press weight?",
+    "question_type": "passage_based",
+    "options": [
+      "Five weeks at 155 pounds",
+      "Three weeks at 145 pounds",
+      "Two months at 165 pounds",
+      "One year at 135 pounds"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The passage clearly states that Jordan had been stuck at the same bench press weight for five weeks at 155 pounds - 'Not 160, definitely not 165. Just... 155.'",
+    "hints": [
+      "Look for the specific time period and weight mentioned",
+      "The passage emphasizes how stuck Jordan feels at this exact weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e36cbc62-43d2-4e76-b87f-bb21479732a9"
+  },
+  {
+    "id": "b3f59cc9-d073-45de-a614-6a8e5802d4c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What strategy did Alex suggest to help Jordan break through their plateau?",
+    "question_type": "passage_based",
+    "options": [
+      "Taking a deload week - backing off volume while maintaining intensity",
+      "Increasing protein intake and doing extra sets",
+      "Switching to a completely different exercise",
+      "Taking a complete month off from the gym"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex specifically explained the concept of a deload week: 'you back off the volume but keep the intensity' and shared their personal success story of how it worked for their deadlifts.",
+    "hints": [
+      "Look for Alex's explanation of the deload concept",
+      "Consider the specific example Alex gave about their own experience"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e36cbc62-43d2-4e76-b87f-bb21479732a9"
+  },
+  {
+    "id": "f78ee08b-0e7b-4de7-96a8-b8d325836e0b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How did Alex's personal example demonstrate the effectiveness of deload weeks?",
+    "question_type": "passage_based",
+    "options": [
+      "They were stuck at 205 on deadlifts, took a deload week, then pulled 215",
+      "They increased their bench press by 20 pounds in one week",
+      "They completely changed their workout routine and saw immediate results",
+      "They took three months off and came back stronger"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex shared that they were stuck at 205 on deadlifts for three weeks, took a deload week (three sets instead of five, same weight), and came back to pull 215 'like it was nothing.'",
+    "hints": [
+      "Look for Alex's specific numbers and timeline",
+      "Notice how the breakthrough happened after strategic recovery"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e36cbc62-43d2-4e76-b87f-bb21479732a9"
+  },
+  {
+    "id": "d4367930-6796-462b-9c71-d7657949ff94",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What key insight does Alex's advice reveal about plateau-busting?",
+    "question_type": "passage_based",
+    "options": [
+      "Strategic recovery can be more effective than continued intense effort",
+      "You should always increase volume when progress stalls",
+      "Plateaus are permanent and cannot be overcome",
+      "Only advanced athletes experience training plateaus"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex's advice shows that sometimes doing less (deload week) can lead to more progress than continuing to bang your head against the same weight. The body builds strength during recovery, not just training.",
+    "hints": [
+      "Consider the counterintuitive nature of the advice",
+      "Think about when 'less' might actually be 'more'"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e36cbc62-43d2-4e76-b87f-bb21479732a9"
+  },
+  {
+    "id": "605bba30-ac52-4adc-80e8-5722c4f91efb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What was Taylor's main concern about their fitness progress?",
+    "question_type": "passage_based",
+    "options": [
+      "The scale hadn't moved in five weeks despite doing everything right",
+      "They were gaining too much muscle too quickly",
+      "Their doctor wanted them to exercise more intensely",
+      "They couldn't afford to continue their gym membership"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor was frustrated because after three months of carefully managed exercise following their pre-diabetes diagnosis, their weight hadn't budged in five weeks, despite 'doing everything right.'",
+    "hints": [
+      "Look for Taylor's specific complaint about their progress",
+      "Consider what metric Taylor was focused on"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9315831c-642e-4297-9de3-87f547e230b7"
+  },
+  {
+    "id": "6da2bf9a-fd2a-4e8c-845a-0c85e02ca98f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "How did Dr. Chen help Taylor reframe their 'plateau'?",
+    "question_type": "passage_based",
+    "options": [
+      "By showing improved health markers: A1C, blood pressure, and resting heart rate",
+      "By recommending a new diet plan to break the weight plateau",
+      "By suggesting Taylor increase their exercise intensity",
+      "By prescribing medication to boost metabolism"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Dr. Chen showed Taylor their lab results demonstrating significant health improvements: A1C dropped from 6.2 to 5.9, blood pressure down 10 points, and resting heart rate improved by 8 beats per minute.",
+    "hints": [
+      "Look for the specific health metrics Dr. Chen mentioned",
+      "Consider what improvements Dr. Chen highlighted beyond weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9315831c-642e-4297-9de3-87f547e230b7"
+  },
+  {
+    "id": "2ca90a2a-2bff-4fbf-99a8-3a041318482c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What important principle did Dr. Chen teach Taylor about weight plateaus?",
+    "question_type": "passage_based",
+    "options": [
+      "Weight is just one metric - your body may be healing while composition changes",
+      "Weight plateaus always indicate that exercise isn't working",
+      "You should focus only on the scale for measuring progress",
+      "Weight loss should be linear and predictable"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Dr. Chen explained that weight is just one metric and that Taylor's body was healing from the inside out. Sometimes weight plateaus while body composition changes, as evidenced by Taylor's looser clothes.",
+    "hints": [
+      "Consider Dr. Chen's explanation about multiple metrics",
+      "Think about the evidence of body composition changes mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9315831c-642e-4297-9de3-87f547e230b7"
+  },
+  {
+    "id": "5e702524-9d60-4f58-b4fa-3127cdf03c3c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "question_text": "What key insight did Dr. Chen share with Taylor about their fitness progress?",
+    "question_type": "passage_based",
+    "options": [
+      "They should focus only on weight loss to measure success",
+      "The scale is just one chapter, not the whole book of health progress",
+      "They need to exercise more intensely to see results",
+      "Weight plateaus always mean their program isn't working"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen helped Taylor understand that the scale is just one metric among many. Their body was healing internally with improved health markers, and sometimes weight plateaus while body composition changes, making the scale 'one chapter, not the whole book' of their health story.",
+    "hints": [
+      "Think about how Dr. Chen reframed Taylor's focus from just the scale to broader health indicators",
+      "Consider what Dr. Chen said about the scale in relation to the complete picture of health"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9315831c-642e-4297-9de3-87f547e230b7"
+  },
+  {
+    "id": "5413b5b8-6fef-47d7-bc03-551fb6ce9ce9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Research shows that people with social support are 50% more likely to stick with their fitness routines beyond six months.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This statistic is correct according to the article. Social support significantly increases fitness adherence rates, making it much more likely for people to maintain their exercise habits long-term.",
+    "hints": [
+      "Think about how accountability and encouragement from others might impact your motivation to continue exercising.",
+      "Consider whether having workout partners or fitness communities would make it easier or harder to quit."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "641e435d-8fad-40d2-aa47-45e004d03808",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Your fitness tribe must consist of people who do the same type of exercises as you.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article emphasizes that effective fitness support doesn't require matching activities. An accountability partner doing cardio while you lift weights can still provide valuable support through presence and commitment.",
+    "hints": [
+      "Think about what makes an accountability partner effective - is it doing identical exercises or showing up consistently?",
+      "Consider whether mutual commitment matters more than identical activities."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "319ea242-3259-4ed6-a0ce-6e7e1f6162fa",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Online fitness communities can provide the same level of accountability as in-person workout partners.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article states that virtual connections count and that online fitness communities can provide real support, especially for those with social anxiety, unusual schedules, or limited local options.",
+    "hints": [
+      "Consider whether sharing progress and challenges online creates genuine accountability.",
+      "Think about people who might benefit from virtual rather than in-person support."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a4181499-a07d-4207-be7a-5ae25c86e6ec",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "When friends don't understand your fitness journey, you should always try to convert them to your way of thinking.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article advises that you don't need to convert anyone or justify your choices. A simple 'This is important to me' is enough, and trying to force understanding often backfires.",
+    "hints": [
+      "Consider whether trying to convince everyone about your fitness choices is necessary or effective.",
+      "Think about maintaining relationships while pursuing personal goals."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "14a3721a-0c75-4f9b-a101-a604c197257d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What should you look for most in an accountability partner?",
+    "question_type": "standalone",
+    "options": [
+      "Similar fitness goals and identical workout preferences",
+      "Similar schedule and commitment level regardless of specific goals",
+      "Higher fitness level to push you harder",
+      "Someone who can critique your form via telepathy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes finding someone with a similar schedule and commitment level, not necessarily similar fitness goals. The key is mutual accountability through consistent showing up.",
+    "hints": [
+      "Focus on what makes partnership sustainable rather than identical.",
+      "Think about what creates mutual accountability most effectively."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9ce66401-c1e2-48be-a378-fb0b5c0bf969",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "When building your fitness tribe, what approach works best?",
+    "question_type": "standalone",
+    "options": [
+      "Collect as many fitness friends as possible for maximum motivation",
+      "Focus on quality connections over quantity - one genuine partner beats many casual ones",
+      "Only connect with people who are more advanced than you",
+      "Start a fitness cult and require matching workout uniforms"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes 'Quality Over Quantity' - one genuine accountability partner is worth more than a dozen casual gym acquaintances. Focus on building real connections with consistent, supportive people.",
+    "hints": [
+      "Consider whether depth or breadth of connections is more sustainable.",
+      "Think about what makes relationships actually supportive versus just numerous."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "da38b12d-4619-4a62-b23e-3b2a58bf06cc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Which situation best describes when you need support rather than solo training?",
+    "question_type": "standalone",
+    "options": [
+      "When you're working on perfect form technique",
+      "When motivation is consistently low and you're making excuses",
+      "When following a highly specific training program",
+      "When you need quality alone time for mental health"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article lists 'motivation is consistently low' and 'you catch yourself making excuses' as clear indicators that you need support rather than continuing to go solo.",
+    "hints": [
+      "Look for the option that indicates struggling with consistency and commitment.",
+      "Consider which situation suggests internal motivation isn't working effectively."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e2064976-8fdc-446f-ae83-50dc53db8dd0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What's the main benefit of fitness communities according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Access to the latest workout trends and equipment",
+      "Normalized behavior - when everyone exercises regularly, it stops feeling special",
+      "Competition to push you beyond your limits",
+      "Free personal training advice from random strangers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explains that the power of community isn't in deep relationships but in normalized behavior - when everyone around you exercises regularly, it stops feeling special and starts feeling normal.",
+    "hints": [
+      "Think about how environments where something is common make that behavior feel more natural.",
+      "Consider what happens when a behavior becomes 'just what people do' rather than special."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0f7fd26e-5a69-4b83-a51e-71fc529d92a5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to the article, which combination represents the four types of fitness support?",
+    "question_type": "standalone",
+    "options": [
+      "Accountability Partner, Personal Trainer, Nutritionist, Doctor",
+      "Accountability Partner, Mentor, Cheerleader, Community",
+      "Beginner, Intermediate, Advanced, Expert",
+      "Online Friend, Gym Buddy, Family Member, Celebrity Influencer"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically outlines four types of fitness support: The Accountability Partner, The Mentor, The Cheerleader, and The Community, each serving different but important roles.",
+    "hints": [
+      "Look for the option that matches the specific categories outlined in the article.",
+      "Consider which combination covers different aspects of support rather than skill levels."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1ff99e0e-f550-4f43-a63e-741681c54762",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What is the correct sequence for building gym connections as suggested in the 'Start Where You Are' strategy?",
+    "question_type": "standalone",
+    "options": [
+      "Deep conversations → Share workout plans → Join communities → Make eye contact",
+      "Make eye contact and smile → Share workout plans with family → Join online communities → Suggest workplace activities",
+      "Join expensive classes → Hire personal trainer → Make friends → Share on social media",
+      "Wait for others to approach → Exchange phone numbers → Plan group workouts → Start fitness blog"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's 'Start Where You Are' section suggests: at the gym (eye contact, smile, nods), at home (share plans with family), online (join communities), at work (suggest activities) - a gradual progression from simple to more involved.",
+    "hints": [
+      "Look for the progression from least to most involved social interaction.",
+      "Consider which sequence builds naturally from simple acknowledgments to shared activities."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f0a55c3b-0a08-440a-b499-a16d2d869146",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Which three qualities should you prioritize when building quality fitness connections?",
+    "question_type": "standalone",
+    "options": [
+      "High fitness level, expensive gym membership, social media following",
+      "Show up consistently, celebrate wins without comparison, understand struggles without judgment",
+      "Same workout schedule, identical fitness goals, matching athletic wear",
+      "Professional training background, nutrition expertise, medical knowledge"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes these three key qualities for meaningful fitness relationships: showing up consistently, celebrating your wins without comparison, and understanding your struggles without judgment.",
+    "hints": [
+      "Focus on emotional and behavioral qualities rather than credentials or achievements.",
+      "Consider what makes relationships supportive and sustainable over time."
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8cd0ef53-3c48-4485-a8c6-be0326b8949a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What was Alex's main concern about joining Jordan's lunch workout group?",
+    "question_type": "passage_based",
+    "options": [
+      "They didn't have time during lunch breaks",
+      "They felt they were too much of a beginner",
+      "They preferred to exercise alone",
+      "They wanted to start their own competing group instead"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex hesitated saying 'I'm pretty beginner level...' showing their main concern was about their fitness level not being advanced enough for the group.",
+    "hints": [
+      "Look at Alex's specific response when invited to join.",
+      "Consider what worry Alex expressed about their fitness level."
+    ],
+    "image_urls": [],
+    "passage_set_id": "a63716d3-57d4-4289-891e-2ebf463d3dc9"
+  },
+  {
+    "id": "fcf6d76a-9dc2-44b2-85aa-ab688eb6ebc5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "How did Jordan reassure Alex about joining the group?",
+    "question_type": "passage_based",
+    "options": [
+      "By promising to teach Alex advanced techniques",
+      "By explaining that half the group members are beginners too",
+      "By offering to create a special beginner-only group",
+      "By challenging Alex to prove their worthiness through a fitness test"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan said 'Perfect! Half of us are' and mentioned that Mike started two months ago and Casey just does cardio, emphasizing the group's inclusive nature for all levels.",
+    "hints": [
+      "Look at Jordan's response to Alex's concern about being a beginner.",
+      "Consider how Jordan described the other group members' fitness levels."
+    ],
+    "image_urls": [],
+    "passage_set_id": "a63716d3-57d4-4289-891e-2ebf463d3dc9"
+  },
+  {
+    "id": "df2b5430-0dcd-4971-beaa-ab966d28f994",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "According to Emma, what is the main reason she needs the group accountability?",
+    "question_type": "passage_based",
+    "options": [
+      "She enjoys the social aspect of working out with others",
+      "She needs spotting help for heavy weightlifting",
+      "Having people expect her there is the only reason she makes it some days",
+      "She likes to compete with other group members for motivation"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma specifically said 'Having people expect me here is literally the only reason I make it some days,' highlighting how external accountability drives her consistency.",
+    "hints": [
+      "Look for Emma's exact words about why the group helps her.",
+      "Consider what Emma says about expectation and showing up."
+    ],
+    "image_urls": [],
+    "passage_set_id": "a63716d3-57d4-4289-891e-2ebf463d3dc9"
+  },
+  {
+    "id": "c5e4c3c7-6b49-40e4-b8b4-96224a62a64f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What realization does Alex have at the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "That they need to find a different gym with better equipment",
+      "That working out is more enjoyable when done with others",
+      "That the hardest part of fitness isn't the exercise but accepting you don't have to do it alone",
+      "That they should become a personal trainer to help other beginners"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The passage ends with 'Sometimes the hardest part of fitness isn't the exercise—it's accepting that you don't have to do it alone,' showing Alex's key realization about accepting support.",
+    "hints": [
+      "Look at the final thought/realization mentioned in the passage.",
+      "Consider what Alex learns about the relationship between fitness and community."
+    ],
+    "image_urls": [],
+    "passage_set_id": "a63716d3-57d4-4289-891e-2ebf463d3dc9"
+  },
+  {
+    "id": "91437e16-be9f-4117-8689-c60029701e34",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What criticism did Sarah's friend make about her fitness routine?",
+    "question_type": "passage_based",
+    "options": [
+      "That she was spending too much money on gym memberships",
+      "That she had changed and was 'always at the gym now' and used to be more fun",
+      "That she wasn't seeing visible results from her workouts",
+      "That she was neglecting her college coursework for exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah's friend said 'you've changed. You're always at the gym now' and later mentioned 'you used to be fun,' showing criticism about her fitness commitment affecting her personality.",
+    "hints": [
+      "Look at what Sarah's friend specifically complained about.",
+      "Consider the friend's concerns about Sarah's personality and social availability."
+    ],
+    "image_urls": [],
+    "passage_set_id": "625f9e83-8c35-40b4-8bab-be76b0a5f2e5"
+  },
+  {
+    "id": "354f9dee-8025-41dd-8ae2-1133ce680e17",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "How did Sarah defend her fitness routine to her friend?",
+    "question_type": "passage_based",
+    "options": [
+      "She explained her specific workout program in detail",
+      "She pointed out that three times a week isn't 'always' and that she feels better than she has in years",
+      "She invited her friend to join her at the gym",
+      "She apologized and promised to reduce her workout frequency"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah corrected that 'Three times a week isn't always' and emphasized 'I feel better than I have in years,' defending both the frequency and personal benefits of her routine.",
+    "hints": [
+      "Look at Sarah's direct response to her friend's criticism.",
+      "Consider how Sarah corrected the 'always' comment and what benefit she mentioned."
+    ],
+    "image_urls": [],
+    "passage_set_id": "625f9e83-8c35-40b4-8bab-be76b0a5f2e5"
+  },
+  {
+    "id": "84e61fda-1411-44ab-b48d-5275f9576994",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Who did Sarah text after the difficult lunch conversation?",
+    "question_type": "passage_based",
+    "options": [
+      "Her personal trainer for advice",
+      "Her gym accountability partner",
+      "Her family members for support",
+      "Her college roommate to complain"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah texted 'her gym accountability partner' saying 'Rough lunch. Thanks for being someone who gets it,' seeking support from someone who understands her fitness journey.",
+    "hints": [
+      "Look at who Sarah reached out to for support after the lunch.",
+      "Consider what type of relationship provided understanding that her old friends couldn't."
+    ],
+    "image_urls": [],
+    "passage_set_id": "625f9e83-8c35-40b4-8bab-be76b0a5f2e5"
+  },
+  {
+    "id": "1e51d647-4b67-494c-bd95-8dd56e2992ab",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What reassurance did Sarah's accountability partner provide?",
+    "question_type": "passage_based",
+    "options": [
+      "Advice on how to convince her old friends to exercise",
+      "That she should find new friends who share her interests",
+      "That they've 'been there' and real friends will adjust, just like theirs did",
+      "That she should ignore her friends and focus only on fitness"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The accountability partner replied 'Been there. Your real friends will adjust. Mine did,' offering reassurance through shared experience and hope that true friends adapt over time.",
+    "hints": [
+      "Look at the specific reassurance message Sarah received back.",
+      "Consider what the accountability partner said about their own experience and real friends."
+    ],
+    "image_urls": [],
+    "passage_set_id": "625f9e83-8c35-40b4-8bab-be76b0a5f2e5"
+  },
+  {
+    "id": "3368645f-d019-4c71-8c50-f54d32275a5f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "Why was Taylor hesitant about posting on the fitness app community board?",
+    "question_type": "passage_based",
+    "options": [
+      "They didn't know how to use the app properly",
+      "Posting felt vulnerable, especially with their health conditions",
+      "They were worried about receiving spam messages",
+      "They preferred face-to-face communication over online interaction"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states 'Posting felt vulnerable, especially with their health conditions,' showing Taylor's specific concern about sharing their pre-diabetes and high blood pressure online.",
+    "hints": [
+      "Look at what made Taylor hesitate before posting.",
+      "Consider how Taylor felt about sharing personal health information online."
+    ],
+    "image_urls": [],
+    "passage_set_id": "11b31f70-7f79-4cee-b465-f489b475eeb0"
+  },
+  {
+    "id": "ea388d28-6158-43f9-8a67-f412256f330d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What types of responses did Taylor receive to their vulnerable post?",
+    "question_type": "passage_based",
+    "options": [
+      "Criticism about their health choices and medical advice",
+      "Success stories from others managing similar health conditions like diabetes and arthritis",
+      "Recommendations for expensive supplements and equipment",
+      "Suggestions to see a doctor instead of exercising"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor received supportive responses from people with similar conditions: someone with Type 2 diabetes now off medications, someone with arthritis doing pool workouts, and someone with high blood pressure success.",
+    "hints": [
+      "Look at the specific types of responses Taylor received.",
+      "Consider what health conditions other community members shared and their success stories."
+    ],
+    "image_urls": [],
+    "passage_set_id": "11b31f70-7f79-4cee-b465-f489b475eeb0"
+  },
+  {
+    "id": "1873d09e-8620-4b2b-ae65-a105897bc473",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What special resource did Riley offer to Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "Free personal training sessions for people with health conditions",
+      "A chronic conditions support thread every Monday with 'no toxic positivity, just real talk'",
+      "A discount code for medical-grade exercise equipment",
+      "Contact information for doctors who specialize in exercise therapy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley mentioned 'We have a chronic conditions support thread every Monday. No toxic positivity, just real talk and modified workout ideas,' offering ongoing targeted support.",
+    "hints": [
+      "Look at what specific ongoing resource Riley mentioned.",
+      "Consider what Riley said about the tone and content of this weekly resource."
+    ],
+    "image_urls": [],
+    "passage_set_id": "11b31f70-7f79-4cee-b465-f489b475eeb0"
+  },
+  {
+    "id": "7dee615d-9987-4289-b1a5-f7c22e1c3301",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "question_text": "What realization did Taylor have about finding their fitness tribe?",
+    "question_type": "passage_based",
+    "options": [
+      "That they needed to hire a personal trainer who understood medical conditions",
+      "That local gyms were more supportive than online communities",
+      "That going solo wasn't necessary and sometimes your tribe is just a Wi-Fi connection away",
+      "That they should start their own support group for people with pre-diabetes"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The passage ends with Taylor realizing 'Maybe going solo wasn't necessary after all. Sometimes your tribe is just a Wi-Fi connection away,' showing how online community can provide real support.",
+    "hints": [
+      "Look at Taylor's final thought about going solo versus finding support.",
+      "Consider what Taylor realized about the accessibility of community through technology."
+    ],
+    "image_urls": [],
+    "passage_set_id": "11b31f70-7f79-4cee-b465-f489b475eeb0"
+  },
+  {
+    "id": "49f62169-7224-4a41-996b-66eaed911ea5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Identity-based behavior means viewing exercise as part of who you are rather than something you need to add to your life.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Identity-based behavior is when fitness becomes part of your identity rather than an external obligation. It's the difference between 'I am someone who exercises' and 'I need to exercise.'",
+    "hints": [
+      "Think about how you brush your teeth - you don't need motivation because it's part of who you are",
+      "Identity-based behavior shifts from external obligation to internal identity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c28b8f87-2be5-4ffb-a977-fb1d44631f9b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The three pillars of sustainable fitness are autonomy, mastery, and purpose.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article identifies autonomy (making it your own), mastery (joy of getting better), and purpose (your personal 'why') as the three foundational pillars of sustainable fitness.",
+    "hints": [
+      "These three elements help transform exercise from obligation to enjoyment",
+      "Each pillar addresses a different aspect of intrinsic motivation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d19f9fcd-2e25-40a9-b823-04d4646e0f6d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The lifestyle phase of fitness integration typically occurs between months 4-12.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "According to the article, the lifestyle phase where exercise becomes as natural as eating lunch occurs between months 4-12, after the scheduling and habit phases.",
+    "hints": [
+      "This is when exercise stops feeling like a decision and becomes automatic",
+      "It follows the scheduling phase (weeks 1-4) and habit phase (weeks 5-12)"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "72b77171-fd7b-4f49-87f1-b2838a346ea8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Red flags of still being in 'have to' mode include using exercise as punishment for eating.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Using exercise as punishment for eating is specifically mentioned as a red flag indicating you haven't reached the sustainable 'want to' mindset and are still operating from obligation.",
+    "hints": [
+      "Healthy fitness comes from self-care, not self-punishment",
+      "The 'want to' mindset views exercise positively, not as punishment"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d8274c9b-92f5-4da2-a8c4-2eb63dabd276",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What should you focus on when trying to build autonomy in your fitness practice?",
+    "question_type": "standalone",
+    "options": [
+      "Following someone else's program exactly as written",
+      "Experimenting to find what genuinely appeals to you",
+      "Only doing exercises that burn the most calories",
+      "Copying what the fittest person at your gym does"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Building autonomy means making fitness your own by experimenting with different types of exercise until you find what genuinely appeals to you, rather than following others' programs.",
+    "hints": [
+      "Autonomy means ownership and personal choice",
+      "What works for others may not work for you"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c12f9b62-09ac-4184-bafa-b284a442a14e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "During stressful periods, the article recommends:",
+    "question_type": "standalone",
+    "options": [
+      "Increasing workout intensity to combat stress",
+      "Scaling back to maintenance mode with 2-3 short sessions per week",
+      "Stopping exercise completely until stress passes",
+      "Adding marathon training to build mental toughness"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "During stressful periods, sustainable fitness involves scaling back to maintenance mode with 2-3 short sessions per week, focusing on exercise as stress relief rather than achievement.",
+    "hints": [
+      "Sustainable fitness adapts to life circumstances",
+      "Stress periods require gentler approaches, not more intensity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bcd683b1-714a-4acf-a145-9724472384dc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Which represents the healthiest approach to tracking progress for mastery?",
+    "question_type": "standalone",
+    "options": [
+      "Only counting calories burned and pounds lost",
+      "Celebrating form improvements and skill development",
+      "Comparing your progress to others on social media",
+      "Focusing solely on how much weight you can lift"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Tracking mastery involves celebrating improvements in form, skills, and mental growth rather than just focusing on traditional metrics like weight or calories burned.",
+    "hints": [
+      "Mastery is about getting better at movement and skills",
+      "Internal improvements matter as much as external metrics"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "84f1f44c-2336-4d7b-800c-d4da3001a63c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "The article suggests reframing 'I have to work out' as:",
+    "question_type": "standalone",
+    "options": [
+      "I must exercise or I'll gain weight",
+      "I get to move my body",
+      "I should probably exercise today",
+      "I need to burn off yesterday's dinner"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Reframing language from 'I have to work out' to 'I get to move my body' shifts the perspective from obligation to privilege and opportunity.",
+    "hints": [
+      "Language shapes mindset - positive framing creates positive associations",
+      "Focus on opportunity rather than obligation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9c01d207-f049-4c0e-b7fc-9a419fc3bec6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What does the article identify as the ultimate success metric for building a fitness life?",
+    "question_type": "standalone",
+    "options": [
+      "Losing a specific amount of weight",
+      "Exercising every single day without fail",
+      "You can't imagine not exercising regularly",
+      "Becoming the strongest person at your gym"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The ultimate success metric is when you can't imagine not exercising regularly because movement has become such a positive, integrated part of your life.",
+    "hints": [
+      "True success is when fitness becomes part of your identity",
+      "It's about integration, not perfection"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "467f01a1-fb56-434e-a664-7afedbd433a9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "Which approach best supports long-term fitness sustainability?",
+    "question_type": "standalone",
+    "options": [
+      "Rigid rules with no exceptions",
+      "Building in flexibility with backup plans",
+      "All-or-nothing thinking",
+      "Perfection-focused training schedules"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Building in flexibility with backup plans supports sustainability because rigid rules lead to rebellion, while flexible approaches allow for life's inevitable changes.",
+    "hints": [
+      "Sustainable systems adapt to real life",
+      "Flexibility prevents the all-or-nothing trap"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4bea106d-2d38-4e31-8c55-48670bedba40",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "According to the integration process, which phase involves putting workouts in your calendar and setting reminders?",
+    "question_type": "standalone",
+    "options": [
+      "The Scheduling Phase",
+      "The Habit Phase and The Lifestyle Phase",
+      "The Lifestyle Phase and The Scheduling Phase",
+      "The Habit Phase"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The Scheduling Phase (weeks 1-4) involves intentional planning like putting workouts in your calendar, setting reminders, and preparing gear the night before.",
+    "hints": [
+      "This is the first phase when you need to be very intentional",
+      "Later phases become more automatic"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b17f6a5d-51dd-4e93-90f8-0925a7d778d9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was the key transformation Casey experienced in their fitness journey?",
+    "question_type": "passage_based",
+    "options": [
+      "They learned to lift heavier weights than before",
+      "They shifted from needing motivation to identifying as someone who moves regularly",
+      "They found the perfect workout program online",
+      "They convinced all their friends to join the gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey's transformation was shifting from viewing motivation as a finite resource to identifying as someone who moves regularly, like someone who showers regularly.",
+    "hints": [
+      "Focus on the identity shift Casey described",
+      "It's about who they became, not what they did"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32cab6dc-e44d-4d5f-95b8-f220fe206d70"
+  },
+  {
+    "id": "8036f099-66ee-4a79-9396-700a1de71bc3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How did Jordan's approach to working out change over the year?",
+    "question_type": "passage_based",
+    "options": [
+      "They started following stricter training programs",
+      "They moved from seeking the perfect program to asking what kind of person they wanted to be",
+      "They increased their workout frequency to daily sessions",
+      "They focused more on competitive bodybuilding"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan shifted from analysis paralysis seeking the perfect program to deciding what kind of person they wanted to be, which changed their entire approach to fitness.",
+    "hints": [
+      "Jordan mentioned being paralyzed by analysis initially",
+      "The change was about identity, not methodology"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32cab6dc-e44d-4d5f-95b8-f220fe206d70"
+  },
+  {
+    "id": "a2fab859-f9b7-47f3-8e4f-d77e3a8a0c05",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What analogy does Casey use to describe their new relationship with exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Like taking medication when prescribed",
+      "Like eating when hungry",
+      "Like showering regularly",
+      "Like going to work every day"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey compares their relationship with exercise to showering regularly - something they do because it's part of who they are, not because they need motivation.",
+    "hints": [
+      "Look for the comparison Casey makes about regular hygiene",
+      "It's about something you do automatically"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32cab6dc-e44d-4d5f-95b8-f220fe206d70"
+  },
+  {
+    "id": "3f9ab2d1-d152-4e33-8d2b-aa4b3f024900",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What paradox does Jordan observe about their relaxed approach to fitness?",
+    "question_type": "passage_based",
+    "options": [
+      "They exercise less but enjoy it more",
+      "They're in better shape now than when they were forcing themselves through hated programs",
+      "They spend more money but get worse results",
+      "They have less time but more energy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan notes the paradox that they're in better shape now with their relaxed, identity-based approach than when they were forcing themselves through programs they hated.",
+    "hints": [
+      "Think about the counterintuitive result Jordan achieved",
+      "Less force led to better results"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32cab6dc-e44d-4d5f-95b8-f220fe206d70"
+  },
+  {
+    "id": "6011f10c-8e1b-4d15-a7f6-1abedfc6cde9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How did Emma's relationship with family time and exercise evolve?",
+    "question_type": "passage_based",
+    "options": [
+      "She gave up exercise to spend more time with her kids",
+      "She realized the energy she brings back to everything else is more important than the time taken",
+      "She convinced her family to always work out together",
+      "She hired a nanny so she could exercise more"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma discovered that it's not about the time taken for exercise, but about the energy she brings back to everything else, including her family.",
+    "hints": [
+      "Emma initially felt guilty about taking time away",
+      "Her perspective shifted to focus on what she gained"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32db74e9-9e1f-4f75-ad90-e41443bdfb41"
+  },
+  {
+    "id": "b7abcfa0-db92-4966-8806-398f6ea83115",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What impact did Sarah's transformation have beyond her own fitness?",
+    "question_type": "passage_based",
+    "options": [
+      "She became a professional personal trainer",
+      "She convinced all her friends to start exercising",
+      "She now volunteers teaching beginners at the community center",
+      "She opened her own gym business"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Sarah, who once hid in her car afraid of the gym, now volunteers at the community center teaching beginners, demonstrating how her transformation extended to helping others.",
+    "hints": [
+      "Sarah went from being terrified to helping others",
+      "She's giving back to the community"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32db74e9-9e1f-4f75-ad90-e41443bdfb41"
+  },
+  {
+    "id": "c98a758d-63ec-4ca2-986a-f96baaadbffd",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "According to Alex, what is the real change that happened to the group over five years?",
+    "question_type": "passage_based",
+    "options": [
+      "They all became competitive athletes",
+      "They moved from being there because they have to be to being there because it's just what they do",
+      "They all lost significant amounts of weight",
+      "They all became fitness influencers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex identifies the real change as moving from obligation ('have to be there') to identity ('this is just what we do on Tuesdays'), representing the shift from external to internal motivation.",
+    "hints": [
+      "Alex is talking about the fundamental shift in why they're there",
+      "It's about the transition from obligation to identity"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32db74e9-9e1f-4f75-ad90-e41443bdfb41"
+  },
+  {
+    "id": "4e708f62-9bad-4f88-bcb2-2a5df5025fc9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What shift does Sarah describe in the final passage about the group's evolution?",
+    "question_type": "passage_based",
+    "options": [
+      "From schedule to lifestyle",
+      "From individual to group training",
+      "From basic to advanced exercises",
+      "From indoor to outdoor activities"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah concludes by describing the group's evolution 'from schedule to lifestyle,' highlighting how exercise moved from being a scheduled obligation to a natural part of their lifestyle.",
+    "hints": [
+      "Sarah summarizes the transformation in two key words",
+      "It's about how exercise fits into their lives"
+    ],
+    "image_urls": [],
+    "passage_set_id": "32db74e9-9e1f-4f75-ad90-e41443bdfb41"
+  },
+  {
+    "id": "59db5508-63db-4e3b-aa36-470b05a94c24",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What key insight does Riley share about sustainable fitness?",
+    "question_type": "passage_based",
+    "options": [
+      "You must exercise every single day to be successful",
+      "You need expensive equipment to stay consistent",
+      "Building a fitness life isn't about perfection, it's about never fully stopping",
+      "You should force yourself through intense workouts even when exhausted"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Riley explains that building a fitness life isn't about perfection but about never fully stopping - even when you slow down, you don't quit completely.",
+    "hints": [
+      "Riley talks about the difference between slowing down and stopping",
+      "It's about consistency over perfection"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0516ea2c-8426-4b26-bed8-8b1674f06d92"
+  },
+  {
+    "id": "1c2d61c2-fddd-4078-9d10-52fb258d41f8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What does Riley suggest Casey should do instead of forcing themselves through a full routine?",
+    "question_type": "passage_based",
+    "options": [
+      "Skip the workout completely and try again tomorrow",
+      "Do fifteen minutes of whatever feels good and call it a win",
+      "Follow a completely different workout program",
+      "Exercise at home instead of at the gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley suggests Casey do fifteen minutes of whatever feels good and call it a win, demonstrating the sustainable approach of adapting rather than abandoning.",
+    "hints": [
+      "Riley offers a middle ground between all-or-nothing",
+      "It's about maintaining the habit even when scaling back"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0516ea2c-8426-4b26-bed8-8b1674f06d92"
+  },
+  {
+    "id": "4f732b4b-1beb-4024-9adb-d3087a876b31",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "How does Riley differentiate between 'Old Casey' and current Casey?",
+    "question_type": "passage_based",
+    "options": [
+      "Old Casey exercised more intensely",
+      "Old Casey would delete the fitness app and forget about it for months when struggling",
+      "Old Casey only did cardio exercises",
+      "Old Casey had a better diet plan"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley points out that Old Casey would delete the fitness app and pretend to forget about it for months, while current Casey still shows up even when struggling.",
+    "hints": [
+      "Riley is highlighting Casey's growth in dealing with difficult periods",
+      "It's about persistence versus giving up completely"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0516ea2c-8426-4b26-bed8-8b1674f06d92"
+  },
+  {
+    "id": "3d96410b-f608-42b4-8748-d3cec6adcc77",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What final insight does Riley offer about how 'people like us' approach fitness challenges?",
+    "question_type": "passage_based",
+    "options": [
+      "We quit when things get difficult",
+      "We don't quit anymore - we adjust",
+      "We only exercise when we feel motivated",
+      "We need perfect conditions to be successful"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley concludes by saying 'people like us? We don't quit anymore. We adjust,' emphasizing that sustainable fitness is about adapting rather than abandoning when faced with challenges.",
+    "hints": [
+      "Riley is making a statement about identity and resilience",
+      "The key is in the contrast between quitting and adjusting"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0516ea2c-8426-4b26-bed8-8b1674f06d92"
+  }
+]
