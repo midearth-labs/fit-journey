@@ -2712,5 +2712,2915 @@
     ],
     "image_urls": [],
     "passage_set_id": "403dbf71-1576-4df7-a413-e9f36f44dcff"
+  },
+  {
+    "id": "27589467-24b3-4d3e-bc07-e074bce79ace",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "The \"all-or-nothing\" approach to fitness leads to better long-term results than moderate consistency.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article explains that all-or-nothing approaches often result in sporadic exercise patterns, with people exercising intensely once per week but missing other days due to soreness or burnout. Moderate consistency provides more total training volume and better results.",
+    "hints": [
+      "Think about what happens after an extremely intense workout session",
+      "Consider how often someone can realistically maintain maximum effort workouts"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "49714dfc-b63e-483f-b9c2-e04da282eea9",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "According to research, training frequency matters more than individual session intensity for beginners.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article specifically states that research shows training frequency matters more than individual session intensity for beginners, as the body adapts to what you do consistently rather than what you do occasionally.",
+    "hints": [
+      "Consider how beginners' bodies respond to exercise stimuli",
+      "Think about the difference between repeated exposure and occasional shock treatments"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "34b797c5-7e8c-4d21-913d-d7ae2705def2",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "The Two-Day Rule means you should never exercise two days in a row to ensure proper recovery.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The Two-Day Rule actually means never let two days pass WITHOUT some form of exercise. This prevents the 'I'll start Monday' spiral and maintains consistency by making the next day non-negotiable if you miss one day.",
+    "hints": [
+      "Re-read what the Two-Day Rule is designed to prevent",
+      "Consider whether this rule promotes or prevents exercise frequency"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "914c8638-1c6a-4275-8b14-f3b7ddcf9fd7",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "Each workout is described as 'a vote for the person you're becoming' regardless of intensity level.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article emphasizes that consistency builds identity, and each workout, regardless of intensity, is a vote for the person you're becoming - someone who shows up and prioritizes health.",
+    "hints": [
+      "Focus on the identity-building aspect mentioned in the article",
+      "Consider how small actions contribute to larger identity formation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5d4dda30-fee2-4e65-810d-b4d1dd966768",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What happens during the recovery timeline after an intense workout according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Days 1-2: Complete recovery, Days 3-4: Ready for next intense session",
+      "Days 1-2: Acute inflammation and muscle damage, Days 3-4: Peak soreness, Days 5-7: Finally recovering to baseline",
+      "Days 1-2: Mild soreness, Days 3-7: Continuous strength building",
+      "Days 1-2: Time for victory dancing, Days 3-4: Planning your fitness influencer career"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article outlines a 7-day recovery timeline where the first two days involve acute inflammation and muscle damage, days 3-4 show peak soreness (DOMS), and days 5-7 are spent finally recovering to baseline, demonstrating why intense workouts can interfere with consistent training.",
+    "hints": [
+      "Look for the specific timeline breakdown in the recovery section",
+      "Consider why this timeline supports the consistency argument"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8c53f7f4-0602-4012-a69f-e3efce0bdd3b",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "According to the math comparison in the article, what's the realistic completion rate difference between weekend warriors and consistent moderate exercisers?",
+    "question_type": "standalone",
+    "options": [
+      "Weekend warriors: 80% completion, Moderate exercisers: 85% completion",
+      "Weekend warriors: 60% completion (~62 workouts), Moderate exercisers: 85% completion (~177 workouts)",
+      "Weekend warriors: 90% completion, Moderate exercisers: 75% completion",
+      "Weekend warriors: 100% completion because they're obviously superhuman, Moderate exercisers: 50% because they lack intensity"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article calculates that weekend warriors achieve about 60% completion rate due to life and soreness (~62 workouts annually), while consistent moderate exercisers achieve 85% completion (~177 workouts annually), resulting in nearly three times more training volume.",
+    "hints": [
+      "Look for the specific mathematical comparison in the compound effect section",
+      "Consider factors like injury risk and burnout that affect completion rates"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6644fbcb-b311-49db-8070-434d372592c2",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What should you do when your energy levels are rated 3-4 out of 10 according to the Energy Matching Principle?",
+    "question_type": "standalone",
+    "options": [
+      "Skip exercise entirely and wait for perfect conditions",
+      "Push through with high-intensity training to boost energy",
+      "Do light movement with reduced duration",
+      "Take a nap and dream about becoming the next fitness influencer"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The Energy Matching Principle states that when your energy is rated 3-4 out of 10, you should engage in light movement with reduced duration. This keeps you active while respecting your body's current capacity.",
+    "hints": [
+      "Find the Energy Matching Principle section and its specific recommendations",
+      "Consider how this approach maintains consistency while being realistic"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ba4782e9-275e-40a4-a722-8d91ff5a921b",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What is your 'minimum effective dose' according to the article's framework?",
+    "question_type": "standalone",
+    "options": [
+      "The most you can possibly do on your best day",
+      "Exactly 45 minutes of intense exercise daily",
+      "Your non-negotiable baseline that keeps you in the game on tough days",
+      "The amount of exercise that impresses people on social media"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article defines your minimum effective dose as your non-negotiable baseline - the amount of exercise you'll do no matter what. This serves as your safety net on tough days, keeping you consistent and 'in the game' rather than breaking the habit entirely.",
+    "hints": [
+      "Look for the section discussing what minimum effective dose means in practice",
+      "Consider the purpose this minimum serves during difficult periods"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "988367a2-d2a1-42c7-a243-570f74b273cf",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "Which combination of factors does the article recommend for building consistency?",
+    "question_type": "standalone",
+    "options": [
+      "Same time + prepared gear + ritual start + visible tracking",
+      "Maximum intensity + perfect conditions + advanced equipment",
+      "Social media posts + expensive gear + complex programming",
+      "Sporadic timing + whatever clothes + random activities + secret tracking"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article lists four consistency triggers: same time (body learns to expect exercise), prepared gear (removes one decision), ritual start (creates mental transition), and visible tracking (calendar X's provide visual motivation).",
+    "hints": [
+      "Look for the consistency triggers section",
+      "Consider what makes showing up automatic rather than dependent on motivation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8c43444e-4db6-4afa-8254-380228eddc35",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "According to the flexible programming approach, what should your weekly movement quotas include?",
+    "question_type": "standalone",
+    "options": [
+      "Total minutes (150+) + strength sessions (2-3) + recovery activities (2)",
+      "Only high-intensity workouts + zero rest days + maximum effort always",
+      "Exactly 7 hours + 5 strength sessions + no recovery time",
+      "Instagram-worthy workouts + perfect form always + comparison with others"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article suggests thinking in weekly movement quotas: total minutes of activity (aim for 150+), number of strength sessions (aim for 2-3), and recovery activities (aim for 2), allowing you to mix and match based on energy and schedule.",
+    "hints": [
+      "Find the flexible programming section that discusses weekly quotas",
+      "Consider how this approach provides structure while maintaining adaptability"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "86a0ddf6-df5a-4d7a-956e-fa502915c9c2",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What sequence does the article recommend for your consistency action plan?",
+    "question_type": "standalone",
+    "options": [
+      "Define minimum → set frequency goals → track showing up → prepare for low-energy days → celebrate consistency",
+      "Buy expensive equipment → join elite gym → hire personal trainer → post on social media → quit after 2 weeks",
+      "Start with maximum effort → ignore rest days → focus on intensity only → compare with others → burnout",
+      "Wait for perfect conditions → plan extensively → never actually start → repeat cycle monthly"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article outlines a 5-step consistency action plan: 1) Define your minimum, 2) Set frequency over intensity goals, 3) Track showing up, 4) Prepare for low-energy days, 5) Celebrate consistency streaks rather than workout intensity.",
+    "hints": [
+      "Look for the numbered action plan at the end of the article",
+      "Notice how each step builds on the previous one for sustainable success"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "574efdcd-5de4-4983-833d-2ab63f7f7812",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "In Casey's story, what was the main problem with their fitness approach?",
+    "question_type": "passage_based",
+    "options": [
+      "They didn't have access to a gym membership",
+      "They were doing all-or-nothing workouts that left them unable to walk for days",
+      "They were exercising too frequently without rest days",
+      "They were following social media influencers' advice too closely"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey's pattern was doing intense 2-hour Monday workouts that left them unable to walk properly until Thursday, resulting in only exercising once per week instead of building consistency.",
+    "hints": [
+      "Focus on Casey's described workout pattern and its consequences",
+      "Consider what prevented Casey from exercising more frequently"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5c37b38c-34f0-4ddd-80c1-6b05f5f63bd3"
+  },
+  {
+    "id": "c457d926-f448-433d-8235-ed8d8e758c7e",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What was Alex's approach that differed from Casey's?",
+    "question_type": "passage_based",
+    "options": [
+      "Alex worked out for 2+ hours to maximize results",
+      "Alex came to the gym 4 times per week but never stayed more than 30 minutes",
+      "Alex focused on advanced techniques and complex programs",
+      "Alex only exercised when feeling perfectly motivated"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex explained that they come to the gym four times per week but never stay more than 30 minutes, demonstrating the consistency over intensity principle in action.",
+    "hints": [
+      "Look at what Alex says about their frequency and duration",
+      "Compare Alex's sustainable approach with Casey's intensive method"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5c37b38c-34f0-4ddd-80c1-6b05f5f63bd3"
+  },
+  {
+    "id": "e2b412d7-4ad1-4026-8fc3-f3f3dfed88f5",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What eye-opening realization did Casey have about their exercise frequency?",
+    "question_type": "passage_based",
+    "options": [
+      "They had completed more workouts than they thought",
+      "They had been to the gym six times in three months while Alex maintained consistent attendance",
+      "They needed to buy more expensive equipment",
+      "They were actually exercising too much"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey realized they had only been to the gym six times in three months, while Alex had been consistently attending. This mathematical reality was 'embarrassing but enlightening' and showed the failure of their all-or-nothing approach.",
+    "hints": [
+      "Look for the specific numbers mentioned in their conversation",
+      "Consider how this comparison highlighted the effectiveness of different approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5c37b38c-34f0-4ddd-80c1-6b05f5f63bd3"
+  },
+  {
+    "id": "07f5ca87-8ec4-475a-a2e4-c3201fc23e85",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "According to Alex, what concept challenged Casey's perfectionist mindset?",
+    "question_type": "passage_based",
+    "options": [
+      "Instagram workouts are more effective than gym sessions",
+      "Two 20-minute sessions you actually do beat five perfect sessions that only exist in your spreadsheet",
+      "Expensive equipment guarantees better results",
+      "Weekend warriors have the most successful approach"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex explained that 'Two 20-minute sessions you actually do beat five perfect sessions that only exist in your spreadsheet,' highlighting how consistency in execution trumps perfection in planning.",
+    "hints": [
+      "Focus on Alex's key message about execution versus planning",
+      "Consider how this addresses the gap between intention and action"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5c37b38c-34f0-4ddd-80c1-6b05f5f63bd3"
+  },
+  {
+    "id": "b6ee6813-5afc-44ac-92d9-93337d58b564",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What rule helped Emma get back on track when she missed two days of exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "The 10,000 steps rule",
+      "The two-day rule: never two days without movement",
+      "The perfect workout rule",
+      "The Instagram posting rule"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma remembered her new rule: never two days without movement. Since she'd already missed Tuesday and it was Wednesday evening, this rule made the day non-negotiable for some form of activity.",
+    "hints": [
+      "Look for what Emma remembered when she saw her unused workout clothes",
+      "Consider how this rule prevented her from falling into a longer inactive period"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8c6ab946-50ae-4e1a-8236-90785a2a6879"
+  },
+  {
+    "id": "092580ca-c5d2-4f6f-9fce-a72ca61cbd23",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "How did Emma's daughter contribute to her fitness consistency?",
+    "question_type": "passage_based",
+    "options": [
+      "By criticizing her mother's exercise habits",
+      "By asking with brutal honesty why she had exercise clothes but wasn't exercising",
+      "By demanding they go to an expensive gym",
+      "By refusing to participate in any activities"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's six-year-old daughter asked with 'brutal honesty only children possess' why she had exercise clothes but wasn't exercising, which prompted Emma to take action rather than make excuses.",
+    "hints": [
+      "Consider the role of Emma's daughter in the story",
+      "Think about how children's directness can sometimes provide needed accountability"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8c6ab946-50ae-4e1a-8236-90785a2a6879"
+  },
+  {
+    "id": "7ec2c758-2fe5-46d7-8411-6504082111f3",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What alternative did Emma choose instead of her planned 45-minute workout?",
+    "question_type": "passage_based",
+    "options": [
+      "She skipped exercise entirely until the next day",
+      "She did a 15-minute dance video with her daughter",
+      "She went for a solo 2-hour run",
+      "She waited for perfect conditions to do her original plan"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Instead of her planned 45-minute workout, Emma chose to do a 15-minute dance video with her daughter, demonstrating that something is infinitely better than nothing when building consistency.",
+    "hints": [
+      "Look for what Emma actually ended up doing that evening",
+      "Consider how this choice exemplified the article's main principle"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8c6ab946-50ae-4e1a-8236-90785a2a6879"
+  },
+  {
+    "id": "31eba814-ba0f-4fe7-877d-9436bbeb9aad",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "question_text": "What made the modified workout meaningful beyond just maintaining consistency?",
+    "question_type": "passage_based",
+    "options": [
+      "It burned exactly the same calories as her planned workout",
+      "Her daughter's giggles during the workout made it the highlight of her week",
+      "She achieved perfect form in all movements",
+      "It impressed her social media followers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The modified workout became meaningful because her daughter's giggles during the dance video made it 'the highlight of her week,' showing that consistency can create unexpected joy and connection beyond just fitness benefits.",
+    "hints": [
+      "Consider the emotional and social benefits that emerged from this choice",
+      "Think about how this moment went beyond just 'exercise' to create family bonding"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8c6ab946-50ae-4e1a-8236-90785a2a6879"
+  },
+  {
+    "id": "60560d71-7e38-4113-b0d5-0fb826c87fb3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "Chronic stress directly sabotages fitness efforts by breaking down muscle tissue for energy.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Elevated cortisol from chronic stress does break down muscle tissue for energy, while also promoting fat storage, disrupting sleep quality, and reducing recovery capacity between workouts.",
+    "hints": [
+      "Think about what happens to cortisol levels when you're chronically stressed",
+      "Consider how stress hormones affect muscle protein synthesis"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "aa26f9f0-4b0a-4731-8209-bef58f37dfee",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "People with workout partners are 2x more likely to stick with exercise programs.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The social multiplier effect shows that people with workout partners are indeed 2x more likely to stick with exercise, while friends who support your goals increase success rates by 40%.",
+    "hints": [
+      "Consider the accountability factor when exercising with others",
+      "Think about how social support impacts motivation and consistency"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "78e96e86-73af-480a-aba9-71ab675c382d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "Most people who claim they don't have time for fitness actually spend 4-5 hours daily on social media.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "While the article mentions people spend 2-3 hours daily on social media, it states that 4-5 hours is above average, not typical for most people.",
+    "hints": [
+      "Look at the specific numbers mentioned about average screen time",
+      "Consider what constitutes typical versus above-average usage"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f3818a61-8eb7-43e1-9e49-c4f30f4465d9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "Alcohol reduces protein synthesis by up to 40%, hindering muscle growth.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alcohol significantly impacts protein synthesis, reducing it by up to 40%, which directly affects muscle growth and recovery. It also disrupts REM sleep and adds empty calories.",
+    "hints": [
+      "Think about how alcohol affects the body's ability to build and repair muscle",
+      "Consider the recovery implications of alcohol consumption"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3809f4be-5e34-4002-ac02-acf05ceac5e1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "When trying to reduce stress for better fitness results, which technique involves breathing patterns?",
+    "question_type": "standalone",
+    "options": [
+      "The 5-5-5 breathing technique",
+      "The 10-8-6 power breathing method",
+      "The 3-2-1 exhale protocol",
+      "The hyperventilation happiness hack"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 5-5-5 breathing technique (inhale for 5 counts, hold for 5, exhale for 5, done 3 times when stressed) is specifically mentioned as a practical stress-buster that actually works.",
+    "hints": [
+      "Look for the breathing technique specifically mentioned in the stress management section",
+      "The correct technique uses equal counts for each phase"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e6cc8135-778b-42c7-a0ef-03b2507def26",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What should you do if your social environment doesn't support your fitness goals?",
+    "question_type": "standalone",
+    "options": [
+      "Completely isolate yourself from unsupportive people",
+      "Use 'I'm prioritizing my health' as a boundary and find your fitness tribe",
+      "Give up on fitness to maintain social harmony",
+      "Start a fitness cult and recruit everyone you know"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article suggests setting boundaries by saying 'I'm prioritizing my health' (which is a complete sentence) and finding your tribe through group classes, running clubs, or online communities.",
+    "hints": [
+      "Think about healthy boundary setting mentioned in the social environment section",
+      "Consider the balance between maintaining relationships and pursuing health goals"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8c42236f-348d-409a-bbbf-8b9becc918e2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "According to the article, what's the recommended approach for managing alcohol consumption while pursuing fitness goals?",
+    "question_type": "standalone",
+    "options": [
+      "Complete abstinence is the only option",
+      "The 2-drink rule with proper hydration and timing",
+      "Alcohol doesn't affect fitness at all",
+      "Switch to energy drinks for better results"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The moderation approach suggests limiting to 2 drinks when you indulge, matching each alcoholic drink with water, and avoiding alcohol within 48 hours of strength training.",
+    "hints": [
+      "Look for the specific moderation strategies mentioned",
+      "Consider the practical guidelines rather than extreme positions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "889913c7-88d6-4aed-a604-87271981c2f4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What does the article suggest about workplace wellness integration?",
+    "question_type": "standalone",
+    "options": [
+      "Your job is always an excuse to avoid fitness",
+      "Quit your job to focus on fitness full-time",
+      "Integrate movement into your workday with walking meetings and desk exercises",
+      "Only exercise after work hours to maintain professionalism"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article emphasizes that your job shouldn't be an excuse but should be integrated with fitness goals through walking meetings, standing during calls, taking stairs, and doing desk exercises.",
+    "hints": [
+      "Think about the workplace wellness hacks mentioned in the article",
+      "Consider how to make fitness part of your work routine, not separate from it"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9eb77387-e7ec-41a6-be41-a7b11012f5f7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What is the correct order of steps in the 1% Better Philosophy for lifestyle changes?",
+    "question_type": "standalone",
+    "options": [
+      "Week 1-2: Pick one factor → Week 3-4: Add second change → Month 2: Add third → Month 3: All are habits",
+      "Month 1: Change everything → Month 2: Maintain → Month 3: Add more",
+      "Week 1: All changes at once → Week 2: Maintain → Week 3: Give up",
+      "Day 1: Perfect lifestyle → Day 2: Burn out → Day 3: Start over"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 1% Better Philosophy specifically outlines picking ONE lifestyle factor to improve by 10% in weeks 1-2, maintaining while adding another in weeks 3-4, stacking a third change in month 2, and by month 3 these become habits.",
+    "hints": [
+      "Look for the specific timeline mentioned in the 1% Better Philosophy section",
+      "Consider the gradual progression rather than dramatic changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "718c972f-d70e-4395-9ba9-6cb9462521ae",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "According to the fitness success formula provided, which statement is correct?",
+    "question_type": "standalone",
+    "options": [
+      "Lifestyle factors add together to create fitness success",
+      "Exercise alone is sufficient for fitness success",
+      "Lifestyle factors multiply rather than add, so when one falls apart it can zero out efforts",
+      "Only nutrition matters for lifestyle factors"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article states that lifestyle factors multiply, not add, in the success formula. When one factor falls apart, it can zero out your efforts, but when they align, that's when magic happens.",
+    "hints": [
+      "Look at the specific mathematical relationship described in the success formula",
+      "Consider why one failing factor could impact everything else"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ca4e9cc6-fa32-4568-8761-c6109ea6ba58",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "Which combination of factors creates the positive spiral effect mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Better sleep → More energy → Better stress management → Better food choices → Improved sleep",
+      "More exercise → More fatigue → More stress → Emotional eating → Worse sleep",
+      "Social media → Less time → Skipped workouts → Higher stress → Poor choices",
+      "Perfect diet → Instant results → Overconfidence → Burnout → Giving up"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The positive spiral involves better sleep leading to more energy for workouts, regular exercise improving stress management, less stress leading to better food choices, and better nutrition improving sleep quality in a continuous beneficial cycle.",
+    "hints": [
+      "Look for the compound effect explanation with the positive spiral",
+      "Consider how each factor supports the next in a beneficial cycle"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "704effe6-1592-4249-a4fc-7da7f53f3616",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "In Emma's time management story, what was her initial objection to meal prep?",
+    "question_type": "standalone",
+    "options": [
+      "She didn't like cooking",
+      "She was too busy with kids and work",
+      "She didn't have a kitchen",
+      "She preferred restaurant food"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma protested that she was 'too busy with the kids and work' when Marcus suggested meal prep, before he showed her the screen time data revealing she had plenty of time that was being used differently.",
+    "hints": [
+      "Think about the common excuse Emma gave for not having time",
+      "Consider what she said about her competing priorities"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea90f83a-02fa-466c-899a-446b51bd5adc"
+  },
+  {
+    "id": "2428a4f0-4e2a-4a38-b09f-424d4370d760",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What was Emma's screen time according to her phone report?",
+    "question_type": "standalone",
+    "options": [
+      "Two hours and fifteen minutes",
+      "Three hours and forty-seven minutes",
+      "Five hours and thirty minutes",
+      "One hour and twenty minutes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's phone showed 'Three hours and forty-seven minutes? Yesterday?' when she checked her screen time report, which Marcus noted was actually below the 4-5 hour average.",
+    "hints": [
+      "Look for the exact time Emma read from her phone",
+      "Remember this was considered below average according to Marcus"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea90f83a-02fa-466c-899a-446b51bd5adc"
+  },
+  {
+    "id": "1bcfbde1-946e-42e0-b716-e4e888600d12",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What insight did Marcus provide about scrolling versus walking?",
+    "question_type": "standalone",
+    "options": [
+      "Both activities burn the same calories",
+      "Scrolling is more mentally stimulating",
+      "Scrolling increases cortisol while walking decreases it - opposite results for same time investment",
+      "Walking is only good for physical health"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Marcus explained that people think scrolling is relaxing, but it actually increases cortisol, while walking decreases it, providing 'same time investment, opposite results.'",
+    "hints": [
+      "Consider what Marcus said about the stress hormone effects",
+      "Think about the comparison he made between the two activities"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea90f83a-02fa-466c-899a-446b51bd5adc"
+  },
+  {
+    "id": "364f967a-e09f-4c3d-91d1-ac0212a76e57",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "How many hours per week did Emma potentially find for fitness without adding time to her day?",
+    "question_type": "standalone",
+    "options": [
+      "3 hours",
+      "5 hours",
+      "7 hours",
+      "10 hours"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Marcus concluded that Emma 'just found 7 hours for fitness without adding a single minute to your day' by suggesting batch cooking on Sundays, walking during lunch breaks, and limiting scrolling to treadmill time.",
+    "hints": [
+      "Look for the specific number Marcus calculated at the end",
+      "Consider all the time-saving strategies he mentioned combined"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea90f83a-02fa-466c-899a-446b51bd5adc"
+  },
+  {
+    "id": "26aa5327-b247-450d-9f67-e1b7c5708796",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What was concerning about Taylor's cortisol levels according to Dr. Chen?",
+    "question_type": "standalone",
+    "options": [
+      "They were too low and causing fatigue",
+      "They were normal and healthy",
+      "They were so elevated they were canceling out his workouts",
+      "They were fluctuating too much throughout the day"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Dr. Chen explained that Taylor's stress hormones were 'so elevated they're canceling out your workouts' and that his body was in survival mode, hoarding fat because it thought there was an emergency.",
+    "hints": [
+      "Think about what Dr. Chen said about the impact on Taylor's exercise efforts",
+      "Consider the survival mode explanation"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9425fdff-2248-4ff2-955b-4407b0c25ae4"
+  },
+  {
+    "id": "92c3729f-7e6e-4401-896f-c876b53a28cc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What analogy did Dr. Chen use to explain Taylor's situation?",
+    "question_type": "standalone",
+    "options": [
+      "Like running a marathon with ankle weights",
+      "Like driving a car with the parking brake on",
+      "Like swimming upstream against a current",
+      "Like trying to fill a bucket with holes in it"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen said 'You're driving a car with the parking brake on. We need to release the brake—lower your cortisol—before pushing the accelerator. Otherwise, you'll just burn out the engine.'",
+    "hints": [
+      "Think about the mechanical metaphor Dr. Chen used",
+      "Consider what needs to be released before acceleration"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9425fdff-2248-4ff2-955b-4407b0c25ae4"
+  },
+  {
+    "id": "131328a6-5789-4a73-a050-d908b6175a6d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What modifications did Dr. Chen recommend for Taylor's exercise routine?",
+    "question_type": "standalone",
+    "options": [
+      "Increase intensity and frequency",
+      "Replace two intense sessions with yoga or walking and add meditation",
+      "Stop exercising completely until stress reduces",
+      "Switch to only weight training"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Chen recommended replacing 'two intense sessions with yoga or walking' and adding 'ten minutes of meditation' while ensuring Taylor got 'seven hours of sleep minimum. Non-negotiable.'",
+    "hints": [
+      "Consider what Dr. Chen suggested to lower the stress load",
+      "Think about the balance between reducing intensity and maintaining activity"
+    ],
+    "image_urls": [],
+    "passage_set_id": "9425fdff-2248-4ff2-955b-4407b0c25ae4"
+  },
+  {
+    "id": "cf78f8cb-76c5-4220-9c6f-48f28efba316",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What was Jordan's strategy for dealing with unsupportive roommates and coworkers?",
+    "question_type": "standalone",
+    "options": [
+      "Avoided them completely",
+      "Made it collaborative by involving them as taste testers and starting workplace challenges",
+      "Criticized their unhealthy choices",
+      "Found new roommates and changed jobs"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan explained they made it collaborative: 'Told my roommate I was learning to cook and asked if they wanted to be taste testers. Started a steps challenge at work. Made it about 'us' instead of 'me'.'",
+    "hints": [
+      "Think about how Jordan shifted from fighting against others to including them",
+      "Consider the 'us' versus 'me' approach mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d93b9ccc-92aa-42ba-84ed-03731fe6359e"
+  },
+  {
+    "id": "66611c26-97b1-4f6e-b5d9-bf3f8f98bf66",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What metaphor did Jordan use to describe building social support?",
+    "question_type": "standalone",
+    "options": [
+      "Swimming upstream alone versus building a boat with others",
+      "Climbing a mountain solo versus with a team",
+      "Fighting a battle alone versus with an army",
+      "Running a race solo versus in a relay"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan said 'So instead of swimming upstream alone...' and Casey finished 'Build a boat with others,' capturing Jordan's philosophy of collaborative rather than isolated fitness efforts.",
+    "hints": [
+      "Look for the water-related metaphor in the conversation",
+      "Think about the contrast between struggling alone versus working together"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d93b9ccc-92aa-42ba-84ed-03731fe6359e"
+  },
+  {
+    "id": "3ecb3395-6194-49b4-9026-1b9db7293543",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "According to Jordan's experience, what's the best way to find support for fitness goals?",
+    "question_type": "standalone",
+    "options": [
+      "Wait for others to invite you to join their programs",
+      "Offer support first to find others who want to be healthier",
+      "Only work with professional trainers",
+      "Avoid involving friends and family in fitness goals"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan concluded by saying 'The best way to find support is to offer it first,' suggesting that taking initiative to help others creates the collaborative environment needed for mutual success.",
+    "hints": [
+      "Think about Jordan's final advice to Casey",
+      "Consider the principle of giving to receive in social dynamics"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d93b9ccc-92aa-42ba-84ed-03731fe6359e"
+  },
+  {
+    "id": "b80aa212-dfa5-467c-9822-fa4a9912cf13",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What final action was Casey considering by the end of the conversation?",
+    "question_type": "standalone",
+    "options": [
+      "Quitting the gym permanently",
+      "Starting a beginners' workout group",
+      "Moving to a new city for better support",
+      "Hiring a personal trainer"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey said 'Maybe I could start a beginners' workout group' after Jordan's advice about offering support first to build collaborative fitness relationships.",
+    "hints": [
+      "Look at Casey's response to Jordan's advice about offering support",
+      "Think about how Casey planned to apply the collaborative approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d93b9ccc-92aa-42ba-84ed-03731fe6359e"
+  },
+  {
+    "id": "1406c549-5abf-4649-a04c-abfd9983c751",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "question_text": "What was Casey's initial reason for wanting to quit the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "The equipment was too complicated",
+      "Everyone there was already fit and Casey felt like a fraud",
+      "The membership was too expensive",
+      "The gym was too crowded during peak hours"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey announced 'I'm done with the gym. Everyone there is already fit. I feel like a fraud.' This reveals the intimidation and imposter syndrome that many beginners experience in fitness environments.",
+    "hints": [
+      "Think about Casey's opening statement about feeling out of place",
+      "Consider the emotional reason rather than practical obstacles"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d93b9ccc-92aa-42ba-84ed-03731fe6359e"
+  },
+  {
+    "id": "3d3314bf-00b3-4461-a014-31b1fb076560",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "The principle of progressive overload works the same way whether you're 18 or 80.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Progressive overload - gradually increasing challenge to muscles - is a universal principle that works at any age. The weight or intensity might differ, but the principle remains the same.",
+    "hints": [
+      "Think about what makes muscles stronger at any age",
+      "Consider the universal principles mentioned in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f5f07000-fbc6-42ae-b56b-12a77ace08eb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "Recovery time needed after intense exercise stays the same throughout your life.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Recovery time increases with age: 20s need 24-48 hours, 40s need 48-72 hours, and 60s+ typically need 72-96 hours for full recovery from intense sessions.",
+    "hints": [
+      "Look at the recovery time reality check in the article",
+      "Think about how your body changes as you age"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "056d956e-ac17-4e8d-bf99-6158b3fcdb08",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "People in their 90s can still build muscle with proper training.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research shows that people in their 90s can still build muscle, bone density can improve at any age with weight-bearing exercise, and balance can be retrained regardless of age.",
+    "hints": [
+      "Check the 'Never-Too-Late Principle' section",
+      "Consider what the research shows about muscle building"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e89cce4d-606a-4653-9325-d6bd5be6903f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "Testosterone declines by approximately 10% per year after age 30.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Testosterone declines by approximately 1% per year after age 30, not 10%. This gradual decline is why strength training becomes important to help maintain hormone levels.",
+    "hints": [
+      "Look at the hormonal factor section carefully",
+      "Think about a realistic rate of hormonal decline"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "40b6feda-c430-427f-9271-f33af2c3d4b9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What's the main reason people in their 20s-30s should focus on building muscle mass?",
+    "question_type": "standalone",
+    "options": [
+      "To win bodybuilding competitions",
+      "To build a 'muscle bank account' for later life",
+      "To impress people at the gym",
+      "To become professional athletes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes building muscle in your 20s-30s is like compound interest - it creates a foundation you can afford to lose some of while still maintaining function in later years.",
+    "hints": [
+      "Think about the compound interest analogy",
+      "Consider long-term benefits rather than short-term goals"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bf88fd21-e061-4244-9716-d72473e09007",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "For someone in their 60s and beyond, what should be the primary exercise focus?",
+    "question_type": "standalone",
+    "options": [
+      "Maximum strength and power development",
+      "Functional fitness for daily activities",
+      "Competitive sports performance",
+      "Extreme endurance challenges"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article clearly states that for 60s+, the focus should be on functional fitness for daily activities, fall prevention through balance work, maintaining muscle mass, and low-impact cardio options.",
+    "hints": [
+      "Look at what the 60s+ section emphasizes",
+      "Think about practical daily needs rather than performance goals"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5fde7c40-25b6-4f67-ad25-d56a374178e1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What mistake do people in their 40s-50s commonly make with exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Doing too much low-impact exercise",
+      "Focusing too much on flexibility",
+      "Trying to exercise like they're still 25",
+      "Spending too much time on balance training"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article specifically mentions that a common mistake for people in their 40s-50s is trying to exercise like they're still 25, along with giving up when progress slows.",
+    "hints": [
+      "Check the common mistakes listed for the 40s-50s age group",
+      "Think about ego versus reality"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bf3f3384-ef44-4085-8b42-90bb677ead28",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "Why does exercise become more important as we age rather than less important?",
+    "question_type": "standalone",
+    "options": [
+      "Because older people have more free time",
+      "Because it's easier to exercise when you're older",
+      "Because age brings natural decline that exercise can combat",
+      "Because gyms offer senior discounts"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Exercise becomes more crucial with age because it combats natural declines like muscle loss (sarcopenia), bone density reduction, balance issues, and cardiovascular efficiency decline.",
+    "hints": [
+      "Think about what naturally happens as we age",
+      "Consider why the article emphasizes exercise as we get older"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7d7ded34-1216-47d6-a666-2ba18f46b6ca",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "Which sequence shows the correct weekly exercise framework progression from youngest to oldest?",
+    "question_type": "standalone",
+    "options": [
+      "More rest days → Fewer rest days → Most rest days",
+      "3 strength sessions → 2 strength sessions → 2 strength sessions",
+      "No flexibility work → Some flexibility → Lots of flexibility",
+      "All of the above changes happen together"
+    ],
+    "correct_answer_index": 3,
+    "explanation": "All these changes occur together as we age: rest days increase (1→2→2), strength sessions decrease (3-4→2-3→2), and flexibility work increases (1→2→2 sessions).",
+    "hints": [
+      "Look at the weekly framework by age section",
+      "Notice how multiple factors change simultaneously"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f7abfc66-8c4a-4a94-8a1e-b973465c3d66",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What combination of factors makes exercise adaptation slower in older adults?",
+    "question_type": "standalone",
+    "options": [
+      "Longer recovery time + hormonal changes + increased injury risk",
+      "Less motivation + poor weather + expensive gym memberships",
+      "Bad genetics + lack of equipment + scheduling conflicts",
+      "Too much social media + poor diet + inadequate sleep"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article identifies that longer recovery times, hormonal changes (decreased testosterone, growth hormone), and increased injury risk all contribute to slower adaptation in older adults.",
+    "hints": [
+      "Look for the physiological changes mentioned in the article",
+      "Focus on biological rather than external factors"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c0ea9c31-807d-495d-82cf-9259bd634ee1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "Based on the article, which modification sequence correctly shows exercise adaptations with age?",
+    "question_type": "standalone",
+    "options": [
+      "High-impact → Low-impact → No-impact → Chair-based",
+      "Heavy weights → Lighter weights → Resistance bands → Bodyweight only",
+      "Competition focus → Performance focus → Health focus → Functional focus",
+      "Running → Elliptical → Walking → Water aerobics"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article describes how exercise motivation and focus evolves: 20s-30s focus on appearance/performance, 40s-50s on health/stress relief, 60s+ on independence and cognitive health.",
+    "hints": [
+      "Look at 'The Mental Game Changes Too' section",
+      "Think about shifting priorities rather than just physical modifications"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a0cc1bfa-df09-4f49-a281-7e99704fe2ec",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What was Taylor's main concern about starting an exercise program at 45?",
+    "question_type": "passage_based",
+    "options": [
+      "Worried about blood pressure during exercise",
+      "Concerned about joint pain and arthritis",
+      "Afraid of looking foolish at the gym",
+      "Uncertain about proper exercise form"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "In the passage, Taylor specifically states: 'I want to get healthy, but I'm worried about my blood pressure during exercise' when speaking with Dr. Martinez.",
+    "hints": [
+      "Look at Taylor's direct quote to the doctor",
+      "Focus on the health condition mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8485e354-5803-4211-8c05-405a1b3afcf2"
+  },
+  {
+    "id": "fa4da7d7-d07e-46bb-8b02-d8ca06123587",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "How did Dr. Martinez reassure Taylor about exercise and blood pressure?",
+    "question_type": "passage_based",
+    "options": [
+      "Exercise temporarily raises blood pressure but lowers it long-term",
+      "Blood pressure medications will prevent any exercise risks",
+      "Taylor should wait until blood pressure improves before exercising",
+      "Only gentle stretching is safe for people with high blood pressure"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Dr. Martinez explained that while weight training 'temporarily, yes' raises blood pressure, 'long-term it actually helps lower it' when done correctly with proper breathing.",
+    "hints": [
+      "Look at the doctor's explanation about temporary vs. long-term effects",
+      "Focus on what Dr. Martinez said about blood pressure and exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8485e354-5803-4211-8c05-405a1b3afcf2"
+  },
+  {
+    "id": "8cd3b4b7-5ce2-4120-a881-a85cf4cf029b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What initial exercise approach did Dr. Martinez recommend for Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "High-intensity interval training to maximize results",
+      "10-minute walks after meals and lighter weight training",
+      "Only swimming and water-based exercises",
+      "Wait for perfect health markers before starting any exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez specifically recommended 'Start with 10-minute walks after meals - that alone can help with blood sugar' and mentioned lighter weights with higher repetitions.",
+    "hints": [
+      "Look for the specific recommendations the doctor made",
+      "Focus on the gentle starting approach mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8485e354-5803-4211-8c05-405a1b3afcf2"
+  },
+  {
+    "id": "9f95e3fa-c232-43dd-b696-59266da60e2d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "How did Taylor feel after the doctor's appointment?",
+    "question_type": "passage_based",
+    "options": [
+      "Disappointed and restricted by too many limitations",
+      "Empowered rather than restricted about starting exercise",
+      "Confused about conflicting medical advice",
+      "Skeptical about whether exercise would really help"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage ends with: 'Leaving the office, Taylor felt empowered rather than restricted. The journey would be different from a healthy 25-year-old's, but it was still very much possible.'",
+    "hints": [
+      "Look at the final sentence describing Taylor's emotional state",
+      "Focus on the contrast between feeling restricted vs. empowered"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8485e354-5803-4211-8c05-405a1b3afcf2"
+  },
+  {
+    "id": "130dbdd1-58b0-45e5-a79f-96faebaacc0e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What was Mike's initial reaction to his reduced lifting capacity?",
+    "question_type": "passage_based",
+    "options": [
+      "Accepting and realistic about his current fitness level",
+      "Frustrated that he could only lift his former warm-up weight",
+      "Excited to start building strength again from scratch",
+      "Indifferent to the weight he was lifting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike 'stared at the barbell, loaded with what used to be his warm-up weight' and said 'I used to bench twice this,' showing his frustration with his reduced capacity after a decade away from the gym.",
+    "hints": [
+      "Look at Mike's body language and what he said about the weight",
+      "Focus on his comparison to his former abilities"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27f3c0c8-f444-4366-8ab2-47683dedaa6b"
+  },
+  {
+    "id": "9ad47e29-5c78-4306-9751-ddf018ce8557",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What key insight did James share about training in his 40s?",
+    "question_type": "passage_based",
+    "options": [
+      "Older people should avoid heavy weights completely",
+      "Age is the enemy of fitness progress",
+      "Ego is the real enemy, not age itself",
+      "It's impossible to get stronger after 40"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "James specifically told Mike: 'Our age isn't the enemy - our ego is' and explained how focusing on consistency over weight made him stronger at 42 than at 32.",
+    "hints": [
+      "Look for James's direct quote about what the real enemy is",
+      "Focus on his philosophy about age vs. attitude"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27f3c0c8-f444-4366-8ab2-47683dedaa6b"
+  },
+  {
+    "id": "66f75aec-5752-4dca-93d3-ed55d34033ca",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "What advantage did James say older exercisers have over younger ones?",
+    "question_type": "passage_based",
+    "options": [
+      "Better flexibility and mobility",
+      "More time to dedicate to exercise",
+      "They recover slower but are smarter",
+      "Superior cardiovascular endurance"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "James told Mike: 'we recover slower but we're smarter. Use that advantage,' highlighting how wisdom and experience can compensate for slower physical recovery.",
+    "hints": [
+      "Look for what James said about the trade-off between recovery and wisdom",
+      "Focus on the compensating advantage mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27f3c0c8-f444-4366-8ab2-47683dedaa6b"
+  },
+  {
+    "id": "8901bc3c-9902-4e3f-a6ce-c68b46aea65e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "question_text": "How did Mike's perspective change by the end of the conversation?",
+    "question_type": "passage_based",
+    "options": [
+      "He decided to quit exercising until he felt stronger",
+      "He realized starting over at 35 meant starting with wisdom, not from zero",
+      "He became more frustrated with his current limitations",
+      "He decided to hire a personal trainer immediately"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage ends with: 'Mike racked the weight, humbled but motivated. Starting over at 35 wasn't starting from zero - it was starting with wisdom.'",
+    "hints": [
+      "Look at the final sentence about Mike's realization",
+      "Focus on the distinction between 'zero' and 'wisdom'"
+    ],
+    "image_urls": [],
+    "passage_set_id": "27f3c0c8-f444-4366-8ab2-47683dedaa6b"
+  },
+  {
+    "id": "2c24c858-11f2-4d8b-831d-246f87a34116",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "Regular exercise can reduce the risk of Type 2 diabetes by 58% with just 150 minutes of moderate activity per week.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This statistic is directly from the article - studies following millions of people show that 150 minutes of moderate exercise weekly reduces Type 2 diabetes risk by 58%.",
+    "hints": [
+      "Think about the specific percentage mentioned in the article's opening statistics",
+      "Consider what constitutes the minimum recommended weekly exercise amount"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5035ae38-271e-4eb3-a0f7-d44976d6ce03",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "Exercise reduces inflammation markers like C-reactive protein by 30-40%.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states that exercise reduces inflammation markers, with C-reactive protein dropping by 30-40%. Chronic inflammation is linked to many diseases, so this reduction is significant for disease prevention.",
+    "hints": [
+      "Look for information about how exercise affects inflammation in the cardiovascular section",
+      "C-reactive protein is a key inflammation marker mentioned in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0f503534-49d5-40f0-85e8-278bdd15e799",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "The minimum effective dose for disease prevention requires at least 300 minutes of exercise per week.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article states the 'magic number' is 150 minutes of moderate activity OR 75 minutes of vigorous activity weekly. Even less than that helps - just 15 minutes daily provides significant benefits.",
+    "hints": [
+      "Check the minimum effective dose section for the actual recommended weekly minutes",
+      "Remember the article emphasizes that even small amounts of exercise provide benefits"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d5f8870c-a828-4417-a9b1-43fb831bbb93",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "Exercise increases natural killer cells by up to 50%, which helps fight cancer.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article explains that exercise fights cancer through multiple pathways, including an immune boost where natural killer cells increase by up to 50% after exercise.",
+    "hints": [
+      "Look in the cancer defense system section for information about immune system benefits",
+      "Natural killer cells are part of your immune system's cancer-fighting arsenal"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "430e7304-3049-493a-8695-eb4fbc417775",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "Which of the following diseases shows the highest risk reduction percentage from regular exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Type 2 Diabetes (58% reduction)",
+      "Heart Disease (35% reduction)",
+      "Stroke (27% reduction)",
+      "Becoming a couch potato (100% reduction because you're actively not being one)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Type 2 diabetes shows the highest risk reduction at 58% with regular exercise, followed by heart disease at 35%, then stroke at 27%. The prevention statistics are powerful motivators for starting an exercise routine.",
+    "hints": [
+      "Review the opening statistics about disease risk reduction",
+      "Compare the percentages for different major diseases mentioned"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bb6aee73-f95b-44f5-99bf-9e6df0882b71",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "How does exercise help prevent diabetes at the cellular level?",
+    "question_type": "standalone",
+    "options": [
+      "By making muscles more sensitive to insulin",
+      "By producing more insulin in the pancreas",
+      "By eliminating sugar from the diet completely",
+      "By turning your muscles into tiny sugar-eating monsters (nom nom nom)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Exercise makes muscles more sensitive to insulin, meaning your body needs less insulin to manage blood sugar. This prevents insulin resistance, which is the pathway to Type 2 diabetes.",
+    "hints": [
+      "Think about the 'blood sugar shield' mechanism described in the article",
+      "Consider how exercise affects insulin sensitivity rather than insulin production"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d55e03df-2176-4e85-ba5b-5bd925c2bc41",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What happens to your blood pressure after exercise?",
+    "question_type": "standalone",
+    "options": [
+      "It stays elevated for several hours",
+      "It drops for up to 22 hours post-exercise",
+      "It returns to normal within 10 minutes",
+      "It transforms into magical fairy dust and floats away"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that blood pressure drops for up to 22 hours post-exercise. This extended benefit is one of the ways exercise acts as cardiovascular medicine.",
+    "hints": [
+      "Check the cardiovascular cleanup crew section",
+      "Think about the lasting effects of exercise beyond just the workout period"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7f8977a9-3dc1-4d52-8d58-a55c915dd9b5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "According to the article, exercise is as effective as which treatment for mild to moderate depression?",
+    "question_type": "standalone",
+    "options": [
+      "Antidepressant medications",
+      "Therapy sessions",
+      "Meditation practices",
+      "Watching cat videos (though that's pretty effective too)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states that exercise is as effective as antidepressants for mild to moderate depression. This demonstrates exercise's powerful impact on mental health disease prevention.",
+    "hints": [
+      "Look for information about mental health conditions in the diseases section",
+      "Consider what medical treatment is mentioned as being equally effective"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5d9248f5-5b79-4c18-b25a-98de016b481d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What is the correct sequence of cardiovascular benefits that occur after exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Blood pressure drops → HDL increases → Inflammation reduces → Blood vessels become more flexible",
+      "HDL increases → Blood pressure drops → Blood vessels become more flexible → Inflammation reduces",
+      "Inflammation reduces → Blood vessels become more flexible → Blood pressure drops → HDL increases",
+      "All benefits happen simultaneously in a beautiful cardiovascular symphony"
+    ],
+    "correct_answer_index": 3,
+    "explanation": "While the article lists these benefits separately, they actually occur simultaneously as part of the cardiovascular cleanup crew response to exercise. All these mechanisms work together to protect heart health.",
+    "hints": [
+      "Think about how the cardiovascular system responds as an integrated whole",
+      "Consider that multiple protective mechanisms can work at the same time"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b162d488-a86f-4b06-b05a-cedac762c751",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "Which combination of factors makes exercise most effective for cancer prevention?",
+    "question_type": "standalone",
+    "options": [
+      "Immune boost + Hormone regulation + Inflammation reduction + Improved digestion",
+      "Weight loss + Muscle building + Cardio fitness + Flexibility",
+      "High intensity + Long duration + Daily frequency + Strict diet",
+      "Determination + Good playlist + Matching workout outfit + Post-workout selfie"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains that exercise fights cancer through multiple pathways: immune boost (50% increase in natural killer cells), hormone regulation (reducing excess estrogen and growth factors), inflammation reduction, and improved digestion (faster transit time).",
+    "hints": [
+      "Review the cancer defense system section for the multiple pathways mentioned",
+      "Think about systemic changes rather than just fitness improvements"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bbc97b69-943a-4422-9982-f35fc3ff3623",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What is the correct age-specific prevention focus progression according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "20s-30s: Bone mass → 40s-50s: Cardiovascular → 60s+: Cognitive protection",
+      "20s-30s: Cardiovascular → 40s-50s: Bone mass → 60s+: Fall prevention",
+      "20s-30s: Mental health → 40s-50s: Cancer prevention → 60s+: Metabolic syndrome",
+      "All ages: Everything all at once because YOLO and prevention knows no boundaries"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article outlines age-specific focuses: building peak bone mass in 20s-30s (you only have until 30!), cardiovascular disease prevention becoming critical in 40s-50s, and cognitive protection against dementia in 60s+.",
+    "hints": [
+      "Look at the age-specific prevention focus section",
+      "Think about what health priorities naturally emerge at different life stages"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "699b8b07-09ed-4a4e-b130-f19678806239",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What was Taylor's initial reaction to learning about exercise as disease prevention?",
+    "question_type": "passage_based",
+    "options": [
+      "They immediately signed up for a gym membership",
+      "They protested that they don't have time for two-hour gym sessions",
+      "They asked for specific medication recommendations instead",
+      "They challenged the doctor to an arm wrestling match to test the theory"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "In the passage, when Dr. Martinez explains how exercise can reverse Taylor's concerning health markers, Taylor's immediate response is to protest that they don't have time for two-hour gym sessions.",
+    "hints": [
+      "Think about Taylor's first reaction when the doctor suggested exercise",
+      "Consider what common excuse or concern Taylor immediately raised"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8eb26262-2fde-4674-a47e-9461ffb138ad"
+  },
+  {
+    "id": "7e4211ac-9232-41f3-b9ea-900cfaacb512",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "How did Dr. Martinez respond to Taylor's time concerns about exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "She recommended finding a 24-hour gym for convenience",
+      "She suggested that 30 minutes of brisk walking five days a week reduces diabetes risk by 58%",
+      "She told Taylor to quit their job to make time for fitness",
+      "She prescribed a magical time-multiplying potion (side effects may include temporal displacement)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez directly addressed Taylor's time concerns by explaining that just 30 minutes of brisk walking five days a week reduces diabetes risk by 58%, emphasizing that this is more effective than medication.",
+    "hints": [
+      "Focus on the specific solution Dr. Martinez provided for the time problem",
+      "Think about the diabetes prevention statistic she mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8eb26262-2fde-4674-a47e-9461ffb138ad"
+  },
+  {
+    "id": "09e3f847-b9fa-43be-95b7-2e234c89ee50",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What example did Morgan provide to support the doctor's exercise recommendations?",
+    "question_type": "passage_based",
+    "options": [
+      "Their own successful fitness transformation story",
+      "Their mother who started walking at 50 and remained medication-free at 72",
+      "A celebrity fitness success story from social media",
+      "Their pet hamster who runs marathons on a wheel (very inspirational)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Morgan shared the story of their mother, who started walking after her pre-diabetes diagnosis at age 50 and was still medication-free at 72, even completing a 5K race.",
+    "hints": [
+      "Think about the personal family example Morgan shared",
+      "Consider the long-term success story that was mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8eb26262-2fde-4674-a47e-9461ffb138ad"
+  },
+  {
+    "id": "19ac9d92-908d-431a-bb74-8f90fec8c122",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "How did Dr. Martinez conclude the appointment regarding exercise vs. medication?",
+    "question_type": "passage_based",
+    "options": [
+      "She said medications are always better than exercise for disease prevention",
+      "She explained that medications treat diseases while exercise prevents them from happening",
+      "She recommended both exercise and multiple medications simultaneously",
+      "She suggested that exercise is like taking multiple medications at once, but with better side effects (like increased awesomeness)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez concluded by explaining the key difference: 'Medications treat diseases. Exercise prevents them from happening in the first place,' emphasizing prevention over treatment.",
+    "hints": [
+      "Think about the final distinction Dr. Martinez made between treatment and prevention",
+      "Consider the doctor's perspective on exercise versus medication approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "8eb26262-2fde-4674-a47e-9461ffb138ad"
+  },
+  {
+    "id": "9a0fd036-1da0-431c-9e09-aaa05abfa409",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What was Casey's main concern about their family health history?",
+    "question_type": "passage_based",
+    "options": [
+      "Their family had no history of health problems to learn from",
+      "They felt doomed because both their father and grandfather had Type 2 diabetes",
+      "They were worried about inheriting their family's athletic abilities",
+      "They discovered their family tree was actually made of donuts (concerning for obvious reasons)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey expressed feeling like they were 'just waiting for their turn' because both their father and grandfather had Type 2 diabetes, showing they felt genetically doomed.",
+    "hints": [
+      "Think about Casey's feelings regarding their family's diabetes history",
+      "Consider the sense of inevitability Casey expressed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "64e5f2ad-d6ac-490b-862e-7c3655d19ff8"
+  },
+  {
+    "id": "084c7162-56b6-4660-a88d-e91331155fce",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "How did Riley explain the relationship between genetics and lifestyle?",
+    "question_type": "passage_based",
+    "options": [
+      "Genetics determines everything and lifestyle doesn't matter",
+      "Genetics loads the gun, but lifestyle pulls the trigger",
+      "Lifestyle is more important than genetics in all cases",
+      "Genetics and lifestyle are in a constant arm-wrestling match (genetics usually wins but lifestyle has been hitting the gym)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley used the powerful metaphor that 'genetics loads the gun, but lifestyle pulls the trigger' to explain that while family history creates predisposition, your choices determine the outcome.",
+    "hints": [
+      "Think about the specific metaphor Riley used to explain genetic risk",
+      "Consider how Riley framed the relationship between inherited risk and personal choices"
+    ],
+    "image_urls": [],
+    "passage_set_id": "64e5f2ad-d6ac-490b-862e-7c3655d19ff8"
+  },
+  {
+    "id": "6c717430-be02-406d-a0b0-6058d4424ee8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What study example did Riley share about genetics and exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "People with high genetic risk who exercised had the same heart disease risk as low-risk people who didn't exercise",
+      "Exercise can completely eliminate all genetic predispositions to disease",
+      "Genetics always override the benefits of exercise",
+      "People with genetic risks should exercise twice as much to achieve normal benefits (genetics are demanding like that)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Riley shared a study showing that people with the highest genetic risk for heart disease who exercised regularly had the same actual risk as people with low genetic risk who didn't exercise, demonstrating exercise's power to 'rewrite genetic destiny.'",
+    "hints": [
+      "Think about the specific study Riley mentioned about genetic risk and exercise outcomes",
+      "Consider how exercise affected people with high versus low genetic risk"
+    ],
+    "image_urls": [],
+    "passage_set_id": "64e5f2ad-d6ac-490b-862e-7c3655d19ff8"
+  },
+  {
+    "id": "748d985f-cba3-4fc9-a370-394547732131",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "How did Riley address Casey's concern about workout frequency?",
+    "question_type": "passage_based",
+    "options": [
+      "They recommended increasing to daily workouts immediately",
+      "They emphasized that consistency beats intensity - three workouts a week for life beats sporadic intense phases",
+      "They suggested that frequency doesn't matter as much as duration",
+      "They revealed the secret: it's not about frequency, it's about workout outfit coordination (consistency in style matters too)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "When Casey worried that three workouts per week wasn't enough to fight genetics, Riley emphasized that 'consistency beats intensity every time' and that three workouts a week for life is better than sporadic intense phases.",
+    "hints": [
+      "Think about Riley's philosophy on workout frequency versus intensity",
+      "Consider their perspective on long-term consistency"
+    ],
+    "image_urls": [],
+    "passage_set_id": "64e5f2ad-d6ac-490b-862e-7c3655d19ff8"
+  },
+  {
+    "id": "e3edb8cb-d814-4cc5-9113-4ab96d5690b4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What was the most significant change Sarah experienced after one year of exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "She lost 15 pounds",
+      "Her metabolic age became five years younger than her actual age",
+      "She won a fitness competition",
+      "She gained the ability to bench press her own body weight (and possibly small cars)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "While Sarah mentioned losing 15 pounds, she emphasized that wasn't even the best part. Her doctor found that her metabolic age was now five years younger than her actual age, along with numerous other health improvements.",
+    "hints": [
+      "Think about what Sarah said wasn't the best part of her transformation",
+      "Consider the most dramatic health marker change mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5e708847-a190-4017-af20-c4f3b21825d7"
+  },
+  {
+    "id": "1a0adc9d-f460-41e6-820f-a98744a2f48d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "How did Marcus explain the compound effect of exercise benefits?",
+    "question_type": "passage_based",
+    "options": [
+      "Benefits plateau after the first year of exercise",
+      "Disease risk reduction increases from 30% at year 1 to 45% at year 5 to a different category at year 10",
+      "All exercise benefits happen immediately and remain constant",
+      "The compound effect works like compound interest, except instead of money you're earning the ability to outrun zombies in the apocalypse"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus explained that Sarah was already reducing major disease risk by 30%, and this compounds over time - jumping to 45% at five years, and putting her in a completely different risk category at ten years.",
+    "hints": [
+      "Think about the specific percentages Marcus mentioned for different time periods",
+      "Consider how risk reduction changes over years of consistent exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5e708847-a190-4017-af20-c4f3b21825d7"
+  },
+  {
+    "id": "56482961-27a4-4ddb-8e65-80decc5543fa",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What comparison did Marcus make about exercise as a pill?",
+    "question_type": "passage_based",
+    "options": [
+      "Exercise pills should be developed by pharmaceutical companies",
+      "If exercise was a pill, it would be the most prescribed medication in the world",
+      "Pills are always better than exercise for health benefits",
+      "Exercise is like a magical pill that also improves your ability to open pickle jars (very important life skill)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah shared what her doctor told her: 'if exercise was a pill, it would be the most prescribed medication in the world' because it simultaneously prevents multiple diseases - heart disease, diabetes, several cancers, depression, and osteoporosis.",
+    "hints": [
+      "Think about the doctor's hypothetical comparison about exercise",
+      "Consider why exercise would be so widely prescribed if it were available as medication"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5e708847-a190-4017-af20-c4f3b21825d7"
+  },
+  {
+    "id": "040a0cf7-e31b-4743-a5d3-86f5b75dfdc5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "question_text": "What example did Emma provide to illustrate the long-term benefits of consistent exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Her own transformation story over the past year",
+      "Her grandmother who gardens daily at 85 after walking since her 40s, compared to her sedentary sister who needed a walker at 75",
+      "A celebrity fitness success story she read online",
+      "Her pet turtle who has been doing yoga for 30 years and is remarkably flexible (for a turtle)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma shared the contrasting stories of her grandmother, who has been walking daily since her 40s and still gardens at 85, versus her sedentary sister who needed a walker at 75, illustrating the compound effect of lifelong exercise habits.",
+    "hints": [
+      "Think about the family comparison Emma made",
+      "Consider the contrast between two different approaches to aging and activity"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5e708847-a190-4017-af20-c4f3b21825d7"
+  },
+  {
+    "id": "8cbbf61d-4595-4337-aa1c-8347deba9a49",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "Weight can fluctuate 2-5 pounds in a single day based on factors like water retention and digestive contents.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Daily weight fluctuations of 2-5 pounds are completely normal and can be caused by water retention from sodium or carbs, hormonal changes, digestive contents, muscle inflammation, and time of day.",
+    "hints": [
+      "Think about what your body contains besides fat and muscle",
+      "Consider why athletes weigh themselves at the same time daily"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5b34447a-7e99-4763-aa4f-64b647742702",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "A healthy resting heart rate for most adults is 60-100 beats per minute.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The normal resting heart rate range for adults is 60-100 beats per minute, with trained athletes often having rates between 40-60 BPM due to improved cardiovascular efficiency.",
+    "hints": [
+      "Athletes typically have lower resting heart rates",
+      "This should be measured first thing in the morning"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "16b0be41-fd32-41e6-bd49-ce79ede933bf",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "Waist circumference is a better predictor of health risks than total body weight.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Waist circumference indicates visceral fat distribution, which is metabolically active and linked to numerous health issues. It's a more accurate predictor of health risks than weight alone.",
+    "hints": [
+      "Think about where fat is stored and its metabolic activity",
+      "Consider why belly fat is particularly concerning"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3a921d30-ceb1-4fd1-998d-d5d3fe874a5a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "Good recovery heart rate means your heart rate drops 50+ beats within 2 minutes after moderate exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "A heart rate drop of 50+ beats within 2 minutes post-exercise indicates excellent cardiovascular fitness. Even a 15-25 beat drop in the first minute shows good recovery.",
+    "hints": [
+      "This measures how quickly your cardiovascular system recovers",
+      "Better fitness = faster heart rate recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c6ee60cb-d011-4715-b95c-5b155b4d6449",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "When you've been exercising for months but the scale hasn't budged, what's the most likely explanation?",
+    "question_type": "standalone",
+    "options": [
+      "Your body has entered 'starvation mode' and stopped losing weight",
+      "You're gaining muscle while losing fat, resulting in body recomposition",
+      "The scale is broken and needs to be replaced",
+      "You're secretly sleepwalking to the fridge every night"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Body recomposition - gaining muscle while losing fat - often results in stable weight despite positive body changes. This is why measurements and how clothes fit are better indicators than weight alone.",
+    "hints": [
+      "Muscle tissue is denser than fat tissue",
+      "Think about what else might be changing besides weight"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "27346603-02ad-4fce-a911-bf6382f54fae",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What's the most practical way to track your resting heart rate as a beginner?",
+    "question_type": "standalone",
+    "options": [
+      "Use expensive medical equipment for maximum accuracy",
+      "Check your pulse first thing in the morning before getting out of bed",
+      "Take your heart rate immediately after drinking coffee",
+      "Hire a nurse to monitor you 24/7"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The most practical and accurate method is checking your pulse first thing in the morning before getting out of bed, when you're truly at rest and haven't been influenced by movement, food, or stimulants.",
+    "hints": [
+      "When would your body be most at rest?",
+      "Consider what factors might artificially raise heart rate"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0cf23c2f-63a5-4cc3-959d-72ee852c0811",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "Which health risk threshold indicates you should pay attention to your waist measurement?",
+    "question_type": "standalone",
+    "options": [
+      "Men over 35 inches, women over 30 inches",
+      "Men over 40 inches, women over 35 inches",
+      "Men over 32 inches, women over 28 inches",
+      "Anyone whose waist measurement equals their favorite pizza size"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Health risk increases when waist circumference exceeds 40 inches for men or 35 inches for women. These thresholds indicate increased risk of metabolic disorders and cardiovascular disease.",
+    "hints": [
+      "These are medical guidelines, not fashion advice",
+      "The thresholds are different for men and women"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d2e84004-79d1-4683-b437-30b95c4dd92e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What's the best approach for tracking functional fitness improvements?",
+    "question_type": "standalone",
+    "options": [
+      "Only use expensive gym equipment for testing",
+      "Focus exclusively on how much weight you can lift",
+      "Track real-world activities like climbing stairs without getting winded",
+      "Hire a personal trainer to test you weekly"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Functional fitness is best measured by improvements in daily activities - climbing stairs easily, carrying groceries without fatigue, playing with kids without exhaustion. These real-world improvements matter most for quality of life.",
+    "hints": [
+      "Think about what fitness improvements you'd notice in daily life",
+      "Consider what makes life easier and more enjoyable"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "80c0592f-5d74-4f11-833b-9dcf72694af5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "Which sequence represents the ideal frequency for tracking different health markers?",
+    "question_type": "standalone",
+    "options": [
+      "Daily weight, weekly measurements, monthly photos, quarterly assessments",
+      "Weekly resting heart rate, monthly measurements, daily photos, yearly assessments",
+      "Monthly weight, weekly measurements, quarterly photos, daily assessments",
+      "Hourly weight, daily measurements, weekly photos, monthly assessments"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The optimal tracking schedule balances useful data with avoiding obsession: daily weight for trends, weekly measurements for body changes, monthly photos for visual progress, and quarterly comprehensive assessments.",
+    "hints": [
+      "Consider how often different metrics actually change meaningfully",
+      "Think about avoiding obsessive daily checking of everything"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1fd13b9c-440f-4908-944e-c8ce4cec6dd1",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What combination of measurements gives you the most complete picture of body composition changes?",
+    "question_type": "standalone",
+    "options": [
+      "Weight and height only",
+      "Weight, waist circumference, and progress photos",
+      "Just the scale reading",
+      "Weight, shoe size, and hair length"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The combination of weight (for overall trends), waist circumference (for fat distribution), and progress photos (for visual changes) provides a comprehensive view of body composition changes that single measurements miss.",
+    "hints": [
+      "Think about what each measurement tells you",
+      "Consider how different measurements complement each other"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5a0ef35a-4589-4136-8c6a-519a41c95df0",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "Which blood work markers typically improve with regular exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Higher fasting glucose, lower HDL cholesterol, higher triglycerides",
+      "Lower fasting glucose, higher HDL cholesterol, lower triglycerides",
+      "Higher everything across the board",
+      "Lower everything including the good markers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Regular exercise typically improves blood markers by lowering fasting glucose, raising HDL (good) cholesterol, lowering LDL and triglycerides, and reducing inflammatory markers - all indicating better metabolic health.",
+    "hints": [
+      "Think about what 'improvement' means for different types of cholesterol",
+      "Consider how exercise affects blood sugar control"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "445c399b-bb09-436d-9e0e-96cba14ed671",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What was Taylor's main concern when visiting Dr. Martinez?",
+    "question_type": "passage_based",
+    "options": [
+      "They had gained too much weight recently",
+      "They were confused why diet alone wasn't showing scale results",
+      "They were experiencing chest pain during exercise",
+      "They wanted to become a professional athlete"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor was frustrated because they had been dieting for months but the scale barely moved, leading them to think their efforts weren't working. Dr. Martinez helped them understand that health improvements happen beyond just weight changes.",
+    "hints": [
+      "Focus on Taylor's specific complaint to the doctor",
+      "Think about what was motivating the doctor visit"
+    ],
+    "image_urls": [],
+    "passage_set_id": "29aa34bc-1091-408d-bfe9-164f13b7df34"
+  },
+  {
+    "id": "526275a6-0ed1-4b20-a3d7-6495eeecd73c",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "According to Dr. Martinez, what health markers were more concerning than Taylor's weight?",
+    "question_type": "passage_based",
+    "options": [
+      "Their height and shoe size",
+      "Their blood pressure (138/88) and fasting glucose (108)",
+      "Their hair color and eye color",
+      "Their exercise frequency and diet quality"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez specifically mentioned that Taylor's weight was fine, but their blood pressure of 138/88 and fasting glucose of 108 were more concerning indicators of health status than the scale number.",
+    "hints": [
+      "Look for the specific numbers Dr. Martinez mentioned",
+      "Think about what medical markers she was concerned about"
+    ],
+    "image_urls": [],
+    "passage_set_id": "29aa34bc-1091-408d-bfe9-164f13b7df34"
+  },
+  {
+    "id": "94909d73-1ac0-499f-9071-81c7e30eff07",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What did Jordan share about their own experience with fitness tracking?",
+    "question_type": "passage_based",
+    "options": [
+      "They lost 50 pounds in 6 months",
+      "They gained 3 pounds but had positive changes in waist size and energy",
+      "They quit exercising because the scale didn't move",
+      "They became a professional fitness trainer"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan mentioned that when they started strength training, they gained 3 pounds but their waist got smaller and their energy increased significantly, demonstrating that positive changes can occur despite weight gain.",
+    "hints": [
+      "Focus on Jordan's personal story about weight vs. other improvements",
+      "Think about what happened when Jordan started strength training"
+    ],
+    "image_urls": [],
+    "passage_set_id": "29aa34bc-1091-408d-bfe9-164f13b7df34"
+  },
+  {
+    "id": "4e1ab46d-d40a-40bc-8425-5d80fabe82f8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What tracking approach did Dr. Martinez recommend for Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "Weigh yourself daily and focus only on the scale",
+      "Track resting heart rate, take monthly measurements, and note energy levels",
+      "Hire a personal trainer to track everything for you",
+      "Don't track anything and just exercise randomly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez specifically recommended that Taylor start tracking their resting heart rate, take monthly body measurements, and note their energy levels, focusing on health markers beyond just weight.",
+    "hints": [
+      "Look for the specific tracking recommendations Dr. Martinez made",
+      "Think about what would give Taylor a fuller picture of their health"
+    ],
+    "image_urls": [],
+    "passage_set_id": "29aa34bc-1091-408d-bfe9-164f13b7df34"
+  },
+  {
+    "id": "8fa02b8a-5ca2-49d2-9e4d-aeab03a91270",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What measurement change did Sarah discover during her tracking session with Emma?",
+    "question_type": "passage_based",
+    "options": [
+      "She had gained 2 inches around her waist",
+      "She had lost an inch from her waist (down to 32 inches)",
+      "Her weight had dropped by 10 pounds",
+      "Her height had mysteriously increased"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah discovered that her waist measurement had decreased by an inch to 32 inches, which was a positive change that the scale hadn't reflected, showing the value of taking body measurements.",
+    "hints": [
+      "Focus on the specific measurement Sarah took and her reaction",
+      "Think about what positive change Sarah discovered"
+    ],
+    "image_urls": [],
+    "passage_set_id": "660b75e6-5255-44c2-bb27-f0f70ac00ad3"
+  },
+  {
+    "id": "0064b375-0b51-4ce0-a494-8ddaa4666740",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What change did Emma notice in her fitness tracker data?",
+    "question_type": "passage_based",
+    "options": [
+      "Her step count had doubled",
+      "Her resting heart rate had dropped from 75 to 68",
+      "Her sleep quality had improved dramatically",
+      "Her blood pressure had normalized"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma noted that her resting heart rate had decreased from 75 to 68 beats per minute, which indicated improved cardiovascular fitness even though her weight had remained the same.",
+    "hints": [
+      "Look for the specific fitness tracker data Emma mentioned",
+      "Think about what heart rate change indicates improved fitness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "660b75e6-5255-44c2-bb27-f0f70ac00ad3"
+  },
+  {
+    "id": "e4884c13-b54a-429a-a5b0-c5592916f8f1",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "What functional fitness improvement did both Sarah and Emma experience?",
+    "question_type": "passage_based",
+    "options": [
+      "They could both deadlift 200 pounds",
+      "They could run marathons without training",
+      "They had improved stair-climbing endurance and energy for playing with kids",
+      "They became professional athletes"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Both women experienced improvements in real-world functional fitness - Sarah could run up stairs twice without getting winded, and Emma could play tag with her kids without getting tired, demonstrating practical fitness gains.",
+    "hints": [
+      "Focus on the daily life activities they mentioned",
+      "Think about practical improvements they both experienced"
+    ],
+    "image_urls": [],
+    "passage_set_id": "660b75e6-5255-44c2-bb27-f0f70ac00ad3"
+  },
+  {
+    "id": "110bca58-5056-48b7-beee-fe38885a2465",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "question_text": "How did Sarah's attitude toward the scale change by the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "She became obsessed with weighing herself daily",
+      "She threw her scale away in frustration",
+      "She adopted a 'who cares?' attitude toward scale weight while focusing on other metrics",
+      "She decided to only weigh herself once per year"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Sarah's final note showed her attitude shift - she recorded positive changes in energy, mood, and how her clothes fit, ending with 'Scale: Who cares?' indicating she now prioritized other health markers over weight.",
+    "hints": [
+      "Look at what Sarah wrote in her final notebook entry",
+      "Think about how her perspective on the scale changed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "660b75e6-5255-44c2-bb27-f0f70ac00ad3"
+  },
+  {
+    "id": "e494ceaa-519b-4ade-a5b2-9614c7fb7263",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "True or False: Fitness trackers are 100% accurate in measuring calories burned during workouts.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article clearly states that no fitness tracker is 100% accurate and that calorie estimates can be off by 20-40%. The article advises to use calorie estimates for comparing workouts, not for eating back calories.",
+    "hints": [
+      "The article mentions fitness trackers 'notoriously overestimate' certain metrics",
+      "Consider what the article says about consistency vs. perfection in tracking"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d3da95dd-0183-4718-95b1-879ddf5f213c",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "True or False: The 10,000 steps daily goal is based on scientific research into optimal health outcomes.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article reveals that the 10,000 steps goal came from a 1960s Japanese marketing campaign for a pedometer, not scientific research. Research shows health benefits start at 7,500 steps and plateau around 12,000.",
+    "hints": [
+      "Look for what the article says about the origin of the 10,000 steps goal",
+      "The article mentions this came from a marketing campaign, not science"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "dab3a941-a5ed-46cf-b91c-368e181e98b7",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "True or False: Your smartphone with free apps can provide everything needed to start tracking fitness effectively.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article emphasizes that your phone + a free app = everything you need to start. Most phones have built-in step counters and can run free apps like Google Fit, Nike Training Club, and Strava.",
+    "hints": [
+      "The article has a section specifically about budget-conscious beginners",
+      "Look at what the article recommends for the '$0-30' category"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d8b00e62-eea8-4ebe-bb7e-bc950916c6ac",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "True or False: Advanced metrics like VO2 max and HRV should be the primary focus for fitness beginners using wearables.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article warns against ignoring basics for advanced metrics and states 'Master sleep, steps, and consistency before advanced metrics.' It emphasizes starting simple with 1-3 basic metrics initially.",
+    "hints": [
+      "The article lists this as a common mistake beginners make",
+      "Consider what the article says about mastering basics first"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "efc0bd99-58f1-4b08-9e35-ddc42fdb3bb3",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "When your fitness tracker says you burned 600 calories in a spin class, what should you realistically expect for diet planning purposes?",
+    "question_type": "standalone",
+    "options": [
+      "Use the full 600 calories",
+      "Cut that number in half to about 300 calories",
+      "Add 20% more for safety margin",
+      "Ignore calorie tracking completely and eat pizza"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Cut that number in half. The article specifically states: 'Your tracker says you burned 600 calories in that spin class? Cut that number in half for realistic diet planning.' Trackers notoriously overestimate calorie burn.",
+    "hints": [
+      "The article has a section called 'Calories: The Biggest Lie Your Tracker Tells'",
+      "Look for the specific advice about cutting calorie estimates"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c871f7d0-1376-4f65-8cd8-3b37c622866b",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "According to the article, what's the main reason 77% of fitness tracker owners abandon their devices within six months?",
+    "question_type": "standalone",
+    "options": [
+      "The devices break easily",
+      "Nobody taught them how to use these tools effectively",
+      "They're too expensive to maintain",
+      "They cause skin allergies and rashes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Nobody taught them how to use these tools effectively. The article opens with this statistic and explains it's 'Not because the tech is bad, but because nobody taught them how to use these tools effectively.'",
+    "hints": [
+      "This statistic appears in the opening of the article",
+      "The reason is about education, not hardware issues"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d8140649-01c3-4d5d-a7a3-2666025e466d",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What does Zone 2 heart rate feel like during exercise?",
+    "question_type": "standalone",
+    "options": [
+      "You could sing your favorite song",
+      "You can hold a conversation easily",
+      "You can talk, but you'd rather not",
+      "You can teach your tracker to play fetch"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Zone 2 (60-70% max HR) feels like 'You can hold a conversation easily.' The article provides practical descriptions for each heart rate zone to help beginners understand effort levels without complex calculations.",
+    "hints": [
+      "The article provides feel-based descriptions for different heart rate zones",
+      "Zone 2 is described as conversational pace"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "df9d5038-7cdb-4589-a2e3-09cefbf828a8",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "For someone just starting with fitness tracking, which approach does the article recommend?",
+    "question_type": "standalone",
+    "options": [
+      "Download 15 fitness apps to cover all possible metrics",
+      "Pick one main app for each purpose (workout, nutrition, wearable)",
+      "Only use the most expensive tracker with all features",
+      "Track every metric available to optimize performance immediately"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Pick one main app for each purpose. The article warns against 'app overload' and advises: 'Pick ONE main app for each purpose: One for workout tracking, One for nutrition (if you're tracking food), One for your wearable device. That's it.'",
+    "hints": [
+      "The article has a section about 'Avoiding App Overload'",
+      "The solution emphasizes simplicity and focus"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9d9a0e68-4243-4f27-986b-18290f481430",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "Which sequence represents the correct progression for adding fitness tracking metrics according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Start with all metrics immediately, then remove unnecessary ones",
+      "Begin with steps only, then add one metric per month",
+      "Focus on advanced metrics first, then add basic ones",
+      "Track sleep quality, then VO2 max, then daily steps"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Begin with steps only, then add one metric per month. The article recommends starting simple and gradually adding complexity, specifically mentioning adding one metric per month as you get comfortable.",
+    "hints": [
+      "Look for advice about gradual progression in tracking",
+      "The article emphasizes starting simple before adding complexity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "80546d11-bb97-48e4-9945-9b8378739f02",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What combination of factors makes fitness trackers most valuable according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Perfect accuracy + expensive hardware + multiple metrics",
+      "Consistent use + trend tracking + realistic expectations",
+      "Social features + gamification + daily challenges",
+      "Medical-grade sensors + AI coaching + cloud storage"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Consistent use + trend tracking + realistic expectations. The article emphasizes that 'consistency matters more than perfection' and that trackers are valuable for showing trends over time, not perfect daily accuracy.",
+    "hints": [
+      "The article repeatedly mentions that trends matter more than accuracy",
+      "Consider what makes tracking sustainable long-term"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3446f208-4c6e-49e9-941c-26fb2cebb80c",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "Which combination best represents the article's recommended approach to fitness technology for beginners?",
+    "question_type": "standalone",
+    "options": [
+      "Buy the most expensive device + track everything + compare with others daily",
+      "Start simple + track consistently + upgrade when you outgrow current tools",
+      "Wait for perfect technology + research for months + then buy premium",
+      "Use multiple devices + cross-reference all data + optimize immediately"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Start simple + track consistently + upgrade when you outgrow current tools. This aligns with the article's conclusion: 'Start simple. Track consistently. Upgrade when you've outgrown your current tool. That's how you make fitness tech work for you, not the other way around.'",
+    "hints": [
+      "Look at the article's final recommendations in the conclusion",
+      "The article emphasizes progression from simple to complex"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8b0b390c-6f9f-4ae8-b6d5-52d13a7bc197",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "In the first passage, what was Emma's main issue with her fitness tracker?",
+    "question_type": "passage_based",
+    "options": [
+      "The battery died too quickly",
+      "It kept telling her negative things about her health metrics",
+      "It was too expensive and she couldn't afford it",
+      "It didn't sync properly with her phone"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's tracker kept telling her negative things - that her stress levels were high, she wasn't sleeping enough, and her VO2 max was below average. She described it as providing guilt rather than helpful motivation.",
+    "hints": [
+      "Emma describes her tracker as '$300 of guilt'",
+      "Look at what specific feedback the tracker was giving Emma"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0a8494bd-e183-4aa8-b466-cb982e50fcea"
+  },
+  {
+    "id": "adecd3e6-24e3-4115-a9ae-c94bc382b405",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What approach did Mike suggest for successfully using a fitness tracker?",
+    "question_type": "passage_based",
+    "options": [
+      "Focus on absolute accuracy and perfect data",
+      "Ignore the device completely when it gives wrong readings",
+      "Focus on trends rather than daily accuracy and start with one metric",
+      "Use multiple devices to cross-reference all measurements"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike advised focusing on trends rather than absolute accuracy and starting with just one metric (steps), gradually adding more features over time. He emphasized that trends show real progress even when daily readings aren't perfect.",
+    "hints": [
+      "Mike showed Emma his step trend over six months",
+      "Consider Mike's advice about starting with just one metric"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0a8494bd-e183-4aa8-b466-cb982e50fcea"
+  },
+  {
+    "id": "c9e125f4-eda5-49e4-906d-dab6955c7607",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What analogy did Mike use to explain the proper approach to fitness tracker features?",
+    "question_type": "passage_based",
+    "options": [
+      "Like learning to drive - start with basics before advanced features",
+      "Like using every machine at the gym on your first day",
+      "Like cooking - you need all ingredients at once",
+      "Like reading - you should finish the whole book immediately"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike said 'You wouldn't use every machine at the gym on your first day, right? Same principle.' This analogy emphasized starting with basics rather than overwhelming yourself with all available features immediately.",
+    "hints": [
+      "Mike compares tracker features to something at the gym",
+      "The analogy is about not doing everything at once as a beginner"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0a8494bd-e183-4aa8-b466-cb982e50fcea"
+  },
+  {
+    "id": "a505349a-8e60-4890-9bcf-2fb65be12638",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "Based on the passage, what was Emma's pattern of tracker usage that led to abandonment?",
+    "question_type": "passage_based",
+    "options": [
+      "She used it consistently but got bored with the features",
+      "She had sporadic usage - intensive periods followed by complete stops",
+      "She never learned how to charge it properly",
+      "She only used it during workouts but not daily activities"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma had 14 days of data from January, 6 from February, then nothing - showing a pattern of intensive use followed by complete abandonment rather than consistent daily use.",
+    "hints": [
+      "Look at Emma's usage pattern when she checked her app",
+      "Notice the gap between her usage months"
+    ],
+    "image_urls": [],
+    "passage_set_id": "0a8494bd-e183-4aa8-b466-cb982e50fcea"
+  },
+  {
+    "id": "4b94f418-43e9-4741-a7ec-22dced81fc05",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What was Riley's main concern about using fitness tracking technology?",
+    "question_type": "passage_based",
+    "options": [
+      "They were worried about privacy and data security",
+      "They couldn't afford the expensive fitness trackers",
+      "They thought phone-based tracking wouldn't be scientific enough",
+      "They were confused by too many app options available"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley said the cheapest decent tracker was 'still a week of groceries,' indicating cost was the primary barrier. They were looking at fitness trackers online with a calculator app to determine affordability.",
+    "hints": [
+      "Riley was using a calculator while looking at trackers",
+      "Consider what Riley said about the cost comparison"
+    ],
+    "image_urls": [],
+    "passage_set_id": "211eea15-0c72-47e9-8289-c8990ffd1522"
+  },
+  {
+    "id": "23c08a05-45e9-462a-840b-f5eba92235ea",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "How did Casey track heart rate during workouts without a wearable device?",
+    "question_type": "passage_based",
+    "options": [
+      "They used a separate chest strap monitor",
+      "They manually checked their pulse every few minutes",
+      "They used the 'talk test' to gauge exercise intensity",
+      "They estimated based on how much they were sweating"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey used the 'talk test': 'Can I hold a conversation? I'm in zone 2. Can I only grunt single words? Too hard.' This method has 'worked for decades before heart rate monitors existed.'",
+    "hints": [
+      "Casey mentions a method that worked before heart rate monitors existed",
+      "The method involves assessing ability to speak during exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "211eea15-0c72-47e9-8289-c8990ffd1522"
+  },
+  {
+    "id": "f74deceb-0e9c-4aee-aec6-e5f73e79e947",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What was Casey's progression strategy for fitness technology purchases?",
+    "question_type": "passage_based",
+    "options": [
+      "Buy the best device immediately to avoid upgrading later",
+      "Start with phone and free apps, prove consistency, then buy basic tracker",
+      "Wait for the latest technology before making any purchase",
+      "Ask friends for recommendations and buy the most popular option"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey started with phone and free apps (MyFitnessPal, Nike Training) at zero cost, proved they'd stick with it for three months, then bought a $40 Mi Band only after establishing the habit.",
+    "hints": [
+      "Casey mentions proving something to themselves for a specific time period",
+      "Look at the sequence of Casey's technology adoption"
+    ],
+    "image_urls": [],
+    "passage_set_id": "211eea15-0c72-47e9-8289-c8990ffd1522"
+  },
+  {
+    "id": "b957bbbf-76de-4b67-90fb-24b1daf3003f",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "According to Casey, what are the essential features needed for a beginner's fitness tracker?",
+    "question_type": "passage_based",
+    "options": [
+      "GPS tracking, smartphone notifications, and music storage",
+      "Tells time, counts steps, tracks sleep, and long battery life",
+      "Heart rate monitoring, calorie counting, and workout detection",
+      "Social features, coaching programs, and data analytics"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey said their Mi Band 'tells time, counts steps, tracks sleep, and the battery lasts two weeks. What else do I really need as a beginner?' emphasizing simplicity over advanced features.",
+    "hints": [
+      "Casey asks what else they really need as a beginner",
+      "Focus on the basic features Casey mentions their simple tracker provides"
+    ],
+    "image_urls": [],
+    "passage_set_id": "211eea15-0c72-47e9-8289-c8990ffd1522"
+  },
+  {
+    "id": "283b9831-c93d-437f-a3cf-80d7dad70932",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What was Jordan's main problem in the third passage?",
+    "question_type": "passage_based",
+    "options": [
+      "They couldn't afford multiple tracking devices",
+      "They were overwhelmed by conflicting data from various metrics",
+      "Their devices kept breaking and needed constant replacement",
+      "They were getting inaccurate readings from all their trackers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan was paralyzed by conflicting metrics: 'My HRV suggests I need recovery, but my body battery is at 82, and my training readiness says moderate intensity is fine. But then my sleep score was only 67...' They couldn't decide what to do.",
+    "hints": [
+      "Jordan lists multiple conflicting recommendations from different metrics",
+      "Alex points out what Jordan has replaced actual exercise with"
+    ],
+    "image_urls": [],
+    "passage_set_id": "38e7c274-a484-4be5-a0af-9fc9478ac7ef"
+  },
+  {
+    "id": "61432d67-64f4-4471-802d-5077c2954b5d",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What insight did Alex share about when fitness tracking data becomes meaningful?",
+    "question_type": "passage_based",
+    "options": [
+      "Data is meaningful from the first day of tracking",
+      "You need at least 4-6 weeks of consistent information before metrics mean anything",
+      "Only expensive devices provide meaningful data",
+      "Data is only useful if you track every possible metric"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex told Jordan: 'You need at least 4-6 weeks of consistent information before those fancy metrics mean anything. And even then...' emphasizing that meaningful patterns require time to develop.",
+    "hints": [
+      "Alex mentions a specific time period for data to become meaningful",
+      "Consider what Alex says about patterns and consistency"
+    ],
+    "image_urls": [],
+    "passage_set_id": "38e7c274-a484-4be5-a0af-9fc9478ac7ef"
+  },
+  {
+    "id": "46179a92-bcc8-4932-b584-3a03c9ea689a",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "How did Alex demonstrate the proper relationship with fitness tracking technology?",
+    "question_type": "passage_based",
+    "options": [
+      "By using multiple devices to ensure accuracy",
+      "By following all device recommendations without question",
+      "By ignoring the watch's recovery recommendation because they felt great",
+      "By spending equal time analyzing data and exercising"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex said 'My watch says I need a recovery day. You know what? I feel great, so I'm ignoring it,' demonstrating that technology should inform decisions, not make them.",
+    "hints": [
+      "Alex explains their watch says one thing, but they plan to do another",
+      "Consider Alex's philosophy about who should make the final decision"
+    ],
+    "image_urls": [],
+    "passage_set_id": "38e7c274-a484-4be5-a0af-9fc9478ac7ef"
+  },
+  {
+    "id": "9c520542-89f2-4d76-b494-604887a7ec5c",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "question_text": "What was Alex's main advice to Jordan about using fitness technology?",
+    "question_type": "passage_based",
+    "options": [
+      "Upgrade to more expensive devices for better accuracy",
+      "Use technology to inform decisions, not make them",
+      "Focus on optimizing all metrics before working out",
+      "Collect more data to resolve conflicting recommendations"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex's key message was 'Use the tech to inform your decisions, not make them' and emphasized that the purpose is to be healthier and fitter, not to obey an algorithm that doesn't know personal context.",
+    "hints": [
+      "Alex gives a direct quote about the relationship between tech and decisions",
+      "Consider what Alex says about the true purpose of fitness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "38e7c274-a484-4be5-a0af-9fc9478ac7ef"
   }
 ]
