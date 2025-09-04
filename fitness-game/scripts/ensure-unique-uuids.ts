@@ -100,11 +100,15 @@ function validateUUIDUniqueness(filePath: string): boolean {
 
 // Main execution
 if (require.main === module) {
-  const filePath = process.argv[2] || path.join(__dirname, '../src/data/content/questions/nutrition-essentials.json');
-  
+  const filePath = process.argv[2];
+  if (!filePath) {
+    console.error('File path parameter is required');
+    process.exit(1);
+  }
+
   const forceUpdate = process.argv.includes('--force');
   
-  console.log('🔄 Ensuring unique UUIDs for nutrition-essentials.json...\n');
+  console.log(`🔄 Ensuring unique UUIDs for ${filePath}\n`);
   
   if (forceUpdate) {
     console.log('⚠️  Force update mode enabled - will update all IDs including existing UUIDs\n');

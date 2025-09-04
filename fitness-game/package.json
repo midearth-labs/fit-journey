@@ -12,6 +12,8 @@
     "type-check": "tsc --noEmit",
     "validate:content": "tsx scripts/validate-content.ts",
     "generate:images": "tsx scripts/gemini-image-generator.ts",
+    "ensure:uuids": "tsx scripts/ensure-unique-uuids.ts $1",
+    "validate:uuids": "tsx scripts/uuid-validator.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",

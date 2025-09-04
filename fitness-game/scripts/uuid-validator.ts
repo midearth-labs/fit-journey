@@ -103,8 +103,12 @@ export function validateAllUUIDsUnique(filePath: string): boolean {
 
 // Example usage
 if (require.main === module) {
-  const filePath = process.argv[2] || path.join(__dirname, '../src/data/content/questions/nutrition-essentials.json');
-  
+  const filePath = process.argv[2];
+  if (!filePath) {
+    console.error('File path parameter is required');
+    process.exit(1);
+  }
+
   console.log(`🔍 Analyzing question IDs in: ${filePath}\n`);
   
   try {

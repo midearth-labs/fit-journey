@@ -1,6 +1,6 @@
 [
   {
-    "id": "b492a0c8-9599-44ff-b263-a1018419170a",
+    "id": "7648837b-114b-416c-bb20-b0a94c8e41b7",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -21,7 +21,7 @@
     "image_urls": []
   },
   {
-    "id": "da177798-9795-495e-bbfc-06613b2e9029",
+    "id": "6886b355-90ba-490d-b5cd-fbd6682addbb",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -42,7 +42,7 @@
     "image_urls": []
   },
   {
-    "id": "79bf93aa-ba00-4ee6-b6d9-e3bd3d1d17d9",
+    "id": "9a0a3488-79b4-4a44-9779-eceea806e0a4",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -63,7 +63,7 @@
     "image_urls": []
   },
   {
-    "id": "5d9719cf-db55-43ed-abf4-20865003b3e5",
+    "id": "9e95e79a-bf14-4cd1-8dee-5ad1cabf293f",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -84,7 +84,7 @@
     "image_urls": []
   },
   {
-    "id": "d746fd59-bfe8-4dbb-a4e9-e2e5a9ec2030",
+    "id": "31bc5348-2b7b-4ebf-aade-523bf6e75f48",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -107,7 +107,7 @@
     "image_urls": []
   },
   {
-    "id": "115abdd0-2c01-47c9-a150-81b18ef0dcf0",
+    "id": "0a541353-f2be-4365-8c85-60c7a50c2589",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -130,7 +130,7 @@
     "image_urls": []
   },
   {
-    "id": "faba5871-b739-4094-91dc-6f0094049fc7",
+    "id": "b20954cf-2db2-46ee-9277-8168bcd1731b",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -153,7 +153,7 @@
     "image_urls": []
   },
   {
-    "id": "3e1bff3b-7e3b-4f5b-8fac-a103ae241d59",
+    "id": "444ecb68-bdf2-46ca-ab75-f7f3a7cdd3f7",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -176,7 +176,7 @@
     "image_urls": []
   },
   {
-    "id": "055b9113-61aa-4838-9337-1ed6648d127c",
+    "id": "57a751e8-5429-4c88-b1ea-134858b1f1c2",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -199,7 +199,7 @@
     "image_urls": []
   },
   {
-    "id": "a98c7da1-39cb-40ba-bedc-8647e5b01e5e",
+    "id": "dc966bf6-0f18-4cdc-a5bd-efccf283fd43",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -222,7 +222,7 @@
     "image_urls": []
   },
   {
-    "id": "96ca188f-041a-4adf-86f1-444c70e0100d",
+    "id": "27de472b-0e0c-417a-8f95-df5d06d456ac",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -245,7 +245,7 @@
     "image_urls": []
   },
   {
-    "id": "209051fc-e643-4ebb-a8d7-0ac57283b3d4",
+    "id": "32d1cd15-ea76-4130-900f-ef569b97925c",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -269,7 +269,7 @@
     "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
   },
   {
-    "id": "4b3d3130-6f89-412c-8ea5-ea0253b6db9c",
+    "id": "24469bec-a139-4d92-a11f-baf2df5a91ff",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -293,7 +293,7 @@
     "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
   },
   {
-    "id": "c1b1b257-db44-4fdc-8abb-233f5955e37c",
+    "id": "678940d7-a72c-45a5-8f81-6f228fb487ff",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -317,7 +317,7 @@
     "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
   },
   {
-    "id": "75c08c13-43a4-412e-b117-719e0f0e6d21",
+    "id": "5a1ce7ef-876d-4abb-b046-02543571bf2b",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -341,7 +341,7 @@
     "passage_set_id": "019127ed-1cc3-40ed-9f22-edc9c4f47425"
   },
   {
-    "id": "ee4f9c67-a228-4bbb-a1d5-efe411238880",
+    "id": "3d9c0981-5028-4a9e-8fa3-e6f96dd4ec7b",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -365,7 +365,7 @@
     "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
   },
   {
-    "id": "f21b7f00-189a-4b4c-88fc-ced2217941e4",
+    "id": "3a8c54d4-80b8-4ac6-be84-9b75cab7f94f",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -389,7 +389,7 @@
     "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
   },
   {
-    "id": "a74551ec-f361-4117-a5f5-e0ab4d810789",
+    "id": "cf316a3c-bd9b-43b8-b2e1-cb64d730e284",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -413,7 +413,7 @@
     "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
   },
   {
-    "id": "3547e78f-565b-4ae0-ae36-08daf1ba77c9",
+    "id": "829b4dc3-edc1-4f94-990d-6d9c34b5142e",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -437,7 +437,7 @@
     "passage_set_id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017"
   },
   {
-    "id": "d0c279df-3e99-4a9d-9359-0ef28bb4df89",
+    "id": "118ed583-c927-442c-8b26-97fd683c0af0",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -458,7 +458,7 @@
     "image_urls": []
   },
   {
-    "id": "b493a89c-d071-41ad-9cb7-ef79977fa3e9",
+    "id": "beb173b2-6130-4dcb-b706-e4c40ba07659",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -479,7 +479,7 @@
     "image_urls": []
   },
   {
-    "id": "7496a8e2-4379-4041-bad6-b636fab0e61d",
+    "id": "95b4be79-11b5-4357-8ac0-20aef09f683f",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -500,7 +500,7 @@
     "image_urls": []
   },
   {
-    "id": "711e2f62-0967-44aa-9a58-6f7f95389396",
+    "id": "3b4dc803-faf6-49d8-a15f-90cf151c4cb6",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -521,7 +521,7 @@
     "image_urls": []
   },
   {
-    "id": "f223345b-dbb0-4357-9166-2f01de56d1b7",
+    "id": "55f04f5f-8289-4f42-a30f-141f32f62884",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -544,7 +544,7 @@
     "image_urls": []
   },
   {
-    "id": "8851770e-cb8e-42a9-93b9-8e9da34de163",
+    "id": "0f36d23f-af6f-4451-b2da-8fabd5954635",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -567,7 +567,7 @@
     "image_urls": []
   },
   {
-    "id": "e9ea90f4-239b-4125-ae09-eaac411421f5",
+    "id": "29724f84-9d0c-405a-9335-6aac280547b2",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -590,7 +590,7 @@
     "image_urls": []
   },
   {
-    "id": "c0f255c4-fb9f-46e2-bfbd-e03a203dbdf6",
+    "id": "843cbbcd-ba77-4c62-9d4c-395c3c332ed6",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -613,7 +613,7 @@
     "image_urls": []
   },
   {
-    "id": "625f9333-acb2-429e-acb6-ea93df1c8deb",
+    "id": "86f13254-8022-4550-b357-29614c85bbbe",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -636,7 +636,7 @@
     "image_urls": []
   },
   {
-    "id": "374bc857-d8c4-4a24-af83-1b3b28221e81",
+    "id": "8d6443a6-03ac-4ab6-a0ce-f670a5f57713",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -659,7 +659,7 @@
     "image_urls": []
   },
   {
-    "id": "79e50ef1-c56c-449b-970d-d8569d111b50",
+    "id": "b46b8066-756c-4e47-8bd5-7bdbd0830d57",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -682,7 +682,7 @@
     "image_urls": []
   },
   {
-    "id": "3ce4caa7-d24b-4b19-b7ed-0440298551ee",
+    "id": "10e67167-0bb8-4958-8025-6061eaf59e9d",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -706,7 +706,7 @@
     "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
   },
   {
-    "id": "837caf44-6b75-4f9b-8861-087fba2d3fa9",
+    "id": "12be04d1-3e1a-406d-a8fc-4378baa92a56",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -730,7 +730,7 @@
     "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
   },
   {
-    "id": "093c65de-8aaa-4e38-852b-1751312ad4b6",
+    "id": "ab9b90f4-23cb-4408-87a5-e0ad53ffdc6d",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -754,7 +754,7 @@
     "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
   },
   {
-    "id": "1e62816a-03b5-4780-859e-da869cc9846b",
+    "id": "d7749304-4594-4925-92a0-289927c174fb",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -778,7 +778,7 @@
     "passage_set_id": "24e3cdc2-0fe5-402f-a653-c988e92286d3"
   },
   {
-    "id": "46bb3bf5-47e9-4992-a795-d44f29eb63b1",
+    "id": "f1207c24-9370-4358-9385-817e77b54197",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -802,7 +802,7 @@
     "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
   },
   {
-    "id": "abff55b9-05ee-482e-808b-88ce576a2eb3",
+    "id": "b86de2fe-f461-440c-a3b0-110bd670eac0",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -826,7 +826,7 @@
     "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
   },
   {
-    "id": "cf2791e2-ecb6-43c3-a146-821535ec90cc",
+    "id": "d71d224f-d46f-4b0a-8201-a779023d3af0",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -850,7 +850,7 @@
     "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
   },
   {
-    "id": "043d85dd-d0bc-413f-b57e-aa29b174b0ce",
+    "id": "dc72c451-e5fd-4661-a5b3-22073c2e4da2",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -874,7 +874,7 @@
     "passage_set_id": "497500e5-bb1a-414a-b162-913cdb45338b"
   },
   {
-    "id": "dcb13753-fd5b-4b9e-940e-3f9e9bb026cc",
+    "id": "437d344c-549f-49de-a103-0dd753aa0148",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -895,7 +895,7 @@
     "image_urls": []
   },
   {
-    "id": "5d0e2f8f-3989-4ed3-b786-d33556997431",
+    "id": "4737d819-e1ca-44cf-9657-78a8d4122206",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -916,7 +916,7 @@
     "image_urls": []
   },
   {
-    "id": "5eefadd7-0da0-4faf-9de6-d097bcc66091",
+    "id": "334b0943-eebc-4483-8176-233c9f9c0152",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -937,7 +937,7 @@
     "image_urls": []
   },
   {
-    "id": "e0230643-e215-4683-9d00-65cb96e3c284",
+    "id": "dc476d16-5a95-42f7-8826-033fc06e7048",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -958,7 +958,7 @@
     "image_urls": []
   },
   {
-    "id": "406ba911-eb22-407c-b0b9-cd2ff632c2d1",
+    "id": "6e6e4126-262c-43ee-a45d-d90175fe07c7",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -981,7 +981,7 @@
     "image_urls": []
   },
   {
-    "id": "908d8e8b-44d4-48b2-9a44-336853df4ced",
+    "id": "88a8052a-a383-493d-b6c4-4455da0c024b",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1004,7 +1004,7 @@
     "image_urls": []
   },
   {
-    "id": "bb33cca1-c540-4514-8193-bca8c0a3bc1e",
+    "id": "747b50c9-994b-4ddf-8099-0eaf272282d2",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1027,7 +1027,7 @@
     "image_urls": []
   },
   {
-    "id": "2c2bbeea-b67d-4d55-b1f4-896316ef2948",
+    "id": "ebfbd5ea-8bc1-49f1-8769-f4b3b45739d2",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1050,7 +1050,7 @@
     "image_urls": []
   },
   {
-    "id": "8e2700ba-1e18-48fe-a5af-4ff14e8eefcd",
+    "id": "b620d898-7e81-45c8-b580-d26c959fa2cc",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1073,7 +1073,7 @@
     "image_urls": []
   },
   {
-    "id": "05cd2fec-995f-4e79-9de6-918097b709c9",
+    "id": "6cfa170d-8357-453d-8fe7-175176363ead",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1096,7 +1096,7 @@
     "image_urls": []
   },
   {
-    "id": "a5e70fee-1141-44ac-94c1-662aeb6cae42",
+    "id": "e7bcc68f-7f37-49ae-99ac-3ce96de03496",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1119,7 +1119,7 @@
     "image_urls": []
   },
   {
-    "id": "64a013d5-269d-4f19-acd9-dd4f8ca4cc04",
+    "id": "05152bb9-3ca9-4528-a647-ace74524f379",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1143,7 +1143,7 @@
     "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
   },
   {
-    "id": "49f2c2e9-d313-41ab-a84f-36eb9b40a6e3",
+    "id": "1fe04ec7-42ad-4183-91cf-ddc5446119ef",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1167,7 +1167,7 @@
     "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
   },
   {
-    "id": "c18ae26f-0544-41aa-9449-06c97b208c9c",
+    "id": "8d06ea0a-e350-4b84-9323-c918890e65a9",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1191,7 +1191,7 @@
     "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
   },
   {
-    "id": "d31da783-3984-4fad-9a50-048d5e97410f",
+    "id": "8a4b1153-5132-4a7c-8f09-f08c8489cf21",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1215,7 +1215,7 @@
     "passage_set_id": "ae4af886-8aec-4ed1-b05e-6b38dcbf8228"
   },
   {
-    "id": "02566463-67db-49fc-ac96-acc3416f4b28",
+    "id": "bb0b99c8-e1d0-490a-be08-52c2ea1f3d37",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1239,7 +1239,7 @@
     "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
   },
   {
-    "id": "d83fb222-6407-41e9-ba20-26bc42b7ffbc",
+    "id": "36bbdacf-e925-4167-a041-e6b067fd353e",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1263,7 +1263,7 @@
     "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
   },
   {
-    "id": "2410d017-31dd-4871-b627-fd8ff1dbd892",
+    "id": "96278ea7-0be3-44c8-8ca9-6ddbd68330e7",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1287,7 +1287,7 @@
     "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
   },
   {
-    "id": "c20734f5-41ac-4edd-aed3-f2a0420b571c",
+    "id": "219abb27-beab-468a-9b40-5d74cbbbe96d",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1311,7 +1311,7 @@
     "passage_set_id": "b77866d7-51c5-4714-b849-5cce5490a584"
   },
   {
-    "id": "97427699-5bfc-41f1-8abd-d5800800809b",
+    "id": "2c8ff4c2-7302-42f3-b9f1-00604f112fdc",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1335,7 +1335,7 @@
     "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
   },
   {
-    "id": "00c7c851-5ec5-44c1-8937-5e039ff6d82f",
+    "id": "697237a3-0095-4147-9fd5-6b8cb7e41ab1",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1359,7 +1359,7 @@
     "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
   },
   {
-    "id": "5024ee83-1b17-4605-a112-14116c661c86",
+    "id": "58860b7d-00b5-461e-8801-4411edd92327",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1383,7 +1383,7 @@
     "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
   },
   {
-    "id": "b99025fc-052c-4172-a3d1-0d9ab5125a4d",
+    "id": "8113e540-8655-4409-8232-fe0c58fd8a94",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1407,7 +1407,7 @@
     "passage_set_id": "6c5aacba-457a-4eb9-8fae-88800fb46691"
   },
   {
-    "id": "f674bfa6-316e-4ae7-97c9-bcebdada4215",
+    "id": "cf365f42-097f-4718-ae25-b3c5a80ab4df",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1428,7 +1428,7 @@
     "image_urls": []
   },
   {
-    "id": "661a0c5a-12ad-455e-b6e7-56d72025c5af",
+    "id": "ee47bd94-8765-4b73-8da0-90d9bc9bba63",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1449,7 +1449,7 @@
     "image_urls": []
   },
   {
-    "id": "70996961-0f5d-4e01-9aea-745a3a089c36",
+    "id": "454070f0-7150-48f0-8e72-9afd917c0c8a",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1470,7 +1470,7 @@
     "image_urls": []
   },
   {
-    "id": "ab15a347-9b9e-42fb-8bee-a4fb185ba271",
+    "id": "47f2dbf8-aecf-4745-9f6a-b64523d79741",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1491,7 +1491,7 @@
     "image_urls": []
   },
   {
-    "id": "dd6ebf6e-a25b-4c2e-bb5a-6efe58d13192",
+    "id": "059c4c9c-a56f-42dc-9267-b35824c47734",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1514,7 +1514,7 @@
     "image_urls": []
   },
   {
-    "id": "0259433d-3645-486c-9c38-f5286e793d26",
+    "id": "e8b6a24d-7d36-4586-b95d-cca1a848f41e",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1537,7 +1537,7 @@
     "image_urls": []
   },
   {
-    "id": "cf148fca-829a-4ff2-af91-d79468ce39fd",
+    "id": "6b080f1a-a84f-4c5d-b4c4-61c62dfbfc2d",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1560,7 +1560,7 @@
     "image_urls": []
   },
   {
-    "id": "84ad3868-4dde-4119-aada-75dcb0cfce1a",
+    "id": "48d62eeb-b327-4f1a-8d91-5e90d2759f50",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1583,7 +1583,7 @@
     "image_urls": []
   },
   {
-    "id": "5b49f525-973e-4805-8cb6-9415fbddf24d",
+    "id": "779b9660-005e-4a9d-87fb-2edeea2d6465",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1606,7 +1606,7 @@
     "image_urls": []
   },
   {
-    "id": "8b80a23b-07a8-4e18-a940-1caa473eaeb0",
+    "id": "2a880a8d-b4bb-4b3d-ae74-e48b013a3056",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1629,7 +1629,7 @@
     "image_urls": []
   },
   {
-    "id": "ba431a06-85ef-4b5e-9ff2-109f9a505f5c",
+    "id": "8440534c-7d30-4272-aaef-77d60fe5bd40",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1652,7 +1652,7 @@
     "image_urls": []
   },
   {
-    "id": "adbcbd96-1d6f-4f04-8e29-57cfd0013f06",
+    "id": "24686ce5-51fe-447f-9c81-bab851591186",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1676,7 +1676,7 @@
     "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
   },
   {
-    "id": "029d7f23-c661-4f22-8503-3983d7458460",
+    "id": "b665aacf-738a-433e-a8e2-e83b9e7bead1",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1700,7 +1700,7 @@
     "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
   },
   {
-    "id": "22351298-06d1-45d1-a173-34f2fbf07269",
+    "id": "652e1b90-e113-4070-9232-17caa84adac6",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1724,7 +1724,7 @@
     "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
   },
   {
-    "id": "21ae78c0-f3ef-4e36-b564-9d29a0c62225",
+    "id": "0a196131-d81c-4520-b9d4-8c33a65eaaab",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1748,7 +1748,7 @@
     "passage_set_id": "d259c90c-7fca-4296-81cb-0db742f9bd6e"
   },
   {
-    "id": "db1ad727-68bb-4f55-b3d0-a05f423f7157",
+    "id": "009fe343-45bd-469e-8fd2-55604b28e7d7",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1772,7 +1772,7 @@
     "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
   },
   {
-    "id": "0c9e3a4c-0b36-46a8-b4dd-f583963334cb",
+    "id": "b973ddbc-49af-4bda-8627-1cc91a2489bf",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1796,7 +1796,7 @@
     "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
   },
   {
-    "id": "c173dd0d-55a4-480b-99c3-2d0457a19465",
+    "id": "2b6c693f-2a45-4aee-9a4a-f1a1b50752e0",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1820,7 +1820,7 @@
     "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
   },
   {
-    "id": "d1dfc75a-05c3-4a9e-a993-a180ac76933e",
+    "id": "bf44505e-5c8a-4105-8267-c5151db02d99",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1844,7 +1844,7 @@
     "passage_set_id": "dde62aa0-cdc3-44df-85a5-96c28d46d3c3"
   },
   {
-    "id": "6fe5d221-1dfb-490f-bb77-afe1614028b1",
+    "id": "9594ee7a-9051-4fd8-9974-6cce7b1b8459",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1865,7 +1865,7 @@
     "image_urls": []
   },
   {
-    "id": "94f82fd2-a462-400b-ae7a-e98815dfdf2e",
+    "id": "802753a6-6e43-489c-8597-a5fb947033b9",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1886,7 +1886,7 @@
     "image_urls": []
   },
   {
-    "id": "9ad06832-3bb4-427c-b597-68a44a41cbdb",
+    "id": "618e8e45-902b-471c-86dd-da73c67b44c5",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1907,7 +1907,7 @@
     "image_urls": []
   },
   {
-    "id": "37deb340-0672-4d74-b7e3-58a385759c22",
+    "id": "463e5568-31cb-4de5-abd9-88071f6677a8",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1928,7 +1928,7 @@
     "image_urls": []
   },
   {
-    "id": "079f2ae8-e961-4294-a14c-8a3bb76f38c2",
+    "id": "e937376f-ac67-416b-857f-7316916ec9e0",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1951,7 +1951,7 @@
     "image_urls": []
   },
   {
-    "id": "00f95253-b57d-4f86-b6bd-44c962fbd929",
+    "id": "949e07d6-5a52-46cf-b409-7c058a196d5d",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1974,7 +1974,7 @@
     "image_urls": []
   },
   {
-    "id": "4bfebf9f-40d6-41c2-a568-3aa17947f7b1",
+    "id": "5f517306-548e-4600-961a-7f7f1e78da6b",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -1997,7 +1997,7 @@
     "image_urls": []
   },
   {
-    "id": "0d77eb0d-d3eb-4701-ae1d-ee0ed88371c3",
+    "id": "2e6714ba-5941-46d0-a53d-ea3ebea01708",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2020,7 +2020,7 @@
     "image_urls": []
   },
   {
-    "id": "76c1f926-24d9-478a-a5e4-11fe154f2d67",
+    "id": "7ac07a8c-6344-4b65-9a59-993b9fda676e",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2043,7 +2043,7 @@
     "image_urls": []
   },
   {
-    "id": "a6a3ecd5-b9b7-4b48-a31b-8d01b7fc6091",
+    "id": "f8d406cd-7ab1-47c4-96c7-77b2de5e1f59",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2066,7 +2066,7 @@
     "image_urls": []
   },
   {
-    "id": "f5965a1a-2ede-4786-a23f-d141e6be0321",
+    "id": "f9f4b889-6dac-4b3e-8218-62f1c92d618c",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2089,7 +2089,7 @@
     "image_urls": []
   },
   {
-    "id": "18f42e0f-aa2d-4ce1-89d8-da7750fabad1",
+    "id": "c391ad0f-de73-4d14-bd10-24f06a4f405f",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2113,7 +2113,7 @@
     "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
   },
   {
-    "id": "26e7051e-59cd-4fa2-85ef-c29ac38c6dec",
+    "id": "2b5ce3e5-705c-435c-9d40-ee0a7fc27b22",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2137,7 +2137,7 @@
     "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
   },
   {
-    "id": "54cdf857-dd26-4a02-ad29-64f0bb08ed6d",
+    "id": "101e90cd-094c-470e-9ed3-15c4c219ff7b",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2161,7 +2161,7 @@
     "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
   },
   {
-    "id": "b5a32b06-e5e8-4d0e-94b2-c793fe19ab93",
+    "id": "13629d6f-fe34-421f-84ab-ba390ca07f8e",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2185,7 +2185,7 @@
     "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
   },
   {
-    "id": "6d196f5c-4b43-4dc3-8ad5-8c85d25b13b7",
+    "id": "7db789f9-aa19-45e8-a572-2bbd1c4120f1",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2209,7 +2209,7 @@
     "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
   },
   {
-    "id": "4da7cc71-970e-467a-9b0c-285c73cf42e6",
+    "id": "decc6a5c-bcea-4335-b775-48247ac5b707",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2233,7 +2233,7 @@
     "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
   },
   {
-    "id": "bdb5edf3-9ea0-4a4d-a4e9-cc89f1ed0417",
+    "id": "2c3fe3f1-380d-41e2-9596-0fb45b81e45d",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2257,7 +2257,7 @@
     "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
   },
   {
-    "id": "6d087717-82a2-4cd2-987b-e9fc80616079",
+    "id": "9232c992-da0d-41ef-adfc-42d3c08d5039",
     "created_at": "2024-01-15T10:00:00Z",
     "updated_at": "2024-01-15T10:00:00Z",
     "is_active": true,
@@ -2281,7 +2281,7 @@
     "passage_set_id": "16929ce2-598b-43a9-857b-d8a096ac42e5"
   },
   {
-    "id": "e6898b4a-6bab-45d3-8059-bb1f479c9328",
+    "id": "55af3ad0-b9f9-4d52-97fe-84fbbea8c53e",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2302,7 +2302,7 @@
     "image_urls": []
   },
   {
-    "id": "b6779bac-b554-4302-ab28-22b998aa45e8",
+    "id": "7758f26e-e032-4334-9cb8-0aaf99308ca4",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2323,7 +2323,7 @@
     "image_urls": []
   },
   {
-    "id": "c5375fb2-5caa-4869-893e-8a5de16ec829",
+    "id": "406a0848-bb62-411a-8e17-75a5cb28c4be",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2344,7 +2344,7 @@
     "image_urls": []
   },
   {
-    "id": "3188058f-001c-4abb-b34d-8dbbb2434458",
+    "id": "8df6f4cb-82ce-4de0-8cb6-0e4dd3d58737",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2365,7 +2365,7 @@
     "image_urls": []
   },
   {
-    "id": "fb284923-8bb0-4318-a6ba-07d1ed1360ff",
+    "id": "f765d3f8-613c-4098-8309-cb9cd541287d",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2388,7 +2388,7 @@
     "image_urls": []
   },
   {
-    "id": "9930bee9-36ec-4cc1-b8ca-bad245893776",
+    "id": "5f2ee826-2517-4079-a669-7d8a8142c673",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2411,7 +2411,7 @@
     "image_urls": []
   },
   {
-    "id": "cbb2c121-9e34-4772-8b06-b3b3fa15491a",
+    "id": "d36bfd20-c388-4e94-af8c-21c9f82e2b3f",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2434,7 +2434,7 @@
     "image_urls": []
   },
   {
-    "id": "05886799-8ec1-4ae1-bb70-0ae1d46cd756",
+    "id": "fa70640c-7f0b-4107-9861-55d7cadae4b4",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2457,7 +2457,7 @@
     "image_urls": []
   },
   {
-    "id": "8d1de957-c36e-45d5-821b-a2e94cb8eb09",
+    "id": "eaa17fb5-aee6-4576-aea3-777640bc0e12",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2480,7 +2480,7 @@
     "image_urls": []
   },
   {
-    "id": "e5fa763d-9a80-401e-b4c3-8f96ea08b2e2",
+    "id": "0e4fc5cb-558a-4f0a-a25b-7984106cac6a",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2503,7 +2503,7 @@
     "image_urls": []
   },
   {
-    "id": "f5b8b713-03b9-4591-a2c0-3a451bfb2760",
+    "id": "23a92f49-0a2c-4944-af39-a04cc3bcbe76",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2525,7 +2525,7 @@
     "image_urls": []
   },
   {
-    "id": "c9beec42-d45e-4713-b005-f53bbbe61e1b",
+    "id": "c1bd0362-08df-4a84-b8fc-47955f1b6458",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2549,7 +2549,7 @@
     "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
   },
   {
-    "id": "c90eaebf-aa5f-4f2d-9170-47108389c0b8",
+    "id": "ad43f923-d077-4e99-a769-4696488fe18b",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2573,7 +2573,7 @@
     "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
   },
   {
-    "id": "330bb27c-8c4d-42b4-a1a2-efbce2fd9549",
+    "id": "38a9588c-7b39-46af-a05a-0a55532e356a",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2597,7 +2597,7 @@
     "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
   },
   {
-    "id": "0cb34a48-4931-4e44-9482-e7dd22095e65",
+    "id": "be1cf247-defe-4bde-8cb7-a8a3f83ec16c",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2621,7 +2621,7 @@
     "passage_set_id": "eb3ecadc-0c39-4854-ac2d-8fa21ba9cb8d"
   },
   {
-    "id": "303a48bb-b95e-44e3-89cb-b54862e22a73",
+    "id": "0a11950c-a80c-4ad7-8b4a-c82fcd78d7c4",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2645,7 +2645,7 @@
     "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
   },
   {
-    "id": "05d6f57a-75d9-4a55-bf50-abec65437639",
+    "id": "09ac3262-fab9-46ab-84ee-9230225d846f",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2669,7 +2669,7 @@
     "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
   },
   {
-    "id": "3439f985-4894-44fb-9285-85975e2cfcdc",
+    "id": "6ccb1f8f-104a-4718-b3d6-4ec5b74647f0",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2693,7 +2693,7 @@
     "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
   },
   {
-    "id": "86b89ca4-b53e-43ff-ac5b-2c66d8c65686",
+    "id": "5cd90dc3-1dbd-4d1b-938a-9b77a3b96880",
     "created_at": "2024-01-12T00:00:00Z",
     "updated_at": "2024-01-12T00:00:00Z",
     "is_active": true,
@@ -2717,7 +2717,7 @@
     "passage_set_id": "929f0030-3c29-452d-8547-87fcfc13ad82"
   },
   {
-    "id": "ca139ecc-f1ca-439a-b6b2-82c7bcc67e93",
+    "id": "ff28a5c9-fef5-4772-a7d0-fab555d5be43",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2738,7 +2738,7 @@
     "image_urls": []
   },
   {
-    "id": "5b8be128-cad1-4aba-8f1f-d923fc7855a0",
+    "id": "2a835f0d-5e82-41e2-9775-94a5bf355a8c",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2759,7 +2759,7 @@
     "image_urls": []
   },
   {
-    "id": "d31350d4-fb9d-4224-a5df-35371f39501e",
+    "id": "dfcbd902-c2c5-44be-b6be-985200e021ca",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2780,7 +2780,7 @@
     "image_urls": []
   },
   {
-    "id": "c43cb0d7-e306-43ba-8139-703302d4fa83",
+    "id": "ae674ba7-0c57-42b4-9f8e-f009bc4e847d",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2801,7 +2801,7 @@
     "image_urls": []
   },
   {
-    "id": "c8ea8642-96ec-4a00-996a-548645f21385",
+    "id": "358eb909-a147-4190-a371-8f8a93911982",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2824,7 +2824,7 @@
     "image_urls": []
   },
   {
-    "id": "df4aae06-1a5e-43d3-be83-7962c69611d6",
+    "id": "1d526bfb-25de-4a26-9e17-7e55dbfd42cc",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2847,7 +2847,7 @@
     "image_urls": []
   },
   {
-    "id": "34698290-49e4-4f45-adae-baee0a59caff",
+    "id": "b44bf136-616a-46c2-b811-147b42fa57e8",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2870,7 +2870,7 @@
     "image_urls": []
   },
   {
-    "id": "1284ae12-2298-49e3-9c45-e142ba2a992e",
+    "id": "e8d73299-9640-4597-b786-312cca8fc3f6",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2893,7 +2893,7 @@
     "image_urls": []
   },
   {
-    "id": "5419c026-afa1-433c-8eda-448df1865841",
+    "id": "bfd3dd81-60dc-4ee0-81f7-5e5effc89f4e",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2915,7 +2915,7 @@
     "image_urls": []
   },
   {
-    "id": "ccbbf5a3-b9b1-47e8-b2b6-2fbf0cfd43ec",
+    "id": "8a502a85-df81-4e2e-b211-832e8b5175c4",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2937,7 +2937,7 @@
     "image_urls": []
   },
   {
-    "id": "9a6e53cf-de01-4a73-89de-2dc8c21fb0f7",
+    "id": "9b66c83f-b1b4-4956-a77f-871ebc2b474f",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2960,7 +2960,7 @@
     "image_urls": []
   },
   {
-    "id": "2764186c-5688-45f2-b395-6137efa4ea41",
+    "id": "868d261e-54c6-4d53-a4a8-d6bdeb8817d8",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -2984,7 +2984,7 @@
     "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
   },
   {
-    "id": "134aa6ce-cf56-4e09-bd3b-74760ff7009e",
+    "id": "f744bf8e-73fd-4516-8ed1-8be1206fc63f",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3008,7 +3008,7 @@
     "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
   },
   {
-    "id": "34c13dea-7753-4aa6-8f3f-8189be6687fa",
+    "id": "6515d934-fbe3-4fdd-8905-231161b6e708",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3032,7 +3032,7 @@
     "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
   },
   {
-    "id": "28659952-86d8-4232-906f-4034bb7f69f2",
+    "id": "ee4afa68-6c80-46bc-9025-3fff18364a74",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3056,7 +3056,7 @@
     "passage_set_id": "b3037081-c154-487e-9a37-e92e94eaf3f6"
   },
   {
-    "id": "8025c491-a87c-4be2-8f5f-d70f901bb7d3",
+    "id": "02380f13-ee66-42ca-ac13-d7244ef014ae",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3080,7 +3080,7 @@
     "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
   },
   {
-    "id": "8d73d729-105e-44be-8f44-3e4c8dde0de9",
+    "id": "18a689ef-4bb0-4feb-80f0-686dd5b72593",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3104,7 +3104,7 @@
     "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
   },
   {
-    "id": "72b73e3a-874b-40ec-bd8d-c71288aa9ee6",
+    "id": "4b2ffdcb-eaa7-4ee7-be9d-c7b6fa75811c",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3128,7 +3128,7 @@
     "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
   },
   {
-    "id": "c1ffa3de-df9c-4917-8857-fa3c2b3d3ee5",
+    "id": "6b62ae34-8039-4b37-8a8b-5bb5160b3e52",
     "created_at": "2025-01-15T10:00:00Z",
     "updated_at": "2025-01-15T10:00:00Z",
     "is_active": true,
@@ -3150,5 +3150,2574 @@
     ],
     "image_urls": [],
     "passage_set_id": "71261b08-1853-4cfb-8fbd-86939a933497"
+  },
+  {
+    "id": "d4b836f8-05f2-439e-9629-bd4258afd475",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "The Plate Method recommends filling half of your plate with non-starchy vegetables.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The Plate Method specifically recommends that half your plate should be filled with non-starchy vegetables like leafy greens, broccoli, cauliflower, and bell peppers to ensure adequate nutrient intake and natural portion control.",
+    "hints": [
+      "Think about the visual proportions recommended in the article",
+      "Consider what takes up the largest section of the plate"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2381e81a-fc97-4338-8dd8-051560d277ba",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "Potatoes should be counted as vegetables in the Plate Method.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Potatoes are starchy vegetables that belong in the carbohydrate quarter of your plate, not the vegetable half. The article specifically mentions this as a common mistake - potatoes, corn, and peas are starchy vegetables that should be counted as carbohydrates.",
+    "hints": [
+      "Consider the difference between starchy and non-starchy vegetables",
+      "Think about which section of the plate potatoes should occupy"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ec75b08a-115a-44c8-9505-138da8844972",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "The Plate Method works with any cuisine from Mediterranean to Mexican to Asian dishes.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that the Plate Method is flexible and works with any cuisine because it focuses on proportions rather than specific foods. You can apply the visual framework to Mediterranean, Mexican, Asian, or any other type of cuisine.",
+    "hints": [
+      "Think about the flexibility mentioned in the article",
+      "Consider whether the method is about specific foods or proportions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cc2b168a-b2a3-4a58-8ae3-e49c2d488698",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "You need to follow the Plate Method perfectly at every meal to see benefits.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically states that perfection isn't the goal - consistency is. Even following the Plate Method 80% of the time will yield significant improvements in energy, recovery, and body composition.",
+    "hints": [
+      "Consider what the article says about perfection versus consistency",
+      "Think about the 80% rule mentioned in the content"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "896a8024-e238-43c8-bb16-e7160a634b55",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "Sarah wants to lose weight. According to the Plate Method adjustments, what should she do?",
+    "question_type": "standalone",
+    "options": [
+      "Keep the vegetable half but choose lower-calorie options and slightly reduce the carbohydrate quarter",
+      "Eliminate the carbohydrate quarter completely and double the protein portion",
+      "Fill the entire plate with vegetables only",
+      "Replace all food with lettuce and call it a day"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "For weight loss, the article recommends keeping the vegetable half but choosing lower-calorie options like leafy greens, and slightly reducing or choosing lower-calorie options for the carbohydrate quarter while maintaining protein to preserve muscle mass.",
+    "hints": [
+      "Look at the weight loss adjustments section in the article",
+      "Consider which macronutrient is most important to maintain during weight loss"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d61d0df2-5c2f-456c-a82e-65e6300f3eca",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "Mike wants to build muscle. What Plate Method adjustment should he consider?",
+    "question_type": "standalone",
+    "options": [
+      "Consider making protein slightly more than a quarter and increase the carbohydrate portion",
+      "Fill half the plate with protein and eliminate carbohydrates",
+      "Only eat vegetables to stay lean while building muscle",
+      "Eat only protein powder mixed with tears of his enemies"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "For muscle building, the article suggests considering making protein slightly more than a quarter, increasing the carbohydrate portion (especially around workouts), and not skipping fats as they're crucial for hormone production.",
+    "hints": [
+      "Look at the muscle building adjustments in the article",
+      "Think about what macronutrients support muscle growth and recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1f130dd9-cd8e-4e95-85d6-65ada56880c6",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What's the main problem with typical restaurant meal proportions?",
+    "question_type": "standalone",
+    "options": [
+      "They have reversed proportions with huge protein and carbs but tiny vegetable sides",
+      "They don't provide enough calories for most people",
+      "The food is always cold by the time it reaches your table",
+      "The waiters judge you for ordering vegetables instead of fries"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains that most restaurant meals come with proportions completely reversed from the Plate Method - huge protein and carbohydrate portions with tiny vegetable sides, which is why asking for double vegetables instead of fries is recommended.",
+    "hints": [
+      "Consider what the article says about restaurant ordering",
+      "Think about typical restaurant portion sizes for different food groups"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "585bfe2b-9ff2-4574-8113-a203b7bb2d9c",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "Emma is meal prepping using the Plate Method. What's the best approach?",
+    "question_type": "standalone",
+    "options": [
+      "Prepare identical meals for every day to maintain consistency",
+      "Prepare components separately and mix and match throughout the week using the Plate Method as a guide",
+      "Only prepare vegetables since they're half the plate",
+      "Hire a personal chef because meal prep is too complicated"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends preparing components separately (roast a variety of vegetables, cook 3-4 protein options, prepare 2-3 grain/starch options, pre-portion healthy fats) then mix and match throughout the week using the Plate Method as your guide.",
+    "hints": [
+      "Look at the meal prep success section in the article",
+      "Consider which approach would provide variety while maintaining balance"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c7d92127-d05e-4887-97f0-cd9953c674f8",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What are the correct proportions for the basic Plate Method formula?",
+    "question_type": "standalone",
+    "options": [
+      "1/2 non-starchy vegetables, 1/4 lean protein, 1/4 complex carbohydrates, thumb of healthy fats",
+      "1/3 protein, 1/3 carbohydrates, 1/3 vegetables, no fats",
+      "1/2 protein, 1/4 vegetables, 1/4 carbohydrates, unlimited fats",
+      "100% vegetables because carbs and protein are overrated"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The basic Plate Method formula is half your plate with non-starchy vegetables, one quarter with lean protein, one quarter with complex carbohydrates, and a thumb-sized portion of healthy fats.",
+    "hints": [
+      "This is the core formula explained at the beginning of the article",
+      "Think about which food group gets the largest portion"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b7221439-93ee-4fa9-b809-6ab215026e92",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "For successful meal prep, what order should you follow when preparing components?",
+    "question_type": "standalone",
+    "options": [
+      "Roast vegetables, cook proteins, prepare grains, pre-portion fats",
+      "Cook proteins, roast vegetables, prepare grains, pre-portion fats",
+      "Pre-portion fats, prepare grains, roast vegetables, cook proteins",
+      "Order takeout and hope for the best"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "While the article doesn't specify an exact order, the logical sequence mentioned is roasting a variety of vegetables, cooking 3-4 protein options, preparing 2-3 grain/starch options, and pre-portioning healthy fats for easy assembly throughout the week.",
+    "hints": [
+      "Consider the meal prep recommendations in the article",
+      "Think about which components take longest to prepare"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5af4878d-93bf-4f54-985b-b16b4922fb5c",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "Which combination best represents special situation meal adjustments mentioned in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Pre-workout: more carbs, moderate protein, less fiber and fat; Post-workout: standard proportions with faster-digesting options",
+      "Pre-workout: only protein; Post-workout: only carbohydrates; Rest day: only vegetables",
+      "Pre-workout: maximum fat; Post-workout: maximum protein; Rest day: standard proportions",
+      "All situations: identical meals because consistency trumps optimization"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains that pre-workout meals should shift toward more carbs, moderate protein, and less fiber and fat to avoid digestive issues. Post-workout meals should maintain standard proportions but prioritize faster-digesting carbs and easily absorbed protein.",
+    "hints": [
+      "Look at the special situations section",
+      "Consider what would support performance versus recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "95a752ac-cc17-427d-bfc4-ae480d0a464b",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "In Emma's meal prep story, what was her main problem with her previous approach?",
+    "question_type": "passage_based",
+    "options": [
+      "She made identical containers that were boring and she wasn't sure about portions",
+      "She didn't have enough storage containers",
+      "She was spending too much money on ingredients",
+      "She was meal prepping for the wrong days of the week"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma's problem was that she made five identical containers of plain chicken, broccoli, and rice, which was boring, and she was never sure if she was eating the right amounts. This is why Jordan introduced her to the component-based meal prep approach.",
+    "hints": [
+      "Look at Emma's initial complaint in the passage",
+      "Consider what made her want to quit meal prepping"
+    ],
+    "image_urls": [],
+    "passage_set_id": "21e3a01d-3185-4db7-86e0-25b5dad71a47"
+  },
+  {
+    "id": "0a396ef1-2959-4f01-99db-17fea1858bbc",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What solution did Jordan suggest to make Emma's meal prep more sustainable?",
+    "question_type": "passage_based",
+    "options": [
+      "Prep components separately and mix and match using the plate proportions",
+      "Order meal delivery services instead",
+      "Only meal prep on weekends",
+      "Make identical meals but add different sauces"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan suggested prepping components rather than complete meals - roasting three different vegetables, cooking two proteins, making two grain options, then mixing and matching all week using the plate method proportions.",
+    "hints": [
+      "Focus on Jordan's specific advice to Emma",
+      "Think about what would solve the boredom and variety problem"
+    ],
+    "image_urls": [],
+    "passage_set_id": "21e3a01d-3185-4db7-86e0-25b5dad71a47"
+  },
+  {
+    "id": "22d7bcb6-3631-4f08-a5aa-43b9a1ee4f13",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "How did Jordan explain that the Plate Method handles macronutrients?",
+    "question_type": "passage_based",
+    "options": [
+      "It automatically balances macros and is like macro counting for people who hate math",
+      "It completely eliminates the need to think about nutrition",
+      "It only works if you count every calorie precisely",
+      "It focuses solely on portion sizes without considering nutrition"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan explained that the Plate Method automatically balances macros - the vegetable half controls calories while providing nutrients, the protein quarter ensures adequate protein for recovery, the carb quarter provides energy, and adding healthy fats supports hormones. It's 'macro counting for people who hate math.'",
+    "hints": [
+      "Look at Jordan's explanation of how the method works",
+      "Consider what Jordan said about math and macro counting"
+    ],
+    "image_urls": [],
+    "passage_set_id": "21e3a01d-3185-4db7-86e0-25b5dad71a47"
+  },
+  {
+    "id": "b02c6b94-51fd-4025-b026-f53737a81d11",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What evidence did Jordan provide that the Plate Method works for fitness goals?",
+    "question_type": "passage_based",
+    "options": [
+      "Three months of consistent eating using this method plus regular workouts",
+      "A scientific study they conducted",
+      "Before and after photos from social media",
+      "Recommendations from multiple personal trainers"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan provided personal evidence, saying they had three months of consistent eating using the Plate Method plus regular workouts, with no calculators, apps, or stress - demonstrating practical success with the approach.",
+    "hints": [
+      "Look at Jordan's personal experience mentioned in the passage",
+      "Consider what timeframe and approach Jordan used"
+    ],
+    "image_urls": [],
+    "passage_set_id": "21e3a01d-3185-4db7-86e0-25b5dad71a47"
+  },
+  {
+    "id": "ad7a2019-722a-473c-9ce7-3993fecfc52f",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What was Mike's initial concern about restaurant portions in the second passage?",
+    "question_type": "passage_based",
+    "options": [
+      "He thought he needed all the protein from his large burger to build muscle",
+      "He was worried about the cost of the meal",
+      "He didn't like the taste of the food",
+      "He was concerned about the restaurant's cleanliness"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Mike's concern was that he was trying to build muscle and thought he needed all the protein from his large burger. He questioned whether he needed all that protein, thinking more protein was better for muscle building.",
+    "hints": [
+      "Focus on Mike's specific question about the burger",
+      "Consider what Mike's fitness goal was"
+    ],
+    "image_urls": [],
+    "passage_set_id": "fd5d475d-0a1c-4e0a-afd6-2e0809304d0e"
+  },
+  {
+    "id": "7080d8c4-3d24-4dac-96b5-e64224056259",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "How did Taylor handle the oversized restaurant portions?",
+    "question_type": "passage_based",
+    "options": [
+      "Asked for extra vegetables, requested a to-go box, and packed half the salmon and rice",
+      "Ate everything on the plate to avoid waste",
+      "Only ate the protein and left everything else",
+      "Switched to ordering from the kids' menu"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor fixed the proportions by pushing half the salmon to the side, asking for extra steamed vegetables, requesting a to-go box, and packing half the salmon and rice pilaf, creating two balanced meals from one oversized restaurant portion.",
+    "hints": [
+      "Look at Taylor's specific actions to handle the large portions",
+      "Consider how Taylor turned one meal into two"
+    ],
+    "image_urls": [],
+    "passage_set_id": "fd5d475d-0a1c-4e0a-afd6-2e0809304d0e"
+  },
+  {
+    "id": "7292becf-d3da-4054-826c-b99a6fb63b09",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What did Taylor teach Mike about protein needs for muscle building?",
+    "question_type": "passage_based",
+    "options": [
+      "You need adequate protein, not excessive protein - the body can only use so much at once",
+      "You should eat as much protein as possible for maximum gains",
+      "Protein timing is more important than total amount",
+      "Plant proteins are better than animal proteins for muscle building"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor explained that Mike needed adequate protein, not excessive protein, noting that the burger was probably 8 ounces (three servings) and that the body can only use so much protein at once for muscle building.",
+    "hints": [
+      "Look at Taylor's explanation about protein requirements",
+      "Consider what Taylor said about the body's ability to use protein"
+    ],
+    "image_urls": [],
+    "passage_set_id": "fd5d475d-0a1c-4e0a-afd6-2e0809304d0e"
+  },
+  {
+    "id": "8ff9d0eb-11b6-4730-83d2-f1b32d4bcd67",
+    "created_at": "2024-01-25T10:00:00Z",
+    "updated_at": "2024-01-25T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440007",
+    "question_text": "What was Taylor's advice for Mike regarding dining out and fitness goals?",
+    "question_type": "passage_based",
+    "options": [
+      "Order a side salad with fries, eat half the fries, and fill up on salad to enjoy treats in proper proportions",
+      "Never eat out while trying to reach fitness goals",
+      "Only order grilled chicken and vegetables at restaurants",
+      "Eat whatever you want since one meal doesn't matter"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor suggested ordering a side salad with fries next time, eating half the fries and filling up on the salad - this way Mike could still enjoy fries but in a proportion that supports rather than sabotages his goals.",
+    "hints": [
+      "Look at Taylor's specific recommendation for future restaurant visits",
+      "Consider how Taylor suggested balancing enjoyment with goals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "fd5d475d-0a1c-4e0a-afd6-2e0809304d0e"
+  },
+  {
+    "id": "d19bbf60-ee56-46d6-9f38-c058ed0f26d8",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "Nutrient density refers to the amount of beneficial nutrients you get per calorie consumed.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Nutrient density is exactly that - the ratio of beneficial nutrients (vitamins, minerals, fiber, protein) to calories. Foods with high nutrient density give you more nutritional value for fewer calories.",
+    "hints": [
+      "Think about what you get for your 'calorie budget'",
+      "Consider the definition given in the article about getting the best bang for your buck"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "97d73566-8207-4840-848e-e737550bc7bf",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "According to the article, frozen vegetables are less nutrient-dense than fresh vegetables.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically states that frozen vegetables are often MORE nutrient-dense than fresh because they're frozen at peak ripeness, preserving their nutritional content.",
+    "hints": [
+      "Check the myth-busting section of the article",
+      "Consider when vegetables are frozen versus when fresh ones are harvested"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8d6fb934-d9f7-432f-8029-eb5b8e7befda",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "The 80/20 approach means eating 80% calorie-dense foods and 20% nutrient-dense foods.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 80/20 approach is the opposite: 80% nutrient-dense choices and 20% whatever you enjoy. This allows for enjoyment while maintaining a foundation of nutritious foods.",
+    "hints": [
+      "Think about which type of food should make up the majority",
+      "The approach should emphasize nutrient-dense foods as the foundation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "099b9246-f946-44c2-acfd-8b8676c1617e",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "Volume eating allows you to consume large portions while keeping calories reasonable by choosing nutrient-dense foods.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Volume eating is exactly this concept - choosing nutrient-dense, lower-calorie foods that allow you to eat satisfying portions. The article gives the example of 300 calories of strawberries being 4.5 cups versus 2 small candy bars.",
+    "hints": [
+      "Think about the strawberry versus chocolate comparison",
+      "Consider which foods give you more volume for the same calories"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7b015c57-b600-41d6-93f8-c04d805ac712",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What makes leafy greens like spinach and kale 'ultra nutrient-dense champions'?",
+    "question_type": "standalone",
+    "options": [
+      "They provide maximum nutrients with minimal calories",
+      "They contain more protein than any other food",
+      "They taste amazing and everyone loves them",
+      "They can be eaten in unlimited quantities without any effects"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Leafy greens are ultra nutrient-dense because they pack tons of vitamins, minerals, and fiber into very few calories - like getting a luxury car for the price of a bicycle, as the article describes.",
+    "hints": [
+      "Think about the luxury car analogy",
+      "Consider what you get versus what you pay in calories"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b634b7ae-a9af-4ed7-965c-8146f78440c2",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "According to the article, which breakfast swap would increase nutrient density?",
+    "question_type": "standalone",
+    "options": [
+      "Oatmeal with berries instead of sugary cereal",
+      "Three donuts instead of two donuts",
+      "Coffee with extra sugar instead of black coffee",
+      "Eating breakfast while standing on your head"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically lists 'oatmeal with berries instead of sugary cereal' as a smart breakfast swap to increase nutrient density by choosing whole grains and fruits over processed, sugary options.",
+    "hints": [
+      "Look at the breakfast swaps section",
+      "Think about whole foods versus processed foods"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "945d78b9-ae8f-45b2-a0f1-3ef324d0b72c",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "Why might someone who is very active need calorie-dense foods?",
+    "question_type": "standalone",
+    "options": [
+      "They may struggle to eat enough calories from only nutrient-dense foods",
+      "Calorie-dense foods are always healthier",
+      "They need to gain weight quickly",
+      "Their taste buds stop working properly"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article explains that very active people may struggle to consume enough total calories if they only eat nutrient-dense, lower-calorie foods. They need efficient calorie sources to meet their high energy demands.",
+    "hints": [
+      "Think about energy needs for active individuals",
+      "Consider the practical challenges of eating enough low-calorie foods"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "bf7c1b0b-1957-4c3c-a984-c8bfae03cfff",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What does the article suggest about the relationship between food quality and enjoyment?",
+    "question_type": "standalone",
+    "options": [
+      "You can balance nutrition with enjoyment using the 80/20 approach",
+      "You must choose between healthy food and tasty food",
+      "Enjoyable foods are always unhealthy",
+      "Food should only be consumed for nutritional value, never pleasure"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that you don't need to eliminate enjoyable foods entirely. The 80/20 approach allows you to balance nutrition (80% nutrient-dense) with enjoyment (20% whatever you like) for a sustainable approach.",
+    "hints": [
+      "Consider the 80/20 principle discussed",
+      "Think about sustainability and long-term success"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7d79849d-0d96-4ca3-8d51-22f55a7a0335",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What should you do first when trying to increase nutrient density according to the action plan?",
+    "question_type": "standalone",
+    "options": [
+      "Start with one meal and add vegetables before removing other foods",
+      "Eliminate all processed foods immediately, throw away everything in your pantry, and start over",
+      "Count every single nutrient in every single food you eat",
+      "Train yourself to survive on nothing but spinach and air"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The action plan specifically recommends starting with one meal and adding before subtracting - add berries to cereal before switching cereals, add vegetables to meals before removing other foods.",
+    "hints": [
+      "Look at the action plan section",
+      "Think about gradual, sustainable changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "57d77a07-78a4-4209-8a0b-90d3d4126857",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "According to the volume eating example, 300 calories of strawberries equals:",
+    "question_type": "standalone",
+    "options": [
+      "4.5 cups",
+      "1 tablespoon",
+      "Half a strawberry",
+      "The weight of a small elephant"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states that 300 calories of strawberries equals 4.5 cups, which is dramatically more volume than 300 calories of chocolate (2 small candy bars).",
+    "hints": [
+      "Look for the specific volume eating comparison",
+      "Think about the strawberry example given"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "129c10a2-1782-4d2f-8b53-d3977d3a4d7b",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "Which combination represents the correct sequence for implementing nutrient density improvements?",
+    "question_type": "standalone",
+    "options": [
+      "Pick one meal → Add before subtracting → Use plate method → Prep convenient options",
+      "Eliminate everything → Start over → Buy expensive supplements → Hire a personal chef",
+      "Count every calorie → Measure everything → Track nutrients → Stress about perfection",
+      "Read more articles → Plan extensively → Never actually start → Repeat cycle"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article's action plan follows this logical progression: start small with one meal, add nutrient-dense foods before removing others, use the plate method for balance, and prep healthy foods to make them convenient.",
+    "hints": [
+      "Review the step-by-step action plan",
+      "Think about gradual, practical implementation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2f5d5b0e-21ee-47f1-b8b0-fa3bc69fad28",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What was Emma's main discovery at the grocery store?",
+    "question_type": "passage_based",
+    "options": [
+      "That she could improve her family's nutrition gradually without completely changing everything",
+      "That healthy food is always more expensive than junk food",
+      "That her children would never accept any changes to their diet",
+      "That she needed to throw away all their current food immediately"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma learned from Jordan that she could make gradual improvements like adding berries to cereal and swapping white bread for whole grain without completely overhauling her family's diet - making healthy changes manageable rather than overwhelming.",
+    "hints": [
+      "Focus on Jordan's advice about gradual changes",
+      "Think about Emma's relief at finding doable solutions"
+    ],
+    "image_urls": [],
+    "passage_set_id": "262432e2-b2d0-4109-91f9-9ebb6d519401"
+  },
+  {
+    "id": "86a34abf-5ad2-4dbd-8a61-b45a7fc1a67f",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "Why did Jordan suggest mixing frozen berries with regular cereal?",
+    "question_type": "passage_based",
+    "options": [
+      "To add nutrients while keeping the kids' favorite foods",
+      "Because frozen berries are cheaper than fresh ones only",
+      "To make the cereal taste worse",
+      "Because all cereal should be eaten cold"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan's strategy was to improve nutrition without causing family rebellion - adding nutrient-dense berries to the existing cereal gives kids their familiar taste while boosting the nutritional value of the meal.",
+    "hints": [
+      "Think about compromise and gradual improvement",
+      "Consider family dynamics and acceptance"
+    ],
+    "image_urls": [],
+    "passage_set_id": "262432e2-b2d0-4109-91f9-9ebb6d519401"
+  },
+  {
+    "id": "d8e815b9-4783-4aa2-a5d5-55bac636c61e",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What key principle did Emma learn about healthy eating for families?",
+    "question_type": "passage_based",
+    "options": [
+      "Small upgrades over time work better than dramatic overhauls",
+      "Children will automatically accept any food changes",
+      "Expensive organic foods are the only healthy options",
+      "All previous food choices must be completely eliminated"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The passage emphasizes Jordan's approach of 'upgrading slowly' with baby steps rather than dramatic changes, which is more sustainable and acceptable to families, especially with children.",
+    "hints": [
+      "Look for Jordan's advice about gradual changes",
+      "Think about sustainable versus dramatic approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "262432e2-b2d0-4109-91f9-9ebb6d519401"
+  },
+  {
+    "id": "470803c5-bc6d-48a8-b4d8-8e3f9995b434",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "How did Emma's perspective on grocery shopping change?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized she could make healthier choices without starting over completely",
+      "She decided to only shop at expensive specialty stores",
+      "She became overwhelmed and decided to give up",
+      "She learned that all her previous choices were terrible"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma's transformation was from feeling overwhelmed to feeling empowered - she learned she didn't have to 'throw out everything and start over' but could make strategic improvements to what she was already doing.",
+    "hints": [
+      "Focus on Emma's emotional journey from overwhelmed to hopeful",
+      "Think about the difference between starting over and upgrading"
+    ],
+    "image_urls": [],
+    "passage_set_id": "262432e2-b2d0-4109-91f9-9ebb6d519401"
+  },
+  {
+    "id": "57c56da5-f989-4069-beb9-c86f78a639a8",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What was Riley's main concern about eating healthy?",
+    "question_type": "passage_based",
+    "options": [
+      "The cost of healthy foods on a tight student budget",
+      "Not having enough time to cook meals",
+      "Disliking the taste of all vegetables",
+      "Worrying about what friends would think"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Riley was standing with a calculator app trying to figure out how to eat healthy on a tight student budget, feeling that healthy meant expensive foods they couldn't afford.",
+    "hints": [
+      "Look at the opening of Riley's passage",
+      "Consider the context of being a student with financial constraints"
+    ],
+    "image_urls": [],
+    "passage_set_id": "689fda2b-2e5e-4cc5-aa73-4139e0a2e21c"
+  },
+  {
+    "id": "364b43ab-0c35-43a9-939e-450cb702f742",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "How did Taylor help Riley understand affordable nutrition?",
+    "question_type": "passage_based",
+    "options": [
+      "By showing that nutrient-dense foods can come from affordable sources",
+      "By giving Riley money for groceries",
+      "By telling Riley to just eat less food",
+      "By recommending expensive supplements instead"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor showed Riley that dried beans provide more protein per dollar than meat, frozen vegetables are nutritious and affordable, and eggs are still the cheapest complete protein - proving that nutrient density doesn't require expensive foods.",
+    "hints": [
+      "Look at Taylor's specific examples of affordable nutritious foods",
+      "Think about the cost-per-nutrient ratio"
+    ],
+    "image_urls": [],
+    "passage_set_id": "689fda2b-2e5e-4cc5-aa73-4139e0a2e21c"
+  },
+  {
+    "id": "12e528d3-aaf3-4933-bdc8-d24aec950a91",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What was Taylor's key insight about healthy eating on a budget?",
+    "question_type": "passage_based",
+    "options": [
+      "You don't need expensive specialty foods to get good nutrition",
+      "Only wealthy people can eat healthily",
+      "All healthy food is expensive by definition",
+      "Students should just accept poor nutrition"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor's message was that Riley had 'been stressed about affording 'good' foods when the basics had everything I needed all along' - showing that simple, affordable foods can provide excellent nutrition.",
+    "hints": [
+      "Focus on Taylor's conclusion about the basics having everything needed",
+      "Think about the difference between expensive specialty foods and nutritious basics"
+    ],
+    "image_urls": [],
+    "passage_set_id": "689fda2b-2e5e-4cc5-aa73-4139e0a2e21c"
+  },
+  {
+    "id": "d5650f6c-915f-45be-8c01-41af7447b8a3",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What changed for Riley by the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "They realized they could eat well within their budget using basic nutritious foods",
+      "They decided to spend more money they didn't have",
+      "They gave up on trying to eat healthily",
+      "They started working extra jobs to afford expensive health foods"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Riley went from stress about affording healthy food to spending only $23 for a week's worth of balanced meals, realizing that 'this changes everything' about their approach to budget nutrition.",
+    "hints": [
+      "Look at the ending where Riley checks out",
+      "Think about the transformation from stress to empowerment"
+    ],
+    "image_urls": [],
+    "passage_set_id": "689fda2b-2e5e-4cc5-aa73-4139e0a2e21c"
+  },
+  {
+    "id": "d5f9d7ac-62ef-41c6-9bc0-0680c0340091",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "Why was Casey struggling with weight management despite working out consistently?",
+    "question_type": "passage_based",
+    "options": [
+      "They were eating calorie-dense healthy foods without considering portions",
+      "They weren't working out hard enough at the gym",
+      "They had a medical condition preventing weight loss",
+      "They were eating too many vegetables"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey was eating 'healthy' foods like smoothies, granola, and nuts, but these were calorie-dense. Their 'healthy' smoothie was 800 calories and their 'small' handful of nuts was actually three servings.",
+    "hints": [
+      "Think about the concept of healthy but calorie-dense foods",
+      "Consider Casey's surprise at the actual calorie counts"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d765ff2e-92b8-423a-b874-d288ae29a72d"
+  },
+  {
+    "id": "2998350b-4824-46f3-98d2-611f86c2c6f4",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What key lesson did Alex teach Casey about healthy foods?",
+    "question_type": "passage_based",
+    "options": [
+      "Healthy doesn't mean unlimited - portions still matter",
+      "All healthy foods are automatically low in calories",
+      "Nuts and smoothies should be completely avoided",
+      "Only vegetables count as truly healthy foods"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex explained that while nuts are healthy, 'healthy doesn't mean unlimited' and demonstrated the dramatic difference in calories between nutrient-dense but calorie-dense foods like nuts versus high-volume, low-calorie foods like cucumbers.",
+    "hints": [
+      "Focus on Alex's key message about unlimited consumption",
+      "Think about the portion control lesson"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d765ff2e-92b8-423a-b874-d288ae29a72d"
+  },
+  {
+    "id": "9d129d53-03c0-41b4-a782-2c0098333523",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "How did Alex solve their own similar problem?",
+    "question_type": "passage_based",
+    "options": [
+      "By pre-portioning calorie-dense foods and eating lots of vegetables for volume",
+      "By eliminating all nuts and healthy fats from their diet",
+      "By only eating one meal per day",
+      "By switching to an all-liquid diet"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex mentioned pre-portioning nuts into small bags and eating 'tons of vegetables' for volume - never being hungry but keeping calories controlled by managing portions of calorie-dense foods and filling up on nutrient-dense, low-calorie vegetables.",
+    "hints": [
+      "Look at Alex's specific strategies mentioned",
+      "Think about the combination of portion control and volume eating"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d765ff2e-92b8-423a-b874-d288ae29a72d"
+  },
+  {
+    "id": "7b1c8d97-07dd-4b10-9286-3805e7a29707",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440008",
+    "question_text": "What was Casey's final understanding about nutrition and weight loss?",
+    "question_type": "passage_based",
+    "options": [
+      "Both food quality AND quantity matter for weight management",
+      "Only food quality matters, quantity is irrelevant",
+      "Only calories matter, nutrition quality doesn't count",
+      "Weight loss is impossible regardless of diet choices"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey learned that 'Quality AND quantity both matter' - you can eat nutritious foods and still need to consider portions for weight loss. Nutrient-dense doesn't automatically mean weight loss if you're eating too many total calories.",
+    "hints": [
+      "Look at the lesson about quality vs quantity",
+      "Think about Casey's realization at the end"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d765ff2e-92b8-423a-b874-d288ae29a72d"
+  },
+  {
+    "id": "a5c9bbe6-0186-48e6-ae52-4898baad85f5",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "A single ounce of most nuts contains around 160-200 calories.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Most nuts are very calorie-dense, with a single ounce containing 157-204 calories depending on the type. This is why portion control is crucial with nuts despite their nutritional benefits.",
+    "hints": [
+      "Consider how small an ounce actually is - about 23 almonds",
+      "Remember that nuts are primarily fat, which has 9 calories per gram"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "31ff3cec-371d-4528-85a8-5b7262f804e1",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "Your brain registers liquid calories the same way it does solid food calories.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Your brain doesn't register liquid calories the same way as solid food. You can drink 500 calories and still feel hungry, but eating 500 calories of whole food would leave you satisfied.",
+    "hints": [
+      "Think about how you feel after drinking a large smoothie versus eating the same calories in solid food",
+      "Consider why liquid calories are called 'invisible threats'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "79a4520b-d1fc-4f75-bc64-f6e737ee33ae",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "Granola is typically a low-calorie breakfast option.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Granola is actually a calorie bomb, often containing 200-300 calories per half-cup. Most people pour 1-2 cups thinking it's like regular cereal, making it a 600+ calorie breakfast before adding milk.",
+    "hints": [
+      "Consider what granola is made of - oats, nuts, seeds, and often honey or sugar",
+      "Think about how dense granola is compared to regular cereal"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f6e2e815-e08d-452e-adce-89b66dfe1bd8",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "The 80/20 rule means you should eliminate calorie-dense foods completely.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 80/20 rule actually means 80% of your calories should come from filling, lower-density foods, and 20% can come from calorie-dense favorites. This allows enjoyment without derailment.",
+    "hints": [
+      "Think about what makes a diet sustainable long-term",
+      "Consider that complete elimination often leads to binge eating"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7430df68-5de1-4867-87b8-e4ce8a459f1e",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "You're trying to lose weight but your progress has stalled despite eating 'healthy' foods. What's the most likely hidden calorie culprit?",
+    "question_type": "standalone",
+    "options": [
+      "The vegetables you're eating with every meal",
+      "The generous amounts of 'healthy' dressing, nuts, and cooking oil you're using",
+      "The water you're drinking throughout the day",
+      "The air you're breathing (it's surprisingly caloric!)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Even healthy foods like dressing, nuts, and cooking oil are extremely calorie-dense. A 'generous' pour of ranch dressing can be 300+ calories, and a handful of nuts can be 400+ calories.",
+    "hints": [
+      "Focus on foods that are healthy but calorie-dense",
+      "Think about portion sizes versus nutrition labels"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8fddb49f-d03d-426a-991b-a1d63c0145fd",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "A Starbucks Venti Caramel Frappuccino contains approximately how many calories?",
+    "question_type": "standalone",
+    "options": [
+      "150 calories - it's mostly coffee and milk",
+      "250 calories - about the same as a small meal",
+      "510 calories - equivalent to a full meal",
+      "Over 9000 calories - it's basically liquid diabetes"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "A Venti Caramel Frappuccino contains 510 calories, which is equivalent to a full meal. This demonstrates how liquid calories can quickly add up without providing satiety.",
+    "hints": [
+      "Consider all the ingredients: coffee, milk, syrup, whipped cream",
+      "Remember that liquid calories don't make you feel full"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f735f9b6-24e7-403d-a4a7-7eeaecf7d642",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What's the best strategy when ordering salad at a restaurant?",
+    "question_type": "standalone",
+    "options": [
+      "Order extra dressing to make sure the salad tastes good",
+      "Always ask for dressing on the side and use sparingly",
+      "Avoid salads completely since they're just rabbit food",
+      "Demand the server personally count each lettuce leaf for accuracy"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Always asking for dressing on the side allows you to control portions. Restaurant salads often come pre-dressed with 3-4 servings of high-calorie dressing, turning a healthy choice into a calorie bomb.",
+    "hints": [
+      "Think about portion control strategies",
+      "Consider how restaurants typically serve dressing"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fbb7e8eb-6e98-4c13-8862-33f06bdb21d3",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "Which combination represents good swaps for reducing hidden calories?",
+    "question_type": "standalone",
+    "options": [
+      "Ranch dressing → Greek yogurt-based dressing, nuts as snacks → air-popped popcorn",
+      "Water → sports drinks, vegetables → processed snacks",
+      "Whole foods → meal replacement shakes, cooking at home → eating out daily",
+      "Sleep → energy drinks, walking → driving everywhere"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Greek yogurt-based dressings are much lower in calories than ranch, and air-popped popcorn provides volume with far fewer calories than nuts when used as a snack.",
+    "hints": [
+      "Look for swaps that maintain satisfaction while reducing calories",
+      "Consider which options focus on calorie-dense foods mentioned in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "07f91b88-f05d-4a3b-8400-9d47dc97d389",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What is the correct sequence for conducting a daily calorie bomb audit?",
+    "question_type": "standalone",
+    "options": [
+      "Evening drinks → Dinner oil → Lunch dressing → Snack nuts → Morning cream",
+      "Morning cream/juice → Lunch dressing → Snack nuts → Dinner oil → Evening drinks",
+      "Snack nuts → Morning cream → Evening drinks → Lunch dressing → Dinner oil",
+      "Dinner oil → Snack nuts → Morning cream → Evening drinks → Lunch dressing"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The audit should follow your natural daily eating pattern: morning beverages, lunch additions, afternoon snacks, dinner preparation, and evening drinks to systematically identify hidden calories throughout the day.",
+    "hints": [
+      "Think about the natural flow of a typical day",
+      "Consider when people typically consume each type of food"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cb7177f1-50db-4629-9800-6a236cc2da83",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "Which visual portion guides are correctly matched?",
+    "question_type": "standalone",
+    "options": [
+      "Nuts: one heaping handful, Nut butter: golf ball, Salad dressing: large pour, Cheese: unlimited",
+      "Nuts: one palm-full, Nut butter: ping pong ball, Salad dressing: shot glass, Cheese: four dice",
+      "Nuts: entire bag, Nut butter: tablespoon heaped high, Salad dressing: ladle full, Cheese: brick-sized",
+      "Nuts: count every single one, Nut butter: electron microscope measurement, Salad dressing: precisely 7.5 drops, Cheese: molecular level"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "These are the correct portion guides from the article: one palm-full of nuts, ping pong ball size for 2 tablespoons of nut butter, shot glass for 2 tablespoons of salad dressing, and four dice for 1 ounce of cheese.",
+    "hints": [
+      "Look for reasonable, practical portion sizes",
+      "Think about visual cues that are easy to remember and use"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "da305c47-9953-4c50-a2cb-c9f0ad924ef7",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "Which three strategies work together for managing calorie-dense healthy foods?",
+    "question_type": "standalone",
+    "options": [
+      "Pre-portioning + measuring tools + complete elimination",
+      "Pre-portioning + awareness tracking + strategic swaps",
+      "Guessing portions + ignoring labels + eating unlimited amounts",
+      "Only eating on weekends + closing your eyes while eating + hoping for the best"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Pre-portioning prevents overconsumption, awareness tracking helps you understand actual intake, and strategic swaps allow you to enjoy foods while managing calories effectively.",
+    "hints": [
+      "Look for strategies that work together without being extreme",
+      "Consider approaches that maintain enjoyment while building awareness"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6fc7c00e-5f4a-4935-a684-ea2d90bff36a",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What was Sarah's main problem with her 'healthy' eating approach?",
+    "question_type": "passage_based",
+    "options": [
+      "She was eating too many vegetables",
+      "She was using excessive amounts of high-calorie salad dressing without realizing it",
+      "She wasn't eating enough protein",
+      "She was drinking too much water"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah was emptying an entire 4-ounce container of ranch dressing (580 calories) over her salad, making her 'healthy' choice more caloric than a Big Mac meal.",
+    "hints": [
+      "Focus on what Sarah was adding to her salad",
+      "Consider the calorie calculation Emma did for her"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "36c54618-ffd9-44a1-9ace-55c7f236ad7c",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "How many calories was Sarah consuming from dressing alone?",
+    "question_type": "passage_based",
+    "options": [
+      "145 calories",
+      "290 calories",
+      "580 calories",
+      "1,200 calories"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma calculated that Sarah's 4-ounce container of ranch (8 tablespoons at 145 calories per 2 tablespoons) contained 580 calories just from dressing.",
+    "hints": [
+      "Emma did the math in the story",
+      "Remember that ranch has 145 calories per 2 tablespoons"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "857afc0b-79b0-4f5b-9154-485c0fe2d841",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What was Sarah's emotional reaction when she learned the truth about her salad?",
+    "question_type": "passage_based",
+    "options": [
+      "She was angry at Emma for telling her",
+      "She was shocked and realized why the scale hadn't moved",
+      "She didn't believe Emma's calculations",
+      "She decided to give up on healthy eating entirely"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah was shocked ('her fork stopped midway to her mouth') and finally understood why the scale hadn't budged despite her thinking she was eating healthy.",
+    "hints": [
+      "Notice Sarah's physical reaction described in the passage",
+      "Consider what realization she came to about her weight loss"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "ab3209eb-15e2-4ebe-aa8b-bd76043e1271",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What did Sarah decide to do at the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "Order the same salad with extra dressing",
+      "Learn from Emma by ordering what she was having",
+      "Leave the restaurant without eating",
+      "Switch to eating only desserts"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah asked Emma to 'Show me what you order' and then changed her order to have what Emma was having, showing she was ready to learn better strategies.",
+    "hints": [
+      "Look at Sarah's final actions in the passage",
+      "Notice how she responded to seeing the difference between their meals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e4aaa113-5514-44ba-9194-b56b0c0f3ba6"
+  },
+  {
+    "id": "36604003-ef6b-4676-b57f-3a0d57acb7cf",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What was Mike's belief about his post-workout smoothie?",
+    "question_type": "passage_based",
+    "options": [
+      "He thought it was too high in calories",
+      "He believed it was healthy and supporting his weight loss",
+      "He knew it was a problem but drank it anyway",
+      "He thought it wasn't providing enough nutrition"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike proudly described his smoothie as 'all healthy stuff' and couldn't understand why his smoothies weren't helping him lose weight, showing he believed it was beneficial.",
+    "hints": [
+      "Notice how Mike described his smoothie ingredients",
+      "Consider his confusion about why it wasn't helping with weight loss"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b4dc8ff0-46ef-4261-bd47-b81db55cbbee"
+  },
+  {
+    "id": "05adfbd3-c071-45f2-974e-87a119ca0364",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "How many calories was Mike's smoothie actually containing?",
+    "question_type": "passage_based",
+    "options": [
+      "350 calories",
+      "500 calories",
+      "734 calories",
+      "1,000 calories"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Jordan calculated Mike's smoothie at 734 calories by adding up all the ingredients: banana (120) + peanut butter (190) + protein powder (150) + almond milk (60) + honey (64) + granola (150).",
+    "hints": [
+      "Jordan did the math breakdown in the passage",
+      "Add up each ingredient's calories as listed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b4dc8ff0-46ef-4261-bd47-b81db55cbbee"
+  },
+  {
+    "id": "d4ad3892-64b6-4ef4-8a70-f6a9730ea051",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What was Jordan's approach to helping Mike?",
+    "question_type": "passage_based",
+    "options": [
+      "Tell Mike to stop drinking smoothies completely",
+      "Show Mike that healthy foods can still be calorie-dense and work on modifications",
+      "Recommend Mike switch to meal replacement shakes",
+      "Suggest Mike only eat solid foods from now on"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan reassured Mike that he was getting good nutrition but helped him understand the calorie impact, then worked with him to create a modified 350-calorie version that still tasted great and supported recovery.",
+    "hints": [
+      "Notice how Jordan balanced the truth with encouragement",
+      "Consider what they did together after revealing the calorie count"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b4dc8ff0-46ef-4261-bd47-b81db55cbbee"
+  },
+  {
+    "id": "29f724c9-ebe5-4580-b74d-a28882192bc8",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What lesson does Mike's story illustrate about healthy eating?",
+    "question_type": "passage_based",
+    "options": [
+      "Healthy foods are always low in calories",
+      "You should avoid all smoothies when trying to lose weight",
+      "Healthy foods can still be calorie-dense and need portion awareness",
+      "Only processed foods contain hidden calories"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike's story demonstrates that even nutritious foods can be very high in calories, and that awareness of portions and modifications can help maintain both health benefits and weight management goals.",
+    "hints": [
+      "Think about the main message of the article this passage supports",
+      "Consider what Mike learned about 'healthy' vs. calorie-controlled"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b4dc8ff0-46ef-4261-bd47-b81db55cbbee"
+  },
+  {
+    "id": "8d82d7b9-b143-4fe7-983b-d34746b262bc",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What was Casey's initial estimate of their nut consumption?",
+    "question_type": "passage_based",
+    "options": [
+      "About 50 nuts per night",
+      "About 10 nuts maximum per night",
+      "About 100 nuts per study session",
+      "They had no idea how much they ate"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey told Taylor 'I probably eat like, ten nuts max' while studying, showing they significantly underestimated their actual consumption.",
+    "hints": [
+      "Look at Casey's exact words to Taylor",
+      "Notice the contrast between their estimate and reality"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3da69622-34d7-4cb2-996a-5a6750b5fa02"
+  },
+  {
+    "id": "c8cd22d5-f37f-4dfa-8959-44b02219d4dc",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "How much was Casey actually eating according to the scale?",
+    "question_type": "passage_based",
+    "options": [
+      "1 ounce (about 160 calories)",
+      "2.5 ounces (about 450 calories)",
+      "5 ounces (about 900 calories)",
+      "10 ounces (about 1,800 calories)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor's scale showed Casey's 'small handful' was actually 2.5 ounces, which equals about 450 calories according to the nutrition label calculation in the passage.",
+    "hints": [
+      "The scale reading is mentioned in the passage",
+      "Taylor calculated the calories based on this weight"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3da69622-34d7-4cb2-996a-5a6750b5fa02"
+  },
+  {
+    "id": "8c34d981-719d-4c70-8e33-c1d2d37dc324",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What was Casey's weekly calorie intake from nuts alone?",
+    "question_type": "passage_based",
+    "options": [
+      "1,500 calories per week",
+      "2,100 calories per week",
+      "3,150 calories per week",
+      "4,500 calories per week"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey realized they were eating 450 calories of nuts every night, which equals 3,150 calories per week (450 × 7 days), explaining why their jeans felt tighter despite eating 'better.'",
+    "hints": [
+      "Casey did this calculation themselves in the passage",
+      "Multiply the daily calories by 7 days"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3da69622-34d7-4cb2-996a-5a6750b5fa02"
+  },
+  {
+    "id": "73323f07-45b6-4b3a-b931-bd2c1043c7b5",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440010",
+    "question_text": "What strategy did Taylor suggest and what was the result?",
+    "question_type": "passage_based",
+    "options": [
+      "Eliminate nuts completely; Casey felt deprived and binged later",
+      "Pre-portion nuts into one-ounce bags and eat slowly; Casey found it satisfying with 300 fewer calories",
+      "Only eat nuts on weekends; Casey forgot and ate them daily anyway",
+      "Switch to a different type of nut; the calories were the same"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor suggested pre-portioning into single-serving bags and eating one nut at a time. Casey discovered this was actually satisfying and saved 300 calories compared to their usual consumption.",
+    "hints": [
+      "Look at Taylor's specific suggestion about portioning",
+      "Notice the outcome Casey experienced that night"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3da69622-34d7-4cb2-996a-5a6750b5fa02"
+  },
+  {
+    "id": "97f621c8-d395-4290-8298-0bd4859ad64a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Most people underestimate their actual calorie intake by 30-50% due to poor portion estimation abilities.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Research shows that humans are terrible at estimating portions, with most people consistently underestimating their calorie intake by 30-50%. This isn't dishonesty—it's a natural limitation in visual portion estimation.",
+    "hints": [
+      "Think about how often you might eyeball a 'tablespoon' of peanut butter",
+      "Consider why the article calls kitchen scales 'getting glasses for your food'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8e18d1d1-9fb3-4f37-9a3f-65d5ebd56b52",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Using a kitchen scale will automatically create obsessive eating behaviors in most people.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explains that most people find the opposite—weighing brings freedom through knowledge. You learn portion awareness and stop fearing foods because you understand them better.",
+    "hints": [
+      "Consider what the article says about the psychology of weighing",
+      "Think about how knowledge typically affects anxiety"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2f7d519d-f9d1-49c5-bb9b-641610df0aec",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Nutrition labels refer to raw weight unless specified otherwise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This is a critical detail for accurate tracking. 100g raw chicken ≠ 100g cooked chicken. Always weigh ingredients in their raw state unless the nutrition label specifically states 'cooked weight.'",
+    "hints": [
+      "Consider how cooking changes the water content and weight of foods",
+      "Think about why this matters for accurate calorie counting"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "60ccc737-48ef-4041-9f74-06fc9c2ccc54",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "The goal of using a kitchen scale is to weigh food forever and never trust your portion estimation.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The goal is developing 'scale vision'—accurate portion estimation skills. Most people need 2-3 months of consistent weighing to build these skills, then can graduate to occasional check-ins or selective weighing.",
+    "hints": [
+      "Think about the article's mention of 'scale vision'",
+      "Consider what happens after you develop portion awareness"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ced96db2-3442-4f8b-8ee3-400103f0abe8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "You notice your 'light drizzle' of olive oil while cooking is actually adding significant calories. What's the most likely reality?",
+    "question_type": "standalone",
+    "options": [
+      "Your drizzle is actually 2-3 tablespoons (200-300 calories)",
+      "Your drizzle is exactly 1 teaspoon as you estimated",
+      "Your drizzle contains magical zero-calorie properties",
+      "Your drizzle has been replaced by your cat with water"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically mentions that a 'light drizzle' of oil is usually 2-3 tablespoons (200-300 calories), not the teaspoon people typically estimate. This is one of the most common portion estimation errors.",
+    "hints": [
+      "Consider the article's examples of shocking portion revelations",
+      "Think about how liquids are particularly hard to estimate visually"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e1258861-84fa-4ee3-8f8e-b537f3b63867",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Which approach gives you the most accurate understanding of your actual food intake?",
+    "question_type": "standalone",
+    "options": [
+      "Weighing everything for one week without changing anything, just observing",
+      "Immediately cutting all portions in half",
+      "Hiring a nutritionist to follow you around",
+      "Eating only foods that come pre-portioned in packages"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article recommends a 'shock-and-awe week' where you weigh everything you normally eat and compare it to what you would have guessed, without changing anything yet. This creates awareness without judgment.",
+    "hints": [
+      "Look for the article's first assignment recommendation",
+      "Consider which approach focuses on awareness rather than restriction"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4d10bfa0-ce87-46b9-8a8b-29b114a3ad3c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What's the biggest advantage of using the tare function on your kitchen scale?",
+    "question_type": "standalone",
+    "options": [
+      "You can zero out containers and measure only the food contents",
+      "It automatically converts measurements to metric",
+      "It makes the scale more expensive and impressive",
+      "It plays motivational music while you weigh food"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The tare function allows you to place a container on the scale, zero it out, then add food to get the exact weight of just the contents—eliminating the need to subtract container weight.",
+    "hints": [
+      "Think about the container method described in the article",
+      "Consider how this makes weighing more convenient"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ba6d39c8-0698-45d1-b225-0802aaaeb7f4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "According to the article, what should you prioritize weighing if you can't weigh everything?",
+    "question_type": "standalone",
+    "options": [
+      "Calorie-dense foods like oils, nuts, and nut butters",
+      "Only vegetables since they're the healthiest",
+      "Your body weight every morning",
+      "Everything except water, because water has no calories"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that people often weigh their chicken but eyeball their olive oil—yet the oil has more calories. Calorie-dense foods have the biggest impact on your total intake when portions are misjudged.",
+    "hints": [
+      "Consider which foods pack the most calories per gram",
+      "Think about the article's warning about common weighing mistakes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0841efe1-6dd1-4649-987a-bc631b4d822e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What is the proper sequence for using the container method with a kitchen scale?",
+    "question_type": "standalone",
+    "options": [
+      "Place container on scale → Hit tare → Add food → Read weight",
+      "Add food to container → Place on scale → Hit tare → Read weight",
+      "Hit tare → Place container → Add food → Calculate container weight",
+      "Read weight → Place container → Hit tare → Add food"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The container method requires placing the empty container first, using tare to zero it out, then adding food to get the direct weight reading of just the contents.",
+    "hints": [
+      "Think through the logical order of eliminating container weight",
+      "Consider when you need to zero out the scale"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "46ef48b1-8b40-4825-bfd7-8bf9be971a24",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Which combination of features should you look for in a basic kitchen scale according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Grams and ounces measurement + tare function + 5kg capacity + flat surface",
+      "Only metric measurements + voice announcements + 20kg capacity + curved surface",
+      "Bluetooth connectivity + smartphone app + solar powered + holographic display",
+      "Ounces only + built-in calculator + 1kg capacity + requires assembly"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifies you need something that measures in both grams and ounces, has a tare function, can handle at least 5kg/11lbs, and has a flat, easy-to-clean surface. You don't need fancy features.",
+    "hints": [
+      "Look for the article's specific requirements list",
+      "Consider which features are actually necessary vs. nice-to-have"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fb6889be-c4ef-4d39-bd76-8f70eea4cd8f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What does the article mean when it says a kitchen scale is 'the $20 personal trainer that never lies'?",
+    "question_type": "standalone",
+    "options": [
+      "It provides objective data for awareness without judgment, helping you make informed choices",
+      "It literally replaces the need for a human personal trainer in all aspects",
+      "It costs exactly $20 and comes with workout programming",
+      "It has artificial intelligence that creates meal plans and insults your food choices"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The scale provides accurate, non-judgmental information about your food portions, helping create awareness for better decision-making—like a trainer who gives you honest feedback without emotional bias.",
+    "hints": [
+      "Consider the article's point about data not judging",
+      "Think about how accurate information helps you make better choices"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "da169aa1-bbc4-4e35-8c6d-9f800e492be0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What was Riley's main frustration that led to trying a kitchen scale?",
+    "question_type": "passage_based",
+    "options": [
+      "Despite logging 1,500 calories daily and staying under goal, the scale wasn't moving",
+      "The nutrition app kept crashing on their phone",
+      "They were gaining weight despite eating less food",
+      "Their measuring cups were all different sizes"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Riley was frustrated because despite carefully logging 'everything' and staying under the calorie goal for three weeks, the scale hadn't budged—indicating a gap between perceived and actual intake.",
+    "hints": [
+      "Focus on Riley's opening complaint in the passage",
+      "Consider what problem the scale helped reveal"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f12b61cc-638d-413f-85e1-df1124974a6a"
+  },
+  {
+    "id": "87d956bc-d2f7-4091-9b10-9976b1a121aa",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "When Alex weighed Riley's 'tablespoon' of peanut butter, what did they discover?",
+    "question_type": "passage_based",
+    "options": [
+      "At 28 grams, it was actually close to a full 2-tablespoon serving",
+      "It was exactly the right amount according to the label",
+      "It was significantly less than a proper serving",
+      "The scale was broken and gave inaccurate readings"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The scale showed 28 grams, and the label indicated a serving was 32g for two tablespoons, meaning Riley's 'single tablespoon' was actually almost a full serving size.",
+    "hints": [
+      "Look at the specific numbers mentioned in the passage",
+      "Compare what Riley thought they were eating vs. reality"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f12b61cc-638d-413f-85e1-df1124974a6a"
+  },
+  {
+    "id": "59c7b5df-ca42-46e7-9c0a-e3b62e429dcc",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What key insight does Alex share about why dense foods like peanut butter are hard to estimate?",
+    "question_type": "passage_based",
+    "options": [
+      "Even when leveled off, dense foods provide much more volume than expected",
+      "Peanut butter changes density depending on room temperature",
+      "All nut butters are deliberately mislabeled by manufacturers",
+      "Dense foods are impossible to measure accurately even with a scale"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex explains that peanut butter is dense, so even a carefully leveled tablespoon contains significantly more weight (and calories) than people realize—it's a natural limitation of visual estimation.",
+    "hints": [
+      "Consider Alex's explanation about density",
+      "Think about why visual estimation fails with thick, dense substances"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f12b61cc-638d-413f-85e1-df1124974a6a"
+  },
+  {
+    "id": "da198622-e0c5-4cbe-867d-888e7c9bb268",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Based on this interaction, what broader principle about portion estimation can we learn?",
+    "question_type": "passage_based",
+    "options": [
+      "Single foods with significant estimation errors can impact total daily intake",
+      "Only people with poor measuring skills make portion mistakes",
+      "Peanut butter is the only food that's commonly mismeasured",
+      "Nutrition apps are always inaccurate regardless of user input"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Riley's experience shows how one commonly mismeasured food—when eaten regularly—can create a significant gap between tracked and actual calories, explaining why progress stalled despite apparent compliance.",
+    "hints": [
+      "Consider the implications if this error happened daily",
+      "Think about how small errors compound over time"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f12b61cc-638d-413f-85e1-df1124974a6a"
+  },
+  {
+    "id": "03aeda77-44d8-421a-9c47-046939739c60",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What problem was Emma experiencing with her meal prep before using a scale?",
+    "question_type": "passage_based",
+    "options": [
+      "Her containers had inconsistent portions—some weeks she'd run out early, others had extras",
+      "She couldn't fit all her food in the containers",
+      "The containers kept breaking in the refrigerator",
+      "Her food wasn't staying fresh throughout the week"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma's meal prep portions were inconsistent when eyeballing, leading to unpredictable food amounts that didn't last the expected time or left her with extras—a common problem with visual estimation.",
+    "hints": [
+      "Focus on Emma's specific meal prep frustration",
+      "Consider what inconsistency means for weekly planning"
+    ],
+    "image_urls": [],
+    "passage_set_id": "47a06f9b-1753-4e4c-8164-4720afe0913c"
+  },
+  {
+    "id": "12fbdaef-6bbd-4da3-9015-179bea3932d3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "How much difference did Jordan discover between Emma's two 'identical' containers?",
+    "question_type": "passage_based",
+    "options": [
+      "A 20% difference (385g vs 467g)",
+      "A 50% difference in total weight",
+      "Almost no difference—they were nearly identical",
+      "One container was completely empty"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Jordan calculated that the 82-gram difference between containers (385g vs 467g) represented about a 20% variation in portion size—a significant difference that would affect hunger and nutrition consistency.",
+    "hints": [
+      "Look for the specific weights mentioned",
+      "Consider Jordan's calculation of the percentage difference"
+    ],
+    "image_urls": [],
+    "passage_set_id": "47a06f9b-1753-4e4c-8164-4720afe0913c"
+  },
+  {
+    "id": "60348262-b16b-4510-95d5-4a9a77544ae7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What positive changes did Emma experience after implementing consistent weighing?",
+    "question_type": "passage_based",
+    "options": [
+      "Steady energy, predictable hunger patterns, and less time thinking about food",
+      "Faster meal prep times and reduced grocery costs",
+      "Weight loss and improved cooking skills",
+      "Better relationships with her coworkers"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The passage specifically states that consistency led to steady energy, predictable hunger patterns, and ironically less time thinking about food since she knew exactly what she was getting.",
+    "hints": [
+      "Look for the specific benefits listed at the end of Emma's story",
+      "Consider how consistency affects both physical and mental aspects"
+    ],
+    "image_urls": [],
+    "passage_set_id": "47a06f9b-1753-4e4c-8164-4720afe0913c"
+  },
+  {
+    "id": "ed4d3290-5701-41b5-a7ad-b9a786b2a61c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What does Emma's experience teach us about the time investment of accurate portioning?",
+    "question_type": "passage_based",
+    "options": [
+      "Adding precision takes minimal extra time but provides significant benefits",
+      "Accurate portioning requires hours of additional meal prep time",
+      "You need expensive equipment to achieve consistency",
+      "Only professional nutritionists can portion accurately"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Emma took only an extra three minutes total to weigh containers, but this small time investment transformed her weekly consistency, energy levels, and relationship with food planning.",
+    "hints": [
+      "Consider the time investment mentioned versus the benefits gained",
+      "Think about the cost-benefit relationship described"
+    ],
+    "image_urls": [],
+    "passage_set_id": "47a06f9b-1753-4e4c-8164-4720afe0913c"
+  },
+  {
+    "id": "6597dce8-082a-4849-9857-c9006bfe240b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What was Casey's estimated calorie count for their daily smoothie versus the actual count?",
+    "question_type": "passage_based",
+    "options": [
+      "Estimated 300 calories, actual was 421 calories",
+      "Estimated 500 calories, actual was 300 calories",
+      "Estimated and actual were exactly the same",
+      "Estimated 200 calories, actual was 600 calories"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey estimated their smoothie at around 300 calories, but when Taylor weighed each ingredient, the total came to 421 calories—a 40% underestimate that adds up significantly over time.",
+    "hints": [
+      "Compare Casey's initial estimate with Taylor's calculated total",
+      "Consider the magnitude of the estimation error"
+    ],
+    "image_urls": [],
+    "passage_set_id": "75aa5a26-5be9-4c84-bfb7-3d76e485b579"
+  },
+  {
+    "id": "0611da20-decf-45aa-bca1-d9530af549e7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "Which ingredient contributed the most calories to Casey's smoothie?",
+    "question_type": "passage_based",
+    "options": [
+      "The almond butter at 206 calories",
+      "The banana at 121 calories",
+      "The almond milk at 40 calories",
+      "The berries at 54 calories"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 'spoon' of almond butter weighed 35g and contributed 206 calories—nearly half of the smoothie's total calories and far more than Casey likely realized from such a small-seeming addition.",
+    "hints": [
+      "Review the breakdown of each ingredient's calorie contribution",
+      "Consider which ingredient surprised Casey the most"
+    ],
+    "image_urls": [],
+    "passage_set_id": "75aa5a26-5be9-4c84-bfb7-3d76e485b579"
+  },
+  {
+    "id": "7222d379-f02b-4305-8eb6-f40353c78b2e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "How does Taylor respond to Casey's concern about the higher calorie count?",
+    "question_type": "passage_based",
+    "options": [
+      "Reassures that it's still healthy and explains why Casey isn't hungry until lunch",
+      "Suggests Casey should immediately cut the smoothie in half",
+      "Recommends switching to a completely different breakfast",
+      "Tells Casey to stop making smoothies altogether"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Taylor maintains a positive, non-judgmental approach by confirming the smoothie is still healthy and helping Casey understand why it keeps them satisfied until lunch—it's a substantial breakfast.",
+    "hints": [
+      "Focus on Taylor's supportive response",
+      "Consider how Taylor frames the calorie information positively"
+    ],
+    "image_urls": [],
+    "passage_set_id": "75aa5a26-5be9-4c84-bfb7-3d76e485b579"
+  },
+  {
+    "id": "0ca4279a-0761-4c22-b02c-a21896e986e1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440011",
+    "question_text": "What key lesson does Casey's smoothie investigation demonstrate about healthy foods?",
+    "question_type": "passage_based",
+    "options": [
+      "Healthy foods can still be calorie-dense, and awareness helps with planning",
+      "All smoothies are unhealthy and should be avoided",
+      "Healthy foods have no calories and don't need to be tracked",
+      "Only processed foods contain significant calories"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Casey's experience shows that nutritious foods can still contribute significant calories, and understanding this helps with meal planning rather than creating fear or restriction.",
+    "hints": [
+      "Consider the broader principle about healthy vs. calorie-dense foods",
+      "Think about how knowledge improves decision-making"
+    ],
+    "image_urls": [],
+    "passage_set_id": "75aa5a26-5be9-4c84-bfb7-3d76e485b579"
+  },
+  {
+    "id": "f01d1e78-aba1-42e4-8e65-a578e83a9a16",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Your brain uses approximately 120 grams of glucose daily just for basic function.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The brain is a glucose-dependent organ that requires about 120 grams of glucose daily (roughly 480 calories from carbs) for normal cognitive function, which is why very low-carb diets can initially cause brain fog.",
+    "hints": [
+      "Think about why people on very low-carb diets often experience initial mental fatigue",
+      "The brain's primary fuel source is glucose, not fat or protein"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4b40a137-3fc9-4803-bd82-d0c3d25bcc41",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Eating fat automatically makes you gain body fat.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Excess calories from any macronutrient can lead to weight gain, not fat specifically. Fat is calorie-dense but also very satiating, and healthy fats are essential for hormone production and vitamin absorption.",
+    "hints": [
+      "Consider what actually causes weight gain - total calories or specific macronutrients?",
+      "Think about why healthy fats like avocados and nuts are recommended despite being high in calories"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "badcc0c2-9ae1-434b-bd3e-47122bc091a1",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Complex carbohydrates provide more sustained energy than simple carbohydrates.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Complex carbs are digested more slowly and contain fiber, providing steady energy release. Simple carbs are absorbed quickly and can cause blood sugar spikes followed by crashes.",
+    "hints": [
+      "Compare how you feel after eating an apple versus drinking apple juice",
+      "Think about why whole grains are recommended over refined grains"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "11852a4c-5188-44d2-bff1-6274d61ca357",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Trans fats serve no beneficial purpose in the human body and should be avoided completely.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Unlike other fats that serve essential functions, trans fats provide no health benefits and are associated with increased risk of heart disease and inflammation. They should be completely avoided.",
+    "hints": [
+      "Consider which type of fat has been largely phased out of processed foods",
+      "Think about which fat type is universally considered harmful by nutrition experts"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c513af6e-56de-45e7-9d4e-061934894999",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Sarah is trying to lose weight and has been avoiding all carbs and fats, eating only lean protein and vegetables. What's the most likely outcome?",
+    "question_type": "standalone",
+    "options": [
+      "Rapid, sustainable weight loss with high energy levels",
+      "Poor workout performance, hormone disruption, and nutrient deficiencies",
+      "Improved brain function and better sleep quality",
+      "She'll develop superhuman powers from pure protein consumption"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Eliminating both carbs and fats leads to inadequate energy for workouts, poor hormone production (which requires fats), inability to absorb fat-soluble vitamins, and potential metabolic issues. Both macronutrients are essential.",
+    "hints": [
+      "Consider what happens when you eliminate essential nutrients",
+      "Think about what your body needs for energy and hormone production"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b452bf08-fae6-4a14-8811-e8030593a316",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Mike wants to improve his workout performance. He's heard conflicting advice about carbs before exercise. What's the best approach?",
+    "question_type": "standalone",
+    "options": [
+      "Always avoid carbs before workouts to burn more fat",
+      "Eat complex carbs 2-3 hours before or simple carbs 30-60 minutes before intense workouts",
+      "Only eat carbs immediately after working out",
+      "Replace all carbs with coffee and hope for the best"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Carbs provide the glycogen needed for high-intensity exercise. Complex carbs eaten earlier provide sustained energy, while simple carbs eaten closer to workouts provide readily available fuel without digestive issues.",
+    "hints": [
+      "Consider what fuel your muscles prefer during intense exercise",
+      "Think about timing - what works for sustained vs immediate energy needs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "47d48d65-03d2-4563-bc32-d15e9fa4b929",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Emma is experiencing constant hunger despite eating regular meals. What combination would best help with satiety?",
+    "question_type": "standalone",
+    "options": [
+      "High-protein meals with no carbs or fats",
+      "Meals combining complex carbs, healthy fats, and adequate protein",
+      "Only simple carbs for quick energy throughout the day",
+      "Surviving solely on the power of positive thinking and cucumber water"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The combination of complex carbs (fiber for fullness), healthy fats (slow digestion and satiety), and protein (muscle preservation and satiety) creates the most satisfying and blood-sugar-stable meals.",
+    "hints": [
+      "Think about which macronutrients work together to slow digestion",
+      "Consider what combination prevents blood sugar spikes and crashes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "05c30642-0aea-4b70-8725-b105f5bfda6e",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Jordan is planning meals and wants to optimize nutrient absorption. What's the best strategy?",
+    "question_type": "standalone",
+    "options": [
+      "Eat all macronutrients separately to avoid confusion",
+      "Include healthy fats with meals containing fat-soluble vitamins (A, D, E, K)",
+      "Avoid mixing any fats with vegetables to prevent nutrient blocking",
+      "Only eat foods that are naturally purple for maximum antioxidant absorption"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Vitamins A, D, E, and K are fat-soluble, meaning they require dietary fat to be properly absorbed. This is why salads with oil-based dressings or nuts actually enhance nutrient absorption.",
+    "hints": [
+      "Think about why oil-based salad dressings might be better than fat-free versions",
+      "Consider which vitamins need fat to be absorbed by your body"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "56c8bb57-3be6-4fd7-bafe-e96d41b474f4",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Which sequence correctly shows the recommended macronutrient distribution for most people?",
+    "question_type": "standalone",
+    "options": [
+      "Carbs: 20-35%, Fats: 45-65%, Protein: 10-35%",
+      "Carbs: 45-65%, Fats: 20-35%, Protein: 10-35%",
+      "Carbs: 10-20%, Fats: 70-80%, Protein: 10-20%",
+      "Carbs: 90%, Fats: 5%, Protein: 5%"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The standard healthy macronutrient distribution is approximately 45-65% carbs, 20-35% fats, and 10-35% protein, though individual needs may vary based on activity level and health conditions.",
+    "hints": [
+      "Carbs should typically be the largest percentage for most people",
+      "Remember that these are general guidelines that can be adjusted for individual needs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "356590bb-dbe2-4bb1-898d-f76748812d0a",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What combination of foods would provide the best balance of complex carbs and healthy fats?",
+    "question_type": "standalone",
+    "options": [
+      "White bread with margarine and sugar",
+      "Oatmeal with walnuts and berries",
+      "Candy bars with diet soda",
+      "Air with a side of wishful thinking"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Oatmeal provides complex carbs and fiber, walnuts provide healthy omega-3 fats, and berries add antioxidants and natural sugars. This combination offers sustained energy, satiety, and multiple nutrients.",
+    "hints": [
+      "Look for whole, unprocessed foods in the combinations",
+      "Consider which option provides both fiber and healthy fats together"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b5524aed-0a43-4734-8860-05bcd6dcadc0",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Which three functions require adequate dietary fat intake?",
+    "question_type": "standalone",
+    "options": [
+      "Hormone production, vitamin absorption, cell membrane function",
+      "Immediate energy, muscle building, hair growth",
+      "Blood clotting, bone density, tooth enamel",
+      "Telepathy, time travel, x-ray vision"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Dietary fat is essential for producing hormones (like testosterone and estrogen), absorbing fat-soluble vitamins (A, D, E, K), and maintaining cell membrane structure and function throughout the body.",
+    "hints": [
+      "Think about what nutrients need fat to be absorbed",
+      "Consider what body processes require fat as a building material"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1d0cb84a-90f8-4af8-b67a-78e42d6a082a",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What was Sarah's main mistake in her approach to healthy eating at the gym cafe?",
+    "question_type": "passage_based",
+    "options": [
+      "She ordered too much food for one meal",
+      "She was trying to avoid both carbs and fats completely",
+      "She chose chicken instead of a vegetarian option",
+      "She forgot to take a photo for social media"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah was paralyzed by conflicting diet advice and tried to avoid both carbs and fats, which led to ordering a sad, dry salad. This restrictive approach was making her feel terrible and hurt her workout performance.",
+    "hints": [
+      "Look at what Sarah was trying to eliminate from her diet",
+      "Consider why she felt terrible during her workouts"
+    ],
+    "image_urls": [],
+    "passage_set_id": "55d95dd1-b94e-42a6-961d-e37f2edda2ac"
+  },
+  {
+    "id": "2b938005-7e7c-4f3b-89df-6f28848da6d4",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "How did Jordan's balanced macro approach (40% carbs, 30% fat, 30% protein) help them?",
+    "question_type": "passage_based",
+    "options": [
+      "It made them gain muscle mass rapidly",
+      "It improved their performance and helped them lose stubborn fat",
+      "It allowed them to eat unlimited calories",
+      "It gave them the ability to skip workouts entirely"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan found that eating balanced macros improved their workout performance (carbs for energy), kept them satisfied (fats for satiety), and supported muscle maintenance (protein), leading to better body composition.",
+    "hints": [
+      "Think about what Jordan said about their results",
+      "Consider how each macronutrient contributed to their success"
+    ],
+    "image_urls": [],
+    "passage_set_id": "55d95dd1-b94e-42a6-961d-e37f2edda2ac"
+  },
+  {
+    "id": "961e6ff6-cc3f-4e5b-8a38-2a43f7262d5f",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What does Jordan's Buddha bowl demonstrate about balanced nutrition?",
+    "question_type": "passage_based",
+    "options": [
+      "Expensive ingredients are necessary for good nutrition",
+      "Meals can include all three macronutrients and still support fitness goals",
+      "Only raw foods provide adequate nutrition",
+      "Buddha would approve of their Instagram food photography skills"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan's Buddha bowl contained quinoa (carbs), salmon (protein and fats), avocado (healthy fats), and vegetables, showing how all macronutrients can work together in one satisfying, goal-supporting meal.",
+    "hints": [
+      "Look at what components made up Jordan's meal",
+      "Think about how this contradicts the 'avoid entire food groups' mentality"
+    ],
+    "image_urls": [],
+    "passage_set_id": "55d95dd1-b94e-42a6-961d-e37f2edda2ac"
+  },
+  {
+    "id": "68bd0959-6ce5-4d8e-ac8a-867f524f735e",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "Why did Sarah decide to change her order at the end of the passage?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized her restrictive approach wasn't working",
+      "Jordan's meal looked more expensive",
+      "The server recommended it",
+      "She wanted to be more social media friendly"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah realized that her extreme restriction of both carbs and fats was making her feel terrible and hurting her performance, while Jordan's balanced approach was actually delivering better results.",
+    "hints": [
+      "Consider what convinced Sarah to change her mind",
+      "Think about the contrast between Sarah's results and Jordan's results"
+    ],
+    "image_urls": [],
+    "passage_set_id": "55d95dd1-b94e-42a6-961d-e37f2edda2ac"
+  },
+  {
+    "id": "6be19645-d744-4717-9fe5-da15cf33e80a",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What was causing Taylor's blood sugar to spike despite avoiding carbs?",
+    "question_type": "passage_based",
+    "options": [
+      "They were eating too much protein",
+      "Gluconeogenesis - their body was making glucose from protein",
+      "They were cheating on their diet secretly",
+      "Their blood sugar meter was broken"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez explained that Taylor's body was converting protein into glucose through gluconeogenesis because it was so desperate for glucose, which was actually causing blood sugar instability.",
+    "hints": [
+      "Look at what Dr. Martinez said about Taylor's body making glucose",
+      "Consider what happens when the body is extremely deprived of its preferred fuel"
+    ],
+    "image_urls": [],
+    "passage_set_id": "96a8081a-7399-44bc-b995-66a80abe084c"
+  },
+  {
+    "id": "0df9fbb9-9fc3-483c-a605-55b7f5a3dd75",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "According to Dr. Martinez, why should Taylor include complex carbohydrates even with pre-diabetes?",
+    "question_type": "passage_based",
+    "options": [
+      "Complex carbs provide fiber which helps regulate blood sugar",
+      "They taste better than simple carbs",
+      "They're required by law for diabetes management",
+      "Dr. Martinez owns stock in a quinoa company"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Dr. Martinez emphasized that complex carbohydrates contain fiber, which actually helps regulate blood sugar levels, making them beneficial rather than harmful for blood sugar management when combined with protein and fats.",
+    "hints": [
+      "Think about what component of complex carbs helps with blood sugar",
+      "Consider why whole grains might be different from refined carbs"
+    ],
+    "image_urls": [],
+    "passage_set_id": "96a8081a-7399-44bc-b995-66a80abe084c"
+  },
+  {
+    "id": "2d3f23d0-8114-4350-8dbe-ebbb37d31993",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What plate composition did Dr. Martinez recommend for Taylor's blood sugar management?",
+    "question_type": "passage_based",
+    "options": [
+      "All protein with no carbs or fats",
+      "One-quarter protein, one-quarter whole grains, half non-starchy vegetables, plus healthy fats",
+      "Only simple carbohydrates for quick energy",
+      "Whatever fits in a shot glass because portion control is everything"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez recommended a balanced plate approach that includes adequate protein, complex carbs from whole grains, plenty of vegetables for fiber, and healthy fats to work together for optimal blood sugar control.",
+    "hints": [
+      "Look at the specific plate division Dr. Martinez described",
+      "Think about how this approach differs from extreme restriction"
+    ],
+    "image_urls": [],
+    "passage_set_id": "96a8081a-7399-44bc-b995-66a80abe084c"
+  },
+  {
+    "id": "a5227cdf-6a12-4acf-bb53-4262c2774c90",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What key insight did Taylor gain about extreme dietary restriction?",
+    "question_type": "passage_based",
+    "options": [
+      "Extreme restriction is the only way to manage health conditions",
+      "Extreme restriction can make health management harder than necessary",
+      "Doctors don't understand nutrition as well as internet influencers",
+      "Keto is the ultimate solution for everyone"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor realized that their extreme keto approach was actually making blood sugar management more difficult, and that a balanced approach with all macronutrients might be more effective and sustainable.",
+    "hints": [
+      "Consider Taylor's final realization about their restrictive approach",
+      "Think about the doctor's emphasis on balance versus restriction"
+    ],
+    "image_urls": [],
+    "passage_set_id": "96a8081a-7399-44bc-b995-66a80abe084c"
+  },
+  {
+    "id": "9010d38d-9e9b-4449-a3dd-dcaab93428dc",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What was Casey's key realization about affordable nutrition?",
+    "question_type": "passage_based",
+    "options": [
+      "Expensive organic foods are necessary for good nutrition",
+      "Basic, affordable foods like rice, beans, and peanut butter can provide balanced macros",
+      "Only fitness influencers know how to eat properly",
+      "Ramen noodles are a complete superfood"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey discovered that affordable staples like rice (carbs), beans (carbs and protein), peanut butter (fats and protein), and oats (complex carbs) could provide balanced nutrition without breaking the budget.",
+    "hints": [
+      "Look at what Casey learned about the foods they could afford",
+      "Think about how basic foods can provide all the macronutrients needed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4150304c-99fd-4fa9-83e1-74d0e88a94b8"
+  },
+  {
+    "id": "eb8a81f2-1770-412f-a4d0-b6263e6367fd",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "How did Riley's perspective on 'poor people food' change?",
+    "question_type": "passage_based",
+    "options": [
+      "They realized it was actually nutritionally inferior",
+      "They learned it could provide complete proteins and sustained energy",
+      "They decided to only eat expensive organic food",
+      "They opened a restaurant specializing in rice and beans"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley learned that rice and beans together create a complete protein profile, and when combined with affordable fats like olive oil, they provide all the macronutrients needed for balanced nutrition.",
+    "hints": [
+      "Think about what Casey taught Riley about rice and beans",
+      "Consider how Riley's assumptions about 'poor people food' were challenged"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4150304c-99fd-4fa9-83e1-74d0e88a94b8"
+  },
+  {
+    "id": "9de318b9-95c5-4a64-aa02-bd3c339308c4",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What was Casey's monthly food budget for hitting all their macros?",
+    "question_type": "passage_based",
+    "options": [
+      "$50 per month",
+      "$150 per month",
+      "$300 per month",
+      "The equivalent of three unicorn tears and a lottery ticket"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey mentioned that their monthly food budget was $150, and they were able to hit all their macro targets with affordable staple foods, proving that good nutrition doesn't require expensive specialty foods.",
+    "hints": [
+      "Look for the specific dollar amount Casey mentioned",
+      "Think about how this compares to what people might spend on 'trendy' health foods"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4150304c-99fd-4fa9-83e1-74d0e88a94b8"
+  },
+  {
+    "id": "06658100-6edb-4d9b-90cb-26808142f0d1",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "550e8400-e29b-41d4-a716-446655440012",
+    "question_text": "What was the total cost of Riley's balanced meal groceries for one week?",
+    "question_type": "passage_based",
+    "options": [
+      "$23",
+      "$50",
+      "$100",
+      "Their firstborn child and a promise to never complain about food costs again"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "At checkout, Riley's total came to $23 for a week's worth of balanced meals, demonstrating that nutritious eating doesn't have to be expensive and that affordable staple foods can provide all necessary macronutrients.",
+    "hints": [
+      "Look for the specific dollar amount mentioned at the end of the passage",
+      "Think about how this total represents a week's worth of balanced nutrition"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4150304c-99fd-4fa9-83e1-74d0e88a94b8"
   }
 ]
