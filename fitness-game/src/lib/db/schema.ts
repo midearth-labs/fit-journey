@@ -34,6 +34,7 @@ export const users = pgTable('users', {
 // UserProfile table
 export const userProfiles = pgTable('user_profiles', {
   id: uuid('id').primaryKey().defaultRandom(),
+  // @TODO: this needs to be unique
   user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   latest_game_session: uuid('latest_game_session').references(() => gameSessions.id),
   current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
@@ -84,13 +85,13 @@ export const streakLogs = pgTable('streak_logs', {
   user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   date_utc: date('date_utc').notNull(), // YYYY-MM-DD
   entries: jsonb('entries').$type<{
-    workout_completed: boolean;
-    ate_clean: boolean;
-    slept_well: boolean;
-    hydrated: boolean;
-    quiz_completed: boolean;
-    quiz_passed: boolean;
-    all: boolean;
+    workout_completed?: boolean;
+    ate_clean?: boolean;
+    slept_well?: boolean;
+    hydrated?: boolean;
+    quiz_completed?: boolean;
+    quiz_passed?: boolean;
+    all?: boolean;
   }>().notNull(),
   logged_at: timestamp('logged_at').defaultNow().notNull(),
 });

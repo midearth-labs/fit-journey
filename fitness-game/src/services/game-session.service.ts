@@ -5,6 +5,7 @@ import {
   IJwtService, 
   IUserProgressService,
   IDateTimeService,
+  IStreakService,
   StartSessionDto,
   StartSessionOutput,
   SubmitAnswersDto,
@@ -28,7 +29,8 @@ export class GameSessionService {
     private readonly knowledgeBaseService: IKnowledgeBaseService,
     private readonly jwtService: IJwtService,
     private readonly userProgressService: IUserProgressService,
-    private readonly dateTimeService: IDateTimeService // Injected
+    private readonly dateTimeService: IDateTimeService,
+    private readonly streakService: IStreakService // Add streak service
   ) {}
 
   public async startOrResumeSession(dto: StartSessionDto): Promise<StartSessionOutput> {
@@ -108,18 +110,25 @@ export class GameSessionService {
     const allCorrect = incorrectQuestionIds.length === 0;
 
     if (allCorrect) {
-      await this.gameSessionRepository.create({
+      const session = await this.gameSessionRepository.create({
         user_id: dto.userId,
         knowledge_base_article_id: payload.article_id,
         day: payload.day_number,
         started_at: tokenIssuedAt,
-        completed_at: nowUtc, // Use current UTC time for co
+        completed_at: nowUtc, // Use current UTC time for completion
         attempt_count: payload.attempts_count,
         all_correct_answers: allCorrect,
         time_spent_seconds: Math.ceil(nowUtc.getTime() - tokenIssuedAt.getTime()) / 1000,
         created_at: nowUtc,
         user_answers: userAnswers,
       });
+
+      // Log quiz completion for streak tracking
+      await this.streakService.logQuizCompletion({
+        userId: dto.userId,
+        allCorrect: allCorrect
+      });
+
       return { status: 'completed' };
     }
 
@@ -147,6 +156,13 @@ export class GameSessionService {
         created_at: nowUtc,
         user_answers: userAnswers,
       });
+
+      // Log quiz completion (failed) for streak tracking
+      await this.streakService.logQuizCompletion({
+        userId: dto.userId,
+        allCorrect: false
+      });
+
       return { status: 'failed' };
     }
   }
