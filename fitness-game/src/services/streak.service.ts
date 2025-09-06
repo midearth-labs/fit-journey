@@ -9,7 +9,8 @@ import {
   StreakType,
   StreakCalculationResult,
   HabitLogDto,
-  QuizCompletionDto
+  QuizCompletionDto,
+  HabitType
 } from '@/shared/interfaces';
 import { 
   ResourceNotFoundError,
@@ -25,7 +26,7 @@ export class StreakService implements IStreakService {
     private readonly dateTimeService: IDateTimeService
   ) {}
 
-  async logHabits(dto: HabitLogDto): Promise<StreakCalculationResult> {
+  async logHabits(dto: HabitLogDto): Promise<StreakCalculationResult[]> {
     const todayUtc = this.dateTimeService.getUtcDateString();
     
     // Get or create today's streak log
@@ -73,7 +74,7 @@ export class StreakService implements IStreakService {
     const results: StreakCalculationResult[] = [];
     
     // Process each habit type that was updated
-    const habitTypes: StreakType[] = ['workout_completed', 'ate_clean', 'slept_well', 'hydrated'];
+    const habitTypes: HabitType[] = ['workout_completed', 'ate_clean', 'slept_well', 'hydrated'];
     
     for (const habitType of habitTypes) {
       if (dto.habits[habitType] !== undefined) {
@@ -268,7 +269,8 @@ export class StreakService implements IStreakService {
     const longestStreaks = userProfile.longest_streaks || {};
 
     // Update current streak ID
-    currentStreakIds[streakResults.currentStreak.streak_type] = streakResults.currentStreak.id;
+    // @TODO double check this
+    currentStreakIds[streakResults.currentStreak.streak_type as StreakType] = streakResults.currentStreak.id;
 
     // Check if this is a new longest streak
     const longestStreak = await this.streakHistoryRepository.findLongestStreakByUserAndType(
@@ -277,7 +279,8 @@ export class StreakService implements IStreakService {
     );
 
     if (longestStreak && longestStreak.id === streakResults.currentStreak.id) {
-      longestStreaks[streakResults.currentStreak.streak_type] = streakResults.currentStreak.id;
+      // @TODO double check this
+      longestStreaks[streakResults.currentStreak.streak_type as StreakType] = streakResults.currentStreak.id;
     }
 
     // Update user profile

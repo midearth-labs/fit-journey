@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitJourney - Your 70-Day Fitness Learning Adventure</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav-brand">
+                    <i class="fas fa-dumbbell"></i>
+                    <h1>FitJourney</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-link" data-page="home">Home</a>
+                    <a href="#" class="nav-link" data-page="categories">Categories</a>
+                    <a href="#" class="nav-link" data-page="progress">My Progress</a>
+                </nav>
+                <div class="nav-actions">
+                    <button class="btn btn-outline" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="hero-section">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h2>Your 70-Day Fitness Learning Adventure</h2>
+                            <p>Master fitness fundamentals through engaging articles and interactive quizzes. Start your journey from absolute beginner to confident fitness enthusiast.</p>
+                            <div class="hero-stats">
+                                <div class="stat">
+                                    <span class="stat-number">70</span>
+                                    <span class="stat-label">Learning Days</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">9</span>
+                                    <span class="stat-label">Categories</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">1000+</span>
+                                    <span class="stat-label">Questions</span>
+                                </div>
+                            </div>
+                            <div class="hero-actions">
+                                <button class="btn btn-primary" data-page="categories">Start Learning</button>
+                                <button class="btn btn-outline" data-page="progress">View Progress</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <div class="progress-ring">
+                                <div class="progress-fill" id="overall-progress"></div>
+                                <div class="progress-text">
+                                    <span id="progress-percentage">0%</span>
+                                    <span>Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Phases -->
+                <section class="phases-section">
+                    <div class="container">
+                        <h3>Your Learning Journey</h3>
+                        <div class="phases-grid" id="phases-grid">
+                            <!-- Phases will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Articles -->
+                <section class="recent-section">
+                    <div class="container">
+                        <h3>Continue Learning</h3>
+                        <div class="articles-grid" id="recent-articles">
+                            <!-- Recent articles will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Categories Page -->
+            <div id="categories-page" class="page">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Learning Categories</h2>
+                        <p>Choose a category to explore articles and start your learning journey</p>
+                    </div>
+                    <div class="categories-grid" id="categories-grid">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Detail Page -->
+            <div id="category-page" class="page">
+                <div class="container">
+                    <div class="page-header">
+                        <button class="btn btn-outline back-btn" onclick="showPage('categories')">
+                            <i class="fas fa-arrow-left"></i> Back to Categories
+                        </button>
+                        <div class="category-header" id="category-header">
+                            <!-- Category header will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="articles-list" id="category-articles">
+                        <!-- Articles will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Page -->
+            <div id="article-page" class="page">
+                <div class="container">
+                    <div class="article-header" id="article-header">
+                        <!-- Article header will be populated by JavaScript -->
+                    </div>
+                    <div class="article-content" id="article-content">
+                        <!-- Article content will be populated by JavaScript -->
+                    </div>
+                    <div class="article-actions">
+                        <button class="btn btn-primary" id="start-quiz-btn">Take Quiz</button>
+                        <button class="btn btn-outline" onclick="showPage('categories')">Back to Categories</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Page -->
+            <div id="quiz-page" class="page">
+                <div class="container">
+                    <div class="quiz-header">
+                        <div class="quiz-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="quiz-progress-fill"></div>
+                            </div>
+                            <span id="quiz-progress-text">Question 1 of 15</span>
+                        </div>
+                        <button class="btn btn-outline" id="exit-quiz-btn">Exit Quiz</button>
+                    </div>
+                    
+                    <div class="quiz-content">
+                        <div class="question-container" id="question-container">
+                            <!-- Questions will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="quiz-actions">
+                            <button class="btn btn-outline" id="prev-question-btn" disabled>Previous</button>
+                            <button class="btn btn-primary" id="next-question-btn">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Page -->
+            <div id="progress-page" class="page">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Your Learning Progress</h2>
+                        <p>Track your journey through the 70-day fitness learning adventure</p>
+                    </div>
+                    <div class="progress-overview" id="progress-overview">
+                        <!-- Progress overview will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 FitJourney. Your fitness learning companion.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

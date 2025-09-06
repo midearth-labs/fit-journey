@@ -10,4 +10,8 @@ export class DateTimeService implements IDateTimeService {
   getUnixTimestamp(date: Date): number {
     return Math.floor(date.getTime() / 1000);
   }
+
+  getUtcDateString(date?: Date): string {
+    return date ? date.toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+  }
 }

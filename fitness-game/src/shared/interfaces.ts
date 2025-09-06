@@ -108,7 +108,7 @@ export type QuizType =
     | 'all';
 
 export interface IStreakService {
-  logHabits(dto: HabitLogDto): Promise<StreakCalculationResult>;
+  logHabits(dto: HabitLogDto): Promise<StreakCalculationResult[]>;
   logQuizCompletion(dto: QuizCompletionDto): Promise<StreakCalculationResult>;
   getCurrentStreaks(userId: string): Promise<Record<StreakType, number>>;
 }
