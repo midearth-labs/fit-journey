@@ -392,6 +392,7 @@ class FitJourneyApp {
                         <div class="article-tags">
                             ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
+                        <div><img style="max-height: 300px;" src="${article.lede_image.path}" alt="${article.lede_image.description}" title="${article.lede_image.description}" /></div>
                     </div>
                 `;
             }
@@ -751,21 +752,8 @@ class FitJourneyApp {
      * @param {string} markdown - Markdown content
      * @returns {string} - HTML content
      */
-    renderMarkdown(markdown) {
-        return markdown
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-            .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
-            .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-            .replace(/\*(.*)\*/gim, '<em>$1</em>')
-            .replace(/^\* (.*$)/gim, '<li>$1</li>')
-            .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
-            .replace(/\n\n/gim, '</p><p>')
-            .replace(/\n/gim, '<br>')
-            .replace(/^<li>(.*)<\/li>$/gim, '<ul><li>$1</li></ul>')
-            .replace(/<\/ul><ul>/gim, '')
-            .replace(/^<p>(.*)<\/p>$/gim, '<p>$1</p>');
+    renderMarkdown(content) {
+        return marked.parse(content);
     }
 
     /**
