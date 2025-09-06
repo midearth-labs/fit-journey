@@ -21,7 +21,10 @@ class FitJourneyApp {
      */
     async init() {
         this.setupEventListeners();
-        await this.loadHomePage();
+        
+        // Check for hash fragment on initial load
+        await this.handleInitialHash();
+        
         this.updateProgress();
     }
 
@@ -98,6 +101,11 @@ class FitJourneyApp {
         if (targetPage) {
             targetPage.classList.add('active');
             this.currentPage = pageName;
+            
+            // Update hash for main navigation pages
+            if (['home', 'categories', 'progress'].includes(pageName)) {
+                this.updateHash(pageName);
+            }
             
             // Load page-specific content
             this.loadPageContent(pageName);
@@ -304,7 +312,7 @@ class FitJourneyApp {
             if (!category) return;
 
             // Update URL
-            window.history.pushState({}, '', `#category/${categoryId}`);
+            this.updateHash('category', categoryId);
 
             // Show category page
             this.showPage('category');
@@ -371,7 +379,7 @@ class FitJourneyApp {
             this.currentArticle = article;
 
             // Update URL
-            window.history.pushState({}, '', `#article/${articleId}`);
+            this.updateHash('article', articleId);
 
             // Show article page
             this.showPage('article');
@@ -449,6 +457,9 @@ class FitJourneyApp {
                 answers: new Array(questions.length).fill(null),
                 score: 0
             };
+
+            // Update URL for quiz
+            this.updateHash('quiz', this.currentArticle.id);
 
             // Show quiz page
             this.showPage('quiz');
@@ -823,6 +834,115 @@ class FitJourneyApp {
         };
         return iconMap[phaseId] || 'book';
     }
+
+    /**
+     * Handle initial hash fragment on page load
+     */
+    async handleInitialHash() {
+        const hash = window.location.hash;
+        
+        if (!hash) {
+            // No hash, load home page
+            await this.loadHomePage();
+            return;
+        }
+
+        try {
+            // Parse hash fragment
+            const hashParts = hash.substring(1).split('/');
+            const route = hashParts[0];
+            const id = hashParts[1];
+
+            switch (route) {
+                case 'category':
+                    if (id) {
+                        await this.openCategory(id);
+                    } else {
+                        await this.loadHomePage();
+                    }
+                    break;
+                case 'article':
+                    if (id) {
+                        await this.openArticle(id);
+                    } else {
+                        await this.loadHomePage();
+                    }
+                    break;
+                case 'quiz':
+                    if (id) {
+                        // For quiz, we need to load the article first, then start quiz
+                        await this.openArticle(id);
+                        // Small delay to ensure article is loaded before starting quiz
+                        setTimeout(() => {
+                            this.startQuiz();
+                        }, 100);
+                    } else {
+                        await this.loadHomePage();
+                    }
+                    break;
+                case 'home':
+                case 'categories':
+                case 'progress':
+                    // Main navigation pages
+                    this.showPage(route);
+                    break;
+                default:
+                    // Unknown route, load home page
+                    console.warn(`Unknown route: ${route}, falling back to home page`);
+                    await this.loadHomePage();
+            }
+        } catch (error) {
+            console.error('Error handling hash fragment:', error);
+            // Fallback to home page on error
+            await this.loadHomePage();
+        }
+    }
+
+    /**
+     * Parse hash fragment and return route information
+     * @param {string} hash - Hash fragment (with or without #)
+     * @returns {Object} - Route information
+     */
+    parseHash(hash) {
+        const cleanHash = hash.startsWith('#') ? hash.substring(1) : hash;
+        const parts = cleanHash.split('/');
+        
+        return {
+            route: parts[0] || 'home',
+            id: parts[1] || null,
+            fullPath: cleanHash
+        };
+    }
+
+    /**
+     * Update URL hash without triggering navigation
+     * @param {string} route - Route name
+     * @param {string} id - Optional ID
+     */
+    updateHash(route, id = null) {
+        const hash = id ? `#${route}/${id}` : `#${route}`;
+        window.history.pushState({}, '', hash);
+    }
+
+    /**
+     * Check if current hash matches expected pattern
+     * @param {string} expectedRoute - Expected route
+     * @param {string} expectedId - Expected ID (optional)
+     * @returns {boolean} - True if hash matches
+     */
+    isCurrentHash(expectedRoute, expectedId = null) {
+        const currentHash = window.location.hash;
+        const expectedHash = expectedId ? `#${expectedRoute}/${expectedId}` : `#${expectedRoute}`;
+        return currentHash === expectedHash;
+    }
+
+    /**
+     * Restore navigation state from hash
+     * This method can be called to restore the app state from the current hash
+     */
+    async restoreNavigationState() {
+        await this.handleInitialHash();
+    }
 }
 
 // Initialize app when DOM is loaded
@@ -834,17 +954,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', savedTheme);
     
     // Handle browser back/forward
-    window.addEventListener('popstate', () => {
-        const hash = window.location.hash;
-        if (hash.startsWith('#category/')) {
-            const categoryId = hash.split('/')[1];
-            app.openCategory(categoryId);
-        } else if (hash.startsWith('#article/')) {
-            const articleId = hash.split('/')[1];
-            app.openArticle(articleId);
-        } else {
-            app.showPage('home');
-        }
+    window.addEventListener('popstate', async () => {
+        await app.handleInitialHash();
     });
 });
 
