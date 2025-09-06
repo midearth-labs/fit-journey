@@ -392,7 +392,7 @@ class FitJourneyApp {
                         <div class="article-tags">
                             ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
-                        <div><img style="max-height: 300px;" src="${article.lede_image.path}" alt="${article.lede_image.description}" title="${article.lede_image.description}" /></div>
+                        <div><img style="max-height: 400px;" src="./${article.lede_image.path}" alt="${article.lede_image.description}" title="${article.lede_image.description}" /></div>
                     </div>
                 `;
             }
@@ -753,7 +753,8 @@ class FitJourneyApp {
      * @returns {string} - HTML content
      */
     renderMarkdown(content) {
-        return marked.parse(content);
+        const parsed = marked.parse(content, {gfm: true, breaks: true});
+        return parsed.replace(/<h1>.*?<\/h1>/g, '');
     }
 
     /**
