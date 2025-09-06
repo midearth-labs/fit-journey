@@ -1,0 +1,380 @@
+[
+  {
+    "id": "workout_completed",
+    "title": "Movement Hero",
+    "habit": "Movement/Workout",
+    "description": "Complete any form of intentional physical activity for at least 15 minutes",
+    "is_active": true,
+    "sort_order": 1,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Improves cardiovascular health and reduces heart disease risk",
+      "Strengthens muscles and bones, preventing age-related decline",
+      "Boosts mood and reduces symptoms of anxiety and depression",
+      "Enhances sleep quality and energy levels",
+      "Supports healthy weight management and metabolism"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Keep moving!",
+        "medium": "Every workout brings you closer to your goals!",
+        "long": "Consistency is the key to transformation. Every day you complete a workout, you're building a stronger, healthier version of yourself."
+      },
+      {
+        "short": "You're unstoppable!",
+        "medium": "Your body is getting stronger with every rep!",
+        "long": "Each movement you make is a declaration of self-care. You're not just exercising—you're investing in decades of future vitality and strength."
+      },
+      {
+        "short": "Motion is medicine!",
+        "medium": "Your dedication to movement is paying dividends!",
+        "long": "Science proves that regular movement is one of the most powerful medicines available. You're literally healing and strengthening your body from the inside out."
+      },
+      {
+        "short": "Progress in action!",
+        "medium": "Every session builds upon yesterday's success!",
+        "long": "Rome wasn't built in a day, but they were laying bricks every hour. Your consistent effort is laying the foundation for incredible long-term results."
+      },
+      {
+        "short": "Energy creator!",
+        "medium": "You're boosting your energy for the entire day!",
+        "long": "It might seem backwards, but expending energy through exercise actually creates more energy. You're charging your body's battery for everything else you want to accomplish."
+      },
+      {
+        "short": "Mood booster!",
+        "medium": "Those endorphins are working their magic!",
+        "long": "Exercise is nature's antidepressant. The endorphins flowing through your system right now are improving your mood, focus, and resilience for hours to come."
+      },
+      {
+        "short": "Future self thanks you!",
+        "medium": "You're creating habits that will serve you for life!",
+        "long": "Your future self—stronger, healthier, more confident—is cheering you on right now. Every workout is a gift you're giving to who you're becoming."
+      }
+    ]
+  },
+  {
+    "id": "ate_clean",
+    "title": "Nutrition Champion",
+    "habit": "Clean Eating",
+    "description": "Make nutritious food choices and avoid highly processed foods throughout the day",
+    "is_active": true,
+    "sort_order": 2,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Provides sustained energy and reduces blood sugar spikes",
+      "Supports optimal body composition and weight management",
+      "Reduces inflammation and supports immune system function",
+      "Improves mental clarity and cognitive performance",
+      "Enhances recovery from exercise and daily stress"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Fuel your success!",
+        "medium": "Every healthy choice powers your progress!",
+        "long": "Your body is your temple, and every nutritious meal is an investment in your health, energy, and future self."
+      },
+      {
+        "short": "Nourish to flourish!",
+        "medium": "You're feeding your body what it truly needs!",
+        "long": "Real food is real medicine. Each nutrient-dense choice you make is healing inflammation, supporting recovery, and optimizing your body's incredible systems."
+      },
+      {
+        "short": "Smart choices win!",
+        "medium": "Your nutrition game is getting stronger!",
+        "long": "Every time you choose whole foods over processed options, you're voting for the person you want to become. Your cells are celebrating these wise decisions."
+      },
+      {
+        "short": "Energy optimizer!",
+        "medium": "You're keeping your energy stable all day!",
+        "long": "Steady blood sugar means steady energy, mood, and focus. You're mastering the art of fueling your body for sustained peak performance."
+      },
+      {
+        "short": "Brain food champion!",
+        "medium": "Your mind is as sharp as your nutrition!",
+        "long": "The connection between nutrition and mental clarity is profound. You're literally feeding your brain the nutrients it needs to think clearly and stay focused."
+      },
+      {
+        "short": "Recovery accelerator!",
+        "medium": "Your muscles are thanking you for this fuel!",
+        "long": "Proper nutrition doesn't just prevent disease—it actively enhances your body's ability to recover, adapt, and grow stronger from every challenge."
+      },
+      {
+        "short": "Inflammation fighter!",
+        "medium": "You're reducing inflammation with every bite!",
+        "long": "Chronic inflammation is behind many health issues. Your commitment to clean eating is like having a personal fire department putting out harmful inflammation throughout your body."
+      }
+    ]
+  },
+  {
+    "id": "slept_well",
+    "title": "Sleep Master",
+    "habit": "Quality Sleep",
+    "description": "Get 7-9 hours of restorative sleep with good sleep hygiene practices",
+    "is_active": true,
+    "sort_order": 3,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Enhances muscle recovery and growth hormone production",
+      "Improves cognitive function, memory, and decision-making",
+      "Strengthens immune system and reduces illness risk",
+      "Regulates hormones that control hunger and metabolism",
+      "Reduces stress levels and improves emotional regulation"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Rest and recharge!",
+        "medium": "Quality sleep is where the magic happens!",
+        "long": "Sleep isn't lazy—it's when your body repairs, grows stronger, and prepares for tomorrow's challenges. Prioritizing rest is prioritizing progress."
+      },
+      {
+        "short": "Recovery champion!",
+        "medium": "Your muscles are rebuilding while you dream!",
+        "long": "While you sleep, your body releases growth hormone, repairs muscle tissue, and consolidates memories. You're literally growing stronger in your sleep."
+      },
+      {
+        "short": "Brain rebooter!",
+        "medium": "Your mind is clearing and organizing overnight!",
+        "long": "Sleep is your brain's daily maintenance mode. It's clearing toxins, organizing memories, and preparing neural pathways for peak performance tomorrow."
+      },
+      {
+        "short": "Immune booster!",
+        "medium": "Your body's defenses are strengthening!",
+        "long": "Quality sleep supercharges your immune system. Every hour of good rest is like adding soldiers to your body's army against illness and stress."
+      },
+      {
+        "short": "Hormone harmonizer!",
+        "medium": "Your body's chemistry is balancing perfectly!",
+        "long": "Sleep regulates hunger hormones, stress hormones, and recovery hormones. You're giving your endocrine system the reset it needs to function optimally."
+      },
+      {
+        "short": "Tomorrow's energy!",
+        "medium": "You're investing in tomorrow's performance!",
+        "long": "Great sleep tonight means sustained energy, better mood, and sharper focus tomorrow. You're setting yourself up for success before the day even begins."
+      },
+      {
+        "short": "Stress reliever!",
+        "medium": "Your nervous system is getting the reset it needs!",
+        "long": "Quality sleep is your body's natural stress management system. You're giving your mind and body permission to release tension and start fresh."
+      }
+    ]
+  },
+  {
+    "id": "hydrated",
+    "title": "Hydration Hero",
+    "habit": "Well Hydrated",
+    "description": "Drink adequate water throughout the day to support optimal body function",
+    "is_active": true,
+    "sort_order": 4,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Maintains optimal physical performance and endurance",
+      "Supports healthy kidney function and toxin elimination",
+      "Improves skin health and appearance",
+      "Enhances cognitive function and mental clarity",
+      "Aids digestion and nutrient absorption"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Stay hydrated!",
+        "medium": "Every sip supports your body's amazing work!",
+        "long": "Water is life's simplest performance enhancer. By staying hydrated, you're giving every cell in your body what it needs to function at its best."
+      },
+      {
+        "short": "Flow state activated!",
+        "medium": "Your cells are swimming in liquid vitality!",
+        "long": "Water isn't just H2O—it's the medium where all your body's chemical reactions happen. You're literally optimizing your internal chemistry with every glass."
+      },
+      {
+        "short": "Clear mind, clear skin!",
+        "medium": "Hydration is your natural beauty treatment!",
+        "long": "From glowing skin to sharp mental focus, proper hydration enhances everything. You're giving your body the foundation it needs to look and feel amazing."
+      },
+      {
+        "short": "Performance unlocked!",
+        "medium": "Your endurance just got a major upgrade!",
+        "long": "Even mild dehydration can drop performance by 10-15%. By staying hydrated, you're ensuring your body operates at peak efficiency all day long."
+      },
+      {
+        "short": "Detox in progress!",
+        "medium": "Your kidneys are working at their finest!",
+        "long": "Your kidneys process about 180 liters of blood daily, filtering toxins and waste. Adequate hydration helps them work efficiently, keeping you feeling clean and energized."
+      },
+      {
+        "short": "Brain boost engaged!",
+        "medium": "Your cognitive function is firing on all cylinders!",
+        "long": "Your brain is 75% water, and even slight dehydration affects concentration and mood. You're literally feeding your mind the fluid it needs to think clearly."
+      },
+      {
+        "short": "Recovery accelerator!",
+        "medium": "You're speeding up your body's repair processes!",
+        "long": "Proper hydration helps transport nutrients to muscles and flush out metabolic waste. You're creating the optimal internal environment for recovery and growth."
+      }
+    ]
+  },
+  {
+    "id": "quiz_completed",
+    "title": "Knowledge Seeker",
+    "habit": "Daily Quiz Completed",
+    "description": "Engage with daily learning content to expand your fitness knowledge",
+    "is_active": true,
+    "sort_order": 5,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Builds confidence and reduces anxiety around fitness topics",
+      "Improves decision-making for health and exercise choices",
+      "Creates better understanding of proper form and safety",
+      "Enhances motivation through increased knowledge",
+      "Develops critical thinking about health and fitness information"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Keep learning!",
+        "medium": "Knowledge is power for your fitness journey!",
+        "long": "Every question you answer builds the foundation of knowledge that will guide you to make better health choices for life."
+      },
+      {
+        "short": "Curiosity wins!",
+        "medium": "Your thirst for knowledge is inspiring!",
+        "long": "The most successful fitness enthusiasts are lifelong learners. You're developing the mindset that turns obstacles into opportunities for growth."
+      },
+      {
+        "short": "Wisdom builder!",
+        "medium": "You're becoming your own fitness expert!",
+        "long": "Knowledge eliminates fear and builds confidence. Every concept you learn moves you from guessing to knowing, from hoping to understanding."
+      },
+      {
+        "short": "Confidence creator!",
+        "medium": "Understanding breeds unstoppable confidence!",
+        "long": "The gym can feel intimidating when you don't know what you're doing. But knowledge is the ultimate confidence builder—you're earning your place anywhere."
+      },
+      {
+        "short": "Safety first champion!",
+        "medium": "You're learning to train smart, not just hard!",
+        "long": "Knowledge is your best injury prevention tool. Understanding proper form, progression, and recovery keeps you training consistently for decades, not just weeks."
+      },
+      {
+        "short": "Myth buster activated!",
+        "medium": "You're separating fitness facts from fiction!",
+        "long": "The fitness world is full of myths and misinformation. Your commitment to learning evidence-based principles protects you from wasted effort and potential harm."
+      },
+      {
+        "short": "Teacher in training!",
+        "medium": "You're becoming a source of inspiration for others!",
+        "long": "Knowledge shared is knowledge multiplied. As you learn, you're not just improving yourself—you're becoming someone who can guide and inspire others on their journey."
+      }
+    ]
+  },
+  {
+    "id": "quiz_passed",
+    "title": "Mastery Achiever",
+    "habit": "Daily Quiz Passed",
+    "description": "Successfully demonstrate understanding by passing daily fitness knowledge assessments",
+    "is_active": true,
+    "sort_order": 6,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Reinforces proper exercise techniques and safety protocols",
+      "Builds confidence in applying fitness knowledge practically",
+      "Improves retention of important health information",
+      "Develops mastery mindset toward health and fitness",
+      "Creates foundation for making informed lifestyle choices"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Knowledge mastered!",
+        "medium": "You're becoming a fitness expert, one quiz at a time!",
+        "long": "Mastering these concepts isn't just about passing quizzes—you're building the expertise to transform your health with confidence and wisdom."
+      },
+      {
+        "short": "Excellence achieved!",
+        "medium": "Your understanding is rock solid!",
+        "long": "True mastery comes from understanding, not just memorizing. You've proven you don't just know the information—you truly comprehend how to apply it."
+      },
+      {
+        "short": "Expert in progress!",
+        "medium": "You're building unshakeable fitness foundations!",
+        "long": "Every concept you master becomes a tool in your wellness toolkit. You're not just learning—you're becoming someone who can navigate any fitness challenge with intelligence."
+      },
+      {
+        "short": "Confidence unlocked!",
+        "medium": "Your fitness IQ is skyrocketing!",
+        "long": "Knowledge creates confidence, and confidence creates results. You're developing the deep understanding that separates those who succeed from those who struggle."
+      },
+      {
+        "short": "Problem solver!",
+        "medium": "You can troubleshoot any fitness challenge now!",
+        "long": "With solid knowledge comes the ability to adapt and overcome. You're becoming someone who doesn't just follow programs—you understand the principles behind success."
+      },
+      {
+        "short": "Mentor material!",
+        "medium": "You're ready to guide others with your wisdom!",
+        "long": "Mastery means you can not only apply knowledge to your own life, but help others understand these concepts too. You're becoming a beacon of evidence-based fitness wisdom."
+      },
+      {
+        "short": "Foundation complete!",
+        "medium": "You've built an unshakeable knowledge base!",
+        "long": "Every principle you've mastered becomes a pillar supporting your lifelong fitness journey. This solid foundation will serve you through every challenge and opportunity ahead."
+      }
+    ]
+  },
+  {
+    "id": "all",
+    "title": "Wellness Warrior",
+    "habit": "Perfect Day",
+    "description": "Achieve all daily goals: workout, clean eating, quality sleep, hydration, and learning",
+    "is_active": true,
+    "sort_order": 7,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Maximizes synergistic effects of combining healthy behaviors",
+      "Creates powerful momentum for long-term lifestyle change",
+      "Optimizes both physical and mental performance",
+      "Builds comprehensive wellness habits that reinforce each other",
+      "Demonstrates complete commitment to holistic health improvement"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Perfect day achieved!",
+        "medium": "You crushed every goal today—absolute champion!",
+        "long": "Today you proved that transformation happens when mind, body, and knowledge align. This is what peak wellness looks like—celebrate this incredible achievement!"
+      },
+      {
+        "short": "Unstoppable force!",
+        "medium": "You've mastered the art of holistic wellness!",
+        "long": "When movement, nutrition, rest, hydration, and learning come together, magic happens. You've created the perfect storm of positive habits that compound into extraordinary results."
+      },
+      {
+        "short": "Legend status!",
+        "medium": "You've conquered every pillar of wellness today!",
+        "long": "Less than 5% of people achieve all their wellness goals in a single day. You're operating at an elite level of self-care and commitment to your health."
+      },
+      {
+        "short": "Synergy master!",
+        "medium": "Your healthy habits are amplifying each other!",
+        "long": "Exercise improves sleep, sleep enhances recovery, good nutrition fuels performance, hydration optimizes everything, and knowledge guides it all. You've orchestrated the perfect wellness symphony."
+      },
+      {
+        "short": "Transformation mode!",
+        "medium": "This is how lasting change happens!",
+        "long": "Real transformation isn't about perfection—it's about consistently showing up for yourself across all dimensions of health. You're living proof that sustainable change is possible."
+      },
+      {
+        "short": "Future self celebration!",
+        "medium": "Your future self is doing a victory dance!",
+        "long": "Every perfect day creates momentum for tomorrow. You're not just building streaks—you're building the person you want to become, one comprehensive day at a time."
+      },
+      {
+        "short": "Wellness genius!",
+        "medium": "You've cracked the code to complete self-care!",
+        "long": "Perfect days like this become the blueprint for your new normal. You've proven you can balance all the elements of wellness—now watch as this becomes your natural way of living."
+      }
+    ]
+  }
+]

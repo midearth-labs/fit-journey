@@ -1,0 +1,2667 @@
+[
+  {
+    "id": "fd2a1193-ef80-461e-ae89-3c09cb38b717",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The 'interference effect' between cardio and strength training is a major concern for most beginner and intermediate exercisers.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The interference effect primarily occurs at elite athletic levels with extreme training volumes. For 99% of people, combining cardio and strength training produces superior results compared to doing either alone.",
+    "hints": [
+      "Think about who this effect actually impacts most",
+      "Consider the training volume required for interference to occur"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f1f4f933-a3fe-403a-978c-15a4e297d230",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Cardiovascular exercise only benefits your heart and lungs, not your muscles.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Cardio improves nutrient delivery to muscles, enhances recovery between strength sets, and increases mitochondria in muscle cells. It provides benefits beyond just cardiovascular health.",
+    "hints": [
+      "Consider how improved circulation affects muscle function",
+      "Think about recovery between strength training sets"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6a2c828a-342b-412b-9a3f-c64d194a9882",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The World Health Organization recommends doing either cardio OR strength training, not both.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The WHO recommends both 150 minutes of moderate cardio (or 75 minutes vigorous) AND 2+ strength training sessions per week. These are complementary recommendations, not alternatives.",
+    "hints": [
+      "Look at the specific WHO guidelines mentioned in the article",
+      "Notice the word 'AND' versus 'OR' in recommendations"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "97584ec1-49d4-41dc-bef6-840a1d503186",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Strength training only builds muscle and has no impact on metabolic health.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Strength training increases insulin sensitivity, improves glucose uptake, maintains bone density, and enhances metabolic health beyond just muscle building.",
+    "hints": [
+      "Consider the metabolic benefits mentioned in the article",
+      "Think about how muscle tissue affects metabolism"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1f086744-b149-48fd-a385-8881aa9b1414",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What's the best approach for someone whose primary goal is fat loss?",
+    "question_type": "standalone",
+    "options": [
+      "Only high-intensity interval training",
+      "Full-body strength training with moderate cardio and some HIIT",
+      "Only long-duration steady-state cardio",
+      "Exclusively yoga and meditation"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "For fat loss, the article recommends combining full-body strength training (to preserve muscle), moderate cardio (for calorie burn), and HIIT (for metabolic boost). This combination is most effective.",
+    "hints": [
+      "Think about what preserves muscle during weight loss",
+      "Consider which combination addresses multiple fat loss mechanisms"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "95f6d2a1-ad0b-4a12-a3a9-977af340f181",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, which scenario best demonstrates why you need both cardio and strength training?",
+    "question_type": "standalone",
+    "options": [
+      "Running a marathon while carrying a backpack",
+      "Helping a friend move - lifting furniture and going up stairs multiple times",
+      "Competing in a bodybuilding competition",
+      "Doing a triathlon while eating pizza"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The moving scenario perfectly illustrates needing both strength (to lift boxes and furniture) and endurance (to go up and down stairs multiple times without getting winded).",
+    "hints": [
+      "Look for the real-world example given in the article",
+      "Think about activities that require both strength and endurance"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "dbf79795-4b03-4b16-9258-a4bd22941b1d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The interference effect typically occurs when:",
+    "question_type": "standalone",
+    "options": [
+      "You do any cardio and strength training in the same week",
+      "You're training at elite levels with high volumes back-to-back without adequate recovery",
+      "You do more than 20 minutes of cardio per day",
+      "You lift weights heavier than your body weight"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The interference effect occurs primarily with elite-level training volumes, competing adaptations done immediately back-to-back, inadequate nutrition/recovery, or when trying to maximize opposing disciplines simultaneously.",
+    "hints": [
+      "Focus on the specific conditions mentioned for interference",
+      "Consider the training level and volume required"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4c7e77a4-eff4-4f5d-b52d-43dd06a48abb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which statement best represents the article's main message?",
+    "question_type": "standalone",
+    "options": [
+      "Cardio is superior to strength training for all goals",
+      "The cardio vs strength debate is based on a false premise - they're complementary",
+      "You must choose either cardio or strength training to see results",
+      "Only professional athletes should combine cardio and strength training"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's central thesis is that the entire cardio vs strength debate is based on a false premise, and these training methods are actually complementary systems that work better together.",
+    "hints": [
+      "Look at the article's title and main theme",
+      "Consider what 'false premise' means in the context"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a2cbfbf2-2d99-47b2-8b55-efdcfc01ba4e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What is the correct sequence for building an effective combined training approach?",
+    "question_type": "standalone",
+    "options": [
+      "Choose goal → Select exercises → Create schedule → Ignore recovery",
+      "Start with cardio → Add strength → Remove cardio → Focus only on strength",
+      "Understand your goals → Choose complementary exercises → Balance both types → Allow adequate recovery",
+      "Copy an influencer's routine → Do everything daily → Increase intensity weekly"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article emphasizes understanding your specific goals, selecting exercises that complement each other, balancing both training types, and ensuring adequate recovery for optimal results.",
+    "hints": [
+      "Think about the systematic approach the article suggests",
+      "Consider the importance of goal-specific and balanced programming"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cfc550c3-1ac2-46a6-aaf5-01e8e33433d9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the training spectrum concept, which combination represents a complete fitness approach?",
+    "question_type": "standalone",
+    "options": [
+      "Only power and strength training",
+      "Power + Strength + Hypertrophy + Muscular Endurance + Conditioning + Recovery",
+      "Just aerobic conditioning and stretching",
+      "Only high-intensity intervals and heavy lifting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article presents a training spectrum that includes all intensities and adaptations: power, strength, hypertrophy, muscular endurance, anaerobic conditioning, aerobic conditioning, and recovery work.",
+    "hints": [
+      "Look at the complete training spectrum outlined in the article",
+      "Consider which option includes the full range of adaptations"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7d1e514f-ff7d-40e8-a747-ad9e8d79c1fe",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which group of weekly training options best follows the article's principles for beginners?",
+    "question_type": "standalone",
+    "options": [
+      "7 days HIIT + 7 days heavy lifting + 7 days marathon training",
+      "3 full-body strength + 2-3 moderate cardio + 1-2 rest days with optional light activity",
+      "1 day yoga + 6 days complete rest",
+      "Daily 3-hour gym sessions combining everything possible"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically recommends balanced approaches like 3 strength sessions, 2-3 cardio sessions, and adequate rest/recovery, which aligns with WHO guidelines and sustainable practices.",
+    "hints": [
+      "Review the sample weekly combinations provided",
+      "Consider what's sustainable for beginners"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ce202343-10f7-4718-8d44-5122253792f2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the main issue with Jordan's approach in the gym floor debate passage?",
+    "question_type": "passage_based",
+    "options": [
+      "He was doing too much cardio",
+      "He was avoiding cardio entirely and missing cardiovascular fitness",
+      "He was lifting weights that were too heavy",
+      "He was spending too much time at the gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan was avoiding cardio completely ('haven't done cardio in two years') and as Mike pointed out, he 'gets winded walking up two flights of stairs' - missing half the fitness picture.",
+    "hints": [
+      "Focus on Mike's observation about Jordan's limitations",
+      "Consider what fitness component Jordan was neglecting"
+    ],
+    "image_urls": [],
+    "passage_set_id": "67ae8542-4d39-4dff-810f-7c065ef687fb"
+  },
+  {
+    "id": "a9bb9004-b4ab-451e-9d6a-49a1656e641f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Mike's advice to Sarah, why would someone only train 'half their body'?",
+    "question_type": "passage_based",
+    "options": [
+      "Because they don't have enough time for full workouts",
+      "Because they're following the false choice between cardio and strength training",
+      "Because they're trying to prevent injury",
+      "Because they're saving money on gym membership"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike's point was that both Jordan and Alex were 'missing half the picture' by choosing only cardio or only strength, when 'your heart needs cardio training' and 'your muscles and bones need resistance training.'",
+    "hints": [
+      "Think about Mike's reasoning for needing both types of training",
+      "Consider what 'half the picture' refers to"
+    ],
+    "image_urls": [],
+    "passage_set_id": "67ae8542-4d39-4dff-810f-7c065ef687fb"
+  },
+  {
+    "id": "490fb18c-26eb-4982-bd50-d2d78fb95ac6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does Alex's limitation (needing help with a 40-pound bag) illustrate about pure cardio training?",
+    "question_type": "passage_based",
+    "options": [
+      "Cardio training is completely ineffective",
+      "You can have good cardiovascular fitness but lack functional strength",
+      "Alex needs to do more cardio",
+      "Weight loss is the only goal that matters"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Despite Alex's cardio success (lost 20 pounds, can run 5K), she still needed help carrying a 40-pound bag, showing that cardiovascular fitness doesn't automatically provide functional strength.",
+    "hints": [
+      "Consider the contrast between Alex's cardio achievements and strength limitations",
+      "Think about what functional strength means in daily life"
+    ],
+    "image_urls": [],
+    "passage_set_id": "67ae8542-4d39-4dff-810f-7c065ef687fb"
+  },
+  {
+    "id": "4692433a-dadb-45a2-80dd-bcc4640d9224",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How does Mike dismiss the online debates that confuse Sarah?",
+    "question_type": "passage_based",
+    "options": [
+      "He says online advice is always wrong",
+      "He compares fitness debates to pointless arguments like 'whether water is wet'",
+      "He tells her to ignore all social media",
+      "He recommends she hire a personal trainer instead"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike humorously dismisses the online debates by saying 'Everyone online also argues about whether water is wet,' pointing out that popular debate topics aren't necessarily meaningful or productive.",
+    "hints": [
+      "Look for Mike's specific comparison about online arguments",
+      "Consider how he puts the debate into perspective"
+    ],
+    "image_urls": [],
+    "passage_set_id": "67ae8542-4d39-4dff-810f-7c065ef687fb"
+  },
+  {
+    "id": "3066f1c9-05eb-481d-bf2f-5bc73f33b51f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Emma's main fitness problem despite doing doctor-prescribed cardio?",
+    "question_type": "passage_based",
+    "options": [
+      "Her blood pressure wasn't improving",
+      "She was cardiovascularly fit but functionally weak for daily tasks",
+      "She wasn't doing enough cardio",
+      "She was gaining weight"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's blood pressure had improved from cardio, but she still couldn't lift carry-ons, had back pain from gardening, and was 'cardiovascularly fit but functionally weak' for everyday activities.",
+    "hints": [
+      "Focus on Emma's specific complaints about daily activities",
+      "Note that her cardiovascular health was improving"
+    ],
+    "image_urls": [],
+    "passage_set_id": "901abfaa-890e-4f6c-ac44-407d1e0e1af1"
+  },
+  {
+    "id": "8301d8af-a8ed-49af-9f2e-8d2e9ee5457b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How does Taylor explain the relationship between cardiovascular fitness and muscular strength?",
+    "question_type": "passage_based",
+    "options": [
+      "They're the same thing",
+      "One is more important than the other",
+      "They're like a car's engine and frame - you need both to work properly",
+      "They interfere with each other"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Taylor uses the analogy that 'cardiovascular fitness and muscular strength are like your car's engine and frame—you need both to work properly' to explain their complementary relationship.",
+    "hints": [
+      "Look for Taylor's specific analogy about cars",
+      "Consider how engines and frames work together"
+    ],
+    "image_urls": [],
+    "passage_set_id": "901abfaa-890e-4f6c-ac44-407d1e0e1af1"
+  },
+  {
+    "id": "4cf09cb8-a3a1-4cd8-90ab-7ba8db7ad448",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Taylor's experience when they only did strength training?",
+    "question_type": "passage_based",
+    "options": [
+      "Poor blood sugar control and couldn't deadlift",
+      "Great blood sugar control and could deadlift body weight, but got winded playing with kids",
+      "No health improvements at all",
+      "Gained too much muscle mass"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor had 'great blood sugar control, could deadlift my body weight, but I'd get winded playing with my kids' when only doing strength training, showing the limitation of single-modality training.",
+    "hints": [
+      "Focus on Taylor's specific experience with strength-only training",
+      "Note both the positive and negative aspects they experienced"
+    ],
+    "image_urls": [],
+    "passage_set_id": "901abfaa-890e-4f6c-ac44-407d1e0e1af1"
+  },
+  {
+    "id": "c68e6268-e549-409b-8261-78ca4e06a721",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Taylor successfully combine both training types?",
+    "question_type": "passage_based",
+    "options": [
+      "Alternating months between cardio and strength",
+      "Doing both simultaneously in every workout",
+      "Started simple by adding 15 minutes of walking after strength sessions, then working up",
+      "Choosing only one type based on daily mood"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Taylor 'started simple. Added 15 minutes of walking after my strength sessions. Then worked up from there' to successfully combine both training modalities without overwhelm.",
+    "hints": [
+      "Look for Taylor's specific progression strategy",
+      "Note the gradual approach they used"
+    ],
+    "image_urls": [],
+    "passage_set_id": "901abfaa-890e-4f6c-ac44-407d1e0e1af1"
+  },
+  {
+    "id": "31e1a709-6c08-439f-88c6-772b217cd087",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why was Casey stuck at the same fitness level despite consistent effort?",
+    "question_type": "passage_based",
+    "options": [
+      "Not eating enough protein",
+      "Doing only running without strength training for body composition changes",
+      "Not running far enough distances",
+      "Taking too many rest days"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey was doing 'three days of running, steadily increasing distance' but wasn't seeing scale or energy changes because they were missing the strength training component needed for body composition improvements.",
+    "hints": [
+      "Consider what type of training Casey was doing exclusively",
+      "Think about what's needed for body composition changes"
+    ],
+    "image_urls": [],
+    "passage_set_id": "00f8708c-afc9-43f7-a5c0-b6eff9d968a2"
+  },
+  {
+    "id": "671dd83c-80f1-44fc-91d3-4a3a5455c212",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Riley's creative solution for combining cardio and strength training?",
+    "question_type": "passage_based",
+    "options": [
+      "Buying expensive gym equipment",
+      "Adding 30-second cardio bursts between strength exercises using bodyweight movements",
+      "Running to the gym for strength workouts",
+      "Doing strength training while watching TV"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley solved budget and time constraints by 'adding 30-second cardio bursts between my strength exercises. Jumping jacks, mountain climbers, whatever required no equipment' to combine both modalities efficiently.",
+    "hints": [
+      "Focus on Riley's specific technique for combining modalities",
+      "Consider how they solved equipment and time constraints"
+    ],
+    "image_urls": [],
+    "passage_set_id": "00f8708c-afc9-43f7-a5c0-b6eff9d968a2"
+  },
+  {
+    "id": "d75b5326-0ff3-4163-85f5-2ba4e4482866",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Riley, why does combining both training types create better body composition results?",
+    "question_type": "passage_based",
+    "options": [
+      "It burns more calories during the workout only",
+      "It prevents muscle loss completely",
+      "Combining creates bigger metabolic impact, and muscle tissue burns more calories at rest than fat",
+      "It makes you sweat more"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Riley explains that 'combining both types of training creates a bigger metabolic impact. Plus, muscle tissue burns more calories at rest than fat tissue. You're basically turning your body into a more efficient machine.'",
+    "hints": [
+      "Look for Riley's explanation about metabolic impact",
+      "Consider the difference between muscle and fat tissue metabolism"
+    ],
+    "image_urls": [],
+    "passage_set_id": "00f8708c-afc9-43f7-a5c0-b6eff9d968a2"
+  },
+  {
+    "id": "ca0644dc-ab79-4844-816f-79f751826100",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What misconception does Casey challenge about continuous cardio requirements?",
+    "question_type": "passage_based",
+    "options": [
+      "That cardio must be done at maximum intensity",
+      "That you need at least 20 minutes of continuous cardio for any benefits",
+      "That cardio should be done every day",
+      "That cardio requires expensive equipment"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey was skeptical because 'everything I read says you need at least 20 minutes of continuous cardio for benefits,' but Riley explains this applies to 'pure aerobic adaptation' while combined training offers different benefits for body composition and overall fitness.",
+    "hints": [
+      "Look for Casey's specific concern about cardio duration",
+      "Consider Riley's response about different types of benefits"
+    ],
+    "image_urls": [],
+    "passage_set_id": "00f8708c-afc9-43f7-a5c0-b6eff9d968a2"
+  },
+  {
+    "id": "66f56274-1962-48ca-a11c-04c04f0e18ae",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, habit formation takes an average of 21 days to establish.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that habit formation takes 66 days on average, not 21 days despite what Instagram often claims.",
+    "hints": [
+      "Look for the timeline myths section",
+      "The article mentions what Instagram says versus actual research"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "49be9885-8155-4089-b4b9-2c3c4b511f1c",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Process goals are more effective than outcome goals because you can directly control the actions required.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes that process goals beat outcome goals because you can control whether you show up and do the work, but you can't directly control outcomes like exact weight loss.",
+    "hints": [
+      "Think about what you can vs cannot control",
+      "The article gives examples of tracking food vs losing pounds"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1c78702f-243e-40c0-9137-46858f1fb317",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The article suggests that visible muscle definition can be achieved in 4-6 weeks with consistent training.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that visible muscle definition takes 8-12 weeks minimum with consistent training and nutrition, not 4-6 weeks.",
+    "hints": [
+      "Check the timeline reality section",
+      "Look for the muscle definition timeframe"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "41dc9a50-2114-45bd-af91-8794efac240a",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the SMART framework, building systems and schedules is more reliable than depending on motivation.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states that motivation is like a cat - unreliable - and emphasizes building systems like scheduling workouts and preparing equipment instead.",
+    "hints": [
+      "Look for the motivation trap section",
+      "The article compares motivation to something unpredictable"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ffb1abe5-d3b5-4623-9072-07ce4646f208",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What makes a fitness goal 'achievable' according to the article's Goldilocks principle?",
+    "question_type": "standalone",
+    "options": [
+      "Easy enough that you never feel challenged",
+      "Challenging enough to require effort but realistic enough that you won't quit",
+      "So difficult that it requires maximum motivation daily",
+      "Impossible enough that you need a rocket ship and a mariachi band"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article describes the Goldilocks zone as challenging enough to require effort but realistic enough that you won't quit after week two.",
+    "hints": [
+      "Look for the Goldilocks zone section",
+      "Think about what's 'just right' versus too easy or too hard"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b19f8837-9364-4d15-8967-a2b92787202d",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, what's the main problem with fantasy goals like 'Get fit'?",
+    "question_type": "standalone",
+    "options": [
+      "They're too ambitious for beginners",
+      "They lack specificity and clear success criteria",
+      "They require too much equipment",
+      "They sound boring when you tell people about them"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article states that 'Get fit' is as useful as 'Be happy' because it's vague and doesn't provide clear direction or success criteria.",
+    "hints": [
+      "Think about the opening comparison to other vague goals",
+      "Consider what makes goals actionable"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a2f4ec64-d969-495b-a543-32bb80b7c3ca",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "When should you adjust a fitness goal according to the Goal Adjustment Protocol?",
+    "question_type": "standalone",
+    "options": [
+      "Only when you achieve it perfectly",
+      "When it's too easy, too hard, or you're hitting it 80% of the time",
+      "Never - goals should be permanent",
+      "Only when your horoscope suggests Mercury is in retrograde"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article outlines when to level up (too easy), scale down (too hard), or document and build (just right at 80% success rate).",
+    "hints": [
+      "Look for the goal adjustment protocol section",
+      "Think about the three different scenarios mentioned"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fd5228ce-9598-453c-aceb-439da3a41b98",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does the article suggest is the most reliable way to maintain workout consistency?",
+    "question_type": "standalone",
+    "options": [
+      "Wait until you feel motivated each day",
+      "Schedule specific days and times with preparation systems",
+      "Only work out when you have perfect conditions",
+      "Hire a personal cheerleader and motivational whale"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes scheduling workouts for specific times and preparing systems (like laying out clothes) rather than relying on motivation.",
+    "hints": [
+      "Check the motivation trap section",
+      "Look for what replaces waiting for motivation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "388e1941-35a7-4bb8-afff-8b634a4fe343",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the beginner's goal menu, which sequence represents the proper progression for building upper body strength?",
+    "question_type": "standalone",
+    "options": [
+      "100 push-ups → plank hold → modified push-ups → grocery carrying",
+      "Modified push-ups → plank hold → full push-ups → functional carrying",
+      "Full push-ups → modified push-ups → plank → carrying groceries",
+      "Carrying groceries → planking → push-ups → becoming a superhero"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The logical progression starts with modified (easier) push-ups, builds core stability with planks, progresses to full push-ups, then applies strength functionally.",
+    "hints": [
+      "Think about building from easier to harder movements",
+      "Consider which exercises build foundations for others"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ea5645ae-c6da-48f1-8bde-ca31835304ab",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination best represents the article's approach to realistic timeline expectations?",
+    "question_type": "standalone",
+    "options": [
+      "Cardiovascular improvement: 2-4 weeks initial, 8-12 weeks significant + Habit formation: 66 days average",
+      "Muscle definition: 2-3 weeks + Flexibility: 1-2 weeks + Habits: 21 days",
+      "Strength gains: 1 week + Cardio improvement: 3 days + Habit formation: 1 month",
+      "All fitness changes: 6 weeks + Habit formation: whenever the fitness fairy visits"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically mentions 2-4 weeks for initial cardiovascular gains, 8-12 weeks for significant changes, and 66 days for habit formation.",
+    "hints": [
+      "Look for the time reality check section",
+      "Find the specific timeframes mentioned for different adaptations"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8ba1676d-f612-4f2d-b8f7-2c4c2631f446",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the 30-day goal setting challenge structure, what is the correct sequence of actions?",
+    "question_type": "standalone",
+    "options": [
+      "Pick multiple goals → Track perfectly → Never adjust → Celebrate",
+      "Choose one process goal → Track honestly → Evaluate and adjust → Repeat cycle",
+      "Set outcome goals → Wait for motivation → Track occasionally → Start over monthly",
+      "Pick one goal → Track perfectly → Give up if you miss a day → Blame Mercury retrograde"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article outlines: pick ONE process goal, track honestly (including missed days), then evaluate and adjust after 30 days without shame.",
+    "hints": [
+      "Look for the 30-day challenge section",
+      "Focus on the emphasis of honest tracking vs perfect execution"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3c8d8d90-e27f-4685-a223-8b8be353975b",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's main mistake in their goal-setting approach?",
+    "question_type": "passage_based",
+    "options": [
+      "They didn't research enough fitness programs",
+      "They tried to optimize everything before starting",
+      "They chose the wrong type of exercise",
+      "They didn't read enough articles about periodization and heart rate zones"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan was stuck in analysis paralysis, creating complex spreadsheets and reading multiple articles instead of just starting with simple, actionable goals.",
+    "hints": [
+      "Focus on what Jordan was doing instead of exercising",
+      "Consider Alex's advice about optimizing showing up"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f74dcaa8-a1fe-4495-9b47-e2f7604a9996"
+  },
+  {
+    "id": "3b0afda3-3bc2-4ede-8689-530c4c111d47",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Alex demonstrate the effectiveness of simple goal setting?",
+    "question_type": "passage_based",
+    "options": [
+      "By showing their complex workout spreadsheet",
+      "By explaining progressive overload theory",
+      "By showing their simple 'Gym: Mon/Wed/Fri 7am, 20 minutes minimum' note",
+      "By discussing heart rate zones and periodization"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex showed Jordan a simple phone note with basic scheduling that they had successfully followed for two months, proving that simple works better than complex planning.",
+    "hints": [
+      "Look for what Alex actually showed Jordan",
+      "Consider the contrast between Jordan's approach and Alex's"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f74dcaa8-a1fe-4495-9b47-e2f7604a9996"
+  },
+  {
+    "id": "cc130773-0b25-4649-ae6d-b69283fae0dc",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What lesson was Alex trying to teach Jordan about goal optimization?",
+    "question_type": "passage_based",
+    "options": [
+      "Optimization should happen before you start exercising",
+      "You should research all variables before beginning",
+      "You need to optimize showing up first, then worry about other details",
+      "Complex planning always leads to better results"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex's key message was 'You can optimize later. Right now, you need to optimize showing up' - emphasizing that consistency comes before perfection.",
+    "hints": [
+      "Focus on Alex's main advice to Jordan",
+      "Think about the order of priorities Alex suggested"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f74dcaa8-a1fe-4495-9b47-e2f7604a9996"
+  },
+  {
+    "id": "e3c44a86-1355-42e8-ba38-00218f04dab3",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does Jordan's behavior represent in terms of common fitness goal mistakes?",
+    "question_type": "passage_based",
+    "options": [
+      "Setting goals that are too easy",
+      "Analysis paralysis and procrastination disguised as planning",
+      "Focusing too much on outcome goals",
+      "Not tracking progress properly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan's endless research and complex planning was actually procrastination disguised as preparation, preventing them from taking action.",
+    "hints": [
+      "Consider what Jordan was really doing by constantly planning",
+      "Think about Alex's comment about procrastination"
+    ],
+    "image_urls": [],
+    "passage_set_id": "f74dcaa8-a1fe-4495-9b47-e2f7604a9996"
+  },
+  {
+    "id": "8e6a3c35-7401-4bbd-a349-582a4717fbd8",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What pattern did Casey recognize about their previous goal-setting attempts?",
+    "question_type": "passage_based",
+    "options": [
+      "They always set goals that were too easy",
+      "They tried to transform completely overnight with perfect execution",
+      "They never tracked their progress properly",
+      "They focused too much on equipment rather than consistency"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey realized they were trying to 'become a different person overnight' with goals like 'workout every day' and 'eat clean' - all-or-nothing thinking that led to burnout.",
+    "hints": [
+      "Look at Casey's historical goals listed in the passage",
+      "Consider Pat's observation about becoming a different person"
+    ],
+    "image_urls": [],
+    "passage_set_id": "daeff3ec-577c-471f-85f7-3ffdf083d0f5"
+  },
+  {
+    "id": "fc0e8fd5-a3ad-4712-b0ad-f1eff719d678",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why did Pat suggest starting with just twice a week instead of daily workouts?",
+    "question_type": "passage_based",
+    "options": [
+      "Because Casey wasn't fit enough for daily exercise",
+      "Because twice a week is the optimal frequency for beginners",
+      "Because it was easy enough that Casey would actually do it consistently",
+      "Because daily workouts don't provide good results"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Pat's strategy was to make the goal 'easy enough that you'll actually do it' rather than setting an ambitious goal that leads to quitting after two weeks.",
+    "hints": [
+      "Focus on Pat's reasoning about sustainability",
+      "Consider the contrast between impressive goals and achievable ones"
+    ],
+    "image_urls": [],
+    "passage_set_id": "daeff3ec-577c-471f-85f7-3ffdf083d0f5"
+  },
+  {
+    "id": "e34d4253-439b-45da-9e65-5a37906ce630",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What did Casey's new goal represent in terms of the SMART framework?",
+    "question_type": "passage_based",
+    "options": [
+      "An outcome-focused goal that was too vague",
+      "A specific, measurable, achievable process goal with a time limit",
+      "A goal that was too easy to create real change",
+      "A goal focused on appearance rather than performance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey's goal 'Tuesday and Thursday. 15 minutes. Home workout. November only.' was specific (days/duration), measurable (15 min), achievable (twice weekly), and time-bound (November).",
+    "hints": [
+      "Analyze Casey's final written goal against SMART criteria",
+      "Consider how it differs from their previous vague goals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "daeff3ec-577c-471f-85f7-3ffdf083d0f5"
+  },
+  {
+    "id": "fa7237d4-762c-41e2-8928-e356dfdcd990",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Pat reframe Casey's concern about the goal not looking 'impressive'?",
+    "question_type": "passage_based",
+    "options": [
+      "By explaining that impressive goals are always better",
+      "By pointing out that quitting every two weeks is less impressive than consistent success",
+      "By encouraging Casey to set more ambitious goals",
+      "By suggesting that appearance matters more than results"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Pat responded that 'quitting every two weeks' isn't impressive either, and that completing twice-weekly workouts for a month would be Casey's 'longest streak ever.'",
+    "hints": [
+      "Look for Pat's comparison between impressive goals and actual achievement",
+      "Consider what Pat said about Casey's track record"
+    ],
+    "image_urls": [],
+    "passage_set_id": "daeff3ec-577c-471f-85f7-3ffdf083d0f5"
+  },
+  {
+    "id": "f566ff0e-8dfe-444a-a1fd-46b2b4e2b9af",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Emma's main challenge in setting realistic fitness goals?",
+    "question_type": "passage_based",
+    "options": [
+      "She didn't understand proper exercise techniques",
+      "She was comparing her available time to unrealistic program expectations",
+      "She lacked motivation to exercise regularly",
+      "She didn't have access to proper equipment"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma was looking at programs requiring an hour per day when she realistically had only 20 minutes, recognizing these programs were 'designed for people with personal chefs and nannies.'",
+    "hints": [
+      "Focus on Emma's reaction to the transformation program requirements",
+      "Consider her comment about who these programs are designed for"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e8fc18ce-5677-4005-8a4d-7b427aeb7d86"
+  },
+  {
+    "id": "6616d219-f9bc-47e9-a72b-0f3470746793",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Mike demonstrate that modest goals can produce significant results?",
+    "question_type": "passage_based",
+    "options": [
+      "By explaining complex exercise physiology",
+      "By showing that 10-minute workouts made him stronger than he'd been in years",
+      "By comparing his results to professional athletes",
+      "By proving that longer workouts are always better"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike showed that his modest goal of three 10-minute YouTube workouts per week had made him 'stronger than I've been in years' and functionally capable of carrying both kids upstairs.",
+    "hints": [
+      "Look for Mike's personal results from his simple approach",
+      "Consider his functional strength example"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e8fc18ce-5677-4005-8a4d-7b427aeb7d86"
+  },
+  {
+    "id": "4da485ae-4eda-4705-bc28-39b364ba3423",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the key difference between Emma's previous failures and Mike's success?",
+    "question_type": "passage_based",
+    "options": [
+      "Mike used better equipment than Emma",
+      "Mike focused on building consistent habits rather than pursuing dramatic transformations",
+      "Mike had more time available for exercise than Emma",
+      "Mike followed more scientifically advanced programs"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike succeeded by focusing on consistent habits ('This is why I've kept going') while Emma had 'started and stopped twelve times' chasing 'beach body goals.'",
+    "hints": [
+      "Compare Mike's approach to Emma's pattern of starting and stopping",
+      "Look for Mike's explanation about consistency vs dramatic goals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e8fc18ce-5677-4005-8a4d-7b427aeb7d86"
+  },
+  {
+    "id": "194d679e-da28-484a-a769-597238c26384",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does Emma's situation illustrate about the importance of goal customization?",
+    "question_type": "passage_based",
+    "options": [
+      "All fitness goals should be exactly the same for everyone",
+      "Goals must be adapted to individual life circumstances and constraints",
+      "Only people with unlimited time can achieve fitness success",
+      "Parents should avoid setting fitness goals entirely"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's story shows that effective goals must fit your actual life situation - her 10-minute, kid-friendly workouts were more appropriate than hour-long programs designed for different lifestyles.",
+    "hints": [
+      "Consider how Emma's final goal accommodated her specific situation",
+      "Think about the contrast between generic programs and personalized approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e8fc18ce-5677-4005-8a4d-7b427aeb7d86"
+  },
+  {
+    "id": "5a782fe0-43bc-4646-af49-c7ef55db0293",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "For beginners, working out every single day is necessary to see meaningful results.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. Beginners see optimal results with 3-4 workout days per week. Your body gets stronger during recovery, not during the workout itself. Daily training can lead to overtraining and burnout.",
+    "hints": [
+      "Think about when muscle repair and growth actually happen",
+      "Consider what happens if you don't allow time for recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e0d94937-fdc0-4af4-b50d-ff0efd9fba8c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Rest days are when your body actually gets stronger through muscle repair and adaptation.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. During rest, your body repairs the tiny muscle tears created during workouts, coming back stronger than before. Without adequate recovery, you skip the adaptation process.",
+    "hints": [
+      "Consider what happens to muscles after they're stressed during exercise",
+      "Think about the difference between training stress and recovery adaptation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "64ee0fd3-9ffc-442b-b6b5-5995023aacac",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The article recommends that beginners should start with 2-3 workout days per week in their first month.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The starter schedule (weeks 1-4) recommends 2-3 days per week on non-consecutive days to establish the habit and allow proper recovery.",
+    "hints": [
+      "Look at the specific recommendations for the first month",
+      "Consider what the article says about building habits versus intensity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c4479cb1-4f47-4091-a52d-efc7b5a1da89",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Active recovery days should leave you breathing hard and sweating significantly.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. Active recovery activities should feel refreshing, not exhausting. If you're breathing hard or sweating significantly, it's not recovery—it's another workout.",
+    "hints": [
+      "Think about the purpose of 'recovery' in active recovery",
+      "Consider what makes an activity restorative versus challenging"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3a049e6b-3623-4173-bd32-57228be5c6fa",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "You're a beginner who can only manage 2 days per week due to a busy schedule. What should you prioritize?",
+    "question_type": "standalone",
+    "options": [
+      "Skip workouts until you can commit to 4 days per week",
+      "Focus on compound movements and increase daily movement",
+      "Do longer sessions to make up for fewer days",
+      "Train your pet hamster to do your workouts for you"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Focus on compound movements (exercises that work multiple muscle groups) and increase daily movement like taking stairs or walking meetings. This maximizes your limited training time.",
+    "hints": [
+      "Consider which approach makes the most of limited time",
+      "Think about exercises that give you the most bang for your buck"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "11632718-f2a9-4ed7-83ba-28be6da091ca",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which scenario indicates you might be overdoing your workout frequency?",
+    "question_type": "standalone",
+    "options": [
+      "Feeling energized after most workouts",
+      "Muscle soreness lasting more than 72 hours consistently",
+      "Making steady progress week over week",
+      "Discovering you can now bench press your refrigerator"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Persistent muscle soreness lasting more than 72 hours is a warning sign of overtraining. Normal soreness should resolve within 48-72 hours with proper recovery.",
+    "hints": [
+      "Consider how long normal muscle soreness should last",
+      "Think about signs that indicate insufficient recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4a977db4-c322-41ec-94ef-4978676255e2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "During high stress periods (exams, work deadlines), what should you do with your workout frequency?",
+    "question_type": "standalone",
+    "options": [
+      "Increase frequency to combat stress with more exercise",
+      "Reduce frequency but maintain consistency while prioritizing recovery",
+      "Stop exercising completely until stress passes",
+      "Switch to exclusively underwater basket weaving classes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "During high stress periods, reduce frequency but maintain consistency, prioritize recovery and sleep, and use exercise as stress relief rather than additional stress.",
+    "hints": [
+      "Consider how additional stress from life should affect training stress",
+      "Think about using exercise as a tool rather than another obligation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4ff6e4ab-96a4-407f-a5f1-22022a142c28",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What makes a workout session count as 'high quality' according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Lifting the heaviest weights possible",
+      "Focusing on form over speed with adequate rest between sets",
+      "Sweating profusely throughout the entire session",
+      "Taking selfies between every set for maximum social media impact"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "High-quality workouts prioritize proper form over speed, include adequate rest between sets (60-90 seconds for beginners), and focus on staying present during the workout.",
+    "hints": [
+      "Consider what makes a workout effective versus just intense",
+      "Think about the elements that contribute to safe, productive training"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2fb8a0f8-811a-464f-a05a-63ae1ce65afd",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article's progression timeline, what should happen in which order?",
+    "question_type": "standalone",
+    "options": [
+      "Month 1: Build intensity, Month 2: Establish habit, Month 3: Increase frequency",
+      "Month 1: Establish habit, Month 2: Build consistency, Month 3: Increase intensity or duration",
+      "Month 1: Increase frequency, Month 2: Establish habit, Month 3: Build intensity",
+      "Month 1: Learn interpretive dance, Month 2: Master juggling, Month 3: Become a ninja"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The correct progression is Month 1: Establish the habit (2-3 days/week), Month 2: Build consistency (3 days/week), Month 3: Increase intensity or duration (3-4 days/week).",
+    "hints": [
+      "Consider what should come first: habit formation or intensity",
+      "Think about building a foundation before adding complexity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0d3746e7-6043-42ea-9710-6cdcc3aca05c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination represents the article's 'Goldilocks zone' for beginner workout frequency?",
+    "question_type": "standalone",
+    "options": [
+      "1-2 days per week with maximum intensity each session",
+      "3-4 days per week with adequate recovery between sessions",
+      "6-7 days per week with varying intensities",
+      "14 days per week using advanced time-travel techniques"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The Goldilocks zone is 3-4 workout days per week with adequate recovery between sessions - challenging enough to drive adaptation but sustainable long-term.",
+    "hints": [
+      "Consider what the article calls the 'just right' frequency",
+      "Think about balancing challenge with sustainability"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "07c1b5fb-2183-447a-828f-6d68dcf9a24e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which factors should determine your personal workout frequency according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Recovery capacity, goals, schedule, enjoyment, and other activities",
+      "Age, gender, and body type only",
+      "What fitness influencers recommend on social media",
+      "The alignment of the planets and your horoscope predictions"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Your personal frequency formula should balance recovery capacity, goals, schedule, enjoyment level, and other physical activities you do. It's highly individual.",
+    "hints": [
+      "Consider all the personal factors mentioned in the article",
+      "Think about what makes a workout schedule sustainable for an individual"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c73069d0-b7ab-4d31-bff3-a1ec6e1dfd42",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Sarah's main mistake in her initial workout planning?",
+    "question_type": "passage_based",
+    "options": [
+      "She didn't buy expensive enough gym equipment",
+      "She planned to work out seven days a week like her favorite fitness influencer",
+      "She forgot to stretch before her workouts",
+      "She scheduled workouts during her favorite TV shows"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah planned to work out seven days a week, copying her favorite fitness influencer's routine without considering that influencers have been training for years and their bodies have adapted to that volume.",
+    "hints": [
+      "Look at what Sarah announced she was going to do",
+      "Consider why copying an experienced person's routine might be problematic"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5bb3ad4e-e443-4c6c-9251-129a7d09a455"
+  },
+  {
+    "id": "8621da4a-059f-4d87-8c91-38bb63736336",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What lesson did Mike learn from his overtraining experience?",
+    "question_type": "passage_based",
+    "options": [
+      "Daily workouts are necessary for muscle growth",
+      "Muscles grow during rest, not during workouts",
+      "Fitness influencers always give the best advice",
+      "Physical therapy is more important than exercise"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike learned that muscles grow during rest periods, not during the actual workouts. This is why he switched to three days a week and became stronger than when he was going daily.",
+    "hints": [
+      "Focus on what Mike discovered about when muscle growth actually happens",
+      "Consider why he became stronger with fewer workout days"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5bb3ad4e-e443-4c6c-9251-129a7d09a455"
+  },
+  {
+    "id": "facc09fe-434c-4e2a-8f98-512495cc722a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why did Mike suggest that Sarah start with three days instead of seven?",
+    "question_type": "passage_based",
+    "options": [
+      "Three is Sarah's lucky number",
+      "The gym is only open three days per week",
+      "Three days is sustainable, and sustainable is what actually works",
+      "Mike wanted Sarah to have more time for other hobbies"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike emphasized that 'less is sustainable, and sustainable is what actually works.' He learned that you can always add more later, but you can't undo burnout.",
+    "hints": [
+      "Look at Mike's explanation about sustainability",
+      "Consider his advice about being able to add more later"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5bb3ad4e-e443-4c6c-9251-129a7d09a455"
+  },
+  {
+    "id": "0d0125a3-80bc-4a58-8b0c-02529b6fa0eb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the key insight Mike shared about recovery versus intensity?",
+    "question_type": "passage_based",
+    "options": [
+      "Recovery is optional if you're young and healthy",
+      "You can always add more later, but you can't undo burnout",
+      "Intensity matters more than consistency",
+      "Recovery is only needed for professional athletes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike's key insight was 'You can always add more later, but you can't undo burnout.' This emphasizes the importance of starting conservatively and building sustainably.",
+    "hints": [
+      "Look for Mike's advice about progression and what can't be undone",
+      "Consider the warning about pushing too hard too fast"
+    ],
+    "image_urls": [],
+    "passage_set_id": "5bb3ad4e-e443-4c6c-9251-129a7d09a455"
+  },
+  {
+    "id": "9614ac7f-f8f5-48f5-9cf3-8f1094d1a325",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why did Emma feel guilty on her rest day?",
+    "question_type": "passage_based",
+    "options": [
+      "She ate too much breakfast",
+      "Her workout group chat was buzzing with post-gym selfies",
+      "She forgot to call her mother",
+      "She missed her favorite TV show"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma felt guilty because her workout group chat was buzzing with post-gym selfies on what was supposed to be her rest day, making her feel like she should be working out too.",
+    "hints": [
+      "Look at what was happening in Emma's social circle",
+      "Consider what external pressure was influencing her decision"
+    ],
+    "image_urls": [],
+    "passage_set_id": "111921f0-4683-4114-9cc1-90acf8865d4f"
+  },
+  {
+    "id": "667c3cde-efff-4dcf-8055-5b16a13f963c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What did Taylor explain was happening during Emma's rest days?",
+    "question_type": "passage_based",
+    "options": [
+      "Nothing important, just wasted time",
+      "Cortisol levels dropping, muscles repairing, and energy restoring",
+      "Muscle atrophy and fitness loss",
+      "Increased risk of injury and illness"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor explained that during rest days, cortisol levels are dropping, muscles are repairing, and energy is restoring. This is why Emma feels good - because the rest is working.",
+    "hints": [
+      "Look at Taylor's explanation of what happens physiologically during rest",
+      "Consider why Emma was feeling good despite not working out"
+    ],
+    "image_urls": [],
+    "passage_set_id": "111921f0-4683-4114-9cc1-90acf8865d4f"
+  },
+  {
+    "id": "f6a3c2c1-0f56-4c31-bee2-ad19f69ab46e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Taylor, what would happen if Emma consistently skipped rest days?",
+    "question_type": "passage_based",
+    "options": [
+      "She would become stronger faster",
+      "She would develop superhuman endurance",
+      "In two weeks she'd be exhausted, injured, or both",
+      "She would win a fitness competition"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Taylor warned that if Emma consistently skipped rest days, in two weeks she'd be exhausted, injured, or both. Rest days are essential for preventing overtraining.",
+    "hints": [
+      "Look at Taylor's warning about what happens without adequate rest",
+      "Consider the timeline Taylor gave for negative consequences"
+    ],
+    "image_urls": [],
+    "passage_set_id": "111921f0-4683-4114-9cc1-90acf8865d4f"
+  },
+  {
+    "id": "de0c8601-1188-465e-95ae-94c0efffabe7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What breakthrough concept did Emma finally understand about rest days?",
+    "question_type": "passage_based",
+    "options": [
+      "Rest days are punishment for working out too hard",
+      "Rest days are actually training days where adaptation happens",
+      "Rest days are only for lazy people",
+      "Rest days should be spent sleeping 20 hours"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma realized that 'rest days are actually... training days' because recovery is when adaptation happens. This reframed rest as an active part of training, not just time off.",
+    "hints": [
+      "Look at Emma's realization about what rest days really are",
+      "Consider the concept that adaptation happens during recovery"
+    ],
+    "image_urls": [],
+    "passage_set_id": "111921f0-4683-4114-9cc1-90acf8865d4f"
+  },
+  {
+    "id": "de233350-cace-4ce2-beef-2a640c27628f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's approach to determining optimal workout frequency?",
+    "question_type": "passage_based",
+    "options": [
+      "Asking friends for advice",
+      "Creating spreadsheets and researching elite athletes",
+      "Flipping a coin each morning",
+      "Following whatever felt good that day"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan had spreadsheets for everything and researched elite athletes who train 6-7 days per week, trying to apply that to their own beginner situation.",
+    "hints": [
+      "Look at Jordan's personality trait mentioned in the passage",
+      "Consider what type of research Jordan was doing"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4435ed8a-4a40-4e12-9421-5abc903833a3"
+  },
+  {
+    "id": "82bbcce0-70d1-4514-b208-8da547032bc7",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What key differences did Casey point out between elite athletes and Jordan?",
+    "question_type": "passage_based",
+    "options": [
+      "Elite athletes have better genetics only",
+      "Elite athletes train for years, have professional recovery protocols, perfect nutrition, and it's their job",
+      "Elite athletes use special equipment unavailable to beginners",
+      "Elite athletes have magic powers that beginners lack"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey explained that elite athletes have been training for years, have professional recovery protocols, perfect nutrition, and often training is literally their job - unlike beginners.",
+    "hints": [
+      "Look at all the factors Casey listed that make elite athletes different",
+      "Consider why elite athlete routines might not apply to beginners"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4435ed8a-4a40-4e12-9421-5abc903833a3"
+  },
+  {
+    "id": "0b119f20-7875-4a3c-afc4-16faa841155b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's actual goal that Casey helped them identify?",
+    "question_type": "passage_based",
+    "options": [
+      "To become a professional athlete",
+      "To be healthier, stronger, and not hate exercise",
+      "To impress people at the gym",
+      "To set new world records"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "When Casey asked about Jordan's actual goal, Jordan realized it was 'to be healthier, stronger, and not hate exercise' - much more modest and achievable than copying elite athletes.",
+    "hints": [
+      "Look at what Jordan said when asked about their real goal",
+      "Consider how this goal differs from elite athlete objectives"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4435ed8a-4a40-4e12-9421-5abc903833a3"
+  },
+  {
+    "id": "5e7e5169-6732-46b2-9998-29cb2137bb91",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What distinction did Casey make between 'minimal' and 'optimal' for Jordan's situation?",
+    "question_type": "passage_based",
+    "options": [
+      "Minimal is three workouts, optimal is seven workouts",
+      "Minimal is zero, optimal is three quality workouts consistently done",
+      "Minimal is bodyweight only, optimal is heavy weights",
+      "There is no difference between minimal and optimal"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey corrected Jordan by saying 'Minimal is zero. Three is optimal for where you are now.' This reframed three workouts as the right amount, not inadequate.",
+    "hints": [
+      "Look at Casey's response when Jordan said three seemed minimal",
+      "Consider how Casey redefined what 'optimal' means for a beginner"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4435ed8a-4a40-4e12-9421-5abc903833a3"
+  },
+  {
+    "id": "148d9f08-718a-46e8-af97-210a65fd2655",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: Different fitness goals require different exercise strategies and selections.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Different goals absolutely require different exercise strategies. Fat loss emphasizes compound movements and cardio, muscle building focuses on progressive resistance training, and cardiovascular health prioritizes aerobic activities. Using the wrong exercises for your goals is like using a hammer when you need a screwdriver.",
+    "hints": [
+      "Think about whether someone training for a marathon would use the same exercises as someone trying to build muscle mass",
+      "Consider the article's analogy about ordering food - you wouldn't order salad if you're craving pizza"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2fb9b505-71c9-4de7-a2f4-f7c4e45d6a58",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: Spot reduction (like doing 1000 crunches to lose belly fat) is an effective fat loss strategy.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Spot reduction is a myth. The article specifically mentions this as a common mismatch - doing endless crunches for belly fat won't work. Fat loss requires full-body training combined with a calorie deficit. You cannot target fat loss in specific body areas through exercise alone.",
+    "hints": [
+      "Review the common mismatches section in the article",
+      "Think about whether your body can selectively burn fat from just one area"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cf1039bd-acc5-40fb-8cfa-9e795ab28524",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: For muscle building goals, you should focus primarily on strength training with limited cardio.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article's muscle building menu recommends 4-5 strength training sessions per week with only 1-2 low-intensity cardio sessions. Muscle growth requires mechanical tension, metabolic stress, and muscle damage - all primarily achieved through progressive resistance training.",
+    "hints": [
+      "Look at the specific exercise menu recommendations for muscle building goals",
+      "Consider what type of training creates the mechanical tension needed for muscle growth"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f14f7e0a-13dc-4e05-95b8-759c79d2cd87",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: The best exercise program is always the most scientifically optimal one, regardless of personal preferences.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article emphasizes that sustainability matters most - if you hate running, don't run; find other ways to get cardio. The best exercise program is one you'll actually follow consistently, taking into account your preferences, schedule, and lifestyle.",
+    "hints": [
+      "Think about the 'Making It Sustainable' section of the article",
+      "Consider what happens to even the best program if you can't stick to it long-term"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "239f735a-9414-45a0-8ea9-7c8ca381dea3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What is the recommended weekly exercise distribution for fat loss goals?",
+    "question_type": "standalone",
+    "options": [
+      "5 cardio sessions, 1 strength session, no rest days",
+      "3 full-body strength sessions, 2-3 moderate cardio sessions, 1-2 HIIT sessions",
+      "7 days of HIIT training only",
+      "Daily yoga and pilates with weekend marathon training"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "For fat loss, the article recommends 3 full-body strength sessions per week (to preserve muscle), 2-3 moderate cardio sessions (to increase calorie burn), and 1-2 HIIT sessions (to boost metabolism). This combination creates the optimal fat-loss recipe.",
+    "hints": [
+      "Look at the specific 'Goal 1: Fat Loss' section in the article",
+      "Think about what combination preserves muscle while creating a calorie deficit"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e111e0b7-cb8a-4e78-a3ce-7bd6b3b4fbb5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the exercise selection matrix, which exercise type is rated as 'Excellent' for both fat loss and cardiovascular health?",
+    "question_type": "standalone",
+    "options": [
+      "Heavy weights",
+      "Swimming",
+      "Yoga",
+      "Interpretive dance with rubber chickens"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Swimming is rated as 'Excellent' for both fat loss and cardiovascular health in the exercise selection matrix. It provides full-body conditioning, burns significant calories, and improves heart health while being easy on joints.",
+    "hints": [
+      "Look at the exercise selection matrix table in the article",
+      "Think about which activity provides both calorie burn and cardiovascular conditioning"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8d5dc0d5-f962-402a-9fe6-6468cfc4385a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What should drive 70% of your exercise choices when creating a personalized workout plan?",
+    "question_type": "standalone",
+    "options": [
+      "What's trending on social media",
+      "Your primary fitness goal",
+      "What equipment is available",
+      "Training like a ninja warrior who only eats protein powder"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Your primary fitness goal should drive 70% of your exercise choices. The article emphasizes picking ONE primary goal and letting it guide most of your exercise selection, with the remaining 30% for supporting work and addressing weaknesses.",
+    "hints": [
+      "Review the 'Creating Your Personal Exercise Menu' section",
+      "Think about what should be the main driver of your exercise decisions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3cb8ebdd-6e3e-4359-99df-96f64e186f6f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which approach is recommended for pursuing multiple fitness goals simultaneously?",
+    "question_type": "standalone",
+    "options": [
+      "Train all goals equally every single day",
+      "Use periodization - focus on different goals in different time blocks",
+      "Pick whichever goal you feel like on any given day",
+      "Hire a team of personal trainers to follow you around 24/7"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article recommends periodization for multiple goals - cycling through different focus periods (e.g., 2 months fat loss, 2 months strength building). This prevents burnout and ensures progress in all areas over time rather than making minimal progress in everything simultaneously.",
+    "hints": [
+      "Look at the 'Multi-Goal Approach' section",
+      "Think about why focusing on everything at once might be less effective"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5cf35df0-6bef-4bad-9823-897c2af69ec5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In the correct order, what are the 4 steps to create your personal exercise menu?",
+    "question_type": "standalone",
+    "options": [
+      "Choose equipment, define goals, add recovery work, select main exercises",
+      "Define main goal, choose main exercises, add supporting exercises, include recovery work",
+      "Start with recovery, add cardio, include strength, finish with flexibility",
+      "Consult a crystal ball, sacrifice a protein shake, do whatever feels good, hope for magic"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The correct order is: 1) Define your main goal, 2) Choose 3-4 cornerstone exercises that support that goal, 3) Add 2-3 supporting exercises for weaknesses, 4) Include recovery work (mobility, stretching, light activities). This systematic approach ensures your program is focused and balanced.",
+    "hints": [
+      "Review the step-by-step process in 'Creating Your Personal Exercise Menu'",
+      "Think about what should logically come first when designing a program"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a3f20512-d35b-4bb8-8d6a-1665df3f19cf",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination of factors should be considered when making your exercise program sustainable?",
+    "question_type": "standalone",
+    "options": [
+      "Time available and equipment access only",
+      "Enjoyment factor and recovery capacity only",
+      "Time available, equipment access, enjoyment factor, and recovery capacity",
+      "Just following whatever the fittest person on Instagram does"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "All four factors are important for sustainability: time available (be realistic about your schedule), equipment access (home vs gym affects options), enjoyment factor (include exercises you don't hate), and recovery capacity (more isn't always better). Considering all these ensures long-term adherence.",
+    "hints": [
+      "Look at the complete list in the 'Making It Sustainable' section",
+      "Think about what factors would affect whether you can stick to a program long-term"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cb418927-9e09-4ca6-8d35-58f2aeecb764",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, which statement best describes the key principle of exercise selection?",
+    "question_type": "standalone",
+    "options": [
+      "Follow the most popular fitness trends regardless of your goals",
+      "Exercise selection should be intentional and goal-specific, not random",
+      "Always choose the hardest possible exercises to maximize results",
+      "Randomly select exercises by throwing darts at a gym equipment poster"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's bottom line emphasizes that exercise selection should be intentional, not random. Every workout should move you closer to your specific goals. This strategic approach, rather than following generic programs, leads to better progress and results.",
+    "hints": [
+      "Review the concluding 'Bottom Line' section of the article",
+      "Think about the difference between strategic and random exercise selection"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "45869a16-7c03-46a5-892e-ff79251452f9",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In the passage about Jordan's goal confusion, what was Marcus's main point about trying to pursue four different fitness goals simultaneously?",
+    "question_type": "passage_based",
+    "options": [
+      "You should always focus on strength training first",
+      "If you chase four rabbits, you'll catch none - focus leads to better results",
+      "All goals are equally important and should get equal time",
+      "Jordan should quit fitness entirely and take up professional rabbit hunting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus used the analogy 'if you chase four rabbits, you'll catch none' to illustrate that trying to pursue multiple goals simultaneously with equal focus leads to minimal progress in all areas. He recommended picking one main goal and making others supporting players.",
+    "hints": [
+      "Remember Marcus's rabbit analogy from the passage",
+      "Think about what happens when you divide your effort among too many goals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7f372432-7097-4caf-bc7e-e7017c9d152d"
+  },
+  {
+    "id": "65aa32f6-456c-4265-adf0-1b1bd72e02f8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's primary goal after working with Marcus to prioritize?",
+    "question_type": "passage_based",
+    "options": [
+      "Building muscle mass",
+      "Improving 5K time",
+      "Fat loss",
+      "Learning to do handstands"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "After Marcus helped Jordan understand the importance of focus, Jordan chose fat loss as their number one priority. Marcus then explained how to build an exercise menu around that main goal with muscle preservation and cardio fitness as supporting elements.",
+    "hints": [
+      "Look at what Jordan decided after Marcus's explanation about focus",
+      "Remember what goal Jordan ultimately selected as their main priority"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7f372432-7097-4caf-bc7e-e7017c9d152d"
+  },
+  {
+    "id": "6bd5ff3c-2df0-46d8-999c-41956f761520",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Marcus suggest Jordan should distribute their 10 hours of weekly exercise time across four goals?",
+    "question_type": "passage_based",
+    "options": [
+      "Equal distribution with 2.5 hours each",
+      "Focus all 10 hours on one goal only",
+      "He suggested it was impossible to split effectively across four goals",
+      "5 hours for fat loss, 5 hours split among the others"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Marcus demonstrated that splitting 10 hours across four goals (2.5 hours each) meant barely scratching the surface of any goal. His visual demonstration with tiny circle slivers showed that effective goal achievement requires more concentrated effort rather than equal distribution.",
+    "hints": [
+      "Think about Marcus's demonstration with the circles and time division",
+      "Consider what Marcus was trying to show about spreading effort too thin"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7f372432-7097-4caf-bc7e-e7017c9d152d"
+  },
+  {
+    "id": "41ac7231-0c6b-409d-a32b-c003d4086e85",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Based on the passage, what does Marcus's approach suggest about the relationship between focus and results?",
+    "question_type": "passage_based",
+    "options": [
+      "More goals always lead to better overall fitness",
+      "Focused effort on fewer goals produces better outcomes than scattered effort",
+      "All goals are equally achievable with enough time",
+      "Goal setting is unnecessary for fitness success"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Marcus's entire approach demonstrates that focused effort on fewer goals produces better outcomes than scattered effort across many goals. His recommendation to make fat loss the star with others as supporting players illustrates the power of prioritization and focus.",
+    "hints": [
+      "Think about the overall lesson Marcus was teaching Jordan",
+      "Consider why he recommended prioritizing one goal over equal distribution"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7f372432-7097-4caf-bc7e-e7017c9d152d"
+  },
+  {
+    "id": "96cadf91-4ecb-4a71-b57a-7cce803c9633",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Casey's main goal, and what exercise approach were they initially using?",
+    "question_type": "passage_based",
+    "options": [
+      "Fat loss goal using only cardio",
+      "Building muscle definition using only yoga",
+      "Cardiovascular health using only weight lifting",
+      "Flexibility improvement using only powerlifting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey's main goal was building muscle and seeing definition, but they were exclusively doing yoga for three months. This mismatch between goal and exercise selection was why they weren't seeing the muscle development they wanted.",
+    "hints": [
+      "Remember what Casey wanted to achieve and what they were actually doing",
+      "Think about the disconnect between their goal and their exercise choice"
+    ],
+    "image_urls": [],
+    "passage_set_id": "de6926be-a88f-4800-aae3-5ccbc67012dc"
+  },
+  {
+    "id": "5beea780-c57e-424c-9462-da9e321b7df3",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Alex, what three components are needed for muscle growth?",
+    "question_type": "passage_based",
+    "options": [
+      "Meditation, breathing, and mindfulness",
+      "Resistance training, progressive overload, and mechanical tension",
+      "Running, jumping, and swimming",
+      "Yoga poses, crystal healing, and motivational quotes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex explained that muscle growth needs resistance training, progressive overload, and mechanical tension. These elements are specifically required for muscle development and aren't effectively provided by yoga alone, which is why Casey wasn't seeing muscle definition improvements.",
+    "hints": [
+      "Recall what Alex told Casey about the requirements for muscle building",
+      "Think about what type of training provides the stress needed for muscle growth"
+    ],
+    "image_urls": [],
+    "passage_set_id": "de6926be-a88f-4800-aae3-5ccbc67012dc"
+  },
+  {
+    "id": "184c0628-afa1-4a29-b83a-df26494c4959",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Alex suggest Casey should modify their exercise routine?",
+    "question_type": "passage_based",
+    "options": [
+      "Replace all yoga with strength training immediately",
+      "Keep 1-2 yoga sessions for flexibility, add 3-4 strength training days",
+      "Continue only yoga but do it more intensely",
+      "Switch to competitive yoga championships with mandatory deadlifting"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex recommended keeping one or two yoga sessions for flexibility benefits but adding three to four strength training days for muscle building. This approach maintains the benefits of yoga while providing the resistance training needed for Casey's muscle development goals.",
+    "hints": [
+      "Remember Alex's specific recommendation about balancing yoga and strength training",
+      "Think about how Alex suggested using different exercises for different purposes"
+    ],
+    "image_urls": [],
+    "passage_set_id": "de6926be-a88f-4800-aae3-5ccbc67012dc"
+  },
+  {
+    "id": "cfc17ef9-dfd0-460c-8325-d46390e25179",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What key principle did Alex demonstrate about exercise selection through their own example?",
+    "question_type": "passage_based",
+    "options": [
+      "One type of exercise can achieve all fitness goals",
+      "Different tools serve different purposes - match exercises to specific objectives",
+      "Yoga is superior to all other forms of exercise",
+      "You should only do exercises that are extremely difficult"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex demonstrated the principle that different tools serve different purposes by sharing that despite deadlifting 300 pounds, they couldn't touch their toes - which is why they added yoga as a supplement. This shows how specific exercises address specific needs and goals.",
+    "hints": [
+      "Think about Alex's personal example with deadlifting and flexibility",
+      "Consider the lesson about using the right tool for the right job"
+    ],
+    "image_urls": [],
+    "passage_set_id": "de6926be-a88f-4800-aae3-5ccbc67012dc"
+  },
+  {
+    "id": "4a92ed41-2906-4144-b51a-80b4f83f3633",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Emma and Taylor's programs differ, and what drove those differences?",
+    "question_type": "passage_based",
+    "options": [
+      "They had identical programs because they worked out together",
+      "Emma focused on strength+cardio for family activities; Taylor emphasized cardio+strength for blood sugar control",
+      "Emma only did cardio while Taylor only lifted weights",
+      "They both followed the same random Instagram workout plan"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's program prioritized strength training with cardio and active recovery with kids to support her family life goals. Taylor's program emphasized cardio for blood sugar management due to pre-diabetes, with strength training as support. Their different health conditions and life situations drove their different exercise selections.",
+    "hints": [
+      "Compare the specific weekly schedules Emma and Taylor described",
+      "Think about how their different health situations and life goals influenced their programs"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb467b4-bb5e-43d4-9d23-504534494d5f"
+  },
+  {
+    "id": "f69d0ff1-9724-4b4c-a35d-1f26c3c5d829",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Emma's previous approach to fitness, and why did it fail?",
+    "question_type": "passage_based",
+    "options": [
+      "She never exercised before meeting Taylor",
+      "She tried daily HIIT because an influencer said it was 'optimal' but burned out after 4 days",
+      "She only did yoga for several years",
+      "She followed Taylor's exact program from the beginning"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma previously tried doing HIIT every day because an influencer promoted it as 'optimal,' but she only lasted four days before burning out. This demonstrates the importance of sustainable programming over following intense but unsustainable trends.",
+    "hints": [
+      "Remember what Emma said about her previous attempt with HIIT",
+      "Think about why following influencer advice without considering sustainability failed"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb467b4-bb5e-43d4-9d23-504534494d5f"
+  },
+  {
+    "id": "e495f21c-f37c-4055-bc24-1dcdf4ef13b2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What concept did Emma use to describe their personalized approach to fitness programming?",
+    "question_type": "passage_based",
+    "options": [
+      "Personal training certification",
+      "Restaurant menu analogy - each having their own customized menu",
+      "Workout partner system",
+      "Social media fitness challenge"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma used the restaurant menu analogy, saying 'It's like we each have our own restaurant menu' to describe how they each had personalized fitness programs tailored to their specific goals, health conditions, and life circumstances rather than following generic one-size-fits-all approaches.",
+    "hints": [
+      "Remember Emma's comparison about having personalized programs",
+      "Think about the analogy Emma used to describe their individualized approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb467b4-bb5e-43d4-9d23-504534494d5f"
+  },
+  {
+    "id": "db17ddde-3667-4457-9825-c9b40d14b29f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What key insight did Emma share about her current program versus trying to follow optimal protocols?",
+    "question_type": "passage_based",
+    "options": [
+      "Optimal protocols are always better than personalized programs",
+      "Her menu might not be Instagram-worthy, but it's Emma-worthy and fits her life",
+      "She should have stuck with the influencer's HIIT program longer",
+      "Everyone should follow the exact same exercise routine regardless of circumstances"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's key insight was that her program 'might not be Instagram-worthy, but it's Emma-worthy. It fits my life, my goals, my schedule.' This emphasizes that effectiveness comes from sustainability and personal fit rather than following what looks impressive or optimal on social media.",
+    "hints": [
+      "Focus on Emma's comment about her program being 'Emma-worthy' rather than 'Instagram-worthy'",
+      "Think about the lesson regarding personal fit versus social media impressiveness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "3fb467b4-bb5e-43d4-9d23-504534494d5f"
+  },
+  {
+    "id": "9d90391c-1c3c-480c-8425-4fd659af419c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Progressive overload only works by adding more weight to your exercises.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Progressive overload can be achieved through six different methods: adding weight, increasing reps, adding sets, improving form, decreasing rest time, or increasing time under tension. Weight is just one option.",
+    "hints": [
+      "Think about all the ways you could make an exercise more challenging",
+      "The article mentions six different progression methods"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0e879991-c8c9-4814-8da8-54220b6ae4d0",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Your body gets stronger during workouts, not during recovery periods.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Your body doesn't get stronger during workouts - it gets stronger during recovery. Workouts create tiny tears in muscle fibers, and the magic happens when your body repairs those tears, coming back stronger than before.",
+    "hints": [
+      "Consider when muscle repair and adaptation actually occurs",
+      "Think about what happens to your muscles between workout sessions"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9e4b13df-6cf2-4956-8301-78cb894375fb",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The 2-for-2 rule means you increase weight when you can perform 2 extra reps beyond your target for 2 consecutive workouts.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 2-for-2 rule is exactly as stated: when you can perform 2 extra reps beyond your target for 2 consecutive workouts, it's time to increase the weight. This ensures consistent readiness for progression.",
+    "hints": [
+      "This is a specific rule mentioned in the article for knowing when to progress",
+      "Consider what indicates you're ready for more challenge"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c73476cf-48cc-4fad-af1d-5481e3b2671f",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Micro-loading involves using very small weight increments like 1.25 or 2.5 pound plates.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Micro-loading is exactly the strategy of using small weight increments (1.25 or 2.5 lbs) or even resistance bands for tiny progressions, especially useful for exercises that are hard to progress like overhead press.",
+    "hints": [
+      "This strategy is mentioned for exercises that are difficult to progress",
+      "Think about making the smallest possible increases"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ec0c3440-d0c3-43e0-ab14-08c54041be2b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What should you do if you're stuck at the same weight for several workouts?",
+    "question_type": "standalone",
+    "options": [
+      "Force yourself to add more weight immediately",
+      "Try adding repetitions instead of weight",
+      "Take a month off from that exercise",
+      "Switch to a completely different workout routine"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "When stuck at the same weight, you should try adding repetitions instead. This is a form of progressive overload that allows continued progress when weight increases aren't possible yet.",
+    "hints": [
+      "Consider alternative progression methods when one isn't working",
+      "Think about the passage where Alex helped Jordan with this exact problem"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "14a2025c-9be8-461f-82b5-e0bb22d54fe4",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the Goldilocks Zone principle, which scenario represents 'just right' progression?",
+    "question_type": "standalone",
+    "options": [
+      "Same weights for weeks with no challenge",
+      "Small, consistent increases with last 2-3 reps feeling challenging",
+      "Form breaks down and joint pain appears",
+      "Adding 50 pounds to your squat in one week"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 'just right' progression involves small, consistent increases where the last 2-3 reps feel challenging. This indicates appropriate difficulty without overwhelming the body.",
+    "hints": [
+      "Look for the balance between too easy and too hard",
+      "Consider what sustainable challenge looks like"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a2c6d9d0-a99c-428a-9718-2f6dcdb1de5b",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What is the recommended weight increase for upper body exercises?",
+    "question_type": "standalone",
+    "options": [
+      "10-15 pounds per session",
+      "2.5-5 pounds per progression",
+      "Whatever feels right that day",
+      "Double the previous weight used"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "For upper body exercises, the article recommends increases of 2.5-5 pounds per progression, while lower body exercises can handle 5-10 pounds. Small, sustainable increases are key.",
+    "hints": [
+      "Upper body muscles are generally smaller and require smaller progressions",
+      "Think about sustainable, long-term progress"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ace923e2-a69c-43d3-befd-eac7ea33fe06",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "When should you prioritize form improvements over adding weight?",
+    "question_type": "standalone",
+    "options": [
+      "Never - adding weight is always the priority",
+      "Only when you're a complete beginner",
+      "Always - form should come before load increases",
+      "Only when trying to show off to others"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Form should always be prioritized over adding weight. Improving form (going deeper in squats, better range of motion) counts as progression, and adding weight with poor form isn't true progress.",
+    "hints": [
+      "Consider what constitutes real progress versus just lifting heavier",
+      "Think about injury prevention and movement quality"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9f428a70-bc0b-4eea-81f3-b1f21f364a4d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In the double progression method, what sequence would you follow?",
+    "question_type": "standalone",
+    "options": [
+      "Increase weight first, then work on reps within a range",
+      "Work on reps within a range, then increase weight when you hit the top",
+      "Alternate between weight and rep increases each workout",
+      "Focus only on adding sets until you can't do anymore"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The double progression method involves first working on increasing reps within a range (like 8-12), and once you hit the top of the range for all sets, you increase the weight and drop back to the bottom of the range.",
+    "hints": [
+      "Look at the detailed example provided in the article",
+      "Think about progressing reps first, then weight"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "046de871-d814-43a2-b05d-de5950ff95cf",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination represents the essential elements needed for effective tracking?",
+    "question_type": "standalone",
+    "options": [
+      "Exercise name, weight used, and how many people watched",
+      "Exercise name, weight used, sets/reps, difficulty rating, and form notes",
+      "Only the weight used and how tired you felt afterward",
+      "Just the exercise name and whether you completed it or not"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Effective tracking should include exercise name, weight used, sets and reps completed, how it felt (1-10 difficulty), and any form notes. This comprehensive approach helps identify patterns and progress.",
+    "hints": [
+      "Consider what information would help you make future training decisions",
+      "Think about the tracking elements specifically mentioned in the article"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "94bd5213-8806-4c4d-872b-88b60a1898a5",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "When experiencing a plateau, what should be your first steps before changing your entire program?",
+    "question_type": "standalone",
+    "options": [
+      "Immediately switch to a completely different workout routine",
+      "Ensure adequate nutrition, check sleep quality, and consider a deload week",
+      "Add more exercises to your current routine",
+      "Train twice as often with the same intensity"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "When progress stalls, first ensure you're eating enough, check your sleep quality, and consider a deload week (reducing weight by 40-50%). These address the most common causes of plateaus before making major changes.",
+    "hints": [
+      "Think about the foundational factors that support progress",
+      "Consider recovery-related factors before program changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "69e17ab2-1921-4554-aa41-d186d2017861",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's main frustration when they talked to Alex about their workout progress?",
+    "question_type": "passage_based",
+    "options": [
+      "They couldn't find time to get to the gym consistently",
+      "They had been stuck at 135 pounds for three weeks",
+      "Their workout partner was lifting much heavier weights",
+      "They were tired of doing the same exercises every day"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan was frustrated because they had been stuck at 135 pounds for three weeks and couldn't add more weight to their exercise.",
+    "hints": [
+      "Look at what Jordan specifically complained about to Alex",
+      "Focus on the weight-related issue mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b14dbe53-6dc2-42a3-b6f1-026d6837642c"
+  },
+  {
+    "id": "b5ce9045-9546-41fb-9a38-d3459efca09d",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What alternative progression method did Alex suggest to Jordan?",
+    "question_type": "passage_based",
+    "options": [
+      "Switching to a completely different exercise",
+      "Taking a week off from training",
+      "Adding repetitions instead of weight",
+      "Decreasing the rest time between sets"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Alex suggested that Jordan focus on adding repetitions instead of weight when they hit a wall with weight progression.",
+    "hints": [
+      "Think about Alex's specific advice for overcoming the plateau",
+      "Consider the alternative to adding weight that was mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b14dbe53-6dc2-42a3-b6f1-026d6837642c"
+  },
+  {
+    "id": "c0ffa561-8471-4155-9709-9ce3de1bf191",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Alex's example, what progression did they make on bench press?",
+    "question_type": "passage_based",
+    "options": [
+      "They went from 155 lbs for 3 reps to 155 lbs for 6 reps",
+      "They went from 155 lbs for 5 reps to 155 lbs for 8 reps over three weeks",
+      "They increased from 155 lbs to 175 lbs in one week",
+      "They decreased weight but improved their form significantly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Alex explained that when stuck at 155 lbs on bench press, they progressed from 5 reps to 8 reps over three weeks before adding weight.",
+    "hints": [
+      "Look at Alex's personal example about being stuck at 155 lbs",
+      "Focus on the rep progression they described"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b14dbe53-6dc2-42a3-b6f1-026d6837642c"
+  },
+  {
+    "id": "e989bba8-afe6-4c14-bc2f-db699c0579be",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's goal at the end of their conversation with Alex?",
+    "question_type": "passage_based",
+    "options": [
+      "To add 10 more pounds to their lift immediately",
+      "To aim for 9 reps after getting 8 reps the previous week",
+      "To switch to a different exercise entirely",
+      "To take a break from that particular movement"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan decided to follow Alex's advice and aim for 9 reps, since they had gotten 8 reps the previous week, focusing on rep progression rather than weight.",
+    "hints": [
+      "Look at Jordan's final decision at the end of the passage",
+      "Consider the specific rep target they set"
+    ],
+    "image_urls": [],
+    "passage_set_id": "b14dbe53-6dc2-42a3-b6f1-026d6837642c"
+  },
+  {
+    "id": "f3c5b37e-e0cc-49be-886c-bbd6cbe812c2",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What concern did Sarah express about moving from 5-pound to 8-pound dumbbells?",
+    "question_type": "passage_based",
+    "options": [
+      "She was worried about getting too bulky",
+      "She thought it was a 60% increase and seemed like too much",
+      "She was afraid other people would judge her",
+      "She didn't think she was strong enough yet"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah calculated that moving from 5 to 8 pounds was a 60% increase and expressed concern that this seemed like too much of a jump.",
+    "hints": [
+      "Look at Sarah's mathematical concern about the weight increase",
+      "Focus on the percentage she calculated"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4b48fe55-dadc-4e2d-9660-16b89814bb79"
+  },
+  {
+    "id": "d835f844-5bd6-4d0f-ad76-04132aad252c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What solution did Emma suggest to help Sarah with her progression?",
+    "question_type": "passage_based",
+    "options": [
+      "Skip the gym and workout at home instead",
+      "Use 7.5-pound dumbbells and 1.25-pound add-on weights",
+      "Stay with the 5-pound weights for another month",
+      "Try resistance bands instead of dumbbells"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma showed Sarah the 7.5-pound dumbbells and the 1.25-pound add-on weights as a way to make smaller, more gradual progressions.",
+    "hints": [
+      "Consider the specific equipment Emma pointed out",
+      "Think about the micro-loading solution she offered"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4b48fe55-dadc-4e2d-9660-16b89814bb79"
+  },
+  {
+    "id": "a8a79293-9095-4c2a-ab13-9f437623ee2e",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to Emma, why don't most trainers tell beginners about gradual progression?",
+    "question_type": "passage_based",
+    "options": [
+      "Because they don't know about micro-loading techniques",
+      "Because dramatic transformations sell better than sustainable progress",
+      "Because gradual progression doesn't actually work",
+      "Because beginners can't handle small weight increments"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma explained that dramatic transformations sell better than sustainable progress, which is why trainers often don't emphasize gradual progression methods.",
+    "hints": [
+      "Look at Emma's explanation about marketing vs. reality",
+      "Consider what sells vs. what actually works"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4b48fe55-dadc-4e2d-9660-16b89814bb79"
+  },
+  {
+    "id": "edc9ec5d-f296-4bed-abed-5ae5bb9be4d6",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What realization did Sarah have about the micro-loading approach?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized she would never get strong using small weights",
+      "She found the 7.5-pound weights challenging but manageable",
+      "She decided to stick with her original plan",
+      "She realized she needed a personal trainer to help her"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "When Sarah tried the 7.5-pound weights, she found they felt challenging but manageable, which was the perfect level for progression.",
+    "hints": [
+      "Focus on Sarah's reaction when she actually tried the intermediate weight",
+      "Consider what she said about how the weights felt"
+    ],
+    "image_urls": [],
+    "passage_set_id": "4b48fe55-dadc-4e2d-9660-16b89814bb79"
+  },
+  {
+    "id": "19542432-c86c-426b-9462-8ab39542fd36",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How much weight was Mike adding to his bench press each week?",
+    "question_type": "passage_based",
+    "options": [
+      "5 pounds per week",
+      "10 pounds per week",
+      "20 pounds per week",
+      "25 pounds per week"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike was adding 20 pounds every week, which was far too aggressive and led to form breakdown and potential injury.",
+    "hints": [
+      "Look at the specific amount mentioned in Mike's aggressive progression",
+      "Consider why Casey was concerned about Mike's approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "35339cac-2816-47ea-a3e7-538705ea7c64"
+  },
+  {
+    "id": "71668d4f-8b6a-45b7-b381-4d6928ef558c",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Mike's justification for his aggressive progression approach?",
+    "question_type": "passage_based",
+    "options": [
+      "His trainer told him to add weight quickly",
+      "He wanted to impress other gym members",
+      "He used to bench 225 pounds in college",
+      "He read that beginners can progress rapidly"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike justified his aggressive approach by saying he used to bench 225 pounds, believing he could quickly return to his former strength levels.",
+    "hints": [
+      "Look at Mike's explanation for why he thought he could progress so quickly",
+      "Consider his past experience that influenced his expectations"
+    ],
+    "image_urls": [],
+    "passage_set_id": "35339cac-2816-47ea-a3e7-538705ea7c64"
+  },
+  {
+    "id": "1df9833c-c173-4c32-bf03-76fd5704fcc1",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What progression rate did Casey suggest for Mike's situation?",
+    "question_type": "passage_based",
+    "options": [
+      "Add 10 pounds every week",
+      "Add 5 pounds every other week",
+      "Add 2.5 pounds every month",
+      "Focus only on reps, not weight"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey recommended that Mike drop 30 pounds, focus on perfect form, and add 5 pounds every other week for sustainable, injury-free progress.",
+    "hints": [
+      "Look at the specific progression rate Casey recommended",
+      "Consider the timeframe and amount he suggested"
+    ],
+    "image_urls": [],
+    "passage_set_id": "35339cac-2816-47ea-a3e7-538705ea7c64"
+  },
+  {
+    "id": "a5df44d7-bba2-4c87-a197-7d7827011f8a",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What physical warning sign made Mike reconsider his approach?",
+    "question_type": "passage_based",
+    "options": [
+      "His shoulder was throbbing with pain",
+      "He was getting headaches after workouts",
+      "His knees were bothering him",
+      "He was feeling dizzy during exercises"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Mike's shoulder was throbbing, which served as a physical warning sign that his aggressive progression was causing harm and made him reconsider his approach.",
+    "hints": [
+      "Look for the specific body part that was giving Mike trouble",
+      "Consider what physical symptom finally convinced him to change"
+    ],
+    "image_urls": [],
+    "passage_set_id": "35339cac-2816-47ea-a3e7-538705ea7c64"
+  }
+]

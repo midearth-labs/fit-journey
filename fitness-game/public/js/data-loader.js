@@ -4,7 +4,7 @@
 class DataLoader {
     constructor() {
         this.cache = new Map();
-        this.baseUrl = '/content';
+        this.baseUrl = '../content';
     }
 
     /**

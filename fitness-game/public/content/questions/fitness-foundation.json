@@ -1,0 +1,3004 @@
+[
+  {
+    "id": "c25efa92-ae7f-4cf2-9c34-f09698dc899e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Real fitness is primarily about achieving perfect Instagram-worthy transformations in 30 days or less.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Real fitness is about sustainable movement that fits your life, gradual improvements over months and years, and supporting your overall health - not quick dramatic transformations for social media.",
+    "hints": [
+      "Think about what the article says about Instagram vs. reality",
+      "Consider the timeline mentioned for meaningful fitness changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "86edf13e-935e-4582-b251-11056437495e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "You need to get fit before you can start exercising.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Starting IS how you get fit. Every expert was once a beginner, and gyms are full of people at every fitness level who are focused on their own workouts.",
+    "hints": [
+      "This is one of the common myths discussed in the article",
+      "Think about how people actually become fit in the first place"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "77735078-c75a-470a-b946-d1cdb9c281e4",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to the article, meaningful fitness changes typically become visible after about 6-8 weeks of consistent effort.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article states that meaningful changes take 6-8 weeks to see and months to solidify, though you'll feel better after just one week of consistent movement.",
+    "hints": [
+      "Look for the specific timeline mentioned in the myths section",
+      "The article distinguishes between feeling better and seeing changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8eef50bc-572d-41ee-a30e-6cd5c691d953",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "The minimum you need to begin a fitness journey includes comfortable clothes, expensive supplements, and special equipment.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "You only need comfortable clothes and shoes to start. Everything else, including supplements and special equipment, is optional. Your body weight is enough equipment to begin.",
+    "hints": [
+      "Check what the article lists as actually needed vs. optional",
+      "Think about the myth-busting section regarding equipment"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "8b68f3ae-5eb9-4cd9-aa85-329dac2f1946",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What are the three pillars of real fitness according to the article?",
+    "question_type": "standalone",
+    "options": [
+      "Movement that fits your life, eating to support your body, and recovery and rest",
+      "Perfect Instagram poses, expensive gym memberships, and complicated supplements",
+      "5 AM workouts, extreme diets, and never taking rest days",
+      "Lifting the heaviest weights, running marathons, and competing with others"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The three pillars are movement that fits your life, eating to support your body, and recovery and rest. These focus on sustainability and health rather than extremes.",
+    "hints": [
+      "Look for the section specifically titled about pillars",
+      "The correct answer emphasizes practical, sustainable approaches"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "6a483bd8-73b2-45da-816f-087812878d1d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to the article, real fitness success is best measured by:",
+    "question_type": "standalone",
+    "options": [
+      "Before and after photos showing dramatic physical changes",
+      "Walking up stairs without getting winded, carrying groceries more easily, and sleeping better",
+      "Getting the most likes on your workout posts",
+      "Doing a backflip while juggling protein shakes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Real fitness success is measured in functional improvements like easier daily activities, better energy, improved mood, and overall quality of life - not just appearance changes.",
+    "hints": [
+      "Look for the section about what success actually looks like",
+      "The humorous option should be obvious to eliminate"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "7cffd009-1164-43a0-bc88-7e17eea1bb62",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What does the article suggest is the 'best exercise'?",
+    "question_type": "standalone",
+    "options": [
+      "The most intense and challenging workout possible",
+      "The one you'll actually do",
+      "Whatever fitness influencers are posting about",
+      "Burpees while riding a unicycle (obviously the peak of fitness)"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article emphasizes that 'The best exercise? The one you'll actually do.' This highlights the importance of sustainability and consistency over intensity.",
+    "hints": [
+      "This is a direct quote from the article",
+      "Think about the emphasis on sustainability vs. intensity"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b48cdb03-923d-4b6c-be1f-e170436fa412",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Which statement best describes the article's view on rest days?",
+    "question_type": "standalone",
+    "options": [
+      "Rest days are for the weak and should be avoided",
+      "They're not lazy days, they're growth days where muscles actually grow",
+      "Rest days are only necessary if you're injured",
+      "They're perfect for practicing your victory dance from completing workouts"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explains that rest days are when muscles grow (during sleep) and are essential for recovery, not signs of laziness or weakness.",
+    "hints": [
+      "Look at the recovery section within the three pillars",
+      "Think about when muscle growth actually occurs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "61e3ace7-62b9-4dcd-bae5-3c82012f433e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What are the essential requirements to start a fitness journey, according to your real starting point?",
+    "question_type": "standalone",
+    "options": [
+      "10 minutes a day, any movement, consistency over intensity",
+      "2 hours daily, perfect form, expensive equipment, supplements",
+      "Professional trainer, gym membership, meal prep containers",
+      "Matching workout outfit, selfie stick, and ability to do the worm"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article emphasizes starting with just 10 minutes a day of any movement, focusing on consistency over intensity, with self-compassion and patience.",
+    "hints": [
+      "Look for the 'Your Real Starting Point' section",
+      "Focus on the minimum viable approach mentioned"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "31049527-ed89-4f34-a887-4244d88e1a5a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "According to the article, what should you do regarding social media fitness content?",
+    "question_type": "standalone",
+    "options": [
+      "Follow every fitness influencer for maximum motivation",
+      "Unfollow accounts that make you feel inadequate",
+      "Try to recreate every workout you see posted",
+      "Start a fitness Instagram account immediately to document your journey with hourly updates"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically grants permission to 'unfollow accounts that make you feel inadequate' as part of creating a healthy relationship with fitness.",
+    "hints": [
+      "Look in the 'Your Permission Slip' section",
+      "Think about creating a positive environment for your journey"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d8e6bca1-bc79-4831-b88b-f127ea7863a9",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "The article presents the fitness journey progression as: Start where you are → Use what you have → Do what you can. What does this sequence emphasize?",
+    "question_type": "standalone",
+    "options": [
+      "You must wait for perfect conditions before starting, then acquire all equipment, then begin intensive training",
+      "Begin with your current situation and resources, then gradually build from there without requiring perfection",
+      "Start by comparing yourself to others, then buy what they have, then copy their routines exactly",
+      "First master the art of fitness selfie angles, then purchase color-coordinated equipment, then become a social media influencer"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "This sequence emphasizes beginning with your current reality and resources rather than waiting for perfect conditions, embodying the article's theme of sustainable, accessible fitness.",
+    "hints": [
+      "This quote appears near the end of the article",
+      "Think about the overall message of meeting fitness where you are"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "96f3a934-f05f-414e-885c-f5e4dd62d28d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Sarah's main concern when she first arrived at the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "She was worried about not having the right workout clothes",
+      "She felt intimidated by the unfamiliar equipment and people who seemed to know what they were doing",
+      "She was concerned about the monthly membership cost",
+      "She was afraid she might accidentally break the treadmill with her enthusiasm"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah stood outside trembling, intimidated by the equipment she didn't recognize and people who seemed to know exactly what they were doing - a common beginner experience.",
+    "hints": [
+      "Focus on what made Sarah hesitate at the door",
+      "Consider the classic beginner anxiety described"
+    ],
+    "image_urls": [],
+    "passage_set_id": "92d90c83-5ebb-400b-8cbc-88f0dae1b647"
+  },
+  {
+    "id": "f71bce41-9c94-432a-a1d1-d9fa6a2bcf15",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "How did the woman who helped Sarah handle her own first week at the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "She immediately started with advanced weight training",
+      "She spent the first week just walking on the treadmill and figuring out where everything was",
+      "She hired a personal trainer to show her around",
+      "She practiced her gym selfie poses until she felt confident"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The woman told Sarah she spent her first week just walking on the treadmill and getting familiar with the gym layout, showing that starting simple is normal and effective.",
+    "hints": [
+      "Look at what the helpful woman did during her first week",
+      "Notice the simple, non-intimidating approach she took"
+    ],
+    "image_urls": [],
+    "passage_set_id": "92d90c83-5ebb-400b-8cbc-88f0dae1b647"
+  },
+  {
+    "id": "4806733d-399b-47c1-813e-ff6bcec5b2da",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What advice did the woman give Sarah about other gym members?",
+    "question_type": "passage_based",
+    "options": [
+      "Everyone would be watching and judging her form",
+      "Nobody cared because they were all too busy with their own workouts",
+      "She needed to prove herself by lifting heavy weights immediately",
+      "The gym members were secretly hoping she would join their synchronized workout dance troupe"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The woman reassured Sarah that nobody cared about her being new because they were all focused on their own workouts, addressing a common gym anxiety.",
+    "hints": [
+      "Consider what the woman said about other gym members' attention",
+      "Think about what people are actually focused on at the gym"
+    ],
+    "image_urls": [],
+    "passage_set_id": "92d90c83-5ebb-400b-8cbc-88f0dae1b647"
+  },
+  {
+    "id": "86d303f5-b6a2-401a-9bc5-bb593e9f77f9",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "How did Sarah's perspective change after talking with the woman?",
+    "question_type": "passage_based",
+    "options": [
+      "She decided to come back the next day with a detailed workout plan",
+      "She felt her shoulders relax and gained some confidence to start with what she knew",
+      "She realized she needed to buy more expensive workout gear first",
+      "She immediately signed up for the gym's advanced CrossFit program"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah felt her shoulders relax and gained confidence, illustrating how a simple, encouraging perspective can reduce beginner anxiety and provide a starting point.",
+    "hints": [
+      "Notice Sarah's physical reaction to the reassurance",
+      "Focus on the emotional shift that occurred"
+    ],
+    "image_urls": [],
+    "passage_set_id": "92d90c83-5ebb-400b-8cbc-88f0dae1b647"
+  },
+  {
+    "id": "1cf0e9da-daa3-483b-b832-067e377bf541",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Mike trying to prove on his first day back at the gym?",
+    "question_type": "passage_based",
+    "options": [
+      "That he could start slowly and build back up safely",
+      "That he could still lift the same weight he did five years ago in college",
+      "That he had learned proper form during his time away",
+      "That he had perfected his gym playlist during his hiatus"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike loaded 135 pounds - his old warm-up weight from college - trying to prove he could still perform at his previous level despite five years away from training.",
+    "hints": [
+      "Look at what weight Mike chose and why",
+      "Consider what he was trying to recreate from his past"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a71f854a-50ce-4429-9aeb-9a1e69d01cd1"
+  },
+  {
+    "id": "792f35e3-ece8-4218-a519-9f0a30074ff8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What warning did Mike's workout partner give him?",
+    "question_type": "passage_based",
+    "options": [
+      "That the gym was about to close",
+      "That ego lifting will get you hurt, and his body doesn't remember his old strength",
+      "That he was using the wrong grip on the bar",
+      "That his form was so perfect it was making everyone jealous"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The partner warned that 'ego lifting will get you hurt' and reminded Mike that his body doesn't remember his strength from five years ago, emphasizing the danger of rushing back.",
+    "hints": [
+      "Focus on the safety warning about motivation vs. current ability",
+      "Consider what the partner said about Mike's current physical state"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a71f854a-50ce-4429-9aeb-9a1e69d01cd1"
+  },
+  {
+    "id": "982c61be-58c8-48b7-8bc2-ded06cf0fad9",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was the result of Mike following the tortoise approach?",
+    "question_type": "passage_based",
+    "options": [
+      "He got injured trying to lift too much too soon",
+      "He progressed faster than when he tried to force it, building back up properly with good form",
+      "He became discouraged and quit after two weeks",
+      "He discovered he had a hidden talent for interpretive weightlifting dance"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "By working with light weight and perfect form, Mike progressed faster than he ever did trying to force it, demonstrating the effectiveness of the gradual approach.",
+    "hints": [
+      "Look at the outcome after Mike changed his approach",
+      "Consider how the tortoise method actually worked for him"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a71f854a-50ce-4429-9aeb-9a1e69d01cd1"
+  },
+  {
+    "id": "de465002-04de-4eff-98aa-7bbfa14dac14",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What lesson does Mike's experience teach about returning to fitness after time off?",
+    "question_type": "passage_based",
+    "options": [
+      "You should immediately test your old limits to see what you've lost",
+      "Muscle memory will instantly restore your previous abilities",
+      "Starting below your previous level and focusing on form prevents injury and accelerates progress",
+      "The best approach is to impress everyone with your comeback story on day one"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Mike's story illustrates that starting conservatively with proper form, despite wounded pride, actually leads to faster and safer progress than trying to immediately return to previous performance levels.",
+    "hints": [
+      "Consider the contrast between Mike's initial approach and what worked",
+      "Think about the broader lesson for comeback situations"
+    ],
+    "image_urls": [],
+    "passage_set_id": "a71f854a-50ce-4429-9aeb-9a1e69d01cd1"
+  },
+  {
+    "id": "6254a746-899a-45f3-bf14-429287c2f5ce",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What was Emma's biggest obstacle to starting a fitness routine?",
+    "question_type": "passage_based",
+    "options": [
+      "Not knowing which exercises to do",
+      "Finding time in her packed schedule with work, school pickup, and dinner prep",
+      "Lack of motivation to exercise",
+      "Her inability to find matching workout socks"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's schedule was packed with work meeting at 9, school pickup at 3, and dinner prep at 6, making her wonder where a workout could possibly fit.",
+    "hints": [
+      "Look at Emma's specific schedule conflicts mentioned",
+      "Consider the time management challenge she faced"
+    ],
+    "image_urls": [],
+    "passage_set_id": "895fba44-3c97-4813-ad2b-119365d66efd"
+  },
+  {
+    "id": "258499fa-6956-45bc-8ea2-b5a36224f69a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "What solution did Emma's friend suggest?",
+    "question_type": "passage_based",
+    "options": [
+      "Wake up at 4 AM for a two-hour gym session",
+      "Do 10 minutes in the morning before the kids wake up, just bodyweight exercises in pajamas",
+      "Hire a babysitter to watch the kids during workouts",
+      "Install a home gym in the garage and exercise while the kids nap"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's friend suggested doing 10 minutes of bodyweight exercises in pajamas before the kids wake up - a simple, time-efficient solution that doesn't require special clothes or equipment.",
+    "hints": [
+      "Focus on the specific solution the friend was already doing",
+      "Notice how practical and minimal the approach was"
+    ],
+    "image_urls": [],
+    "passage_set_id": "895fba44-3c97-4813-ad2b-119365d66efd"
+  },
+  {
+    "id": "ee503731-7d62-4a7c-9e30-17e7fe3bd51d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "Why was the friend's approach successful?",
+    "question_type": "passage_based",
+    "options": [
+      "It was the most intense workout possible in a short time",
+      "She had been doing it consistently for six months and felt stronger, slept better, and never missed a day because it was only 10 minutes",
+      "It impressed everyone on social media",
+      "It allowed her to perfect her morning dance routine while getting fit"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The friend's success came from consistency over six months, resulting in feeling stronger and sleeping better, with perfect attendance because the 10-minute duration was manageable.",
+    "hints": [
+      "Look at the specific benefits the friend mentioned",
+      "Consider why she never missed a day"
+    ],
+    "image_urls": [],
+    "passage_set_id": "895fba44-3c97-4813-ad2b-119365d66efd"
+  },
+  {
+    "id": "de1751f0-ce46-4549-a63b-b36bd058c80c",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "question_text": "How did Emma's perspective change after hearing about the 10-minute solution?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized she needed to find more time for longer workouts",
+      "She compared the unused hour-long gym membership to the manageable 10-minute option and saw it was doable",
+      "She decided to stick with her current routine of not exercising",
+      "She immediately signed up for a marathon training program"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma reflected on her unused gym membership from the previous year where an hour felt impossible, but realized that 10 minutes was actually achievable - shifting her perspective on what fitness required.",
+    "hints": [
+      "Consider how Emma compared her past experience to this new option",
+      "Think about the contrast between an hour and 10 minutes"
+    ],
+    "image_urls": [],
+    "passage_set_id": "895fba44-3c97-4813-ad2b-119365d66efd"
+  },
+  {
+    "id": "2787c007-299e-4b30-9a45-f5eb0de89b4c",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The PAR-Q questionnaire is designed to screen for exercise readiness before starting physical activity.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The Physical Activity Readiness Questionnaire (PAR-Q) is specifically designed as a safety screening tool to identify individuals who should consult with a healthcare provider before beginning an exercise program.",
+    "hints": [
+      "PAR-Q stands for Physical Activity Readiness Questionnaire",
+      "It's a widely used safety screening tool"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c5f9d6e2-3f4b-5c7d-8e9f-0a1b2c3d4e5f",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Sharp, stabbing pain during exercise is a normal sign of muscle growth.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sharp, stabbing pain is a red flag that requires stopping immediately. Normal exercise discomfort includes muscle burning and mild soreness, but sharp pain indicates potential injury.",
+    "hints": [
+      "Think about the difference between muscle burn and joint pain",
+      "The article distinguishes between normal discomfort and warning signs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c2c3b452-4c60-44e9-831d-0a1d14d76f5a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Exercise with chronic sleep deprivation increases injury risk by approximately 70%.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically states that exercising with chronic sleep deprivation increases injury risk by 70%, along with reducing muscle recovery and impairing coordination.",
+    "hints": [
+      "The article mentions a specific percentage for injury risk",
+      "Sleep affects coordination and recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1b8a3117-fe2b-4d00-bd49-2741e745a0f5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "People over 45 (men) or 55 (women) should always consult a doctor before starting exercise for the first time.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically lists being over 45 (men) or 55 (women) and starting exercise for the first time as requiring medical consultation due to increased cardiovascular risks at these ages.",
+    "hints": [
+      "Age guidelines are specifically mentioned in the medical consultation section",
+      "Different ages are given for men and women"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1b07228e-4776-4ba2-b43f-f84442fd0eee",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Sarah is 32 and completely sedentary but has no health conditions. What should be her first step before starting exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Start with high-intensity interval training immediately",
+      "Complete the PAR-Q questionnaire and begin with gentle movement",
+      "Get expensive personal training sessions",
+      "Train for a marathon to get motivated"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "For a healthy adult under the age thresholds with no health conditions, completing the PAR-Q and starting with gentle movement is appropriate. The other options are either unnecessary (expensive training), dangerous (HIIT for beginners), or unrealistic (marathon training).",
+    "hints": [
+      "Consider her age and health status",
+      "Think about appropriate progression for beginners"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1421b613-269c-4559-b1b3-2d5b9691394d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "During exercise, you experience chest pain and severe shortness of breath. What should you do?",
+    "question_type": "standalone",
+    "options": [
+      "Push through it to build mental toughness",
+      "Stop immediately and seek medical attention",
+      "Slow down slightly but continue exercising",
+      "Post about it on social media for advice"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Chest pain and severe shortness of breath are serious red flags that require stopping immediately and potentially seeking emergency medical care. These are not normal exercise responses.",
+    "hints": [
+      "These symptoms are listed as red flags in the article",
+      "Think about cardiovascular safety"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "521219cd-0ff7-40e0-9095-90da26a536fc",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination represents the safest approach for someone with high blood pressure who wants to start exercising?",
+    "question_type": "standalone",
+    "options": [
+      "Skip the doctor, start immediately with CrossFit",
+      "Get medical clearance, start slowly, monitor symptoms",
+      "Only do extreme sports for excitement",
+      "Exercise only at 3 AM when blood pressure is naturally lower"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "High blood pressure is specifically listed as requiring medical consultation. The safe approach involves getting clearance, starting gradually, and monitoring for any concerning symptoms.",
+    "hints": [
+      "High blood pressure is mentioned as requiring medical consultation",
+      "Think about a gradual, monitored approach"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b2a9551d-fcb6-4121-a616-03fc48a0ca5f",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "A proper pre-exercise safety routine should include checking hydration status by:",
+    "question_type": "standalone",
+    "options": [
+      "Weighing yourself before and after",
+      "Counting how many glasses of water you drank",
+      "Checking your urine color",
+      "Asking a fitness influencer on Instagram"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article specifically mentions checking urine color as a hydration assessment method: pale yellow indicates good hydration, while dark yellow or amber indicates dehydration.",
+    "hints": [
+      "The article gives specific color indicators for hydration",
+      "This is a simple visual check mentioned in the safety protocol"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c24dff92-e8ec-44f3-9e1b-8f7c05cc18bd",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The article recommends starting slower than you think necessary because:",
+    "question_type": "standalone",
+    "options": [
+      "You can always add intensity but can't always undo an injury",
+      "Slow workouts burn more calories",
+      "Fast workouts are illegal in most states",
+      "Instagram likes slower workout videos better"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This exact phrase appears in the article: 'You can always add intensity. You can't always undo an injury.' It emphasizes the wisdom of conservative progression.",
+    "hints": [
+      "This is a direct quote from the safety section",
+      "Think about risk management and progression"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ba54c338-a160-4a96-8199-4b0f819e0062",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the safety progression timeline, what should be the focus during weeks 1-2 of starting exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Maximum intensity to see quick results",
+      "Just show up and move gently",
+      "Compete with other gym members",
+      "Master advanced Olympic lifting techniques"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The safety progression timeline specifically states 'Week 1-2: Just show up and move gently' emphasizing habit formation over intensity.",
+    "hints": [
+      "Look at the specific timeline mentioned in the article",
+      "The focus is on habit formation first"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f189055d-8f8f-4587-b220-4cdebf319940",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which sequence correctly represents the safe 8-week progression outlined in the article?",
+    "question_type": "standalone",
+    "options": [
+      "Week 1-2: Show up gently → Week 3-4: Add structure → Week 5-6: Build habits → Week 7-8: Expand horizons",
+      "Week 1-2: Maximum effort → Week 3-4: Compete → Week 5-6: Burnout → Week 7-8: Quit",
+      "Week 1-2: Buy equipment → Week 3-4: Join CrossFit → Week 5-6: Train for Olympics → Week 7-8: Become influencer",
+      "Week 1-2: Read about exercise → Week 3-4: Watch videos → Week 5-6: Think about starting → Week 7-8: Maybe tomorrow"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This sequence exactly matches the 8-week progression outlined in the article, emphasizing gradual habit formation and sustainable development.",
+    "hints": [
+      "This progression is specifically outlined in the article",
+      "Look for the logical sequence of habit development"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c0fa0e84-72e1-47f2-a6e8-2a14d59964eb",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In Taylor's scenario with the doctor, what was the key message about exercising with pre-diabetes and high blood pressure?",
+    "question_type": "passage_based",
+    "options": [
+      "It's too dangerous and should never be attempted",
+      "Exercise is beneficial but requires medical supervision and smart progression",
+      "Only CrossFit is safe for people with these conditions",
+      "Pre-diabetes automatically disqualifies you from all physical activity"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez told Taylor that exercise is 'one of the best things you can do' for these conditions but emphasized the need to 'be smart about it' with proper medical oversight and gradual progression.",
+    "hints": [
+      "The doctor was supportive of exercise",
+      "The emphasis was on being smart and supervised"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d8cfcceb-014f-401d-a386-d4dd96e3c823"
+  },
+  {
+    "id": "dd3a219b-a4cd-4fd6-95ef-3a9c04bcd5b6",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What specific accommodations did Dr. Martinez mention for Taylor's conditions?",
+    "question_type": "passage_based",
+    "options": [
+      "No accommodations needed, just exercise normally",
+      "Medication timing adjustments and blood sugar monitoring",
+      "Only exercise on weekends",
+      "Avoid all forms of physical activity"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez specifically mentioned 'I'll adjust your medication timing, and you'll need to check your blood sugar before and after exercise initially.'",
+    "hints": [
+      "The doctor mentioned specific medical management steps",
+      "Think about managing diabetes and medication timing"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d8cfcceb-014f-401d-a386-d4dd96e3c823"
+  },
+  {
+    "id": "2c187bd7-1510-4866-b663-6870d16d061a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Taylor initially feel about starting exercise with health conditions?",
+    "question_type": "passage_based",
+    "options": [
+      "Completely confident and ready to start",
+      "Embarrassed and uncertain about safety",
+      "Angry about having to see a doctor",
+      "Excited about joining a competitive team"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states Taylor 'sat in the doctor's office, slightly embarrassed' and asked hesitantly if exercise was 'safe' with pre-diabetes and high blood pressure.",
+    "hints": [
+      "Notice Taylor's emotional state at the beginning",
+      "Taylor was uncertain about safety"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d8cfcceb-014f-401d-a386-d4dd96e3c823"
+  },
+  {
+    "id": "ef1f3748-5263-493b-b305-2a9d9acdbea9",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the key analogy Dr. Martinez used to explain exercise for Taylor?",
+    "question_type": "passage_based",
+    "options": [
+      "Exercise is like a race you need to win",
+      "Exercise is medicine that needs the right dose",
+      "Exercise is like eating - you just do it",
+      "Exercise is warfare against your body"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Dr. Martinez said 'Exercise is medicine, but like any medicine, we need the right dose,' emphasizing the importance of proper dosing and medical oversight.",
+    "hints": [
+      "The doctor used a medical comparison",
+      "Think about dosage and prescribing"
+    ],
+    "image_urls": [],
+    "passage_set_id": "d8cfcceb-014f-401d-a386-d4dd96e3c823"
+  },
+  {
+    "id": "e07d41d0-f551-47b9-9e9c-9e604752c621",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Casey's initial approach to handling knee pain during exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Immediately stopped and sought help",
+      "Tried to push through the pain thinking it would make them tougher",
+      "Modified the exercise to reduce stress",
+      "Only exercised when pain-free"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states Casey thought 'Just push through it,' remembering 'all those motivational posts about not quitting' despite the sharp pain being different from muscle burn.",
+    "hints": [
+      "Casey was influenced by motivational messaging",
+      "The initial reaction was to continue despite pain"
+    ],
+    "image_urls": [],
+    "passage_set_id": "cb76f77c-06d2-4c7a-965f-a613a360b2e4"
+  },
+  {
+    "id": "5993c4bf-9c38-461f-b90e-f3a601b8b35d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the physical therapist's key lesson about pain during exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "All pain should be completely ignored",
+      "Sharp pain is your body's stop sign, not a yield sign",
+      "Pain always means you're getting stronger",
+      "Only extreme pain matters, everything else is normal"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The physical therapist specifically said 'Sharp pain is your body's stop sign, not a yield sign,' emphasizing the importance of distinguishing between types of pain and responding appropriately.",
+    "hints": [
+      "The PT used a traffic sign analogy",
+      "The distinction was about types of responses to pain signals"
+    ],
+    "image_urls": [],
+    "passage_set_id": "cb76f77c-06d2-4c7a-965f-a613a360b2e4"
+  },
+  {
+    "id": "e567e67d-49ac-4c00-8a79-405c8d775c01",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the consequence of Casey's decision to push through sharp knee pain?",
+    "question_type": "passage_based",
+    "options": [
+      "Became stronger and more resilient",
+      "Won a fitness competition",
+      "Two weeks unable to exercise due to injury",
+      "Got featured on social media for toughness"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The passage states 'Two weeks later, still unable to exercise due to the injury' showing the direct consequence of ignoring the body's warning signals.",
+    "hints": [
+      "The story shows the negative outcome of ignoring pain",
+      "Think about the time lost due to injury"
+    ],
+    "image_urls": [],
+    "passage_set_id": "cb76f77c-06d2-4c7a-965f-a613a360b2e4"
+  },
+  {
+    "id": "5d53a41e-19a5-4021-ba20-07a6a95066bf",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does Casey's story illustrate about the relationship between toughness and injury prevention?",
+    "question_type": "passage_based",
+    "options": [
+      "True toughness means pushing through any discomfort",
+      "Ignoring pain signals doesn't make you tough, it makes you injured",
+      "Only weak people get injured during exercise",
+      "Pain is always a sign of progress"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The physical therapist's words directly state 'Ignoring it doesn't make you tough—it makes you injured,' which is the central lesson of Casey's experience.",
+    "hints": [
+      "The PT's quote provides the key lesson",
+      "This challenges common misconceptions about toughness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "cb76f77c-06d2-4c7a-965f-a613a360b2e4"
+  },
+  {
+    "id": "690a3954-fe69-48b9-9c78-10bdb3a15d81",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's approach to exercise preparation?",
+    "question_type": "passage_based",
+    "options": [
+      "Just started exercising immediately without any research",
+      "Spent three weeks researching with a detailed 47-row spreadsheet",
+      "Asked friends for advice and followed it exactly",
+      "Hired a personal trainer right away"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage describes Jordan spending 'three weeks researching' with topics like 'Heart rate zones, VO2 max, optimal training windows' and 'the spreadsheet had 47 rows of safety considerations.'",
+    "hints": [
+      "Jordan was very thorough in research",
+      "There's a specific mention of spreadsheet rows"
+    ],
+    "image_urls": [],
+    "passage_set_id": "57f94164-a0fc-412e-8889-085910f2cff7"
+  },
+  {
+    "id": "8c7f5ca0-b292-480b-ad21-93891e003817",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the friend's key advice to Jordan about starting exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "Research more thoroughly before starting",
+      "You can't optimize what you haven't started",
+      "Buy better equipment first",
+      "Wait until you have perfect conditions"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The friend said 'You can't optimize what you haven't started' and advised Jordan to 'start with a 10-minute walk. Today. You can optimize later.'",
+    "hints": [
+      "The friend emphasized action over planning",
+      "This quote directly addresses analysis paralysis"
+    ],
+    "image_urls": [],
+    "passage_set_id": "57f94164-a0fc-412e-8889-085910f2cff7"
+  },
+  {
+    "id": "4448a8f4-691b-401b-b944-15a1040f074e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does Jordan's story demonstrate about the balance between preparation and action?",
+    "question_type": "passage_based",
+    "options": [
+      "Perfect preparation is always necessary before starting",
+      "Sometimes the safest thing is just beginning with basics",
+      "Research should always take precedence over action",
+      "Complex spreadsheets are essential for exercise safety"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The story concludes with 'Sometimes the safest thing is just beginning' as Jordan finally starts with a simple walk, illustrating that over-preparation can become a barrier to starting.",
+    "hints": [
+      "The story's conclusion provides the key message",
+      "Jordan finally took action with something simple"
+    ],
+    "image_urls": [],
+    "passage_set_id": "57f94164-a0fc-412e-8889-085910f2cff7"
+  },
+  {
+    "id": "e547275b-d894-4745-9344-845f0a754c02",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Jordan's approach change after the friend's intervention?",
+    "question_type": "passage_based",
+    "options": [
+      "Continued researching for another week",
+      "Hired a professional to create a complex plan",
+      "Closed the laptop, put on sneakers, and went for a walk",
+      "Decided to wait for better weather conditions"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The passage ends with 'Jordan closed the laptop, put on sneakers, and walked out the door' showing the immediate shift from analysis to action.",
+    "hints": [
+      "Jordan took immediate action after the friend's advice",
+      "The ending shows a clear behavioral change"
+    ],
+    "image_urls": [],
+    "passage_set_id": "57f94164-a0fc-412e-8889-085910f2cff7"
+  },
+  {
+    "id": "6867f3ad-bcbd-4ffb-812d-972d909058e1",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: You need a gym membership and special equipment to start an effective fitness routine.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. Fitness can happen anywhere using just your bodyweight. The article emphasizes that you only need your body, a few minutes, and the decision to start. Everything else is optional.",
+    "hints": [
+      "Think about the article's main message about meeting you 'where you are'",
+      "Consider what the article lists as actually needed versus what the fitness industry wants you to believe"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "031f2cb5-2389-4e4c-b378-249eba3eb697",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: Housework and daily activities can count as meaningful exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True. The article specifically mentions that movement counts whether it's housework, walking to the kitchen, or dancing while cooking. Every movement matters regardless of setting or intensity.",
+    "hints": [
+      "The article gives specific examples of kitchen and household activities as exercise",
+      "Remember the permission slip section about what counts as exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "89409385-a900-4fe1-9745-e1991fec2ea5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: You should wait until you have the perfect setup and enough time before starting to exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article strongly advocates against the 'all-or-nothing' mindset. It emphasizes starting exactly where you are, with whatever time you have, using whatever space is available.",
+    "hints": [
+      "Consider the article's stance on the 'all-or-nothing mindset'",
+      "Think about what the article says about waiting for the perfect starting point"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "08591857-6ca8-4b0b-90e8-a1abcd1e550f",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: Two minutes of movement daily is too insignificant to provide any fitness benefits.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False. The article explicitly states that micro-workouts and even 2-minute morning stretches count and can lead to sustainable fitness habits. It emphasizes that every minute of movement matters.",
+    "hints": [
+      "Look at the micro-workout examples for time-strapped people",
+      "Remember the article's stance that 'every minute of movement matters'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ae79feb7-d38b-45fd-88cb-d06348ddc200",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Your friend says they're too out of shape to start exercising and should wait until they're fitter. What's the best response based on this article?",
+    "question_type": "standalone",
+    "options": [
+      "Agree that they should get in better shape first through diet alone",
+      "Tell them being out of shape is exactly why they should start, even with tiny movements",
+      "Suggest they wait until January when they'll be more motivated",
+      "Recommend they train for a marathon to really jumpstart their fitness"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article explicitly addresses this mindset shift: instead of 'I'm too out of shape to start,' think 'Being out of shape is exactly why I should start.' It emphasizes meeting people where they are, regardless of current fitness level.",
+    "hints": [
+      "Look at the mindset shift examples in the article",
+      "Consider what the article says about meeting different starting points"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "368c4024-3b69-4949-8953-e07d54d09bf5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "A completely sedentary person wants to start exercising. According to the article, what should be their first week's approach?",
+    "question_type": "standalone",
+    "options": [
+      "Join a high-intensity bootcamp class immediately",
+      "Stand up once per hour and walk to the end of their street",
+      "Start with 45-minute gym sessions three times per week",
+      "Buy expensive equipment and transform their spare room into a home gym"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically outlines a gentle progression for completely sedentary individuals, starting with standing up once per hour, walking to the end of the street, and stretching for 2 minutes before bed.",
+    "hints": [
+      "Check the specific recommendations for 'If You're Completely Sedentary'",
+      "Look for the most gentle, accessible starting point mentioned"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "49f48035-06a1-41f3-bcf1-c4a1ce31de68",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "For someone dealing with depression or anxiety, the article recommends exercise that focuses on:",
+    "question_type": "standalone",
+    "options": [
+      "High-intensity intervals to boost endorphins quickly",
+      "Gentle movement with breathing focus and no distance goals",
+      "Competitive sports to build confidence through winning",
+      "Complex choreographed routines to distract the mind completely"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically addresses mental health considerations, recommending gentle movement like slow walks without distance goals, stretching with breathing focus, and treating movement as medicine with the smallest dose.",
+    "hints": [
+      "Look at the section specifically addressing depression and anxiety",
+      "Consider what approach would be most supportive for mental health challenges"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9d7cc130-da9a-4c24-8700-e805cd1cc78e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does the article suggest as the total daily movement time that 'will change your life' for busy people?",
+    "question_type": "standalone",
+    "options": [
+      "30 minutes of continuous exercise",
+      "10 minutes spread throughout the day",
+      "60 minutes of intense activity",
+      "5 hours of light movement"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically mentions the 'Busy Person Plan' with 2-minute morning stretch, 5-minute lunch walk, and 3-minute evening strength for a total of 10 minutes that 'will change your life.'",
+    "hints": [
+      "Look for the 'Busy Person Plan' in the article",
+      "Find the specific time breakdown mentioned for busy individuals"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4feed62b-b556-41f7-90c1-332f6e62ca75",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The progressive adaptation principle suggests which timeline for building exercise habits?",
+    "question_type": "standalone",
+    "options": [
+      "Week 1: Just move → Week 7-8: Expand horizons with new challenges",
+      "Week 1: High intensity → Week 8: Maximum difficulty achieved",
+      "Week 1: Perfect form required → Week 8: Competition ready",
+      "Week 1: Equipment mastery → Week 8: Professional athlete status"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article outlines a specific progressive timeline: Week 1 focuses on just moving, gradually building to Week 7-8 where you expand horizons and try new movements. This gentle progression respects the body's adaptation needs.",
+    "hints": [
+      "Look at the 'Progressive Adaptation Principle' section",
+      "Find the week-by-week breakdown of habit building"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e0af4453-e377-4d42-a2ff-f20385139ec6",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, what sequence should beginners follow to build sustainable fitness habits?",
+    "question_type": "standalone",
+    "options": [
+      "Environment audit → Movement opportunities → Time opportunities → Start immediately",
+      "Buy equipment → Join gym → Hire trainer → Begin advanced workouts",
+      "Perfect form → Maximum intensity → Competition goals → Professional coaching",
+      "Wait for Monday → Plan extensively → Research thoroughly → Never actually start"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article suggests conducting an environment audit to identify movement opportunities (stairs, walls, chairs) and time opportunities (waiting, watching TV, phone calls), then starting immediately with what's available.",
+    "hints": [
+      "Look at the 'Your Environment Audit' section",
+      "Consider the practical, immediate approach the article advocates"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ac0aabbe-374f-45fc-bb52-3f600e96595c",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The article's 'permission slip' includes permission to do which combination of things?",
+    "question_type": "standalone",
+    "options": [
+      "Start bigger than necessary, exercise only in perfect conditions, compare constantly to others",
+      "Start smaller than seems worthwhile, exercise in pajamas, move at your own pace",
+      "Wait for perfect timing, buy expensive gear first, follow complex programs only",
+      "Train every day without rest, ignore pain signals, push through exhaustion always"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's permission slip specifically includes permission to start smaller than seems worthwhile, exercise in pajamas, take rest days without guilt, move at your own pace, and define fitness your own way.",
+    "hints": [
+      "Look at the specific 'Permission Slip You Need' section",
+      "Consider which option aligns with the article's compassionate, flexible approach"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a7cf3d88-b207-48c2-b6b4-c8836e862c3a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Based on Riley's situation in the passage, what was the main barrier to starting fitness and how was it overcome?",
+    "question_type": "passage_based",
+    "options": [
+      "Lack of motivation; overcome by finding an expensive personal trainer",
+      "Financial constraints; overcome by discovering free home workout alternatives",
+      "Time limitations; overcome by waking up at 4 AM for gym sessions",
+      "Lack of knowledge; overcome by enrolling in fitness education courses"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Riley couldn't afford the $79/month gym membership but learned from their roommate Sam about using YouTube workouts, household items as weights, and their apartment as a gym space - all free alternatives.",
+    "hints": [
+      "Focus on Riley's financial concern about the gym membership cost",
+      "Consider how Sam demonstrated fitness solutions that cost nothing"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ecd3b8aa-3bb4-4ff2-bf5e-e64f8dff8b60"
+  },
+  {
+    "id": "81986486-d859-4a22-a8a4-2b394537d735",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What key insight did Riley gain from observing Sam's approach to fitness?",
+    "question_type": "passage_based",
+    "options": [
+      "Expensive gym equipment is essential for real results",
+      "Home workouts are inferior to professional gym facilities",
+      "A gym membership isn't a requirement for effective fitness",
+      "Only certified trainers can provide proper workout guidance"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Riley's key realization was that 'maybe the gym wasn't a requirement after all' after seeing Sam's successful home workout routine using creative household alternatives.",
+    "hints": [
+      "Look at Riley's final thought in the passage",
+      "Consider what changed Riley's perspective about fitness requirements"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ecd3b8aa-3bb4-4ff2-bf5e-e64f8dff8b60"
+  },
+  {
+    "id": "bae5fb03-038c-42f1-83b9-91ca8fd5522b",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What creative equipment alternatives did Sam demonstrate to Riley?",
+    "question_type": "passage_based",
+    "options": [
+      "Resistance bands and foam rollers from the gym",
+      "Water bottles as weights and backpack for weighted squats",
+      "Professional dumbbells and barbells at home",
+      "Virtual reality fitness games and smart mirrors"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sam specifically mentioned using 'water bottles as weights, backpack for weighted squats' as examples of how household items can replace gym equipment effectively.",
+    "hints": [
+      "Look at the specific examples Sam gave of household items as fitness equipment",
+      "Focus on the creative substitutions mentioned in the dialogue"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ecd3b8aa-3bb4-4ff2-bf5e-e64f8dff8b60"
+  },
+  {
+    "id": "3ca8b772-12b2-4737-8cd9-2cdd0b1f5a99",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How long had Sam been successfully working out without a gym membership?",
+    "question_type": "passage_based",
+    "options": [
+      "Three months",
+      "Six months",
+      "One year",
+      "Two years"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sam mentioned 'I haven't been to a gym in six months' while demonstrating their successful home workout routine to Riley.",
+    "hints": [
+      "Look for the specific time period Sam mentioned about not using a gym",
+      "This detail shows how long the home workout approach has been working"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ecd3b8aa-3bb4-4ff2-bf5e-e64f8dff8b60"
+  },
+  {
+    "id": "0c8008a8-cbc7-4e5a-8b28-bedd4ebe6c40",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Emma's main complaint about exercise was that she was 'too busy.' What was her neighbor's key insight?",
+    "question_type": "passage_based",
+    "options": [
+      "She needed to find two extra hours in her day for proper workouts",
+      "She should wake up earlier to create time for exercise",
+      "Fitness wasn't about adding time but using existing time differently",
+      "She should quit some activities to make room for gym sessions"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The neighbor's key insight was revealed in Emma's realization: 'Maybe fitness wasn't about finding time—maybe it was about using the time differently' after seeing how to incorporate movement into existing activities.",
+    "hints": [
+      "Look at Emma's final realization about time and fitness",
+      "Consider how the neighbor was already exercising while doing chores"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2f4f9470-c834-4d93-a7cc-dee63f795de3"
+  },
+  {
+    "id": "875a0a95-88fa-479b-93c3-623098fc349f",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which activities was Emma's neighbor doing while they talked?",
+    "question_type": "passage_based",
+    "options": [
+      "Folding laundry and sitting down to rest",
+      "Calf raises while hanging clothes",
+      "Running in place during the conversation",
+      "Lifting heavy weights between sentences"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage specifically states the neighbor was 'doing calf raises while hanging clothes' as an example of incorporating exercise into daily tasks.",
+    "hints": [
+      "Look for what the neighbor was doing while talking to Emma",
+      "This demonstrates the concept of multitasking exercise with chores"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2f4f9470-c834-4d93-a7cc-dee63f795de3"
+  },
+  {
+    "id": "43f2f7e0-d24f-4230-a2b6-7d394556f0a6",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What examples did the neighbor give of incorporating movement into daily routines?",
+    "question_type": "passage_based",
+    "options": [
+      "Gym visits before work and protein shakes after dinner",
+      "Squats while brushing teeth and wall push-ups while cooking",
+      "Morning runs and evening yoga classes",
+      "Weekend hiking and weekday swimming"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The neighbor specifically mentioned 'Squats while brushing teeth. Calf raises while doing hair/makeup. I take the stairs two at a time when carrying groceries up. Wall push-ups while dinner cooks.'",
+    "hints": [
+      "Look at the specific list of activities the neighbor mentioned",
+      "These examples show how to blend exercise with necessary daily tasks"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2f4f9470-c834-4d93-a7cc-dee63f795de3"
+  },
+  {
+    "id": "7902438b-2678-4e68-a15d-68b0279f768e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Emma's perspective on fitness change after talking with her neighbor?",
+    "question_type": "passage_based",
+    "options": [
+      "She realized she needed to join an expensive gym immediately",
+      "She understood that fitness could be integrated into existing activities rather than added as separate time blocks",
+      "She decided that exercise was impossible with her busy schedule",
+      "She concluded that only morning workouts could fit her lifestyle"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Emma's shift from seeing exercise as something to 'add' to her life to something she could 'find' in what she already does represents integrating fitness into existing activities rather than requiring separate time blocks.",
+    "hints": [
+      "Consider Emma's realization about 'finding' vs 'adding' exercise",
+      "Think about how she looked at the laundry basket 'with new eyes'"
+    ],
+    "image_urls": [],
+    "passage_set_id": "2f4f9470-c834-4d93-a7cc-dee63f795de3"
+  },
+  {
+    "id": "2607a5e4-bc7c-43b2-bf0b-c2efc2948556",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The 10% rule states that you should never increase your training volume by more than 10% per week.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The 10% rule is a fundamental guideline used by professional athletes and coaches to prevent injury and ensure sustainable progress. Increasing training volume by more than 10% per week significantly increases injury risk and can lead to burnout.",
+    "hints": [
+      "Professional athletes with million-dollar bodies follow this rule",
+      "The article mentions this is used even with professional support teams"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "3bf58a78-7fea-4a58-953c-0e9b13ff6380",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Tendons and ligaments adapt at the same rate as muscles when you start exercising.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Muscles adapt in weeks while tendons and ligaments take months to strengthen. This mismatch is why rushing progression leads to tendonitis, strains, and tears - strong muscles pulling on weak connective tissue.",
+    "hints": [
+      "Think about what happens when strong muscles pull on weak connective tissue",
+      "The article mentions muscles get stronger 50% faster than tendons"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "0a735497-e593-44ed-962a-9c14e1e2d5a6",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to James Clear's 2-minute rule, you should start with exercises that take exactly 2 minutes to complete.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The 2-minute rule isn't about exercise duration - it's about breaking down habits into 2-minute actions. For example, 'Go to the gym' becomes 'Put on workout clothes' or 'Run 3 miles' becomes 'Walk to the end of the street.' This programs your brain to show up consistently.",
+    "hints": [
+      "Think about what action helps you 'show up' rather than the full activity",
+      "The examples given transform big commitments into tiny first steps"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "faf7ac53-fa09-4c5e-813d-c773d082c366",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Chronic cortisol release from excessive exercise can disrupt sleep and increase hunger.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Too much exercise too soon triggers chronic cortisol release, which disrupts sleep (goodbye recovery), increases hunger (hello overeating), suppresses immune system, promotes fat storage, and kills motivation. This is why starting slow is physiologically important.",
+    "hints": [
+      "Consider what happens when your body is constantly stressed",
+      "The article lists several negative effects of chronic cortisol"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e6d5d896-9c9d-479a-b570-d5b5e97ca3e4",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "A beginner notices they're constantly sore for more than 48 hours after workouts. What should they do?",
+    "question_type": "standalone",
+    "options": [
+      "Push through the pain to build toughness",
+      "Reduce workout intensity and frequency",
+      "Take supplements to speed recovery",
+      "Switch to a completely different exercise routine"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Constant soreness lasting more than 48 hours is a warning sign that you're going too fast. This indicates insufficient recovery time and potential overtraining. Reducing intensity and frequency allows proper adaptation and prevents injury.",
+    "hints": [
+      "Look at the warning signs listed in the article",
+      "Consider what constant soreness might indicate about recovery"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "a98c2f90-e214-4578-9e38-9cb994f045f7",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Someone returning to exercise after time off should start at what percentage of their previous level?",
+    "question_type": "standalone",
+    "options": [
+      "50% to ease back in",
+      "25% to prevent injury",
+      "75% since muscle memory helps",
+      "100% to regain fitness quickly"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically recommends starting at 25% of your previous level when returning to exercise. This accounts for deconditioning and allows your body to readapt safely. Examples include starting with 1 mile if you used to run 4, or 25 lbs if you used to lift 100.",
+    "hints": [
+      "The article gives specific examples of this percentage",
+      "Consider how much fitness is lost during time off"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "fae06942-10e2-43d9-a0d1-c224ddec176b",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What makes habits form fastest according to MIT researchers?",
+    "question_type": "standalone",
+    "options": [
+      "High intensity and challenge",
+      "Small, consistent, and rewarding actions",
+      "Perfect execution every time",
+      "Training yourself to ignore discomfort"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "MIT researchers found habits form fastest when they're small enough to be easy, consistent enough to be automatic, and rewarding enough to be repeated. Notice that intensity and difficulty are not on this list - sustainable habit formation prioritizes consistency over challenge.",
+    "hints": [
+      "The article lists three specific criteria from MIT research",
+      "Notice what's NOT on the list that people often think is important"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "2bdef87c-a1bc-4601-b889-4f1749f64fca",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "The minimum effective dose for health benefits includes which weekly requirements?",
+    "question_type": "standalone",
+    "options": [
+      "300 minutes cardio, 5 strength sessions, daily stretching",
+      "75 minutes vigorous OR 150 minutes moderate cardio, 2 strength sessions",
+      "60 minutes daily exercise of any type",
+      "500 minutes total exercise regardless of type"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Research shows the minimum for health benefits is 75 minutes vigorous OR 150 minutes moderate cardio per week, plus 2 strength training sessions covering major muscle groups. This is less than 30 minutes per day total, emphasizing that effective fitness doesn't require huge time commitments.",
+    "hints": [
+      "The article gives very specific research-based numbers",
+      "Consider that this is described as 'less than 30 minutes per day'"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f3ef6490-fa20-4d3b-a1a3-9c6eb88bac43",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which sequence correctly shows the biological adaptation timeline for exercise?",
+    "question_type": "standalone",
+    "options": [
+      "Week 1-2: Visible changes, Week 3-4: Neural learning, Week 5-8: Metabolic improvements",
+      "Week 1-2: Neural adaptations, Week 3-4: Metabolic changes, Week 5-8: Structural changes, Week 9-12: Visible changes",
+      "Week 1-4: Muscle growth, Week 5-8: Strength gains, Week 9-12: Endurance improvements",
+      "All adaptations happen simultaneously from week 1"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The correct biological timeline is: Week 1-2 (neural adaptations - brain learns movements), Week 3-4 (metabolic changes - energy systems improve), Week 5-8 (structural changes - muscles and tendons strengthen), Week 9-12 (visible changes - what everyone's chasing). This explains why patience is crucial and why visible results take time.",
+    "hints": [
+      "The article presents this as a specific timeline of what happens when",
+      "Consider that visible changes come last, not first"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "9a34c9d9-8770-4661-b7cb-d49be8e45081",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Progressive overload means you should dramatically increase weight, reps, or time every workout.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Progressive overload means doing slightly more than last time - not double or triple, just slightly. The article emphasizes picking ONE way to progress per week (add 1 rep, add 30 seconds, improve form, reduce rest, add minimal weight, or increase range of motion). Dramatic increases lead to injury and burnout.",
+    "hints": [
+      "The article emphasizes 'slightly more' and 'pick ONE per week'",
+      "Consider what 'progressive' really means versus dramatic changes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "612a49c6-6138-4cc4-a90d-2aa4936c087a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the 1% better philosophy, improving 1% each day leads to being how much better after one year?",
+    "question_type": "standalone",
+    "options": [
+      "37 times better",
+      "3.65 times better",
+      "365% better",
+      "Twice as good at everything"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The compound effect of 1% daily improvement leads to being 37 times better in one year. This mathematical reality demonstrates why consistency trumps intensity - small, sustainable improvements compound into massive transformations over time.",
+    "hints": [
+      "The article gives a specific mathematical result",
+      "Think about compound growth rather than simple addition"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "23989d7a-f39d-4129-9cc3-909a9dfd5413",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In Mike's story about returning to the gym, what lesson did he learn about ego lifting?",
+    "question_type": "passage_based",
+    "options": [
+      "Muscle memory makes previous weights immediately accessible",
+      "Starting with light weight and perfect form led to faster progress",
+      "Heavy weights are necessary to rebuild strength quickly",
+      "Other people's opinions about your lifting weight matter most"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike learned that starting with light weight (even just the bar) and focusing on perfect form led to faster progress than ego lifting. His workout partner warned that ego lifting leads to injury, and Mike discovered the 'tortoise approach' worked better than forcing heavy weights.",
+    "hints": [
+      "Focus on what Mike discovered about his progress after reducing the weight",
+      "Consider what his workout partner warned about"
+    ],
+    "image_urls": [],
+    "passage_set_id": "04b7e4a4-cf0e-4815-8c0b-074065b23081"
+  },
+  {
+    "id": "935ae8d2-68aa-41bb-a578-cb6d6c35f6c6",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What warning sign indicated Mike was trying to lift too much weight too soon?",
+    "question_type": "passage_based",
+    "options": [
+      "He felt dizzy during the exercise",
+      "His form was breaking down by the third rep",
+      "He experienced sharp pain in his muscles",
+      "He couldn't complete the warm-up"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike's form was breaking down by the third rep, which his workout partner recognized as a warning sign of lifting too much weight. This breakdown in technique is exactly what leads to injury when returning to exercise.",
+    "hints": [
+      "Look at what happened during Mike's lifting attempt",
+      "Consider what his spotter observed about his technique"
+    ],
+    "image_urls": [],
+    "passage_set_id": "04b7e4a4-cf0e-4815-8c0b-074065b23081"
+  },
+  {
+    "id": "8d9ef1fb-2a7d-4d1f-8762-7875ba9566ad",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Mike's initial weight selection mistake?",
+    "question_type": "passage_based",
+    "options": [
+      "He chose weight that was too light for his goals",
+      "He loaded 135 pounds - his old warm-up weight from 5 years ago",
+      "He didn't warm up before lifting heavy",
+      "He tried to lift his old maximum weight immediately"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike loaded 135 pounds on the bar, which he described as a 'warm-up weight' from his college days five years ago. This shows how ego and past performance can mislead returning exercisers about their current capabilities.",
+    "hints": [
+      "Look at what weight Mike chose and why",
+      "Consider how much time had passed since he last lifted regularly"
+    ],
+    "image_urls": [],
+    "passage_set_id": "04b7e4a4-cf0e-4815-8c0b-074065b23081"
+  },
+  {
+    "id": "2d698a03-a1c5-46fa-b776-8436f902def4",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Mike's workout partner help him avoid injury?",
+    "question_type": "passage_based",
+    "options": [
+      "By encouraging him to lift heavier for motivation",
+      "By suggesting he start with just the bar and warning about injury risk",
+      "By spotting him through the heavy lifts",
+      "By recommending supplements for faster recovery"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Mike's workout partner suggested he start with just the bar and specifically warned that 'ego lifting will get you hurt' and that he'd 'seen too many comebacks end in the emergency room.' This guidance helped Mike swallow his pride and start safely.",
+    "hints": [
+      "Focus on the specific advice the workout partner gave",
+      "Consider the warning about emergency room visits"
+    ],
+    "image_urls": [],
+    "passage_set_id": "04b7e4a4-cf0e-4815-8c0b-074065b23081"
+  },
+  {
+    "id": "5fbb508e-dec4-4212-a4ee-c8b867dae138",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the main difference between Sarah's and Jordan's approaches to starting fitness?",
+    "question_type": "passage_based",
+    "options": [
+      "Sarah focused on strength while Jordan did cardio",
+      "Sarah started with 10 minutes daily while Jordan went hard 6 days a week for 2 hours",
+      "Sarah used a gym while Jordan exercised at home",
+      "Sarah had professional help while Jordan trained alone"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah started with just 10 minutes daily (feeling silly about how little it was), while Jordan went hard the first month with 6 days a week for 2 hours each. This contrast perfectly illustrates the tortoise vs. hare approach to fitness.",
+    "hints": [
+      "Compare the time commitment and intensity each person chose",
+      "Look at what Sarah felt 'silly' about versus Jordan's aggressive approach"
+    ],
+    "image_urls": [],
+    "passage_set_id": "14890ae6-0cc3-4af2-9899-968fe56c0118"
+  },
+  {
+    "id": "519a98a5-34e3-4302-8c0f-8ee69e776611",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the outcome of Jordan's aggressive approach after three months?",
+    "question_type": "passage_based",
+    "options": [
+      "Achieved amazing results and inspired others",
+      "Got injured with a wrapped knee and hadn't worked out in 5 weeks",
+      "Decided to become a personal trainer",
+      "Switched to Sarah's gentler approach"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan ended up injured with a wrapped knee and hadn't worked out in five weeks when meeting with Sarah. This demonstrates the real-world consequence of the 'hare' approach - initial intensity leading to injury and complete stoppage.",
+    "hints": [
+      "Look at Jordan's physical condition when meeting with Sarah",
+      "Consider how long Jordan had been unable to exercise"
+    ],
+    "image_urls": [],
+    "passage_set_id": "14890ae6-0cc3-4af2-9899-968fe56c0118"
+  },
+  {
+    "id": "e71c5c8f-6d1d-4fba-8e50-d811f75f410a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Sarah's total exercise days compare to Jordan's after three months?",
+    "question_type": "passage_based",
+    "options": [
+      "Jordan had more total days due to higher intensity",
+      "Sarah had 90 consecutive days versus Jordan's 24 total days",
+      "They had roughly the same number of exercise days",
+      "The passage doesn't provide specific numbers"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Sarah had exercised 90 days straight (not missing a single day) versus Jordan's 24 total days before injury. This mathematical comparison shows how consistency beats intensity over time - Sarah had nearly 4 times more exercise days despite her 'easier' approach.",
+    "hints": [
+      "Look for the specific numbers Sarah calculated",
+      "Consider what 'not missing a single day' means over 3 months"
+    ],
+    "image_urls": [],
+    "passage_set_id": "14890ae6-0cc3-4af2-9899-968fe56c0118"
+  },
+  {
+    "id": "8349d5ce-16bb-41cf-879d-43e2577cdae3",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What insight did Jordan's competitive nature finally understand from this experience?",
+    "question_type": "passage_based",
+    "options": [
+      "Higher intensity always leads to better results",
+      "Expensive equipment makes the biggest difference",
+      "Consistency beats intensity every time",
+      "Individual genetics determine success more than effort"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Jordan's competitive nature finally understood that 'consistency beats intensity every time.' This was the key lesson from comparing their injured, interrupted approach to Sarah's steady, daily commitment that never stopped.",
+    "hints": [
+      "Look at the final realization Jordan came to",
+      "Consider how Jordan's competitive mindset processed the comparison"
+    ],
+    "image_urls": [],
+    "passage_set_id": "14890ae6-0cc3-4af2-9899-968fe56c0118"
+  },
+  {
+    "id": "036d6eae-0060-4264-97d9-e69606ee63fe",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Casey's initial reaction to the trainer's simple program?",
+    "question_type": "passage_based",
+    "options": [
+      "Excitement about the manageable approach",
+      "Disappointment, asking 'That's it?' and wanting to do more",
+      "Concern about the cost for so little",
+      "Confusion about the exercise selection"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey was disappointed and asked 'That's it?' feeling capable of doing way more than the trainer's program of 3 exercises, 10 minutes, 3 times a week. This reaction shows the common beginner mistake of equating more with better.",
+    "hints": [
+      "Look at Casey's exact words when hearing the program",
+      "Consider Casey's belief about their capabilities"
+    ],
+    "image_urls": [],
+    "passage_set_id": "724c2d08-950e-40b1-b517-7362c9310f5c"
+  },
+  {
+    "id": "f0d33928-88ec-4e84-a263-efbe762ea6c1",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the trainer's philosophy about minimum versus maximum effort?",
+    "question_type": "passage_based",
+    "options": [
+      "Maximum effort leads to maximum results",
+      "Minimum effort is lazy and ineffective",
+      "Doing the minimum consistently beats doing the maximum sporadically",
+      "Intensity matters more than frequency"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The trainer's philosophy was that 'if you do the minimum consistently, you'll get better results than doing the maximum sporadically.' This encapsulates the core message about sustainable progress versus unsustainable intensity.",
+    "hints": [
+      "Focus on the trainer's exact words about minimum vs maximum",
+      "Consider the comparison being made between two approaches"
+    ],
+    "image_urls": [],
+    "passage_set_id": "724c2d08-950e-40b1-b517-7362c9310f5c"
+  },
+  {
+    "id": "52900cc8-75d0-4887-8ec1-6bea0b2b282d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How had Casey's program evolved after six months of consistency?",
+    "question_type": "passage_based",
+    "options": [
+      "Stayed exactly the same to maintain consistency",
+      "Evolved to 20 minutes, 4 times a week",
+      "Became an intense daily 2-hour routine",
+      "Was abandoned for a more challenging program"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Casey's program had naturally evolved to 20 minutes, 4 times a week after six months of consistency. This shows how the minimum effective dose can grow organically when built on a sustainable foundation, rather than being forced prematurely.",
+    "hints": [
+      "Look at what Casey was doing after 6 months",
+      "Consider how the program grew from the original prescription"
+    ],
+    "image_urls": [],
+    "passage_set_id": "724c2d08-950e-40b1-b517-7362c9310f5c"
+  },
+  {
+    "id": "b5eb71fe-8e84-4c05-9df6-8901234c9204",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What happened to Casey's friends who started with hour-long bootcamps?",
+    "question_type": "passage_based",
+    "options": [
+      "They all became fitness instructors",
+      "They had amazing transformations",
+      "They all quit by month two",
+      "They gradually reduced to Casey's approach"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "All three friends who started with hour-long bootcamps had quit by month two, while Casey was still consistently following the program six months later. This real-world comparison demonstrates why intensity-first approaches typically fail while gradual approaches succeed.",
+    "hints": [
+      "Compare Casey's longevity to the friends' outcomes",
+      "Consider the timeline of when the friends stopped"
+    ],
+    "image_urls": [],
+    "passage_set_id": "724c2d08-950e-40b1-b517-7362c9310f5c"
+  },
+  {
+    "id": "fbc8f5dc-c50a-4d3d-b322-d4e8801a3a67",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: One rep means one complete movement of an exercise.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! A rep (repetition) is exactly one complete movement of an exercise - like one squat up and down, or one push-up up and down.",
+    "hints": [
+      "Think about what 'repetition' means in everyday language",
+      "Consider a single squat - that's one complete movement cycle"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d13d3667-5b23-4def-a344-2b86e5b65736",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: RIR stands for 'Really Intense Reps'.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False! RIR stands for 'Reps in Reserve' - it indicates how many more reps you could do. For example, RIR 2 means you could do 2 more reps if you tried.",
+    "hints": [
+      "Think about what you have 'in reserve' or 'left in the tank'",
+      "It's about capacity remaining, not intensity level"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c5525940-11e3-48d9-8c06-3becef960152",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: Compound exercises work multiple muscle groups at once.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "True! Compound exercises like squats, push-ups, and deadlifts work multiple muscle groups and joints simultaneously, making them very efficient for beginners.",
+    "hints": [
+      "Think about a squat - it works legs, glutes, and core all at once",
+      "Compare this to a bicep curl which only works one muscle"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "afe310a6-8c24-4a30-86c3-38edc9c03853",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "True or False: DOMS is a type of injury that requires immediate medical attention.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "False! DOMS (Delayed Onset Muscle Soreness) is the normal soreness you feel 24-48 hours after exercise, especially when trying new movements. It's not an injury and decreases as your body adapts.",
+    "hints": [
+      "Think about how you feel the day after a new workout - that achiness is normal",
+      "It's 'delayed' because it doesn't happen immediately during exercise"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "94c56970-a348-40e4-88d3-49469de2d4df",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "If you're doing 3 sets of 12 reps at RPE 7, what does this mean?",
+    "question_type": "standalone",
+    "options": [
+      "3 groups of 12 repetitions at a pretty hard intensity level",
+      "3 exercises done 12 times each at maximum effort",
+      "12 groups of 3 repetitions at an easy intensity level",
+      "3 minutes of exercise at 12% intensity while eating 7 protein bars"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! You'll do 3 separate groups (sets) of 12 repetitions each, resting between groups, at a pretty hard but not maximum effort level (RPE 7 on a 1-10 scale).",
+    "hints": [
+      "Break down each part: sets = groups, reps = repetitions, RPE = effort level",
+      "RPE 7 means hard but you could still talk in short phrases"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "5bba450b-aaa8-40d3-ac35-c72d26aeb4be",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What's the main difference between HIIT and LISS cardio?",
+    "question_type": "standalone",
+    "options": [
+      "HIIT uses short bursts of hard work with rest, LISS is steady easy pace",
+      "HIIT is for beginners, LISS is for advanced athletes only",
+      "HIIT requires expensive equipment, LISS can be done anywhere",
+      "HIIT stands for 'Highly Intense Ice Training', LISS means 'Low Impact Silly Steps'"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! HIIT (High Intensity Interval Training) alternates between short periods of intense effort and rest, while LISS (Low Intensity Steady State) maintains an easy, sustainable pace throughout.",
+    "hints": [
+      "Think about sprinting vs jogging at a conversational pace",
+      "Interval training means alternating between work and rest periods"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d74dd5bc-dede-4173-b69b-e3f045c2b9b3",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination best describes the three macronutrients?",
+    "question_type": "standalone",
+    "options": [
+      "Protein (4 cal/g), Carbs (4 cal/g), Fats (9 cal/g)",
+      "Vitamins (2 cal/g), Minerals (6 cal/g), Water (8 cal/g)",
+      "Supplements (10 cal/g), Smoothies (5 cal/g), Snacks (3 cal/g)",
+      "Breakfast (300 cal), Lunch (500 cal), Dinner (700 cal)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! The three macronutrients are protein and carbs (both 4 calories per gram) and fats (9 calories per gram). These provide the body's main energy sources and building blocks.",
+    "hints": [
+      "Macronutrients are the 'big three' nutrients your body needs in large amounts",
+      "Fats are more calorie-dense than protein or carbs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "dacf62ca-7bc9-4619-ae14-3e1536bb83e5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does 'mind-muscle connection' mean in fitness?",
+    "question_type": "standalone",
+    "options": [
+      "Focusing on feeling the target muscle work during exercise",
+      "Thinking positive thoughts while lifting weights",
+      "Using mental telepathy to move gym equipment",
+      "Connecting your phone to gym speakers to play motivational music"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! Mind-muscle connection means consciously focusing on feeling and engaging the specific muscle you're trying to work during an exercise, which can improve results and form.",
+    "hints": [
+      "It's about awareness and intention during movement",
+      "Think about really feeling your bicep work during a curl"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "f7164c5a-5df0-4831-a157-cfd839d3b8b1",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which sequence correctly describes the three phases of a repetition?",
+    "question_type": "standalone",
+    "options": [
+      "Eccentric (lowering), Isometric (pause), Concentric (lifting)",
+      "Concentric (lowering), Eccentric (pause), Isometric (lifting)",
+      "Isometric (lowering), Concentric (pause), Eccentric (lifting)"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! Eccentric is the lowering/lengthening phase, isometric is holding still under tension, and concentric is the lifting/shortening phase. This sequence describes a complete controlled repetition.",
+    "hints": [
+      "Think about a squat: down (eccentric), pause (isometric), up (concentric)",
+      "The eccentric phase is where most muscle damage (growth stimulus) occurs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "78d2fcfb-525f-4939-ba23-39645a8f46f8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "In what order should you typically organize your workout split progression?",
+    "question_type": "standalone",
+    "options": [
+      "Full body → Upper/Lower → Push/Pull/Legs → Specialized splits",
+      "Specialized splits → Push/Pull/Legs → Upper/Lower → Full body",
+      "Upper/Lower → Full body → Specialized splits → Push/Pull/Legs"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! Beginners should start with full body workouts, progress to upper/lower splits, then to push/pull/legs, and finally to more specialized splits as they advance and can handle more training volume.",
+    "hints": [
+      "Start simple and progress to more complex as you advance",
+      "Full body workouts are most efficient for beginners"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "455928ed-dd89-402c-879c-8ef6436e9367",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What combination of gym equipment would be most beneficial for a complete beginner?",
+    "question_type": "standalone",
+    "options": [
+      "Dumbbells, cables, and bodyweight exercises",
+      "Olympic barbells, kettlebells, and specialized machines",
+      "Resistance bands, foam rollers, and heart rate monitors",
+      "Smith machines, battle ropes, and suspension trainers"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Correct! Dumbbells offer versatility and safety for beginners, cables provide smooth resistance, and bodyweight exercises require no equipment while building foundation strength and movement patterns.",
+    "hints": [
+      "Think about equipment that's versatile, safe, and allows for progression",
+      "Beginners need to master basic movement patterns first"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "238e3e8d-1110-4646-8fa2-5ac317866454",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Sarah felt completely lost when the instructor said they'd be doing 'supersets with AMRAP finishers.' What would be the most helpful response from someone nearby?",
+    "question_type": "passage_based",
+    "options": [
+      "A detailed explanation of each term in simple language",
+      "Telling her to just follow along and figure it out",
+      "Suggesting she leave and come back when she knows more",
+      "Handing her a fitness dictionary to study during class"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The most helpful response is explaining the terms simply: 'Do two exercises back-to-back (superset), then finish with as many reps as possible (AMRAP).' This shows community support and helps beginners feel included.",
+    "hints": [
+      "Think about what would make someone feel welcomed vs excluded",
+      "Simple translations are more helpful than complex explanations"
+    ],
+    "image_urls": [],
+    "passage_set_id": "51c17098-6fde-40af-aa63-f05f2d8c8181"
+  },
+  {
+    "id": "0d50fe9a-fc33-4e78-9cbf-7eaf77376c3a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Based on the passage, why was Sarah's experience positive despite being confused initially?",
+    "question_type": "passage_based",
+    "options": [
+      "Someone took time to translate the confusing terms into simple language",
+      "She figured out all the terminology on her own quickly",
+      "The instructor stopped using fitness jargon completely",
+      "She pretended to understand and hoped for the best"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Sarah's experience improved because someone nearby kindly translated the confusing fitness terminology into simple, understandable language, showing how community support can help beginners feel included.",
+    "hints": [
+      "Look for what changed between feeling confused and feeling better",
+      "Consider the role of the helpful person next to her"
+    ],
+    "image_urls": [],
+    "passage_set_id": "51c17098-6fde-40af-aa63-f05f2d8c8181"
+  },
+  {
+    "id": "4a8090c3-55ee-4405-a719-65d3977ba21a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does the helper's comment 'We all started somewhere' suggest about the fitness community?",
+    "question_type": "passage_based",
+    "options": [
+      "Even experienced people were beginners once and understand the confusion",
+      "Everyone in fitness is naturally gifted and learns terminology easily",
+      "Fitness knowledge is something you're born with or without",
+      "Only certain types of people belong in fitness environments"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The comment shows that experienced fitness people remember being beginners themselves and can empathize with newcomers' confusion, suggesting that the fitness community can be supportive and inclusive when people choose to help.",
+    "hints": [
+      "Think about what 'we all started somewhere' implies about shared experience",
+      "Consider the empathy shown by someone who remembers being new"
+    ],
+    "image_urls": [],
+    "passage_set_id": "51c17098-6fde-40af-aa63-f05f2d8c8181"
+  },
+  {
+    "id": "97615d96-d3d9-4369-b7f0-008d6a3a2c5e",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does the prediction 'By next week, you'll be translating for someone else' suggest about learning fitness language?",
+    "question_type": "passage_based",
+    "options": [
+      "Fitness terminology becomes familiar quickly with practice and exposure",
+      "You need years of study to understand basic gym vocabulary",
+      "Only naturally gifted people can learn fitness language",
+      "Sarah will become a certified translator by next week"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "This prediction suggests that fitness terminology, while initially confusing, becomes familiar relatively quickly with regular exposure and practice, and that newcomers can soon help other newcomers in the same way.",
+    "hints": [
+      "Think about how quickly you pick up new vocabulary when immersed in it",
+      "Consider the cycle of learning and then helping others learn"
+    ],
+    "image_urls": [],
+    "passage_set_id": "51c17098-6fde-40af-aa63-f05f2d8c8181"
+  },
+  {
+    "id": "1774e6c2-0beb-4a78-b16b-a122597d3155",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why did Alex find the online fitness community responses helpful?",
+    "question_type": "passage_based",
+    "options": [
+      "People translated complex terms into simple explanations",
+      "Everyone agreed that beginners shouldn't ask questions",
+      "The responses were full of advanced technical jargon",
+      "They told Alex to figure it out alone without help"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex found the responses helpful because community members took the time to break down complex terminology (like 5x5, compound movements, progressive overload) into simple, understandable explanations for a beginner.",
+    "hints": [
+      "Look at how the community members explained each confusing term",
+      "Notice the difference between jargon and clear explanations"
+    ],
+    "image_urls": [],
+    "passage_set_id": "545dec0c-21ab-4dcb-9c19-5f2c8d05ba12"
+  },
+  {
+    "id": "0115eafd-9114-430f-91fe-ee05c02de001",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What changed Alex's perception of the fitness community?",
+    "question_type": "passage_based",
+    "options": [
+      "Discovering that people were willing to help explain things clearly",
+      "Realizing that everyone expected beginners to know everything already",
+      "Finding out that you must pay for all fitness advice",
+      "Learning that fitness communities only help advanced athletes"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex's perception changed from thinking the fitness community was intimidating to realizing that many people are willing to help beginners by providing clear, patient explanations of confusing terminology.",
+    "hints": [
+      "Consider what Alex expected vs what actually happened",
+      "Think about the contrast between intimidation and helpfulness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "545dec0c-21ab-4dcb-9c19-5f2c8d05ba12"
+  },
+  {
+    "id": "a4eda2f9-4cf6-47f8-9068-fad4a5d992e4",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Why did Alex screenshot the helpful responses?",
+    "question_type": "passage_based",
+    "options": [
+      "To save the simple translations for future reference",
+      "To complain about the advice to other people",
+      "To prove that online communities are unhelpful",
+      "To share confusing examples with friends"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "Alex screenshotted the responses because they contained valuable, clear translations of confusing fitness terms that would be useful to reference again in the future, showing the practical value of the help received.",
+    "hints": [
+      "Think about why you'd save helpful information",
+      "Consider what made these responses worth keeping"
+    ],
+    "image_urls": [],
+    "passage_set_id": "545dec0c-21ab-4dcb-9c19-5f2c8d05ba12"
+  },
+  {
+    "id": "50b3309b-4304-4561-97b1-d93714511130",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What does the beginner-friendly advice about 1RM suggest about good fitness communication?",
+    "question_type": "passage_based",
+    "options": [
+      "Complex concepts should be simplified with practical alternatives for beginners",
+      "Beginners should learn all advanced terminology before starting",
+      "Technical terms should never be explained or simplified",
+      "New exercisers should figure out percentages and math on their own"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The advice shows good fitness communication by acknowledging that 1RM (one rep max) is complex for beginners and providing a simple alternative: 'just use a weight that makes the last rep challenging.' This makes concepts accessible.",
+    "hints": [
+      "Notice how the advice replaced complex calculations with simple guidance",
+      "Think about what makes fitness advice more or less intimidating"
+    ],
+    "image_urls": [],
+    "passage_set_id": "545dec0c-21ab-4dcb-9c19-5f2c8d05ba12"
+  },
+  {
+    "id": "c35316c0-aeb9-447c-8702-60fb5f15d8c0",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "You can safely start fitness with basic movements like walking and bodyweight exercises without professional help if you have no current injuries or health conditions.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The DIY green zone includes basic movements like walking, jogging, swimming, and basic bodyweight exercises for people with no current injuries or health conditions. These low-risk activities are safe to start independently while building basic fitness habits.",
+    "hints": [
+      "Think about what the article called the 'DIY Green Zone'",
+      "Consider the risk level of basic movements versus complex exercises"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "cecc58e5-7b67-437a-b7db-79aa35be0a78",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Personal trainers and nutritionists have the same level of regulation and credentialing requirements.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Registered Dietitians have much more stringent regulation and credentialing requirements than nutritionists. The article specifically notes that nutritionists are 'less regulated' and warns against confusing them with Registered Dietitians who have medical nutrition training.",
+    "hints": [
+      "Look for the distinction made between Registered Dietitians and nutritionists",
+      "Consider which profession requires medical training and regulation"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "c65765ea-5135-414e-8db9-0d18f18f9322",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Sharp, shooting, or persistent pain during exercise always requires immediate professional help rather than attempting to work through it.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article clearly states that sharp, shooting, or persistent pain falls in the 'Red Zone' requiring professional help immediately. This type of pain indicates potential injury and should never be ignored or worked through.",
+    "hints": [
+      "Review what the article says about the 'Red Zone' for professional help",
+      "Consider the difference between normal muscle fatigue and warning signs"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "ab4123f5-2087-4b14-8449-c084405d4fe3",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Small group training where 2-4 people share a trainer's cost provides the same quality instruction as one-on-one personal training.",
+    "question_type": "standalone",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "While small group training provides many benefits and is more affordable, it doesn't provide the same level of individualized attention as one-on-one training. The article presents it as a budget-friendly middle ground option that offers professional guidance with social support, but the trainer's attention is divided among participants.",
+    "hints": [
+      "Think about the difference between individual attention and shared attention",
+      "Consider why small group training costs less per person"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "494f0880-7fdb-40a1-8118-08465c5d41f7",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, what is the most important red flag to avoid when choosing a fitness professional?",
+    "question_type": "standalone",
+    "options": [
+      "They don't have the most expensive certification available",
+      "They push through pain and ignore your discomfort during exercises",
+      "They don't offer 24/7 text support between sessions",
+      "They require you to bring your own towel to sessions"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article specifically lists 'push through pain' as a major red flag when choosing professionals. A good fitness professional should respect your body's warning signals and never encourage working through pain, which can lead to serious injury.",
+    "hints": [
+      "Look at the 'Red Flags: When to Run' section",
+      "Consider which behavior could cause physical harm"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "b8334f09-4138-48fc-a649-7532fe8a42d3",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What should you do if you experience a fitness plateau that lasts more than 3-4 weeks?",
+    "question_type": "standalone",
+    "options": [
+      "Immediately increase your workout intensity by 50%",
+      "Consider getting guidance to reassess your program",
+      "Quit exercising completely and start a different hobby",
+      "Post about it on social media and wait for likes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article identifies a plateau lasting more than 3-4 weeks as a yellow zone indicator that you'd benefit from some guidance. A professional can help assess your program and suggest modifications to break through the plateau safely.",
+    "hints": [
+      "Check the 'Yellow Zone: Consider Some Guidance' section",
+      "Think about what causes plateaus and who might help solve them"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "e880a663-6432-489c-a1eb-4173bf3edaa7",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which type of fitness professional is best suited for helping someone with chronic pain management and movement dysfunction?",
+    "question_type": "standalone",
+    "options": [
+      "Group fitness instructor who teaches Zumba classes",
+      "Physical therapist with medical training",
+      "Instagram influencer with 100k followers",
+      "Your neighbor who runs marathons"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Physical therapists are specifically trained in injury rehabilitation, movement dysfunction, and chronic pain management. The article lists these as their primary areas of expertise, and they often work with insurance coverage for these medical conditions.",
+    "hints": [
+      "Look at what each professional specializes in",
+      "Consider which requires medical training for pain and dysfunction"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "95787369-463e-4f1d-98a6-064896bf80d5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the article, having a workout buddy makes you how much more likely to stick with your fitness routine?",
+    "question_type": "standalone",
+    "options": [
+      "25% more likely",
+      "50% more likely",
+      "86% more likely",
+      "200% more likely"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "The article specifically states that having a workout buddy makes you '86% more likely to stick with it.' This statistic highlights the powerful role of accountability and social support in fitness adherence.",
+    "hints": [
+      "Look for the specific statistic mentioned about workout buddies",
+      "Find the percentage in 'The Workout Buddy Solution' section"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "d30f384f-ec96-4b91-af0f-de529521d004",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What is the correct sequence for the ideal fitness support transition as you progress?",
+    "question_type": "standalone",
+    "options": [
+      "Start DIY → Add professional help → Reduce support → Periodic tune-ups",
+      "Start with professional help → Reduce to check-ins → DIY with tune-ups",
+      "Always use professional help → Never reduce support → Increase intensity",
+      "Start with workout buddy → Get trainer → Fire trainer → Go completely solo"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The article's 'DIY + Support Hybrid Approach' shows: Month 1-2 professional help for foundation, Month 3-4 reduce to bi-weekly check-ins, Month 5-6 monthly form checks, then ongoing DIY with periodic tune-ups. This progression builds independence while maintaining safety.",
+    "hints": [
+      "Look for the 'DIY + Support Hybrid Approach' timeline",
+      "Consider how support needs change as skills develop"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4adc1eb6-faa9-4473-902b-23364faa3681",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "Which combination represents the article's 'ideal fitness support system'?",
+    "question_type": "standalone",
+    "options": [
+      "Professional + Workout Buddy + Online Community + Friends/Family + Healthcare Team",
+      "Personal Trainer + Nutritionist + Physical Therapist only",
+      "Workout Buddy + Instagram Followers + Expensive Supplements",
+      "Solo Training + Ignore Everyone + Trust Only Yourself"
+    ],
+    "correct_answer_index": 0,
+    "explanation": "The article specifically outlines the ideal fitness support system as including: Professional (expertise/safety), Workout Buddy (accountability), Online Community (daily motivation), Friends/Family (lifestyle support), and Healthcare Team (medical clearance). This comprehensive network addresses all aspects of fitness success.",
+    "hints": [
+      "Find 'The Ideal Fitness Support System' section",
+      "Look for the five components listed with their purposes"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "1d35f049-23f3-42ad-b59d-722e0d2abb8b",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "According to the support decision tree, what should you do if you have pain or medical conditions?",
+    "question_type": "standalone",
+    "options": [
+      "Continue to assess if you know what exercises to do",
+      "See doctor/physical therapist immediately",
+      "Post on social media asking for exercise advice",
+      "Push through it and hope it gets better"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The support decision tree clearly states that if you answer 'Yes' to having pain or medical conditions, you should 'See doctor/physical therapist' immediately. This is the first and most important filter in the decision-making process, prioritizing safety above all else.",
+    "hints": [
+      "Look at the first question in 'Your Support Decision Tree'",
+      "Consider what takes priority when health issues are present"
+    ],
+    "image_urls": []
+  },
+  {
+    "id": "4b7fd6db-02c5-48b5-87ae-1285816ab0b9",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Taylor's main mistake regarding the knee pain?",
+    "question_type": "passage_based",
+    "options": [
+      "Not buying proper knee support equipment",
+      "Working through pain for three months instead of seeking help",
+      "Choosing the wrong type of squats for beginners",
+      "Not posting about it on social media for advice"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Taylor had been 'working through' knee pain for three months, believing it was 'just part of getting fit.' The physical therapist's assessment showed this was dangerous thinking that could have led to serious injury. The lesson is that pain is never just part of the process.",
+    "hints": [
+      "Focus on how long Taylor ignored the pain",
+      "Consider what Taylor believed about pain and fitness"
+    ],
+    "image_urls": [],
+    "passage_set_id": "557b4ace-28fc-4054-b777-8a2db2b7e27b"
+  },
+  {
+    "id": "169804df-869e-4ead-8540-fdd0c7b63a09",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What did the physical therapist identify as the root cause of Taylor's knee problem?",
+    "question_type": "passage_based",
+    "options": [
+      "Taylor was lifting too much weight",
+      "Taylor's knee was collapsing inward during squats",
+      "Taylor wasn't warming up properly before exercise",
+      "Taylor was wearing the wrong type of shoes"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The physical therapist observed that 'Your knee is collapsing inward. You're putting massive stress on the joint.' This movement dysfunction was causing the pain and would have led to serious injury if continued. Proper form assessment caught what could have been a major problem.",
+    "hints": [
+      "Look at what the PT observed during Taylor's squat",
+      "Focus on the specific movement problem identified"
+    ],
+    "image_urls": [],
+    "passage_set_id": "557b4ace-28fc-4054-b777-8a2db2b7e27b"
+  },
+  {
+    "id": "97921003-cc3d-436f-99c7-97a56ef5b38a",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How long did it take for Taylor to resolve the knee issue with proper professional help?",
+    "question_type": "passage_based",
+    "options": [
+      "One week of rest",
+      "Four weeks of corrective exercises",
+      "Six months of intensive therapy",
+      "One year of gradual improvement"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage states 'Four weeks of corrective exercises later, Taylor was squatting pain-free with proper form.' This shows how quickly professional intervention can solve problems that seem insurmountable when trying to handle them alone.",
+    "hints": [
+      "Look for the specific timeframe mentioned for recovery",
+      "Find when Taylor was able to squat pain-free again"
+    ],
+    "image_urls": [],
+    "passage_set_id": "557b4ace-28fc-4054-b777-8a2db2b7e27b"
+  },
+  {
+    "id": "c0c423e4-1aad-42a5-8a08-1bc4a9f7c3c5",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What lesson does Taylor's story teach about pain during exercise?",
+    "question_type": "passage_based",
+    "options": [
+      "All pain is good and shows you're working hard",
+      "Pain is never just part of the exercise process",
+      "You should always push through discomfort to see results",
+      "Only severe pain needs professional attention"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The PT's final message was 'Pain is never just part of the process,' directly contradicting Taylor's initial belief. This reinforces the article's key point that pain signals should be taken seriously and evaluated professionally, not ignored or pushed through.",
+    "hints": [
+      "Look at the physical therapist's key message to Taylor",
+      "Consider what Taylor learned about their initial assumption"
+    ],
+    "image_urls": [],
+    "passage_set_id": "557b4ace-28fc-4054-b777-8a2db2b7e27b"
+  },
+  {
+    "id": "9c296a68-94d6-41c7-9c17-58c4afdbd4ee",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the main barrier preventing Emma and Casey from getting personal training?",
+    "question_type": "passage_based",
+    "options": [
+      "They couldn't find a qualified trainer in their area",
+      "The cost of individual sessions at $75 each was too expensive",
+      "They were too intimidated to work with a professional",
+      "Their gym didn't offer personal training services"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The passage clearly states they 'couldn't afford $75 sessions individually.' This financial barrier led them to find a creative solution through small group training, demonstrating that cost doesn't have to prevent access to professional guidance.",
+    "hints": [
+      "Look at what prevented them from getting individual training",
+      "Focus on the specific dollar amount mentioned"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e1de993e-143c-4c66-818a-a9eb8df4a0b6"
+  },
+  {
+    "id": "a5af3611-e9af-431e-8ee5-10e105a04d6d",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did Emma and Casey solve their budget problem while still getting professional help?",
+    "question_type": "passage_based",
+    "options": [
+      "They negotiated a lower rate with a trainer",
+      "They found four people total to share small group training costs",
+      "They decided to train without any professional guidance",
+      "They got jobs at the gym in exchange for free training"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "They found 'two more beginners at their gym and approached a trainer together,' creating a group of four people. This allowed them to access small group training at $30 each instead of $75 for individual sessions, making professional help affordable.",
+    "hints": [
+      "Count how many total people were in their training group",
+      "Look at the solution they created for the cost problem"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e1de993e-143c-4c66-818a-a9eb8df4a0b6"
+  },
+  {
+    "id": "3a4ff51a-73f6-452a-a384-353831772fb8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What unexpected benefit did Emma discover from group training beyond cost savings?",
+    "question_type": "passage_based",
+    "options": [
+      "The workouts were easier than individual training",
+      "She didn't have to work as hard in a group setting",
+      "The accountability factor helped her show up consistently",
+      "She could hide in the group and not participate fully"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Emma noted that 'knowing three people are counting on me gets me there' when she doesn't feel like showing up. This demonstrates how group training provides built-in accountability that helps with consistency, a major factor in fitness success.",
+    "hints": [
+      "Look at what motivates Emma to attend when she doesn't feel like it",
+      "Consider the social aspect of group training"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e1de993e-143c-4c66-818a-a9eb8df4a0b6"
+  },
+  {
+    "id": "81857eb8-84c5-402d-8b3b-b450dc7bc31c",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "How did the group training arrangement extend support beyond the formal sessions?",
+    "question_type": "passage_based",
+    "options": [
+      "The trainer gave them extra homework assignments",
+      "They met for coffee after each session to discuss progress",
+      "They checked each other's form between trainer sessions",
+      "They shared workout equipment and split those costs too"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "Casey mentioned 'we check each other's form between trainer sessions,' showing how the group created ongoing support beyond the paid sessions. This peer checking system extended the safety and education benefits of professional training into their independent workouts.",
+    "hints": [
+      "Look at what Casey added about their ongoing support system",
+      "Focus on how they help each other when the trainer isn't present"
+    ],
+    "image_urls": [],
+    "passage_set_id": "e1de993e-143c-4c66-818a-a9eb8df4a0b6"
+  },
+  {
+    "id": "682b3d5e-576a-48c7-8aac-694e04d03870",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was Jordan's main problem that led to seeking help from the gym's floor trainer?",
+    "question_type": "passage_based",
+    "options": [
+      "Jordan had suffered an injury and needed rehabilitation",
+      "Jordan was overwhelmed by conflicting information from multiple sources",
+      "Jordan couldn't afford any type of professional training",
+      "Jordan was too shy to exercise in front of other people"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan had 'seventeen fitness apps, three workout programs printed out, and a browser with 47 open tabs about exercise' and complained that 'Every source says something different.' This represents classic information overload leading to paralysis rather than action.",
+    "hints": [
+      "Count how many different sources of information Jordan had collected",
+      "Look at Jordan's specific complaint about the information"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7edca862-7052-4b5e-b78c-60d43ba2337f"
+  },
+  {
+    "id": "f34598a4-d236-4ef3-afaa-1660f975a6b6",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What simple solution did the gym floor trainer provide to Jordan?",
+    "question_type": "passage_based",
+    "options": [
+      "A comprehensive 12-week training program with detailed progressions",
+      "Three basic exercises written on an index card to do for four weeks",
+      "Access to premium fitness apps with personalized programming",
+      "A reading list of the best fitness books and research studies"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The trainer 'spent 20 minutes showing Jordan three basic exercises and writing a simple program on an index card' with instructions to 'Do this for four weeks. That's it. Ignore everything else.' This demonstrates how professional guidance can cut through information overload with simple, actionable direction.",
+    "hints": [
+      "Look at what the trainer wrote down for Jordan",
+      "Focus on how simple and specific the solution was"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7edca862-7052-4b5e-b78c-60d43ba2337f"
+  },
+  {
+    "id": "9a244642-cf89-4f1b-85e3-ba04dfe1a774",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What was the trainer's key message when Jordan wanted to discuss optimization?",
+    "question_type": "passage_based",
+    "options": [
+      "Optimization is the most important part of any fitness program",
+      "You should research optimization techniques for at least six months first",
+      "You can't optimize what you haven't started - master basics first",
+      "Optimization only matters for advanced athletes, not beginners"
+    ],
+    "correct_answer_index": 2,
+    "explanation": "When Jordan tried to ask about optimization, the trainer said 'You can't optimize what you haven't started. Master these three moves first.' This addresses a common beginner mistake of trying to perfect a plan before taking action, emphasizing that starting with basics is more important than theoretical optimization.",
+    "hints": [
+      "Look at the trainer's response about optimization",
+      "Consider the trainer's philosophy about starting versus perfecting"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7edca862-7052-4b5e-b78c-60d43ba2337f"
+  },
+  {
+    "id": "1c945a3f-0bbd-4e79-a456-aacb73489257",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "knowledge_base_id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "question_text": "What did Jordan gain from this interaction that months of research hadn't provided?",
+    "question_type": "passage_based",
+    "options": [
+      "Access to expensive fitness equipment and advanced techniques",
+      "Clarity and a simple starting point instead of information overload",
+      "Detailed scientific explanations of exercise physiology",
+      "A complete understanding of all possible workout variations"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "Jordan 'left with one index card and more clarity than months of research had provided.' The simple, professional guidance gave Jordan what all the research couldn't: clear direction and permission to start with something manageable instead of trying to understand everything first.",
+    "hints": [
+      "Compare what Jordan gained from 20 minutes with a trainer versus months of research",
+      "Focus on the concept of clarity versus information"
+    ],
+    "image_urls": [],
+    "passage_set_id": "7edca862-7052-4b5e-b78c-60d43ba2337f"
+  }
+]

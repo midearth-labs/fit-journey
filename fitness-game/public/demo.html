@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitJourney - Modern Fitness Learning Platform Demo</title>
+    <meta name="description" content="Experience the modern, elegant FitJourney fitness learning platform with Duolingo-inspired design and engaging interactions.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav-brand">
+                    <div class="brand-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                    </div>
+                    <div class="brand-text">
+                        <h1>FitJourney</h1>
+                        <span class="brand-subtitle">Learn • Grow • Transform</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Categories</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Progress</span>
+                    </a>
+                </nav>
+                <div class="nav-actions">
+                    <div class="streak-indicator">
+                        <i class="fas fa-fire"></i>
+                        <span>7</span>
+                    </div>
+                    <button class="btn btn-ghost" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm">
+                        Start Learning
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-background">
+                    <div class="floating-elements">
+                        <div class="floating-element element-1">💪</div>
+                        <div class="floating-element element-2">🏃‍♀️</div>
+                        <div class="floating-element element-3">🥗</div>
+                        <div class="floating-element element-4">🧘‍♀️</div>
+                        <div class="floating-element element-5">🏋️‍♂️</div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-star"></i>
+                            <span>Interactive Learning Platform</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Master Fitness in
+                            <span class="gradient-text">70 Days</span>
+                        </h1>
+                        <p class="hero-description">
+                            Transform from fitness beginner to confident enthusiast through our engaging, 
+                            character-driven learning experience. Learn with real stories, not boring textbooks.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number">70</span>
+                                    <span class="stat-label">Learning Days</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number">9</span>
+                                    <span class="stat-label">Categories</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number">1000+</span>
+                                    <span class="stat-label">Questions</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary btn-lg">
+                                <i class="fas fa-play"></i>
+                                Start Your Journey
+                            </button>
+                            <button class="btn btn-outline btn-lg">
+                                <i class="fas fa-chart-line"></i>
+                                View Progress
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="progress-ring-container">
+                            <div class="progress-ring">
+                                <svg class="progress-ring-svg" width="280" height="280">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#58cc02;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#1cb0f6;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="progress-ring-circle-bg" cx="140" cy="140" r="120"></circle>
+                                    <circle class="progress-ring-circle" cx="140" cy="140" r="120" style="stroke-dashoffset: 565;"></circle>
+                                </svg>
+                                <div class="progress-content">
+                                    <div class="progress-percentage">45%</div>
+                                    <div class="progress-label">Complete</div>
+                                    <div class="progress-days">
+                                        <span>32</span> of 70 days
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-badges">
+                                <div class="badge">
+                                    <i class="fas fa-fire"></i>
+                                    <span>7 day streak</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>12 quizzes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Phases -->
+            <section class="phases-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h3>Your Learning Journey</h3>
+                        <p>Progress through 6 carefully designed phases, each building upon the last to create a comprehensive fitness education.</p>
+                    </div>
+                    <div class="phases-grid">
+                        <div class="phase-card fade-in">
+                            <div class="phase-header">
+                                <div class="phase-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div>
+                                    <h4 class="phase-title">Foundation Building</h4>
+                                    <p class="phase-description">Essential knowledge base before specialized topics. Master the fundamentals that every fitness enthusiast needs.</p>
+                                </div>
+                            </div>
+                            <div class="phase-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                <div class="progress-text">Days 1-6 • 6 articles • Complete</div>
+                            </div>
+                        </div>
+                        <div class="phase-card fade-in">
+                            <div class="phase-header">
+                                <div class="phase-icon">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <div>
+                                    <h4 class="phase-title">Core Knowledge Introduction</h4>
+                                    <p class="phase-description">Practical application foundations. Learn how to apply fitness principles in real-world scenarios.</p>
+                                </div>
+                            </div>
+                            <div class="phase-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="progress-text">Days 7-18 • 12 articles • 9 complete</div>
+                            </div>
+                        </div>
+                        <div class="phase-card fade-in">
+                            <div class="phase-header">
+                                <div class="phase-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4 class="phase-title">Movement Mastery</h4>
+                                    <p class="phase-description">Advanced nutrition, movement literacy and goal refinement. Take your knowledge to the next level.</p>
+                                </div>
+                            </div>
+                            <div class="phase-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%"></div>
+                                </div>
+                                <div class="progress-text">Days 19-30 • 12 articles • 6 complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Preview -->
+            <section class="recent-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h3>Learning Categories</h3>
+                        <p>Explore our comprehensive curriculum covering all aspects of fitness and wellness.</p>
+                    </div>
+                    <div class="categories-grid">
+                        <div class="category-card fade-in">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-flag-checkered"></i>
+                                </div>
+                                <div class="category-info">
+                                    <h3>Fitness Foundation</h3>
+                                    <p class="category-description">Essential fitness basics for absolute beginners. Learn what fitness really means and build confidence.</p>
+                                    <div class="category-stats">
+                                        <div class="category-stat">
+                                            <i class="fas fa-book"></i>
+                                            <span>6 articles</span>
+                                        </div>
+                                        <div class="category-stat">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span>90 questions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-card fade-in">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-apple"></i>
+                                </div>
+                                <div class="category-info">
+                                    <h3>Nutrition Essentials</h3>
+                                    <p class="category-description">Build healthy eating habits that support your fitness goals. Master macronutrients and meal planning.</p>
+                                    <div class="category-stats">
+                                        <div class="category-stat">
+                                            <i class="fas fa-book"></i>
+                                            <span>12 articles</span>
+                                        </div>
+                                        <div class="category-stat">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span>180 questions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-card fade-in">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-target"></i>
+                                </div>
+                                <div class="category-info">
+                                    <h3>Exercise Fundamentals</h3>
+                                    <p class="category-description">Master proper exercise technique and movement patterns. Learn the building blocks of safe, effective exercise.</p>
+                                    <div class="category-stats">
+                                        <div class="category-stat">
+                                            <i class="fas fa-book"></i>
+                                            <span>6 articles</span>
+                                        </div>
+                                        <div class="category-stat">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span>90 questions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Articles -->
+            <section class="recent-section" style="background: var(--bg-secondary);">
+                <div class="container">
+                    <div class="section-title">
+                        <h3>Continue Learning</h3>
+                        <p>Pick up where you left off with these engaging articles and character stories.</p>
+                    </div>
+                    <div class="articles-grid">
+                        <div class="article-card fade-in">
+                            <div class="article-image">
+                                <i class="fas fa-flag-checkered"></i>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span>Day 1</span>
+                                    <span>•</span>
+                                    <span>Fitness Foundation</span>
+                                    <span>•</span>
+                                    <span>5 min read</span>
+                                </div>
+                                <h3 class="article-title">What Is Fitness Really? Debunking the Instagram Myths</h3>
+                                <p class="article-excerpt">You've seen them. The 5 AM workout posts. The perfect abs. The protein shakes that somehow look appetizing. Here's the truth about real fitness...</p>
+                                <div class="article-tags">
+                                    <span class="tag">beginner</span>
+                                    <span class="tag">fitness-basics</span>
+                                    <span class="tag">myths</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-card fade-in">
+                            <div class="article-image">
+                                <i class="fas fa-apple"></i>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span>Day 2</span>
+                                    <span>•</span>
+                                    <span>Nutrition Essentials</span>
+                                    <span>•</span>
+                                    <span>4 min read</span>
+                                </div>
+                                <h3 class="article-title">Understanding Macronutrients: The Building Blocks of Nutrition</h3>
+                                <p class="article-excerpt">Learn about proteins, carbohydrates, and fats - the three macronutrients that fuel your body and support your fitness goals...</p>
+                                <div class="article-tags">
+                                    <span class="tag">nutrition</span>
+                                    <span class="tag">macros</span>
+                                    <span class="tag">basics</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-card fade-in">
+                            <div class="article-image">
+                                <i class="fas fa-target"></i>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span>Day 3</span>
+                                    <span>•</span>
+                                    <span>Exercise Fundamentals</span>
+                                    <span>•</span>
+                                    <span>6 min read</span>
+                                </div>
+                                <h3 class="article-title">Proper Breathing Techniques for Exercise</h3>
+                                <p class="article-excerpt">Master the art of breathing during exercise to maximize performance, prevent injury, and build mind-muscle connection...</p>
+                                <div class="article-tags">
+                                    <span class="tag">breathing</span>
+                                    <span class="tag">technique</span>
+                                    <span class="tag">safety</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 FitJourney. Your fitness learning companion.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    
+                    const icon = this.querySelector('i');
+                    icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                });
+            }
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards
+            document.querySelectorAll('.phase-card, .category-card, .article-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add hover effects to buttons
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add click effects to cards
+            document.querySelectorAll('.category-card, .article-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

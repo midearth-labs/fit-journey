@@ -33,14 +33,19 @@ class FitJourneyApp {
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const page = e.target.dataset.page;
+                const page = e.target.closest('.nav-link').dataset.page;
                 this.showPage(page);
             });
         });
 
         // Theme toggle
-        document.getElementById('theme-toggle').addEventListener('click', () => {
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
             this.toggleTheme();
+        });
+
+        // Start learning button
+        document.getElementById('start-learning-btn')?.addEventListener('click', () => {
+            this.showPage('categories');
         });
 
         // Quiz actions
@@ -59,6 +64,23 @@ class FitJourneyApp {
         document.getElementById('prev-question-btn')?.addEventListener('click', () => {
             this.previousQuestion();
         });
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to cards
+        this.addCardHoverEffects();
     }
 
     /**
@@ -630,15 +652,22 @@ class FitJourneyApp {
      * @param {number} progress - Progress percentage
      */
     updateOverallProgress(progress) {
-        const progressFill = document.getElementById('overall-progress');
+        const progressCircle = document.getElementById('progress-circle');
         const progressText = document.getElementById('progress-percentage');
+        const completedDays = document.getElementById('completed-days');
         
-        if (progressFill) {
-            progressFill.style.background = `conic-gradient(var(--accent-color) 0deg, var(--accent-color) ${progress * 3.6}deg, rgba(255, 255, 255, 0.2) ${progress * 3.6}deg)`;
+        if (progressCircle) {
+            const circumference = 2 * Math.PI * 120; // radius = 120
+            const offset = circumference - (progress / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
         }
         
         if (progressText) {
             progressText.textContent = `${progress}%`;
+        }
+        
+        if (completedDays) {
+            completedDays.textContent = Math.round((progress / 100) * 70);
         }
     }
 
@@ -658,6 +687,63 @@ class FitJourneyApp {
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('fitjourney-theme', newTheme);
+        
+        // Update theme toggle icon
+        const themeIcon = document.querySelector('#theme-toggle i');
+        if (themeIcon) {
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+
+    /**
+     * Add card hover effects
+     */
+    addCardHoverEffects() {
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.phase-card, .category-card, .article-card').forEach(card => {
+            observer.observe(card);
+        });
+    }
+
+    /**
+     * Add particle effects to hero section
+     */
+    addParticleEffects() {
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+
+        // Create floating particles
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: var(--primary-color);
+                border-radius: 50%;
+                opacity: 0.3;
+                animation: float ${3 + Math.random() * 4}s ease-in-out infinite;
+                animation-delay: ${Math.random() * 2}s;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+            `;
+            heroSection.appendChild(particle);
+        }
     }
 
     /**
