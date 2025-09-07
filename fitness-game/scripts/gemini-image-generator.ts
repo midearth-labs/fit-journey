@@ -115,6 +115,7 @@ class GeminiImageGenerator {
           knowledgeBaseTitle: kb.title
         });
       }
+      continue;
 
       // Extract image_urls
       if (kb.image_urls && kb.image_urls.length > 0) {
@@ -186,7 +187,13 @@ class GeminiImageGenerator {
       console.log(`\n📸 Generating image ${i + 1}/${imagesToGenerate.length}`);
       console.log(`📝 Source: ${image.source} from "${image.knowledgeBaseTitle}"`);
       console.log(`📍 Path: ${image.path}`);
-      console.log(`🎯 Prompt: ${image.prompt_generation_string}`);
+      const fullPromptText = `Create a high-quality image for a fitness education app. The image should be professional, engaging, and appropriate for a health and fitness context. Dimensions should be approximately ${image.width}x${image.height} pixels. 
+
+Prompt: ${image.prompt_generation_string}
+
+Additional context: This is for a knowledge base article titled "${image.knowledgeBaseTitle}". The image will be used as ${image.source.replace('_', ' ')} in the article.`
+      
+console.log(`🎯 Prompt: ${fullPromptText}`);
 
       try {
         // Create directory if it doesn't exist
@@ -207,35 +214,33 @@ class GeminiImageGenerator {
           // Generate image using Gemini
           const result = await model.generateContent([
             {
-              text: `Create a high-quality image for a fitness education app. The image should be professional, engaging, and appropriate for a health and fitness context. Dimensions should be approximately ${image.width}x${image.height} pixels. 
-
-Prompt: ${image.prompt_generation_string}
-
-Additional context: This is for a knowledge base article titled "${image.knowledgeBaseTitle}". The image will be used as ${image.source.replace('_', ' ')} in the article.`
+              text: fullPromptText
             }
           ]);
 
           // Check if the response contains image data
           const response = await result.response;
           
-          // Note: Gemini 2.0 Flash Experimental doesn't generate images directly
-          // This is a placeholder for when image generation becomes available
-          console.log(`⚠️  Note: Gemini 2.0 Flash Experimental doesn't support direct image generation yet.`);
-          console.log(`📄 Generated text response instead: ${response.text()?.substring(0, 100)}...`);
-          
-          // For now, create a placeholder file to track that we've "processed" this image
-          const placeholderContent = JSON.stringify({
-            path: image.path,
-            description: image.description,
-            prompt: image.prompt_generation_string,
-            generated_at: new Date().toISOString(),
-            note: "Placeholder - Gemini image generation not yet available"
-          }, null, 2);
-          
-          const placeholderPath = path.join(this.publicDir, image.path + '.meta.json');
-          await fs.writeFile(placeholderPath, placeholderContent);
-          
-          console.log(`📄 Created metadata file: ${placeholderPath}`);
+          // Process the response to extract image data
+          if (response.candidates && response.candidates[0] && response.candidates[0].content && response.candidates[0].content.parts) {
+            for (const part of response.candidates[0].content.parts) {
+              if (part.text) {
+                console.log(`📄 Generated text response: ${part.text}`);
+              } else if (part.inlineData) {
+                // Extract image data and save
+                const imageData = part.inlineData.data;
+                const buffer = Buffer.from(imageData, "base64");
+                
+                const fullImagePath = path.join(this.publicDir, image.path);
+                
+                await fs.writeFile(fullImagePath, buffer);
+                console.log(`✅ Image saved: ${image.path}`);
+                break; // Exit loop after finding the first image
+              }
+            }
+          } else {
+            console.log(`⚠️  No valid response candidates found for image generation`);
+          }
         }
 
       } catch (error) {

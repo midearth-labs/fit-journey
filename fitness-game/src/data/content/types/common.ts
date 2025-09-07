@@ -42,7 +42,7 @@ export const AffiliateLinkSchema = z.object({
 }).describe('Affiliate link to purchase products or services related to the content.');
 
 export const ImageSchema = z.object({
-  path: z.string().describe('Relative path of the image. Should be relative to the content specific directory under the images directory. i.e. "/images/knowledge-base/{article-id}/{image-id}.jpeg", this relative Image URL will be used in the associated content markdown'),
+  path: z.string().describe('Relative path of the image. Should be relative to the content specific directory under the images directory. i.e. "/images/knowledge-base/{article-id}/{image-id}.png", this relative Image URL will be used in the associated content markdown'),
   description: z.string().describe('The description of the image. Used for alt text and other purposes.'),
   width: z.number(),
   height: z.number(),
