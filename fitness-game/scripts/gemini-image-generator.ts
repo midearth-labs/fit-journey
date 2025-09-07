@@ -182,7 +182,7 @@ class GeminiImageGenerator {
     
     const model = this.genAI?.getGenerativeModel({ model: "gemini-2.5-flash-image-preview" });
 
-    for (let i = 0; i < 1 /* imagesToGenerate.length */; i++) {
+    for (let i = 0; i < imagesToGenerate.length; i++) {
       const image = imagesToGenerate[i];
       console.log(`\n📸 Generating image ${i + 1}/${imagesToGenerate.length}`);
       console.log(`📝 Source: ${image.source} from "${image.knowledgeBaseTitle}"`);
