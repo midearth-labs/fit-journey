@@ -30,7 +30,7 @@ interface ImageMetadata {
   height: number;
   source: 'lede_image' | 'image_urls' | 'passage_image_urls';
   knowledgeBaseId: string;
-  knowledgeBaseTitle: string;
+  title: string;
 }
 
 class GeminiImageGenerator {
@@ -112,7 +112,7 @@ class GeminiImageGenerator {
           ...kb.lede_image,
           source: 'lede_image',
           knowledgeBaseId: kb.id,
-          knowledgeBaseTitle: kb.title
+          title: kb.title
         });
       }
 
@@ -123,7 +123,7 @@ class GeminiImageGenerator {
             ...image,
             source: 'image_urls',
             knowledgeBaseId: kb.id,
-            knowledgeBaseTitle: kb.title
+            title: kb.title
           });
         }
       }
@@ -137,7 +137,7 @@ class GeminiImageGenerator {
                 ...image,
                 source: 'passage_image_urls',
                 knowledgeBaseId: kb.id,
-                knowledgeBaseTitle: kb.title
+                title: passage.title
               });
             }
           }
@@ -180,17 +180,21 @@ class GeminiImageGenerator {
     }
     
     const model = this.genAI?.getGenerativeModel({ model: "gemini-2.5-flash-image-preview" });
-
-    for (let i = 0; i < 10; i++) {
+    const imageSourceDestinationMap: Record<ImageMetadata['source'], string> = {
+      lede_image: 'the article lede image',
+      image_urls: 'one of the images in the article body',
+      passage_image_urls: 'one of the images in the passage body'
+    }
+    for (let i = 0; i < 50; i++) {
       const image = imagesToGenerate[i];
       console.log(`\n📸 Generating image ${i + 1}/${imagesToGenerate.length}`);
-      console.log(`📝 Source: ${image.source} from "${image.knowledgeBaseTitle}"`);
+      console.log(`📝 Source: ${image.source} from "${image.title}"`);
       console.log(`📍 Path: ${image.path}`);
-      const fullPromptText = `Create a high-quality image for a fitness education app. The image should be professional, engaging, and appropriate for a health and fitness context. Dimensions should be approximately ${image.width}x${image.height} pixels. 
-
+      const fullPromptText = `You are to create a high-quality image for a fitness education app. The image should be professional, engaging, and appropriate for a health and fitness context. Dimensions should be approximately ${image.width}x${image.height} pixels. 
+The content which contains this image is titled "${image.title}". The image will be used as ${imageSourceDestinationMap[image.source]}.
+Now, generate the below prompt according to the instructions and context above: 
 Prompt: ${image.prompt_generation_string}
-
-Additional context: This is for a knowledge base article titled "${image.knowledgeBaseTitle}". The image will be used as ${image.source.replace('_', ' ')} in the article.`
+`
       
 console.log(`🎯 Prompt: ${fullPromptText}`);
 
