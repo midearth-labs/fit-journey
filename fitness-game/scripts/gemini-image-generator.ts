@@ -185,7 +185,7 @@ class GeminiImageGenerator {
       image_urls: 'one of the images in the article body',
       passage_image_urls: 'one of the images in the passage body'
     }
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < imagesToGenerate.length; i++) {
       const image = imagesToGenerate[i];
       console.log(`\n📸 Generating image ${i + 1}/${imagesToGenerate.length}`);
       console.log(`📝 Source: ${image.source} from "${image.title}"`);
