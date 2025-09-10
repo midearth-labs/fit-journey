@@ -6,12 +6,40 @@ import { InferSelectModel, InferInsertModel } from 'drizzle-orm';
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
 
+/**
+ * Describes the structure for a single answer submitted by a user for a quiz.
+ * An array of these will be stored in the `quizAnswers` JSONB field.
+ */
 export type UserAnswer = {
   question_id: string;
   answer_index: number;
   is_correct: boolean;
   hint_used: boolean;
 }
+
+/**
+ * Defines the lifecycle status of a user's participation in a challenge.
+ * (Unchanged from previous design)
+ */
+export const userChallengeStatusEnum = pgEnum('user_challenge_status', [
+  'not_started',
+  'active',
+  'completed',
+  'locked',
+]);
+
+/**
+ * Describes the structure for the daily habit log.
+ * The key is the `challengeHabitId` (as a string, since JSON keys are strings),
+ * and the value is the data logged by the user.
+ */
+export type DailyHabitLogPayload = {
+  workout_completed?: boolean,
+  ate_clean?: boolean,
+  slept_well?: boolean,
+  hydrated?: boolean,
+};
+
 
 // User table - seeded from Supabase Auth table using trigger
 export const users = pgTable('users', {
@@ -59,6 +87,90 @@ export const userProfiles = pgTable('user_profiles', {
   updated_at: timestamp('updated_at').defaultNow().notNull(),
 });
 
+
+/**
+ * USER CHALLENGES
+ * Represents a specific user's instance of a challenge.
+ * This table is central to tracking a user's journey.
+ */
+export const userChallenges = pgTable('user_challenges', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  
+  // NOTE: 'challengeId' is just a string. Your application must validate
+  // that this ID exists in your static JSON challenge definitions.
+  challengeId: text('challenge_id').notNull(),
+
+  startDate: date('start_date').notNull(),
+  originalStartDate: date('original_start_date').notNull(),
+  status: userChallengeStatusEnum('status').notNull().default('not_started'),
+  
+  completedAt: timestamp('completed_at'), // Marks the start of the grace period
+  lockedAt: timestamp('locked_at'), // Marks when the challenge becomes read-only
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+/**
+ * USER CHALLENGE PROGRESS
+ * Tracks a user's progress on a specific article/quiz within their challenge.
+ */
+// Drizzle Schema
+export const userChallengeProgress = pgTable('user_challenge_progress', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userChallengeId: uuid('user_challenge_id').notNull().references(() => userChallenges.id, { onDelete: 'cascade' }),
+  
+  // NOTE: 'knowledgeBaseId' corresponds to an ID in your static JSON.
+  knowledgeBaseId: text('knowledge_base_id').notNull(),
+
+  allCorrectAnswers: boolean('all_correct_answers').notNull(), // Whether all questions were answered correctly
+  
+  /**
+   * NEW: Stores all user answers for this quiz in a single JSONB field.
+   * This is ideal for batch submissions.
+   */
+  quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>(),
+
+  firstAttemptedAt: timestamp('first_attempted_at').notNull(),
+  lastAttemptedAt: timestamp('last_attempted_at').notNull(),
+  attempts: integer('attempts').notNull(),
+}, (table) => {
+  return {
+    // A user should only have one progress record per article in their challenge.
+    unq: unique('user_challenge_article_unique').on(table.userChallengeId, table.knowledgeBaseId),
+  };
+});
+
+
+/**
+ * USER HABIT LOGS (Redesigned)
+ * This table now stores one row per user, per challenge, per day.
+ * All habit data for that day is consolidated into a single JSONB object.
+ */
+export const userHabitLogs = pgTable('user_habit_logs', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userChallengeId: uuid('user_challenge_id').notNull().references(() => userChallenges.id, { onDelete: 'cascade' }),
+  
+  // The specific date this log entry is for. CRITICAL for back-logging.
+  logDate: date('log_date').notNull(),
+  
+  /**
+   * NEW: A JSONB object holding all habit values for the given day.
+   * Example: { "habit_id_1": true, "habit_id_5": 120, "habit_id_7": "Ate a healthy salad" }
+   */
+  values: jsonb('values').notNull().$type<DailyHabitLogPayload>(),
+
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+}, (table) => {
+  return {
+    // Ensures a user can only have ONE log entry per day for a given challenge.
+    // This makes updates (UPSERTs) simple and prevents duplicate data.
+    unq: unique('user_daily_log_unique').on(table.userChallengeId, table.logDate),
+  };
+});
+
 // GameSession table
 export const gameSessions = pgTable('game_sessions', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -76,6 +188,8 @@ export const gameSessions = pgTable('game_sessions', {
   // Unique index for querying game sessions by user and day
   unique('game_sessions_user_id_day_idx').on(table.user_id, table.day),
 ]));
+
+
 
 // StreakLog table
 export const streakLogs = pgTable('streak_logs', {
@@ -117,7 +231,7 @@ export const fitnessLevelHistories = pgTable('fitness_level_histories', {
 export const usersRelations = relations(users, ({ one, many }) => ({
   profile: one(userProfiles, {
     fields: [users.id],
-    references: [userProfiles.user_id],
+    references: [userProfiles.id],
   }),
   gameSessions: many(gameSessions),
   streakLogs: many(streakLogs),
@@ -127,7 +241,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
 
 export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
   user: one(users, {
-    fields: [userProfiles.user_id],
+    fields: [userProfiles.id],
     references: [users.id],
   }),
   latestGameSession: one(gameSessions, {

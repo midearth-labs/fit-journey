@@ -21,8 +21,7 @@ export const ChallengeArticleSchema = z.object({
  * This defines the entire blueprint for a challenge like "30-day FitJourney".
  * This schema is used to validate the static JSON files loaded by the application.
  */
-export const ChallengeSchema = z.object({
-    id: UUIDSchema.shape.id,
+export const ChallengeSchema = UUIDSchema.extend(BaseContentSchema.shape).extend({
     name: z.string().describe("The name of the challenge"),
     description: z.string().describe("A marketing or explanatory description of the challenge."),
     durationDays: z.number().int().positive({ message: "Duration must be at least 1 day." }).describe("The total duration of the challenge in days."),

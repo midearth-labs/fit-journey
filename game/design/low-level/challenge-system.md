@@ -182,7 +182,7 @@ export const userChallengeStatusEnum = pgEnum('user_challenge_status', [
  * Describes the structure for a single answer submitted by a user for a quiz.
  * An array of these will be stored in the `quizAnswers` JSONB field.
  */
-export type QuizAnswerPayload = {
+export type UserAnswer = {
   questionId: number;
   selectedAnswer: number; // Flexible for different question types
 };
@@ -248,7 +248,7 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
      * NEW: Stores all user answers for this quiz in a single JSONB field.
      * This is ideal for batch submissions.
      */
-    quizAnswers: jsonb('quiz_answers').$type<QuizAnswerPayload[]>(),
+    quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>(),
 
     firstViewedAt: timestamp('first_viewed_at'),
     lastViewedAt: timestamp('last_viewed_at'),
