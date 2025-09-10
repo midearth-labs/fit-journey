@@ -678,3 +678,22 @@ File edit prompt per type
 Generate the type of QuestionSchema as if by zod.infer, flatten out any related structures so the output properties doesn't have any dependency on any ot type.
 Add the description of each field as a comment in front of each type property 
 ```
+
+### Prompt 9
+Attachments: background.nd, PRD.md, content-types.ts
+```
+Given the PRD and the below structures. Let's brainstorm an appealing, engaging, and easy to navigate UI for this blog, and the associated quizzes. The main progression will be users going from article Day 1 to article Day 70. 
+
+Content directory: `fitness-game/src/data/content` <- read a few content from here just to have an idea of the real data but dont ingest the whole content into the context window.
+
+Think deeply using the ContentCategory, KnowledgeBase, and Question type structures, inspect the related_categories, tags, etc to build up the taxonomy/navigation. 
+
+Generate the real UI  using HTML and Javascript. The Javascript must load content from the content path using AJAX or pre-loaded in the page using a script tag, dont duplicate JSON into the generated outputs. Think about the different UI for passage-based questions. Use Javascript and dynamic generation from the JSON data so as to reduce static HTML output. i.e. /article.html?article_id=foobar /category.html?category=blabla, /questions.html?article_id=foobar 
+
+Save the outputs (JS, CSS, HTML) into subdirectories of `fitness-game/public`
+```
+
+### Prompt 9.1
+```
+The UI isn't elegant enough, use modern, elegant, and engaging UI experiences for a project like this. Imagine DuoLingo was a website.
+```

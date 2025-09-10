@@ -430,6 +430,7 @@ export class ContentValidator {
         KnowledgeBase: this.content.KnowledgeBase.map.size,
         StreakType: this.content.StreakType.map.size,
         AvatarAsset: this.content.AvatarAsset.map.size,
+        Challenge: this.content.Challenge.map.size,
       }
     };
   }

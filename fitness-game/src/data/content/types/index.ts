@@ -8,6 +8,7 @@ import { Question, QuestionSchema } from './question';
 import { KnowledgeBase, KnowledgeBaseSchema } from './knowledge-base';
 import { StreakType, StreakTypeSchema } from './streak-type';
 import { AvatarAsset, AvatarAssetSchema } from './avatar-asset';
+import { Challenge, ChallengeSchema } from './challenge';
 
 export * from './common';
 export * from './content-category';
@@ -23,6 +24,7 @@ export type Content = {
   KnowledgeBase: MapAndList<KnowledgeBase>;
   StreakType: MapAndList<StreakType>;
   AvatarAsset: MapAndList<AvatarAsset>;
+  Challenge: MapAndList<Challenge>;
 };
 
 // Mapping from ContentType to Zod schema for runtime validation
@@ -32,6 +34,7 @@ export const ContentTypeToSchema = {
   KnowledgeBase: KnowledgeBaseSchema,
   StreakType: StreakTypeSchema,
   AvatarAsset: AvatarAssetSchema,
+  Challenge: ChallengeSchema,
 } as const satisfies Record<keyof Content, z.ZodSchema<any>>;
 
 export type MapAndList<T> = {

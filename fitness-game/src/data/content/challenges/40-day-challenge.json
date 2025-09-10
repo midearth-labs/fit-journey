@@ -1,0 +1,176 @@
+[
+    {
+        "id": "550e8400-e29b-41d4-a716-446655440040",
+        "name": "40-Day FitJourney Challenge",
+        "description": "An advanced 40-day fitness journey designed for intermediate to advanced users. This challenge builds upon foundational knowledge with deeper nutrition insights, advanced exercise techniques, and comprehensive lifestyle optimization strategies.",
+        "durationDays": 40,
+        "articles": [
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440003",
+            "suggestedDay": 1
+            },
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440005",
+            "suggestedDay": 2
+            },
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440006",
+            "suggestedDay": 3
+            },
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440008",
+            "suggestedDay": 4
+            },
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440009",
+            "suggestedDay": 5
+            },
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440011",
+            "suggestedDay": 6
+            },
+            {
+            "knowledgeBaseId": "550e8400-e29b-41d4-a716-446655440012",
+            "suggestedDay": 7
+            },
+            {
+            "knowledgeBaseId": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+            "suggestedDay": 8
+            },
+            {
+            "knowledgeBaseId": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+            "suggestedDay": 9
+            },
+            {
+            "knowledgeBaseId": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+            "suggestedDay": 10
+            },
+            {
+            "knowledgeBaseId": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+            "suggestedDay": 11
+            },
+            {
+            "knowledgeBaseId": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+            "suggestedDay": 12
+            },
+            {
+            "knowledgeBaseId": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+            "suggestedDay": 13
+            },
+            {
+            "knowledgeBaseId": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 14
+            },
+            {
+            "knowledgeBaseId": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 15
+            },
+            {
+            "knowledgeBaseId": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 16
+            },
+            {
+            "knowledgeBaseId": "9ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 17
+            },
+            {
+            "knowledgeBaseId": "9ba7b811-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 18
+            },
+            {
+            "knowledgeBaseId": "9ba7b812-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 19
+            },
+            {
+            "knowledgeBaseId": "9ba7b813-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 20
+            },
+            {
+            "knowledgeBaseId": "9ba7b814-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 21
+            },
+            {
+            "knowledgeBaseId": "9ba7b815-9dad-11d1-80b4-00c04fd430c8",
+            "suggestedDay": 22
+            },
+            {
+            "knowledgeBaseId": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+            "suggestedDay": 23
+            },
+            {
+            "knowledgeBaseId": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+            "suggestedDay": 24
+            },
+            {
+            "knowledgeBaseId": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+            "suggestedDay": 25
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d479",
+            "suggestedDay": 26
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d480",
+            "suggestedDay": 27
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d481",
+            "suggestedDay": 28
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d483",
+            "suggestedDay": 29
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d484",
+            "suggestedDay": 30
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d485",
+            "suggestedDay": 31
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d486",
+            "suggestedDay": 32
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d487",
+            "suggestedDay": 33
+            },
+            {
+            "knowledgeBaseId": "a47ac10b-58cc-4372-a567-0e02b2c3d488",
+            "suggestedDay": 34
+            },
+            {
+            "knowledgeBaseId": "c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f9",
+            "suggestedDay": 35
+            },
+            {
+            "knowledgeBaseId": "c47ac10b-58cc-4372-a567-0e02b2c3d481",
+            "suggestedDay": 36
+            },
+            {
+            "knowledgeBaseId": "c47ac10b-58cc-4372-a567-0e02b2c3d482",
+            "suggestedDay": 37
+            },
+            {
+            "knowledgeBaseId": "c47ac10b-58cc-4372-a567-0e02b2c3d483",
+            "suggestedDay": 38
+            },
+            {
+            "knowledgeBaseId": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+            "suggestedDay": 39
+            },
+            {
+            "knowledgeBaseId": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+            "suggestedDay": 40
+            }
+        ],
+        "habits": [
+            "workout_completed",
+            "ate_clean",
+            "slept_well",
+            "hydrated"
+        ]
+    }
+]

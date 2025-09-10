@@ -15,7 +15,7 @@ export type UserAnswer = {
 
 // User table - seeded from Supabase Auth table using trigger
 export const users = pgTable('users', {
-  id: uuid('id').primaryKey().defaultRandom(),
+  id: uuid('id').primaryKey().defaultRandom(), // this will be the FK to Supabase Auth table
   email: text('email').notNull().unique(),
   display_name: text('display_name'),
   avatar_gender: avatarGenderEnum('avatar_gender'),
@@ -31,11 +31,9 @@ export const users = pgTable('users', {
   updated_at: timestamp('updated_at').defaultNow().notNull(),
 });
 
-// UserProfile table
+// UserProfile table (which is an extension of the User table)
 export const userProfiles = pgTable('user_profiles', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  // @TODO: this needs to be unique
-  user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   latest_game_session: uuid('latest_game_session').references(() => gameSessions.id),
   current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
   current_streak_ids: jsonb('current_streak_ids').$type<{

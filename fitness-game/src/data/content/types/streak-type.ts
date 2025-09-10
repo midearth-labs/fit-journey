@@ -4,17 +4,28 @@
 import { z } from 'zod';
 import { BaseContentSchema } from './common';
 
+export const HabitIdsSchema = z.enum([
+  "workout_completed",
+  "ate_clean", 
+  "slept_well",
+  "hydrated",
+]);
+
 export const StreakTypeSchema = BaseContentSchema.extend({
-  id: z.enum([
-    "workout_completed",
-    "ate_clean", 
-    "slept_well",
-    "hydrated",
+  id: HabitIdsSchema.or(z.enum([
     "quiz_completed",
     "quiz_passed",
     "all"
-  ]),
+  ])),
   title: z.string(),
+
+  /**
+   * The type of data the user will log for this habit.
+   * - 'boolean': A simple checkbox (done/not done).
+   * - 'numeric': A number (e.g., minutes of exercise, glasses of water).
+   * - 'text': A short text entry (e.g., "What I'm grateful for today").
+   */
+  type: z.enum(['boolean', 'numeric', 'text']),
   habit: z.string(),
   description: z.string(),
   health_benefits: z.array(z.string()),
