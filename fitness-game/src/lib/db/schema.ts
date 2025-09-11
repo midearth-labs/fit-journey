@@ -83,8 +83,8 @@ export const userProfiles = pgTable('user_profiles', {
     all?: string;
   }>(), // each value is a FK to StreakHistory
   last_activity_date: date('last_activity_date'), // update this based on completion of daily quiz or logging of habits
-  created_at: timestamp('created_at').defaultNow().notNull(),
-  updated_at: timestamp('updated_at').defaultNow().notNull(),
+  created_at: timestamp('created_at').notNull(),
+  updated_at: timestamp('updated_at').notNull(),
 });
 
 
@@ -103,13 +103,13 @@ export const userChallenges = pgTable('user_challenges', {
 
   startDate: date('start_date').notNull(),
   originalStartDate: date('original_start_date').notNull(),
-  status: userChallengeStatusEnum('status').notNull().default('not_started'),
+  status: userChallengeStatusEnum('status').notNull(),
   
   completedAt: timestamp('completed_at'), // Marks the start of the grace period
   lockedAt: timestamp('locked_at'), // Marks when the challenge becomes read-only
   
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
 });
 
 /**
@@ -131,7 +131,7 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
    * NEW: Stores all user answers for this quiz in a single JSONB field.
    * This is ideal for batch submissions.
    */
-  quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>(),
+  quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>().notNull(),
 
   firstAttemptedAt: timestamp('first_attempted_at').notNull(),
   lastAttemptedAt: timestamp('last_attempted_at').notNull(),
@@ -163,8 +163,8 @@ export const userHabitLogs = pgTable('user_habit_logs', {
    */
   values: jsonb('values').notNull().$type<DailyHabitLogPayload>(),
 
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
   return {
     // Ensures a user can only have ONE log entry per day for a given challenge.
@@ -294,8 +294,9 @@ export type NewStreakHistory = InferInsertModel<typeof streakHistories>;
 export type FitnessLevelHistory = InferSelectModel<typeof fitnessLevelHistories>;
 export type NewFitnessLevelHistory = InferInsertModel<typeof fitnessLevelHistories>;
 export type UserChallenge = InferSelectModel<typeof userChallenges>;
-export type NewUserChallenge = InferInsertModel<typeof userChallenges>;
+export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'completedAt' | 'lockedAt' | 'status'>;
 export type UserChallengeProgress = InferSelectModel<typeof userChallengeProgress>;
-export type NewUserChallengeProgress = InferInsertModel<typeof userChallengeProgress>;
+export type NewUserChallengeProgress = Omit<InferInsertModel<typeof userChallengeProgress>, 'id' | 'attempts' | 'lastAttemptedAt'>;
 export type UserHabitLog = InferSelectModel<typeof userHabitLogs>;
-export type NewUserHabitLog = InferInsertModel<typeof userHabitLogs>;
+export type NewUserHabitLog = Omit<InferInsertModel<typeof userHabitLogs>, 'id' | 'updatedAt'>;
+export type UpdateUserChallenge = Partial<UserChallenge> & Pick<UserChallenge, 'updatedAt' | 'id' | 'userId'>

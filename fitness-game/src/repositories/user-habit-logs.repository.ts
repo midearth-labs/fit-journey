@@ -1,5 +1,5 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq, and, gte, lte } from 'drizzle-orm';
+import { eq, and, gte, lte, sql } from 'drizzle-orm';
 import { userHabitLogs, UserHabitLog, NewUserHabitLog } from '@/lib/db/schema';
 import { IUserHabitLogsRepository } from '@/shared/interfaces';
 
@@ -11,22 +11,23 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
    * This handles both creating new records and updating existing ones
    * Uses the unique constraint on (userChallengeId, logDate)
    */
-  // @TODO: look for other upser methods and update to use the onConflictDoUpdate pattern
-  async upsert(logData: NewUserHabitLog, updatedAt: Date): Promise<UserHabitLog> {
+  // @TODO: look for other upsert methods and update to use the onConflictDoUpdate pattern.
+  async upsert(logData: NewUserHabitLog): Promise<UserHabitLog | null> {
     const [log] = await this.db
       .insert(userHabitLogs)
-      .values(logData)
+      .values({...logData, updatedAt: logData.createdAt})
       .onConflictDoUpdate({
-        // @TODO: does this need to include userId also?
         target: [userHabitLogs.userChallengeId, userHabitLogs.logDate],
         set: {
           values: logData.values,
-          updatedAt,
+          updatedAt: logData.createdAt,
         },
+        // This makes sure we only update the log for the user
+        setWhere: sql`${userHabitLogs.userId} = ${logData.userId}`
       })
       .returning();
     
-    return log;
+    return log || null;
   }
 
   /**

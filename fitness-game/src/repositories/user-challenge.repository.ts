@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, lte } from 'drizzle-orm';
-import { userChallenges, UserChallenge, NewUserChallenge } from '@/lib/db/schema';
+import { userChallenges, UserChallenge, NewUserChallenge, UpdateUserChallenge } from '@/lib/db/schema';
 import { IUserChallengeRepository } from '@/shared/interfaces';
 
 export class UserChallengeRepository implements IUserChallengeRepository {
@@ -12,7 +12,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   async create(challengeData: NewUserChallenge): Promise<UserChallenge> {
     const [challenge] = await this.db
       .insert(userChallenges)
-      .values(challengeData)
+      .values({...challengeData, updatedAt: challengeData.createdAt, status: 'not_started'})
       .returning();
     
     return challenge;
@@ -68,14 +68,14 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   /**
    * Update a user challenge
    */
-  async update(id: string, userId: string, updates: Partial<UserChallenge>, updatedAt: Date): Promise<UserChallenge | null> {
+  async update(updates: UpdateUserChallenge): Promise<UserChallenge | null> {
     const [updatedChallenge] = await this.db
       .update(userChallenges)
-      .set({ ...updates, updatedAt })
+      .set({ ...updates })
       .where(
         and(
-          eq(userChallenges.id, id),
-          eq(userChallenges.userId, userId)
+          eq(userChallenges.id, updates.id),
+          eq(userChallenges.userId, updates.userId)
         )
       )
       .returning();

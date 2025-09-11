@@ -15,7 +15,8 @@ import {
   StreakHistory,
   NewStreakHistory,
   FitnessLevelHistory,
-  NewFitnessLevelHistory
+  NewFitnessLevelHistory,
+  UpdateUserChallenge
 } from "@/db/schema";
 import { Challenge } from "@/data/content/types/challenge";
 
@@ -218,7 +219,7 @@ export type IUserChallengeRepository = {
   findById(id: string, userId: string): Promise<UserChallenge | null>;
   findByUserId(userId: string): Promise<UserChallenge[]>;
   findActiveByUserId(userId: string): Promise<UserChallenge | null>;
-  update(id: string, userId: string, updates: Partial<UserChallenge>, updatedAt: Date): Promise<UserChallenge | null>;
+  update(updates: UpdateUserChallenge): Promise<UserChallenge | null>;
   delete(id: string, userId: string): Promise<boolean>;
   findChallengesToActivate(currentDate: string): Promise<UserChallenge[]>;
   findActiveChallenges(): Promise<UserChallenge[]>;
@@ -226,15 +227,13 @@ export type IUserChallengeRepository = {
 };
 
 export type IUserChallengeProgressRepository = {
-  create(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress>;
   findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserChallengeProgress[]>;
   findByUserChallengeAndArticle(userChallengeId: string, userId: string, knowledgeBaseId: string): Promise<UserChallengeProgress | null>;
-  upsert(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress>;
-  update(id: string, userId: string, updates: Partial<UserChallengeProgress>): Promise<UserChallengeProgress | null>;
+  upsert(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress | null>;
 };
 
 export type IUserHabitLogsRepository = {
-  upsert(logData: NewUserHabitLog, updatedAt: Date): Promise<UserHabitLog>;
+  upsert(logData: NewUserHabitLog): Promise<UserHabitLog | null>;
   findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserHabitLog[]>;
   findByUserChallengeAndDateRange(userChallengeId: string, userId: string, fromDate: string, toDate: string): Promise<UserHabitLog[]>;
   findByUserChallengeAndDate(userChallengeId: string, userId: string, logDate: string): Promise<UserHabitLog | null>;
@@ -270,6 +269,7 @@ export type SubmitUserChallengeQuizDto = {
   userChallengeId: string;
   knowledgeBaseId: string;
   quizAnswers: UserAnswer[];
+  overrideSubmission?: boolean;
 };
 
 export type PutUserChallengeLogDto = {

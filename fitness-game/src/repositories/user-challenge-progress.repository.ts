@@ -1,22 +1,10 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, sql } from 'drizzle-orm';
 import { userChallengeProgress, UserChallengeProgress, NewUserChallengeProgress } from '@/lib/db/schema';
 import { IUserChallengeProgressRepository } from '@/shared/interfaces';
 
 export class UserChallengeProgressRepository implements IUserChallengeProgressRepository {
   constructor(private db: NodePgDatabase<Record<string, never>>) {}
-
-  /**
-   * Create a new user challenge progress record
-   */
-  async create(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress> {
-    const [progress] = await this.db
-      .insert(userChallengeProgress)
-      .values(progressData)
-      .returning();
-    
-    return progress;
-  }
 
   /**
    * Find all progress records for a user challenge
@@ -61,53 +49,23 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
    * Upsert a user challenge progress record
    * This handles both creating new records and updating existing ones
    */
-  async upsert(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress> {
-    // First try to find existing record
-    const existing = await this.findByUserChallengeAndArticle(
-      progressData.userChallengeId,
-      progressData.userId,
-      progressData.knowledgeBaseId
-    );
-
-    if (existing) {
-      // Update existing record
-      const [updated] = await this.db
-        .update(userChallengeProgress)
-        .set({
+  async upsert(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress | null> {
+    const [progress] = await this.db
+      .insert(userChallengeProgress)
+      .values({...progressData, lastAttemptedAt: progressData.firstAttemptedAt, attempts: 1})
+      .onConflictDoUpdate({
+        target: [userChallengeProgress.userChallengeId, userChallengeProgress.knowledgeBaseId],
+        set: {
           allCorrectAnswers: progressData.allCorrectAnswers,
           quizAnswers: progressData.quizAnswers,
-          lastAttemptedAt: progressData.lastAttemptedAt,
-          attempts: progressData.attempts,
-        })
-        .where(
-            and(
-              eq(userChallengeProgress.id, existing.id),
-              eq(userChallengeProgress.userId, existing.userId)
-            ))
-        .returning();
-      
-      return updated;
-    } else {
-      // Create new record
-      return await this.create(progressData);
-    }
-  }
-
-  /**
-   * Update a user challenge progress record
-   */
-  async update(id: string, userId: string, updates: Partial<UserChallengeProgress>): Promise<UserChallengeProgress | null> {
-    const [updatedProgress] = await this.db
-      .update(userChallengeProgress)
-      .set(updates)
-      .where(
-        and(
-          eq(userChallengeProgress.id, id),
-          eq(userChallengeProgress.userId, userId)
-        )
-      )
+          lastAttemptedAt: progressData.firstAttemptedAt,
+          attempts: sql<number>`${userChallengeProgress.attempts} + 1`,
+        },
+        // This makes sure we only update the progress for the user
+        setWhere: sql`${userChallengeProgress.userId} = ${progressData.userId}`
+      })
       .returning();
     
-    return updatedProgress || null;
+    return progress || null;
   }
 }

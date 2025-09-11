@@ -33,6 +33,7 @@ export class ChallengeService implements IChallengeService {
    * POST /user-challenges
    */
   async createUserChallenge(dto: CreateUserChallengeDto): Promise<UserChallengeResponse> {
+    const requestDate = this.dateTimeService.getUtcNow();
     // Validate challenge exists
     const challengeExists = await this.challengeContentService.validateChallengeExists(dto.challengeId);
     if (!challengeExists) {
@@ -54,15 +55,13 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Create the challenge
-    const newChallenge: NewUserChallenge = {
-      userId: dto.userId,
-      challengeId: dto.challengeId,
-      startDate: dto.startDate,
-      originalStartDate: dto.startDate,
-      status: 'not_started'
-    };
-
-    const challenge = await this.userChallengeRepository.create(newChallenge);
+    const challenge = await this.userChallengeRepository.create({
+        userId: dto.userId,
+        challengeId: dto.challengeId,
+        startDate: dto.startDate,
+        originalStartDate: dto.startDate,
+        createdAt: requestDate,
+      });
     return this.mapToUserChallengeResponse(challenge);
   }
 
@@ -94,6 +93,7 @@ export class ChallengeService implements IChallengeService {
    * PATCH /user-challenges/:userChallengeId/schedule
    */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<UserChallengeResponse> {
+    const requestDate = this.dateTimeService.getUtcNow();
     const challenge = await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
@@ -112,9 +112,12 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Update the challenge
-    const updatedChallenge = await this.userChallengeRepository.update(dto.userChallengeId, dto.userId, {
-      startDate: dto.newStartDate
-    }, this.dateTimeService.getUtcNow());
+    const updatedChallenge = await this.userChallengeRepository.update({
+      id: dto.userChallengeId,
+      userId: dto.userId,
+      startDate: dto.newStartDate,
+      updatedAt: requestDate
+    });
 
     if (!updatedChallenge) {
       throw new ResourceNotFoundError('Failed to update challenge');
@@ -156,26 +159,27 @@ export class ChallengeService implements IChallengeService {
       dto.knowledgeBaseId
     );
 
-    if (existingProgress) {
-      throw new ValidationError('Quiz for this article has already been submitted');
+    // If the quiz has already been submitted with a perfect score and the user is not overriding the submission, throw an error
+    if (existingProgress && existingProgress.allCorrectAnswers) {
+      if (dto.overrideSubmission) {
+        console.warn('Quiz for this article has already been submitted. Overriding submission.');
+      } else {
+        throw new ValidationError('Quiz for this article has already been submitted with a perfect score. Do you really want to override the submission?');
+      }
     }
 
     // Calculate if all answers are correct
     const allCorrect = dto.quizAnswers.every(answer => answer.is_correct);
 
-    // Create progress record
-    const progressData: NewUserChallengeProgress = {
-      userId: dto.userId,
-      userChallengeId: dto.userChallengeId,
-      knowledgeBaseId: dto.knowledgeBaseId,
-      allCorrectAnswers: allCorrect,
-      quizAnswers: dto.quizAnswers,
-      firstAttemptedAt: this.dateTimeService.getUtcNow(),
-      lastAttemptedAt: this.dateTimeService.getUtcNow(),
-      attempts: 1
-    };
-
-    await this.userChallengeProgressRepository.create(progressData);
+    // Create or Update progress record
+    await this.userChallengeProgressRepository.upsert({
+        userId: dto.userId,
+        userChallengeId: dto.userChallengeId,
+        knowledgeBaseId: dto.knowledgeBaseId,
+        allCorrectAnswers: allCorrect,
+        quizAnswers: dto.quizAnswers,
+        firstAttemptedAt: this.dateTimeService.getUtcNow(),
+      });
   }
 
   /**
@@ -183,6 +187,7 @@ export class ChallengeService implements IChallengeService {
    * PUT /user-challenges/:userChallengeId/logs/:logDate
    */
   async putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void> {
+    const requestDate = this.dateTimeService.getUtcNow();
     const challenge = await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
@@ -210,14 +215,13 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Upsert the habit log
-    const logData: NewUserHabitLog = {
-      userId: dto.userId,
-      userChallengeId: dto.userChallengeId,
-      logDate: dto.logDate,
-      values: dto.values
-    };
-
-    await this.userHabitLogsRepository.upsert(logData, this.dateTimeService.getUtcNow());
+    await this.userHabitLogsRepository.upsert({
+        userId: dto.userId,
+        userChallengeId: dto.userChallengeId,
+        logDate: dto.logDate,
+        values: dto.values,
+        createdAt: requestDate,
+      });
   }
 
   /**
@@ -250,6 +254,7 @@ export class ChallengeService implements IChallengeService {
    * This method implements the challenge status update algorithm
    */
   async updateChallengeStatuses(): Promise<void> {
+    const requestDate = this.dateTimeService.getUtcNow();
     // @TODO: update logic to allow for user filter, and also, to run in batches (or partitioned, using a WHERE INDEX)
     const today = this.dateTimeService.getTodayUtcDateString();
     const fortyEightHoursAgo = this.dateTimeService.getFortyEightHoursAgoUtcTimestamp();
@@ -257,7 +262,12 @@ export class ChallengeService implements IChallengeService {
     // Transition from NOT_STARTED to ACTIVE
     const challengesToActivate = await this.userChallengeRepository.findChallengesToActivate(today);
     for (const challenge of challengesToActivate) {
-      await this.userChallengeRepository.update(challenge.id, challenge.userId, { status: 'active' }, this.dateTimeService.getUtcNow());
+      await this.userChallengeRepository.update({
+        id: challenge.id,
+        userId: challenge.userId,
+        status: 'active',
+        updatedAt: requestDate
+      });
     }
 
     // Transition from ACTIVE to COMPLETED
@@ -270,10 +280,13 @@ export class ChallengeService implements IChallengeService {
         const endDate = this.dateTimeService.getChallengeEndDateUtcDateString(challenge.startDate, duration);
         
         if (this.dateTimeService.isDateAfterChallengeEndDate(today, endDate)) {
-          await this.userChallengeRepository.update(challenge.id, challenge.userId, {
+          await this.userChallengeRepository.update({
+            id: challenge.id,
+            userId: challenge.userId,
             status: 'completed',
-            completedAt: this.dateTimeService.getUtcNow()
-          }, this.dateTimeService.getUtcNow());
+            completedAt: requestDate,
+            updatedAt: requestDate
+          });
         }
       }
     }
@@ -281,10 +294,13 @@ export class ChallengeService implements IChallengeService {
     // Transition from COMPLETED to LOCKED
     const challengesToLock = await this.userChallengeRepository.findChallengesToLock(fortyEightHoursAgo);
     for (const challenge of challengesToLock) {
-      await this.userChallengeRepository.update(challenge.id, challenge.userId, {
+      await this.userChallengeRepository.update({
+        id: challenge.id,
+        userId: challenge.userId,
         status: 'locked',
-        lockedAt: this.dateTimeService.getUtcNow()
-      }, this.dateTimeService.getUtcNow());
+        lockedAt: requestDate,
+        updatedAt: requestDate
+      });
     }
   }
 
