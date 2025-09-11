@@ -11,7 +11,6 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
    * This handles both creating new records and updating existing ones
    * Uses the unique constraint on (userChallengeId, logDate)
    */
-  // @TODO: look for other upsert methods and update to use the onConflictDoUpdate pattern.
   async upsert(logData: NewUserHabitLog): Promise<UserHabitLog | null> {
     const [log] = await this.db
       .insert(userHabitLogs)
@@ -49,22 +48,24 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   /**
    * Find habit logs for a user challenge within a date range
    */
-  // @TODO: make fromDate and toDate optional.
   async findByUserChallengeAndDateRange(
     userChallengeId: string, 
     userId: string,
-    fromDate: string, 
-    toDate: string
+    fromDate?: string, 
+    toDate?: string
   ): Promise<UserHabitLog[]> {
+    const whereClause = [
+        eq(userHabitLogs.userChallengeId, userChallengeId),
+        eq(userHabitLogs.userId, userId),
+        ...(fromDate ? [gte(userHabitLogs.logDate, fromDate)] : []),
+        ...(toDate ? [lte(userHabitLogs.logDate, toDate)] : []),
+    ];
     return await this.db
       .select()
       .from(userHabitLogs)
       .where(
         and(
-          eq(userHabitLogs.userChallengeId, userChallengeId),
-          eq(userHabitLogs.userId, userId),
-          gte(userHabitLogs.logDate, fromDate),
-          lte(userHabitLogs.logDate, toDate)
+          ...whereClause
         )
       )
       .orderBy(userHabitLogs.logDate);

@@ -1,7 +1,6 @@
 // --- Data Structures ---
 
-import { 
-  GameSession, 
+  import {
   UserAnswer, 
   DailyHabitLogPayload, 
   UserChallenge, 
@@ -19,46 +18,7 @@ import {
   UpdateUserChallenge
 } from "@/db/schema";
 import { Challenge } from "@/data/content/types/challenge";
-
-export type KnowledgeBaseArticleSummary = {
-  id: string;
-  day: number;
-};
-
-// Key is the question ID, value is an object the correct option index
-export type CorrectAssessment = Record<string, { correctOptionIndex: number }>;
-
-export type GameSessionJwtPayload = {
-  sub: string; // User ID
-  article_id: string;
-  day_number: number;
-  attempts_count: number;
-  iat: number; // Issued At (Unix timestamp)
-};
-
 // --- Service Types (for Dependency Injection) ---
-
-export type IKnowledgeBaseService = {
-  getArticleForDay(day: number): Promise<KnowledgeBaseArticleSummary | null>;
-  getAssessmentForArticle(articleId: string): Promise<CorrectAssessment | null>;
-  getMaxProgressionDay(): number; // Added to define the upper limit of the progression
-};
-
-export type IJwtService = {
-  sign(payload: Record<string, unknown>, expiresIn: string | number): string;
-  verify<T>(token: string): T;
-};
-
-export type IUserProgressService = {
-  // Method to determine the current day for the user's progression
-  getCurrentDayForUser(userId: string): Promise<number>; 
-  // You might have other methods here, like updating user's max completed day etc.
-};
-
-export type IUserTimezoneService = {
-  // Returns the user's current timezone string (e.g., "America/New_York", "Europe/London")
-  getUserTimezone(userId: string): Promise<string>;
-};
 
 export type IDateTimeService = {
   getUtcNow(): Date; // Returns current UTC Date object
@@ -78,50 +38,9 @@ export type IDateTimeService = {
   isLogDateWithinChallengePeriod(logDate: string, startDate: string, durationDays: number): boolean; // Check if log date is within challenge period
 };
 
-// --- DTOs for Service Methods ---
-
-export type StartSessionDto = {
-  userId: string;
-};
-
-export type SubmitAnswersDto = {
-  userId: string; // Authenticated user ID
-  sessionToken: string;
-  userAnswers: {
-    questionId: string;
-    selectedOptionIndex: number;
-    hintUsed: boolean;
-  }[];
-};
-
-export type ListUserSessionsDto = {
-  userId: string;
-  page: number;
-  limit: number;
-};
-
-// --- Output Types for Service Methods ---
-
-export type StartSessionOutput = 
-  | { status: 'completed' }
-  | { 
-      status: 'in-progress'; 
-      sessionToken: string;
-      articleSummary: KnowledgeBaseArticleSummary;
-    };
-
-export type SubmitAnswersOutput =
-  | { status: 'completed'; }
-  | { 
-      status: 'retry'; 
-      retriesLeft: number;
-      incorrectQuestions: string[];
-      newSessionToken: string;
-    }
-  | { status: 'failed'; };
-
 // --- Streak Management Interfaces ---
 
+// @TODO: synchronize DailyHabitLogPayload with HabitType
 export type HabitType = 
 | 'workout_completed'
 | 'ate_clean' 
@@ -235,7 +154,7 @@ export type IUserChallengeProgressRepository = {
 export type IUserHabitLogsRepository = {
   upsert(logData: NewUserHabitLog): Promise<UserHabitLog | null>;
   findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserHabitLog[]>;
-  findByUserChallengeAndDateRange(userChallengeId: string, userId: string, fromDate: string, toDate: string): Promise<UserHabitLog[]>;
+  findByUserChallengeAndDateRange(userChallengeId: string, userId: string, fromDate?: string, toDate?: string): Promise<UserHabitLog[]>;
   findByUserChallengeAndDate(userChallengeId: string, userId: string, logDate: string): Promise<UserHabitLog | null>;
   delete(id: string, userId: string): Promise<boolean>;
 };
@@ -282,8 +201,8 @@ export type PutUserChallengeLogDto = {
 export type ListUserChallengeLogsDto = {
   userId: string;
   userChallengeId: string;
-  fromDate: string; // YYYY-MM-DD format
-  toDate: string; // YYYY-MM-DD format
+  fromDate?: string; // YYYY-MM-DD format
+  toDate?: string; // YYYY-MM-DD format
 };
 
 // --- Challenge Response Types ---

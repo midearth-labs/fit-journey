@@ -235,7 +235,7 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Validate date range
-    if (dto.fromDate > dto.toDate) {
+    if (dto.fromDate && dto.toDate && dto.fromDate > dto.toDate) {
       throw new ValidationError('From date must be before or equal to to date');
     }
 

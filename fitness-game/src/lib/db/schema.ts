@@ -62,7 +62,6 @@ export const users = pgTable('users', {
 // UserProfile table (which is an extension of the User table)
 export const userProfiles = pgTable('user_profiles', {
   id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
-  latest_game_session: uuid('latest_game_session').references(() => gameSessions.id),
   current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
   current_streak_ids: jsonb('current_streak_ids').$type<{
     workout_completed?: string;
@@ -173,26 +172,6 @@ export const userHabitLogs = pgTable('user_habit_logs', {
   };
 });
 
-// GameSession table
-export const gameSessions = pgTable('game_sessions', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  day: integer('day').notNull(), // FK to KnowledgeBase.day (stored as JSON file)
-  knowledge_base_article_id: uuid('knowledge_base_article_id').notNull(),
-  started_at: timestamp('started_at', { withTimezone: true }).notNull(),
-  completed_at: timestamp('completed_at', { withTimezone: true }).notNull(),
-  user_answers: jsonb('user_answers').$type<Array<UserAnswer>>().notNull(),
-  all_correct_answers: boolean('all_correct_answers').notNull(), // Whether all questions were answered correctly
-  time_spent_seconds: integer('time_spent_seconds').notNull(),
-  attempt_count: integer('attempt_count').notNull(), // default: 1. If at a submission, a user doesn't answer all questions correctly, they can try again up to 3 times before the current day ends
-  created_at: timestamp('created_at', { withTimezone: true }).notNull(),
-}, (table) => ([
-  // Unique index for querying game sessions by user and day
-  unique('game_sessions_user_id_day_idx').on(table.user_id, table.day),
-]));
-
-
-
 // StreakLog table
 export const streakLogs = pgTable('streak_logs', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -235,7 +214,6 @@ export const usersRelations = relations(users, ({ one, many }) => ({
     fields: [users.id],
     references: [userProfiles.id],
   }),
-  gameSessions: many(gameSessions),
   streakLogs: many(streakLogs),
   streakHistories: many(streakHistories),
   fitnessLevelHistories: many(fitnessLevelHistories),
@@ -244,17 +222,6 @@ export const usersRelations = relations(users, ({ one, many }) => ({
 export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
   user: one(users, {
     fields: [userProfiles.id],
-    references: [users.id],
-  }),
-  latestGameSession: one(gameSessions, {
-    fields: [userProfiles.latest_game_session],
-    references: [gameSessions.id],
-  }),
-}));
-
-export const gameSessionsRelations = relations(gameSessions, ({ one }) => ({
-  user: one(users, {
-    fields: [gameSessions.user_id],
     references: [users.id],
   }),
 }));
@@ -285,8 +252,6 @@ export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
 export type UserProfile = InferSelectModel<typeof userProfiles>;
 export type NewUserProfile = InferInsertModel<typeof userProfiles>;
-export type GameSession = InferSelectModel<typeof gameSessions>;
-export type NewGameSession = InferInsertModel<typeof gameSessions>;
 export type StreakLog = InferSelectModel<typeof streakLogs>;
 export type NewStreakLog = InferInsertModel<typeof streakLogs>;
 export type StreakHistory = InferSelectModel<typeof streakHistories>;
