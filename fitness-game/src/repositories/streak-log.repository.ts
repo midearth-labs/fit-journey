@@ -4,7 +4,7 @@ import { streakLogs, StreakLog, NewStreakLog } from '@/lib/db/schema';
 
 export interface IStreakLogRepository {
   create(logData: NewStreakLog): Promise<StreakLog>;
-  update(logId: string, updates: Partial<StreakLog>): Promise<StreakLog | null>;
+  update(logId: string, userId: string, updates: Partial<StreakLog>): Promise<StreakLog | null>;
   findByUserAndDate(userId: string, dateUtc: string): Promise<StreakLog | null>;
   findByUserInDateRange(userId: string, startDate: string, endDate: string): Promise<StreakLog[]>;
   findLatestByUser(userId: string): Promise<StreakLog | null>;
@@ -21,10 +21,15 @@ export class StreakLogRepository implements IStreakLogRepository {
     return result[0];
   }
 
-  async update(logId: string, updates: Partial<StreakLog>): Promise<StreakLog | null> {
+  async update(logId: string, userId: string, updates: Partial<StreakLog>): Promise<StreakLog | null> {
     const result = await this.db.update(streakLogs)
       .set(updates)
-      .where(eq(streakLogs.id, logId))
+      .where(
+        and(
+          eq(streakLogs.id, logId),
+          eq(streakLogs.user_id, userId)
+        )
+      )
       .returning();
     
     return result[0] || null;
@@ -42,6 +47,7 @@ export class StreakLogRepository implements IStreakLogRepository {
     return result[0] || null;
   }
 
+  // @TODO: make startDate and endDate optional.
   async findByUserInDateRange(userId: string, startDate: string, endDate: string): Promise<StreakLog[]> {
     return this.db.select()
       .from(streakLogs)

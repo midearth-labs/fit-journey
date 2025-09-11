@@ -19,13 +19,18 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   }
 
   /**
-   * Find a user challenge by ID
+   * Find a user challenge by ID and userId
    */
-  async findById(id: string): Promise<UserChallenge | null> {
+  async findById(id: string, userId: string): Promise<UserChallenge | null> {
     const [challenge] = await this.db
       .select()
       .from(userChallenges)
-      .where(eq(userChallenges.id, id))
+      .where(
+        and(
+          eq(userChallenges.id, id),
+          eq(userChallenges.userId, userId)
+        )
+      )
       .limit(1);
     
     return challenge || null;
@@ -63,11 +68,16 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   /**
    * Update a user challenge
    */
-  async update(id: string, updates: Partial<UserChallenge>, updatedAt?: Date): Promise<UserChallenge | null> {
+  async update(id: string, userId: string, updates: Partial<UserChallenge>, updatedAt: Date): Promise<UserChallenge | null> {
     const [updatedChallenge] = await this.db
       .update(userChallenges)
-      .set({ ...updates, updatedAt: updatedAt || new Date() })
-      .where(eq(userChallenges.id, id))
+      .set({ ...updates, updatedAt })
+      .where(
+        and(
+          eq(userChallenges.id, id),
+          eq(userChallenges.userId, userId)
+        )
+      )
       .returning();
     
     return updatedChallenge || null;
@@ -76,10 +86,15 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   /**
    * Delete a user challenge
    */
-  async delete(id: string): Promise<boolean> {
+  async delete(id: string, userId: string): Promise<boolean> {
     const result = await this.db
       .delete(userChallenges)
-      .where(eq(userChallenges.id, id));
+      .where(
+        and(
+          eq(userChallenges.id, id),
+          eq(userChallenges.userId, userId)
+        )
+      );
     
     return result.rowCount > 0;
   }

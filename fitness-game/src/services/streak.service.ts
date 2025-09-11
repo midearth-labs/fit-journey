@@ -62,7 +62,7 @@ export class StreakService implements IStreakService {
     updatedEntries.all = allHabitsCompleted;
 
     // Update the streak log
-    const updatedLog = await this.streakLogRepository.update(streakLog.id, {
+    const updatedLog = await this.streakLogRepository.update(streakLog.id, dto.userId, {
       entries: updatedEntries
     });
 
@@ -130,7 +130,7 @@ export class StreakService implements IStreakService {
     updatedEntries.all = allHabitsCompleted;
 
     // Update the streak log
-    const updatedLog = await this.streakLogRepository.update(streakLog.id, {
+    const updatedLog = await this.streakLogRepository.update(streakLog.id, dto.userId, {
       entries: updatedEntries
     });
 
@@ -219,7 +219,7 @@ export class StreakService implements IStreakService {
 
     if (wasActiveYesterday) {
       // Extend existing streak
-      const updatedStreak = await this.streakHistoryRepository.update(currentStreak.id, {
+      const updatedStreak = await this.streakHistoryRepository.update(currentStreak.id, userId, {
         streak_length: currentStreak.streak_length + 1
       });
 
@@ -230,7 +230,7 @@ export class StreakService implements IStreakService {
       };
     } else {
       // Streak broken, end current streak and start new one
-      await this.streakHistoryRepository.update(currentStreak.id, {
+      await this.streakHistoryRepository.update(currentStreak.id, userId, {
         ended_date: yesterdayUtc
       });
 
@@ -301,7 +301,7 @@ export class StreakService implements IStreakService {
 
     for (const [streakType, streakId] of Object.entries(userProfile.current_streak_ids)) {
       if (streakId) {
-        const streak = await this.streakHistoryRepository.findById(streakId);
+        const streak = await this.streakHistoryRepository.findById(streakId, userId);
         if (streak) {
           streakLengths[streakType as StreakType] = streak.streak_length;
         }

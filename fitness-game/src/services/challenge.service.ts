@@ -15,8 +15,7 @@ import {
 } from '@/shared/interfaces';
 import { 
   ResourceNotFoundError,
-  ValidationError,
-  AuthorizationError
+  ValidationError
 } from '@/shared/errors';
 import { UserChallenge, NewUserChallenge, NewUserChallengeProgress, NewUserHabitLog, UserHabitLog } from '@/lib/db/schema';
 
@@ -72,20 +71,15 @@ export class ChallengeService implements IChallengeService {
    * GET /user-challenges/:userChallengeId
    */
   async getUserChallenge(userChallengeId: string, userId: string): Promise<UserChallengeResponse> {
-    const challenge = await this.userChallengeRepository.findById(userChallengeId);
+    const challenge = await this.userChallengeRepository.findById(userChallengeId, userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
     }
 
-    // Check authorization
-    if (challenge.userId !== userId) {
-      throw new AuthorizationError('Access denied');
-    }
-
     // Get additional data
     const challengeData = await this.challengeContentService.getChallengeById(challenge.challengeId);
-    const progress = await this.userChallengeProgressRepository.findByUserChallengeId(userChallengeId);
-    const logs = await this.userHabitLogsRepository.findByUserChallengeId(userChallengeId);
+    const progress = await this.userChallengeProgressRepository.findByUserChallengeId(userChallengeId, userId);
+    const logs = await this.userHabitLogsRepository.findByUserChallengeId(userChallengeId, userId);
 
     const response = this.mapToUserChallengeResponse(challenge);
     response.challenge = challengeData;
@@ -100,14 +94,9 @@ export class ChallengeService implements IChallengeService {
    * PATCH /user-challenges/:userChallengeId/schedule
    */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<UserChallengeResponse> {
-    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId);
+    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
-    }
-
-    // Check authorization
-    if (challenge.userId !== dto.userId) {
-      throw new AuthorizationError('Access denied');
     }
 
     // Check if challenge is not started
@@ -123,7 +112,7 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Update the challenge
-    const updatedChallenge = await this.userChallengeRepository.update(dto.userChallengeId, {
+    const updatedChallenge = await this.userChallengeRepository.update(dto.userChallengeId, dto.userId, {
       startDate: dto.newStartDate
     }, this.dateTimeService.getUtcNow());
 
@@ -139,14 +128,9 @@ export class ChallengeService implements IChallengeService {
    * POST /user-challenges/:userChallengeId/progress/:knowledgeBaseId/quiz
    */
   async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void> {
-    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId);
+    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
-    }
-
-    // Check authorization
-    if (challenge.userId !== dto.userId) {
-      throw new AuthorizationError('Access denied');
     }
 
     // Check if challenge is not locked
@@ -168,6 +152,7 @@ export class ChallengeService implements IChallengeService {
     // Check if quiz already submitted
     const existingProgress = await this.userChallengeProgressRepository.findByUserChallengeAndArticle(
       dto.userChallengeId,
+      dto.userId,
       dto.knowledgeBaseId
     );
 
@@ -180,6 +165,7 @@ export class ChallengeService implements IChallengeService {
 
     // Create progress record
     const progressData: NewUserChallengeProgress = {
+      userId: dto.userId,
       userChallengeId: dto.userChallengeId,
       knowledgeBaseId: dto.knowledgeBaseId,
       allCorrectAnswers: allCorrect,
@@ -197,14 +183,9 @@ export class ChallengeService implements IChallengeService {
    * PUT /user-challenges/:userChallengeId/logs/:logDate
    */
   async putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void> {
-    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId);
+    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
-    }
-
-    // Check authorization
-    if (challenge.userId !== dto.userId) {
-      throw new AuthorizationError('Access denied');
     }
 
     // Check if challenge is not locked
@@ -230,6 +211,7 @@ export class ChallengeService implements IChallengeService {
 
     // Upsert the habit log
     const logData: NewUserHabitLog = {
+      userId: dto.userId,
       userChallengeId: dto.userChallengeId,
       logDate: dto.logDate,
       values: dto.values
@@ -243,14 +225,9 @@ export class ChallengeService implements IChallengeService {
    * GET /user-challenges/:userChallengeId/logs?from=YYYY-MM-DD&to=YYYY-MM-DD
    */
   async listUserChallengeLogs(dto: ListUserChallengeLogsDto): Promise<UserHabitLogResponse[]> {
-    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId);
+    const challenge = await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId);
     if (!challenge) {
       throw new ResourceNotFoundError('Challenge not found');
-    }
-
-    // Check authorization
-    if (challenge.userId !== dto.userId) {
-      throw new AuthorizationError('Access denied');
     }
 
     // Validate date range
@@ -260,6 +237,7 @@ export class ChallengeService implements IChallengeService {
 
     const logs = await this.userHabitLogsRepository.findByUserChallengeAndDateRange(
       dto.userChallengeId,
+      dto.userId,
       dto.fromDate,
       dto.toDate
     );
@@ -279,7 +257,7 @@ export class ChallengeService implements IChallengeService {
     // Transition from NOT_STARTED to ACTIVE
     const challengesToActivate = await this.userChallengeRepository.findChallengesToActivate(today);
     for (const challenge of challengesToActivate) {
-      await this.userChallengeRepository.update(challenge.id, { status: 'active' }, this.dateTimeService.getUtcNow());
+      await this.userChallengeRepository.update(challenge.id, challenge.userId, { status: 'active' }, this.dateTimeService.getUtcNow());
     }
 
     // Transition from ACTIVE to COMPLETED
@@ -292,7 +270,7 @@ export class ChallengeService implements IChallengeService {
         const endDate = this.dateTimeService.getChallengeEndDateUtcDateString(challenge.startDate, duration);
         
         if (this.dateTimeService.isDateAfterChallengeEndDate(today, endDate)) {
-          await this.userChallengeRepository.update(challenge.id, {
+          await this.userChallengeRepository.update(challenge.id, challenge.userId, {
             status: 'completed',
             completedAt: this.dateTimeService.getUtcNow()
           }, this.dateTimeService.getUtcNow());
@@ -303,7 +281,7 @@ export class ChallengeService implements IChallengeService {
     // Transition from COMPLETED to LOCKED
     const challengesToLock = await this.userChallengeRepository.findChallengesToLock(fortyEightHoursAgo);
     for (const challenge of challengesToLock) {
-      await this.userChallengeRepository.update(challenge.id, {
+      await this.userChallengeRepository.update(challenge.id, challenge.userId, {
         status: 'locked',
         lockedAt: this.dateTimeService.getUtcNow()
       }, this.dateTimeService.getUtcNow());

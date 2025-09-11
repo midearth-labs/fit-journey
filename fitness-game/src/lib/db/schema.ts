@@ -119,6 +119,7 @@ export const userChallenges = pgTable('user_challenges', {
 // Drizzle Schema
 export const userChallengeProgress = pgTable('user_challenge_progress', {
   id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   userChallengeId: uuid('user_challenge_id').notNull().references(() => userChallenges.id, { onDelete: 'cascade' }),
   
   // NOTE: 'knowledgeBaseId' corresponds to an ID in your static JSON.
@@ -150,6 +151,7 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
  */
 export const userHabitLogs = pgTable('user_habit_logs', {
   id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   userChallengeId: uuid('user_challenge_id').notNull().references(() => userChallenges.id, { onDelete: 'cascade' }),
   
   // The specific date this log entry is for. CRITICAL for back-logging.

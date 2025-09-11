@@ -188,7 +188,7 @@ export type FitnessLevelResult = {
 
 export type IStreakLogRepository = {
   create(logData: NewStreakLog): Promise<StreakLog>;
-  update(logId: string, updates: Partial<StreakLog>): Promise<StreakLog | null>;
+  update(logId: string, userId: string, updates: Partial<StreakLog>): Promise<StreakLog | null>;
   findByUserAndDate(userId: string, dateUtc: string): Promise<StreakLog | null>;
   findByUserInDateRange(userId: string, startDate: string, endDate: string): Promise<StreakLog[]>;
   findLatestByUser(userId: string): Promise<StreakLog | null>;
@@ -197,8 +197,8 @@ export type IStreakLogRepository = {
 
 export type IStreakHistoryRepository = {
   create(historyData: NewStreakHistory): Promise<StreakHistory>;
-  update(historyId: string, updates: Partial<StreakHistory>): Promise<StreakHistory | null>;
-  findById(historyId: string): Promise<StreakHistory | null>;
+  update(historyId: string, userId: string, updates: Partial<StreakHistory>): Promise<StreakHistory | null>;
+  findById(historyId: string, userId: string): Promise<StreakHistory | null>;
   findCurrentStreakByUserAndType(userId: string, streakType: string): Promise<StreakHistory | null>;
   findLongestStreakByUserAndType(userId: string, streakType: string): Promise<StreakHistory | null>;
   findByUserAndType(userId: string, streakType: string, limit?: number): Promise<StreakHistory[]>;
@@ -215,11 +215,11 @@ export type IFitnessLevelHistoryRepository = {
 
 export type IUserChallengeRepository = {
   create(challengeData: NewUserChallenge): Promise<UserChallenge>;
-  findById(id: string): Promise<UserChallenge | null>;
+  findById(id: string, userId: string): Promise<UserChallenge | null>;
   findByUserId(userId: string): Promise<UserChallenge[]>;
   findActiveByUserId(userId: string): Promise<UserChallenge | null>;
-  update(id: string, updates: Partial<UserChallenge>, updatedAt?: Date): Promise<UserChallenge | null>;
-  delete(id: string): Promise<boolean>;
+  update(id: string, userId: string, updates: Partial<UserChallenge>, updatedAt: Date): Promise<UserChallenge | null>;
+  delete(id: string, userId: string): Promise<boolean>;
   findChallengesToActivate(currentDate: string): Promise<UserChallenge[]>;
   findActiveChallenges(): Promise<UserChallenge[]>;
   findChallengesToLock(fortyEightHoursAgoTimestamp: Date): Promise<UserChallenge[]>;
@@ -227,18 +227,18 @@ export type IUserChallengeRepository = {
 
 export type IUserChallengeProgressRepository = {
   create(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress>;
-  findByUserChallengeId(userChallengeId: string): Promise<UserChallengeProgress[]>;
-  findByUserChallengeAndArticle(userChallengeId: string, knowledgeBaseId: string): Promise<UserChallengeProgress | null>;
+  findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserChallengeProgress[]>;
+  findByUserChallengeAndArticle(userChallengeId: string, userId: string, knowledgeBaseId: string): Promise<UserChallengeProgress | null>;
   upsert(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress>;
-  update(id: string, updates: Partial<UserChallengeProgress>): Promise<UserChallengeProgress | null>;
+  update(id: string, userId: string, updates: Partial<UserChallengeProgress>): Promise<UserChallengeProgress | null>;
 };
 
 export type IUserHabitLogsRepository = {
-  upsert(logData: NewUserHabitLog, updatedAt?: Date): Promise<UserHabitLog>;
-  findByUserChallengeId(userChallengeId: string): Promise<UserHabitLog[]>;
-  findByUserChallengeAndDateRange(userChallengeId: string, fromDate: string, toDate: string): Promise<UserHabitLog[]>;
-  findByUserChallengeAndDate(userChallengeId: string, logDate: string): Promise<UserHabitLog | null>;
-  delete(id: string): Promise<boolean>;
+  upsert(logData: NewUserHabitLog, updatedAt: Date): Promise<UserHabitLog>;
+  findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserHabitLog[]>;
+  findByUserChallengeAndDateRange(userChallengeId: string, userId: string, fromDate: string, toDate: string): Promise<UserHabitLog[]>;
+  findByUserChallengeAndDate(userChallengeId: string, userId: string, logDate: string): Promise<UserHabitLog | null>;
+  delete(id: string, userId: string): Promise<boolean>;
 };
 
 export type IChallengeService = {

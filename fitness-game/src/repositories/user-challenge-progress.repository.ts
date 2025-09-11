@@ -21,11 +21,16 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
   /**
    * Find all progress records for a user challenge
    */
-  async findByUserChallengeId(userChallengeId: string): Promise<UserChallengeProgress[]> {
+  async findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserChallengeProgress[]> {
     return await this.db
       .select()
       .from(userChallengeProgress)
-      .where(eq(userChallengeProgress.userChallengeId, userChallengeId))
+      .where(
+        and(
+          eq(userChallengeProgress.userChallengeId, userChallengeId),
+          eq(userChallengeProgress.userId, userId)
+        )
+      )
       .orderBy(userChallengeProgress.firstAttemptedAt);
   }
 
@@ -34,6 +39,7 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
    */
   async findByUserChallengeAndArticle(
     userChallengeId: string, 
+    userId: string,
     knowledgeBaseId: string
   ): Promise<UserChallengeProgress | null> {
     const [progress] = await this.db
@@ -42,6 +48,7 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
       .where(
         and(
           eq(userChallengeProgress.userChallengeId, userChallengeId),
+          eq(userChallengeProgress.userId, userId),
           eq(userChallengeProgress.knowledgeBaseId, knowledgeBaseId)
         )
       )
@@ -58,6 +65,7 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
     // First try to find existing record
     const existing = await this.findByUserChallengeAndArticle(
       progressData.userChallengeId,
+      progressData.userId,
       progressData.knowledgeBaseId
     );
 
@@ -71,7 +79,11 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
           lastAttemptedAt: progressData.lastAttemptedAt,
           attempts: progressData.attempts,
         })
-        .where(eq(userChallengeProgress.id, existing.id))
+        .where(
+            and(
+              eq(userChallengeProgress.id, existing.id),
+              eq(userChallengeProgress.userId, existing.userId)
+            ))
         .returning();
       
       return updated;
@@ -84,11 +96,16 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
   /**
    * Update a user challenge progress record
    */
-  async update(id: string, updates: Partial<UserChallengeProgress>): Promise<UserChallengeProgress | null> {
+  async update(id: string, userId: string, updates: Partial<UserChallengeProgress>): Promise<UserChallengeProgress | null> {
     const [updatedProgress] = await this.db
       .update(userChallengeProgress)
       .set(updates)
-      .where(eq(userChallengeProgress.id, id))
+      .where(
+        and(
+          eq(userChallengeProgress.id, id),
+          eq(userChallengeProgress.userId, userId)
+        )
+      )
       .returning();
     
     return updatedProgress || null;

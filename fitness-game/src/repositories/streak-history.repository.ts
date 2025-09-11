@@ -4,8 +4,8 @@ import { streakHistories, StreakHistory, NewStreakHistory } from '@/lib/db/schem
 
 export interface IStreakHistoryRepository {
   create(historyData: NewStreakHistory): Promise<StreakHistory>;
-  update(historyId: string, updates: Partial<StreakHistory>): Promise<StreakHistory | null>;
-  findById(historyId: string): Promise<StreakHistory | null>;
+  update(historyId: string, userId: string, updates: Partial<StreakHistory>): Promise<StreakHistory | null>;
+  findById(historyId: string, userId: string): Promise<StreakHistory | null>;
   findCurrentStreakByUserAndType(userId: string, streakType: string): Promise<StreakHistory | null>;
   findLongestStreakByUserAndType(userId: string, streakType: string): Promise<StreakHistory | null>;
   findByUserAndType(userId: string, streakType: string, limit?: number): Promise<StreakHistory[]>;
@@ -22,19 +22,29 @@ export class StreakHistoryRepository implements IStreakHistoryRepository {
     return result[0];
   }
 
-  async update(historyId: string, updates: Partial<StreakHistory>): Promise<StreakHistory | null> {
+  async update(historyId: string, userId: string, updates: Partial<StreakHistory>): Promise<StreakHistory | null> {
     const result = await this.db.update(streakHistories)
       .set(updates)
-      .where(eq(streakHistories.id, historyId))
+      .where(
+        and(
+          eq(streakHistories.id, historyId),
+          eq(streakHistories.user_id, userId)
+        )
+      )
       .returning();
     
     return result[0] || null;
   }
 
-  async findById(historyId: string): Promise<StreakHistory | null> {
+  async findById(historyId: string, userId: string): Promise<StreakHistory | null> {
     const result = await this.db.select()
       .from(streakHistories)
-      .where(eq(streakHistories.id, historyId))
+      .where(
+        and(
+          eq(streakHistories.id, historyId),
+          eq(streakHistories.user_id, userId)
+        )
+      )
       .limit(1);
     
     return result[0] || null;

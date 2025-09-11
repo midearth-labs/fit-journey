@@ -11,15 +11,17 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
    * This handles both creating new records and updating existing ones
    * Uses the unique constraint on (userChallengeId, logDate)
    */
-  async upsert(logData: NewUserHabitLog, updatedAt?: Date): Promise<UserHabitLog> {
+  // @TODO: look for other upser methods and update to use the onConflictDoUpdate pattern
+  async upsert(logData: NewUserHabitLog, updatedAt: Date): Promise<UserHabitLog> {
     const [log] = await this.db
       .insert(userHabitLogs)
       .values(logData)
       .onConflictDoUpdate({
+        // @TODO: does this need to include userId also?
         target: [userHabitLogs.userChallengeId, userHabitLogs.logDate],
         set: {
           values: logData.values,
-          updatedAt: updatedAt || new Date(),
+          updatedAt,
         },
       })
       .returning();
@@ -30,19 +32,26 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   /**
    * Find all habit logs for a user challenge
    */
-  async findByUserChallengeId(userChallengeId: string): Promise<UserHabitLog[]> {
+  async findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserHabitLog[]> {
     return await this.db
       .select()
       .from(userHabitLogs)
-      .where(eq(userHabitLogs.userChallengeId, userChallengeId))
+      .where(
+        and(
+          eq(userHabitLogs.userChallengeId, userChallengeId),
+          eq(userHabitLogs.userId, userId)
+        )
+      )
       .orderBy(userHabitLogs.logDate);
   }
 
   /**
    * Find habit logs for a user challenge within a date range
    */
+  // @TODO: make fromDate and toDate optional.
   async findByUserChallengeAndDateRange(
     userChallengeId: string, 
+    userId: string,
     fromDate: string, 
     toDate: string
   ): Promise<UserHabitLog[]> {
@@ -52,6 +61,7 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
       .where(
         and(
           eq(userHabitLogs.userChallengeId, userChallengeId),
+          eq(userHabitLogs.userId, userId),
           gte(userHabitLogs.logDate, fromDate),
           lte(userHabitLogs.logDate, toDate)
         )
@@ -64,18 +74,10 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
    */
   async findByUserChallengeAndDate(
     userChallengeId: string, 
+    userId: string,
     logDate: string
   ): Promise<UserHabitLog | null> {
-    const [log] = await this.db
-      .select()
-      .from(userHabitLogs)
-      .where(
-        and(
-          eq(userHabitLogs.userChallengeId, userChallengeId),
-          eq(userHabitLogs.logDate, logDate)
-        )
-      )
-      .limit(1);
+    const [log] = await this.findByUserChallengeAndDateRange(userChallengeId, userId, logDate, logDate);
     
     return log || null;
   }
@@ -83,10 +85,15 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   /**
    * Delete a habit log record
    */
-  async delete(id: string): Promise<boolean> {
+  async delete(id: string, userId: string): Promise<boolean> {
     const result = await this.db
       .delete(userHabitLogs)
-      .where(eq(userHabitLogs.id, id));
+      .where(
+        and(
+          eq(userHabitLogs.id, id),
+          eq(userHabitLogs.userId, userId)
+        )
+      );
     
     return result.rowCount > 0;
   }

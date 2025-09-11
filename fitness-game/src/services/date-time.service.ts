@@ -7,17 +7,20 @@ export class DateTimeService implements IDateTimeService {
     return new Date(); // Returns current date/time in UTC
   }
 
+  // @TODO: this should be made static
   getUnixTimestamp(date: Date): number {
     return Math.floor(date.getTime() / 1000);
   }
 
-  getUtcDateString(date?: Date): string {
-    return date ? date.toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+  // @TODO: this should be made static
+  getUtcDateString(date: Date): string {
+    return date.toISOString().split('T')[0];
   }
 
-  // Challenge-specific date methods
+  // @TODO: Challenge-specific date methods (I think these should be moved back to the challenge service as they are challenge specific)
+  // or made static or in some utility module
   getTodayUtcDateString(): string {
-    return new Date().toISOString().split('T')[0];
+    return this.getUtcNow().toISOString().split('T')[0];
   }
 
   getTwoWeeksFromTodayUtcDateString(): string {
