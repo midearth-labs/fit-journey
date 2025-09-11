@@ -693,7 +693,28 @@ Generate the real UI  using HTML and Javascript. The Javascript must load conten
 Save the outputs (JS, CSS, HTML) into subdirectories of `fitness-game/public`
 ```
 
-### Prompt 9.1
+#### Prompt 9.1
 ```
 The UI isn't elegant enough, use modern, elegant, and engaging UI experiences for a project like this. Imagine DuoLingo was a website.
+```
+
+### Prompt 10
+```
+Look at challenge-system.md design and create the services and repositories to match the design for ALL the APIs mentioned.  Use the daos in `fitness-game/src/data/content/utils/daos` to access static content, create new dao methods if needed.
+
+Look at existing implementations in the subdirectories `fitness-game/src/`
+
+Put appropriate comments and follow the API naming conventions.
+```
+
+#### Prompt 10.1
+```
+You can't use "any", the code-base is meant to take advantage of typescript typing and you have the ability to create or use existing structures as necessary. Also, define structures as "type" everywhere, not "interface"
+```
+
+#### Prompt 10.2
+```
+Ensure no logic calls "new Date()" directly in the services, but always use the IDateTimeService, add new purpose-specific methods (with descriptive names) to IDateTimeService interface and implementations as needed. 
+
+Also, daos should not access "new Date()", whatever date they work with should be passed to them in input from the services.
 ```

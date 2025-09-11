@@ -4,3 +4,6 @@ export { type IUserProfileRepository, UserProfileRepository } from './user-profi
 export { type IStreakLogRepository, StreakLogRepository } from './streak-log.repository';
 export { type IStreakHistoryRepository, StreakHistoryRepository } from './streak-history.repository';
 export { type IFitnessLevelHistoryRepository, FitnessLevelHistoryRepository } from './fitness-level-history.repository';
+export { type IUserChallengeRepository, UserChallengeRepository } from './user-challenge.repository';
+export { type IUserChallengeProgressRepository, UserChallengeProgressRepository } from './user-challenge-progress.repository';
+export { type IUserHabitLogsRepository, UserHabitLogsRepository } from './user-habit-logs.repository';
