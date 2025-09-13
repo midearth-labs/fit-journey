@@ -65,6 +65,7 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
         setWhere: sql`${userChallengeProgress.userId} = ${progressData.userId}`
       })
       .returning();
+      // @TODO: Add logic to update the user challenge progress count
     
     return progress || null;
   }

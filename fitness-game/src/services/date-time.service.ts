@@ -1,6 +1,6 @@
 // src/services/date-time.service.ts
 
-import { IDateTimeService } from '../shared/interfaces';
+import { IDateTimeService, Offsets } from '../shared/interfaces';
 
 export class DateTimeService implements IDateTimeService {
   getUtcNow(): Date {
@@ -70,5 +70,45 @@ export class DateTimeService implements IDateTimeService {
   isLogDateWithinChallengePeriod(logDate: string, startDate: string, durationDays: number): boolean {
     const endDate = this.getChallengeEndDateUtcDateString(startDate, durationDays);
     return logDate >= startDate && logDate <= endDate;
+  }
+
+  getDatesFromInstantWithOffset(instant: Date, offsets: Offsets) {
+    const offsetInstant = new Date(instant.getTime());
+    if (offsets.days) {
+      offsetInstant.setDate(offsetInstant.getDate() + offsets.days);
+    }
+    if (offsets.hours) {
+      offsetInstant.setHours(offsetInstant.getHours() + offsets.hours);
+    }
+    if (offsets.minutes) {
+      offsetInstant.setMinutes(offsetInstant.getMinutes() + offsets.minutes);
+    }
+    if (offsets.seconds) {
+      offsetInstant.setSeconds(offsetInstant.getSeconds() + offsets.seconds);
+    }
+    if (offsets.milliseconds) {
+      offsetInstant.setMilliseconds(offsetInstant.getMilliseconds() + offsets.milliseconds);
+    }
+    return this.getPossibleDatesOnEarthAtInstant(offsetInstant);
+  }
+
+  getPossibleDatesOnEarthAtInstant(instant: Date) {  
+    // Get the milliseconds timestamp for easier manipulation, ensuring we preserve the instant.
+    const ms = instant.getTime();
+
+    const instantUTC = this.getUtcDateString(instant);
+    // 1. Calculate the instant adjusted for the latest timezone (UTC-12:00).
+    // This is 12 hours earlier than the UTC instant.
+    const instantMinus12Hours = this.getUtcDateString(new Date(ms - (12 * 60 * 60 * 1000)));
+
+    // 2. Calculate the instant adjusted for the earliest timezone (UTC+14:00).
+    // This is 14 hours later than the UTC instant.
+    const instantPlus14Hours = this.getUtcDateString(new Date(ms + (14 * 60 * 60 * 1000)));
+
+    return {
+      earliest: instantMinus12Hours,
+      utc: instantUTC,
+      latest: instantPlus14Hours,
+    };
   }
 }

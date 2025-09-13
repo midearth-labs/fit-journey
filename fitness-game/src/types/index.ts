@@ -53,17 +53,6 @@ export interface UserProfile {
   updatedAt: Date;
 }
 
-// Game Session Types
-export interface GameSession {
-  id: string;
-  userId: string;
-  gameType: GameType;
-  score: number;
-  questionsAnswered: number;
-  correctAnswers: number;
-  timeSpent: number; // in seconds
-  completedAt: Date;
-}
 
 // Social Types
 export interface ShareableResult {

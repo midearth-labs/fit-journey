@@ -81,7 +81,7 @@ export const userProfiles = pgTable('user_profiles', {
     quiz_passed?: string;
     all?: string;
   }>(), // each value is a FK to StreakHistory
-  last_activity_date: date('last_activity_date'), // update this based on completion of daily quiz or logging of habits
+  last_activity_date: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits
   created_at: timestamp('created_at').notNull(),
   updated_at: timestamp('updated_at').notNull(),
 });
@@ -103,9 +103,10 @@ export const userChallenges = pgTable('user_challenges', {
   startDate: date('start_date').notNull(),
   originalStartDate: date('original_start_date').notNull(),
   status: userChallengeStatusEnum('status').notNull(),
-  
-  completedAt: timestamp('completed_at'), // Marks the start of the grace period
-  lockedAt: timestamp('locked_at'), // Marks when the challenge becomes read-only
+
+  knowledgeBaseCompletedCount: integer('knowledge_base_completed_count').notNull(),
+  habitsLoggedCount: integer('habits_logged_count').notNull(),
+  lastActivityDate: timestamp('last_activity_date'),
   
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
@@ -136,10 +137,10 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
   lastAttemptedAt: timestamp('last_attempted_at').notNull(),
   attempts: integer('attempts').notNull(),
 }, (table) => {
-  return {
+  return [
     // A user should only have one progress record per article in their challenge.
-    unq: unique('user_challenge_article_unique').on(table.userChallengeId, table.knowledgeBaseId),
-  };
+    unique('user_challenge_article_unique').on(table.userChallengeId, table.knowledgeBaseId),
+  ];
 });
 
 
@@ -165,11 +166,11 @@ export const userHabitLogs = pgTable('user_habit_logs', {
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
-  return {
+  return [
     // Ensures a user can only have ONE log entry per day for a given challenge.
     // This makes updates (UPSERTs) simple and prevents duplicate data.
-    unq: unique('user_daily_log_unique').on(table.userChallengeId, table.logDate),
-  };
+    unique('user_daily_log_unique').on(table.userChallengeId, table.logDate),
+  ];
 });
 
 // StreakLog table
@@ -259,7 +260,7 @@ export type NewStreakHistory = InferInsertModel<typeof streakHistories>;
 export type FitnessLevelHistory = InferSelectModel<typeof fitnessLevelHistories>;
 export type NewFitnessLevelHistory = InferInsertModel<typeof fitnessLevelHistories>;
 export type UserChallenge = InferSelectModel<typeof userChallenges>;
-export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'completedAt' | 'lockedAt' | 'status'>;
+export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>;
 export type UserChallengeProgress = InferSelectModel<typeof userChallengeProgress>;
 export type NewUserChallengeProgress = Omit<InferInsertModel<typeof userChallengeProgress>, 'id' | 'attempts' | 'lastAttemptedAt'>;
 export type UserHabitLog = InferSelectModel<typeof userHabitLogs>;

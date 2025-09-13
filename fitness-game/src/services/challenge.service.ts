@@ -32,6 +32,7 @@ export class ChallengeService implements IChallengeService {
    * Create a new user challenge
    * POST /user-challenges
    */
+
   async createUserChallenge(dto: CreateUserChallengeDto): Promise<UserChallengeResponse> {
     const requestDate = this.dateTimeService.getUtcNow();
     // Validate challenge exists
@@ -41,6 +42,7 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Validate start date is within 2 weeks
+    // @TODO: Convert the input Dtos to Zod schemas and validate them using Zod not here but from the API entry point.
     const today = this.dateTimeService.getTodayUtcDateString();
     const twoWeeksFromToday = this.dateTimeService.getTwoWeeksFromTodayUtcDateString();
 
@@ -49,6 +51,8 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Check if user already has an active challenge
+    // @TODO: check if this is the right logic, i.e. if its only a challenge of the same challenge id,
+    // a user can have multiple challenges of different challenge ids
     const existingActiveChallenge = await this.userChallengeRepository.findActiveByUserId(dto.userId);
     if (existingActiveChallenge) {
       throw new ValidationError('User already has an active challenge');
@@ -200,6 +204,8 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Validate log date is not in the future and not before start date
+    // @TODO double check this logic, and also that you cant log for a date outside the challenge period range
+    // Implement an isWithinRange method somewhere (maybe in the date-time service)
     if (this.dateTimeService.isDateInFuture(dto.logDate)) {
       throw new ValidationError('Cannot log habits for future dates');
     }
@@ -255,53 +261,8 @@ export class ChallengeService implements IChallengeService {
    */
   async updateChallengeStatuses(): Promise<void> {
     const requestDate = this.dateTimeService.getUtcNow();
-    // @TODO: update logic to allow for user filter, and also, to run in batches (or partitioned, using a WHERE INDEX)
-    const today = this.dateTimeService.getTodayUtcDateString();
-    const fortyEightHoursAgo = this.dateTimeService.getFortyEightHoursAgoUtcTimestamp();
-    
-    // Transition from NOT_STARTED to ACTIVE
-    const challengesToActivate = await this.userChallengeRepository.findChallengesToActivate(today);
-    for (const challenge of challengesToActivate) {
-      await this.userChallengeRepository.update({
-        id: challenge.id,
-        userId: challenge.userId,
-        status: 'active',
-        updatedAt: requestDate
-      });
-    }
 
-    // Transition from ACTIVE to COMPLETED
-    // This requires checking against static challenge data for duration
-    const activeChallenges = await this.userChallengeRepository.findActiveChallenges();
-    
-    for (const challenge of activeChallenges) {
-      const duration = this.challengeContentService.getChallengeDuration(challenge.challengeId);
-      if (duration) {
-        const endDate = this.dateTimeService.getChallengeEndDateUtcDateString(challenge.startDate, duration);
-        
-        if (this.dateTimeService.isDateAfterChallengeEndDate(today, endDate)) {
-          await this.userChallengeRepository.update({
-            id: challenge.id,
-            userId: challenge.userId,
-            status: 'completed',
-            completedAt: requestDate,
-            updatedAt: requestDate
-          });
-        }
-      }
-    }
-
-    // Transition from COMPLETED to LOCKED
-    const challengesToLock = await this.userChallengeRepository.findChallengesToLock(fortyEightHoursAgo);
-    for (const challenge of challengesToLock) {
-      await this.userChallengeRepository.update({
-        id: challenge.id,
-        userId: challenge.userId,
-        status: 'locked',
-        lockedAt: requestDate,
-        updatedAt: requestDate
-      });
-    }
+    // call SQL methods off the Repo
   }
 
   /**
@@ -315,8 +276,9 @@ export class ChallengeService implements IChallengeService {
       startDate: challenge.startDate,
       originalStartDate: challenge.originalStartDate,
       status: challenge.status,
-      completedAt: challenge.completedAt?.toISOString(),
-      lockedAt: challenge.lockedAt?.toISOString(),
+      knowledgeBaseCompletedCount: challenge.knowledgeBaseCompletedCount,
+      habitsLoggedCount: challenge.habitsLoggedCount,
+      lastActivityDate: challenge.lastActivityDate?.toISOString(),
       createdAt: challenge.createdAt.toISOString(),
       updatedAt: challenge.updatedAt.toISOString()
     };

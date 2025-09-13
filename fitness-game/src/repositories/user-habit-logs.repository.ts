@@ -25,6 +25,7 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
         setWhere: sql`${userHabitLogs.userId} = ${logData.userId}`
       })
       .returning();
+      // @TODO: Add logic to update the user challenge progress count
     
     return log || null;
   }
@@ -87,6 +88,7 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   /**
    * Delete a habit log record
    */
+  // @TODO: check if this method is needed, delete if not
   async delete(id: string, userId: string): Promise<boolean> {
     const result = await this.db
       .delete(userHabitLogs)
@@ -96,6 +98,7 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
           eq(userHabitLogs.userId, userId)
         )
       );
+      // @TODO: Add logic to update the user challenge progress count
     
     return result.rowCount > 0;
   }

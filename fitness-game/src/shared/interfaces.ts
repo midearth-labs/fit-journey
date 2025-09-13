@@ -20,6 +20,15 @@
 import { Challenge } from "@/data/content/types/challenge";
 // --- Service Types (for Dependency Injection) ---
 
+export type DatesOnEarthAtInstant = { earliest: string, utc: string, latest: string };
+export type Offsets = {
+  days?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds?: number;
+}
+
 export type IDateTimeService = {
   getUtcNow(): Date; // Returns current UTC Date object
   getUnixTimestamp(date: Date): number;
@@ -36,6 +45,8 @@ export type IDateTimeService = {
   isDateAfterChallengeEndDate(currentDate: string, endDate: string): boolean; // Check if current date is after challenge end
   getMaxLoggingDateUtcDateString(startDate: string, durationDays: number): string; // Get max date user can log habits
   isLogDateWithinChallengePeriod(logDate: string, startDate: string, durationDays: number): boolean; // Check if log date is within challenge period
+  getPossibleDatesOnEarthAtInstant(instant: Date): DatesOnEarthAtInstant; // Get all possible actual dates (YYYY-MM-DD) on earth at the time of the input date
+  getDatesFromInstantWithOffset(instant: Date, offsets: Offsets): DatesOnEarthAtInstant;
 };
 
 // --- Streak Management Interfaces ---
@@ -140,9 +151,6 @@ export type IUserChallengeRepository = {
   findActiveByUserId(userId: string): Promise<UserChallenge | null>;
   update(updates: UpdateUserChallenge): Promise<UserChallenge | null>;
   delete(id: string, userId: string): Promise<boolean>;
-  findChallengesToActivate(currentDate: string): Promise<UserChallenge[]>;
-  findActiveChallenges(): Promise<UserChallenge[]>;
-  findChallengesToLock(fortyEightHoursAgoTimestamp: Date): Promise<UserChallenge[]>;
 };
 
 export type IUserChallengeProgressRepository = {
@@ -214,8 +222,9 @@ export type UserChallengeResponse = {
   startDate: string;
   originalStartDate: string;
   status: 'not_started' | 'active' | 'completed' | 'locked';
-  completedAt?: string;
-  lockedAt?: string;
+  knowledgeBaseCompletedCount: number;
+  habitsLoggedCount: number;
+  lastActivityDate?: string;
   createdAt: string;
   updatedAt: string;
   challenge?: Challenge; // Static challenge data
