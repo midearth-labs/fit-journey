@@ -221,7 +221,7 @@ export type UserChallengeResponse = {
   userId: string;
   startDate: string;
   originalStartDate: string;
-  status: 'not_started' | 'active' | 'completed' | 'locked';
+  status: 'not_started' | 'active' | 'completed' | 'locked' | 'inactive';
   knowledgeBaseCompletedCount: number;
   habitsLoggedCount: number;
   lastActivityDate?: string;

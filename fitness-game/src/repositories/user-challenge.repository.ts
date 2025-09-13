@@ -1,5 +1,5 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq, and, lte, lt, ne, gte } from 'drizzle-orm';
+import { eq, and, lte, lt, ne, gte, notInArray } from 'drizzle-orm';
 import { userChallenges, UserChallenge, NewUserChallenge, UpdateUserChallenge } from '@/lib/db/schema';
 import { IUserChallengeRepository, IDateTimeService } from '@/shared/interfaces';
 import { CHALLENGE_CONSTANTS } from '@/data/content/types/constants';
@@ -113,11 +113,11 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     challenge: Pick<UserChallenge, 'status' | 'startDate' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>
     ): UserChallenge['status'] {
         
-        // --- 1. Handle all "locked" conditions first as guard clauses ---
+        // --- 1. Handle all "locked" and "inactive" conditions first as guard clauses ---
 
-        // Condition A: The challenge is explicitly marked as 'locked'.
-        if (challenge.status === 'locked') {
-            return 'locked';
+        // Condition A: The challenge is explicitly marked as 'locked' or 'inactive'.
+        if (challenge.status === 'locked' || challenge.status === 'inactive') {
+            return challenge.status;
         }
 
         // Condition B: The challenge is outside its accessible time window (grace period).
@@ -181,20 +181,21 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     /**
      * QUERY 1: Lock challenges that are outside their grace period.
      * This logic corresponds to the primary guard clause. It locks any challenge
-     * (that isn't already locked) whose start date is before the earliest allowed date.
+     * (that isn't already locked or inactive) whose start date is before the earliest allowed date.
      */
+    // @TODO: check the performance of this query and that they always use user_challenge_status_start_date_not_locked_inactive_index and no table scan
+    // Use some constants to keep the statuses in sync with the schema.
     const lockExpiredChallengesQuery = this.db.update(userChallenges)
       .set({
         status: 'locked',
         updatedAt: currentInstant,
       })
       .where(and(
-        ne(userChallenges.status, 'locked'),
+        notInArray(userChallenges.status, ['locked', 'inactive']),
         lt(userChallenges.startDate, earliestAllowedStartDate)
       ));
     // Expected SQL:
-    // UPDATE "user_challenges" SET "status" = 'locked', "updated_at" = $1 WHERE "status" != 'locked' AND "start_date" < $2
-  
+    // UPDATE "user_challenges" SET "status" = 'locked', "updated_at" = $1 WHERE "status" NOT IN ('locked', 'inactive') AND "start_date" < $2
     /**
      * QUERY 2: Activate challenges that have not started yet but their start date has arrived.
      * This transitions challenges from 'not_started' to 'active'.

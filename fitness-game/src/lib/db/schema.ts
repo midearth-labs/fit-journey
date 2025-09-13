@@ -1,5 +1,5 @@
 import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique } from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
+import { relations, sql } from 'drizzle-orm';
 import { InferSelectModel, InferInsertModel } from 'drizzle-orm';
 
 // Enums
@@ -26,6 +26,7 @@ export const userChallengeStatusEnum = pgEnum('user_challenge_status', [
   'active',
   'completed',
   'locked',
+  'inactive',
 ]);
 
 /**
@@ -110,6 +111,14 @@ export const userChallenges = pgTable('user_challenges', {
   
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
+}, (table) => {
+  return [
+    // Index to find challenges by status and startDate
+    // @TODO: @NOTE: might not be safe to modify this index after deployment, might be better to create a new index with the new statuses
+    // then update the queries, then drop the old index
+    index('user_challenge_status_start_date_not_locked_inactive_index').on(table.status, table.startDate)
+    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
+  ];
 });
 
 /**
