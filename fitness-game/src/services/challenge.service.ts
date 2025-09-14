@@ -10,6 +10,7 @@ import {
   UserHabitLogResponse,
   UserChallengeProgressResponse,
   ListUserChallengeQuizSubmissionsDto,
+  AuthRequestContext,
 } from '@/shared/interfaces';
 import { 
   ResourceNotFoundError,
@@ -24,15 +25,15 @@ import { IChallengeDAO } from '@/data/content/utils/daos/';
 
 
 export type IChallengeService = {
-    createUserChallenge(dto: CreateUserChallengeDto): Promise<NewUserChallengeResponse>;
-    getUserChallenge(userChallengeId: string, userId: string): Promise<UserChallengeDetailResponse>;
-    listUserChallenges(userId: string): Promise<UserChallengeSummaryResponse[]>;
-    updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void>;
-    submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void>;
-    putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void>;
-    listUserChallengeLogs(dto: ListUserChallengeLogsDto): Promise<UserHabitLogResponse[]>;
-    listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]>;
-    updateChallengeStatuses(): Promise<void>;
+    createUserChallenge(dto: CreateUserChallengeDto, requestContext: AuthRequestContext): Promise<NewUserChallengeResponse>;
+    getUserChallenge(userChallengeId: string, requestContext: AuthRequestContext): Promise<UserChallengeDetailResponse>;
+    listUserChallenges(requestContext: AuthRequestContext): Promise<UserChallengeSummaryResponse[]>;
+    updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto, requestContext: AuthRequestContext): Promise<void>;
+    submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto, requestContext: AuthRequestContext): Promise<void>;
+    putUserChallengeLog(dto: PutUserChallengeLogDto, requestContext: AuthRequestContext): Promise<void>;
+    listUserChallengeLogs(dto: ListUserChallengeLogsDto, requestContext: AuthRequestContext): Promise<UserHabitLogResponse[]>;
+    listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto, requestContext: AuthRequestContext): Promise<UserChallengeProgressResponse[]>;
+    updateChallengeStatuses(requestContext: AuthRequestContext): Promise<void>;
   };
   
 export class ChallengeService implements IChallengeService {
@@ -49,8 +50,8 @@ export class ChallengeService implements IChallengeService {
    * POST /user-challenges
    */
 
-  async createUserChallenge(dto: CreateUserChallengeDto): Promise<NewUserChallengeResponse> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async createUserChallenge(dto: CreateUserChallengeDto, requestContext: AuthRequestContext): Promise<NewUserChallengeResponse> {
+    const requestDate = requestContext.requestDate;
     const challenge = notFoundCheck(this.challengeDAO.getById(dto.challengeId), 'Challenge');
 
     // Validate start date is within 2 weeks
@@ -65,14 +66,14 @@ export class ChallengeService implements IChallengeService {
     // Check if user already has an active challenge
     // @TODO: check if this is the right logic, i.e. if its only a challenge of the same challenge id,
     // a user can have multiple challenges of different challenge ids
-    const existingActiveChallenge = await this.userChallengeRepository.findActiveByUserId(dto.userId);
+    const existingActiveChallenge = await this.userChallengeRepository.findActiveByUserId(requestContext.userId);
     if (existingActiveChallenge) {
       throw new ValidationError('User already has an active challenge');
     }
 
     // Create the challenge
     const userChallenge = await this.userChallengeRepository.create({
-        userId: dto.userId,
+        userId: requestContext.userId,
         challengeId: dto.challengeId,
         startDate: dto.startDate,
         originalStartDate: dto.startDate,
@@ -86,10 +87,10 @@ export class ChallengeService implements IChallengeService {
    * Get a user challenge by ID
    * GET /user-challenges/:userChallengeId
    */
-  async getUserChallenge(userChallengeId: string, userId: string): Promise<UserChallengeDetailResponse> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async getUserChallenge(userChallengeId: string, requestContext: AuthRequestContext): Promise<UserChallengeDetailResponse> {
+    const requestDate = requestContext.requestDate;
     const userChallenge = notFoundCheck(
-        await this.userChallengeRepository.findById(userChallengeId, userId),
+        await this.userChallengeRepository.findById(userChallengeId, requestContext.userId),
         'Challenge'
     );
     
@@ -99,10 +100,10 @@ export class ChallengeService implements IChallengeService {
     return this.mapToUserChallengeResponse(userChallenge, implicitStatus);
   }
 
-  async listUserChallenges(userId: string): Promise<UserChallengeSummaryResponse[]> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async listUserChallenges(requestContext: AuthRequestContext): Promise<UserChallengeSummaryResponse[]> {
+    const requestDate = requestContext.requestDate;
 
-    const userChallenges = await this.userChallengeRepository.findByUserId(userId);
+    const userChallenges = await this.userChallengeRepository.findByUserId(requestContext.userId);
     return userChallenges.map(userChallenge => {
         const challenge = this.challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new InternalServerError(`Challenge with ID ${userChallenge.challengeId} does not exist`));
         const implicitStatus = userChallenge.implicitStatus({ requestDate, challengeDays: challenge.durationDays });
@@ -114,10 +115,10 @@ export class ChallengeService implements IChallengeService {
    * Update user challenge schedule
    * PATCH /user-challenges/:userChallengeId/schedule
    */
-  async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto, requestContext: AuthRequestContext): Promise<void> {
+    const requestDate = requestContext.requestDate;
     const userChallenge = notFoundCheck(
-        await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
+        await this.userChallengeRepository.findById(dto.userChallengeId, requestContext.userId),
         'Challenge'
     );
 
@@ -138,7 +139,7 @@ export class ChallengeService implements IChallengeService {
     // Update the challenge
     const updatedChallenge = await this.userChallengeRepository.update({
       id: dto.userChallengeId,
-      userId: dto.userId,
+      userId: requestContext.userId,
       startDate: dto.newStartDate,
       updatedAt: requestDate
     });
@@ -152,10 +153,10 @@ export class ChallengeService implements IChallengeService {
    * Submit user challenge quiz
    * POST /user-challenges/:userChallengeId/progress/:knowledgeBaseId/quiz
    */
-  async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto, requestContext: AuthRequestContext): Promise<void> {
+    const requestDate = requestContext.requestDate;
     const userChallenge = notFoundCheck(
-        await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
+        await this.userChallengeRepository.findById(dto.userChallengeId, requestContext.userId),
         'Challenge'
     );
 
@@ -176,7 +177,7 @@ export class ChallengeService implements IChallengeService {
     // Check if quiz already submitted
     const existingProgress = await this.userChallengeProgressRepository.findByUserChallengeAndArticle(
       dto.userChallengeId,
-      dto.userId,
+      requestContext.userId,
       dto.knowledgeBaseId
     );
 
@@ -194,12 +195,12 @@ export class ChallengeService implements IChallengeService {
 
     // Create or Update progress record
     await this.userChallengeProgressRepository.upsert({
-        userId: dto.userId,
+        userId: requestContext.userId,
         userChallengeId: dto.userChallengeId,
         knowledgeBaseId: dto.knowledgeBaseId,
         allCorrectAnswers: allCorrect,
         quizAnswers: dto.quizAnswers,
-        firstAttemptedAt: this.dateTimeHelper.getUtcNow(),
+        firstAttemptedAt: requestDate,
       });
   }
   
@@ -216,10 +217,10 @@ export class ChallengeService implements IChallengeService {
    * Put user challenge log
    * PUT /user-challenges/:userChallengeId/logs/:logDate
    */
-  async putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async putUserChallengeLog(dto: PutUserChallengeLogDto, requestContext: AuthRequestContext): Promise<void> {
+    const requestDate = requestContext.requestDate;
     const userChallenge = notFoundCheck(
-        await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
+        await this.userChallengeRepository.findById(dto.userChallengeId, requestContext.userId),
         'Challenge'
     );
     const challenge = this.challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new InternalServerError(`Challenge with ID ${userChallenge.challengeId} does not exist`));
@@ -249,7 +250,7 @@ export class ChallengeService implements IChallengeService {
 
     // Upsert the habit log
     await this.userHabitLogsRepository.upsert({
-        userId: dto.userId,
+        userId: requestContext.userId,
         userChallengeId: dto.userChallengeId,
         logDate: dto.logDate,
         values: dto.values,
@@ -261,9 +262,9 @@ export class ChallengeService implements IChallengeService {
    * List user challenge logs
    * GET /user-challenges/:userChallengeId/logs?from=YYYY-MM-DD&to=YYYY-MM-DD
    */
-  async listUserChallengeLogs(dto: ListUserChallengeLogsDto): Promise<UserHabitLogResponse[]> {
+  async listUserChallengeLogs(dto: ListUserChallengeLogsDto, requestContext: AuthRequestContext): Promise<UserHabitLogResponse[]> {
     const challenge = notFoundCheck(
-        await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
+        await this.userChallengeRepository.findById(dto.userChallengeId, requestContext.userId),
         'Challenge'
     );
 
@@ -274,7 +275,7 @@ export class ChallengeService implements IChallengeService {
 
     const logs = await this.userHabitLogsRepository.findByUserChallengeAndDateRange(
       dto.userChallengeId,
-      dto.userId,
+      requestContext.userId,
       dto.fromDate,
       dto.toDate
     );
@@ -282,15 +283,15 @@ export class ChallengeService implements IChallengeService {
     return logs.map(log => this.mapToUserHabitLogResponse(log));
   }
 
-  async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]> {
+  async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto, requestContext: AuthRequestContext): Promise<UserChallengeProgressResponse[]> {
     const challenge = notFoundCheck(
-        await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
+        await this.userChallengeRepository.findById(dto.userChallengeId, requestContext.userId),
         'Challenge'
     );
 
     const submissions = await this.userChallengeProgressRepository.findByUserChallengeId(
       dto.userChallengeId,
-      dto.userId
+      requestContext.userId
     );
 
     return submissions.map(submission => this.mapToUserChallengeProgressResponse(submission));
@@ -300,8 +301,8 @@ export class ChallengeService implements IChallengeService {
    * Update challenge statuses (scheduled job)
    * This method implements the challenge status update algorithm
    */
-  async updateChallengeStatuses(): Promise<void> {
-    const requestDate = this.dateTimeHelper.getUtcNow();
+  async updateChallengeStatuses(requestContext: AuthRequestContext): Promise<void> {
+    const requestDate = requestContext.requestDate;
 
     // call SQL methods off the Repo
   }

@@ -8,6 +8,12 @@
 import { Challenge } from "@/data/content/types/challenge";
 // --- Service Types (for Dependency Injection) ---
 
+// --- Auth Context ---
+export type AuthRequestContext = {
+  requestDate: Date; // the timestamp/instant of the incoming request
+  userId: string; // the userId of the user session
+};
+
 export type DatesOnEarthAtInstant = { earliest: string, utc: string, latest: string };
 export type Offsets = {
   days?: number;
@@ -52,19 +58,16 @@ export type QuizCompletionDto = {
 // --- Challenge DTOs ---
 
 export type CreateUserChallengeDto = {
-  userId: string;
   challengeId: string;
   startDate: string; // YYYY-MM-DD format
 };
 
 export type UpdateUserChallengeScheduleDto = {
-  userId: string;
   userChallengeId: string;
   newStartDate: string; // YYYY-MM-DD format
 };
 
 export type SubmitUserChallengeQuizDto = {
-  userId: string;
   userChallengeId: string;
   knowledgeBaseId: string;
   quizAnswers: UserAnswer[];
@@ -72,14 +75,12 @@ export type SubmitUserChallengeQuizDto = {
 };
 
 export type PutUserChallengeLogDto = {
-  userId: string;
   userChallengeId: string;
   logDate: string; // YYYY-MM-DD format
   values: DailyHabitLogPayload;
 };
 
 export type ListUserChallengeLogsDto = {
-  userId: string;
   userChallengeId: string;
   fromDate?: string; // YYYY-MM-DD format
   toDate?: string; // YYYY-MM-DD format
