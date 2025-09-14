@@ -7,7 +7,6 @@ export interface IUserProfileRepository {
   update(userProfileId: string, updates: Partial<UserProfile>): Promise<UserProfile | null>;
   delete(userProfileId: string): Promise<boolean>;
   findById(userProfileId: string): Promise<UserProfile | null>;
-  findByUserId(userId: string): Promise<UserProfile | null>;
 }
 
 export class UserProfileRepository implements IUserProfileRepository {
@@ -41,15 +40,6 @@ export class UserProfileRepository implements IUserProfileRepository {
     const result = await this.db.select()
       .from(userProfiles)
       .where(eq(userProfiles.id, userProfileId))
-      .limit(1);
-    
-    return result[0] || null;
-  }
-
-  async findByUserId(userId: string): Promise<UserProfile | null> {
-    const result = await this.db.select()
-      .from(userProfiles)
-      .where(eq(userProfiles.user_id, userId))
       .limit(1);
     
     return result[0] || null;

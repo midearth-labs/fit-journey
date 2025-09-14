@@ -1,5 +1,5 @@
 export const notFoundCheck = <T>(item: T, itemName: string) => {
-  if (!item) {
+  if (item === undefined || item === null) {
     throw new ResourceNotFoundError(itemName);
   }
   return item;
@@ -21,6 +21,14 @@ export class ResourceNotFoundError extends BaseError {
 export class AuthorizationError extends BaseError {
   constructor(message: string = 'User is not authorized to perform this action.') {
     super(message);
+  }
+}
+
+export class InternalServerError extends BaseError {
+  public readonly actualError: Error | string;
+  constructor(actualError: Error | string) {
+    super('An internal server error occurred.');
+    this.actualError = actualError;
   }
 }
 

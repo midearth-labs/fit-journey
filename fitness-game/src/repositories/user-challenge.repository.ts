@@ -1,39 +1,47 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq, and, lte, lt, ne, gte, notInArray } from 'drizzle-orm';
+import { eq, and, lte, lt, gte, notInArray, Query } from 'drizzle-orm';
 import { userChallenges, UserChallenge, NewUserChallenge, UpdateUserChallenge } from '@/lib/db/schema';
 import { CHALLENGE_CONSTANTS } from '@/data/content/types/constants';
 import { type IDateTimeService } from '@/services/date-time.service';
+import { type IChallengeDAO } from '@/data/content/utils/daos/challenge';
+import { ImplicitStatusCheckPayload, UserChallengeWithImplicitStatus } from '@/shared/interfaces';
 
 export type IUserChallengeRepository = {
-    create(challengeData: NewUserChallenge): Promise<UserChallenge>;
-    findById(id: string, userId: string): Promise<UserChallenge | null>;
-    findByUserId(userId: string): Promise<UserChallenge[]>;
-    findActiveByUserId(userId: string): Promise<UserChallenge | null>;
-    update(updates: UpdateUserChallenge): Promise<UserChallenge | null>;
+    create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus>;
+    findById(id: string, userId: string): Promise<UserChallengeWithImplicitStatus | null>;
+    findByUserId(userId: string): Promise<UserChallengeWithImplicitStatus[]>;
+    findActiveByUserId(userId: string): Promise<UserChallengeWithImplicitStatus | null>;
+    update(updates: UpdateUserChallenge): Promise<UserChallengeWithImplicitStatus | null>;
     delete(id: string, userId: string): Promise<boolean>;
+    batchUpdateChallengeStatuses(requestDate: Date): Promise<void>;
   };
   
 export class UserChallengeRepository implements IUserChallengeRepository {
   constructor(private readonly db: NodePgDatabase<Record<string, never>>, 
-    private readonly dateTimeService: IDateTimeService
+    private readonly dateTimeService: IDateTimeService,
+    private readonly challengeDAO: IChallengeDAO,
   ) {}
 
   /**
    * Create a new user challenge
    */
-  async create(challengeData: NewUserChallenge): Promise<UserChallenge> {
+  async create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus> {
     const [challenge] = await this.db
       .insert(userChallenges)
       .values({...challengeData, updatedAt: challengeData.createdAt, status: 'not_started', knowledgeBaseCompletedCount: 0, habitsLoggedCount: 0})
       .returning();
     
-    return challenge;
+    return {
+      ...challenge,
+      // @TODO: Implement caching for the implicit status
+      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+    };
   }
 
   /**
    * Find a user challenge by ID and userId
    */
-  async findById(id: string, userId: string): Promise<UserChallenge | null> {
+  async findById(id: string, userId: string): Promise<UserChallengeWithImplicitStatus | null> {
     const [challenge] = await this.db
       .select()
       .from(userChallenges)
@@ -45,24 +53,31 @@ export class UserChallengeRepository implements IUserChallengeRepository {
       )
       .limit(1);
     
-    return challenge || null;
+    return challenge ? {
+      ...challenge,
+      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+    } : null;
   }
 
   /**
    * Find all challenges for a specific user
    */
-  async findByUserId(userId: string): Promise<UserChallenge[]> {
-    return await this.db
+  async findByUserId(userId: string): Promise<UserChallengeWithImplicitStatus[]> {
+    const challenges = await this.db
       .select()
       .from(userChallenges)
       .where(eq(userChallenges.userId, userId))
       .orderBy(userChallenges.createdAt);
+    return challenges.map(challenge => ({
+      ...challenge,
+      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+    }));
   }
 
   /**
    * Find the active challenge for a specific user
    */
-  async findActiveByUserId(userId: string): Promise<UserChallenge | null> {
+  async findActiveByUserId(userId: string): Promise<UserChallengeWithImplicitStatus | null> {
     const [challenge] = await this.db
       .select()
       .from(userChallenges)
@@ -74,13 +89,16 @@ export class UserChallengeRepository implements IUserChallengeRepository {
       )
       .limit(1);
     
-    return challenge || null;
+    return challenge ? {
+      ...challenge,
+      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+    } : null;
   }
 
   /**
    * Update a user challenge
    */
-  async update(updates: UpdateUserChallenge): Promise<UserChallenge | null> {
+  async update(updates: UpdateUserChallenge): Promise<UserChallengeWithImplicitStatus | null> {
     const [updatedChallenge] = await this.db
       .update(userChallenges)
       .set({ ...updates })
@@ -92,7 +110,10 @@ export class UserChallengeRepository implements IUserChallengeRepository {
       )
       .returning();
     
-    return updatedChallenge || null;
+    return updatedChallenge ? {
+      ...updatedChallenge,
+      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, updatedChallenge),
+    } : null;
   }
 
   /**
@@ -117,40 +138,36 @@ export class UserChallengeRepository implements IUserChallengeRepository {
 
 
   private getRealChallengeStatus(
-    requestDate: Date,
-    challengeDays: number,
-    challenge: Pick<UserChallenge, 'status' | 'startDate' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>
+    payload: ImplicitStatusCheckPayload,
+    userChallenge: Pick<UserChallenge, 'status' | 'startDate' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>
     ): UserChallenge['status'] {
-        
+        const { requestDate, challengeDays } = payload;
         // --- 1. Handle all "locked" and "inactive" conditions first as guard clauses ---
 
         // Condition A: The challenge is explicitly marked as 'locked' or 'inactive'.
-        if (challenge.status === 'locked' || challenge.status === 'inactive') {
-            return challenge.status;
+        if (userChallenge.status === 'locked' || userChallenge.status === 'inactive') {
+            return userChallenge.status;
         }
-
+        const { earliestAllowedStartDate, latestDateOnEarth } = this.getInferredStatusBoundaryDates(challengeDays, requestDate);
+        
         // Condition B: The challenge is outside its accessible time window (grace period).
         // This is a universal rule that can lock an otherwise active or completed challenge.
-        const { earliest: earliestAllowedStartDate } = this.dateTimeService.getDatesFromInstantWithOffset(
-            requestDate,
-            { days: -challengeDays, hours: -CHALLENGE_CONSTANTS.DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS }
-        );
-        if (earliestAllowedStartDate > challenge.startDate) {
+        if (earliestAllowedStartDate > userChallenge.startDate) {
             return 'locked';
         }
 
         // --- 2. Handle state transitions for non-locked challenges ---
         // At this point, we know the challenge is not locked. We can now evaluate its current status.
 
-        switch (challenge.status) {
+        switch (userChallenge.status) {
             case 'completed':
                 // If it's already completed and not locked by the grace period, it remains completed.
                 return 'completed';
 
             case 'active':
                 // An active challenge might transition to 'completed'.
-                const isComplete = challenge.knowledgeBaseCompletedCount >= challengeDays &&
-                                challenge.habitsLoggedCount >= challengeDays;
+                const isComplete = userChallenge.knowledgeBaseCompletedCount >= challengeDays &&
+                                userChallenge.habitsLoggedCount >= challengeDays;
                 if (isComplete) {
                     return 'completed';
                 }
@@ -159,8 +176,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
 
             case 'not_started':
                 // A 'not_started' challenge might transition to 'active'.
-                const { latest: latestDateOnEarth } = this.dateTimeService.getPossibleDatesOnEarthAtInstant(requestDate);
-                if (latestDateOnEarth >= challenge.startDate) {
+                if (latestDateOnEarth >= userChallenge.startDate) {
                     return 'active';
                 }
                 // Otherwise, it remains 'not_started'.
@@ -168,25 +184,69 @@ export class UserChallengeRepository implements IUserChallengeRepository {
 
             default:
                 // This handles any unexpected status values.
-                throw new Error(`Invalid or unhandled challenge status: ${challenge.status}`);
+                throw new Error(`Invalid or unhandled challenge status: ${userChallenge.status}`);
         }
     }
+
+    public async batchUpdateChallengeStatuses(
+        requestDate: Date,
+    ) {
+        const activeChallenges = this.challengeDAO.getActiveChallengesOrdered();
+        for (const challenge of activeChallenges) {
+          console.log(`Processing challenge: ${challenge.id}`);
+          const challengeDays = challenge.durationDays;
+          
+          const { lockExpiredChallengesQuery, activatePendingChallengesQuery, completeActiveChallengesQuery } = this.getChallengeStatusUpdateQueries(challengeDays, requestDate);
+          // @TODO: find how to batch each query in limits of 1000 or so.
+          // We could utilize the dynamodb type partition space hash approach for this: 1 to 24 (on the userId)
+          console.log(`Executing Lock expired challenges query: ${lockExpiredChallengesQuery.toSQL()}`);
+          const lockExpiredChallengesResult = await lockExpiredChallengesQuery;
+          console.log(`Lock expired challenges: ${lockExpiredChallengesResult.rowCount}`);
+
+          console.log(`Executing Activate pending challenges query: ${activatePendingChallengesQuery.toSQL()}`);
+          const activatePendingChallengesResult = await activatePendingChallengesQuery;
+          console.log(`Activate pending challenges: ${activatePendingChallengesResult.rowCount}`);
+          
+          console.log(`Executing Complete active challenges query: ${completeActiveChallengesQuery.toSQL()}`);
+          const completeActiveChallengesResult = await completeActiveChallengesQuery;
+          console.log(`Complete active challenges: ${completeActiveChallengesResult.rowCount}`);
+        }
+    }
+
+    /**
+     * 
+     * @param challengeDays 
+     * @param requestDate 
+     * @returns 
+     * earliestAllowedStartDate The calculated date for the grace period lock check.
+     * currentDateOnEarth The earliest current date anywhere on Earth, for activation checks.
+     */
+    private getInferredStatusBoundaryDates(
+        challengeDays: number,
+        requestDate: Date,
+    ) {
+        const { earliest: earliestAllowedStartDate } = this.dateTimeService.getDatesFromInstantWithOffset(
+            requestDate,
+            { days: -challengeDays, hours: -CHALLENGE_CONSTANTS.DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS }
+        );
+        const { latest: latestDateOnEarth } = this.dateTimeService.getPossibleDatesOnEarthAtInstant(requestDate);
+        return { earliestAllowedStartDate, latestDateOnEarth };
+    }
+    
     /**
      * Generates a sequence of Drizzle UPDATE queries to synchronize challenge statuses.
      * These queries should be executed in the returned order within a transaction.
      *
      * @param challengeDays The number of days required for challenge completion.
-     * @param currentInstant The current timestamp (new Date()) to use for `updatedAt`.
-     * @param earliestAllowedStartDate The calculated date for the grace period lock check.
-     * @param currentDateOnEarth The earliest current date anywhere on Earth, for activation checks.
+     * @param requestDate The request timestamp for calculations.
      * @returns An array of Drizzle promise-based queries to be executed.
      */
-  public getChallengeStatusUpdateQueries(
+  private getChallengeStatusUpdateQueries(
     challengeDays: number,
-    currentInstant: Date,
-    earliestAllowedStartDate: string,
-    latestDateOnEarth: string
+    requestDate: Date
   ) {
+    const { earliestAllowedStartDate, latestDateOnEarth } = this.getInferredStatusBoundaryDates(challengeDays, requestDate);
+        
     /**
      * QUERY 1: Lock challenges that are outside their grace period.
      * This logic corresponds to the primary guard clause. It locks any challenge
@@ -197,7 +257,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     const lockExpiredChallengesQuery = this.db.update(userChallenges)
       .set({
         status: 'locked',
-        updatedAt: currentInstant,
+        updatedAt: requestDate,
       })
       .where(and(
         notInArray(userChallenges.status, ['locked', 'inactive']),
@@ -212,7 +272,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     const activatePendingChallengesQuery = this.db.update(userChallenges)
       .set({
         status: 'active',
-        updatedAt: currentInstant,
+        updatedAt: requestDate,
       })
       .where(and(
         eq(userChallenges.status, 'not_started'),
@@ -228,7 +288,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     const completeActiveChallengesQuery = this.db.update(userChallenges)
       .set({
         status: 'completed',
-        updatedAt: currentInstant,
+        updatedAt: requestDate,
       })
       .where(and(
         eq(userChallenges.status, 'active'),
@@ -238,10 +298,10 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     // Expected SQL:
     // UPDATE "user_challenges" SET "status" = 'completed', "updated_at" = $1 WHERE "status" = 'active' AND "knowledge_base_completed_count" >= $2 AND "habits_logged_count" >= $3
   
-    return [
+    return {
       lockExpiredChallengesQuery,
       activatePendingChallengesQuery,
       completeActiveChallengesQuery,
-    ];
+    };
   }
 }

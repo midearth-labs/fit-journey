@@ -3,7 +3,20 @@
 
 import { MapAndList } from "../types";
 
-export abstract class BaseContentDAO<T> {
+export type IBaseContentDAO<T> = {
+  getAll(): T[];
+  getById(id: string): T | undefined;
+  getByIdOrThrow(id: string, errorProvider: () => Error): T;
+  getByIds(ids: string[]): T[];
+  getCount(): number;
+  exists(id: string): boolean;
+  getRandom(count: number): T[];
+  clearCache(): void;
+  getCacheStats(): { size: number; hits: number; misses: number };
+};
+  
+
+export abstract class BaseContentDAO<T> implements IBaseContentDAO<T> {
   protected content: MapAndList<T>;
   private contentCache: Map<string, any> = new Map();
   private cacheExpiry: Map<string, number> = new Map();
@@ -38,6 +51,17 @@ export abstract class BaseContentDAO<T> {
       this.cacheContent(cacheKey, content);
     }
 
+    return content;
+  }
+
+  /**
+   * Get content by ID
+   */
+  getByIdOrThrow(id: string, errorProvider: () => Error): T {
+    const content = this.getById(id);
+    if (!content) {
+      throw errorProvider();
+    }
     return content;
   }
 

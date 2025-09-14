@@ -5,7 +5,7 @@ import { DatesOnEarthAtInstant, Offsets } from '../shared/interfaces';
 export type IDateTimeService = {
   getUtcNow(): Date; // Returns current UTC Date object
   getUnixTimestamp(date: Date): number;
-  getUtcDateString(date?: Date): string; // Returns YYYY-MM-DD format
+  getUtcDateString(date: Date): string; // Returns YYYY-MM-DD format
   
   // Challenge-specific date methods
   getTodayUtcDateString(): string; // Returns today's date in YYYY-MM-DD format

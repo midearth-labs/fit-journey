@@ -5,4 +5,4 @@ export { QuestionDAO } from './question-dao';
 export { KnowledgeBaseDAO } from './knowledge-base-dao';
 export { AvatarAssetDAO } from './avatar-asset-dao';
 export { StreakTypeDAO } from './streak-type-dao';
-export { ChallengeDAO } from './challenge';
+export { type IChallengeDAO, ChallengeDAO } from './challenge';

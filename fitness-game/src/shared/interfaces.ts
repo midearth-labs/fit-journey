@@ -3,13 +3,7 @@
   import {
   UserAnswer, 
   DailyHabitLogPayload, 
-  UserChallenge, 
-  NewUserChallenge, 
-  UserChallengeProgress, 
-  NewUserChallengeProgress, 
-  UserHabitLog, 
-  NewUserHabitLog,
-  UpdateUserChallenge
+  UserChallenge,
 } from "@/db/schema";
 import { Challenge } from "@/data/content/types/challenge";
 // --- Service Types (for Dependency Injection) ---
@@ -91,10 +85,15 @@ export type ListUserChallengeLogsDto = {
   toDate?: string; // YYYY-MM-DD format
 };
 
+export type ListUserChallengeQuizSubmissionsDto = ListUserChallengeLogsDto;
+
 // --- Challenge Response Types ---
 
-export type UserChallengeResponse = {
+export type NewUserChallengeResponse = {
   id: string;
+};
+
+export type UserChallengeSummaryResponse = NewUserChallengeResponse & {
   challengeId: string;
   userId: string;
   startDate: string;
@@ -105,18 +104,38 @@ export type UserChallengeResponse = {
   lastActivityDate?: string;
   createdAt: string;
   updatedAt: string;
-  challenge?: Challenge; // Static challenge data
-  progress?: UserChallengeProgress[]; // User's progress on articles
-  logs?: UserHabitLog[]; // User's habit logs
 };
+
+
+export type UserChallengeDetailResponse = UserChallengeSummaryResponse
 
 export type UserHabitLogResponse = {
   id: string;
   userChallengeId: string;
   logDate: string;
+  // @TODO: decouple the database models from the service layer
   values: DailyHabitLogPayload;
   createdAt: string;
   updatedAt: string;
 };
 
+export type UserChallengeProgressResponse = {
+  id: string;
+  userChallengeId: string;
+  knowledgeBaseId: string;
+  allCorrectAnswers: boolean;
+  // @TODO: decouple the database models from the service layer
+  quizAnswers: UserAnswer[];
+  firstAttemptedAt: string;
+  lastAttemptedAt: string;
+  attempts: number;
+};
 
+export type ImplicitStatusCheckPayload = {
+  requestDate: Date;
+  challengeDays: number;
+};
+
+export type UserChallengeWithImplicitStatus = UserChallenge & {
+  implicitStatus: (payload: ImplicitStatusCheckPayload) => UserChallenge['status'];
+};
