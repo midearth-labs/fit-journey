@@ -5,50 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1756431333554,
-      "tag": "0000_sleepy_paibok",
+      "when": 1757837509030,
+      "tag": "0000_wet_catseye",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1756431378877,
+      "when": 1757837564504,
       "tag": "0001_custom-ddl",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1756548907828,
-      "tag": "0002_numerous_nightmare",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1756784149618,
-      "tag": "0003_wooden_nehzno",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1756815491971,
-      "tag": "0004_high_blur",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1757703351763,
-      "tag": "0005_polite_microchip",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1757703697666,
-      "tag": "0006_custom-ddl",
       "breakpoints": true
     }
   ]

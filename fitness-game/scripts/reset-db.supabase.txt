@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS public.users CASCADE;
+DROP TABLE IF EXISTS public.user_profiles CASCADE;
+DROP TABLE IF EXISTS public.user_habit_logs CASCADE;
+DROP TABLE IF EXISTS public.user_challenges CASCADE;
+DROP TABLE IF EXISTS public.user_challenge_progress CASCADE;
+DROP TABLE IF EXISTS public.streak_logs CASCADE;
+DROP TABLE IF EXISTS public.streak_histories CASCADE;
+DROP TABLE IF EXISTS public.fitness_level_histories CASCADE;
+DROP TYPE IF EXISTS "public"."user_challenge_status";
+DROP TYPE IF EXISTS "public"."avatar_age_range";
+DROP TYPE IF EXISTS "public"."avatar_gender";
+DROP FUNCTION IF EXISTS public.handle_new_user CASCADE;
+DROP FUNCTION IF EXISTS public.increment_knowledge_base_completed_count CASCADE;
+DROP FUNCTION IF EXISTS public.decrement_knowledge_base_completed_count CASCADE;
+DROP FUNCTION IF EXISTS public.increment_habits_logged_count CASCADE;
+DROP FUNCTION IF EXISTS public.decrement_habits_logged_count CASCADE;

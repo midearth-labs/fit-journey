@@ -1,11 +1,11 @@
 {
-  "id": "729f3376-a890-4cb3-82bd-29e480b1cd2f",
+  "id": "dcf09351-6f3f-412e-ac52-cb595b9f2c78",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.fitness_level_histories": {
-      "name": "fitness_level_histories",
+    "public.user_challenge_progress": {
+      "name": "user_challenge_progress",
       "schema": "",
       "columns": {
         "id": {
@@ -21,25 +21,54 @@
           "primaryKey": false,
           "notNull": true
         },
-        "fitness_level": {
-          "name": "fitness_level",
-          "type": "integer",
+        "user_challenge_id": {
+          "name": "user_challenge_id",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
-        "calculated_at": {
-          "name": "calculated_at",
+        "knowledge_base_id": {
+          "name": "knowledge_base_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "all_correct_answers": {
+          "name": "all_correct_answers",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quiz_answers": {
+          "name": "quiz_answers",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "first_attempted_at": {
+          "name": "first_attempted_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
+        },
+        "last_attempted_at": {
+          "name": "last_attempted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "attempts": {
+          "name": "attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "fitness_level_histories_user_id_users_id_fk": {
-          "name": "fitness_level_histories_user_id_users_id_fk",
-          "tableFrom": "fitness_level_histories",
+        "user_challenge_progress_user_id_users_id_fk": {
+          "name": "user_challenge_progress_user_id_users_id_fk",
+          "tableFrom": "user_challenge_progress",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"
@@ -49,16 +78,38 @@
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
+        },
+        "user_challenge_progress_user_challenge_id_user_challenges_id_fk": {
+          "name": "user_challenge_progress_user_challenge_id_user_challenges_id_fk",
+          "tableFrom": "user_challenge_progress",
+          "tableTo": "user_challenges",
+          "columnsFrom": [
+            "user_challenge_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "user_challenge_article_unique": {
+          "name": "user_challenge_article_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "user_challenge_id",
+            "knowledge_base_id"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.game_sessions": {
-      "name": "game_sessions",
+    "public.user_challenges": {
+      "name": "user_challenges",
       "schema": "",
       "columns": {
         "id": {
@@ -80,69 +131,84 @@
           "primaryKey": false,
           "notNull": true
         },
-        "session_timezone": {
-          "name": "session_timezone",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "session_date_utc": {
-          "name": "session_date_utc",
+        "start_date": {
+          "name": "start_date",
           "type": "date",
           "primaryKey": false,
           "notNull": true
         },
-        "started_at": {
-          "name": "started_at",
-          "type": "timestamp",
+        "original_start_date": {
+          "name": "original_start_date",
+          "type": "date",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         },
-        "completed_at": {
-          "name": "completed_at",
-          "type": "timestamp",
+        "status": {
+          "name": "status",
+          "type": "user_challenge_status",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "in_progress": {
-          "name": "in_progress",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false,
-          "default": true
-        },
-        "user_answers": {
-          "name": "user_answers",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "all_correct_answers": {
-          "name": "all_correct_answers",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "time_spent_seconds": {
-          "name": "time_spent_seconds",
+        "knowledge_base_completed_count": {
+          "name": "knowledge_base_completed_count",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "attempt_count": {
-          "name": "attempt_count",
+        "habits_logged_count": {
+          "name": "habits_logged_count",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "default": 1
+          "notNull": true
+        },
+        "last_activity_date": {
+          "name": "last_activity_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
         }
       },
-      "indexes": {},
+      "indexes": {
+        "user_challenge_status_start_date_not_locked_inactive_index": {
+          "name": "user_challenge_status_start_date_not_locked_inactive_index",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "start_date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "where": "\"user_challenges\".\"status\" NOT IN ('locked', 'inactive')",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
-        "game_sessions_user_id_users_id_fk": {
-          "name": "game_sessions_user_id_users_id_fk",
-          "tableFrom": "game_sessions",
+        "user_challenges_user_id_users_id_fk": {
+          "name": "user_challenges_user_id_users_id_fk",
+          "tableFrom": "user_challenges",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"
@@ -160,8 +226,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.streak_histories": {
-      "name": "streak_histories",
+    "public.user_habit_logs": {
+      "name": "user_habit_logs",
       "schema": "",
       "columns": {
         "id": {
@@ -177,27 +243,21 @@
           "primaryKey": false,
           "notNull": true
         },
-        "streak_length": {
-          "name": "streak_length",
-          "type": "integer",
+        "user_challenge_id": {
+          "name": "user_challenge_id",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
-        "started_date": {
-          "name": "started_date",
+        "log_date": {
+          "name": "log_date",
           "type": "date",
           "primaryKey": false,
           "notNull": true
         },
-        "ended_date": {
-          "name": "ended_date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "streak_type": {
-          "name": "streak_type",
-          "type": "text",
+        "values": {
+          "name": "values",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
@@ -205,74 +265,20 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "streak_histories_user_id_users_id_fk": {
-          "name": "streak_histories_user_id_users_id_fk",
-          "tableFrom": "streak_histories",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.streak_logs": {
-      "name": "streak_logs",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
           "notNull": true
         },
-        "date_utc": {
-          "name": "date_utc",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "entries": {
-          "name": "entries",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "logged_at": {
-          "name": "logged_at",
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "streak_logs_user_id_users_id_fk": {
-          "name": "streak_logs_user_id_users_id_fk",
-          "tableFrom": "streak_logs",
+        "user_habit_logs_user_id_users_id_fk": {
+          "name": "user_habit_logs_user_id_users_id_fk",
+          "tableFrom": "user_habit_logs",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"
@@ -282,10 +288,32 @@
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
+        },
+        "user_habit_logs_user_challenge_id_user_challenges_id_fk": {
+          "name": "user_habit_logs_user_challenge_id_user_challenges_id_fk",
+          "tableFrom": "user_habit_logs",
+          "tableTo": "user_challenges",
+          "columnsFrom": [
+            "user_challenge_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "user_daily_log_unique": {
+          "name": "user_daily_log_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "user_challenge_id",
+            "log_date"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -298,20 +326,7 @@
           "name": "id",
           "type": "uuid",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
           "notNull": true
-        },
-        "latest_game_session": {
-          "name": "latest_game_session",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
         },
         "current_fitness_level": {
           "name": "current_fitness_level",
@@ -334,7 +349,7 @@
         },
         "last_activity_date": {
           "name": "last_activity_date",
-          "type": "date",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
@@ -342,43 +357,28 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "user_profiles_user_id_users_id_fk": {
-          "name": "user_profiles_user_id_users_id_fk",
+        "user_profiles_id_users_id_fk": {
+          "name": "user_profiles_id_users_id_fk",
           "tableFrom": "user_profiles",
           "tableTo": "users",
           "columnsFrom": [
-            "user_id"
+            "id"
           ],
           "columnsTo": [
             "id"
           ],
           "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "user_profiles_latest_game_session_game_sessions_id_fk": {
-          "name": "user_profiles_latest_game_session_game_sessions_id_fk",
-          "tableFrom": "user_profiles",
-          "tableTo": "game_sessions",
-          "columnsFrom": [
-            "latest_game_session"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
@@ -495,12 +495,15 @@
         "female"
       ]
     },
-    "public.question_type": {
-      "name": "question_type",
+    "public.user_challenge_status": {
+      "name": "user_challenge_status",
       "schema": "public",
       "values": [
-        "standalone",
-        "passage_based"
+        "not_started",
+        "active",
+        "completed",
+        "locked",
+        "inactive"
       ]
     }
   },
