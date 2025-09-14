@@ -3,8 +3,8 @@ export const ContentTypes = [
   'ContentCategory',
   'Question',
   'KnowledgeBase',
-  'StreakType',
-  'AvatarAsset',
+  //'StreakType',
+  //'AvatarAsset',
   'Challenge'
 ] as const;
 
@@ -18,8 +18,8 @@ export const CONTENT_DIRECTORIES = {
   ContentCategory: 'categories',
   Question: 'questions',
   KnowledgeBase: 'knowledge-base',
-  StreakType: 'streak-types',
-  AvatarAsset: 'avatar-assets',
+  //StreakType: 'streak-types',
+  //AvatarAsset: 'avatar-assets',
   Challenge: 'challenges',
 } as const satisfies Record<ContentType, string>;
 

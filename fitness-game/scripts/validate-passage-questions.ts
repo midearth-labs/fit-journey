@@ -13,6 +13,8 @@ interface ValidationResult {
     totalQuestions: number;
     passageBasedQuestions: number;
     knowledgeBasesChecked: number;
+    totalKnowledgeBases: number;
+    unvisitedKnowledgeBases: number;
     validGroups: number;
     invalidGroups: number;
     updatedQuestions: number;
@@ -52,6 +54,8 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
       totalQuestions: 0,
       passageBasedQuestions: 0,
       knowledgeBasesChecked: 0,
+      totalKnowledgeBases: 0,
+      unvisitedKnowledgeBases: 0,
       validGroups: 0,
       invalidGroups: 0,
       updatedQuestions: 0,
@@ -93,6 +97,9 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
       result.isValid = false;
     }
   }
+
+  // Track which knowledge bases still need to be visited (start with all, remove as we visit)
+  const knowledgeBasesToVisit = new Set<string>(knowledgeBaseMap.keys());
 
   // Process each question file
   for (const file of questionFiles) {
@@ -149,6 +156,9 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
           continue;
         }
 
+        // Remove this knowledge base from the "to visit" list
+        knowledgeBasesToVisit.delete(knowledgeBaseId);
+
         const groupValidation = validateQuestionGroup(group, knowledgeBase, file);
         
         if (groupValidation.isValid) {
@@ -189,6 +199,18 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
     }
   }
 
+  // Check for unvisited knowledge bases (any remaining in knowledgeBasesToVisit)
+  const unvisitedKnowledgeBases = Array.from(knowledgeBasesToVisit);
+  
+  // Update summary statistics
+  result.summary.totalKnowledgeBases = knowledgeBaseMap.size;
+  result.summary.unvisitedKnowledgeBases = unvisitedKnowledgeBases.length;
+  
+  if (unvisitedKnowledgeBases.length > 0) {
+    result.errors.push(`Found ${unvisitedKnowledgeBases.length} knowledge base(s) that are not referenced by any passage-based questions: ${unvisitedKnowledgeBases.join(', ')}`);
+    result.isValid = false;
+  }
+
   return result;
 }
 
@@ -202,6 +224,7 @@ function validateQuestionGroup(group: QuestionGroup, knowledgeBase: any, fileNam
 
   // Check if total questions is a multiple of 4
   if (questions.length % 4 !== 0) {
+    console.log(group)
     errors.push(`Knowledge base ${group.knowledgeBaseId} in ${fileName}: Total passage-based questions (${questions.length}) is not a multiple of 4`);
     isValid = false;
   }
@@ -268,11 +291,6 @@ function validateQuestionGroup(group: QuestionGroup, knowledgeBase: any, fileNam
       errors.push(`Knowledge base ${group.knowledgeBaseId} in ${fileName}: Questions reference passage_set_id ${passageSetId} which does not exist in the knowledge base`);
       isValid = false;
     }
-  }
-
-  // Add summary warning if everything is valid
-  if (isValid) {
-    warnings.push(`Knowledge base ${group.knowledgeBaseId} in ${fileName}: Valid with ${questions.length} passage-based questions across ${passages.length} passages`);
   }
 
   return { isValid, errors, warnings };
@@ -380,7 +398,9 @@ if (require.main === module) {
   console.log('📊 SUMMARY:');
   console.log(`Total questions processed: ${result.summary.totalQuestions}`);
   console.log(`Passage-based questions: ${result.summary.passageBasedQuestions}`);
+  console.log(`Total knowledge bases: ${result.summary.totalKnowledgeBases}`);
   console.log(`Knowledge bases checked: ${result.summary.knowledgeBasesChecked}`);
+  console.log(`Unvisited knowledge bases: ${result.summary.unvisitedKnowledgeBases}`);
   console.log(`Valid groups: ${result.summary.validGroups}`);
   console.log(`Invalid groups: ${result.summary.invalidGroups}`);
   

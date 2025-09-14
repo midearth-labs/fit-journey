@@ -137,12 +137,6 @@ export class ContentValidator {
 
     // Validate question count for each knowledge base
     for (const [knowledgeBaseId, knowledgeBase] of this.content.KnowledgeBase.map) {
-      // @TODO: This should be removed after all content is generated
-      if (!questionsByKnowledgeBase.has(knowledgeBaseId)) {
-        console.log(`Knowledge base ${knowledgeBaseId} has no questions yet`);
-        continue;
-      }
-
       const numPassages = knowledgeBase.passages.length;
       const expectedQuestions = 11 + (4 * numPassages);
       
@@ -335,42 +329,6 @@ export class ContentValidator {
       );
     }
   }
-  
-  /**
-   * Validate unlock conditions
-   */
-  private validateUnlockCondition(entityType: string, entityId: string, unlockCondition: any): void {
-    if (!unlockCondition.type) {
-      this.addError(entityType, entityId, 'unlock_condition.type', 'Unlock condition type is required');
-      return;
-    }
-
-    if (unlockCondition.value === undefined || unlockCondition.value === null) {
-      this.addError(entityType, entityId, 'unlock_condition.value', 'Unlock condition value is required');
-      return;
-    }
-
-    if (unlockCondition.value <= 0) {
-      this.addError(entityType, entityId, 'unlock_condition.value', 'Unlock condition value must be positive');
-    }
-
-    // Validate streak type reference if applicable
-    if (unlockCondition.type === 'streak' && unlockCondition.streak_type) {
-      const targetMap = this.content['StreakType'].map;
-      if (!targetMap || !targetMap.has(unlockCondition.streak_type)) {
-        this.addError(entityType, entityId, 'unlock_condition.streak_type', `References non-existent StreakType with ID: ${unlockCondition.streak_type}`);
-      }
-    }
-
-    // Validate content category reference if applicable
-    if (unlockCondition.content_category_id) {
-      const targetMap = this.content['ContentCategory'].map;
-      if (!targetMap || !targetMap.has(unlockCondition.content_category_id)) {
-        this.addError(entityType, entityId, 'unlock_condition.content_category_id', `References non-existent ContentCategory with ID: ${unlockCondition.content_category_id}`);
-      }
-    }
-  }
-
 
 
   /**
@@ -428,8 +386,8 @@ export class ContentValidator {
         ContentCategory: this.content.ContentCategory.map.size,
         Question: this.content.Question.map.size,
         KnowledgeBase: this.content.KnowledgeBase.map.size,
-        StreakType: this.content.StreakType.map.size,
-        AvatarAsset: this.content.AvatarAsset.map.size,
+        //StreakType: this.content.StreakType.map.size,
+        //AvatarAsset: this.content.AvatarAsset.map.size,
         Challenge: this.content.Challenge.map.size,
       }
     };

@@ -44,8 +44,8 @@ export class ContentLoader {
         ContentCategory: await this.loadContentType('ContentCategory'),
         Question: await this.loadContentType('Question'),
         KnowledgeBase: await this.loadContentType('KnowledgeBase'),
-        StreakType: await this.loadContentType('StreakType'),
-        AvatarAsset: await this.loadContentType('AvatarAsset'),
+        //StreakType: await this.loadContentType('StreakType'),
+        //AvatarAsset: await this.loadContentType('AvatarAsset'),
         Challenge: await this.loadContentType('Challenge'),
       }
     } catch (error) {
@@ -76,8 +76,8 @@ export class ContentLoader {
     }
     
     if (jsonFiles.length === 0) {
-      console.error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
-      // @TODO throw new Error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
+      // console.error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
+      throw new Error(`Content ${contentType}: No JSON files found in ${directoryPath}`);
     }
 
     const contentMap: Content[T]['map'] = new Map();

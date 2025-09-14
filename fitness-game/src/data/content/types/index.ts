@@ -22,8 +22,8 @@ export type Content = {
   ContentCategory: MapAndList<ContentCategory>;
   Question: MapAndList<Question>;
   KnowledgeBase: MapAndList<KnowledgeBase>;
-  StreakType: MapAndList<StreakType>;
-  AvatarAsset: MapAndList<AvatarAsset>;
+  //StreakType: MapAndList<StreakType>;
+  //AvatarAsset: MapAndList<AvatarAsset>;
   Challenge: MapAndList<Challenge>;
 };
 
@@ -32,8 +32,8 @@ export const ContentTypeToSchema = {
   ContentCategory: ContentCategorySchema,
   Question: QuestionSchema,
   KnowledgeBase: KnowledgeBaseSchema,
-  StreakType: StreakTypeSchema,
-  AvatarAsset: AvatarAssetSchema,
+  // StreakType: StreakTypeSchema,
+  // AvatarAsset: AvatarAssetSchema,
   Challenge: ChallengeSchema,
 } as const satisfies Record<keyof Content, z.ZodSchema<any>>;
 

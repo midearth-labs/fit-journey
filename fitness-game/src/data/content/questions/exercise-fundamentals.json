@@ -3073,11 +3073,35 @@
     "passage_set_id": "ea3975f1-2ca4-42cf-81b6-b2dc01a7ee42"
   },
   {
-    "id": "718d6094-f723-4914-bb58-93b03336caea",
+    "id": "11f6b9fa-267e-4fd1-bf0e-2642b40e74b6",
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z",
     "is_active": true,
     "sort_order": 19,
+    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "question_text": "What was the trainer's initial suggestion to replace Emma's barbell squats?",
+    "question_type": "passage_based",
+    "options": [
+      "Use lighter weights and do more repetitions",
+      "Try sit-to-stand movements from her dining chair",
+      "Switch to leg presses at the gym instead",
+      "Do wall squats to reduce the load"
+    ],
+    "correct_answer_index": 1,
+    "explanation": "The trainer suggested Emma try sit-to-stand movements from her dining chair, which maintained the same movement pattern as squats but eliminated the need for equipment and was easier on her knee.",
+    "hints": [
+      "Look at the trainer's first response to Emma's concern about barbell squats",
+      "Consider what modification kept the same movement pattern but required no equipment"
+    ],
+    "image_urls": [],
+    "passage_set_id": "ea3975f1-2ca4-42cf-81b6-b2dc01a7ee42"
+  },
+  {
+    "id": "718d6094-f723-4914-bb58-93b03336caea",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
     "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
     "question_text": "What was Taylor's initial concern about using exercise modifications for their arthritis?",
     "question_type": "passage_based",
@@ -3101,7 +3125,7 @@
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z",
     "is_active": true,
-    "sort_order": 20,
+    "sort_order": 21,
     "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
     "question_text": "How did Marcus, the physical therapist, reframe Taylor's perspective on modifications?",
     "question_type": "passage_based",
@@ -3125,7 +3149,7 @@
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z",
     "is_active": true,
-    "sort_order": 21,
+    "sort_order": 22,
     "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
     "question_text": "What was Taylor's immediate physical response to the resistance band modification?",
     "question_type": "passage_based",
@@ -3149,7 +3173,7 @@
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z",
     "is_active": true,
-    "sort_order": 22,
+    "sort_order": 23,
     "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
     "question_text": "Marcus's approach to Taylor's exercise plan emphasized:",
     "question_type": "passage_based",
@@ -3164,30 +3188,6 @@
     "hints": [
       "Consider Marcus's overall philosophy about working with limitations",
       "Think about how he balanced safety with effectiveness"
-    ],
-    "image_urls": [],
-    "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"
-  },
-  {
-    "id": "cb758e00-9bb1-4460-9829-433cd9897ef0",
-    "created_at": "2024-01-01T00:00:00Z",
-    "updated_at": "2024-01-01T00:00:00Z",
-    "is_active": true,
-    "sort_order": 23,
-    "knowledge_base_id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
-    "question_text": "The common theme across all three passage stories is that effective exercise modifications:",
-    "question_type": "passage_based",
-    "options": [
-      "Always require expensive equipment or professional supervision",
-      "Should only be temporary until you can do 'real' exercises",
-      "Provide appropriate challenge while maintaining safety and proper form",
-      "Are only necessary for people with medical conditions"
-    ],
-    "correct_answer_index": 2,
-    "explanation": "All three stories demonstrate that effective modifications provide an appropriate level of challenge while prioritizing safety and proper form, whether for beginners, parents, or those with medical limitations.",
-    "hints": [
-      "Look for the common outcomes across Jordan's, Emma's, and Taylor's experiences",
-      "Consider what made each modification successful"
     ],
     "image_urls": [],
     "passage_set_id": "4d3ebc48-5b5b-4d6f-935e-24ed505de3b9"

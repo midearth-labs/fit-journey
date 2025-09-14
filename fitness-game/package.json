@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "validate:content": "tsx scripts/validate-content.ts",
+    "validate:content": "tsx scripts/validate-content.ts && tsx scripts/validate-passage-questions.ts",
     "generate:images": "tsx scripts/gemini-image-generator.ts",
     "ensure:uuids": "tsx scripts/ensure-unique-uuids.ts $1",
     "validate:uuids": "tsx scripts/uuid-validator.ts",

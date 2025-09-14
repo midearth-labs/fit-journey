@@ -14,8 +14,8 @@ export type ContentDaos = {
   ContentCategory: ContentCategoryDAO;
   Question: QuestionDAO;
   KnowledgeBase: KnowledgeBaseDAO;
-  StreakType: StreakTypeDAO;
-  AvatarAsset: AvatarAssetDAO;
+  //StreakType: StreakTypeDAO;
+  //AvatarAsset: AvatarAssetDAO;
   Challenge: ChallengeDAO;
 };
 
@@ -34,8 +34,8 @@ export class ContentDAOFactory {
       ContentCategory: new ContentCategoryDAO(content.ContentCategory),
       Question: new QuestionDAO(content.Question),
       KnowledgeBase: new KnowledgeBaseDAO(content.KnowledgeBase),
-      StreakType: new StreakTypeDAO(content.StreakType),
-      AvatarAsset: new AvatarAssetDAO(content.AvatarAsset),
+      //StreakType: new StreakTypeDAO(content.StreakType),
+      //AvatarAsset: new AvatarAssetDAO(content.AvatarAsset),
       Challenge: new ChallengeDAO(content.Challenge),
     } satisfies Record<ContentType, any>;
   }
