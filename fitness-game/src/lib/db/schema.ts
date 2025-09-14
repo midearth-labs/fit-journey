@@ -182,51 +182,12 @@ export const userHabitLogs = pgTable('user_habit_logs', {
   ];
 });
 
-// StreakLog table
-export const streakLogs = pgTable('streak_logs', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  date_utc: date('date_utc').notNull(), // YYYY-MM-DD
-  entries: jsonb('entries').$type<{
-    workout_completed?: boolean;
-    ate_clean?: boolean;
-    slept_well?: boolean;
-    hydrated?: boolean;
-    quiz_completed?: boolean;
-    quiz_passed?: boolean;
-    all?: boolean;
-  }>().notNull(),
-  logged_at: timestamp('logged_at').defaultNow().notNull(),
-});
-
-// StreakHistory table
-export const streakHistories = pgTable('streak_histories', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  streak_length: integer('streak_length').notNull(),
-  started_date: date('started_date').notNull(),
-  ended_date: date('ended_date'), // null if current streak
-  streak_type: text('streak_type').notNull(), // FK to StreakType (stored as JSON file)
-  created_at: timestamp('created_at').defaultNow().notNull(),
-});
-
-// FitnessLevelHistory table
-export const fitnessLevelHistories = pgTable('fitness_level_histories', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  user_id: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  fitness_level: integer('fitness_level').notNull(), // -5 to +5 fitness level
-  calculated_at: timestamp('calculated_at').defaultNow().notNull(),
-});
-
 // Relations
 export const usersRelations = relations(users, ({ one, many }) => ({
   profile: one(userProfiles, {
     fields: [users.id],
     references: [userProfiles.id],
   }),
-  streakLogs: many(streakLogs),
-  streakHistories: many(streakHistories),
-  fitnessLevelHistories: many(fitnessLevelHistories),
 }));
 
 export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
@@ -236,38 +197,11 @@ export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
   }),
 }));
 
-export const streakLogsRelations = relations(streakLogs, ({ one }) => ({
-  user: one(users, {
-    fields: [streakLogs.user_id],
-    references: [users.id],
-  }),
-}));
-
-export const streakHistoriesRelations = relations(streakHistories, ({ one }) => ({
-  user: one(users, {
-    fields: [streakHistories.user_id],
-    references: [users.id],
-  }),
-}));
-
-export const fitnessLevelHistoriesRelations = relations(fitnessLevelHistories, ({ one }) => ({
-  user: one(users, {
-    fields: [fitnessLevelHistories.user_id],
-    references: [users.id],
-  }),
-}));
-
 // Export types
 export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
 export type UserProfile = InferSelectModel<typeof userProfiles>;
 export type NewUserProfile = InferInsertModel<typeof userProfiles>;
-export type StreakLog = InferSelectModel<typeof streakLogs>;
-export type NewStreakLog = InferInsertModel<typeof streakLogs>;
-export type StreakHistory = InferSelectModel<typeof streakHistories>;
-export type NewStreakHistory = InferInsertModel<typeof streakHistories>;
-export type FitnessLevelHistory = InferSelectModel<typeof fitnessLevelHistories>;
-export type NewFitnessLevelHistory = InferInsertModel<typeof fitnessLevelHistories>;
 export type UserChallenge = InferSelectModel<typeof userChallenges>;
 export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>;
 export type UserChallengeProgress = InferSelectModel<typeof userChallengeProgress>;

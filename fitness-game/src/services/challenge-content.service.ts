@@ -1,6 +1,15 @@
 import { ChallengeDAO } from '@/data/content/utils/daos/challenge';
-import { IChallengeContentService } from '@/shared/interfaces';
 import { Challenge } from '@/data/content/types/challenge';
+
+export type IChallengeContentService = {
+    getChallengeById(challengeId: string): Promise<Challenge>;
+    getAllChallenges(): Promise<Challenge[]>;
+    validateChallengeExists(challengeId: string): Promise<boolean>;
+    getChallengeDuration(challengeId: string): number | null;
+    getChallengeArticles(challengeId: string): Challenge['articles'] | null;
+    getChallengeHabits(challengeId: string): Challenge['habits'] | null;
+    isArticleInChallenge(challengeId: string, knowledgeBaseId: string): boolean;
+  };
 
 export class ChallengeContentService implements IChallengeContentService {
   constructor(private readonly challengeDAO: ChallengeDAO) {}

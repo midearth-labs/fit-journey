@@ -1,8 +1,14 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, sql } from 'drizzle-orm';
 import { userChallengeProgress, UserChallengeProgress, NewUserChallengeProgress } from '@/lib/db/schema';
-import { IUserChallengeProgressRepository } from '@/shared/interfaces';
 
+
+export type IUserChallengeProgressRepository = {
+    findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserChallengeProgress[]>;
+    findByUserChallengeAndArticle(userChallengeId: string, userId: string, knowledgeBaseId: string): Promise<UserChallengeProgress | null>;
+    upsert(progressData: NewUserChallengeProgress): Promise<UserChallengeProgress | null>;
+  };
+  
 export class UserChallengeProgressRepository implements IUserChallengeProgressRepository {
   constructor(private db: NodePgDatabase<Record<string, never>>) {}
 

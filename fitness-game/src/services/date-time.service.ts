@@ -1,6 +1,26 @@
 // src/services/date-time.service.ts
 
-import { IDateTimeService, Offsets } from '../shared/interfaces';
+import { DatesOnEarthAtInstant, Offsets } from '../shared/interfaces';
+
+export type IDateTimeService = {
+  getUtcNow(): Date; // Returns current UTC Date object
+  getUnixTimestamp(date: Date): number;
+  getUtcDateString(date?: Date): string; // Returns YYYY-MM-DD format
+  
+  // Challenge-specific date methods
+  getTodayUtcDateString(): string; // Returns today's date in YYYY-MM-DD format
+  getTwoWeeksFromTodayUtcDateString(): string; // Returns date 2 weeks from today
+  getOneMonthFromDateUtcDateString(fromDate: string): string; // Returns date 1 month from given date
+  getFortyEightHoursAgoUtcTimestamp(): Date; // Returns timestamp 48 hours ago
+  isDateInFuture(dateString: string): boolean; // Check if date is in the future
+  isDateBeforeStartDate(logDate: string, startDate: string): boolean; // Check if log date is before start date
+  getChallengeEndDateUtcDateString(startDate: string, durationDays: number): string; // Calculate challenge end date
+  isDateAfterChallengeEndDate(currentDate: string, endDate: string): boolean; // Check if current date is after challenge end
+  getMaxLoggingDateUtcDateString(startDate: string, durationDays: number): string; // Get max date user can log habits
+  isLogDateWithinChallengePeriod(logDate: string, startDate: string, durationDays: number): boolean; // Check if log date is within challenge period
+  getPossibleDatesOnEarthAtInstant(instant: Date): DatesOnEarthAtInstant; // Get all possible actual dates (YYYY-MM-DD) on earth at the time of the input date
+  getDatesFromInstantWithOffset(instant: Date, offsets: Offsets): DatesOnEarthAtInstant;
+};
 
 export class DateTimeService implements IDateTimeService {
   getUtcNow(): Date {

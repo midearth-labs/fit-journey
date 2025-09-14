@@ -1,9 +1,18 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, lte, lt, ne, gte, notInArray } from 'drizzle-orm';
 import { userChallenges, UserChallenge, NewUserChallenge, UpdateUserChallenge } from '@/lib/db/schema';
-import { IUserChallengeRepository, IDateTimeService } from '@/shared/interfaces';
 import { CHALLENGE_CONSTANTS } from '@/data/content/types/constants';
+import { type IDateTimeService } from '@/services/date-time.service';
 
+export type IUserChallengeRepository = {
+    create(challengeData: NewUserChallenge): Promise<UserChallenge>;
+    findById(id: string, userId: string): Promise<UserChallenge | null>;
+    findByUserId(userId: string): Promise<UserChallenge[]>;
+    findActiveByUserId(userId: string): Promise<UserChallenge | null>;
+    update(updates: UpdateUserChallenge): Promise<UserChallenge | null>;
+    delete(id: string, userId: string): Promise<boolean>;
+  };
+  
 export class UserChallengeRepository implements IUserChallengeRepository {
   constructor(private readonly db: NodePgDatabase<Record<string, never>>, 
     private readonly dateTimeService: IDateTimeService

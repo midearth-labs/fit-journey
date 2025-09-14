@@ -1,7 +1,15 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, gte, lte, sql } from 'drizzle-orm';
 import { userHabitLogs, UserHabitLog, NewUserHabitLog } from '@/lib/db/schema';
-import { IUserHabitLogsRepository } from '@/shared/interfaces';
+
+export type IUserHabitLogsRepository = {
+    upsert(logData: NewUserHabitLog): Promise<UserHabitLog | null>;
+    findByUserChallengeId(userChallengeId: string, userId: string): Promise<UserHabitLog[]>;
+    findByUserChallengeAndDateRange(userChallengeId: string, userId: string, fromDate?: string, toDate?: string): Promise<UserHabitLog[]>;
+    findByUserChallengeAndDate(userChallengeId: string, userId: string, logDate: string): Promise<UserHabitLog | null>;
+    delete(id: string, userId: string): Promise<boolean>;
+  };
+  
 
 export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   constructor(private db: NodePgDatabase<Record<string, never>>) {}

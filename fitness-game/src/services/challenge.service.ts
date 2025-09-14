@@ -1,10 +1,4 @@
-import { 
-  IUserChallengeRepository, 
-  IUserChallengeProgressRepository, 
-  IUserHabitLogsRepository,
-  IChallengeContentService,
-  IDateTimeService,
-  IChallengeService,
+import {
   CreateUserChallengeDto,
   UpdateUserChallengeScheduleDto,
   SubmitUserChallengeQuizDto,
@@ -17,8 +11,23 @@ import {
   ResourceNotFoundError,
   ValidationError
 } from '@/shared/errors';
-import { UserChallenge, NewUserChallenge, NewUserChallengeProgress, NewUserHabitLog, UserHabitLog } from '@/lib/db/schema';
+import { type IDateTimeService } from './date-time.service';
+// @TODO: break this relationship between the services and another service, it should be the repositories that have the relationships
+import { type IChallengeContentService } from './challenge-content.service';
+import { type IUserChallengeProgressRepository, type IUserChallengeRepository, type IUserHabitLogsRepository } from '@/repositories/';
+import { UserChallenge, UserHabitLog } from '@/lib/db/schema';
 
+
+export type IChallengeService = {
+    createUserChallenge(dto: CreateUserChallengeDto): Promise<UserChallengeResponse>;
+    getUserChallenge(userChallengeId: string, userId: string): Promise<UserChallengeResponse>;
+    updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<UserChallengeResponse>;
+    submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void>;
+    putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void>;
+    listUserChallengeLogs(dto: ListUserChallengeLogsDto): Promise<UserHabitLogResponse[]>;
+    updateChallengeStatuses(): Promise<void>;
+  };
+  
 export class ChallengeService implements IChallengeService {
   constructor(
     private readonly userChallengeRepository: IUserChallengeRepository,
