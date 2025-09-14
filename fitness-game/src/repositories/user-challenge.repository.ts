@@ -17,8 +17,8 @@ export type IUserChallengeRepository = {
   };
   
 export class UserChallengeRepository implements IUserChallengeRepository {
-  constructor(private readonly db: NodePgDatabase<Record<string, never>>, 
-    private readonly dateTimeService: IDateTimeHelper,
+  constructor(private readonly db: NodePgDatabase<any>, 
+    private readonly dateTimeHelper: IDateTimeHelper,
     private readonly challengeDAO: IChallengeDAO,
   ) {}
 
@@ -225,11 +225,11 @@ export class UserChallengeRepository implements IUserChallengeRepository {
         challengeDays: number,
         requestDate: Date,
     ) {
-        const { earliest: earliestAllowedStartDate } = this.dateTimeService.getDatesFromInstantWithOffset(
+        const { earliest: earliestAllowedStartDate } = this.dateTimeHelper.getDatesFromInstantWithOffset(
             requestDate,
             { days: -challengeDays, hours: -CHALLENGE_CONSTANTS.DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS }
         );
-        const { latest: latestDateOnEarth } = this.dateTimeService.getPossibleDatesOnEarthAtInstant(requestDate);
+        const { latest: latestDateOnEarth } = this.dateTimeHelper.getPossibleDatesOnEarthAtInstant(requestDate);
         return { earliestAllowedStartDate, latestDateOnEarth };
     }
     

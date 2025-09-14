@@ -22,28 +22,28 @@ export type ContentDaos = {
 export class ContentDAOFactory {
   private readonly daos: Readonly<ContentDaos>;
 
-  constructor(daos: ContentDaos) {
+  private constructor(daos: ContentDaos) {
     this.daos = daos;
   }
 
   /**
    * Initialize all DAOs
    */
-  private static initializeDAOs(content: Content): ContentDaos {
-    return {
+  public static initializeDAOs(content: Content): ContentDAOFactory  {
+    return new ContentDAOFactory({
       ContentCategory: new ContentCategoryDAO(content.ContentCategory),
       Question: new QuestionDAO(content.Question),
       KnowledgeBase: new KnowledgeBaseDAO(content.KnowledgeBase),
       //StreakType: new StreakTypeDAO(content.StreakType),
       //AvatarAsset: new AvatarAssetDAO(content.AvatarAsset),
       Challenge: new ChallengeDAO(content.Challenge),
-    } satisfies Record<ContentType, any>;
+    });
   }
 
   /**
    * Get DAO for specific content type
    */
-  getDAO(contentType: ContentType) {
+  getDAO<T extends keyof ContentDaos>(contentType: T): ContentDaos[T] {
     return this.daos[contentType];
   }
 

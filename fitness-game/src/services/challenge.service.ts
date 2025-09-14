@@ -26,8 +26,8 @@ import { IChallengeDAO } from '@/data/content/utils/daos/';
 
 export type IChallengeService = {
     createUserChallenge(dto: CreateUserChallengeDto, requestContext: AuthRequestContext): Promise<NewUserChallengeResponse>;
-    getUserChallenge(userChallengeId: string, requestContext: AuthRequestContext): Promise<UserChallengeDetailResponse>;
-    listUserChallenges(requestContext: AuthRequestContext): Promise<UserChallengeSummaryResponse[]>;
+    getUserChallenge(dto: {userChallengeId: string}, requestContext: AuthRequestContext): Promise<UserChallengeDetailResponse>;
+    listUserChallenges(dto: {}, requestContext: AuthRequestContext): Promise<UserChallengeSummaryResponse[]>;
     updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto, requestContext: AuthRequestContext): Promise<void>;
     submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto, requestContext: AuthRequestContext): Promise<void>;
     putUserChallengeLog(dto: PutUserChallengeLogDto, requestContext: AuthRequestContext): Promise<void>;
@@ -87,10 +87,10 @@ export class ChallengeService implements IChallengeService {
    * Get a user challenge by ID
    * GET /user-challenges/:userChallengeId
    */
-  async getUserChallenge(userChallengeId: string, requestContext: AuthRequestContext): Promise<UserChallengeDetailResponse> {
+  async getUserChallenge(dto: {userChallengeId: string}, requestContext: AuthRequestContext): Promise<UserChallengeDetailResponse> {
     const requestDate = requestContext.requestDate;
     const userChallenge = notFoundCheck(
-        await this.userChallengeRepository.findById(userChallengeId, requestContext.userId),
+        await this.userChallengeRepository.findById(dto.userChallengeId, requestContext.userId),
         'Challenge'
     );
     
@@ -100,7 +100,7 @@ export class ChallengeService implements IChallengeService {
     return this.mapToUserChallengeResponse(userChallenge, implicitStatus);
   }
 
-  async listUserChallenges(requestContext: AuthRequestContext): Promise<UserChallengeSummaryResponse[]> {
+  async listUserChallenges(_: {}, requestContext: AuthRequestContext): Promise<UserChallengeSummaryResponse[]> {
     const requestDate = requestContext.requestDate;
 
     const userChallenges = await this.userChallengeRepository.findByUserId(requestContext.userId);

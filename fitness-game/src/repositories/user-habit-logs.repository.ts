@@ -12,7 +12,7 @@ export type IUserHabitLogsRepository = {
   
 
 export class UserHabitLogsRepository implements IUserHabitLogsRepository {
-  constructor(private db: NodePgDatabase<Record<string, never>>) {}
+  constructor(private db: NodePgDatabase<any>) {}
 
   /**
    * Upsert a user habit log record

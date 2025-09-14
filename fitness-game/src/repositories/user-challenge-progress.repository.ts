@@ -10,7 +10,7 @@ export type IUserChallengeProgressRepository = {
   };
   
 export class UserChallengeProgressRepository implements IUserChallengeProgressRepository {
-  constructor(private db: NodePgDatabase<Record<string, never>>) {}
+  constructor(private db: NodePgDatabase<any>) {}
 
   /**
    * Find all progress records for a user challenge

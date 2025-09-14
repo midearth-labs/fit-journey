@@ -3,8 +3,8 @@ import { Challenge } from '@/data/content/types/challenge';
 import { AuthRequestContext } from '@/shared/interfaces';
 
 export type IChallengeContentService = {
-    getChallengeById(challengeId: string, requestContext: AuthRequestContext): Challenge;
-    getAllChallenges(requestContext: AuthRequestContext): Challenge[];
+    getChallengeById(dto: {challengeId: string}, requestContext: AuthRequestContext): Challenge;
+    getAllChallenges(dto: {}, requestContext: AuthRequestContext): Challenge[];
   };
 
 export class ChallengeContentService implements IChallengeContentService {
@@ -13,10 +13,10 @@ export class ChallengeContentService implements IChallengeContentService {
   /**
    * Get a challenge by its ID
    */
-  getChallengeById(challengeId: string, _: AuthRequestContext): Challenge {
-    const challenge = this.challengeDAO.getById(challengeId);
+  getChallengeById(dto: {challengeId: string}, _: AuthRequestContext): Challenge {
+    const challenge = this.challengeDAO.getById(dto.challengeId);
     if (!challenge) {
-      throw new Error(`Challenge with ID ${challengeId} not found`);
+      throw new Error(`Challenge with ID ${dto.challengeId} not found`);
     }
     return challenge;
   }
@@ -24,7 +24,7 @@ export class ChallengeContentService implements IChallengeContentService {
   /**
    * Get all available challenges
    */
-  getAllChallenges(_: AuthRequestContext): Challenge[] {
+  getAllChallenges(_: {}, __: AuthRequestContext): Challenge[] {
     return this.challengeDAO.getOrdered();
   }
 
