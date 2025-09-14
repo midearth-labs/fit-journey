@@ -1,8 +1,8 @@
 // src/services/date-time.service.ts
 
-import { DatesOnEarthAtInstant, Offsets } from '../shared/interfaces';
+import { DatesOnEarthAtInstant, Offsets } from '@/shared/interfaces';
 
-export type IDateTimeService = {
+export type IDateTimeHelper = {
   getUtcNow(): Date; // Returns current UTC Date object
   getUnixTimestamp(date: Date): number;
   getUtcDateString(date: Date): string; // Returns YYYY-MM-DD format
@@ -22,7 +22,7 @@ export type IDateTimeService = {
   getDatesFromInstantWithOffset(instant: Date, offsets: Offsets): DatesOnEarthAtInstant;
 };
 
-export class DateTimeService implements IDateTimeService {
+export class DateTimeHelper implements IDateTimeHelper {
   getUtcNow(): Date {
     return new Date(); // Returns current date/time in UTC
   }

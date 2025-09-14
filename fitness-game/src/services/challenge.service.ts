@@ -17,7 +17,7 @@ import {
   InternalServerError,
   notFoundCheck
 } from '@/shared/errors';
-import { type IDateTimeService } from './date-time.service';
+import { type IDateTimeHelper } from '../helpers/date-time.helper';
 import { type IUserChallengeProgressRepository, type IUserChallengeRepository, type IUserHabitLogsRepository } from '@/repositories/';
 import { UserChallenge, UserChallengeProgress, UserHabitLog } from '@/lib/db/schema';
 import { IChallengeDAO } from '@/data/content/utils/daos/';
@@ -41,7 +41,7 @@ export class ChallengeService implements IChallengeService {
     private readonly userChallengeProgressRepository: IUserChallengeProgressRepository,
     private readonly userHabitLogsRepository: IUserHabitLogsRepository,
     private readonly challengeDAO: IChallengeDAO,
-    private readonly dateTimeService: IDateTimeService
+    private readonly dateTimeHelper: IDateTimeHelper
   ) {}
 
   /**
@@ -50,13 +50,13 @@ export class ChallengeService implements IChallengeService {
    */
 
   async createUserChallenge(dto: CreateUserChallengeDto): Promise<NewUserChallengeResponse> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
     const challenge = notFoundCheck(this.challengeDAO.getById(dto.challengeId), 'Challenge');
 
     // Validate start date is within 2 weeks
     // @TODO: Convert the input Dtos to Zod schemas and validate them using Zod not here but from the API entry point.
-    const today = this.dateTimeService.getUtcDateString(requestDate);
-    const twoWeeksFromToday = this.dateTimeService.getTwoWeeksFromTodayUtcDateString();
+    const today = this.dateTimeHelper.getUtcDateString(requestDate);
+    const twoWeeksFromToday = this.dateTimeHelper.getTwoWeeksFromTodayUtcDateString();
 
     if (dto.startDate < today || dto.startDate > twoWeeksFromToday) {
       throw new ValidationError('Start date must be between today and 2 weeks from now');
@@ -87,7 +87,7 @@ export class ChallengeService implements IChallengeService {
    * GET /user-challenges/:userChallengeId
    */
   async getUserChallenge(userChallengeId: string, userId: string): Promise<UserChallengeDetailResponse> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
     const userChallenge = notFoundCheck(
         await this.userChallengeRepository.findById(userChallengeId, userId),
         'Challenge'
@@ -100,7 +100,7 @@ export class ChallengeService implements IChallengeService {
   }
 
   async listUserChallenges(userId: string): Promise<UserChallengeSummaryResponse[]> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
 
     const userChallenges = await this.userChallengeRepository.findByUserId(userId);
     return userChallenges.map(userChallenge => {
@@ -115,7 +115,7 @@ export class ChallengeService implements IChallengeService {
    * PATCH /user-challenges/:userChallengeId/schedule
    */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
     const userChallenge = notFoundCheck(
         await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
         'Challenge'
@@ -129,7 +129,7 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Validate new start date is within one month of original start date
-    const oneMonthFromOriginal = this.dateTimeService.getOneMonthFromDateUtcDateString(userChallenge.originalStartDate);
+    const oneMonthFromOriginal = this.dateTimeHelper.getOneMonthFromDateUtcDateString(userChallenge.originalStartDate);
 
     if (dto.newStartDate < userChallenge.originalStartDate || dto.newStartDate > oneMonthFromOriginal) {
       throw new ValidationError('New start date must be within one month of the originally chosen date');
@@ -153,7 +153,7 @@ export class ChallengeService implements IChallengeService {
    * POST /user-challenges/:userChallengeId/progress/:knowledgeBaseId/quiz
    */
   async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
     const userChallenge = notFoundCheck(
         await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
         'Challenge'
@@ -199,7 +199,7 @@ export class ChallengeService implements IChallengeService {
         knowledgeBaseId: dto.knowledgeBaseId,
         allCorrectAnswers: allCorrect,
         quizAnswers: dto.quizAnswers,
-        firstAttemptedAt: this.dateTimeService.getUtcNow(),
+        firstAttemptedAt: this.dateTimeHelper.getUtcNow(),
       });
   }
   
@@ -217,7 +217,7 @@ export class ChallengeService implements IChallengeService {
    * PUT /user-challenges/:userChallengeId/logs/:logDate
    */
   async putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
     const userChallenge = notFoundCheck(
         await this.userChallengeRepository.findById(dto.userChallengeId, dto.userId),
         'Challenge'
@@ -233,17 +233,17 @@ export class ChallengeService implements IChallengeService {
     // Validate log date is not in the future and not before start date
     // @TODO double check this logic, and also that you cant log for a date outside the challenge period range
     // Implement an isWithinRange method somewhere (maybe in the date-time service)
-    if (this.dateTimeService.isDateInFuture(dto.logDate)) {
+    if (this.dateTimeHelper.isDateInFuture(dto.logDate)) {
       throw new ValidationError('Cannot log habits for future dates');
     }
 
-    if (this.dateTimeService.isDateBeforeStartDate(dto.logDate, userChallenge.startDate)) {
+    if (this.dateTimeHelper.isDateBeforeStartDate(dto.logDate, userChallenge.startDate)) {
       throw new ValidationError('Cannot log habits for dates before challenge start date');
     }
 
     // Validate log date is within challenge period
     const challengeDuration = challenge.durationDays;
-    if (challengeDuration && !this.dateTimeService.isLogDateWithinChallengePeriod(dto.logDate, userChallenge.startDate, challengeDuration)) {
+    if (challengeDuration && !this.dateTimeHelper.isLogDateWithinChallengePeriod(dto.logDate, userChallenge.startDate, challengeDuration)) {
       throw new ValidationError('Cannot log habits for dates outside the challenge period');
     }
 
@@ -301,7 +301,7 @@ export class ChallengeService implements IChallengeService {
    * This method implements the challenge status update algorithm
    */
   async updateChallengeStatuses(): Promise<void> {
-    const requestDate = this.dateTimeService.getUtcNow();
+    const requestDate = this.dateTimeHelper.getUtcNow();
 
     // call SQL methods off the Repo
   }

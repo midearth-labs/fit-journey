@@ -2,7 +2,7 @@ import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, lte, lt, gte, notInArray, Query } from 'drizzle-orm';
 import { userChallenges, UserChallenge, NewUserChallenge, UpdateUserChallenge } from '@/lib/db/schema';
 import { CHALLENGE_CONSTANTS } from '@/data/content/types/constants';
-import { type IDateTimeService } from '@/services/date-time.service';
+import { type IDateTimeHelper } from '@/helpers/date-time.helper';
 import { type IChallengeDAO } from '@/data/content/utils/daos/challenge';
 import { ImplicitStatusCheckPayload, UserChallengeWithImplicitStatus } from '@/shared/interfaces';
 
@@ -18,7 +18,7 @@ export type IUserChallengeRepository = {
   
 export class UserChallengeRepository implements IUserChallengeRepository {
   constructor(private readonly db: NodePgDatabase<Record<string, never>>, 
-    private readonly dateTimeService: IDateTimeService,
+    private readonly dateTimeService: IDateTimeHelper,
     private readonly challengeDAO: IChallengeDAO,
   ) {}
 
