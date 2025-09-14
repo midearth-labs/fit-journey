@@ -3403,7 +3403,7 @@
     "sort_order": 12,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "In Emma's time management story, what was her initial objection to meal prep?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "She didn't like cooking",
       "She was too busy with kids and work",
@@ -3427,7 +3427,7 @@
     "sort_order": 13,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What was Emma's screen time according to her phone report?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Two hours and fifteen minutes",
       "Three hours and forty-seven minutes",
@@ -3451,7 +3451,7 @@
     "sort_order": 14,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What insight did Marcus provide about scrolling versus walking?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Both activities burn the same calories",
       "Scrolling is more mentally stimulating",
@@ -3475,7 +3475,7 @@
     "sort_order": 15,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "How many hours per week did Emma potentially find for fitness without adding time to her day?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "3 hours",
       "5 hours",
@@ -3499,7 +3499,7 @@
     "sort_order": 16,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What was concerning about Taylor's cortisol levels according to Dr. Chen?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "They were too low and causing fatigue",
       "They were normal and healthy",
@@ -3523,7 +3523,7 @@
     "sort_order": 17,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What analogy did Dr. Chen use to explain Taylor's situation?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Like running a marathon with ankle weights",
       "Like driving a car with the parking brake on",
@@ -3547,7 +3547,7 @@
     "sort_order": 18,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What modifications did Dr. Chen recommend for Taylor's exercise routine?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Increase intensity and frequency",
       "Replace two intense sessions with yoga or walking and add meditation",
@@ -3564,28 +3564,28 @@
     "passage_set_id": "9425fdff-2248-4ff2-955b-4407b0c25ae4"
   },
   {
-    "id": "cf78f8cb-76c5-4220-9c6f-48f28efba316",
+    "id": "7f8e9a2b-4c5d-6e7f-8901-234567890abc",
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z",
     "is_active": true,
     "sort_order": 19,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
-    "question_text": "What was Jordan's strategy for dealing with unsupportive roommates and coworkers?",
-    "question_type": "standalone",
+    "question_text": "What was Taylor's average sleep duration according to Dr. Chen's review?",
+    "question_type": "passage_based",
     "options": [
-      "Avoided them completely",
-      "Made it collaborative by involving them as taste testers and starting workplace challenges",
-      "Criticized their unhealthy choices",
-      "Found new roommates and changed jobs"
+      "Six to seven hours per night",
+      "Four to five hours average",
+      "Three to four hours on weekdays",
+      "Seven to eight hours but poor quality"
     ],
     "correct_answer_index": 1,
-    "explanation": "Jordan explained they made it collaborative: 'Told my roommate I was learning to cook and asked if they wanted to be taste testers. Started a steps challenge at work. Made it about 'us' instead of 'me'.'",
+    "explanation": "Dr. Chen looked at the sleep data and noted 'Four to five hours average?' which was clearly insufficient for Taylor's recovery needs, leading to the doctor's recommendation for 'seven hours of sleep minimum. Non-negotiable.'",
     "hints": [
-      "Think about how Jordan shifted from fighting against others to including them",
-      "Consider the 'us' versus 'me' approach mentioned"
+      "Look at what Dr. Chen observed when reviewing Taylor's sleep data",
+      "Consider why Dr. Chen was concerned about this specific aspect"
     ],
     "image_urls": [],
-    "passage_set_id": "d93b9ccc-92aa-42ba-84ed-03731fe6359e"
+    "passage_set_id": "9425fdff-2248-4ff2-955b-4407b0c25ae4"
   },
   {
     "id": "66611c26-97b1-4f6e-b5d9-bf3f8f98bf66",
@@ -3595,7 +3595,7 @@
     "sort_order": 20,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What metaphor did Jordan use to describe building social support?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Swimming upstream alone versus building a boat with others",
       "Climbing a mountain solo versus with a team",
@@ -3619,7 +3619,7 @@
     "sort_order": 21,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "According to Jordan's experience, what's the best way to find support for fitness goals?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Wait for others to invite you to join their programs",
       "Offer support first to find others who want to be healthier",
@@ -3643,7 +3643,7 @@
     "sort_order": 22,
     "knowledge_base_id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
     "question_text": "What final action was Casey considering by the end of the conversation?",
-    "question_type": "standalone",
+    "question_type": "passage_based",
     "options": [
       "Quitting the gym permanently",
       "Starting a beginners' workout group",
