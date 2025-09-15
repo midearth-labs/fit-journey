@@ -4,7 +4,7 @@
 
 FitJourney is a gamified fitness knowledge platform that combines daily quiz challenges, habit tracking, and avatar progression to motivate users to learn about fitness while building healthy habits. The system uses pre-generated AI content to minimize runtime costs while providing engaging, personalized experiences through streak tracking and social sharing.
 
-The architecture follows a modern web application pattern with Next.js frontend, Supabase backend, and enhanced offline capabilities through PWA features. Content is generated offline using AI tools and stored as static JSON files, ensuring fast performance and low operational costs. Users primarily interact online with offline fallback for content viewing.
+The architecture follows a modern web application pattern with SvelteKit frontend, Supabase backend, and enhanced offline capabilities through PWA features. Content is generated offline using AI tools and stored as static JSON files, ensuring fast performance and low operational costs. Users primarily interact online with offline fallback for content viewing.
 
 ## System Context
 
@@ -152,13 +152,13 @@ graph TB
     end
     
     subgraph "Frontend Layer"
-        NextJS[Next.js 14 App]
+        SvelteKit[SvelteKit App]
         PWAFeatures[PWA Features]
         OfflineCache[Offline Cache]
     end
     
     subgraph "Backend Layer"
-        APIRoutes[Next.js API Routes]
+        APIRoutes[SvelteKit API Routes]
         AuthMiddleware[Auth Middleware]
         GameLogic[Game Logic Engine]
         StreakEngine[Streak Management]
@@ -183,14 +183,14 @@ graph TB
         SocialShare[Social Platforms]
     end
     
-    Web --> NextJS
-    Mobile --> NextJS
-    PWA --> NextJS
+    Web --> SvelteKit
+    Mobile --> SvelteKit
+    PWA --> SvelteKit
     
-    NextJS --> PWAFeatures
+    SvelteKit --> PWAFeatures
     PWAFeatures --> OfflineCache
     
-    NextJS --> APIRoutes
+    SvelteKit --> APIRoutes
     APIRoutes --> AuthMiddleware
     APIRoutes --> GameLogic
     APIRoutes --> StreakEngine
@@ -206,12 +206,12 @@ graph TB
     
     ContentGen --> StaticContent
     HumanReview --> StaticContent
-    StaticContent --> NextJS
+    StaticContent --> SvelteKit
     
-    NextJS --> PushAPI
-    NextJS --> SocialShare
+    SvelteKit --> PushAPI
+    SvelteKit --> SocialShare
     
-    NextJS --> OfflineCache
+    SvelteKit --> OfflineCache
     OfflineCache --> StaticContent
 ```
 
@@ -223,12 +223,12 @@ graph TB
 
 ### Technology Stack
 #### **Frontend/Presentation Tier**
-- **Next.js 14**: Server-side rendering, PWA support, and API routes
+- **SvelteKit**: Server-side rendering, PWA support, and API routes
 - **Tailwind CSS**: Rapid UI development with consistent design system
 - **Framer Motion**: Smooth animations for avatar progression and transitions
 
 #### **Application Tier**
-- **Next.js API Routes**: Backend logic and game mechanics
+- **SvelteKit API Routes**: Backend logic and game mechanics
 - **Zustand**: Lightweight state management for client-side state
 - **React Query**: Server state management and caching
 
@@ -237,7 +237,7 @@ graph TB
 - **Drizzle ORM**: Type-safe database operations and migrations
 
 #### **Infrastructure & Platform**
-- **Vercel**: Next.js optimized hosting with edge functions
+- **Vercel**: SvelteKit optimized hosting with edge functions
 - **Supabase**: Managed database and authentication platform
 
 ## Core Components
@@ -305,7 +305,7 @@ flowchart TD
     end
     
     subgraph "Data Storage"
-        StaticJSON --> NextJS[Next.js App]
+        StaticJSON --> SvelteKit[SvelteKit App]
         GameSession --> PostgreSQL[(PostgreSQL)]
         QuestionAttempt --> PostgreSQL
         StreakCalc --> PostgreSQL
@@ -436,11 +436,11 @@ flowchart TD
 
 ### References
 - Supabase Documentation: https://supabase.com/docs
-- Next.js PWA Documentation: https://nextjs.org/docs
+- SvelteKit PWA Documentation: https://nextjs.org/docs
 - Drizzle ORM Documentation: https://orm.drizzle.team
 
 ### Decision Log
-- **Next.js 14**: Chosen for built-in PWA support and server-side rendering capabilities
+- **SvelteKit**: Chosen for built-in PWA support and server-side rendering capabilities
 - **Supabase**: Selected for managed PostgreSQL, authentication, and file storage in single platform
 - **Static Content Strategy**: Pre-generated content approach to minimize runtime costs and ensure quality
 - **Timezone Locking**: Session-based timezone storage to prevent manipulation and ensure fair play

@@ -23,7 +23,7 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 **Requirements**: R1.1 (Database Structure)
 **Dependencies**: None
 
-- [X] **1.1.1** Initialize Next.js 14 project with TypeScript and Tailwind CSS
+- [X] **1.1.1** Initialize SvelteKit project with TypeScript and Tailwind CSS
 - [X] **1.1.2** Install and configure Drizzle ORM with PostgreSQL
 - [X] **1.1.3** Set up Supabase project and configure environment variables
 - [X] **1.1.4** Create database connection and basic configuration

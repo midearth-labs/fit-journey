@@ -3,11 +3,11 @@
 ## Phase 1: Core Foundation (Weeks 1-2)
 
 ### 🏗️ Project Setup & Infrastructure
-- [X] **project-setup** - Set up Next.js 14 project with TypeScript, Tailwind CSS, and essential dependencies
+- [X] **project-setup** - Set up SvelteKit project with TypeScript, Tailwind CSS, and essential dependencies
   - Dependencies: None
   - Estimated Time: 2-3 hours
   - Tasks:
-    - Initialize Next.js project with App Router
+    - Initialize SvelteKit project with App Router
     - Install core dependencies (Tailwind, TypeScript, Zustand, React Query, Framer Motion)
     - Configure development environment and scripts
 

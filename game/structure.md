@@ -7,8 +7,8 @@
 ## Frontend Stack
 
 ### Core Framework
-- **Next.js 14** with App Router
-  - Built-in PWA support via `next-pwa`
+- **SvelteKit** with App Router
+  - Built-in PWA support
   - Server-side rendering for SEO (each quiz as discoverable page)
   - Image optimization for avatar assets
   - Built-in API routes for backend logic
@@ -50,7 +50,7 @@
 ## Deployment & Infrastructure
 
 ### Hosting
-- **Vercel** (Next.js optimized, generous free tier)
+- **Vercel** (SvelteKit optimized, generous free tier)
   - Automatic deployments from Git
   - Built-in analytics
   - Edge functions for global performance
@@ -84,7 +84,7 @@
 ### Social Sharing
 - **next-share** for social platform integrations
 - **html2canvas** for screenshot generation of results
-- **Open Graph meta tags** via Next.js built-in support
+- **Open Graph meta tags** via SvelteKit built-in support
 
 ### Form Handling
 - **React Hook Form** with **Zod** validation
@@ -102,7 +102,7 @@
 
 ### Initial Setup Commands
 ```bash
-# Create Next.js project with TypeScript
+# Create SvelteKit project with TypeScript
 npx create-next-app@latest fitness-game --typescript --tailwind --app
 
 # Add essential dependencies
@@ -144,7 +144,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3090
 ## Performance Optimizations
 
 ### Image Handling
-- **Next.js Image component** for automatic optimization
+- **SvelteKit Image component** for automatic optimization
 - **WebP format** with JPEG fallbacks
 - **Responsive images** for different screen sizes
 - **Lazy loading** for avatar assets
@@ -169,7 +169,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3090
 
 ### API Rate Limiting
 - **Upstash Redis** for rate limiting (free tier available)
-- **Next.js middleware** for request throttling
+- **SvelteKit middleware** for request throttling
 
 ### Global Performance
 - **Vercel Edge Functions** for global API responses
@@ -193,7 +193,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3090
 ### Data Protection
 - **Row Level Security** in Supabase for user data isolation
 - **Input validation** with Zod schemas
-- **CSRF protection** via Next.js built-in features
+- **CSRF protection** via SvelteKit built-in features
 - **Rate limiting** on quiz attempts and sharing
 
 ### Content Security
