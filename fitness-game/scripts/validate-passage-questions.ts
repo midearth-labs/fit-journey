@@ -63,8 +63,8 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
     }
   };
 
-  const questionsDir = path.join(__dirname, '../src/data/content/questions');
-  const knowledgeBaseDir = path.join(__dirname, '../src/data/content/knowledge-base');
+  const questionsDir = path.join(__dirname, '..', '..', 'static', 'content', 'questions');
+  const knowledgeBaseDir = path.join(__dirname, '..', '..', 'static', 'content', 'knowledge-base');
 
   // Load all question files
   const questionFiles = fs.readdirSync(questionsDir).filter(file => file.endsWith('.json'));

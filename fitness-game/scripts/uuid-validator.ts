@@ -103,7 +103,7 @@ export function validateAllUUIDsUnique(filePath: string): boolean {
 
 // Example usage
 if (require.main === module) {
-  const questionsDir = path.join(__dirname, '../src/data/content/questions');
+  const questionsDir = path.join(__dirname, '..', '..', 'static', 'content', 'questions');
 
   try {
     // Get all JSON files in the questions directory

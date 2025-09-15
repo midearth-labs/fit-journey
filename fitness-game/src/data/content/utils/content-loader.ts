@@ -15,7 +15,7 @@ import z from 'zod';
 
 export class ContentLoader {
   private content: Content;
-  private static contentBasePath: string = path.join(process.cwd(), 'src', 'data', 'content');
+  private static contentBasePath: string = path.join(process.cwd(), '..', 'static', 'content');
 
   constructor(content: Content) {
     this.content = content;

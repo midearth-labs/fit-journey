@@ -86,7 +86,7 @@ function fixSortOrders(filePath: string): void {
 }
 
 function main(): void {
-  const questionsDir = path.join(__dirname, '..', 'src', 'data', 'content', 'questions');
+  const questionsDir = path.join(__dirname, '..', '..', 'static', 'content', 'questions');
   
   if (!fs.existsSync(questionsDir)) {
     console.error(`Directory not found: ${questionsDir}`);
