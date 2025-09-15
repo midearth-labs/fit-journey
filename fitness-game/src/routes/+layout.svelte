@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { invalidate } from '$app/navigation';
 	import { progressStore } from '$lib/stores/progress';
 	import '../app.css';
 
-	let { children } = $props();
+	let { data, children } = $props();
+	let { session, supabase } = $derived(data);
 	let theme = $state('light');
 
 	onMount(() => {
@@ -15,6 +17,15 @@
 		
 		// Load progress
 		progressStore.load();
+		
+		// Listen to auth state changes
+		const { data: authData } = supabase.auth.onAuthStateChange((_, newSession) => {
+			if (newSession?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth')
+			}
+		})
+		
+		return () => authData.subscription.unsubscribe()
 	});
 
 	function toggleTheme() {
@@ -73,6 +84,23 @@
 				</a>
 			</nav>
 			<div class="nav-actions">
+				{#if session?.user}
+					<div class="user-menu">
+						<div class="user-avatar">
+							<i class="fas fa-user"></i>
+						</div>
+						<span class="user-name">{session.user.email}</span>
+						<button class="btn btn-ghost btn-sm" onclick={() => supabase.auth.signOut()}>
+							Sign Out
+						</button>
+					</div>
+				{:else}
+					<div class="auth-actions">
+						<a href="/auth/signin" class="btn btn-ghost btn-sm">Sign In</a>
+						<a href="/auth/signup" class="btn btn-primary btn-sm">Sign Up</a>
+					</div>
+				{/if}
+				
 				<div class="streak-indicator">
 					<i class="fas fa-fire"></i>
 					<span>0</span>
@@ -99,3 +127,40 @@
 		</div>
 	</footer>
 </div>
+
+<style>
+	.user-menu {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-right: 1rem;
+	}
+	
+	.user-avatar {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background: var(--primary-color);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-size: 0.875rem;
+	}
+	
+	.user-name {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		max-width: 150px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	
+	.auth-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-right: 1rem;
+	}
+</style>

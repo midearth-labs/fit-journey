@@ -50,8 +50,8 @@ This roadmap outlines the step-by-step implementation tasks for the Content Mana
 **Dependencies**: 1.2.1-1.2.10 ✅
 **Note**: This is a dependency interface contract for components outside our scope
 
-- [ ] **1.3.1** Update authentication middleware to expose currently logged-in user
-- [ ] **1.3.2** Add protected API routes prefix to middleware i.e. `/user/`
+- [X] **1.3.1** Create/Update authentication middleware to expose currently logged-in user
+- [X] **1.3.2** Add protected API routes prefix to middleware i.e. `/api/v1/`
 
 ## Phase 2: Content Management System Implementation
 

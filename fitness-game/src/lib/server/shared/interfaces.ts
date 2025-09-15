@@ -5,13 +5,14 @@
     type DailyHabitLogPayload, 
   type UserChallenge,
 } from "$lib/server/db/schema";
-import { type Challenge } from "$lib/server/content/types/challenge";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 // --- Service Types (for Dependency Injection) ---
 
 // --- Auth Context ---
 export type AuthRequestContext = {
   requestDate: Date; // the timestamp/instant of the incoming request
   userId: string; // the userId of the user session
+  user: SupabaseUser
 };
 
 export type DatesOnEarthAtInstant = { earliest: string, utc: string, latest: string };

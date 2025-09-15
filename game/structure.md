@@ -7,7 +7,7 @@
 ## Frontend Stack
 
 ### Core Framework
-- **SvelteKit** with App Router
+- **SvelteKit 5** with App Router
   - Built-in PWA support
   - Server-side rendering for SEO (each quiz as discoverable page)
   - Image optimization for avatar assets
