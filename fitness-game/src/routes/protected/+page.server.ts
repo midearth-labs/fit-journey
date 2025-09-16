@@ -1,14 +1,9 @@
-import { redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
+import { requireAuth } from '$lib/server/auth/middleware'
 
-export const load: PageServerLoad = async ({ locals: { safeGetSession } }) => {
-  const { session, user } = await safeGetSession()
-  
-  if (!session) {
-    throw redirect(303, '/auth/signin')
-  }
-  
+export const load: PageServerLoad = async ({ locals }) => {
+  const authContext = await requireAuth(locals)
   return {
-    user
+    user: authContext.user
   }
 }

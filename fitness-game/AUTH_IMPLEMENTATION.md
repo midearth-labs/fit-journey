@@ -160,20 +160,16 @@ The authentication system integrates seamlessly with the existing fitness game:
 
 ### New Files
 - `src/lib/auth/supabase.ts` - Supabase client configuration
-- `src/lib/auth/types.ts` - Auth type definitions
-- `src/lib/auth/store.ts` - Auth store and context
 - `src/lib/server/auth/middleware.ts` - Server auth middleware
-- `src/routes/api/v1/user/profile/+server.ts` - Protected API route
 - `src/routes/auth/callback/+page.server.ts` - OAuth callback handler
 - `src/lib/components/auth/SignInForm.svelte` - Sign in component
 - `src/lib/components/auth/SignUpForm.svelte` - Sign up component
 - `src/routes/auth/signin/+page.svelte` - Sign in page
 - `src/routes/auth/signup/+page.svelte` - Sign up page
 - `src/routes/auth/reset-password/+page.svelte` - Password reset page
-- `src/routes/protected/+page.server.ts` - Protected page example
+- `src/routes/protected/+page.server.ts` - Protected page example (@TODO: remove these later)
 - `src/routes/protected/+page.svelte` - Protected page UI
 - `src/hooks.server.ts` - Server hooks for auth
-- `env.template` - Environment variables template
 
 ### Modified Files
 - `src/routes/+layout.svelte` - Added auth integration to navigation

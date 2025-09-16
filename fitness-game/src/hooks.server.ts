@@ -1,7 +1,16 @@
 import { createServerClient } from '@supabase/ssr'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { type Handle, redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
+const PROTECTED_ROUTE_PREFIXES = ['/api/v1/']; // prefix paths
+const PROTECTED_ROUTES = ['/protected'] as string[]; //exact paths
+
+const requestWrapper: Handle = async ({ event, resolve }) => {
+  event.locals.requestDate = new Date();
+  event.locals.requestId = crypto.randomUUID();
+  return resolve(event);
+}
 
 const supabase: Handle = async ({ event, resolve }) => {
   /**
@@ -23,7 +32,8 @@ const supabase: Handle = async ({ event, resolve }) => {
         })
       },
     },
-  })
+  });
+
 
   /**
    * Unlike `supabase.auth.getSession()`, which returns the session _without_
@@ -48,6 +58,7 @@ const supabase: Handle = async ({ event, resolve }) => {
     return { session, user }
   }
 
+
   return resolve(event, {
     filterSerializedResponseHeaders(name) {
       /**
@@ -65,18 +76,18 @@ const authGuard: Handle = async ({ event, resolve }) => {
   event.locals.user = user
 
   // Protect API routes
-  if (event.url.pathname.startsWith('/api/v1/')) {
-    if (!event.locals.session) {
+  if (PROTECTED_ROUTES.includes(event.url.pathname) || PROTECTED_ROUTE_PREFIXES.some(prefix => event.url.pathname.startsWith(prefix))) {
+    if (!event.locals.user) {
       throw redirect(303, '/auth/signin')
     }
   }
 
   // Redirect authenticated users away from auth pages
-  if (event.locals.session && event.url.pathname.startsWith('/auth/')) {
+  if (event.locals.user && event.url.pathname.startsWith('/auth/')) {
     throw redirect(303, '/')
   }
 
   return resolve(event)
 }
 
-export const handle: Handle = sequence(supabase, authGuard)
+export const handle: Handle = sequence(requestWrapper, supabase, authGuard)
