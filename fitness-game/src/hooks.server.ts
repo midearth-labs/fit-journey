@@ -1,10 +1,14 @@
 import { createServerClient } from '@supabase/ssr'
-import type { SupabaseClient } from '@supabase/supabase-js'
 import { type Handle, redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
+import { ServiceFactory } from '$lib/server/shared/service-factory'
+import { tryRequireAuth } from '$lib/server/auth/middleware'
 const PROTECTED_ROUTE_PREFIXES = ['/api/v1/']; // prefix paths
 const PROTECTED_ROUTES = ['/protected'] as string[]; //exact paths
+
+// Preload the single instance of ServiceFactory
+const serviceFactoryInstance = await ServiceFactory.getInstance();
 
 const requestWrapper: Handle = async ({ event, resolve }) => {
   event.locals.requestDate = new Date();
@@ -74,6 +78,8 @@ const authGuard: Handle = async ({ event, resolve }) => {
   const { session, user } = await event.locals.safeGetSession()
   event.locals.session = session
   event.locals.user = user
+  const serviceAuthRequestContext = tryRequireAuth(event.locals)
+  event.locals.authServices = serviceAuthRequestContext ? serviceFactoryInstance.getAuthServices(serviceAuthRequestContext) : null
 
   // Protect API routes
   if (PROTECTED_ROUTES.includes(event.url.pathname) || PROTECTED_ROUTE_PREFIXES.some(prefix => event.url.pathname.startsWith(prefix))) {

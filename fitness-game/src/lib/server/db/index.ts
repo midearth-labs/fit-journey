@@ -4,12 +4,22 @@ import * as schema from './schema';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
 
-// Database connection configuration
-const connectionString = process.env.DATABASE_URL!;
+const intializeDb = () => {
+    // Database connection configuration
+    const connectionString = process.env.DATABASE_URL!;
 
-// Create postgres client
-// Disable prefetch as it is not supported for "Transaction" pool mode
-const client = postgres(connectionString, { prepare: false });
+    // Create postgres client
+    // Disable prefetch as it is not supported for "Transaction" pool mode
+    const client = postgres(connectionString, { prepare: false });
 
-// Create drizzle instance
-export const db = drizzle(client, { schema, logger: true });
+    // Create drizzle instance
+    return drizzle(client, { schema, logger: true });
+}
+let db: ReturnType<typeof intializeDb>;
+
+export const getDBInstance = () => {
+  if (!db) {
+    db = intializeDb();
+  }
+  return db;
+}

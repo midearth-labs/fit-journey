@@ -13,7 +13,7 @@ export type AuthRequestContext = {
   requestId: string; // the requestId UUID of the request
   user: {
     id: string;
-    email: string;
+    email?: string;
     created_at: string;
   }
 };

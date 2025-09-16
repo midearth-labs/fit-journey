@@ -1,7 +1,7 @@
 import type { AuthRequestContext } from '$lib/server/shared/interfaces'
 import { redirect } from '@sveltejs/kit'
 
-export async function requireAuth(locals: App.Locals): Promise<AuthRequestContext> {
+export function tryRequireAuth(locals: App.Locals): AuthRequestContext | null {
   if (locals.session && locals.user) {
     return {
       requestDate: locals.requestDate,
@@ -9,6 +9,6 @@ export async function requireAuth(locals: App.Locals): Promise<AuthRequestContex
       user: locals.user,
     }
   } else {
-    throw redirect(303, '/auth/signin')
+    return null
   }
 }

@@ -1,20 +1,25 @@
-import { type IChallengeDAO } from '$lib/server/content/daos';
+import { ChallengeDAO, type IChallengeDAO } from '$lib/server/content/daos';
 import { type Challenge } from '$lib/server/content/types/challenge';
 import { type AuthRequestContext } from '$lib/server/shared/interfaces';
+import { type ServiceCreatorFromDependencies, type ServiceCreatorFromRequestContext } from './shared';
 
 export type IChallengeContentService = {
-    getChallengeById(dto: {challengeId: string}, requestContext: AuthRequestContext): Challenge;
-    getAllChallenges(dto: {}, requestContext: AuthRequestContext): Challenge[];
-  };
+    getChallengeById(dto: {challengeId: string}): Challenge;
+    listAllChallenges(dto: {}): Challenge[];
+};
 
 export class ChallengeContentService implements IChallengeContentService {
-  constructor(private readonly challengeDAO: IChallengeDAO) {}
+  constructor(
+    private readonly dependencies: { readonly challengeDAO: IChallengeDAO; },
+    private readonly authRequestContext: AuthRequestContext
+  ) {}
 
   /**
    * Get a challenge by its ID
    */
-  getChallengeById(dto: {challengeId: string}, _: AuthRequestContext): Challenge {
-    const challenge = this.challengeDAO.getById(dto.challengeId);
+  getChallengeById(dto: {challengeId: string}): Challenge {
+    const { challengeDAO } = this.dependencies;
+    const challenge = challengeDAO.getById(dto.challengeId);
     if (!challenge) {
       throw new Error(`Challenge with ID ${dto.challengeId} not found`);
     }
@@ -22,10 +27,11 @@ export class ChallengeContentService implements IChallengeContentService {
   }
 
   /**
-   * Get all available challenges
+   * List all available challenges
    */
-  getAllChallenges(_: {}, __: AuthRequestContext): Challenge[] {
-    return this.challengeDAO.getOrdered();
+  listAllChallenges(): Challenge[] {
+    const { challengeDAO } = this.dependencies;
+    return challengeDAO.getOrdered();
   }
 
 }
