@@ -2,10 +2,12 @@ import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, 
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
+export const FiveStarHabitLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration'] as const;
+export const AllHabitLogKeys = [...FiveStarHabitLogKeys] as const;
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
-
+export const allHabitLogKeysEnum = pgEnum('all_habit_log_keys', AllHabitLogKeys);
 /**
  * Describes the structure for a single answer submitted by a user for a quiz.
  * An array of these will be stored in the `quizAnswers` JSONB field.
@@ -34,12 +36,25 @@ export const userChallengeStatusEnum = pgEnum('user_challenge_status', [
  * The key is the `challengeHabitId` (as a string, since JSON keys are strings),
  * and the value is the data logged by the user.
  */
-export type DailyHabitLogPayload = {
-  workout_completed?: boolean,
-  ate_clean?: boolean,
-  slept_well?: boolean,
-  hydrated?: boolean,
-};
+export type AllHabitLogKeysType = (typeof AllHabitLogKeys)[number];
+export const FiveStarValues = [1, 2, 3, 4, 5] as const;
+export type FiveStarValuesType = (typeof FiveStarValues)[number];
+export const YesNoValues = [1, 0] as const;
+export type YesNoValuesType = (typeof YesNoValues)[number];
+
+type Satisfies<Constraint, Target extends Constraint> = Target;
+type SharedType = Record<AllHabitLogKeysType, 
+  HabitLogValueType<FiveStarValuesType> | 
+  HabitLogValueType<YesNoValuesType>>;
+
+export type HabitLogValueType<V extends number> = V | null | undefined;
+
+export type DailyHabitLogPayload = Satisfies<SharedType, {
+  dailyMovement: HabitLogValueType<FiveStarValuesType>,
+  cleanEating: HabitLogValueType<FiveStarValuesType>,
+  sleepQuality: HabitLogValueType<FiveStarValuesType>,
+  hydration: HabitLogValueType<FiveStarValuesType>,
+}>;
 
 
 // User table - seeded from Supabase Auth table using trigger
@@ -65,19 +80,19 @@ export const userProfiles = pgTable('user_profiles', {
   id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
   current_streak_ids: jsonb('current_streak_ids').$type<{
-    workout_completed?: string;
-    ate_clean?: string;
-    slept_well?: string;
-    hydrated?: string;
+    dailyMovement?: string;
+    cleanEating?: string;
+    sleepQuality?: string;
+    hydration?: string;
     quiz_completed?: string;
     quiz_passed?: string;
     all?: string;
   }>(), // each value is a FK to StreakHistory
   longest_streaks: jsonb('longest_streaks').$type<{
-    workout_completed?: string;
-    ate_clean?: string;
-    slept_well?: string;
-    hydrated?: string;
+    dailyMovement?: string;
+    cleanEating?: string;
+    sleepQuality?: string;
+    hydration?: string;
     quiz_completed?: string;
     quiz_passed?: string;
     all?: string;
@@ -161,24 +176,19 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
 export const userHabitLogs = pgTable('user_habit_logs', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  userChallengeId: uuid('user_challenge_id').notNull().references(() => userChallenges.id, { onDelete: 'cascade' }),
-  
+  logKey: allHabitLogKeysEnum('log_key').notNull(),
+  logValue: integer('log_value').notNull(),
   // The specific date this log entry is for. CRITICAL for back-logging.
   logDate: date('log_date').notNull(),
-  
-  /**
-   * NEW: A JSONB object holding all habit values for the given day.
-   * Example: { "habit_id_1": true, "habit_id_5": 120, "habit_id_7": "Ate a healthy salad" }
-   */
-  values: jsonb('values').notNull().$type<DailyHabitLogPayload>(),
+  // logNotes: text('log_notes'),
 
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
   return [
-    // Ensures a user can only have ONE log entry per day for a given challenge.
+    // Ensures a user can only have ONE log entry per day per user.
     // This makes updates (UPSERTs) simple and prevents duplicate data.
-    unique('user_daily_log_unique').on(table.userChallengeId, table.logDate),
+    unique('user_daily_log_unique').on(table.userId, table.logDate, table.logKey),
   ];
 });
 

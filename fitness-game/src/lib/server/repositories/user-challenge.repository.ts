@@ -1,10 +1,10 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, lte, lt, gte, notInArray } from 'drizzle-orm';
-import { userChallenges, type UserChallenge, type NewUserChallenge, type UpdateUserChallenge } from '$lib/server/db/schema';
+import { userChallenges, type UserChallenge, type NewUserChallenge, type UpdateUserChallenge, type AllHabitLogKeysType } from '$lib/server/db/schema';
 import { CHALLENGE_CONSTANTS } from '$lib/server/content/types/constants';
 import { type IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
 import { type IChallengeDAO } from '$lib/server/content/daos/challenge';
-import { type ImplicitStatusCheckPayload, type UserChallengeWithImplicitStatus } from '$lib/server/shared/interfaces';
+import { type ActiveChallengeMetadata, type ActiveChallengesStatusCheckPayload, type ImplicitStatusCheckPayload, type UserChallengeWithImplicitStatus } from '$lib/server/shared/interfaces';
 
 export type IUserChallengeRepository = {
     create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus>;
@@ -14,6 +14,7 @@ export type IUserChallengeRepository = {
     update(updates: UpdateUserChallenge): Promise<UserChallengeWithImplicitStatus | null>;
     delete(id: string, userId: string): Promise<boolean>;
     batchUpdateChallengeStatuses(requestDate: Date): Promise<void>;
+    findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata>;
   };
   
 export class UserChallengeRepository implements IUserChallengeRepository {
@@ -34,7 +35,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     return {
       ...challenge,
       // @TODO: Implement caching for the implicit status
-      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: challenge.id}, challenge),
     };
   }
 
@@ -55,7 +56,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     
     return challenge ? {
       ...challenge,
-      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: challenge.id}, challenge),
     } : null;
   }
 
@@ -70,7 +71,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
       .orderBy(userChallenges.createdAt);
     return challenges.map(challenge => ({
       ...challenge,
-      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: challenge.id}, challenge),
     }));
   }
 
@@ -91,7 +92,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     
     return challenge ? {
       ...challenge,
-      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, challenge),
+      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: challenge.id}, challenge),
     } : null;
   }
 
@@ -112,8 +113,39 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     
     return updatedChallenge ? {
       ...updatedChallenge,
-      implicitStatus: (payload: ImplicitStatusCheckPayload) => this.getRealChallengeStatus(payload, updatedChallenge),
+      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: updatedChallenge.id}, updatedChallenge),
     } : null;
+  }
+  async findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata> {
+    const challenges = await this.findByUserId(userId);
+    const { requestDate } = payload;
+
+    const activeChallenges = challenges.filter(challenge => 
+        this.isChallengeLoggable(challenge.implicitStatus({referenceDate: requestDate}))
+    )
+    .map(userChallenge => {
+      return {userChallenge, 
+        challenge: this.challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new Error(`Challenge ${userChallenge.challengeId} not found`))
+      }})
+    
+    const activeChallengeHabits = activeChallenges
+    .flatMap(({challenge}) => challenge.habits)
+    // Remove duplicates
+    .filter((habit, index, self) => self.indexOf(habit) === index);
+
+    const earliestStartDate = activeChallenges.map(({userChallenge}) => userChallenge.startDate).sort()[0];
+    
+    const latestEndDate = activeChallenges
+      .map(({userChallenge, challenge}) => this.dateTimeHelper.daysOffset(userChallenge.startDate, challenge.durationDays))
+      .sort()
+      .reverse()[0];
+
+    return {activeChallengeHabits, earliestStartDate, latestEndDate};
+  }
+
+  //@TODO: Refactor into one method
+  private isChallengeLoggable(status: UserChallenge['status']): boolean {
+    return ['active', 'completed'].includes(status);
   }
 
   /**
@@ -141,14 +173,16 @@ export class UserChallengeRepository implements IUserChallengeRepository {
     payload: ImplicitStatusCheckPayload,
     userChallenge: Pick<UserChallenge, 'status' | 'startDate' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>
     ): UserChallenge['status'] {
-        const { requestDate, challengeDays } = payload;
+        const { referenceDate: requestDate, challengeId } = payload;
+        const challenge = this.challengeDAO.getByIdOrThrow(challengeId, () => new Error(`Challenge ${challengeId} not found`));
+        const { durationDays: challengeDurationDays } = challenge;
         // --- 1. Handle all "locked" and "inactive" conditions first as guard clauses ---
 
         // Condition A: The challenge is explicitly marked as 'locked' or 'inactive'.
         if (userChallenge.status === 'locked' || userChallenge.status === 'inactive') {
             return userChallenge.status;
         }
-        const { earliestAllowedStartDate, latestDateOnEarth } = this.getInferredStatusBoundaryDates(challengeDays, requestDate);
+        const { earliestAllowedStartDate, latestDateOnEarth } = this.getInferredStatusBoundaryDates(challengeDurationDays, requestDate);
         
         // Condition B: The challenge is outside its accessible time window (grace period).
         // This is a universal rule that can lock an otherwise active or completed challenge.
@@ -166,8 +200,8 @@ export class UserChallengeRepository implements IUserChallengeRepository {
 
             case 'active':
                 // An active challenge might transition to 'completed'.
-                const isComplete = userChallenge.knowledgeBaseCompletedCount >= challengeDays &&
-                                userChallenge.habitsLoggedCount >= challengeDays;
+                const isComplete = userChallenge.knowledgeBaseCompletedCount >= challengeDurationDays &&
+                                userChallenge.habitsLoggedCount >= challengeDurationDays;
                 if (isComplete) {
                     return 'completed';
                 }

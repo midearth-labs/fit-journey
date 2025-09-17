@@ -54,29 +54,4 @@ export class ContentDAOFactory {
     return this.daos;
   }
 
-  /**
-   * Clear all DAO caches
-   */
-  clearAllCaches(): void {
-    for (const dao of Object.values(this.daos)) {
-      if (dao.clearCache) {
-        dao.clearCache();
-      }
-    }
-  }
-
-  /**
-   * Get cache statistics for all DAOs
-   */
-  getAllCacheStats(): Record<ContentType, any> {
-    const stats: Record<ContentType, any> = {} as Record<ContentType, any>;
-
-    for (const [contentType, dao] of Object.entries(this.daos)) {
-      if (dao.getCacheStats) {
-        stats[contentType as ContentType] = dao.getCacheStats();
-      }
-    }
-    
-    return stats;
-  }
 }

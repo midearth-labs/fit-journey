@@ -4,6 +4,7 @@
     type UserAnswer, 
     type DailyHabitLogPayload, 
   type UserChallenge,
+  type AllHabitLogKeysType,
 } from "$lib/server/db/schema";
 // --- Service Types (for Dependency Injection) ---
 
@@ -27,36 +28,6 @@ export type Offsets = {
   milliseconds?: number;
 }
 
-// --- Streak Management Interfaces ---
-
-// @TODO: synchronize DailyHabitLogPayload with HabitType
-export type HabitType = 
-| 'workout_completed'
-| 'ate_clean' 
-| 'slept_well'
-| 'hydrated';
-
-export type QuizType = 
-  | 'quiz_completed'
-  | 'quiz_passed';
-
-  export type StreakType = 
-    | HabitType
-    | QuizType
-    | 'all';
-
-// --- Streak DTOs ---
-
-export type HabitLogDto = {
-  userId: string;
-  habits: Record<HabitType, boolean>;
-};
-
-export type QuizCompletionDto = {
-  userId: string;
-  allCorrect: boolean;
-};
-
 // --- Challenge System Types ---
 
 // --- Challenge DTOs ---
@@ -79,7 +50,6 @@ export type SubmitUserChallengeQuizDto = {
 };
 
 export type PutUserChallengeLogDto = {
-  userChallengeId: string;
   logDate: string; // YYYY-MM-DD format
   values: DailyHabitLogPayload;
 };
@@ -115,13 +85,9 @@ export type UserChallengeSummaryResponse = NewUserChallengeResponse & {
 export type UserChallengeDetailResponse = UserChallengeSummaryResponse
 
 export type UserHabitLogResponse = {
-  id: string;
-  userChallengeId: string;
   logDate: string;
   // @TODO: decouple the database models from the service layer
   values: DailyHabitLogPayload;
-  createdAt: string;
-  updatedAt: string;
 };
 
 export type UserChallengeProgressResponse = {
@@ -137,10 +103,20 @@ export type UserChallengeProgressResponse = {
 };
 
 export type ImplicitStatusCheckPayload = {
+  referenceDate: Date; // usually requestDate but might be logDate?
+  challengeId: string;
+};
+
+export type ActiveChallengesStatusCheckPayload = {
   requestDate: Date;
-  challengeDays: number;
 };
 
 export type UserChallengeWithImplicitStatus = UserChallenge & {
-  implicitStatus: (payload: ImplicitStatusCheckPayload) => UserChallenge['status'];
+  implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => UserChallenge['status'];
+};
+
+export type ActiveChallengeMetadata = {
+  earliestStartDate: string;
+  latestEndDate: string;
+  activeChallengeHabits: AllHabitLogKeysType[];
 };

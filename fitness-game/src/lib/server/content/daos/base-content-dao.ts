@@ -11,16 +11,11 @@ export type IBaseContentDAO<T> = {
   getCount(): number;
   exists(id: string): boolean;
   getRandom(count: number): T[];
-  clearCache(): void;
-  getCacheStats(): { size: number; hits: number; misses: number };
 };
   
 
 export abstract class BaseContentDAO<T> implements IBaseContentDAO<T> {
   protected content: MapAndList<T>;
-  private contentCache: Map<string, any> = new Map();
-  private cacheExpiry: Map<string, number> = new Map();
-  protected readonly CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
   constructor(content: MapAndList<T>) {
     this.content = content;
@@ -37,21 +32,7 @@ export abstract class BaseContentDAO<T> implements IBaseContentDAO<T> {
    * Get content by ID
    */
   getById(id: string): T | undefined {
-    const cacheKey = `id:${id}`;
-    
-    // Check cache first
-    if (this.isCacheValid(cacheKey)) {
-      return this.contentCache.get(cacheKey);
-    }
-
-    const content = this.content.map.get(id);
-    
-    // Cache the result
-    if (content) {
-      this.cacheContent(cacheKey, content);
-    }
-
-    return content;
+    return this.content.map.get(id);
   }
 
   /**
@@ -93,49 +74,6 @@ export abstract class BaseContentDAO<T> implements IBaseContentDAO<T> {
    */
   getRandom(count: number): T[] {
     return this.getRandomItems(this.getAll(), count);
-  }
-
-  /**
-   * Clear content cache
-   */
-  clearCache(): void {
-    this.contentCache.clear();
-    this.cacheExpiry.clear();
-  }
-
-  /**
-   * Get cache statistics
-   */
-  getCacheStats(): { size: number; hits: number; misses: number } {
-    return {
-      size: this.contentCache.size,
-      hits: 0, // Could implement hit tracking if needed
-      misses: 0
-    };
-  }
-
-  /**
-   * Cache content with expiration
-   */
-  protected cacheContent(key: string, content: any): void {
-    this.contentCache.set(key, content);
-    this.cacheExpiry.set(key, Date.now() + this.CACHE_TTL);
-  }
-
-  /**
-   * Check if cache is still valid
-   */
-  protected isCacheValid(key: string): boolean {
-    const expiry = this.cacheExpiry.get(key);
-    if (!expiry) return false;
-    
-    if (Date.now() > expiry) {
-      this.contentCache.delete(key);
-      this.cacheExpiry.delete(key);
-      return false;
-    }
-    
-    return true;
   }
 
   /**

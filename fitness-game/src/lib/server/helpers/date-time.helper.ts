@@ -6,6 +6,7 @@ export type IDateTimeHelper = {
   getUtcNow(): Date; // Returns current UTC Date object
   getUnixTimestamp(date: Date): number;
   getUtcDateString(date: Date): string; // Returns YYYY-MM-DD format
+  daysOffset(date: string, offset: number): string;
   
   // Challenge-specific date methods
   getTodayUtcDateString(): string; // Returns today's date in YYYY-MM-DD format
@@ -13,11 +14,7 @@ export type IDateTimeHelper = {
   getOneMonthFromDateUtcDateString(fromDate: string): string; // Returns date 1 month from given date
   getFortyEightHoursAgoUtcTimestamp(): Date; // Returns timestamp 48 hours ago
   isDateInFuture(dateString: string): boolean; // Check if date is in the future
-  isDateBeforeStartDate(logDate: string, startDate: string): boolean; // Check if log date is before start date
-  getChallengeEndDateUtcDateString(startDate: string, durationDays: number): string; // Calculate challenge end date
   isDateAfterChallengeEndDate(currentDate: string, endDate: string): boolean; // Check if current date is after challenge end
-  getMaxLoggingDateUtcDateString(startDate: string, durationDays: number): string; // Get max date user can log habits
-  isLogDateWithinChallengePeriod(logDate: string, startDate: string, durationDays: number): boolean; // Check if log date is within challenge period
   getPossibleDatesOnEarthAtInstant(instant: Date): DatesOnEarthAtInstant; // Get all possible actual dates (YYYY-MM-DD) on earth at the time of the input date
   getDatesFromInstantWithOffset(instant: Date, offsets: Offsets): DatesOnEarthAtInstant;
 };
@@ -62,34 +59,14 @@ export class DateTimeHelper implements IDateTimeHelper {
     return fortyEightHoursAgo;
   }
 
+  // @TODO: use highest timezone time calc to compare.
   isDateInFuture(dateString: string): boolean {
     const today = this.getTodayUtcDateString();
     return dateString > today;
   }
 
-  isDateBeforeStartDate(logDate: string, startDate: string): boolean {
-    return logDate < startDate;
-  }
-
-  getChallengeEndDateUtcDateString(startDate: string, durationDays: number): string {
-    const startDateObj = new Date(startDate);
-    const endDate = new Date(startDateObj);
-    endDate.setDate(endDate.getDate() + durationDays);
-    return endDate.toISOString().split('T')[0];
-  }
-
   isDateAfterChallengeEndDate(currentDate: string, endDate: string): boolean {
     return currentDate > endDate;
-  }
-
-  getMaxLoggingDateUtcDateString(startDate: string, durationDays: number): string {
-    // Users can log habits up to the challenge end date
-    return this.getChallengeEndDateUtcDateString(startDate, durationDays);
-  }
-
-  isLogDateWithinChallengePeriod(logDate: string, startDate: string, durationDays: number): boolean {
-    const endDate = this.getChallengeEndDateUtcDateString(startDate, durationDays);
-    return logDate >= startDate && logDate <= endDate;
   }
 
   getDatesFromInstantWithOffset(instant: Date, offsets: Offsets) {
@@ -130,5 +107,11 @@ export class DateTimeHelper implements IDateTimeHelper {
       utc: instantUTC,
       latest: instantPlus14Hours,
     };
+  }
+
+  daysOffset(date: string, offset: number): string {
+    const dateObj = new Date(date);
+    dateObj.setDate(dateObj.getDate() + offset);
+    return dateObj.toISOString().split('T')[0];
   }
 }

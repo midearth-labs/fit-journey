@@ -18,6 +18,7 @@ import {
   InternalServerError,
   notFoundCheck
 } from '$lib/server/shared/errors';
+import { type HabitLogValueType, type AllHabitLogKeysType, type DailyHabitLogPayload, type FiveStarValuesType } from '$lib/server/db/schema';
 import { type IDateTimeHelper } from '../helpers/date-time.helper';
 import { type IUserChallengeProgressRepository, type IUserChallengeRepository, type IUserHabitLogsRepository } from '$lib/server/repositories';
 import { type UserChallenge, type UserChallengeProgress, type UserHabitLog } from '$lib/server/db/schema';
@@ -55,8 +56,7 @@ export class ChallengeService implements IChallengeService {
 
   async createUserChallenge(dto: CreateUserChallengeDto): Promise<NewUserChallengeResponse> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { challengeDAO, dateTimeHelper, userChallengeRepository } = this.dependencies;
-    const challenge = notFoundCheck(challengeDAO.getById(dto.challengeId), 'Challenge');
+    const { dateTimeHelper, userChallengeRepository } = this.dependencies;
 
     // Validate start date is within 2 weeks
     // @TODO: Convert the input Dtos to Zod schemas and validate them using Zod not here but from the API entry point.
@@ -93,26 +93,24 @@ export class ChallengeService implements IChallengeService {
    */
   async getUserChallenge(dto: {userChallengeId: string}): Promise<UserChallengeDetailResponse> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, challengeDAO } = this.dependencies;
+    const { userChallengeRepository } = this.dependencies;
     const userChallenge = notFoundCheck(
         await userChallengeRepository.findById(dto.userChallengeId, userId),
         'Challenge'
     );
     
-    const challenge = challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new InternalServerError(`Challenge with ID ${userChallenge.challengeId} does not exist`));
-    const implicitStatus = userChallenge.implicitStatus({ requestDate, challengeDays: challenge.durationDays });
+    const implicitStatus = userChallenge.implicitStatus({ referenceDate: requestDate });
 
     return this.mapToUserChallengeResponse(userChallenge, implicitStatus);
   }
 
   async listUserChallenges(_: {}): Promise<UserChallengeSummaryResponse[]> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, challengeDAO } = this.dependencies;
+    const { userChallengeRepository } = this.dependencies;
 
     const userChallenges = await userChallengeRepository.findByUserId(userId);
     return userChallenges.map(userChallenge => {
-        const challenge = challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new InternalServerError(`Challenge with ID ${userChallenge.challengeId} does not exist`));
-        const implicitStatus = userChallenge.implicitStatus({ requestDate, challengeDays: challenge.durationDays });
+        const implicitStatus = userChallenge.implicitStatus({ referenceDate: requestDate });
         return this.mapToUserChallengeResponse(userChallenge, implicitStatus);
     });
   }
@@ -123,15 +121,14 @@ export class ChallengeService implements IChallengeService {
    */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, challengeDAO, dateTimeHelper, userHabitLogsRepository } = this.dependencies;
+    const { userChallengeRepository, dateTimeHelper } = this.dependencies;
     const userChallenge = notFoundCheck(
         await userChallengeRepository.findById(dto.userChallengeId, userId),
         'Challenge'
     );
 
     // Check if challenge is rescheduleable
-    const challenge = challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new InternalServerError(`Challenge with ID ${userChallenge.challengeId} does not exist`));
-    const implicitStatus = userChallenge.implicitStatus({ requestDate, challengeDays: challenge.durationDays });
+    const implicitStatus = userChallenge.implicitStatus({ referenceDate: requestDate });
     if (!this.isChallengeRescheduleable(implicitStatus)) {
       throw new ValidationError('Cannot reschedule a challenge in this state');
     }
@@ -177,7 +174,7 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Check if challenge is not locked or maybe not started?
-    const implicitStatus = userChallenge.implicitStatus({ requestDate, challengeDays: challenge.durationDays });
+    const implicitStatus = userChallenge.implicitStatus({ referenceDate: requestDate });
     if (!this.isChallengeLoggable(implicitStatus)) {
       throw new ValidationError('Challenge is not active and cannot be modified at this time');
     }
@@ -211,7 +208,8 @@ export class ChallengeService implements IChallengeService {
         firstAttemptedAt: requestDate,
       });
   }
-  
+
+  //@TODO: Refactor into one method
   private isChallengeLoggable(status: UserChallenge['status']): boolean {
     return ['active', 'completed'].includes(status);
   }
@@ -227,18 +225,11 @@ export class ChallengeService implements IChallengeService {
    */
   async putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, challengeDAO, dateTimeHelper, userHabitLogsRepository } = this.dependencies;
-    const userChallenge = notFoundCheck(
-        await userChallengeRepository.findById(dto.userChallengeId, userId),
-        'Challenge'
-    );
-    const challenge = challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new InternalServerError(`Challenge with ID ${userChallenge.challengeId} does not exist`));
+    const { userChallengeRepository, dateTimeHelper, userHabitLogsRepository } = this.dependencies;
     
-
-    const implicitStatus = userChallenge.implicitStatus({ requestDate, challengeDays: challenge.durationDays });
-    if (!this.isChallengeLoggable(implicitStatus)) {
-      throw new ValidationError('Challenge is locked and cannot be modified');
-    }
+    //@TODO: Use this to generate warnings in response, if challenge habits are not set, and if log date is outside all active challenge period
+    const {activeChallengeHabits, earliestStartDate, latestEndDate} = 
+      await userChallengeRepository.findAllActiveChallengeMetadata(userId, { requestDate });
 
     // Validate log date is not in the future and not before start date
     // @TODO double check this logic, and also that you cant log for a date outside the challenge period range
@@ -247,24 +238,19 @@ export class ChallengeService implements IChallengeService {
       throw new ValidationError('Cannot log habits for future dates');
     }
 
-    if (dateTimeHelper.isDateBeforeStartDate(dto.logDate, userChallenge.startDate)) {
-      throw new ValidationError('Cannot log habits for dates before challenge start date');
-    }
-
-    // Validate log date is within challenge period
-    const challengeDuration = challenge.durationDays;
-    if (challengeDuration && !dateTimeHelper.isLogDateWithinChallengePeriod(dto.logDate, userChallenge.startDate, challengeDuration)) {
-      throw new ValidationError('Cannot log habits for dates outside the challenge period');
-    }
+    // Transform DailyHabitLogPayload into the expected array format
+    const valuesArray = Object.entries(dto.values)
+      .map(([key, value]) => ({ 
+        key: key as AllHabitLogKeysType, 
+        value: value as HabitLogValueType<number>
+      }));
 
     // Upsert the habit log
     await userHabitLogsRepository.upsert({
         userId,
-        userChallengeId: dto.userChallengeId,
         logDate: dto.logDate,
-        values: dto.values,
         createdAt: requestDate,
-      });
+      }, valuesArray);
   }
 
   /**
@@ -285,19 +271,20 @@ export class ChallengeService implements IChallengeService {
     }
 
     const logs = await userHabitLogsRepository.findByUserChallengeAndDateRange(
-      dto.userChallengeId,
+      {id: dto.userChallengeId, startDate: challenge.startDate},
       userId,
       dto.fromDate,
       dto.toDate
     );
 
-    return logs.map(log => this.mapToUserHabitLogResponse(log));
+    return this.mapToUserHabitLogResponse(logs);
   }
 
   async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]> {
     const { requestDate, user: { id: userId } } = this.requestContext;
     const { userChallengeRepository, userChallengeProgressRepository } = this.dependencies;
-    const challenge = notFoundCheck(
+    // Resource existence check
+    notFoundCheck(
         await userChallengeRepository.findById(dto.userChallengeId, userId),
         'Challenge'
     );
@@ -339,16 +326,31 @@ export class ChallengeService implements IChallengeService {
 
   /**
    * Map database model to habit log response DTO
+   * Groups logs by date and creates a values object for each date
    */
-  private mapToUserHabitLogResponse(log: UserHabitLog): UserHabitLogResponse {
-    return {
-      id: log.id,
-      userChallengeId: log.userChallengeId,
+  private mapToUserHabitLogResponse(logs: UserHabitLog[]): UserHabitLogResponse[] {
+    // Group logs by date
+    const logsByDate = logs.reduce((acc, log) => {
+      const dateKey = log.logDate;
+      if (!acc.has(dateKey)) {
+        acc.set(dateKey, {
+          logDate: log.logDate,
+          values: {} as DailyHabitLogPayload,
+        });
+      }
+      
+      // Add the habit value to the values object
+      const entry = acc.get(dateKey)!;
+      entry.values[log.logKey] = log.logValue as HabitLogValueType<unknown>;
+      
+      return acc;
+    }, new Map<string, UserHabitLogResponse>());
+
+    // Convert to array and format timestamps
+    return Object.values(logsByDate).map(log => ({
       logDate: log.logDate,
       values: log.values,
-      createdAt: log.createdAt.toISOString(),
-      updatedAt: log.updatedAt.toISOString()
-    };
+    }));
   }
 
   private mapToUserChallengeProgressResponse(progress: UserChallengeProgress): UserChallengeProgressResponse {

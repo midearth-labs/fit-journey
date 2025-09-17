@@ -47,7 +47,7 @@ export class ServiceFactory {
     this.userProfileRepository = new UserProfileRepository(db);
     this.userChallengeRepository = new UserChallengeRepository(db, this.dateTimeHelper, this.contentDAOFactory.getDAO('Challenge'));
     this.userChallengeProgressRepository = new UserChallengeProgressRepository(db);
-    this.userHabitLogsRepository = new UserHabitLogsRepository(db);
+    this.userHabitLogsRepository = new UserHabitLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
     
     // Initialize services
     this.challengeContentServiceCreator = createServiceFromClass(

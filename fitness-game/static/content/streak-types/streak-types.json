@@ -1,6 +1,6 @@
 [
   {
-    "id": "workout_completed",
+    "id": "dailyMovement",
     "title": "Movement Hero",
     "habit": "Movement/Workout",
     "type": "boolean",
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "id": "ate_clean",
+    "id": "cleanEating",
     "title": "Nutrition Champion",
     "habit": "Clean Eating",
     "type": "boolean",
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "id": "slept_well",
+    "id": "sleepQuality",
     "title": "Sleep Master",
     "habit": "Quality Sleep",
     "type": "boolean",
@@ -165,7 +165,7 @@
     ]
   },
   {
-    "id": "hydrated",
+    "id": "hydration",
     "title": "Hydration Hero",
     "habit": "Well Hydrated",
     "type": "boolean",

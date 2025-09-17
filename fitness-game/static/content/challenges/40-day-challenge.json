@@ -167,10 +167,10 @@
             }
         ],
         "habits": [
-            "workout_completed",
-            "ate_clean",
-            "slept_well",
-            "hydrated"
+            "dailyMovement",
+            "cleanEating",
+            "sleepQuality",
+            "hydration"
         ],
         "is_active": true,
         "sort_order": 2,

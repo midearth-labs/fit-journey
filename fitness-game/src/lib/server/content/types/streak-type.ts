@@ -5,10 +5,10 @@ import { z } from 'zod';
 import { BaseContentSchema } from './common';
 
 export const HabitIdsSchema = z.enum([
-  "workout_completed",
-  "ate_clean", 
-  "slept_well",
-  "hydrated",
+  "dailyMovement",
+  "cleanEating", 
+  "sleepQuality",
+  "hydration",
 ]);
 
 export const StreakTypeSchema = BaseContentSchema.extend({
@@ -25,7 +25,7 @@ export const StreakTypeSchema = BaseContentSchema.extend({
    * - 'numeric': A number (e.g., minutes of exercise, glasses of water).
    * - 'text': A short text entry (e.g., "What I'm grateful for today").
    */
-  type: z.enum(['boolean', 'numeric', 'text']),
+  type: z.enum(['weight_grams', '5star', 'yesno']),
   habit: z.string(),
   description: z.string(),
   health_benefits: z.array(z.string()),
