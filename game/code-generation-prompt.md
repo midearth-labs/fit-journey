@@ -756,3 +756,27 @@ Extract out Challenge Progress APis from ChallengeService into a new service cal
 
 Remove all unused dependencies and signatures from ChallengeService. Also, export and initialize ChallengeProgressService additionally in all the locations ChallengeService is currently references
 ```
+
+### Prompt 13
+```
+Reference @services/ and @repositories/ @schema.ts
+Use the pattern in the above to create or update functionality to implement a user-profile service that allows a user to update their profile preferences. The user would be able to update 1 or more of display_name, avatar_gender, avatar_age_range, personalizationCountryCodes, timezone, preferred_reminder_time, notification_preferences.  The input profile values can be a value, or null, or undefined. undefined values are to be ignored, but null values must also null out the database fields.
+Create the 
+
+Make sure the service types are inferred but decoupled from the database schema. i.e. the service must not import anything directly from "schema"
+```
+
+#### Prompt 13.1
+```
+Can you reverse-engineer the work you just did for service creation or update, repository creation or update, dependency setup and injection, and exporting  into 1 or more AGENTS.md files that I can put in my project into the right directories or subdirectories to help make the tasks less ambiguous for the Cursor AI agent.
+```
+
+#### Prompt 13.2
+```
+Similar to the REST path comments on ChallengeService.getUserChallenge, add comments for the rest of the services that are missing REST paths.
+```
+
+#### Prompt 13.3
+```
+Add the "REST path" comment instruction to the services: AGENTS.MD
+```
