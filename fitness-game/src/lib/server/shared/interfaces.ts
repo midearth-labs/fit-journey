@@ -156,6 +156,4 @@ export type UserProfileResponse = {
     social: boolean;
     fitness_level: boolean;
   } | null;
-  created_at?: string;
-  updated_at?: Date | string;
 };

@@ -2,9 +2,11 @@ import { type AuthRequestContext } from '$lib/server/shared/interfaces';
 import { type IUserRepository } from '$lib/server/repositories';
 import type { UpdateUserProfileDto, UserProfileResponse } from '$lib/server/shared/interfaces';
 import type { User } from '../db/schema';
+import { notFoundCheck } from '../shared/errors';
 
 export type IUserProfileService = {
   updateUserProfile(dto: UpdateUserProfileDto): Promise<void>;
+  getUserProfile(): Promise<UserProfileResponse>;
 };
 
 export class UserProfileService implements IUserProfileService {
@@ -42,6 +44,29 @@ export class UserProfileService implements IUserProfileService {
     updates.updated_at = requestDate;
 
     await userRepository.update(userId, updates);
+  }
+
+  /**
+   * Get the authenticated user's profile
+   * GET /users/me/profile
+   */
+  async getUserProfile(): Promise<UserProfileResponse> {
+    const { userRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+
+    const user = notFoundCheck(await userRepository.findById(userId), 'User');
+
+    return {
+      id: user.id,
+      email: user.email,
+      display_name: user.display_name,
+      avatar_gender: user.avatar_gender,
+      avatar_age_range: user.avatar_age_range,
+      personalizationCountryCodes: user.personalizationCountryCodes,
+      timezone: user.timezone,
+      preferred_reminder_time: user.preferred_reminder_time,
+      notification_preferences: user.notification_preferences,
+    };
   }
 }
 
