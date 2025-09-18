@@ -806,3 +806,9 @@ Ensure to use the latest Zod documentation: @https://zod.dev/api
 ```
 Add an AGENTS.MD for APIs under "/api/v1" directory based on the approach you just took
 ```
+
+### Prompt 15
+```
+Create a new API to get the users profile. Tell me what you will do first in a concise manner
+```
+
