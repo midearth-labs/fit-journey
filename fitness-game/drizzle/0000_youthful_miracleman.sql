@@ -1,3 +1,4 @@
+CREATE TYPE "public"."all_log_keys" AS ENUM('dailyMovement', 'cleanEating', 'sleepQuality', 'hydration');--> statement-breakpoint
 CREATE TYPE "public"."avatar_age_range" AS ENUM('child', 'teen', 'young-adult', 'middle-age', 'senior');--> statement-breakpoint
 CREATE TYPE "public"."avatar_gender" AS ENUM('male', 'female');--> statement-breakpoint
 CREATE TYPE "public"."user_challenge_status" AS ENUM('not_started', 'active', 'completed', 'locked', 'inactive');--> statement-breakpoint
@@ -22,24 +23,24 @@ CREATE TABLE "user_challenges" (
 	"original_start_date" date NOT NULL,
 	"status" "user_challenge_status" NOT NULL,
 	"knowledge_base_completed_count" integer NOT NULL,
-	"habits_logged_count" integer NOT NULL,
+	"daily_log_count" integer NOT NULL,
 	"last_activity_date" timestamp,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE "user_habit_logs" (
+CREATE TABLE "user_logs" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
-	"user_challenge_id" uuid NOT NULL,
+	"log_key" "all_log_keys" NOT NULL,
+	"log_value" integer NOT NULL,
 	"log_date" date NOT NULL,
-	"values" jsonb NOT NULL,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL,
-	CONSTRAINT "user_daily_log_unique" UNIQUE("user_challenge_id","log_date")
+	CONSTRAINT "user_daily_log_unique" UNIQUE("user_id","log_date","log_key")
 );
 --> statement-breakpoint
-CREATE TABLE "user_profiles" (
+CREATE TABLE "user_metadata" (
 	"id" uuid PRIMARY KEY NOT NULL,
 	"current_fitness_level" integer DEFAULT 0 NOT NULL,
 	"current_streak_ids" jsonb,
@@ -55,6 +56,7 @@ CREATE TABLE "users" (
 	"display_name" text,
 	"avatar_gender" "avatar_gender",
 	"avatar_age_range" "avatar_age_range",
+	"personalization_country_codes" jsonb,
 	"timezone" text,
 	"preferred_reminder_time" text,
 	"notification_preferences" jsonb,
@@ -66,7 +68,6 @@ CREATE TABLE "users" (
 ALTER TABLE "user_challenge_progress" ADD CONSTRAINT "user_challenge_progress_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "user_challenge_progress" ADD CONSTRAINT "user_challenge_progress_user_challenge_id_user_challenges_id_fk" FOREIGN KEY ("user_challenge_id") REFERENCES "public"."user_challenges"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "user_challenges" ADD CONSTRAINT "user_challenges_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "user_habit_logs" ADD CONSTRAINT "user_habit_logs_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "user_habit_logs" ADD CONSTRAINT "user_habit_logs_user_challenge_id_user_challenges_id_fk" FOREIGN KEY ("user_challenge_id") REFERENCES "public"."user_challenges"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "user_profiles" ADD CONSTRAINT "user_profiles_id_users_id_fk" FOREIGN KEY ("id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "user_logs" ADD CONSTRAINT "user_logs_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "user_metadata" ADD CONSTRAINT "user_metadata_id_users_id_fk" FOREIGN KEY ("id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 CREATE INDEX "user_challenge_status_start_date_not_locked_inactive_index" ON "user_challenges" USING btree ("status","start_date") WHERE "user_challenges"."status" NOT IN ('locked', 'inactive');

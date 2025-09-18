@@ -5,7 +5,7 @@ import type { IChallengeDAO } from '../content/daos';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
 
 export type IUserLogsRepository = {
-    upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<UserLog[]>;
+    upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<void>;
     findByUserChallenge(challenge: {id: string, startDate: string}, userId: string): Promise<UserLog[]>;
     findByUserChallengeAndDateRange(challenge: {id: string, startDate: string}, userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
     findByUserChallengeAndDate(challenge: {id: string, startDate: string}, userId: string, logDate: string): Promise<UserLog[]>;
@@ -33,7 +33,7 @@ export class UserLogsRepository implements IUserLogsRepository {
    * - null values: delete corresponding entries
    * - undefined values: ignore them
    */
-  async upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<UserLog[]> {
+  async upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<void> {
     const definedValues: Array<{key: AllLogKeysType, value: T}> = [];
     const keysToDelete: Array<AllLogKeysType> = [];
     
@@ -48,13 +48,11 @@ export class UserLogsRepository implements IUserLogsRepository {
     });
 
     if (keysToDelete.length === 0 && definedValues.length === 0) {
-      return [];
+      return;
     }
 
     // Execute operations in a transaction
-    return await this.db.transaction(async (tx) => {
-      const results: UserLog[] = [];
-
+    await this.db.transaction(async (tx) => {
       // Handle defined values with upsert logic
       if (definedValues.length > 0) {
         const insertData = definedValues.map(value => ({
@@ -64,7 +62,7 @@ export class UserLogsRepository implements IUserLogsRepository {
           updatedAt: logData.createdAt
         }));
 
-        const upsertedLogs = await tx
+        await tx
           .insert(userLogs)
           .values(insertData)
           .onConflictDoUpdate({
@@ -77,9 +75,6 @@ export class UserLogsRepository implements IUserLogsRepository {
             // This makes sure we only update the log for the user
             setWhere: sql`${userLogs.userId} = ${logData.userId}`
           })
-          .returning();
-        
-        results.push(...upsertedLogs);
       }
 
       // Handle null values by deleting corresponding entries
@@ -94,8 +89,6 @@ export class UserLogsRepository implements IUserLogsRepository {
             )
           );
       }
-
-      return results;
     });
     // @TODO: Add logic to correct the user challenge progress count in triggers
   }

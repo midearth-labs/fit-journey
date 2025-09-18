@@ -126,16 +126,12 @@ export class ChallengeService implements IChallengeService {
     }
 
     // Update the challenge
-    const updatedChallenge = await userChallengeRepository.update({
+    await userChallengeRepository.update({
       id: dto.userChallengeId,
       userId: userId,
       startDate: dto.newStartDate,
       updatedAt: requestDate
     });
-
-    if (!updatedChallenge) {
-      throw new ResourceNotFoundError('Failed to update challenge');
-    }
   }
 
   /**

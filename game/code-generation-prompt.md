@@ -718,3 +718,41 @@ Ensure no logic calls "new Date()" directly in the services, but always use the 
 
 Also, daos should not access "new Date()", whatever date they work with should be passed to them in input from the services.
 ```
+
+### Prompt 11
+```
+Implement UI and backend logic to implement the following auth - features.
+
+interface AuthContextType extends AuthState {
+  signIn: (email: string, password: string) => Promise<void>
+  signUp: (email: string, password: string) => Promise<void>
+  signInWithGoogle: () => Promise<void>
+  signOut: () => Promise<void>
+  resetPassword: (email: string) => Promise<void>
+  updateProfile: (data: Partial<User['user_metadata']>) => Promise<void>
+}
+
+Ensure that session-management works both on client-side and server-side routes.
+
+First of all, tell me in a concise manner how you understand this request?
+```
+
+#### Prompt 11.1
+```
+Ensure all the Svelte code uses Svelte5 syntax. Look out particularly for "on:submit" or other deprecated patterns
+```
+
+#### Prompt 11.2
+```
+Update the use of createBrowserClient and createServerClient to match the latest signatures and also the general directory structure is the latest. 
+
+@https://supabase.com/docs/guides/auth/server-side/sveltekit  
+```
+
+### Prompt 12
+```
+@challenge.service.ts
+Extract out Challenge Progress APis from ChallengeService into a new service called ChallengeProgressService in a new file "challenge-progress.service" with two methods submitUserChallengeQuiz and  listUserChallengeQuizSubmissions
+
+Remove all unused dependencies and signatures from ChallengeService. Also, export and initialize ChallengeProgressService additionally in all the locations ChallengeService is currently references
+```

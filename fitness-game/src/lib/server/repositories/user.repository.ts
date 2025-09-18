@@ -3,14 +3,17 @@ import { eq } from 'drizzle-orm';
 import { users, type User, type NewUser } from '$lib/server/db/schema';
 
 export interface IUserRepository {
-  create(userData: NewUser): Promise<User>;
-  update(userId: string, updates: Partial<User>): Promise<User | null>;
-  delete(userId: string): Promise<boolean>;
+  update(userId: string, updates: Partial<User>): Promise<void>;
   findById(userId: string): Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;
 }
 
-export class UserRepository implements IUserRepository {
+export interface IUserInternalRepository {
+  create(userData: NewUser): Promise<User>;
+  delete(userId: string): Promise<boolean>;
+}
+
+export class UserRepository implements IUserRepository, IUserInternalRepository {
   // Drizzle instance is injected
   constructor(private db: NodePgDatabase<any>) {}
 
@@ -21,13 +24,10 @@ export class UserRepository implements IUserRepository {
     return result[0];
   }
 
-  async update(userId: string, updates: Partial<User>): Promise<User | null> {
-    const result = await this.db.update(users)
+  async update(userId: string, updates: Partial<User>): Promise<void> {
+    await this.db.update(users)
       .set(updates)
-      .where(eq(users.id, userId))
-      .returning();
-    
-    return result[0] || null;
+      .where(eq(users.id, userId));
   }
 
   async delete(userId: string): Promise<boolean> {

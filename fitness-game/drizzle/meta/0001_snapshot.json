@@ -1,6 +1,6 @@
 {
-  "id": "cf74c6a8-be2d-447b-ad40-431f3fa23c3b",
-  "prevId": "dcf09351-6f3f-412e-ac52-cb595b9f2c78",
+  "id": "7b4e0324-367c-4ae7-8e6d-c0d83efd3977",
+  "prevId": "66285971-bc4b-4486-9564-01246d70de21",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -156,8 +156,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "habits_logged_count": {
-          "name": "habits_logged_count",
+        "daily_log_count": {
+          "name": "daily_log_count",
           "type": "integer",
           "primaryKey": false,
           "notNull": true
@@ -226,8 +226,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.user_habit_logs": {
-      "name": "user_habit_logs",
+    "public.user_logs": {
+      "name": "user_logs",
       "schema": "",
       "columns": {
         "id": {
@@ -243,21 +243,22 @@
           "primaryKey": false,
           "notNull": true
         },
-        "user_challenge_id": {
-          "name": "user_challenge_id",
-          "type": "uuid",
+        "log_key": {
+          "name": "log_key",
+          "type": "all_log_keys",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "log_value": {
+          "name": "log_value",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
         "log_date": {
           "name": "log_date",
           "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "values": {
-          "name": "values",
-          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
@@ -276,26 +277,13 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_habit_logs_user_id_users_id_fk": {
-          "name": "user_habit_logs_user_id_users_id_fk",
-          "tableFrom": "user_habit_logs",
+        "user_logs_user_id_users_id_fk": {
+          "name": "user_logs_user_id_users_id_fk",
+          "tableFrom": "user_logs",
           "columnsFrom": [
             "user_id"
           ],
           "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
-        },
-        "user_habit_logs_user_challenge_id_user_challenges_id_fk": {
-          "name": "user_habit_logs_user_challenge_id_user_challenges_id_fk",
-          "tableFrom": "user_habit_logs",
-          "columnsFrom": [
-            "user_challenge_id"
-          ],
-          "tableTo": "user_challenges",
           "columnsTo": [
             "id"
           ],
@@ -308,8 +296,9 @@
         "user_daily_log_unique": {
           "name": "user_daily_log_unique",
           "columns": [
-            "user_challenge_id",
-            "log_date"
+            "user_id",
+            "log_date",
+            "log_key"
           ],
           "nullsNotDistinct": false
         }
@@ -318,8 +307,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.user_profiles": {
-      "name": "user_profiles",
+    "public.user_metadata": {
+      "name": "user_metadata",
       "schema": "",
       "columns": {
         "id": {
@@ -368,9 +357,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_profiles_id_users_id_fk": {
-          "name": "user_profiles_id_users_id_fk",
-          "tableFrom": "user_profiles",
+        "user_metadata_id_users_id_fk": {
+          "name": "user_metadata_id_users_id_fk",
+          "tableFrom": "user_metadata",
           "columnsFrom": [
             "id"
           ],
@@ -425,6 +414,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "personalization_country_codes": {
+          "name": "personalization_country_codes",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
         "timezone": {
           "name": "timezone",
           "type": "text",
@@ -476,6 +471,16 @@
     }
   },
   "enums": {
+    "public.all_log_keys": {
+      "name": "all_log_keys",
+      "schema": "public",
+      "values": [
+        "dailyMovement",
+        "cleanEating",
+        "sleepQuality",
+        "hydration"
+      ]
+    },
     "public.avatar_age_range": {
       "name": "avatar_age_range",
       "schema": "public",

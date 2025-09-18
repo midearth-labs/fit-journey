@@ -6,6 +6,7 @@
   type UserChallenge,
   type AllLogKeysType,
   type LogValueType,
+  type User,
 } from "$lib/server/db/schema";
 // --- Service Types (for Dependency Injection) ---
 
@@ -126,4 +127,35 @@ export type ActiveChallengeMetadata = {
   earliestStartDate: string;
   latestEndDate: string;
   activeChallengeLoggingKeys: AllLogKeysType[];
+};
+
+type Nullable<T> = T | null;
+
+// --- User Profile DTOs ---
+export type UpdateUserProfileDto = {
+  display_name?: Nullable<User['display_name']>;
+  avatar_gender?: Nullable<User['avatar_gender']>;
+  avatar_age_range?: Nullable<User['avatar_age_range']>;
+  personalizationCountryCodes?: Nullable<User['personalizationCountryCodes']>;
+  timezone?: Nullable<User['timezone']>;
+  preferred_reminder_time?: Nullable<User['preferred_reminder_time']>;
+  notification_preferences?: Nullable<User['notification_preferences']>;
+};
+
+export type UserProfileResponse = {
+  id: string;
+  email?: string;
+  display_name: string | null;
+  avatar_gender: string | null;
+  avatar_age_range: string | null;
+  personalizationCountryCodes: string[] | null;
+  timezone: string | null;
+  preferred_reminder_time: string | null;
+  notification_preferences: {
+    daily: boolean;
+    social: boolean;
+    fitness_level: boolean;
+  } | null;
+  created_at?: string;
+  updated_at?: Date | string;
 };

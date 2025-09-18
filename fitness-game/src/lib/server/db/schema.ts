@@ -54,12 +54,15 @@ export type DailyLogPayload = Satisfies<Partial<SharedType>, {
 
 
 // User table - seeded from Supabase Auth table using trigger
+// For user profile submitted information
 export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(), // this will be the FK to Supabase Auth table
   email: text('email').notNull().unique(),
   display_name: text('display_name'),
   avatar_gender: avatarGenderEnum('avatar_gender'),
   avatar_age_range: avatarAgeRangeEnum('avatar_age_range'),
+  // country codes for content personalization.
+  personalizationCountryCodes: jsonb('personalization_country_codes').$type<string[]>(),
   timezone: text('timezone'), // e.g. UTC, UTC+1, UTC-8
   preferred_reminder_time: text('preferred_reminder_time'), // e.g. "19:00"
   notification_preferences: jsonb('notification_preferences').$type<{
@@ -71,8 +74,8 @@ export const users = pgTable('users', {
   updated_at: timestamp('updated_at').defaultNow().notNull(),
 });
 
-// UserProfile table (which is an extension of the User table)
-export const userProfiles = pgTable('user_profiles', {
+// UserMetadata table (which is an extension of the User table for non-user submitted information)
+export const userMetadata = pgTable('user_metadata', {
   id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
   current_streak_ids: jsonb('current_streak_ids').$type<{
@@ -80,8 +83,8 @@ export const userProfiles = pgTable('user_profiles', {
     cleanEating?: string;
     sleepQuality?: string;
     hydration?: string;
-    quiz_completed?: string;
-    quiz_passed?: string;
+    quizCompleted?: string;
+    quizPassed?: string;
     all?: string;
   }>(), // each value is a FK to StreakHistory
   longest_streaks: jsonb('longest_streaks').$type<{
@@ -89,8 +92,8 @@ export const userProfiles = pgTable('user_profiles', {
     cleanEating?: string;
     sleepQuality?: string;
     hydration?: string;
-    quiz_completed?: string;
-    quiz_passed?: string;
+    quizCompleted?: string;
+    quizPassed?: string;
     all?: string;
   }>(), // each value is a FK to StreakHistory
   last_activity_date: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits, weight, RHR etc
@@ -184,15 +187,15 @@ export const userLogs = pgTable('user_logs', {
 
 // Relations
 export const usersRelations = relations(users, ({ one, many }) => ({
-  profile: one(userProfiles, {
+  profile: one(userMetadata, {
     fields: [users.id],
-    references: [userProfiles.id],
+    references: [userMetadata.id],
   }),
 }));
 
-export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
+export const userProfilesRelations = relations(userMetadata, ({ one }) => ({
   user: one(users, {
-    fields: [userProfiles.id],
+    fields: [userMetadata.id],
     references: [users.id],
   }),
 }));
@@ -200,8 +203,8 @@ export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
 // Export types
 export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
-export type UserProfile = InferSelectModel<typeof userProfiles>;
-export type NewUserProfile = InferInsertModel<typeof userProfiles>;
+export type UserMetadata = InferSelectModel<typeof userMetadata>;
+export type NewUserMetadata = InferInsertModel<typeof userMetadata>;
 export type UserChallenge = InferSelectModel<typeof userChallenges>;
 export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'dailyLogCount'>;
 export type UserChallengeProgress = InferSelectModel<typeof userChallengeProgress>;

@@ -8,7 +8,7 @@ BEGIN
     INSERT INTO public.users (id, email, created_at, updated_at)
     VALUES (NEW.id, NEW.email, NOW(), NOW());
     
-    INSERT INTO public.user_profiles (id, created_at, updated_at)
+    INSERT INTO public.user_metadata (id, created_at, updated_at)
     VALUES (NEW.id, NOW(), NOW());
     
     RETURN NEW;
@@ -29,7 +29,7 @@ BEGIN
     UPDATE user_challenges 
     SET knowledge_base_completed_count = knowledge_base_completed_count + 1, last_activity_date = GREATEST(last_activity_date, NEW.updated_at)
     WHERE id = NEW.user_challenge_id AND user_id = NEW.user_id;
-    UPDATE user_profiles
+    UPDATE user_metadata
     SET last_activity_date = GREATEST(last_activity_date, NEW.last_attempted_at)
     WHERE id = NEW.user_id;
     RETURN NEW;
@@ -54,7 +54,7 @@ BEGIN
     UPDATE user_challenges 
     SET daily_log_count = daily_log_count + 1, last_activity_date = GREATEST(last_activity_date, NEW.updated_at)
     WHERE id = NEW.user_challenge_id AND user_id = NEW.user_id;
-    UPDATE user_profiles
+    UPDATE user_metadata
     SET last_activity_date = GREATEST(last_activity_date, NEW.updated_at)
     WHERE id = NEW.user_id;
     RETURN NEW;

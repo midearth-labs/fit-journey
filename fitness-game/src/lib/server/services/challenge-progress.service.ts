@@ -28,6 +28,10 @@ export class ChallengeProgressService implements IChallengeProgressService {
     private readonly requestContext: AuthRequestContext
   ) {}
 
+    /**
+     * Submit a quiz for a challenge article
+     * POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId
+     */
   async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
     const { userChallengeRepository, challengeDAO, userChallengeProgressRepository } = this.dependencies;
@@ -79,6 +83,10 @@ export class ChallengeProgressService implements IChallengeProgressService {
     });
   }
 
+  /**
+     * List quiz submissions for a user challenge
+     * GET /user-challenges/:userChallengeId/quizzes
+     */
   async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]> {
     const { user: { id: userId } } = this.requestContext;
     const { userChallengeRepository, userChallengeProgressRepository } = this.dependencies;

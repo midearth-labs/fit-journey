@@ -11,7 +11,7 @@ export type IUserChallengeRepository = {
     findById(id: string, userId: string): Promise<UserChallengeWithImplicitStatus | null>;
     findByUserId(userId: string): Promise<UserChallengeWithImplicitStatus[]>;
     findActiveByUserId(userId: string): Promise<UserChallengeWithImplicitStatus | null>;
-    update(updates: UpdateUserChallenge): Promise<UserChallengeWithImplicitStatus | null>;
+    update(updates: UpdateUserChallenge): Promise<void>;
     delete(id: string, userId: string): Promise<boolean>;
     batchUpdateChallengeStatuses(requestDate: Date): Promise<void>;
     findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata>;
@@ -99,8 +99,8 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   /**
    * Update a user challenge
    */
-  async update(updates: UpdateUserChallenge): Promise<UserChallengeWithImplicitStatus | null> {
-    const [updatedChallenge] = await this.db
+  async update(updates: UpdateUserChallenge): Promise<void> {
+    await this.db
       .update(userChallenges)
       .set({ ...updates })
       .where(
@@ -109,12 +109,6 @@ export class UserChallengeRepository implements IUserChallengeRepository {
           eq(userChallenges.userId, updates.userId)
         )
       )
-      .returning();
-    
-    return updatedChallenge ? {
-      ...updatedChallenge,
-      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: updatedChallenge.id}, updatedChallenge),
-    } : null;
   }
   async findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata> {
     const challenges = await this.findByUserId(userId);
