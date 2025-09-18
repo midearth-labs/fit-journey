@@ -780,3 +780,29 @@ Similar to the REST path comments on ChallengeService.getUserChallenge, add comm
 ```
 Add the "REST path" comment instruction to the services: AGENTS.MD
 ```
+
+### Prompt 14
+```
+I'd like to create Svelte 15 APIs or Form actions to connect to the services defined in @services/   , I'd like to use a proper REST pattern as documented in each Service method and under the route path `/api/v1/` using best practices. "/api/v1" is a protected route , so you can be sure that authServices is not null and you can safely grab any service from there with the ! operator to remove the nullability.
+
+Also, I'd like to use Zod to declare the request and responses models. 
+
+Derive the Zod schemas from the dto input structure for each method and infer some meaningful validation defaults for each property based on its name or expectation. Make sure code is reused as much as possible, and also when types are extended e.g. type A = B & {...}, make sure the zod schema also reuses via schema.extend etc.
+
+Tell me concisely how you will approach starting with UserProfileService and LogService, if I like the approach, I will give you the go-ahead to implement the rest.
+```
+
+#### Prompt 14.1
+```
+Ok, I like the approach. Start implementing service by service. Do no add any tests yet.
+```
+
+#### Prompt 14.2
+```
+Ensure to use the latest Zod documentation: @https://zod.dev/api 
+```
+
+#### Prompt 14.3
+```
+Add an AGENTS.MD for APIs under "/api/v1" directory based on the approach you just took
+```
