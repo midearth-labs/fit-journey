@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, lte, lt, gte, notInArray } from 'drizzle-orm';
-import { userChallenges, type UserChallenge, type NewUserChallenge, type UpdateUserChallenge, type AllHabitLogKeysType } from '$lib/server/db/schema';
+import { userChallenges, type UserChallenge, type NewUserChallenge, type UpdateUserChallenge, type AllLogKeysType } from '$lib/server/db/schema';
 import { CHALLENGE_CONSTANTS } from '$lib/server/content/types/constants';
 import { type IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
 import { type IChallengeDAO } from '$lib/server/content/daos/challenge';
@@ -29,7 +29,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   async create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus> {
     const [challenge] = await this.db
       .insert(userChallenges)
-      .values({...challengeData, updatedAt: challengeData.createdAt, status: 'not_started', knowledgeBaseCompletedCount: 0, habitsLoggedCount: 0})
+      .values({...challengeData, updatedAt: challengeData.createdAt, status: 'not_started', knowledgeBaseCompletedCount: 0, dailyLogCount: 0})
       .returning();
     
     return {
@@ -128,8 +128,8 @@ export class UserChallengeRepository implements IUserChallengeRepository {
         challenge: this.challengeDAO.getByIdOrThrow(userChallenge.challengeId, () => new Error(`Challenge ${userChallenge.challengeId} not found`))
       }})
     
-    const activeChallengeHabits = activeChallenges
-    .flatMap(({challenge}) => challenge.habits)
+    const activeChallengeLoggingKeys = activeChallenges
+    .flatMap(({challenge}) => challenge.loggingKeys)
     // Remove duplicates
     .filter((habit, index, self) => self.indexOf(habit) === index);
 
@@ -140,7 +140,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
       .sort()
       .reverse()[0];
 
-    return {activeChallengeHabits, earliestStartDate, latestEndDate};
+    return {activeChallengeLoggingKeys, earliestStartDate, latestEndDate};
   }
 
   //@TODO: Refactor into one method
@@ -171,7 +171,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
 
   private getRealChallengeStatus(
     payload: ImplicitStatusCheckPayload,
-    userChallenge: Pick<UserChallenge, 'status' | 'startDate' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>
+    userChallenge: Pick<UserChallenge, 'status' | 'startDate' | 'knowledgeBaseCompletedCount' | 'dailyLogCount'>
     ): UserChallenge['status'] {
         const { referenceDate: requestDate, challengeId } = payload;
         const challenge = this.challengeDAO.getByIdOrThrow(challengeId, () => new Error(`Challenge ${challengeId} not found`));
@@ -201,7 +201,7 @@ export class UserChallengeRepository implements IUserChallengeRepository {
             case 'active':
                 // An active challenge might transition to 'completed'.
                 const isComplete = userChallenge.knowledgeBaseCompletedCount >= challengeDurationDays &&
-                                userChallenge.habitsLoggedCount >= challengeDurationDays;
+                                userChallenge.dailyLogCount >= challengeDurationDays;
                 if (isComplete) {
                     return 'completed';
                 }
@@ -327,10 +327,10 @@ export class UserChallengeRepository implements IUserChallengeRepository {
       .where(and(
         eq(userChallenges.status, 'active'),
         gte(userChallenges.knowledgeBaseCompletedCount, challengeDays),
-        gte(userChallenges.habitsLoggedCount, challengeDays)
+        gte(userChallenges.dailyLogCount, challengeDays)
       ));
     // Expected SQL:
-    // UPDATE "user_challenges" SET "status" = 'completed', "updated_at" = $1 WHERE "status" = 'active' AND "knowledge_base_completed_count" >= $2 AND "habits_logged_count" >= $3
+    // UPDATE "user_challenges" SET "status" = 'completed', "updated_at" = $1 WHERE "status" = 'active' AND "knowledge_base_completed_count" >= $2 AND "daily_log_count" >= $3
   
     return {
       lockExpiredChallengesQuery,

@@ -2,9 +2,10 @@
 
   import {
     type UserAnswer, 
-    type DailyHabitLogPayload, 
+    type DailyLogPayload, 
   type UserChallenge,
-  type AllHabitLogKeysType,
+  type AllLogKeysType,
+  type LogValueType,
 } from "$lib/server/db/schema";
 // --- Service Types (for Dependency Injection) ---
 
@@ -49,18 +50,22 @@ export type SubmitUserChallengeQuizDto = {
   overrideSubmission?: boolean;
 };
 
-export type PutUserChallengeLogDto = {
+export type PutUserLogDto = {
   logDate: string; // YYYY-MM-DD format
-  values: DailyHabitLogPayload;
+  values: DailyLogPayload;
 };
 
-export type ListUserChallengeLogsDto = {
-  userChallengeId: string;
+export type ListUserLogsDto = {
+  userChallengeId?: string;
   fromDate?: string; // YYYY-MM-DD format
   toDate?: string; // YYYY-MM-DD format
 };
 
-export type ListUserChallengeQuizSubmissionsDto = ListUserChallengeLogsDto;
+export type ListUserChallengeQuizSubmissionsDto = {
+  userChallengeId: string;
+  fromDate?: string; // YYYY-MM-DD format
+  toDate?: string; // YYYY-MM-DD format
+};;
 
 // --- Challenge Response Types ---
 
@@ -75,7 +80,7 @@ export type UserChallengeSummaryResponse = NewUserChallengeResponse & {
   originalStartDate: string;
   status: 'not_started' | 'active' | 'completed' | 'locked' | 'inactive';
   knowledgeBaseCompletedCount: number;
-  habitsLoggedCount: number;
+  dailyLogCount: number;
   lastActivityDate?: string;
   createdAt: string;
   updatedAt: string;
@@ -84,10 +89,12 @@ export type UserChallengeSummaryResponse = NewUserChallengeResponse & {
 
 export type UserChallengeDetailResponse = UserChallengeSummaryResponse
 
-export type UserHabitLogResponse = {
+export type UserLogResponse = {
   logDate: string;
   // @TODO: decouple the database models from the service layer
-  values: DailyHabitLogPayload;
+  values: {
+    [Property in keyof DailyLogPayload]?: LogValueType<number>;
+  };
 };
 
 export type UserChallengeProgressResponse = {
@@ -118,5 +125,5 @@ export type UserChallengeWithImplicitStatus = UserChallenge & {
 export type ActiveChallengeMetadata = {
   earliestStartDate: string;
   latestEndDate: string;
-  activeChallengeHabits: AllHabitLogKeysType[];
+  activeChallengeLoggingKeys: AllLogKeysType[];
 };

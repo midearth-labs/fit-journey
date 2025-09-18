@@ -1,22 +1,21 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, gte, lte, sql, inArray } from 'drizzle-orm';
-import { userHabitLogs, type UserHabitLog, type NewUserHabitLog, type AllHabitLogKeysType, AllHabitLogKeys, type HabitLogValueType } from '$lib/server/db/schema';
+import { userLogs, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType } from '$lib/server/db/schema';
 import type { IChallengeDAO } from '../content/daos';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
 
-export type IUserHabitLogsRepository = {
-    upsert(logData: Omit<NewUserHabitLog, 'logKey' | 'logValue'>, values: Array<{key: AllHabitLogKeysType, value: HabitLogValueType<number>}>): Promise<UserHabitLog[]>;
-    findByUserChallenge(challenge: {id: string, startDate: string}, userId: string): Promise<UserHabitLog[]>;
-    findByUserChallengeAndDateRange(challenge: {id: string, startDate: string}, userId: string, fromDate?: string, toDate?: string): Promise<UserHabitLog[]>;
-    findByUserChallengeAndDate(challenge: {id: string, startDate: string}, userId: string, logDate: string): Promise<UserHabitLog[]>;
-    findByUser(userId: string): Promise<UserHabitLog[]>;
-    findByUserDateRange(userId: string, fromDate?: string, toDate?: string): Promise<UserHabitLog[]>;
-    findByUserDate(userId: string, logDate: string): Promise<UserHabitLog[]>;
-    delete(id: string, userId: string): Promise<boolean>;
+export type IUserLogsRepository = {
+    upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<UserLog[]>;
+    findByUserChallenge(challenge: {id: string, startDate: string}, userId: string): Promise<UserLog[]>;
+    findByUserChallengeAndDateRange(challenge: {id: string, startDate: string}, userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
+    findByUserChallengeAndDate(challenge: {id: string, startDate: string}, userId: string, logDate: string): Promise<UserLog[]>;
+    findByUser(userId: string): Promise<UserLog[]>;
+    findByUserDateRange(userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
+    findByUserDate(userId: string, logDate: string): Promise<UserLog[]>;
   };
   
 
-export class UserHabitLogsRepository implements IUserHabitLogsRepository {
+export class UserLogsRepository implements IUserLogsRepository {
   constructor(
     private db: NodePgDatabase<any>,
     private readonly challengeDAO: IChallengeDAO,
@@ -24,7 +23,7 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   ) {}
 
   /**
-   * Upsert multiple user habit log records
+   * Upsert multiple user log records
    * This handles both creating new records and updating existing ones
    * Uses the unique constraint on (userId, logKey, logDate)
    * Each value in the values array creates a separate row
@@ -34,9 +33,9 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
    * - null values: delete corresponding entries
    * - undefined values: ignore them
    */
-  async upsert(logData: Omit<NewUserHabitLog, 'logKey' | 'logValue'>, values: Array<{key: AllHabitLogKeysType, value: HabitLogValueType<number>}>): Promise<UserHabitLog[]> {
-    const definedValues: Array<{key: AllHabitLogKeysType, value: number}> = [];
-    const keysToDelete: Array<AllHabitLogKeysType> = [];
+  async upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<UserLog[]> {
+    const definedValues: Array<{key: AllLogKeysType, value: T}> = [];
+    const keysToDelete: Array<AllLogKeysType> = [];
     
     // Partition values into defined, null, and undefined groups
     values.forEach(value => {
@@ -54,7 +53,7 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
 
     // Execute operations in a transaction
     return await this.db.transaction(async (tx) => {
-      const results: UserHabitLog[] = [];
+      const results: UserLog[] = [];
 
       // Handle defined values with upsert logic
       if (definedValues.length > 0) {
@@ -66,17 +65,17 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
         }));
 
         const upsertedLogs = await tx
-          .insert(userHabitLogs)
+          .insert(userLogs)
           .values(insertData)
           .onConflictDoUpdate({
-            target: [userHabitLogs.userId, userHabitLogs.logKey, userHabitLogs.logDate],
+            target: [userLogs.userId, userLogs.logKey, userLogs.logDate],
             set: {
               // Dynamically update logValue based on the conflicting row's logValue
               logValue: sql`EXCLUDED.log_value`,
               updatedAt: logData.createdAt,
             },
             // This makes sure we only update the log for the user
-            setWhere: sql`${userHabitLogs.userId} = ${logData.userId}`
+            setWhere: sql`${userLogs.userId} = ${logData.userId}`
           })
           .returning();
         
@@ -86,12 +85,12 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
       // Handle null values by deleting corresponding entries
       if (keysToDelete.length > 0) {
         await tx
-          .delete(userHabitLogs)
+          .delete(userLogs)
           .where(
             and(
-              eq(userHabitLogs.userId, logData.userId),
-              eq(userHabitLogs.logDate, logData.logDate),
-              inArray(userHabitLogs.logKey, keysToDelete)
+              eq(userLogs.userId, logData.userId),
+              eq(userLogs.logDate, logData.logDate),
+              inArray(userLogs.logKey, keysToDelete)
             )
           );
       }
@@ -102,18 +101,18 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
   }
 
   /**
-   * Find all habit logs for a user
+   * Find all log records for a user
    */
-  async findByUser(userId: string): Promise<UserHabitLog[]> {
+  async findByUser(userId: string): Promise<UserLog[]> {
     return await this._findByUserDateRangeAndKeys(userId);
   }
 
   /**
-   * Find habit logs for a user challenge
+   * Find log records for a user challenge
    * Uses the userChallenge's startDate as fromDate and calculates toDate as startDate + challenge.durationDays
-   * Filters by the challenge's habit keys
+   * Filters by the challenge's tracking keys
    */
-  async findByUserChallenge({id: challengeId, startDate}: {id: string, startDate: string}, userId: string): Promise<UserHabitLog[]> {
+  async findByUserChallenge({id: challengeId, startDate}: {id: string, startDate: string}, userId: string): Promise<UserLog[]> {
     return await this.findByUserChallengeAndDateRange({id: challengeId, startDate}, userId);
   }
 
@@ -125,10 +124,10 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
     userId: string,
     userFromDate?: string, 
     userEndDate?: string
-  ): Promise<UserHabitLog[]> {
+  ): Promise<UserLog[]> {
      const {id: challengeId, startDate: challengeStartDate} = challenge;
-     // Get the challenge to access durationDays and habits
-     const {durationDays, habits: habitKeys} = this.challengeDAO.getByIdOrThrow(challengeId, () => new Error(`Challenge ${challengeId} not found`));
+     // Get the challenge to access durationDays and tracking keys
+     const {durationDays, loggingKeys: trackingKeys} = this.challengeDAO.getByIdOrThrow(challengeId, () => new Error(`Challenge ${challengeId} not found`));
      const challengeEndDate = this.dateTimeHelper.daysOffset(challengeStartDate, durationDays);
 
    // If userFromDate or userEndDate is provided, they must fall within the challenge period
@@ -147,38 +146,38 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
       return [];
      }
  
-     return await this._findByUserDateRangeAndKeys(userId, fromDate, toDate, habitKeys);
+     return await this._findByUserDateRangeAndKeys(userId, fromDate, toDate, trackingKeys);
   }
 
   /**
-   * Find habit log for a specific date within a user challenge
+   * Find log record for a specific date within a user challenge
    */
   async findByUserChallengeAndDate(
     challenge: {id: string, startDate: string},
     userId: string,
     logDate: string
-  ): Promise<UserHabitLog[]> {
+  ): Promise<UserLog[]> {
     return await this.findByUserChallengeAndDateRange(challenge, userId, logDate, logDate);
   }
 
   /**
-   * Find habit logs for a user within a date range
+   * Find log records for a user within a date range
    */
   async findByUserDateRange(
     userId: string,
     fromDate?: string, 
     toDate?: string
-  ): Promise<UserHabitLog[]> {
+  ): Promise<UserLog[]> {
     return await this._findByUserDateRangeAndKeys(userId, fromDate, toDate);
   }
 
   /**
-   * Find habit log for a specific date within a user challenge
+   * Find log record for a specific date within a user challenge
    */
   async findByUserDate( 
     userId: string,
     logDate: string
-  ): Promise<UserHabitLog[]> {
+  ): Promise<UserLog[]> {
     return await this._findByUserDateRangeAndKeys(userId, logDate, logDate);
   }
 
@@ -186,40 +185,21 @@ export class UserHabitLogsRepository implements IUserHabitLogsRepository {
     userId: string,
     fromDate?: string, 
     toDate?: string,
-    keys?: AllHabitLogKeysType[]
-  ): Promise<UserHabitLog[]> {
+    keys?: AllLogKeysType[]
+  ): Promise<UserLog[]> {
     const whereClause = [
-        eq(userHabitLogs.userId, userId),
-        ...(fromDate ? [gte(userHabitLogs.logDate, fromDate)] : []),
-        ...(toDate ? [lte(userHabitLogs.logDate, toDate)] : []),
-        ...(keys ? [inArray(userHabitLogs.logKey, keys)] : []),
+        eq(userLogs.userId, userId),
+        ...(fromDate ? [gte(userLogs.logDate, fromDate)] : []),
+        ...(toDate ? [lte(userLogs.logDate, toDate)] : []),
+        ...(keys ? [inArray(userLogs.logKey, keys)] : []),
     ];
     return await this.db
       .select()
-      .from(userHabitLogs)
+      .from(userLogs)
       .where(
         and(
           ...whereClause
         )
       )
-  }
-
-
-  /**
-   * Delete a habit log record
-   */
-  // @TODO: check if this method is needed, delete if not
-  async delete(id: string, userId: string): Promise<boolean> {
-    const result = await this.db
-      .delete(userHabitLogs)
-      .where(
-        and(
-          eq(userHabitLogs.id, id),
-          eq(userHabitLogs.userId, userId)
-        )
-      );
-      // @TODO: Add logic to update the user challenge progress count
-    
-    return result.rowCount > 0;
   }
 }

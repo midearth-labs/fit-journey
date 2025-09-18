@@ -2,12 +2,9 @@ import {
   type CreateUserChallengeDto,
   type UpdateUserChallengeScheduleDto,
   type SubmitUserChallengeQuizDto,
-  type PutUserChallengeLogDto,
-  type ListUserChallengeLogsDto,
   type UserChallengeSummaryResponse,
   type UserChallengeDetailResponse,
   type NewUserChallengeResponse,
-  type UserHabitLogResponse,
   type UserChallengeProgressResponse,
   type ListUserChallengeQuizSubmissionsDto,
   type AuthRequestContext,
@@ -18,10 +15,9 @@ import {
   InternalServerError,
   notFoundCheck
 } from '$lib/server/shared/errors';
-import { type HabitLogValueType, type AllHabitLogKeysType, type DailyHabitLogPayload, type FiveStarValuesType } from '$lib/server/db/schema';
 import { type IDateTimeHelper } from '../helpers/date-time.helper';
-import { type IUserChallengeProgressRepository, type IUserChallengeRepository, type IUserHabitLogsRepository } from '$lib/server/repositories';
-import { type UserChallenge, type UserChallengeProgress, type UserHabitLog } from '$lib/server/db/schema';
+import { type IUserChallengeProgressRepository, type IUserChallengeRepository } from '$lib/server/repositories';
+import { type UserChallenge, type UserChallengeProgress } from '$lib/server/db/schema';
 import { type IChallengeDAO } from '$lib/server/content/daos';
 
 
@@ -31,8 +27,6 @@ export type IChallengeService = {
     listUserChallenges(dto: {}): Promise<UserChallengeSummaryResponse[]>;
     updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void>;
     submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void>;
-    putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void>;
-    listUserChallengeLogs(dto: ListUserChallengeLogsDto): Promise<UserHabitLogResponse[]>;
     listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]>;
     updateChallengeStatuses(): Promise<void>;
   };
@@ -42,7 +36,6 @@ export class ChallengeService implements IChallengeService {
     private readonly dependencies: {
       readonly userChallengeRepository: IUserChallengeRepository;
       readonly userChallengeProgressRepository: IUserChallengeProgressRepository;
-      readonly userHabitLogsRepository: IUserHabitLogsRepository;
       readonly challengeDAO: IChallengeDAO;
       readonly dateTimeHelper: IDateTimeHelper;
     },
@@ -218,70 +211,8 @@ export class ChallengeService implements IChallengeService {
     return status === 'not_started';
   }
 
-  
-  /**
-   * Put user challenge log
-   * PUT /user-challenges/:userChallengeId/logs/:logDate
-   */
-  async putUserChallengeLog(dto: PutUserChallengeLogDto): Promise<void> {
-    const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, dateTimeHelper, userHabitLogsRepository } = this.dependencies;
-    
-    //@TODO: Use this to generate warnings in response, if challenge habits are not set, and if log date is outside all active challenge period
-    const {activeChallengeHabits, earliestStartDate, latestEndDate} = 
-      await userChallengeRepository.findAllActiveChallengeMetadata(userId, { requestDate });
-
-    // Validate log date is not in the future and not before start date
-    // @TODO double check this logic, and also that you cant log for a date outside the challenge period range
-    // Implement an isWithinRange method somewhere (maybe in the date-time service)
-    if (dateTimeHelper.isDateInFuture(dto.logDate)) {
-      throw new ValidationError('Cannot log habits for future dates');
-    }
-
-    // Transform DailyHabitLogPayload into the expected array format
-    const valuesArray = Object.entries(dto.values)
-      .map(([key, value]) => ({ 
-        key: key as AllHabitLogKeysType, 
-        value: value as HabitLogValueType<number>
-      }));
-
-    // Upsert the habit log
-    await userHabitLogsRepository.upsert({
-        userId,
-        logDate: dto.logDate,
-        createdAt: requestDate,
-      }, valuesArray);
-  }
-
-  /**
-   * List user challenge logs
-   * GET /user-challenges/:userChallengeId/logs?from=YYYY-MM-DD&to=YYYY-MM-DD
-   */
-  async listUserChallengeLogs(dto: ListUserChallengeLogsDto): Promise<UserHabitLogResponse[]> {
-    const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, userHabitLogsRepository, dateTimeHelper } = this.dependencies;
-    const challenge = notFoundCheck(
-        await userChallengeRepository.findById(dto.userChallengeId, userId),
-        'Challenge'
-    );
-
-    // Validate date range
-    if (dto.fromDate && dto.toDate && dto.fromDate > dto.toDate) {
-      throw new ValidationError('From date must be before or equal to to date');
-    }
-
-    const logs = await userHabitLogsRepository.findByUserChallengeAndDateRange(
-      {id: dto.userChallengeId, startDate: challenge.startDate},
-      userId,
-      dto.fromDate,
-      dto.toDate
-    );
-
-    return this.mapToUserHabitLogResponse(logs);
-  }
-
   async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]> {
-    const { requestDate, user: { id: userId } } = this.requestContext;
+    const { user: { id: userId } } = this.requestContext;
     const { userChallengeRepository, userChallengeProgressRepository } = this.dependencies;
     // Resource existence check
     notFoundCheck(
@@ -317,40 +248,11 @@ export class ChallengeService implements IChallengeService {
       originalStartDate: challenge.originalStartDate,
       status: implicitStatus,
       knowledgeBaseCompletedCount: challenge.knowledgeBaseCompletedCount,
-      habitsLoggedCount: challenge.habitsLoggedCount,
+      dailyLogCount: challenge.dailyLogCount,
       lastActivityDate: challenge.lastActivityDate?.toISOString(),
       createdAt: challenge.createdAt.toISOString(),
       updatedAt: challenge.updatedAt.toISOString()
     };
-  }
-
-  /**
-   * Map database model to habit log response DTO
-   * Groups logs by date and creates a values object for each date
-   */
-  private mapToUserHabitLogResponse(logs: UserHabitLog[]): UserHabitLogResponse[] {
-    // Group logs by date
-    const logsByDate = logs.reduce((acc, log) => {
-      const dateKey = log.logDate;
-      if (!acc.has(dateKey)) {
-        acc.set(dateKey, {
-          logDate: log.logDate,
-          values: {} as DailyHabitLogPayload,
-        });
-      }
-      
-      // Add the habit value to the values object
-      const entry = acc.get(dateKey)!;
-      entry.values[log.logKey] = log.logValue as HabitLogValueType<unknown>;
-      
-      return acc;
-    }, new Map<string, UserHabitLogResponse>());
-
-    // Convert to array and format timestamps
-    return Object.values(logsByDate).map(log => ({
-      logDate: log.logDate,
-      values: log.values,
-    }));
   }
 
   private mapToUserChallengeProgressResponse(progress: UserChallengeProgress): UserChallengeProgressResponse {

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { BaseContentSchema, UUIDSchema } from './common';
 import { KnowledgeBaseSchema } from './knowledge-base';
-import { HabitIdsSchema } from './streak-type';
+import { LoggingKeysSchema } from './streak-type';
 
 /**
  * Defines the link between a Challenge and a Knowledge Base article.
@@ -26,7 +26,7 @@ export const ChallengeSchema = UUIDSchema.extend(BaseContentSchema.shape).extend
     description: z.string().describe("A marketing or explanatory description of the challenge."),
     durationDays: z.number().int().positive({ message: "Duration must be at least 1 day." }).describe("The total duration of the challenge in days."),
     articles: z.array(ChallengeArticleSchema).describe("An array of articles that are part of this challenge's curriculum."),
-    habits: z.array(HabitIdsSchema).describe("An array of habits that users are expected to track during this challenge."),
+    loggingKeys: z.array(LoggingKeysSchema).describe("An array of keys of metrics that users are expected to log during this challenge."),
 });
 
 // To infer the TypeScript type directly from the schema:

@@ -6,9 +6,9 @@ import {
   UserProfileRepository,
   UserChallengeRepository,
   UserChallengeProgressRepository,
-  UserHabitLogsRepository,
+  UserLogsRepository,
 } from '$lib/server/repositories';
-import { ChallengeService, ChallengeContentService, type IChallengeContentService, type IChallengeService, type AuthServices } from '$lib/server/services';
+import { ChallengeService, ChallengeContentService, LogService, type IChallengeContentService, type IChallengeService, type AuthServices, type ILogService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -29,11 +29,12 @@ export class ServiceFactory {
   private readonly userProfileRepository: UserProfileRepository;
   private readonly userChallengeRepository: UserChallengeRepository;
   private readonly userChallengeProgressRepository: UserChallengeProgressRepository;
-  private readonly userHabitLogsRepository: UserHabitLogsRepository;
+  private readonly userLogsRepository: UserLogsRepository;
   
   // Services
   private readonly challengeContentServiceCreator: ServiceCreatorFromRequestContext<IChallengeContentService>;
   private readonly challengeServiceCreator: ServiceCreatorFromRequestContext<IChallengeService>;
+  private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
   
   private constructor(content: Content) {
     const db = getDBInstance();
@@ -47,7 +48,7 @@ export class ServiceFactory {
     this.userProfileRepository = new UserProfileRepository(db);
     this.userChallengeRepository = new UserChallengeRepository(db, this.dateTimeHelper, this.contentDAOFactory.getDAO('Challenge'));
     this.userChallengeProgressRepository = new UserChallengeProgressRepository(db);
-    this.userHabitLogsRepository = new UserHabitLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
+    this.userLogsRepository = new UserLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
     
     // Initialize services
     this.challengeContentServiceCreator = createServiceFromClass(
@@ -57,7 +58,11 @@ export class ServiceFactory {
     
     this.challengeServiceCreator = createServiceFromClass(
       ChallengeService,
-      { userChallengeRepository: this.userChallengeRepository, userChallengeProgressRepository: this.userChallengeProgressRepository, userHabitLogsRepository: this.userHabitLogsRepository, challengeDAO: this.contentDAOFactory.getDAO('Challenge'), dateTimeHelper: this.dateTimeHelper }
+      { userChallengeRepository: this.userChallengeRepository, userChallengeProgressRepository: this.userChallengeProgressRepository, challengeDAO: this.contentDAOFactory.getDAO('Challenge'), dateTimeHelper: this.dateTimeHelper }
+    );
+    this.logServiceCreator = createServiceFromClass(
+      LogService,
+      { userChallengeRepository: this.userChallengeRepository, userLogsRepository: this.userLogsRepository, dateTimeHelper: this.dateTimeHelper }
     );
   }
   
@@ -90,6 +95,7 @@ export class ServiceFactory {
     return {
       challengeContentService: () => this.challengeContentServiceCreator(authRequestContext),
       challengeService: () => this.challengeServiceCreator(authRequestContext),
+      logService: () => this.logServiceCreator(authRequestContext),
     };
   }
   
@@ -102,7 +108,7 @@ export class ServiceFactory {
       userProfileRepository: this.userProfileRepository,
       userChallengeRepository: this.userChallengeRepository,
       userChallengeProgressRepository: this.userChallengeProgressRepository,
-      userHabitLogsRepository: this.userHabitLogsRepository,
+      userLogsRepository: this.userLogsRepository,
     };
   }
   

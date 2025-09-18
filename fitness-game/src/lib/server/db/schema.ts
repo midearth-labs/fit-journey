@@ -2,12 +2,12 @@ import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, 
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
-export const FiveStarHabitLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration'] as const;
-export const AllHabitLogKeys = [...FiveStarHabitLogKeys] as const;
+export const FiveStarLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration'] as const;
+export const AllLogKeys = [...FiveStarLogKeys] as const;
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
-export const allHabitLogKeysEnum = pgEnum('all_habit_log_keys', AllHabitLogKeys);
+export const allLogKeysEnum = pgEnum('all_log_keys', AllLogKeys);
 /**
  * Describes the structure for a single answer submitted by a user for a quiz.
  * An array of these will be stored in the `quizAnswers` JSONB field.
@@ -31,29 +31,25 @@ export const userChallengeStatusEnum = pgEnum('user_challenge_status', [
   'inactive',
 ]);
 
-/**
- * Describes the structure for the daily habit log.
- * The key is the `challengeHabitId` (as a string, since JSON keys are strings),
- * and the value is the data logged by the user.
- */
-export type AllHabitLogKeysType = (typeof AllHabitLogKeys)[number];
+export type AllLogKeysType = (typeof AllLogKeys)[number];
 export const FiveStarValues = [1, 2, 3, 4, 5] as const;
 export type FiveStarValuesType = (typeof FiveStarValues)[number];
 export const YesNoValues = [1, 0] as const;
 export type YesNoValuesType = (typeof YesNoValues)[number];
 
 type Satisfies<Constraint, Target extends Constraint> = Target;
-type SharedType = Record<AllHabitLogKeysType, 
-  HabitLogValueType<FiveStarValuesType> | 
-  HabitLogValueType<YesNoValuesType>>;
+type SharedType = Record<AllLogKeysType, 
+  LogValueType<FiveStarValuesType> | 
+  LogValueType<YesNoValuesType>>;
 
-export type HabitLogValueType<V extends number> = V | null | undefined;
+export type LogValueType<V extends number> = V | null | undefined;
 
-export type DailyHabitLogPayload = Satisfies<SharedType, {
-  dailyMovement: HabitLogValueType<FiveStarValuesType>,
-  cleanEating: HabitLogValueType<FiveStarValuesType>,
-  sleepQuality: HabitLogValueType<FiveStarValuesType>,
-  hydration: HabitLogValueType<FiveStarValuesType>,
+// @TODO LATER: TIGHTEN THIS TYPE USING CONDITIONAL TYPES (KEYOF / NEVER ETC)
+export type DailyLogPayload = Satisfies<Partial<SharedType>, {
+  dailyMovement?: LogValueType<FiveStarValuesType>,
+  cleanEating?: LogValueType<FiveStarValuesType>,
+  sleepQuality?: LogValueType<FiveStarValuesType>,
+  hydration?: LogValueType<FiveStarValuesType>,
 }>;
 
 
@@ -97,7 +93,7 @@ export const userProfiles = pgTable('user_profiles', {
     quiz_passed?: string;
     all?: string;
   }>(), // each value is a FK to StreakHistory
-  last_activity_date: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits
+  last_activity_date: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits, weight, RHR etc
   created_at: timestamp('created_at').notNull(),
   updated_at: timestamp('updated_at').notNull(),
 });
@@ -121,7 +117,7 @@ export const userChallenges = pgTable('user_challenges', {
   status: userChallengeStatusEnum('status').notNull(),
 
   knowledgeBaseCompletedCount: integer('knowledge_base_completed_count').notNull(),
-  habitsLoggedCount: integer('habits_logged_count').notNull(),
+  dailyLogCount: integer('daily_log_count').notNull(),
   lastActivityDate: timestamp('last_activity_date'),
   
   createdAt: timestamp('created_at').notNull(),
@@ -167,16 +163,10 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
   ];
 });
 
-
-/**
- * USER HABIT LOGS (Redesigned)
- * This table now stores one row per user, per challenge, per day.
- * All habit data for that day is consolidated into a single JSONB object.
- */
-export const userHabitLogs = pgTable('user_habit_logs', {
+export const userLogs = pgTable('user_logs', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  logKey: allHabitLogKeysEnum('log_key').notNull(),
+  logKey: allLogKeysEnum('log_key').notNull(),
   logValue: integer('log_value').notNull(),
   // The specific date this log entry is for. CRITICAL for back-logging.
   logDate: date('log_date').notNull(),
@@ -213,9 +203,9 @@ export type NewUser = InferInsertModel<typeof users>;
 export type UserProfile = InferSelectModel<typeof userProfiles>;
 export type NewUserProfile = InferInsertModel<typeof userProfiles>;
 export type UserChallenge = InferSelectModel<typeof userChallenges>;
-export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'habitsLoggedCount'>;
+export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'dailyLogCount'>;
 export type UserChallengeProgress = InferSelectModel<typeof userChallengeProgress>;
 export type NewUserChallengeProgress = Omit<InferInsertModel<typeof userChallengeProgress>, 'id' | 'attempts' | 'lastAttemptedAt'>;
-export type UserHabitLog = InferSelectModel<typeof userHabitLogs>;
-export type NewUserHabitLog = Omit<InferInsertModel<typeof userHabitLogs>, 'id' | 'updatedAt'>;
+export type UserLog = InferSelectModel<typeof userLogs>;
+export type NewUserLog = Omit<InferInsertModel<typeof userLogs>, 'id' | 'updatedAt'>;
 export type UpdateUserChallenge = Partial<UserChallenge> & Pick<UserChallenge, 'updatedAt' | 'id' | 'userId'>

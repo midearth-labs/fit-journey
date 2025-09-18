@@ -166,7 +166,7 @@
             "suggestedDay": 40
             }
         ],
-        "habits": [
+        "loggingKeys": [
             "dailyMovement",
             "cleanEating",
             "sleepQuality",
