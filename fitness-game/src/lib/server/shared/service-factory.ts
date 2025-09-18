@@ -8,7 +8,7 @@ import {
   UserChallengeProgressRepository,
   UserLogsRepository,
 } from '$lib/server/repositories';
-import { ChallengeService, ChallengeContentService, LogService, type IChallengeContentService, type IChallengeService, type AuthServices, type ILogService } from '$lib/server/services';
+import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -34,6 +34,7 @@ export class ServiceFactory {
   // Services
   private readonly challengeContentServiceCreator: ServiceCreatorFromRequestContext<IChallengeContentService>;
   private readonly challengeServiceCreator: ServiceCreatorFromRequestContext<IChallengeService>;
+  private readonly challengeProgressServiceCreator: ServiceCreatorFromRequestContext<IChallengeProgressService>;
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
   
   private constructor(content: Content) {
@@ -58,7 +59,11 @@ export class ServiceFactory {
     
     this.challengeServiceCreator = createServiceFromClass(
       ChallengeService,
-      { userChallengeRepository: this.userChallengeRepository, userChallengeProgressRepository: this.userChallengeProgressRepository, challengeDAO: this.contentDAOFactory.getDAO('Challenge'), dateTimeHelper: this.dateTimeHelper }
+      { userChallengeRepository: this.userChallengeRepository, dateTimeHelper: this.dateTimeHelper }
+    );
+    this.challengeProgressServiceCreator = createServiceFromClass(
+      ChallengeProgressService,
+      { userChallengeRepository: this.userChallengeRepository, userChallengeProgressRepository: this.userChallengeProgressRepository, challengeDAO: this.contentDAOFactory.getDAO('Challenge') }
     );
     this.logServiceCreator = createServiceFromClass(
       LogService,
@@ -77,24 +82,11 @@ export class ServiceFactory {
     return ServiceFactory.instance;
   }
   
-  /**
-   * Get ChallengeContentService instance
-   */
-  public getChallengeContentService(): ServiceCreatorFromRequestContext<IChallengeContentService> {
-    return this.challengeContentServiceCreator;
-  }
-  
-  /**
-   * Get ChallengeService instance
-   */
-  public getChallengeService(): ServiceCreatorFromRequestContext<IChallengeService> {
-    return this.challengeServiceCreator;
-  }
-
   public getAuthServices(authRequestContext: AuthRequestContext): AuthServices {
     return {
       challengeContentService: () => this.challengeContentServiceCreator(authRequestContext),
       challengeService: () => this.challengeServiceCreator(authRequestContext),
+      challengeProgressService: () => this.challengeProgressServiceCreator(authRequestContext),
       logService: () => this.logServiceCreator(authRequestContext),
     };
   }
