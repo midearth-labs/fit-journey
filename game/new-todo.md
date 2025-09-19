@@ -8,6 +8,8 @@ Check if Data API needs disabling? https://supabase.com/dashboard/project/pkftjn
 - Consider hardening data api
 - Connection string needs PGBouncer for serverless environments?
 
+Finish up Supabase Auth: https://supabase.com/docs/guides/auth/server-side/sveltekit
+
 Extract product-marketing-requirements.md out from PRD.md 
 
 
