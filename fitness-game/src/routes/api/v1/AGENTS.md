@@ -17,6 +17,7 @@ Mirror REST paths with SvelteKit routing:
 - `POST /user-challenges` → `user-challenges/+server.ts`
 - `GET /user-challenges` → `user-challenges/+server.ts`
 - `GET /user-challenges/:userChallengeId` → `user-challenges/[userChallengeId]/+server.ts`
+- `DELETE /user-challenges/:userChallengeId` → `user-challenges/[userChallengeId]/+server.ts`
 - `PATCH /user-challenges/:userChallengeId/schedule` → `user-challenges/[userChallengeId]/schedule/+server.ts`
 - `POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId` → `user-challenges/[userChallengeId]/quizzes/[knowledgeBaseId]/+server.ts`
 - `GET /user-challenges/:userChallengeId/quizzes` → `user-challenges/[userChallengeId]/quizzes/+server.ts`
@@ -102,6 +103,29 @@ export const GET: RequestHandler = async (event) => {
 };
 ```
 
+### Example: DELETE /user-challenges/:userChallengeId
+```ts
+import type { RequestHandler } from './$types';
+import { z } from 'zod';
+import { UuidSchema } from '$lib/server/shared/z.primitives';
+import { parseParams, handleServiceError, noContent } from '$lib/server/shared/http';
+
+const UserChallengeParamsSchema = z.object({
+  userChallengeId: UuidSchema
+});
+
+export const DELETE: RequestHandler = async (event) => {
+  try {
+    const { userChallengeId } = parseParams(event, UserChallengeParamsSchema);
+    const { challengeService } = event.locals.authServices!;
+    await challengeService().cancelChallenge({ userChallengeId });
+    return noContent();
+  } catch (err) {
+    return handleServiceError(err, event.locals.requestId);
+  }
+};
+```
+
 ## Zod conventions
 
 - Use latest helpers:
@@ -118,6 +142,62 @@ export const GET: RequestHandler = async (event) => {
 return validateAndReturn(result, SomeResponseSchema);
 ```
 
+## API Client Integration
+
+**CRITICAL**: Every new API endpoint MUST have a corresponding method in `src/client/api-client.ts`. This ensures the frontend can consume the API consistently.
+
+### Adding API Client Methods
+
+When creating a new endpoint, add the corresponding method to `ApiClient` class:
+
+```typescript
+// For GET endpoints
+/** GET /endpoint/:param */
+async getEndpoint(param: string): Promise<ResponseType> {
+  return this.request<ResponseType>('/endpoint/:param', { method: 'GET' }, {
+    params: { param }
+  });
+}
+
+// For POST endpoints
+/** POST /endpoint */
+async createEndpoint(dto: CreateDto): Promise<ResponseType> {
+  return this.request<ResponseType>('/endpoint', { 
+    method: 'POST', 
+    body: JSON.stringify(dto) 
+  });
+}
+
+// For PATCH endpoints
+/** PATCH /endpoint/:param */
+async updateEndpoint(dto: UpdateDto): Promise<void> {
+  await this.request<void>('/endpoint/:param', { 
+    method: 'PATCH', 
+    body: JSON.stringify(dto) 
+  }, {
+    params: { param: dto.param }
+  });
+}
+
+// For DELETE endpoints
+/** DELETE /endpoint/:param */
+async deleteEndpoint(param: string): Promise<void> {
+  await this.request<void>('/endpoint/:param', { method: 'DELETE' }, {
+    params: { param }
+  });
+}
+```
+
+### API Client Method Conventions
+
+- Use descriptive method names that match the HTTP verb and resource
+- Include JSDoc comments with the HTTP method and path
+- Use proper parameter substitution for path parameters
+- Return appropriate types (void for writes, typed responses for reads)
+- Handle query parameters via the `query` option
+- Handle path parameters via the `params` option
+- Use the expected dtos from '$lib/server/shared/schemas' 
+
 ## Checklist for new endpoints
 
 1. Ensure the service method has a REST docblock (path + verb).
@@ -127,6 +207,7 @@ return validateAndReturn(result, SomeResponseSchema);
 5. Call service via `event.locals.authServices!` and return.
 6. Use 204 for void writes; validate reads.
 7. Rely on `handleServiceError()` for consistent errors.
+8. **ALWAYS add or update the corresponding method in `src/client/api-client.ts`**.
 
 ## References
 

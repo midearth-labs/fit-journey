@@ -21,6 +21,7 @@ export type IChallengeService = {
     getUserChallenge(dto: {userChallengeId: string}): Promise<UserChallengeDetailResponse>;
     listUserChallenges(dto: {}): Promise<UserChallengeSummaryResponse[]>;
     updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void>;
+    cancelChallenge(dto: {userChallengeId: string}): Promise<void>;
     updateChallengeStatuses(): Promise<void>;
   };
   
@@ -52,12 +53,12 @@ export class ChallengeService implements IChallengeService {
       throw new ValidationError('Start date must be between today and 2 weeks from now');
     }
 
-    // Check if user already has an active challenge
+    // Check if user already has an existing conflicting challenge for the same challenge id
     // @TODO: check if this is the right logic, i.e. if its only a challenge of the same challenge id,
     // a user can have multiple challenges of different challenge ids
-    const existingActiveChallenge = await userChallengeRepository.findActiveByUserId(userId);
+    const existingActiveChallenge = await userChallengeRepository.findConflictingByUserIdAndChallengeId(userId, dto.challengeId);
     if (existingActiveChallenge) {
-      throw new ValidationError('User already has an active challenge');
+      throw new ValidationError('User already has an existing conflicting challenge');
     }
 
     // Create the challenge
@@ -132,6 +133,22 @@ export class ChallengeService implements IChallengeService {
       startDate: dto.newStartDate,
       updatedAt: requestDate
     });
+  }
+
+  /**
+   * Cancel a user challenge
+   * DELETE /user-challenges/:userChallengeId
+   */
+  async cancelChallenge(dto: {userChallengeId: string}): Promise<void> {
+    const { requestDate, user: { id: userId } } = this.requestContext;
+    const { userChallengeRepository } = this.dependencies;
+
+    // Cancel the challenge using the repository method
+    const cancelledChallenge = await userChallengeRepository.cancel(dto.userChallengeId, userId, requestDate);
+    
+    if (!cancelledChallenge) {
+      throw new ResourceNotFoundError('Cancellable challenge not found');
+    }
   }
 
   /**

@@ -96,14 +96,67 @@ this.repositoryName = new RepositoryName(db);
 
 ## Repository Design Principles
 
-### 1. Schema Coupling
+### 1. Atomic Operations (CRITICAL)
+
+**ALWAYS prefer atomic operations over separate read-then-write patterns.** This prevents race conditions and ensures data consistency.
+
+#### ❌ Avoid: Separate Check + Update
+```typescript
+// DON'T DO THIS - Race condition possible
+async cancel(id: string, userId: string): Promise<boolean> {
+  const existing = await this.findById(id, userId);
+  if (!existing || existing.status === 'locked') {
+    return false;
+  }
+  
+  const result = await this.db.update(entities)
+    .set({ status: 'inactive' })
+    .where(eq(entities.id, id));
+  
+  return result.rowCount > 0;
+}
+```
+
+#### ✅ Prefer: Atomic Conditional Update
+```typescript
+// DO THIS - Atomic operation
+async cancel(id: string, userId: string): Promise<boolean> {
+  const result = await this.db.update(entities)
+    .set({ status: 'inactive' })
+    .where(and(
+      eq(entities.id, id),
+      eq(entities.userId, userId),
+      notInArray(entities.status, ['locked', 'inactive'])
+    ));
+  
+  return result.rowCount > 0;
+}
+```
+
+#### ✅ Prefer: Atomic Upsert
+```typescript
+// DO THIS - Atomic upsert
+async upsert(data: EntityData): Promise<Entity> {
+  const result = await this.db.insert(entities)
+    .values(data)
+    .onConflictDoUpdate({
+      target: [entities.id],
+      set: data
+    })
+    .returning();
+  
+  return result[0];
+}
+```
+
+### 2. Schema Coupling
 
 Repositories CAN import directly from `schema.ts` because they are the data access layer. This is expected and necessary for:
 - Type definitions (`Entity`, `NewEntity`)
 - Table references (`entities`)
 - Database operations
 
-### 2. Method Naming Conventions
+### 3. Method Naming Conventions
 
 - `create()` - Insert new entity
 - `findById()` - Find by primary key
@@ -113,7 +166,7 @@ Repositories CAN import directly from `schema.ts` because they are the data acce
 - `upsert()` - Insert or update
 - `list()` - Get multiple entities with filtering
 
-### 3. Return Value Patterns
+### 4. Return Value Patterns
 
 - `create()` - Returns the created entity
 - `findById()` - Returns entity or null
@@ -121,16 +174,17 @@ Repositories CAN import directly from `schema.ts` because they are the data acce
 - `delete()` - Returns boolean success indicator
 - `list()` - Returns array of entities
 
-### 4. Error Handling
+### 5. Error Handling
 
 Repositories should let database errors bubble up to services. Services handle business logic validation, repositories handle data access.
 
-### 5. Query Optimization
+### 6. Query Optimization
 
 - Use `limit(1)` for single entity queries
 - Use appropriate indexes for filtering
 - Consider pagination for large result sets
 - Use `returning()` for insert/update operations when you need the result
+- **Prefer atomic operations over multiple database calls**
 
 ## Advanced Repository Patterns
 
@@ -354,10 +408,11 @@ export class UserRepository implements IUserRepository, IUserInternalRepository 
 
 ## Best Practices
 
-1. **Single Responsibility**: Each repository should handle one entity type
-2. **Consistent Naming**: Use consistent method names across repositories
-3. **Type Safety**: Leverage TypeScript for compile-time safety
-4. **Error Handling**: Let database errors bubble up to services
-5. **Performance**: Use appropriate indexes and query optimization
-6. **Testing**: Write comprehensive tests for data access logic
-7. **Documentation**: Document complex queries and business rules
+1. **Atomic Operations**: ALWAYS prefer atomic operations over separate read-then-write patterns
+2. **Single Responsibility**: Each repository should handle one entity type
+3. **Consistent Naming**: Use consistent method names across repositories
+4. **Type Safety**: Leverage TypeScript for compile-time safety
+5. **Error Handling**: Let database errors bubble up to services
+6. **Performance**: Use appropriate indexes and query optimization
+7. **Testing**: Write comprehensive tests for data access logic
+8. **Documentation**: Document complex queries and business rules

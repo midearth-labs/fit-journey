@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique, uniqueIndex } from 'drizzle-orm/pg-core';
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
@@ -131,6 +131,10 @@ export const userChallenges = pgTable('user_challenges', {
     // @TODO: @NOTE: might not be safe to modify this index after deployment, might be better to create a new index with the new statuses
     // then update the queries, then drop the old index
     index('user_challenge_status_start_date_not_locked_inactive_index').on(table.status, table.startDate)
+    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
+    
+    // Unique index to ensure a user can only have one challenge per challengeId when status is not locked or inactive
+    uniqueIndex('user_challenge_unique_active_index').on(table.userId, table.challengeId)
     .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
   ];
 });

@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, lte, lt, gte, notInArray } from 'drizzle-orm';
-import { userChallenges, type UserChallenge, type NewUserChallenge, type UpdateUserChallenge, type AllLogKeysType } from '$lib/server/db/schema';
+import { userChallenges, type UserChallenge, type NewUserChallenge, type UpdateUserChallenge } from '$lib/server/db/schema';
 import { CHALLENGE_CONSTANTS } from '$lib/server/content/types/constants';
 import { type IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
 import { type IChallengeDAO } from '$lib/server/content/daos/challenge';
@@ -10,9 +10,10 @@ export type IUserChallengeRepository = {
     create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus>;
     findById(id: string, userId: string): Promise<UserChallengeWithImplicitStatus | null>;
     findByUserId(userId: string): Promise<UserChallengeWithImplicitStatus[]>;
-    findActiveByUserId(userId: string): Promise<UserChallengeWithImplicitStatus | null>;
+    findConflictingByUserIdAndChallengeId(userId: string, challengeId: string): Promise<UserChallengeWithImplicitStatus | null>;
     update(updates: UpdateUserChallenge): Promise<void>;
     delete(id: string, userId: string): Promise<boolean>;
+    cancel(id: string, userId: string, requestDate: Date): Promise<boolean>;
     batchUpdateChallengeStatuses(requestDate: Date): Promise<void>;
     findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata>;
   };
@@ -76,16 +77,17 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   }
 
   /**
-   * Find the active challenge for a specific user
+   * Find a conflicting challenge for a specific user and challenge id, i.e. a challenge that is not locked or inactive
    */
-  async findActiveByUserId(userId: string): Promise<UserChallengeWithImplicitStatus | null> {
+  async findConflictingByUserIdAndChallengeId(userId: string, challengeId: string): Promise<UserChallengeWithImplicitStatus | null> {
     const [challenge] = await this.db
       .select()
       .from(userChallenges)
       .where(
         and(
           eq(userChallenges.userId, userId),
-          eq(userChallenges.status, 'active')
+          eq(userChallenges.challengeId, challengeId),
+          notInArray(userChallenges.status, ['locked', 'inactive'])
         )
       )
       .limit(1);
@@ -140,6 +142,31 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   //@TODO: Refactor into one method
   private isChallengeLoggable(status: UserChallenge['status']): boolean {
     return ['active', 'completed'].includes(status);
+  }
+
+  /**
+   * Cancel a user challenge by setting its status to 'inactive'
+   * Only cancels challenges that are in the same statuses that findConflictingByUserIdAndChallengeId expects
+   * (i.e., not 'locked' or 'inactive'). The status check is done atomically in the update query.
+   */
+  async cancel(id: string, userId: string, requestDate: Date): Promise<boolean> {
+    // Update the challenge status to 'inactive' atomically, only if it's in a cancelable state
+    // This ensures the status check and update happen in a single atomic operation
+    const result = await this.db
+      .update(userChallenges)
+      .set({
+        status: 'inactive',
+        updatedAt: requestDate
+      })
+      .where(
+        and(
+          eq(userChallenges.id, id),
+          eq(userChallenges.userId, userId),
+          notInArray(userChallenges.status, ['locked', 'inactive'])
+        )
+      )
+
+    return result.rowCount > 0;
   }
 
   /**

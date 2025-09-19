@@ -18,6 +18,7 @@ FitJourney is a gamified fitness education platform that combines structured lea
   - Timezone configuration
   - Preferred reminder time settings
   - Notification preferences management
+The user is not required to supply any profile information to use the app features, the data are enhancements for the user experience and are all opt-in.
 
 **Dependencies:** All authenticated features depend on this system
 
@@ -34,22 +35,16 @@ FitJourney is a gamified fitness education platform that combines structured lea
   - Recovery & Injury Prevention
   - Mindset & Motivation
   - Health & Lifestyle Integration
-
-- **Learning Phases** - 6 progressive learning phases (Foundation Building → Mastery & Sustainability)
-- **Article Features:**
-  - Rich content with images, passages, and key takeaways
-  - Reading time estimates
-  - Tag-based categorization
-  - Day-based progression (1-70)
-  - Character stories integration
+ Every article has a call-to-action:
 
 **Dependencies:** Articles feed into quiz system and progress tracking
 
 ### 3. Challenge System
-**API Operations:** `createUserChallenge()`, `listUserChallenges()`, `getUserChallenge()`, `updateUserChallengeSchedule()`
+**API Operations:** `createUserChallenge()`, `listUserChallenges()`, `getUserChallenge()`, `updateUserChallengeSchedule(), cancelUserChallenge`
 
-- **Structured Challenges** - Pre-defined challenge templates (30-day, 40-day challenges)
+- **Structured Challenges** - Pre-defined challenge templates (7-day challenges, 30-day, 40-day challenges)
 - **Challenge Creation** - Users can start challenges with custom start dates
+- **Challenge Cancellation** - Users can cancel/deactivate challenges at any time.
 - **Challenge Management** - Schedule modification and progress tracking
 - **Challenge Status Tracking** - Not started, active, completed, locked, inactive states
 - **Knowledge Base Integration** - Challenges link to specific articles and learning content
@@ -59,15 +54,15 @@ FitJourney is a gamified fitness education platform that combines structured lea
 ### 4. Progress Tracking & Analytics
 **API Operations:** `listLogs()`, `putLog()`
 
-- **Daily Metric Logging** - Track 4 core wellness metrics:
+- **Daily Metric Logging** - Track core wellness metrics e.g.
   - Daily Movement (15+ minutes of physical activity)
   - Clean Eating (nutritious food choices)
   - Sleep Quality (7-9 hours of restorative sleep)
   - Hydration (adequate water intake)
+The user is not prompted to log all metrics at a time. The metrics the user is prompted to log is related to the challenge(s) they are actively participating in. For example, a 7-day nutrition challenge will only require clean eating metric to be logged.
 
 - **Progress Visualization** - Real-time progress tracking with:
   - Overall completion percentages
-  - Phase-based progress breakdown
   - Article completion tracking
   - Quiz score accumulation
 
@@ -75,7 +70,7 @@ FitJourney is a gamified fitness education platform that combines structured lea
 
 **Dependencies:** Feeds into avatar progression
 
-### 5. Quiz & Assessment System
+### 5. Knowledge Check (quiz) System
 **API Operations:** `listUserChallengeQuizSubmissions()`, `submitUserChallengeQuiz()`
 
 - **Knowledge Assessment** - Quiz questions tied to specific articles and knowledge bases
@@ -97,14 +92,22 @@ FitJourney is a gamified fitness education platform that combines structured lea
 
 **Dependencies:** Requires progress tracking and daily metric logging management
 
-## Secondart Features
+## Secondary Features
 
 ### 8. Social Features
-
+These features are meant to be introduced for a user that has sufficiently engaged with the system and built confidence. 
 - **User Invites** - Invite system with user codes for friend referrals
-- **Progress Sharing** - Social sharing of personal progress and fitness avatar
+- **Progress Sharing** - Social sharing of personal progress and fitness avatar, CTA includes "friend invites". Viewers can react on social sharing using pre-defined simple emoji reactions (👏 💪 🎉). 
 - **Group FitJourney** - Collaborative challenges and group progress tracking
 - **Discord Community** - External community integration for user engagement
+
+### 8.1 Knowledge Q&A Community
+Article-Specific Discussions: Each article has a simple but context-specific Q&A section
+Beginner-Safe Environment: Clear labeling: "No question is too basic here!"
+Expert Community Helpers: Advanced users earn badges for helping newcomers
+Moderated Environment: AI + human moderation to prevent intimidation
+
+Benefits:
 
 **Dependencies:** Requires user authentication and progress tracking
 
@@ -126,17 +129,16 @@ FitJourney is a gamified fitness education platform that combines structured lea
 **Dependencies:** Requires comprehensive progress tracking data
 
 ### 11. Content Consumption Modes
-
-- **Non-Authenticated Access** - Public/Guest article consumption without FitJourney participation
+- **60-Second Fitness IQ Test** - Fun entry point that provides personalized article recommendations for nun-authenticated access and challenges for authenticated learning.
+- **Non-Authenticated Access** -  Public/Guest article consumption without FitJourney participation
 - **Authenticated Learning** - Registered users Full-featured learning with progress tracking and quiz integration
 - **Progressive Profile Updates** - Contextual profile enhancement prompts at strategic touchpoints
 
 **Dependencies:** Requires content management system and user authentication
 
 ### 12. Practical Tips & Call-to-Action
-
-- **Daily Tips** - Text, video, or link-based practical tips delivered daily
-- **Action Items** - Contextual calls-to-action based on user progress and learning phase
+- **Daily Tips** - 1-minute daily content (Text, video, or link-based) practical tips delivered daily
+- **Action Items** - Contextual and easily do-able calls-to-action based on user progress
 - **Personalized Recommendations** - Tailored suggestions based on user behavior and preferences
 
 **Dependencies:** Requires content system and user progress data

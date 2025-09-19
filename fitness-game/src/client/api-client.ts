@@ -160,6 +160,13 @@ export class ApiClient {
     });
   }
 
+  /** DELETE /user-challenges/:userChallengeId */
+  async cancelUserChallenge(userChallengeId: string): Promise<void> {
+    await this.request<void>('/user-challenges/:userChallengeId', { method: 'DELETE' }, {
+      params: { userChallengeId }
+    });
+  }
+
   // ---------- User Challenge Quizzes ----------
 
   /** GET /user-challenges/:userChallengeId/quizzes */
