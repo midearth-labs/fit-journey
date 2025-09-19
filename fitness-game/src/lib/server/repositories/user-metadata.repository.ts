@@ -4,7 +4,7 @@ import { userMetadata, type UserMetadata, type NewUserMetadata } from '$lib/serv
 
 export interface IUserMetadataRepository {
   create(profileData: NewUserMetadata): Promise<UserMetadata>;
-  update(UserMetadataId: string, updates: Partial<UserMetadata>): Promise<UserMetadata | null>;
+  update(UserMetadataId: string, updates: Partial<UserMetadata>): Promise<boolean>;
   delete(UserMetadataId: string): Promise<boolean>;
   findById(UserMetadataId: string): Promise<UserMetadata | null>;
 }
@@ -20,13 +20,12 @@ export class UserMetadataRepository implements IUserMetadataRepository {
     return result[0];
   }
 
-  async update(UserMetadataId: string, updates: Partial<UserMetadata>): Promise<UserMetadata | null> {
+  async update(UserMetadataId: string, updates: Partial<UserMetadata>): Promise<boolean> {
     const result = await this.db.update(userMetadata)
       .set(updates)
-      .where(eq(userMetadata.id, UserMetadataId))
-      .returning();
+      .where(eq(userMetadata.id, UserMetadataId));
     
-    return result[0] || null;
+    return result.rowCount > 0;
   }
 
   async delete(UserMetadataId: string): Promise<boolean> {

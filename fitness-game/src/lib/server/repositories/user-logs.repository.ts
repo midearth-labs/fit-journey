@@ -5,7 +5,7 @@ import type { IChallengeDAO } from '../content/daos';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
 
 export type IUserLogsRepository = {
-    upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<void>;
+    upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<boolean>;
     findByUserChallenge(challenge: {id: string, startDate: string}, userId: string): Promise<UserLog[]>;
     findByUserChallengeAndDateRange(challenge: {id: string, startDate: string}, userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
     findByUserChallengeAndDate(challenge: {id: string, startDate: string}, userId: string, logDate: string): Promise<UserLog[]>;
@@ -33,7 +33,7 @@ export class UserLogsRepository implements IUserLogsRepository {
    * - null values: delete corresponding entries
    * - undefined values: ignore them
    */
-  async upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<void> {
+  async upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<boolean> {
     const definedValues: Array<{key: AllLogKeysType, value: T}> = [];
     const keysToDelete: Array<AllLogKeysType> = [];
     
@@ -48,9 +48,10 @@ export class UserLogsRepository implements IUserLogsRepository {
     });
 
     if (keysToDelete.length === 0 && definedValues.length === 0) {
-      return;
+      return false;
     }
 
+    let affectedRows = 0;
     // Execute operations in a transaction
     await this.db.transaction(async (tx) => {
       // Handle defined values with upsert logic
@@ -62,7 +63,7 @@ export class UserLogsRepository implements IUserLogsRepository {
           updatedAt: logData.createdAt
         }));
 
-        await tx
+        const insertResult = await tx
           .insert(userLogs)
           .values(insertData)
           .onConflictDoUpdate({
@@ -74,12 +75,14 @@ export class UserLogsRepository implements IUserLogsRepository {
             },
             // This makes sure we only update the log for the user
             setWhere: sql`${userLogs.userId} = ${logData.userId}`
-          })
+          });
+        
+        affectedRows += insertResult.rowCount;
       }
 
       // Handle null values by deleting corresponding entries
       if (keysToDelete.length > 0) {
-        await tx
+        const deleteResult = await tx
           .delete(userLogs)
           .where(
             and(
@@ -88,9 +91,13 @@ export class UserLogsRepository implements IUserLogsRepository {
               inArray(userLogs.logKey, keysToDelete)
             )
           );
+        
+        affectedRows += deleteResult.rowCount;
       }
     });
     // @TODO: Add logic to correct the user challenge progress count in triggers
+    
+    return affectedRows > 0;
   }
 
   /**

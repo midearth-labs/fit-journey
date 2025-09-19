@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { users, type User, type NewUser } from '$lib/server/db/schema';
 
 export interface IUserRepository {
-  update(userId: string, updates: Partial<User>): Promise<void>;
+  update(userId: string, updates: Partial<User>): Promise<boolean>;
   findById(userId: string): Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;
 }
@@ -24,10 +24,12 @@ export class UserRepository implements IUserRepository, IUserInternalRepository 
     return result[0];
   }
 
-  async update(userId: string, updates: Partial<User>): Promise<void> {
-    await this.db.update(users)
+  async update(userId: string, updates: Partial<User>): Promise<boolean> {
+    const result = await this.db.update(users)
       .set(updates)
       .where(eq(users.id, userId));
+    
+    return result.rowCount > 0;
   }
 
   async delete(userId: string): Promise<boolean> {

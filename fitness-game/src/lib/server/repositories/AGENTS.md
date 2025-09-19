@@ -16,8 +16,9 @@ Every repository must define an interface that describes its public methods:
 export interface IRepositoryName {
   create(data: NewEntity): Promise<Entity>;
   findById(id: string): Promise<Entity | null>;
-  update(id: string, updates: Partial<Entity>): Promise<Entity | null>;
+  update(id: string, updates: Partial<Entity>): Promise<boolean>;
   delete(id: string): Promise<boolean>;
+  upsert(data: EntityData): Promise<boolean>;
   // ... other methods
 }
 ```
@@ -53,13 +54,12 @@ export class RepositoryName implements IRepositoryName {
     return result[0] || null;
   }
 
-  async update(id: string, updates: Partial<Entity>): Promise<Entity | null> {
+  async update(id: string, updates: Partial<Entity>): Promise<boolean> {
     const result = await this.db.update(entities)
       .set(updates)
-      .where(eq(entities.id, id))
-      .returning();
+      .where(eq(entities.id, id));
     
-    return result[0] || null;
+    return result.rowCount > 0;
   }
 
   async delete(id: string): Promise<boolean> {
@@ -136,16 +136,15 @@ async cancel(id: string, userId: string): Promise<boolean> {
 #### ✅ Prefer: Atomic Upsert
 ```typescript
 // DO THIS - Atomic upsert
-async upsert(data: EntityData): Promise<Entity> {
+async upsert(data: EntityData): Promise<boolean> {
   const result = await this.db.insert(entities)
     .values(data)
     .onConflictDoUpdate({
       target: [entities.id],
       set: data
-    })
-    .returning();
+    });
   
-  return result[0];
+  return result.rowCount > 0;
 }
 ```
 
@@ -170,9 +169,42 @@ Repositories CAN import directly from `schema.ts` because they are the data acce
 
 - `create()` - Returns the created entity
 - `findById()` - Returns entity or null
-- `update()` - Returns updated entity or null
-- `delete()` - Returns boolean success indicator
+- `update()` - Returns boolean indicating if any rows were affected
+- `delete()` - Returns boolean indicating if any rows were affected
+- `upsert()` - Returns boolean indicating if any rows were affected
 - `list()` - Returns array of entities
+
+#### Boolean Return Values for Mutations
+
+**CRITICAL**: All update, upsert, and delete operations must return boolean values indicating whether any rows were affected. This allows services to:
+
+1. **Detect Operation Failures**: Know if the operation actually modified data
+2. **Handle Edge Cases**: Respond appropriately when no rows match the criteria
+3. **Provide Better Error Messages**: Give users specific feedback about operation success
+4. **Enable Proper Validation**: Ensure business logic constraints are met
+
+```typescript
+// ✅ CORRECT: Return boolean for affected rows
+async update(id: string, updates: Partial<Entity>): Promise<boolean> {
+  const result = await this.db.update(entities)
+    .set(updates)
+    .where(eq(entities.id, id));
+  
+  return result.rowCount > 0;
+}
+
+// ❌ AVOID: Returning the updated entity (unless specifically needed)
+async update(id: string, updates: Partial<Entity>): Promise<Entity | null> {
+  const result = await this.db.update(entities)
+    .set(updates)
+    .where(eq(entities.id, id))
+    .returning();
+  
+  return result[0] || null;
+}
+```
+
+**Exception**: Only return the updated entity when the service layer specifically needs the updated data for business logic or response mapping.
 
 ### 5. Error Handling
 
@@ -216,20 +248,89 @@ async findByUserAndDateRange(
 
 ### 2. Upsert Operations
 
+#### Simple Upsert
 ```typescript
 async upsert(
   where: { userId: string; date: string },
   data: Partial<Entity>
-): Promise<Entity> {
+): Promise<boolean> {
   const result = await this.db.insert(entities)
     .values({ ...where, ...data })
     .onConflictDoUpdate({
       target: [entities.userId, entities.date],
       set: data
-    })
-    .returning();
+    });
   
-  return result[0];
+  return result.rowCount > 0;
+}
+```
+
+#### Complex Upsert with Multiple Operations
+
+For upsert operations that involve both insert/update and delete operations (e.g., handling null values), track affected rows across all operations:
+
+```typescript
+async upsert(
+  baseData: { userId: string; date: string },
+  values: Array<{ key: string; value: any }>
+): Promise<boolean> {
+  const definedValues: Array<{ key: string; value: any }> = [];
+  const keysToDelete: Array<string> = [];
+  
+  // Partition values into defined, null, and undefined groups
+  values.forEach(value => {
+    if (value.value === null) {
+      keysToDelete.push(value.key);
+    } else if (value.value !== undefined) {
+      definedValues.push(value);
+    }
+    // undefined values are ignored
+  });
+
+  if (keysToDelete.length === 0 && definedValues.length === 0) {
+    return false;
+  }
+
+  let affectedRows = 0;
+  
+  // Execute operations in a transaction
+  await this.db.transaction(async (tx) => {
+    // Handle defined values with upsert logic
+    if (definedValues.length > 0) {
+      const insertData = definedValues.map(value => ({
+        ...baseData,
+        key: value.key,
+        value: value.value
+      }));
+
+      const insertResult = await tx
+        .insert(entities)
+        .values(insertData)
+        .onConflictDoUpdate({
+          target: [entities.userId, entities.key, entities.date],
+          set: { value: sql`EXCLUDED.value` }
+        });
+      
+      affectedRows += insertResult.rowCount;
+    }
+
+    // Handle null values by deleting corresponding entries
+    if (keysToDelete.length > 0) {
+      const deleteResult = await tx
+        .delete(entities)
+        .where(
+          and(
+            eq(entities.userId, baseData.userId),
+            eq(entities.date, baseData.date),
+            inArray(entities.key, keysToDelete)
+          )
+        );
+      
+      affectedRows += deleteResult.rowCount;
+    }
+  });
+  
+  return affectedRows > 0;
 }
 ```
 
@@ -252,16 +353,15 @@ async updateWithTransaction(
   id: string, 
   updates: Partial<Entity>,
   additionalOperations: (tx: any) => Promise<void>
-): Promise<Entity | null> {
+): Promise<boolean> {
   return await this.db.transaction(async (tx) => {
     const result = await tx.update(entities)
       .set(updates)
-      .where(eq(entities.id, id))
-      .returning();
+      .where(eq(entities.id, id));
     
     await additionalOperations(tx);
     
-    return result[0] || null;
+    return result.rowCount > 0;
   });
 }
 ```
@@ -350,7 +450,7 @@ import { eq } from 'drizzle-orm';
 import { users, type User, type NewUser } from '$lib/server/db/schema';
 
 export interface IUserRepository {
-  update(userId: string, updates: Partial<User>): Promise<User | null>;
+  update(userId: string, updates: Partial<User>): Promise<boolean>;
   findById(userId: string): Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;
 }
@@ -370,13 +470,12 @@ export class UserRepository implements IUserRepository, IUserInternalRepository 
     return result[0];
   }
 
-  async update(userId: string, updates: Partial<User>): Promise<User | null> {
+  async update(userId: string, updates: Partial<User>): Promise<boolean> {
     const result = await this.db.update(users)
       .set(updates)
-      .where(eq(users.id, userId))
-      .returning();
+      .where(eq(users.id, userId));
     
-    return result[0] || null;
+    return result.rowCount > 0;
   }
 
   async delete(userId: string): Promise<boolean> {
@@ -416,3 +515,5 @@ export class UserRepository implements IUserRepository, IUserInternalRepository 
 6. **Performance**: Use appropriate indexes and query optimization
 7. **Testing**: Write comprehensive tests for data access logic
 8. **Documentation**: Document complex queries and business rules
+9. **Return Values**: Update/upsert/delete methods should return boolean indicating affected rows
+10. **Service Integration**: Services should check boolean return values to handle operation failures
