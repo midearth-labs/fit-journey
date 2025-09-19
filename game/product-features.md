@@ -96,18 +96,14 @@ The user is not prompted to log all metrics at a time. The metrics the user is p
 
 ### 8. Social Features
 These features are meant to be introduced for a user that has sufficiently engaged with the system and built confidence. 
-- **User Invites** - Invite system with user codes for friend referrals
-- **Progress Sharing** - Social sharing of personal progress and fitness avatar, CTA includes "friend invites". Viewers can react on social sharing using pre-defined simple emoji reactions (👏 💪 🎉). 
-- **Group FitJourney** - Collaborative challenges and group progress tracking
-- **Discord Community** - External community integration for user engagement
+- **User Invites** - Simplified invitation system with unique user codes (UUID) stored in user profile. Users can share their invitation link/code through any mechanism (copy link, social media, etc.). New users register with invitation code to automatically link with inviter. Dashboard shows invitation join count.
+- **Progress Sharing** - Social sharing of personal progress and fitness avatar with optional invitation link inclusion. Viewers can react on social sharing using pre-defined simple emoji reactions (👏 💪 🎉).
 
-### 8.1 Knowledge Q&A Community
-Article-Specific Discussions: Each article has a simple but context-specific Q&A section
+#### 8.1 Knowledge Q&A Community
+Article-Specific Discussions: Each article has a simple but context-specific Q&A section with separate questions and answers
 Beginner-Safe Environment: Clear labeling: "No question is too basic here!"
 Expert Community Helpers: Advanced users earn badges for helping newcomers
 Moderated Environment: AI + human moderation to prevent intimidation
-
-Benefits:
 
 **Dependencies:** Requires user authentication and progress tracking
 

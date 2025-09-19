@@ -812,3 +812,64 @@ Add an AGENTS.MD for APIs under "/api/v1" directory based on the approach you ju
 Create a new API to get the users profile. Tell me what you will do first in a concise manner
 ```
 
+### Prompt 16
+```
+I'd like to create Svelte 15 APIs or Form actions to connect to the services defined in @services/   , I'd like to use a proper REST pattern as documented in each Service method and under the route path `/api/v1/` using best practices. "/api/v1" is a protected route , so you can be sure that authServices is not null and you can safely grab any service from there with the ! operator to remove the nullability.
+
+Also, I'd like to use Zod to declare the request and responses models. 
+
+Derive the Zod schemas from the dto input structure for each method and infer some meaningful validation defaults for each property based on its name or expectation. Make sure code is reused as much as possible, and also when types are extended e.g. type A = B & {...}, make sure the zod schema also reuses via schema.extend etc.
+
+Tell me concisely how you will approach starting with UserProfileService and LogService, if I like the approach, I will give you the go-ahead to implement the rest.
+
+Ensure to use the latest Zod documentation: @https://zod.dev/api 
+```
+
+#### Prompt 16.1
+```
+Add an AGENTS.MD for APIs under "/api/v1" directory based on the approach you just took
+```
+
+### Prompt 17
+```
+Create an API-client named ApiClient in 'src/client/ api-client.ts' that mirrors and calls the underyling API in "/api/v1" correctly using fetch. reuse logic as much as possible and add concise descriptive comments everywhere.
+
+Have the constructor accept a baseUrl to use to construct the full URLS per API operation.
+
+Import and couple with the Zod infered types in '$lib/server/shared/schemas', dont redeclare a copy of the types. 
+```
+
+#### Prompt 17.1
+```
+I think you can reuse more, I dont think each individual method should build their url, the request method can take in a request path with placeholders, and a key-value of the values to replace with so that everything gets delegated to request method.
+```
+
+### Prompt 18
+```
+Generate an artifact on the features and functionality of this entire Fitness App. Use concise standard product management language and concise descriptions. There are some that are not yet implemented or some that can be derived from existing features. Also, explicitly state how some features reference or depend on each other. If the feature is implemented by an API, also call out the operation name, as hinted by the method names in 'api-client.ts'
+
+Some features that might not be explicitly mentioned are:
+Invites with a user code (and tracking of such), Add to Calendar (via a static ical generation, or a server backed), Social sharing of Progress (your personal progress page including your fitness avatar), Group FitJourney, Personal Dashboard with trends/analytics, Practical Tip (text/video/link) of the day / Call to action, Progressive Profile Update i.e. ask for profile updates at diferent touchpoints that such profile information might enhance the features, Discord Community, Non-authenticated article consumptions unrelated to a Fit Journey, Authenticated article consumptions including progress tracking and quiz records towards a Fit Journey completion.
+
+Use Markdown format and save into a file `product-features.md` in the 'fit-journey/game' directory.
+```
+
+### Prompt 19
+```
+Create a new API to cancel a challenge given a challengeId. Use findConflictingByUserIdAndChallengeId to find the challenge to cancel, cancel it with a new repository method  cancel(...) that will ensure the challenge is in the same statuses that findConflictingByUserIdAndChallengeId expected it to be. Add the API to "src/client/api-client.ts" and update the relevant Agents.MD for adding or updating APIs in "api-client.ts"
+```
+
+#### Prompt 19.1
+```
+I expect the status check to be done atomically in the update query in the cancel repository method
+```
+
+#### Prompt 19.2
+```
+Update the repository AGENTS.MD to favor atomic operations and the "api/v1" routes AGENTS.MD to always add or update into "src/client/api-client.ts"
+```
+
+### Prompt 20
+```
+
+```

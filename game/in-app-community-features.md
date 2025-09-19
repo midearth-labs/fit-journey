@@ -37,16 +37,36 @@
 ### **3. Knowledge Q&A Community**
 
 **Implementation:**
-- **Article-Specific Discussions:** Each article has a simple Q&A section
+- **Article-Specific Discussions:** Each article has a simple Q&A section with separate questions and answers
 - **Beginner-Safe Environment:** Clear labeling: "No question is too basic here!"
 - **Expert Community Helpers:** Advanced users earn badges for helping newcomers
 - **Moderated Environment:** AI + human moderation to prevent intimidation
+- **Reaction System:** Users can react to both questions and answers with "helpful" or "not helpful"
 
 **Benefits:**
 - Learning-focused rather than performance-focused
 - Reduces barriers to asking "stupid" questions
 - Creates value for advanced users through teaching
 - Builds expertise confidence gradually
+- Separate Q&A structure allows for better organization and moderation
+
+---
+
+### **3.1 Simplified Invitation System**
+
+**Implementation:**
+- **Unique Invitation Codes:** Each user gets a unique UUID invitation code stored in their profile
+- **Zoom-like Sharing:** Users can share their invitation link through any mechanism (copy link, social media, WhatsApp, etc.)
+- **Automatic Linking:** New users register with invitation code and are automatically linked to the inviter
+- **Dashboard Tracking:** Users can see their invitation join count in their dashboard
+- **Optional Integration:** Users can choose to include invitation links when sharing progress
+
+**Benefits:**
+- Simple and familiar (like Zoom invitation links)
+- No complex invitation management needed
+- Users can share through any platform they prefer
+- Automatic tracking reduces friction
+- Encourages organic growth through existing social networks
 
 ---
 
