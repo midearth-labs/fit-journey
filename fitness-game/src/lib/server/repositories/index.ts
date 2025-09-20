@@ -7,4 +7,5 @@ export { type IUserLogsRepository, UserLogsRepository } from './user-logs.reposi
 // Social Features Repositories
 export { type IQuestionsRepository, QuestionsRepository } from './questions.repository';
 export { type IQuestionReactionsRepository, QuestionReactionsRepository } from './question-reactions.repository';
+export { type IAnswerReactionsRepository, AnswerReactionsRepository } from './answer-reactions.repository';
 export { type IAnswersRepository, AnswersRepository } from './answers.repository';

@@ -91,6 +91,7 @@ export class QuestionsService implements IQuestionsService {
   async getQuestion(dto: GetQuestionDto): Promise<QuestionResponse> {
     const { questionId } = dto;
 
+    // Verify question exists
     const question = notFoundCheck(await this.dependencies.questionsRepository.findById(questionId), 'Question');
     
     return this.mapToQuestionResponse(question);
@@ -103,6 +104,9 @@ export class QuestionsService implements IQuestionsService {
   async addReaction(dto: AddReactionDto): Promise<void> {
     const { user: { id: userId }, requestDate } = this.requestContext;
     const { questionId, reactionType } = dto;
+
+    // Verify question exists
+    notFoundCheck(await this.dependencies.questionsRepository.findById(questionId), 'Question');
 
     await this.dependencies.questionReactionsRepository.upsertQuestionReaction({
       questionId,

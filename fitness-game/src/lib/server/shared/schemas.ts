@@ -278,27 +278,10 @@ export const InviteStatsResponseSchema = z.object({
   invitationJoinCount: z.number().int().min(0)
 });
 
-// Export inferred types
-export type SubmitQuestionDto = z.infer<typeof SubmitQuestionDtoSchema>;
-export type ListQuestionsDto = z.infer<typeof ListQuestionsQuerySchema>;
-export type GetQuestionDto = z.infer<typeof GetQuestionParamsSchema>;
-export type QuestionResponse = z.infer<typeof QuestionResponseSchema>;
-export type SubmitAnswerDto = z.infer<typeof SubmitAnswerDtoSchema>;
-export type ListAnswersDto = z.infer<typeof ListAnswersQuerySchema>;
-export type AnswerResponse = z.infer<typeof AnswerResponseSchema>;
-export type AddReactionDto = z.infer<typeof AddReactionDtoSchema>;
-export type AddAnswerReactionDto = z.infer<typeof AddAnswerReactionDtoSchema>;
-export type ShareProgressDto = z.infer<typeof ShareProgressDtoSchema>;
-export type AddShareReactionDto = z.infer<typeof AddShareReactionDtoSchema>;
-export type ProgressShareResponse = z.infer<typeof ProgressShareResponseSchema>;
-export type InviteStatsResponse = z.infer<typeof InviteStatsResponseSchema>;
-
 // Additional response types
 export const NewQuestionResponseSchema = z.object({
   id: UuidSchema
 });
-
-export type NewQuestionResponse = z.infer<typeof NewQuestionResponseSchema>;
 
 // --- Consolidated Operation Schemas ---
 
