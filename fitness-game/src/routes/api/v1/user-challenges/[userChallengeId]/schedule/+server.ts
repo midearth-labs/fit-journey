@@ -1,25 +1,14 @@
 import type { RequestHandler } from './$types';
-import { z } from 'zod';
-import { UuidSchema, IsoDateSchema } from '$lib/server/shared/z.primitives';
+import { UpdateUserChallengeScheduleOperationSchema } from '$lib/server/shared/schemas';
 import { parseBody, parseParams, handleServiceError, noContent } from '$lib/server/shared/http';
-
-// Schema for route parameters
-const UserChallengeParamsSchema = z.object({
-  userChallengeId: UuidSchema
-});
-
-// Schema for request body
-const UpdateUserChallengeScheduleDtoSchema = z.object({
-  newStartDate: IsoDateSchema
-});
 
 export const PATCH: RequestHandler = async (event) => {
   try {
     // Parse route parameters
-    const { userChallengeId } = parseParams(event, UserChallengeParamsSchema);
+    const { userChallengeId } = parseParams(event, UpdateUserChallengeScheduleOperationSchema.request.params);
     
     // Parse request body
-    const { newStartDate } = await parseBody(event, UpdateUserChallengeScheduleDtoSchema);
+    const { newStartDate } = await parseBody(event, UpdateUserChallengeScheduleOperationSchema.request.body);
     
     // Get authenticated services (guaranteed to exist in protected /api/v1 routes)
     const { challengeService } = event.locals.authServices!;

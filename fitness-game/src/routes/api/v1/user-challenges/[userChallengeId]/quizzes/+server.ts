@@ -1,23 +1,14 @@
 import type { RequestHandler } from './$types';
-import { z } from 'zod';
-import { UuidSchema } from '$lib/server/shared/z.primitives';
-import { ListUserChallengeQuizSubmissionsDtoSchema, UserChallengeProgressResponseSchema } from '$lib/server/shared/schemas';
+import { ListUserChallengeQuizSubmissionsOperationSchema } from '$lib/server/shared/schemas';
 import { parseQuery, parseParams, handleServiceError, validateAndReturn } from '$lib/server/shared/http';
-
-// Schema for route parameters
-const UserChallengeParamsSchema = z.object({
-  userChallengeId: UuidSchema
-});
 
 export const GET: RequestHandler = async (event) => {
   try {
     // Parse route parameters
-    const { userChallengeId } = parseParams(event, UserChallengeParamsSchema);
+    const { userChallengeId } = parseParams(event, ListUserChallengeQuizSubmissionsOperationSchema.request.params);
     
     // Parse query parameters
-    const queryParams = parseQuery(event, ListUserChallengeQuizSubmissionsDtoSchema.omit({
-      userChallengeId: true
-    }));
+    const queryParams = parseQuery(event, ListUserChallengeQuizSubmissionsOperationSchema.request.query);
     
     // Get authenticated services (guaranteed to exist in protected /api/v1 routes)
     const { challengeProgressService } = event.locals.authServices!;
@@ -30,7 +21,7 @@ export const GET: RequestHandler = async (event) => {
     });
     
     // Validate response and return
-    return validateAndReturn(submissions, UserChallengeProgressResponseSchema.array());
+    return validateAndReturn(submissions, ListUserChallengeQuizSubmissionsOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }

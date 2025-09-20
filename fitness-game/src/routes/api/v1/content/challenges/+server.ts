@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
-import { handleServiceError, jsonOk } from '$lib/server/shared/http';
+import { ListChallengesOperationSchema } from '$lib/server/shared/schemas';
+import { handleServiceError, validateAndReturn } from '$lib/server/shared/http';
 
 export const GET: RequestHandler = async (event) => {
   try {
@@ -9,8 +10,8 @@ export const GET: RequestHandler = async (event) => {
     // Call service
     const challenges = challengeContentService().listAllChallenges({});
     
-    // Return challenges (no validation needed as it's content data)
-    return jsonOk(challenges);
+    // Return challenges with validation
+    return validateAndReturn(challenges, ListChallengesOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }

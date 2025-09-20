@@ -1,11 +1,11 @@
 import type { RequestHandler } from './$types';
-import { CreateUserChallengeDtoSchema, NewUserChallengeResponseSchema } from '$lib/server/shared/schemas';
+import { CreateUserChallengeOperationSchema, ListUserChallengesOperationSchema } from '$lib/server/shared/schemas';
 import { parseBody, handleServiceError, validateAndReturn } from '$lib/server/shared/http';
 
 export const POST: RequestHandler = async (event) => {
   try {
     // Parse and validate request body
-    const dto = await parseBody(event, CreateUserChallengeDtoSchema);
+    const dto = await parseBody(event, CreateUserChallengeOperationSchema.request.body);
     
     // Get authenticated services (guaranteed to exist in protected /api/v1 routes)
     const { challengeService } = event.locals.authServices!;
@@ -14,7 +14,7 @@ export const POST: RequestHandler = async (event) => {
     const result = await challengeService().createUserChallenge(dto);
     
     // Validate response and return
-    return validateAndReturn(result, NewUserChallengeResponseSchema);
+    return validateAndReturn(result, CreateUserChallengeOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }
@@ -29,7 +29,7 @@ export const GET: RequestHandler = async (event) => {
     const challenges = await challengeService().listUserChallenges({});
     
     // Validate response and return
-    return validateAndReturn(challenges, NewUserChallengeResponseSchema.array());
+    return validateAndReturn(challenges, ListUserChallengesOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }

@@ -299,3 +299,565 @@ export const NewQuestionResponseSchema = z.object({
 });
 
 export type NewQuestionResponse = z.infer<typeof NewQuestionResponseSchema>;
+
+// --- Consolidated Operation Schemas ---
+
+// User Profile Operations
+export const GetUserProfileOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: UserProfileResponseSchema
+  }
+};
+
+export const UpdateUserProfileOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: UpdateUserProfileDtoSchema
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// Log Operations
+export const ListUserLogsOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: ListUserLogsQuerySchema,
+    body: z.void()
+  },
+  response: {
+    body: UserLogResponseSchema.array()
+  }
+};
+
+export const PutUserLogOperationSchema = {
+  request: {
+    params: z.object({ logDate: IsoDateSchema }),
+    query: z.object({}),
+    body: z.object({ values: DailyLogPayloadSchema })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// User Challenge Operations
+export const CreateUserChallengeOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: CreateUserChallengeDtoSchema
+  },
+  response: {
+    body: NewUserChallengeResponseSchema
+  }
+};
+
+export const ListUserChallengesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: NewUserChallengeResponseSchema.array()
+  }
+};
+
+export const GetUserChallengeOperationSchema = {
+  request: {
+    params: z.object({ userChallengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: UserChallengeDetailResponseSchema
+  }
+};
+
+export const UpdateUserChallengeScheduleOperationSchema = {
+  request: {
+    params: z.object({ userChallengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.object({ newStartDate: IsoDateSchema })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export const CancelUserChallengeOperationSchema = {
+  request: {
+    params: z.object({ userChallengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// User Challenge Quiz Operations
+export const ListUserChallengeQuizSubmissionsOperationSchema = {
+  request: {
+    params: z.object({ userChallengeId: UuidSchema }),
+    query: z.object({
+      fromDate: IsoDateSchema.optional(),
+      toDate: IsoDateSchema.optional()
+    }),
+    body: z.void()
+  },
+  response: {
+    body: UserChallengeProgressResponseSchema.array()
+  }
+};
+
+export const SubmitUserChallengeQuizOperationSchema = {
+  request: {
+    params: z.object({ 
+      userChallengeId: UuidSchema,
+      knowledgeBaseId: UuidSchema 
+    }),
+    query: z.object({}),
+    body: z.object({
+      quizAnswers: z.array(UserAnswerSchema).min(1, 'At least one answer required'),
+      overrideSubmission: z.boolean().optional()
+    })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// Content Operations
+export const ListChallengesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    // @TODO: figure out why this is ANY and also the below
+    body: z.any() // Generic content response
+  }
+};
+
+export const GetChallengeOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.any() // Generic content response
+  }
+};
+
+// Social Question Operations
+export const SubmitQuestionOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: SubmitQuestionDtoSchema
+  },
+  response: {
+    body: NewQuestionResponseSchema
+  }
+};
+
+export const ListQuestionsOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: ListQuestionsQuerySchema,
+    body: z.void()
+  },
+  response: {
+    body: QuestionResponseSchema.array()
+  }
+};
+
+export const GetQuestionOperationSchema = {
+  request: {
+    params: z.object({ questionId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: QuestionResponseSchema
+  }
+};
+
+export const AddQuestionReactionOperationSchema = {
+  request: {
+    params: z.object({ questionId: UuidSchema }),
+    query: z.object({}),
+    body: z.object({ reactionType: ReactionTypeSchema })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// Social Answer Operations
+export const SubmitAnswerOperationSchema = {
+  request: {
+    params: z.object({ questionId: UuidSchema }),
+    query: z.object({}),
+    body: z.object({
+      answer: z.string().trim().min(10, 'Answer must be at least 10 characters').max(2000, 'Answer must be no more than 2000 characters'),
+      isAnonymous: z.boolean().default(false)
+    })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export const ListAnswersOperationSchema = {
+  request: {
+    params: z.object({ questionId: UuidSchema }),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: AnswerResponseSchema.array()
+  }
+};
+
+export const GetAnswerOperationSchema = {
+  request: {
+    params: z.object({ 
+      questionId: UuidSchema,
+      answerId: UuidSchema 
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: AnswerResponseSchema
+  }
+};
+
+export const AddAnswerReactionOperationSchema = {
+  request: {
+    params: z.object({ 
+      questionId: UuidSchema,
+      answerId: UuidSchema 
+    }),
+    query: z.object({}),
+    body: z.object({ reactionType: ReactionTypeSchema })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// Social Share Operations
+export const ShareProgressOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: ShareProgressDtoSchema
+  },
+  response: {
+    body: ProgressShareResponseSchema
+  }
+};
+
+export const AddShareReactionOperationSchema = {
+  request: {
+    params: z.object({ shareId: UuidSchema }),
+    query: z.object({}),
+    body: z.object({ reactionType: EmojiReactionTypeSchema })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// Social Invitation Operations
+export const GetInviteStatsOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: InviteStatsResponseSchema
+  }
+};
+
+// Export inferred operation types
+export type GetUserProfileOperation = {
+  request: {
+    params: z.infer<typeof GetUserProfileOperationSchema.request.params>;
+    query: z.infer<typeof GetUserProfileOperationSchema.request.query>;
+    body: z.infer<typeof GetUserProfileOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetUserProfileOperationSchema.response.body>;
+  };
+};
+
+export type UpdateUserProfileOperation = {
+  request: {
+    params: z.infer<typeof UpdateUserProfileOperationSchema.request.params>;
+    query: z.infer<typeof UpdateUserProfileOperationSchema.request.query>;
+    body: z.infer<typeof UpdateUserProfileOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof UpdateUserProfileOperationSchema.response.body>;
+  };
+};
+
+export type ListUserLogsOperation = {
+  request: {
+    params: z.infer<typeof ListUserLogsOperationSchema.request.params>;
+    query: z.infer<typeof ListUserLogsOperationSchema.request.query>;
+    body: z.infer<typeof ListUserLogsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListUserLogsOperationSchema.response.body>;
+  };
+};
+
+export type PutUserLogOperation = {
+  request: {
+    params: z.infer<typeof PutUserLogOperationSchema.request.params>;
+    query: z.infer<typeof PutUserLogOperationSchema.request.query>;
+    body: z.infer<typeof PutUserLogOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof PutUserLogOperationSchema.response.body>;
+  };
+};
+
+export type CreateUserChallengeOperation = {
+  request: {
+    params: z.infer<typeof CreateUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof CreateUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof CreateUserChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof CreateUserChallengeOperationSchema.response.body>;
+  };
+};
+
+export type ListUserChallengesOperation = {
+  request: {
+    params: z.infer<typeof ListUserChallengesOperationSchema.request.params>;
+    query: z.infer<typeof ListUserChallengesOperationSchema.request.query>;
+    body: z.infer<typeof ListUserChallengesOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListUserChallengesOperationSchema.response.body>;
+  };
+};
+
+export type GetUserChallengeOperation = {
+  request: {
+    params: z.infer<typeof GetUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof GetUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof GetUserChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetUserChallengeOperationSchema.response.body>;
+  };
+};
+
+export type UpdateUserChallengeScheduleOperation = {
+  request: {
+    params: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.request.params>;
+    query: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.request.query>;
+    body: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.response.body>;
+  };
+};
+
+export type CancelUserChallengeOperation = {
+  request: {
+    params: z.infer<typeof CancelUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof CancelUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof CancelUserChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof CancelUserChallengeOperationSchema.response.body>;
+  };
+};
+
+export type ListUserChallengeQuizSubmissionsOperation = {
+  request: {
+    params: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.request.params>;
+    query: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.request.query>;
+    body: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.response.body>;
+  };
+};
+
+export type SubmitUserChallengeQuizOperation = {
+  request: {
+    params: z.infer<typeof SubmitUserChallengeQuizOperationSchema.request.params>;
+    query: z.infer<typeof SubmitUserChallengeQuizOperationSchema.request.query>;
+    body: z.infer<typeof SubmitUserChallengeQuizOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof SubmitUserChallengeQuizOperationSchema.response.body>;
+  };
+};
+
+export type ListChallengesOperation = {
+  request: {
+    params: z.infer<typeof ListChallengesOperationSchema.request.params>;
+    query: z.infer<typeof ListChallengesOperationSchema.request.query>;
+    body: z.infer<typeof ListChallengesOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListChallengesOperationSchema.response.body>;
+  };
+};
+
+export type GetChallengeOperation = {
+  request: {
+    params: z.infer<typeof GetChallengeOperationSchema.request.params>;
+    query: z.infer<typeof GetChallengeOperationSchema.request.query>;
+    body: z.infer<typeof GetChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetChallengeOperationSchema.response.body>;
+  };
+};
+
+export type SubmitQuestionOperation = {
+  request: {
+    params: z.infer<typeof SubmitQuestionOperationSchema.request.params>;
+    query: z.infer<typeof SubmitQuestionOperationSchema.request.query>;
+    body: z.infer<typeof SubmitQuestionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof SubmitQuestionOperationSchema.response.body>;
+  };
+};
+
+export type ListQuestionsOperation = {
+  request: {
+    params: z.infer<typeof ListQuestionsOperationSchema.request.params>;
+    query: z.infer<typeof ListQuestionsOperationSchema.request.query>;
+    body: z.infer<typeof ListQuestionsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListQuestionsOperationSchema.response.body>;
+  };
+};
+
+export type GetQuestionOperation = {
+  request: {
+    params: z.infer<typeof GetQuestionOperationSchema.request.params>;
+    query: z.infer<typeof GetQuestionOperationSchema.request.query>;
+    body: z.infer<typeof GetQuestionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetQuestionOperationSchema.response.body>;
+  };
+};
+
+export type AddQuestionReactionOperation = {
+  request: {
+    params: z.infer<typeof AddQuestionReactionOperationSchema.request.params>;
+    query: z.infer<typeof AddQuestionReactionOperationSchema.request.query>;
+    body: z.infer<typeof AddQuestionReactionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof AddQuestionReactionOperationSchema.response.body>;
+  };
+};
+
+export type SubmitAnswerOperation = {
+  request: {
+    params: z.infer<typeof SubmitAnswerOperationSchema.request.params>;
+    query: z.infer<typeof SubmitAnswerOperationSchema.request.query>;
+    body: z.infer<typeof SubmitAnswerOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof SubmitAnswerOperationSchema.response.body>;
+  };
+};
+
+export type ListAnswersOperation = {
+  request: {
+    params: z.infer<typeof ListAnswersOperationSchema.request.params>;
+    query: z.infer<typeof ListAnswersOperationSchema.request.query>;
+    body: z.infer<typeof ListAnswersOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListAnswersOperationSchema.response.body>;
+  };
+};
+
+export type GetAnswerOperation = {
+  request: {
+    params: z.infer<typeof GetAnswerOperationSchema.request.params>;
+    query: z.infer<typeof GetAnswerOperationSchema.request.query>;
+    body: z.infer<typeof GetAnswerOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetAnswerOperationSchema.response.body>;
+  };
+};
+
+export type AddAnswerReactionOperation = {
+  request: {
+    params: z.infer<typeof AddAnswerReactionOperationSchema.request.params>;
+    query: z.infer<typeof AddAnswerReactionOperationSchema.request.query>;
+    body: z.infer<typeof AddAnswerReactionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof AddAnswerReactionOperationSchema.response.body>;
+  };
+};
+
+export type ShareProgressOperation = {
+  request: {
+    params: z.infer<typeof ShareProgressOperationSchema.request.params>;
+    query: z.infer<typeof ShareProgressOperationSchema.request.query>;
+    body: z.infer<typeof ShareProgressOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ShareProgressOperationSchema.response.body>;
+  };
+};
+
+export type AddShareReactionOperation = {
+  request: {
+    params: z.infer<typeof AddShareReactionOperationSchema.request.params>;
+    query: z.infer<typeof AddShareReactionOperationSchema.request.query>;
+    body: z.infer<typeof AddShareReactionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof AddShareReactionOperationSchema.response.body>;
+  };
+};
+
+export type GetInviteStatsOperation = {
+  request: {
+    params: z.infer<typeof GetInviteStatsOperationSchema.request.params>;
+    query: z.infer<typeof GetInviteStatsOperationSchema.request.query>;
+    body: z.infer<typeof GetInviteStatsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetInviteStatsOperationSchema.response.body>;
+  };
+};

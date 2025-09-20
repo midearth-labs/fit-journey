@@ -1,15 +1,11 @@
 import type { RequestHandler } from './$types';
-import { SubmitAnswerDtoSchema, ListAnswersQuerySchema, AnswerResponseSchema } from '$lib/server/shared/schemas';
+import { SubmitAnswerOperationSchema, ListAnswersOperationSchema } from '$lib/server/shared/schemas';
 import { parseBody, parseQuery, parseParams, handleServiceError, validateAndReturn, noContent } from '$lib/server/shared/http';
-import { z } from 'zod';
-import { UuidSchema } from '$lib/server/shared/z.primitives';
-
-const QuestionIdParamsSchema = z.object({ questionId: UuidSchema });
 
 export const POST: RequestHandler = async (event) => {
   try {
-    const { questionId } = parseParams(event, QuestionIdParamsSchema);
-    const { answer, isAnonymous } = await parseBody(event, SubmitAnswerDtoSchema);
+    const { questionId } = parseParams(event, SubmitAnswerOperationSchema.request.params);
+    const { answer, isAnonymous } = await parseBody(event, SubmitAnswerOperationSchema.request.body);
     const { answersService } = event.locals.authServices!;
     
     await answersService().submitAnswer({ questionId, answer, isAnonymous });
@@ -21,12 +17,12 @@ export const POST: RequestHandler = async (event) => {
 
 export const GET: RequestHandler = async (event) => {
   try {
-    const { questionId } = parseParams(event, QuestionIdParamsSchema);
-    const { page, limit } = parseQuery(event, ListAnswersQuerySchema);
+    const { questionId } = parseParams(event, ListAnswersOperationSchema.request.params);
+    const { page, limit } = parseQuery(event, ListAnswersOperationSchema.request.query);
     const { answersService } = event.locals.authServices!;
     
     const answers = await answersService().listAnswers({ questionId, page, limit });
-    return validateAndReturn(answers, AnswerResponseSchema.array());
+    return validateAndReturn(answers, ListAnswersOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }
