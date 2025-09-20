@@ -9,7 +9,21 @@ import type {
   SubmitUserChallengeQuizDto,
   NewUserChallengeResponse,
   UserChallengeDetailResponse,
-  UserChallengeProgressResponse
+  UserChallengeProgressResponse,
+  SubmitQuestionDto,
+  ListQuestionsDto,
+  GetQuestionDto,
+  NewQuestionResponse,
+  QuestionResponse,
+  SubmitAnswerDto,
+  ListAnswersDto,
+  AnswerResponse,
+  AddReactionDto,
+  AddAnswerReactionDto,
+  ShareProgressDto,
+  AddShareReactionDto,
+  ProgressShareResponse,
+  InviteStatsResponse
 } from '$lib/server/shared/schemas';
 
 /**
@@ -202,6 +216,106 @@ export class ApiClient {
     return this.request<T>('/content/challenges/:challengeId', { method: 'GET' }, {
       params: { challengeId }
     });
+  }
+
+  // ---------- Social Features ----------
+
+  // ---------- Questions ----------
+
+  /** POST /social/questions */
+  async submitQuestion(dto: SubmitQuestionDto): Promise<NewQuestionResponse> {
+    return this.request<NewQuestionResponse>('/social/questions', { 
+      method: 'POST', 
+      body: JSON.stringify(dto) 
+    });
+  }
+
+  /** GET /social/questions?articleId=:articleId */
+  async listQuestions(dto: ListQuestionsDto): Promise<QuestionResponse[]> {
+    return this.request<QuestionResponse[]>('/social/questions', { method: 'GET' }, {
+      query: {
+        articleId: dto.articleId,
+        page: dto.page,
+        limit: dto.limit
+      }
+    });
+  }
+
+  /** GET /social/questions/:questionId */
+  async getQuestion(questionId: string): Promise<QuestionResponse> {
+    return this.request<QuestionResponse>('/social/questions/:questionId', { method: 'GET' }, {
+      params: { questionId }
+    });
+  }
+
+  /** POST /social/questions/:questionId/reactions */
+  async addQuestionReaction(dto: AddReactionDto): Promise<void> {
+    await this.request<void>('/social/questions/:questionId/reactions', { 
+      method: 'POST', 
+      body: JSON.stringify({ reactionType: dto.reactionType }) 
+    }, {
+      params: { questionId: dto.questionId }
+    });
+  }
+
+  // ---------- Answers ----------
+
+  /** POST /social/questions/:questionId/answers */
+  async submitAnswer(dto: SubmitAnswerDto): Promise<void> {
+    await this.request<void>('/social/questions/:questionId/answers', { 
+      method: 'POST', 
+      body: JSON.stringify({ answer: dto.answer, isAnonymous: dto.isAnonymous }) 
+    }, {
+      params: { questionId: dto.questionId }
+    });
+  }
+
+  /** GET /social/questions/:questionId/answers */
+  async listAnswers(dto: ListAnswersDto): Promise<AnswerResponse[]> {
+    return this.request<AnswerResponse[]>('/social/questions/:questionId/answers', { method: 'GET' }, {
+      params: { questionId: dto.questionId },
+      query: {
+        page: dto.page,
+        limit: dto.limit
+      }
+    });
+  }
+
+  /** POST /social/questions/:questionId/answers/:answerId/reactions */
+  async addAnswerReaction(dto: AddAnswerReactionDto): Promise<void> {
+    await this.request<void>('/social/questions/:questionId/answers/:answerId/reactions', { 
+      method: 'POST', 
+      body: JSON.stringify({ reactionType: dto.reactionType }) 
+    }, {
+      params: { questionId: dto.questionId, answerId: dto.answerId }
+    });
+  }
+
+  // ---------- Progress Shares ----------
+
+  /** POST /social/share */
+  async shareProgress(dto: ShareProgressDto): Promise<ProgressShareResponse> {
+    return this.request<ProgressShareResponse>('/social/share', { 
+      method: 'POST', 
+      body: JSON.stringify(dto) 
+    });
+  }
+
+  /** POST /social/shares/:shareId/reactions */
+  async addShareReaction(dto: AddShareReactionDto): Promise<void> {
+    await this.request<void>('/social/shares/:shareId/reactions', { 
+      method: 'POST', 
+      body: JSON.stringify({ reactionType: dto.reactionType }) 
+    }, {
+      params: { shareId: dto.shareId }
+    });
+  }
+
+  // ---------- Invitations ----------
+
+  /** GET /social/invite/stats */
+  async getInviteStats(): Promise<InviteStatsResponse> {
+    return this.request<InviteStatsResponse>('/social/invite/stats', { method: 'GET' });
   }
 }
 

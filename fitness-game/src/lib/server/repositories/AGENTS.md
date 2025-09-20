@@ -218,6 +218,117 @@ Repositories should let database errors bubble up to services. Services handle b
 - Use `returning()` for insert/update operations when you need the result
 - **Prefer atomic operations over multiple database calls**
 
+### 7. Avoiding N+1 Query Patterns (CRITICAL)
+
+**NEVER implement N+1 query patterns in repositories.** This is a critical performance anti-pattern that can severely impact application performance.
+
+#### ❌ Avoid: N+1 Query Pattern
+```typescript
+// DON'T DO THIS - N+1 queries
+async listQuestionsWithArticles(articleId: string): Promise<QuestionWithArticles[]> {
+  const questions = await this.db.select()
+    .from(questions)
+    .innerJoin(questionArticles, eq(questions.id, questionArticles.questionId))
+    .where(eq(questionArticles.articleId, articleId));
+  
+  // This creates N+1 queries - one for each question!
+  const questionsWithArticles = await Promise.all(
+    questions.map(async (question) => {
+      const articleAssociations = await this.db.select()
+        .from(questionArticles)
+        .where(eq(questionArticles.questionId, question.id));
+      return { ...question, articleIds: articleAssociations.map(a => a.articleId) };
+    })
+  );
+  
+  return questionsWithArticles;
+}
+```
+
+#### ✅ Prefer: Single Query with JOINs
+```typescript
+// DO THIS - Single query with proper JOINs
+async listQuestionsWithArticles(articleId: string): Promise<QuestionWithArticles[]> {
+  // First, get the question IDs for the specific article
+  const questionIds = await this.db.select({ id: questions.id })
+    .from(questions)
+    .innerJoin(questionArticles, eq(questions.id, questionArticles.questionId))
+    .where(eq(questionArticles.articleId, articleId));
+  
+  if (questionIds.length === 0) {
+    return [];
+  }
+  
+  // Get all questions with their article associations in a single query
+  const result = await this.db.select({
+    id: questions.id,
+    title: questions.title,
+    body: questions.body,
+    // ... other question fields
+    articleId: questionArticles.articleId,
+  })
+  .from(questions)
+  .innerJoin(questionArticles, eq(questions.id, questionArticles.questionId))
+  .where(sql`${questions.id} = ANY(${questionIds.map(q => q.id)})`);
+  
+  // Group by question and collect article IDs
+  const questionMap = new Map<string, QuestionWithArticles>();
+  
+  for (const row of result) {
+    const { articleId: _, ...questionData } = row;
+    const questionId = questionData.id;
+    
+    if (!questionMap.has(questionId)) {
+      questionMap.set(questionId, {
+        ...questionData,
+        articleIds: []
+      });
+    }
+    
+    questionMap.get(questionId)!.articleIds.push(row.articleId);
+  }
+  
+  return Array.from(questionMap.values());
+}
+```
+
+#### ✅ Alternative: Use Database Aggregation
+```typescript
+// Alternative approach using database aggregation
+async listQuestionsWithArticles(articleId: string): Promise<QuestionWithArticles[]> {
+  const result = await this.db.select({
+    id: questions.id,
+    title: questions.title,
+    body: questions.body,
+    // ... other question fields
+    articleIds: sql<string[]>`array_agg(${questionArticles.articleId})`,
+  })
+  .from(questions)
+  .innerJoin(questionArticles, eq(questions.id, questionArticles.questionId))
+  .where(eq(questionArticles.articleId, articleId))
+  .groupBy(questions.id, questions.title, questions.body);
+  
+  return result.map(row => ({
+    ...row,
+    articleIds: row.articleIds || []
+  }));
+}
+```
+
+#### Key Principles for Avoiding N+1:
+
+1. **Single Query Strategy**: Always prefer one query over multiple queries
+2. **JOIN When Possible**: Use JOINs to fetch related data in one query
+3. **Group Results**: Use Map/Set to group related data after fetching
+4. **Database Aggregation**: Use SQL aggregation functions when appropriate
+5. **Batch Operations**: When you must make multiple queries, batch them together
+
+#### When N+1 Might Seem Necessary:
+
+- **Large Result Sets**: If you're dealing with thousands of records, consider pagination
+- **Complex Relationships**: Use subqueries or CTEs instead of N+1
+- **Conditional Loading**: Use optional JOINs with LEFT JOIN instead of separate queries
+
 ## Advanced Repository Patterns
 
 ### 1. Complex Queries

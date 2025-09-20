@@ -157,3 +157,115 @@ export type UserProfileResponse = {
     fitness_level: boolean;
   } | null;
 };
+
+// --- Social Features DTOs ---
+
+// Question DTOs
+export type SubmitQuestionDto = {
+  articleIds: string[];
+  title: string;
+  body: string;
+  isAnonymous: boolean;
+};
+
+export type ListQuestionsDto = {
+  articleId: string;
+  page?: number;
+  limit?: number;
+};
+
+export type GetQuestionDto = {
+  questionId: string;
+};
+
+export type NewQuestionResponse = {
+  id: string;
+};
+
+export type QuestionResponse = NewQuestionResponse & {
+  title: string;
+  body: string;
+  status: 'pending' | 'approved' | 'rejected' | 'hidden';
+  helpfulCount: number;
+  notHelpfulCount: number;
+  createdAt: string;
+  updatedAt: string;
+  userId: string | null;
+};
+
+// Answer DTOs
+export type SubmitAnswerDto = {
+  questionId: string;
+  answer: string;
+  isAnonymous: boolean;
+};
+
+export type ListAnswersDto = {
+  questionId: string;
+  page?: number;
+  limit?: number;
+};
+
+export type AnswerResponse = {
+  id: string;
+  answer: string;
+  isAnonymous: boolean;
+  status: 'pending' | 'approved' | 'rejected' | 'hidden';
+  helpfulCount: number;
+  notHelpfulCount: number;
+  createdAt: string;
+  userId: string;
+};
+
+// Reaction DTOs
+export type AddReactionDto = {
+  questionId: string;
+  reactionType: 'helpful' | 'not_helpful';
+};
+
+export type AddAnswerReactionDto = {
+  questionId: string;
+  answerId: string;
+  reactionType: 'helpful' | 'not_helpful';
+};
+
+// Share DTOs
+export type ShareProgressDto = {
+  shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement';
+  shareTypeId?: string;
+  includeInviteLink: boolean;
+  isPublic: boolean;
+};
+
+export type AddShareReactionDto = {
+  shareId: string;
+  reactionType: 'clap' | 'muscle' | 'party';
+};
+
+export type ProgressShareResponse = {
+  id: string;
+  shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement';
+  shareTypeId: string;
+  contentVersion: string;
+  generatedContent: {
+    title: string;
+    message: string;
+    stats: Record<string, any>;
+    image?: string;
+  };
+  includeInviteLink: boolean;
+  isPublic: boolean;
+  status: 'active' | 'hidden' | 'deleted';
+  clapCount: number;
+  muscleCount: number;
+  partyCount: number;
+  createdAt: string;
+  userId: string;
+};
+
+// Invitation DTOs
+export type InviteStatsResponse = {
+  invitationCode: string;
+  invitationLink: string;
+  invitationJoinCount: number;
+};

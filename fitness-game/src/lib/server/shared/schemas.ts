@@ -9,11 +9,14 @@ import {
   CountryCodeSchema,
   AvatarGenderSchema,
   AvatarAgeRangeSchema,
-  FiveStarValueSchema,
-  YesNoValueSchema,
   DailyLogValueSchema,
-  AllLogKeysSchema,
-  NotificationPreferencesSchema
+  NotificationPreferencesSchema,
+  QuestionStatusSchema,
+  AnswerStatusSchema,
+  ReactionTypeSchema,
+  EmojiReactionTypeSchema,
+  ShareTypeSchema,
+  ShareStatusSchema
 } from './z.primitives';
 
 // --- User Profile Schemas ---
@@ -161,3 +164,134 @@ export type NewUserChallengeResponse = z.infer<typeof NewUserChallengeResponseSc
 export type UserChallengeSummaryResponse = z.infer<typeof UserChallengeSummaryResponseSchema>;
 export type UserChallengeDetailResponse = z.infer<typeof UserChallengeDetailResponseSchema>;
 export type UserChallengeProgressResponse = z.infer<typeof UserChallengeProgressResponseSchema>;
+
+// --- Social Features Schemas ---
+
+// Question Schemas
+export const SubmitQuestionDtoSchema = z.object({
+  articleIds: z.array(z.string().min(1, 'Article ID cannot be empty')).min(1, 'At least one article ID required'),
+  title: z.string().trim().min(10, 'Title must be at least 10 characters').max(100, 'Title must be no more than 100 characters'),
+  body: z.string().trim().min(10, 'Body must be at least 10 characters').max(2000, 'Body must be no more than 2000 characters'),
+  isAnonymous: z.boolean().default(false)
+});
+
+export const ListQuestionsQuerySchema = z.object({
+  articleId: z.string().min(1, 'Article ID cannot be empty'),
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(20)
+});
+
+export const GetQuestionParamsSchema = z.object({
+  questionId: UuidSchema
+});
+
+export const QuestionResponseSchema = z.object({
+  id: UuidSchema,
+  title: z.string(),
+  body: z.string(),
+  status: QuestionStatusSchema,
+  helpfulCount: z.number().int().min(0),
+  notHelpfulCount: z.number().int().min(0),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  userId: UuidSchema.nullable()
+});
+
+// Answer Schemas
+export const SubmitAnswerDtoSchema = z.object({
+  questionId: UuidSchema,
+  answer: z.string().trim().min(10, 'Answer must be at least 10 characters').max(2000, 'Answer must be no more than 2000 characters'),
+  isAnonymous: z.boolean().default(false)
+});
+
+export const ListAnswersQuerySchema = z.object({
+  questionId: UuidSchema,
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(20)
+});
+
+export const AnswerResponseSchema = z.object({
+  id: UuidSchema,
+  answer: z.string(),
+  isAnonymous: z.boolean(),
+  status: AnswerStatusSchema,
+  helpfulCount: z.number().int().min(0),
+  notHelpfulCount: z.number().int().min(0),
+  createdAt: z.string(),
+  userId: UuidSchema
+});
+
+// Reaction Schemas
+export const AddReactionDtoSchema = z.object({
+  questionId: UuidSchema,
+  reactionType: ReactionTypeSchema
+});
+
+export const AddAnswerReactionDtoSchema = z.object({
+  questionId: UuidSchema,
+  answerId: UuidSchema,
+  reactionType: ReactionTypeSchema
+});
+
+// Share Schemas
+export const ShareProgressDtoSchema = z.object({
+  shareType: ShareTypeSchema,
+  shareTypeId: z.string().min(1, 'Share type ID cannot be empty').optional(),
+  includeInviteLink: z.boolean().default(false),
+  isPublic: z.boolean().default(true)
+});
+
+export const AddShareReactionDtoSchema = z.object({
+  shareId: UuidSchema,
+  reactionType: EmojiReactionTypeSchema
+});
+
+export const ProgressShareResponseSchema = z.object({
+  id: UuidSchema,
+  shareType: ShareTypeSchema,
+  shareTypeId: z.string(),
+  contentVersion: z.string(),
+  generatedContent: z.object({
+    title: z.string(),
+    message: z.string(),
+    stats: z.record(z.string(), z.any()),
+    image: z.string().optional()
+  }),
+  includeInviteLink: z.boolean(),
+  isPublic: z.boolean(),
+  status: ShareStatusSchema,
+  clapCount: z.number().int().min(0),
+  muscleCount: z.number().int().min(0),
+  partyCount: z.number().int().min(0),
+  createdAt: z.string(),
+  userId: UuidSchema
+});
+
+// Invitation Schemas
+export const InviteStatsResponseSchema = z.object({
+  invitationCode: UuidSchema,
+  invitationLink: z.string().url(),
+  invitationJoinCount: z.number().int().min(0)
+});
+
+// Export inferred types
+export type SubmitQuestionDto = z.infer<typeof SubmitQuestionDtoSchema>;
+export type ListQuestionsDto = z.infer<typeof ListQuestionsQuerySchema>;
+export type GetQuestionDto = z.infer<typeof GetQuestionParamsSchema>;
+export type QuestionResponse = z.infer<typeof QuestionResponseSchema>;
+export type SubmitAnswerDto = z.infer<typeof SubmitAnswerDtoSchema>;
+export type ListAnswersDto = z.infer<typeof ListAnswersQuerySchema>;
+export type AnswerResponse = z.infer<typeof AnswerResponseSchema>;
+export type AddReactionDto = z.infer<typeof AddReactionDtoSchema>;
+export type AddAnswerReactionDto = z.infer<typeof AddAnswerReactionDtoSchema>;
+export type ShareProgressDto = z.infer<typeof ShareProgressDtoSchema>;
+export type AddShareReactionDto = z.infer<typeof AddShareReactionDtoSchema>;
+export type ProgressShareResponse = z.infer<typeof ProgressShareResponseSchema>;
+export type InviteStatsResponse = z.infer<typeof InviteStatsResponseSchema>;
+
+// Additional response types
+export const NewQuestionResponseSchema = z.object({
+  id: UuidSchema
+});
+
+export type NewQuestionResponse = z.infer<typeof NewQuestionResponseSchema>;

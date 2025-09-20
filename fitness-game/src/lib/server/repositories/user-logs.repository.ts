@@ -74,7 +74,7 @@ export class UserLogsRepository implements IUserLogsRepository {
               updatedAt: logData.createdAt,
             },
             // This makes sure we only update the log for the user
-            setWhere: sql`${userLogs.userId} = ${logData.userId}`
+            setWhere: sql`${userLogs.userId} = EXCLUDED.userId`
           });
         
         affectedRows += insertResult.rowCount;

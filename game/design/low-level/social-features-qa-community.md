@@ -220,9 +220,9 @@ Error Conditions: Invalid share type, invalid shareTypeId, user not eligible
 **POST /api/v1/social/shares/{shareId}/reactions**: React to shared content
 ```
 Signature: addShareReaction(shareId: string, reactionType: 'clap' | 'muscle' | 'party')
-Purpose: Add emoji reaction to shared content
+Purpose: Add emoji reaction to shared content (public, unlimited reactions)
 Preconditions: User must be authenticated
-Postconditions: Reaction is recorded and count is incremented
+Postconditions: Reaction count is incremented (no individual tracking)
 Error Conditions: Invalid share ID, invalid reaction type
 ```
 
@@ -374,21 +374,7 @@ export const progressShares = pgTable('progress_shares', {
 });
 ```
 
-**Share Reactions**
-```typescript
-export const shareReactions = pgTable('share_reactions', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  shareId: uuid('share_id').notNull().references(() => progressShares.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  reactionType: emojiReactionEnum('reaction_type').notNull(), // clap, muscle, party
-  createdAt: timestamp('created_at').notNull(),
-}, (table) => {
-  return [
-    unique('share_reactions_unique').on(table.shareId, table.userId),
-    index('share_reactions_share_index').on(table.shareId),
-  ];
-});
-```
+**Note**: Share reactions are public and don't require individual tracking. Reactions are handled by directly updating the count fields (`clapCount`, `muscleCount`, `partyCount`) on the `progressShares` table. This simplifies the system and allows for overcounting without privacy concerns.
 
 
 **Business Rules**: 
@@ -396,8 +382,9 @@ export const shareReactions = pgTable('share_reactions', {
 - Each user gets one unique invitation code (UUID) that never changes
 - Questions must have both title (10-100 chars) and body (10-2000 chars)
 - Questions and answers must pass AI moderation before being visible
-- Users can only react once per question/answer/share
+- Users can only react once per question/answer (share reactions are public and unlimited)
 - Reaction counts are maintained as integer fields for performance
+- Share reactions are public and don't require individual tracking (overcounting is acceptable)
 - Invitation join count is tracked automatically when new users register with invitation code
 - Users can only have one inviter (first invitation code used wins)
 - Self-referencing relationship: users.inviterUserId → users.id
@@ -406,7 +393,7 @@ export const shareReactions = pgTable('share_reactions', {
 - Questions belong to users and can be associated with multiple articles (many-to-many)
 - Question Articles junction table links questions to articles
 - Answers belong to questions and users
-- Reactions belong to questions/answers/shares and users
+- Reactions belong to questions/answers and users (share reactions are public counters only)
 - Users have optional self-referencing relationship to inviter (users.inviterUserId → users.id)
 
 **Indexing Strategy**: 
@@ -418,7 +405,7 @@ export const shareReactions = pgTable('share_reactions', {
 - Index on questionArticles.questionId for finding articles by question
 - Composite primary key on questionArticles (questionId, articleId) prevents duplicates and enables efficient lookups
 - User-based indexes for personal content retrieval
-- Unique constraints to prevent duplicate reactions
+- Unique constraints to prevent duplicate reactions (questions/answers only)
 - Unique index on invitationCode for fast lookups during registration
 - Index on inviterUserId for finding users by inviter
 
@@ -782,42 +769,17 @@ async function addQuestionReaction(questionId: string, userId: string, reactionT
 }
 ```
 
-**Add Share Reaction Operation** (updates count fields)
+**Add Share Reaction Operation** (simplified - no individual tracking)
 ```typescript
-async function addShareReaction(shareId: string, userId: string, reactionType: 'clap' | 'muscle' | 'party') {
-  await db.transaction(async (tx) => {
-    // Check if user already reacted
-    const existingReaction = await tx.select({ reactionType: shareReactions.reactionType })
-      .from(shareReactions)
-      .where(
-        and(
-          eq(shareReactions.shareId, shareId),
-          eq(shareReactions.userId, userId)
-        )
-      )
-      .limit(1);
-    
-    if (existingReaction[0]) {
-      throw new Error('User has already reacted to this share');
-    }
-    
-    // Insert reaction
-    await tx.insert(shareReactions).values({
-      shareId,
-      userId,
-      reactionType,
-      createdAt: new Date(),
-    });
-    
-    // Update count
-    const countField = `${reactionType}Count`;
-    await tx.update(progressShares)
-      .set({ 
-        [countField]: sql`${progressShares[countField]} + 1`,
-        updatedAt: new Date()
-      })
-      .where(eq(progressShares.id, shareId));
-  });
+async function addShareReaction(shareId: string, reactionType: 'clap' | 'muscle' | 'party') {
+  // Simply increment the count - no individual tracking needed for public shares
+  const countField = `${reactionType}Count`;
+  await db.update(progressShares)
+    .set({ 
+      [countField]: sql`${progressShares[countField]} + 1`,
+      updatedAt: new Date()
+    })
+    .where(eq(progressShares.id, shareId));
 }
 ```
 
@@ -911,7 +873,8 @@ async function generateShareContent(
 - Question submission: <200ms (including article associations)
 - Answer retrieval: <50ms for 20 answers (no runtime counting)
 - Question retrieval for article: <100ms for 20 questions (optimized with partial index)
-- Reaction addition: <100ms (includes count update)
+- Question/Answer reaction addition: <100ms (includes count update and duplicate check)
+- Share reaction addition: <20ms (simplified - just count increment)
 - Progress share creation: <300ms (includes content generation and data fetching)
 
 **Indexes Required**: 
@@ -924,7 +887,7 @@ async function generateShareContent(
 - Composite primary key on questionArticles (questionId, articleId) for efficient lookups and duplicate prevention
 - Index on questionArticles.articleId for finding questions by article
 - Index on questionArticles.questionId for finding articles by question
-- Unique indexes on reaction tables to prevent duplicates
+- Unique indexes on question/answer reaction tables to prevent duplicates (share reactions are public and unlimited)
 
 ## Error Handling & Validation
 

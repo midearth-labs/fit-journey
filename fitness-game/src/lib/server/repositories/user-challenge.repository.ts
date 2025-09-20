@@ -7,7 +7,7 @@ import { type IChallengeDAO } from '$lib/server/content/daos/challenge';
 import { type ActiveChallengeMetadata, type ActiveChallengesStatusCheckPayload, type ImplicitStatusCheckPayload, type UserChallengeWithImplicitStatus } from '$lib/server/shared/interfaces';
 
 export type IUserChallengeRepository = {
-    create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus>;
+    create(challengeData: NewUserChallenge): Promise<{id: UserChallenge['id']}>;
     findById(id: string, userId: string): Promise<UserChallengeWithImplicitStatus | null>;
     findByUserId(userId: string): Promise<UserChallengeWithImplicitStatus[]>;
     findConflictingByUserIdAndChallengeId(userId: string, challengeId: string): Promise<UserChallengeWithImplicitStatus | null>;
@@ -27,17 +27,13 @@ export class UserChallengeRepository implements IUserChallengeRepository {
   /**
    * Create a new user challenge
    */
-  async create(challengeData: NewUserChallenge): Promise<UserChallengeWithImplicitStatus> {
+  async create(challengeData: NewUserChallenge): Promise<{id: UserChallenge['id']}> {
     const [challenge] = await this.db
       .insert(userChallenges)
       .values({...challengeData, updatedAt: challengeData.createdAt, status: 'not_started', knowledgeBaseCompletedCount: 0, dailyLogCount: 0})
-      .returning();
+      .returning({id: userChallenges.id});
     
-    return {
-      ...challenge,
-      // @TODO: Implement caching for the implicit status
-      implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => this.getRealChallengeStatus({...payload, challengeId: challenge.id}, challenge),
-    };
+    return challenge;
   }
 
   /**

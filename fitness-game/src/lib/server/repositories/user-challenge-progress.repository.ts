@@ -68,7 +68,7 @@ export class UserChallengeProgressRepository implements IUserChallengeProgressRe
           attempts: sql<number>`${userChallengeProgress.attempts} + 1`,
         },
         // This makes sure we only update the progress for the user
-        setWhere: sql`${userChallengeProgress.userId} = ${progressData.userId}`
+        setWhere: sql`${userChallengeProgress.userId} = EXCLUDED.userId`
       })
       // @TODO: Add logic to update the user challenge progress count
     

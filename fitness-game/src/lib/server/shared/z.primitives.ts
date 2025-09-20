@@ -51,3 +51,11 @@ export const NotificationPreferencesSchema = z.object({
   social: z.boolean(),
   fitness_level: z.boolean()
 });
+
+// Social Features Enums
+export const QuestionStatusSchema = z.enum(['pending', 'approved', 'rejected', 'hidden']);
+export const AnswerStatusSchema = z.enum(['pending', 'approved', 'rejected', 'hidden']);
+export const ReactionTypeSchema = z.enum(['helpful', 'not_helpful']);
+export const EmojiReactionTypeSchema = z.enum(['clap', 'muscle', 'party']);
+export const ShareTypeSchema = z.enum(['challenge_completion', 'avatar_progression', 'quiz_achievement']);
+export const ShareStatusSchema = z.enum(['active', 'hidden', 'deleted']);

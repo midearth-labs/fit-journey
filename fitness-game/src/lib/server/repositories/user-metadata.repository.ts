@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { userMetadata, type UserMetadata, type NewUserMetadata } from '$lib/server/db/schema';
 
 export interface IUserMetadataRepository {
-  create(profileData: NewUserMetadata): Promise<UserMetadata>;
+  create(profileData: NewUserMetadata): Promise<{id: UserMetadata['id']}>;
   update(UserMetadataId: string, updates: Partial<UserMetadata>): Promise<boolean>;
   delete(UserMetadataId: string): Promise<boolean>;
   findById(UserMetadataId: string): Promise<UserMetadata | null>;
@@ -13,10 +13,10 @@ export class UserMetadataRepository implements IUserMetadataRepository {
   // Drizzle instance is injected
   constructor(private db: NodePgDatabase<any>) {}
 
-  async create(profileData: NewUserMetadata): Promise<UserMetadata> {
+  async create(profileData: NewUserMetadata): Promise<{id: UserMetadata['id']}> {
     const result = await this.db.insert(userMetadata)
       .values(profileData)
-      .returning();
+      .returning({id: userMetadata.id});
     return result[0];
   }
 

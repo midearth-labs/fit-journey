@@ -7,8 +7,10 @@ import {
   UserChallengeRepository,
   UserChallengeProgressRepository,
   UserLogsRepository,
+  QuestionsRepository,
+  QuestionReactionsRepository,
 } from '$lib/server/repositories';
-import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService } from '$lib/server/services';
+import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -31,12 +33,20 @@ export class ServiceFactory {
   private readonly userChallengeProgressRepository: UserChallengeProgressRepository;
   private readonly userLogsRepository: UserLogsRepository;
   
+  // Social Features Repositories
+  private readonly questionsRepository: QuestionsRepository;
+  private readonly questionReactionsRepository: QuestionReactionsRepository;
+  
   // Services
   private readonly challengeContentServiceCreator: ServiceCreatorFromRequestContext<IChallengeContentService>;
   private readonly challengeServiceCreator: ServiceCreatorFromRequestContext<IChallengeService>;
   private readonly challengeProgressServiceCreator: ServiceCreatorFromRequestContext<IChallengeProgressService>;
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
   private readonly userProfileServiceCreator: ServiceCreatorFromRequestContext<IUserProfileService>;
+  
+  // Social Features Services
+  private readonly moderationService: ModerationService;
+  private readonly questionsServiceCreator: ServiceCreatorFromRequestContext<IQuestionsService>;
   
   private constructor(content: Content) {
     const db = getDBInstance();
@@ -51,6 +61,10 @@ export class ServiceFactory {
     this.userChallengeRepository = new UserChallengeRepository(db, this.dateTimeHelper, this.contentDAOFactory.getDAO('Challenge'));
     this.userChallengeProgressRepository = new UserChallengeProgressRepository(db);
     this.userLogsRepository = new UserLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
+    
+    // Initialize Social Features repositories
+    this.questionsRepository = new QuestionsRepository(db);
+    this.questionReactionsRepository = new QuestionReactionsRepository(db);
     
     // Initialize services
     this.challengeContentServiceCreator = createServiceFromClass(
@@ -74,6 +88,18 @@ export class ServiceFactory {
       UserProfileService,
       { userRepository: this.userRepository }
     );
+    
+    // Initialize Social Features services
+    this.moderationService = new ModerationService();
+    this.questionsServiceCreator = createServiceFromClass(
+      QuestionsService,
+      { 
+        questionsRepository: this.questionsRepository,
+        questionReactionsRepository: this.questionReactionsRepository,
+        moderationService: this.moderationService,
+        userChallengeRepository: this.userChallengeRepository
+      }
+    );
   }
   
   /**
@@ -94,6 +120,7 @@ export class ServiceFactory {
       challengeProgressService: () => this.challengeProgressServiceCreator(authRequestContext),
       logService: () => this.logServiceCreator(authRequestContext),
       userProfileService: () => this.userProfileServiceCreator(authRequestContext),
+      questionsService: () => this.questionsServiceCreator(authRequestContext),
     };
   }
   
