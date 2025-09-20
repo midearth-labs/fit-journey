@@ -248,11 +248,11 @@ export const questionAnswers = pgTable('question_answers', {
   questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade' }),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   answer: text('answer').notNull(),
-  isAnonymous: boolean('is_anonymous').notNull().default(false),
-  status: answerStatusEnum('status').notNull().default('pending'),
-  moderationNotes: text('moderation_notes'),
-  helpfulCount: integer('helpful_count').notNull().default(0),
-  notHelpfulCount: integer('not_helpful_count').notNull().default(0),
+  isAnonymous: boolean('is_anonymous').notNull(),
+  status: answerStatusEnum('status').notNull(),
+  moderationNotes: jsonb('moderation_notes').$type<{answer: string[]}>().notNull(),
+  helpfulCount: integer('helpful_count').notNull(),
+  notHelpfulCount: integer('not_helpful_count').notNull(),
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
@@ -278,14 +278,13 @@ export const questionReactions = pgTable('question_reactions', {
 
 // Answer Reactions table
 export const answerReactions = pgTable('answer_reactions', {
-  id: uuid('id').primaryKey().defaultRandom(),
   answerId: uuid('answer_id').notNull().references(() => questionAnswers.id, { onDelete: 'cascade' }),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   reactionType: reactionTypeEnum('reaction_type').notNull(),
   createdAt: timestamp('created_at').notNull(),
 }, (table) => {
   return [
-    unique('answer_reactions_unique').on(table.answerId, table.userId),
+    primaryKey({ columns: [table.answerId, table.userId] }), // Composite primary key
     index('answer_reactions_answer_index').on(table.answerId),
   ];
 });
@@ -422,6 +421,6 @@ export type NewQuestionAnswer = Omit<InferInsertModel<typeof questionAnswers>, '
 export type QuestionReaction = InferSelectModel<typeof questionReactions>;
 export type NewQuestionReaction = InferInsertModel<typeof questionReactions>;
 export type AnswerReaction = InferSelectModel<typeof answerReactions>;
-export type NewAnswerReaction = Omit<InferInsertModel<typeof answerReactions>, 'id'>;
+export type NewAnswerReaction = InferInsertModel<typeof answerReactions>;
 export type ProgressShare = InferSelectModel<typeof progressShares>;
 export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id' | 'updatedAt' | 'clapCount' | 'muscleCount' | 'partyCount'>;

@@ -210,15 +210,19 @@ export const ListAnswersQuerySchema = z.object({
   limit: z.coerce.number().int().min(1).max(100).default(20)
 });
 
+export const GetAnswerParamsSchema = z.object({
+  questionId: UuidSchema,
+  answerId: UuidSchema
+});
+
 export const AnswerResponseSchema = z.object({
   id: UuidSchema,
   answer: z.string(),
-  isAnonymous: z.boolean(),
   status: AnswerStatusSchema,
   helpfulCount: z.number().int().min(0),
   notHelpfulCount: z.number().int().min(0),
   createdAt: z.string(),
-  userId: UuidSchema
+  userId: UuidSchema.nullable()
 });
 
 // Reaction Schemas

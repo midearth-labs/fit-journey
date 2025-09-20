@@ -206,15 +206,22 @@ export type ListAnswersDto = {
   limit?: number;
 };
 
-export type AnswerResponse = {
+export type GetAnswerDto = {
+  questionId: string;
+  answerId: string;
+};
+
+export type NewAnswerResponse = {
   id: string;
+};
+
+export type AnswerResponse = NewAnswerResponse & {
   answer: string;
-  isAnonymous: boolean;
   status: 'pending' | 'approved' | 'rejected' | 'hidden';
   helpfulCount: number;
   notHelpfulCount: number;
   createdAt: string;
-  userId: string;
+  userId: string | null;
 };
 
 // Reaction DTOs

@@ -25,6 +25,7 @@ Services are implemented as classes that:
 - Accept dependencies via constructor injection
 - Accept `AuthRequestContext` for request-scoped data
 - Implement the service interface
+- Use the `notFound` check for dependent resource existence check.
 
 ```typescript
 export class ServiceName implements IServiceName {

@@ -9,8 +9,9 @@ import {
   UserLogsRepository,
   QuestionsRepository,
   QuestionReactionsRepository,
+  AnswersRepository,
 } from '$lib/server/repositories';
-import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService } from '$lib/server/services';
+import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, AnswersService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService, type IAnswersService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -36,6 +37,7 @@ export class ServiceFactory {
   // Social Features Repositories
   private readonly questionsRepository: QuestionsRepository;
   private readonly questionReactionsRepository: QuestionReactionsRepository;
+  private readonly answersRepository: AnswersRepository;
   
   // Services
   private readonly challengeContentServiceCreator: ServiceCreatorFromRequestContext<IChallengeContentService>;
@@ -47,6 +49,7 @@ export class ServiceFactory {
   // Social Features Services
   private readonly moderationService: ModerationService;
   private readonly questionsServiceCreator: ServiceCreatorFromRequestContext<IQuestionsService>;
+  private readonly answersServiceCreator: ServiceCreatorFromRequestContext<IAnswersService>;
   
   private constructor(content: Content) {
     const db = getDBInstance();
@@ -65,6 +68,7 @@ export class ServiceFactory {
     // Initialize Social Features repositories
     this.questionsRepository = new QuestionsRepository(db);
     this.questionReactionsRepository = new QuestionReactionsRepository(db);
+    this.answersRepository = new AnswersRepository(db);
     
     // Initialize services
     this.challengeContentServiceCreator = createServiceFromClass(
@@ -100,6 +104,15 @@ export class ServiceFactory {
         userChallengeRepository: this.userChallengeRepository
       }
     );
+    this.answersServiceCreator = createServiceFromClass(
+      AnswersService,
+      { 
+        answersRepository: this.answersRepository,
+        questionsRepository: this.questionsRepository,
+        moderationService: this.moderationService,
+        userChallengeRepository: this.userChallengeRepository
+      }
+    );
   }
   
   /**
@@ -121,6 +134,7 @@ export class ServiceFactory {
       logService: () => this.logServiceCreator(authRequestContext),
       userProfileService: () => this.userProfileServiceCreator(authRequestContext),
       questionsService: () => this.questionsServiceCreator(authRequestContext),
+      answersService: () => this.answersServiceCreator(authRequestContext),
     };
   }
   

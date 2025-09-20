@@ -281,6 +281,13 @@ export class ApiClient {
     });
   }
 
+  /** GET /social/questions/:questionId/answers/:answerId */
+  async getAnswer(questionId: string, answerId: string): Promise<AnswerResponse> {
+    return this.request<AnswerResponse>('/social/questions/:questionId/answers/:answerId', { method: 'GET' }, {
+      params: { questionId, answerId }
+    });
+  }
+
   /** POST /social/questions/:questionId/answers/:answerId/reactions */
   async addAnswerReaction(dto: AddAnswerReactionDto): Promise<void> {
     await this.request<void>('/social/questions/:questionId/answers/:answerId/reactions', { 

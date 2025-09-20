@@ -5,6 +5,7 @@ import type { ILogService } from './log.service';
 import type { IUserProfileService } from './user-profile.service';
 import type { IQuestionsService } from './questions.service';
 import type { IModerationService } from './moderation.service';
+import type { IAnswersService } from './answers.service';
 
 export { type IChallengeService, ChallengeService } from './challenge.service';
 export { type IChallengeContentService, ChallengeContentService } from './challenge-content.service';
@@ -15,6 +16,7 @@ export { type IUserProfileService, UserProfileService } from './user-profile.ser
 // Social Features Services
 export { type IQuestionsService, QuestionsService } from './questions.service';
 export { type IModerationService, ModerationService } from './moderation.service';
+export { type IAnswersService, AnswersService } from './answers.service';
 
 export type AuthServices = {
   challengeContentService: () => IChallengeContentService
@@ -23,4 +25,5 @@ export type AuthServices = {
   logService: () => ILogService
   userProfileService: () => IUserProfileService
   questionsService: () => IQuestionsService
+  answersService: () => IAnswersService
 }
