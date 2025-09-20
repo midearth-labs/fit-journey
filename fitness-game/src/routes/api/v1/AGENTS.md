@@ -28,7 +28,7 @@ Mirror REST paths with SvelteKit routing:
 
 - `$lib/server/shared/z.primitives.ts` – common Zod primitives (uuid, email, iso date, enums, etc.) using latest Zod APIs:
   - `z.uuid()`, `z.email()`, `z.iso.date()`
-- `$lib/server/shared/schemas.ts` – DTO-aligned schemas composed from primitives; reuse via `.extend()/.omit()/.pick()`.
+- `$lib/server/shared/schemas.ts` – **Consolidated operation schemas** and DTO-aligned schemas composed from primitives; reuse via `.extend()/.omit()/.pick()`.
 - `$lib/server/shared/http.ts` – helpers:
   - `parseBody(event, schema)` – JSON + Zod
   - `parseQuery(event, schema)` – URLSearchParams + Zod
@@ -36,6 +36,46 @@ Mirror REST paths with SvelteKit routing:
   - `validateAndReturn(data, schema)` – response validation
   - `noContent()` – 204
   - `handleServiceError(err)` – maps `ValidationError` → 400, others → 500
+
+## Consolidated Operation Schemas
+
+**NEW APPROACH**: All API operations now use consolidated schemas that define the complete request/response structure in one place.
+
+### Schema Structure
+
+Each operation follows this pattern in `schemas.ts`:
+
+```typescript
+export const {OperationName}OperationSchema = {
+  request: {
+    params: ParamSchema{IfExists},
+    query: QuerySchema{IfExists},
+    body: BodySchema{IfExists},
+  },
+  response: {
+    body: ResponseSchema{IfExists},
+  }
+};
+
+export type {OperationName}Operation = {
+  request: {
+    params: z.infer<typeof {OperationName}OperationSchema.request.params>;
+    query: z.infer<typeof {OperationName}OperationSchema.request.query>;
+    body: z.infer<typeof {OperationName}OperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof {OperationName}OperationSchema.response.body>;
+  };
+};
+```
+
+### Benefits
+
+1. **Centralized Schema Management**: All operation schemas in one place
+2. **Type Safety**: Full TypeScript inference from consolidated schemas
+3. **Consistency**: Uniform structure across all operations
+4. **Maintainability**: Easier to update schemas and ensure consistency
+5. **Documentation**: Clear request/response structure for each operation
 
 ## Handler pattern
 
@@ -46,12 +86,12 @@ Mirror REST paths with SvelteKit routing:
 ### Example: PATCH /users/me/profile
 ```ts
 import type { RequestHandler } from './$types';
-import { UpdateUserProfileDtoSchema } from '$lib/server/shared/schemas';
+import { UpdateUserProfileOperationSchema } from '$lib/server/shared/schemas';
 import { parseBody, handleServiceError, noContent } from '$lib/server/shared/http';
 
 export const PATCH: RequestHandler = async (event) => {
   try {
-    const dto = await parseBody(event, UpdateUserProfileDtoSchema);
+    const dto = await parseBody(event, UpdateUserProfileOperationSchema.request.body);
     const { userProfileService } = event.locals.authServices!;
     await userProfileService().updateUserProfile(dto);
     return noContent();
@@ -64,18 +104,13 @@ export const PATCH: RequestHandler = async (event) => {
 ### Example: PUT /logs/:logDate
 ```ts
 import type { RequestHandler } from './$types';
-import { z } from 'zod';
-import { IsoDateSchema } from '$lib/server/shared/z.primitives';
-import { DailyLogPayloadSchema } from '$lib/server/shared/schemas';
+import { PutUserLogOperationSchema } from '$lib/server/shared/schemas';
 import { parseBody, parseParams, handleServiceError, noContent } from '$lib/server/shared/http';
-
-const LogDateParamsSchema = z.object({ logDate: IsoDateSchema });
-const PutUserLogBodySchema = z.object({ values: DailyLogPayloadSchema });
 
 export const PUT: RequestHandler = async (event) => {
   try {
-    const { logDate } = parseParams(event, LogDateParamsSchema);
-    const { values } = await parseBody(event, PutUserLogBodySchema);
+    const { logDate } = parseParams(event, PutUserLogOperationSchema.request.params);
+    const { values } = await parseBody(event, PutUserLogOperationSchema.request.body);
     const { logService } = event.locals.authServices!;
     await logService().putUserLog({ logDate, values });
     return noContent();
@@ -88,15 +123,15 @@ export const PUT: RequestHandler = async (event) => {
 ### Example: GET /logs
 ```ts
 import type { RequestHandler } from './$types';
-import { ListUserLogsQuerySchema, UserLogResponseSchema } from '$lib/server/shared/schemas';
+import { ListUserLogsOperationSchema } from '$lib/server/shared/schemas';
 import { parseQuery, handleServiceError, validateAndReturn } from '$lib/server/shared/http';
 
 export const GET: RequestHandler = async (event) => {
   try {
-    const dto = parseQuery(event, ListUserLogsQuerySchema);
+    const dto = parseQuery(event, ListUserLogsOperationSchema.request.query);
     const { logService } = event.locals.authServices!;
     const logs = await logService().listUserLogs(dto);
-    return validateAndReturn(logs, UserLogResponseSchema.array());
+    return validateAndReturn(logs, ListUserLogsOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }
@@ -106,17 +141,12 @@ export const GET: RequestHandler = async (event) => {
 ### Example: DELETE /user-challenges/:userChallengeId
 ```ts
 import type { RequestHandler } from './$types';
-import { z } from 'zod';
-import { UuidSchema } from '$lib/server/shared/z.primitives';
+import { CancelUserChallengeOperationSchema } from '$lib/server/shared/schemas';
 import { parseParams, handleServiceError, noContent } from '$lib/server/shared/http';
-
-const UserChallengeParamsSchema = z.object({
-  userChallengeId: UuidSchema
-});
 
 export const DELETE: RequestHandler = async (event) => {
   try {
-    const { userChallengeId } = parseParams(event, UserChallengeParamsSchema);
+    const { userChallengeId } = parseParams(event, CancelUserChallengeOperationSchema.request.params);
     const { challengeService } = event.locals.authServices!;
     await challengeService().cancelChallenge({ userChallengeId });
     return noContent();
@@ -148,41 +178,41 @@ return validateAndReturn(result, SomeResponseSchema);
 
 ### Adding API Client Methods
 
-When creating a new endpoint, add the corresponding method to `ApiClient` class:
+When creating a new endpoint, add the corresponding method to `ApiClient` class using **consolidated operation types**:
 
 ```typescript
 // For GET endpoints
 /** GET /endpoint/:param */
-async getEndpoint(param: string): Promise<ResponseType> {
-  return this.request<ResponseType>('/endpoint/:param', { method: 'GET' }, {
+async getEndpoint(param: string): Promise<GetEndpointOperation['response']['body']> {
+  return this.request<GetEndpointOperation['response']['body']>('/endpoint/:param', { method: 'GET' }, {
     params: { param }
   });
 }
 
 // For POST endpoints
 /** POST /endpoint */
-async createEndpoint(dto: CreateDto): Promise<ResponseType> {
-  return this.request<ResponseType>('/endpoint', { 
+async createEndpoint(dto: CreateEndpointOperation['request']['body']): Promise<CreateEndpointOperation['response']['body']> {
+  return this.request<CreateEndpointOperation['response']['body']>('/endpoint', { 
     method: 'POST', 
     body: JSON.stringify(dto) 
   });
 }
 
-// For PATCH endpoints
+// For PATCH endpoints with params
 /** PATCH /endpoint/:param */
-async updateEndpoint(dto: UpdateDto): Promise<void> {
-  await this.request<void>('/endpoint/:param', { 
+async updateEndpoint(dto: UpdateEndpointOperation['request']): Promise<UpdateEndpointOperation['response']['body']> {
+  await this.request<UpdateEndpointOperation['response']['body']>('/endpoint/:param', { 
     method: 'PATCH', 
-    body: JSON.stringify(dto) 
+    body: JSON.stringify(dto.body) 
   }, {
-    params: { param: dto.param }
+    params: { param: dto.params.param }
   });
 }
 
 // For DELETE endpoints
 /** DELETE /endpoint/:param */
-async deleteEndpoint(param: string): Promise<void> {
-  await this.request<void>('/endpoint/:param', { method: 'DELETE' }, {
+async deleteEndpoint(param: string): Promise<DeleteEndpointOperation['response']['body']> {
+  await this.request<DeleteEndpointOperation['response']['body']>('/endpoint/:param', { method: 'DELETE' }, {
     params: { param }
   });
 }
@@ -190,24 +220,27 @@ async deleteEndpoint(param: string): Promise<void> {
 
 ### API Client Method Conventions
 
+- **Use consolidated operation types** from `$lib/server/shared/schemas`
 - Use descriptive method names that match the HTTP verb and resource
 - Include JSDoc comments with the HTTP method and path
 - Use proper parameter substitution for path parameters
-- Return appropriate types (void for writes, typed responses for reads)
+- Return appropriate types using `OperationType['response']['body']`
 - Handle query parameters via the `query` option
 - Handle path parameters via the `params` option
-- Use the expected dtos from '$lib/server/shared/schemas' 
+- **Import operation types** from `$lib/server/shared/schemas` 
 
 ## Checklist for new endpoints
 
 1. Ensure the service method has a REST docblock (path + verb).
-2. Define/compose DTO schemas in `schemas.ts` using primitives.
-3. Create route file mirroring the REST path.
-4. Validate params/query/body with `parse*` helpers.
-5. Call service via `event.locals.authServices!` and return.
-6. Use 204 for void writes; validate reads.
-7. Rely on `handleServiceError()` for consistent errors.
-8. **ALWAYS add or update the corresponding method in `src/client/api-client.ts`**.
+2. **Define consolidated operation schema** in `schemas.ts` using the `{OperationName}OperationSchema` pattern.
+3. **Export the operation type** using the `{OperationName}Operation` pattern.
+4. Create route file mirroring the REST path.
+5. **Import the consolidated operation schema** and use `OperationSchema.request.params/query/body`.
+6. **Use `OperationSchema.response.body`** for response validation.
+7. Call service via `event.locals.authServices!` and return.
+8. Use 204 for void writes; validate reads.
+9. Rely on `handleServiceError()` for consistent errors.
+10. **ALWAYS add or update the corresponding method in `src/client/api-client.ts`** using operation types.
 
 ## References
 

@@ -8,9 +8,49 @@ The shared layer contains common interfaces, DTOs, error types, and utility func
 
 ## Core Components
 
-### 1. Interfaces (`interfaces.ts`)
+### 1. Schemas (`schemas.ts`)
 
-This file contains all shared type definitions, DTOs, and interfaces.
+This file contains **consolidated operation schemas** and DTO-aligned schemas for all API operations.
+
+#### Consolidated Operation Schema Pattern
+
+**NEW APPROACH**: All API operations use consolidated schemas that define the complete request/response structure in one place.
+
+```typescript
+export const {OperationName}OperationSchema = {
+  request: {
+    params: ParamSchema{IfExists},
+    query: QuerySchema{IfExists},
+    body: BodySchema{IfExists},
+  },
+  response: {
+    body: ResponseSchema{IfExists},
+  }
+};
+
+export type {OperationName}Operation = {
+  request: {
+    params: z.infer<typeof {OperationName}OperationSchema.request.params>;
+    query: z.infer<typeof {OperationName}OperationSchema.request.query>;
+    body: z.infer<typeof {OperationName}OperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof {OperationName}OperationSchema.response.body>;
+  };
+};
+```
+
+#### Benefits of Consolidated Schemas
+
+1. **Centralized Schema Management**: All operation schemas in one place
+2. **Type Safety**: Full TypeScript inference from consolidated schemas
+3. **Consistency**: Uniform structure across all operations
+4. **Maintainability**: Easier to update schemas and ensure consistency
+5. **Documentation**: Clear request/response structure for each operation
+
+### 2. Interfaces (`interfaces.ts`)
+
+This file contains all shared type definitions, DTOs, and interfaces for services.
 
 #### DTO Pattern
 
@@ -215,6 +255,36 @@ constructor(
 ```
 
 ## File Organization
+
+### schemas.ts Structure
+
+```typescript
+// --- Zod Primitives ---
+import { UuidSchema, EmailSchema, IsoDateSchema, ... } from './z.primitives';
+
+// --- Individual DTO Schemas ---
+export const UpdateUserProfileDtoSchema = z.object({ ... });
+export const DailyLogPayloadSchema = z.object({ ... });
+
+// --- Consolidated Operation Schemas ---
+export const GetUserProfileOperationSchema = {
+  request: { params: z.object({}), query: z.object({}), body: z.void() },
+  response: { body: UserProfileResponseSchema }
+};
+
+export const PutUserLogOperationSchema = {
+  request: { 
+    params: z.object({ logDate: IsoDateSchema }), 
+    query: z.object({}), 
+    body: z.object({ values: DailyLogPayloadSchema }) 
+  },
+  response: { body: z.void() }
+};
+
+// --- Operation Types ---
+export type GetUserProfileOperation = { ... };
+export type PutUserLogOperation = { ... };
+```
 
 ### interfaces.ts Structure
 
