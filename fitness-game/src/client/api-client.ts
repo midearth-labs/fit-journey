@@ -22,6 +22,9 @@ import type {
   AddAnswerReactionOperation,
   ShareProgressOperation,
   AddShareReactionOperation,
+  GetUserSharesOperation,
+  GetPublicSharesOperation,
+  DeleteShareOperation,
   GetInviteStatsOperation
 } from '$lib/server/shared/schemas';
 
@@ -297,23 +300,52 @@ export class ApiClient {
 
   // ---------- Progress Shares ----------
 
-  /** POST /social/share */
+  /** POST /progress-shares */
   async shareProgress(dto: ShareProgressOperation['request']['body']): Promise<ShareProgressOperation['response']['body']> {
-    return this.request<ShareProgressOperation['response']['body']>('/social/share', { 
+    return this.request<ShareProgressOperation['response']['body']>('/progress-shares', { 
       method: 'POST', 
       body: JSON.stringify(dto) 
     });
   }
 
-  /** POST /social/shares/:shareId/reactions */
+  /** GET /progress-shares */
+  async getPublicShares(dto: GetPublicSharesOperation['request']['query']): Promise<GetPublicSharesOperation['response']['body']> {
+    return this.request<GetPublicSharesOperation['response']['body']>('/progress-shares', { method: 'GET' }, {
+      query: {
+        shareType: dto.shareType,
+        page: dto.page,
+        limit: dto.limit
+      }
+    });
+  }
+
+  /** GET /users/me/progress-shares */
+  async getMyShares(dto: GetUserSharesOperation['request']['query']): Promise<GetUserSharesOperation['response']['body']> {
+    return this.request<GetUserSharesOperation['response']['body']>('/users/me/progress-shares', { method: 'GET' }, {
+      query: {
+        page: dto.page,
+        limit: dto.limit
+      }
+    });
+  }
+
+  /** DELETE /progress-shares/:shareId */
+  async deleteShare(shareId: string): Promise<DeleteShareOperation['response']['body']> {
+    await this.request<DeleteShareOperation['response']['body']>('/progress-shares/:shareId', { method: 'DELETE' }, {
+      params: { shareId }
+    });
+  }
+
+  /** POST /progress-shares/:shareId/reactions */
   async addShareReaction(dto: AddShareReactionOperation['request']): Promise<AddShareReactionOperation['response']['body']> {
-    await this.request<AddShareReactionOperation['response']['body']>('/social/shares/:shareId/reactions', { 
+    await this.request<AddShareReactionOperation['response']['body']>('/progress-shares/:shareId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
       params: { shareId: dto.params.shareId }
     });
   }
+
 
   // ---------- Invitations ----------
 

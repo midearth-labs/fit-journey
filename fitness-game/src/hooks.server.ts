@@ -3,7 +3,7 @@ import { type Handle, redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 import { ServiceFactory } from '$lib/server/shared/service-factory'
-import { tryRequireAuth } from '$lib/server/auth/middleware'
+import type { AuthRequestContext, MaybeAuthRequestContext } from '$lib/server/shared/interfaces'
 const PROTECTED_ROUTE_PREFIXES = ['/api/v1/']; // prefix paths
 const PROTECTED_ROUTES = ['/protected'] as string[]; //exact paths
 
@@ -74,26 +74,62 @@ const supabase: Handle = async ({ event, resolve }) => {
   })
 }
 
-const authGuard: Handle = async ({ event, resolve }) => {
-  const { session, user } = await event.locals.safeGetSession()
-  event.locals.session = session
-  event.locals.user = user
-  const serviceAuthRequestContext = tryRequireAuth(event.locals)
-  event.locals.authServices = serviceAuthRequestContext ? serviceFactoryInstance.getAuthServices(serviceAuthRequestContext) : null
-
-  // Protect API routes
+const routeType: Handle = async ({ event, resolve }) => {
+  // Protected API routes
   if (PROTECTED_ROUTES.includes(event.url.pathname) || PROTECTED_ROUTE_PREFIXES.some(prefix => event.url.pathname.startsWith(prefix))) {
-    if (!event.locals.user) {
-      throw redirect(303, '/auth/signin')
-    }
+    event.locals.routeType = 'authenticated'
   }
-
-  // Redirect authenticated users away from auth pages
-  if (event.locals.user && event.url.pathname.startsWith('/auth/')) {
-    throw redirect(303, '/')
+  else if (event.locals.user && event.url.pathname.startsWith('/auth/')) {
+    event.locals.routeType = 'auth_page'
+  } else {
+    event.locals.routeType = 'unauthenticated'
   }
 
   return resolve(event)
 }
 
-export const handle: Handle = sequence(requestWrapper, supabase, authGuard)
+const extractSessionAndUser = async (locals: App.Locals) => {
+  const { session, user } = await locals.safeGetSession()
+  locals.session = session
+  locals.user = user
+}
+
+const authGuard: Handle = async ({ event, resolve }) => {
+  if (['authenticated', 'auth_page'].includes(event.locals.routeType)) {
+    await extractSessionAndUser(event.locals);
+
+    // Redirect authenticated users away from auth pages
+    if (event.locals.routeType === 'auth_page' && event.locals.user) {
+      throw redirect(303, '/')
+    }
+
+    // Protect API routes
+    if (event.locals.routeType === 'authenticated' && event.locals.user) {
+      const serviceAuthRequestContext: AuthRequestContext = {
+        requestDate: event.locals.requestDate,
+        requestId: event.locals.requestId,
+        user: event.locals.user,
+      }
+      event.locals.authServices = serviceFactoryInstance.getAuthServices(serviceAuthRequestContext);
+  
+    } else {
+      throw redirect(303, '/auth/signin');
+    }
+  } else {
+    const serviceUnAuthRequestContext: MaybeAuthRequestContext = {
+      requestDate: event.locals.requestDate,
+      requestId: event.locals.requestId,
+      getUserContext: async () => {
+        if (event.locals.user === undefined) {
+          await extractSessionAndUser(event.locals);
+        }
+        return event.locals.user || null;
+      }
+    }
+    event.locals.unAuthServices = serviceFactoryInstance.getUnAuthServices(serviceUnAuthRequestContext)
+  }
+
+  return resolve(event)
+}
+
+export const handle: Handle = sequence(requestWrapper, supabase, routeType, authGuard)

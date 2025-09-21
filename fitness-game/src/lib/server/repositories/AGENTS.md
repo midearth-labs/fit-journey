@@ -567,17 +567,17 @@ export interface IUserRepository {
 }
 
 export interface IUserInternalRepository {
-  create(userData: NewUser): Promise<User>;
+  create(userData: NewUser): Promise<{id: User['id']}>;
   delete(userId: string): Promise<boolean>;
 }
 
 export class UserRepository implements IUserRepository, IUserInternalRepository {
   constructor(private db: NodePgDatabase<any>) {}
 
-  async create(userData: NewUser): Promise<User> {
+  async create(userData: NewUser): Promise<{id: User['id']}> {
     const result = await this.db.insert(users)
       .values(userData)
-      .returning();
+      .returning({id: users.id});
     return result[0];
   }
 

@@ -1,0 +1,111 @@
+import { NodePgDatabase } from 'drizzle-orm/node-postgres';
+import { eq, and, desc, sql, count } from 'drizzle-orm';
+import { progressShares, type ProgressShare, type NewProgressShare } from '$lib/server/db/schema';
+
+export type ReactionType = 'clap' | 'muscle' | 'party';
+export interface IProgressSharesRepository {
+  create(data: NewProgressShare): Promise<{id: ProgressShare['id']}>;
+  findById(id: string): Promise<ProgressShare | null>;
+  findByUserId(userId: string, page?: number, limit?: number): Promise<ProgressShare[]>;
+  findPublicSharesByShareType(shareType: ProgressShare['shareType'], page?: number, limit?: number): Promise<ProgressShare[]>;
+  updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'updatedAt' | 'userId'>): Promise<boolean>;
+  incrementActiveShareReactionCount(id: string, reactionType: ReactionType, requestDate: Date): Promise<boolean>;
+  delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean>;
+}
+
+export class ProgressSharesRepository implements IProgressSharesRepository {
+  constructor(private db: NodePgDatabase<any>) {}
+
+  async create(data: NewProgressShare): Promise<{id: ProgressShare['id']}> {
+    const result = await this.db.insert(progressShares)
+      .values({...data, updatedAt: data.createdAt, clapCount: 0, muscleCount: 0, partyCount: 0, status: 'active'})
+      .returning();
+    return {id: result[0].id};
+  }
+
+  async findById(id: string): Promise<ProgressShare | null> {
+    const result = await this.db.select()
+      .from(progressShares)
+      .where(eq(progressShares.id, id))
+      .limit(1);
+    
+    return result[0] || null;
+  }
+
+  // @TODO: check the logic of limit and offset across all repositories
+  async findByUserId(userId: string, page: number = 1, limit: number = 20): Promise<ProgressShare[]> {
+    const offset = (page - 1) * limit;
+    
+    return await this.db.select()
+      .from(progressShares)
+      .where(and(
+        eq(progressShares.userId, userId),
+        eq(progressShares.status, 'active')
+      ))
+      .orderBy(desc(progressShares.updatedAt))
+      .limit(limit)
+      .offset(offset);
+  }
+//@TODO: add the index back and ensure it is sorted by createdAt
+  async findPublicSharesByShareType(shareType: ProgressShare['shareType'], page: number = 1, limit: number = 20): Promise<ProgressShare[]> {
+    const offset = (page - 1) * limit;
+    
+    return await this.db.select()
+      .from(progressShares)
+      .where(and(
+        eq(progressShares.shareType, shareType),
+        eq(progressShares.status, 'active'),
+        eq(progressShares.isPublic, true)
+      ))
+      .orderBy(desc(progressShares.createdAt))
+      .limit(limit)
+      .offset(offset);
+  }
+
+  async updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'isPublic' | 'updatedAt' | 'userId'>): Promise<boolean> {
+    const result = await this.db.update(progressShares)
+      .set({ 
+        status: share.status,
+        isPublic: share.isPublic,
+        updatedAt: share.updatedAt
+      })
+      .where(and(
+        eq(progressShares.id, share.id),
+        eq(progressShares.userId, share.userId)
+      ));
+    
+    return result.rowCount > 0;
+  }
+
+  async incrementActiveShareReactionCount(id: string, reactionType: ReactionType, requestDate: Date): Promise<boolean> {
+    const fieldMap = {
+      clap: { field: progressShares.clapCount, name: 'clapCount' }, 
+      muscle: { field: progressShares.muscleCount, name: 'muscleCount' },
+      party: { field: progressShares.partyCount, name: 'partyCount' },
+    } as const;
+
+    const incrementField = fieldMap[reactionType];
+    
+    const result = await this.db.update(progressShares)
+      .set({ 
+        [incrementField.name]: sql`${incrementField.field} + 1`,
+        updatedAt: requestDate
+      })
+      .where(and(
+        eq(progressShares.id, id),
+        eq(progressShares.status, 'active')
+      ));
+    
+    return result.rowCount > 0;
+  }
+
+  async delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean> {
+    const result = await this.db.delete(progressShares)
+      .where(and(
+        eq(progressShares.id, share.id),
+        eq(progressShares.userId, share.userId)
+      ));
+    
+    return result.rowCount > 0;
+  }
+}

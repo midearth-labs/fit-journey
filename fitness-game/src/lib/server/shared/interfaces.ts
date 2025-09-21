@@ -1,24 +1,35 @@
 // --- Data Structures ---
 
-  import {
-    type UserAnswer, 
-    type DailyLogPayload, 
+import {
+  type UserAnswer, 
+  type DailyLogPayload, 
   type UserChallenge,
   type AllLogKeysType,
   type LogValueType,
   type User,
+  type ProgressShare,
 } from "$lib/server/db/schema";
+
 // --- Service Types (for Dependency Injection) ---
 
-// --- Auth Context ---
-export type AuthRequestContext = {
-  requestDate: Date; // the timestamp/instant of the incoming request
-  requestId: string; // the requestId UUID of the request
-  user: {
-    id: string;
-    email?: string;
-    created_at: string;
-  }
+// --- Auth Context ---'
+export type RequestContext = {
+    requestDate: Date; // the timestamp/instant of the incoming request
+    requestId: string; // the requestId UUID of the request
+};
+
+export type UserContext = {
+  id: string;
+  email?: string;
+  created_at: string;
+};
+  
+export type AuthRequestContext = RequestContext & {
+  user: UserContext;
+};
+
+export type MaybeAuthRequestContext = RequestContext & {
+    getUserContext: () => Promise<UserContext | null>;
 };
 
 export type DatesOnEarthAtInstant = { earliest: string, utc: string, latest: string };
@@ -66,7 +77,7 @@ export type ListUserChallengeQuizSubmissionsDto = {
   userChallengeId: string;
   fromDate?: string; // YYYY-MM-DD format
   toDate?: string; // YYYY-MM-DD format
-};;
+};
 
 // --- Challenge Response Types ---
 
@@ -86,7 +97,6 @@ export type UserChallengeSummaryResponse = NewUserChallengeResponse & {
   createdAt: string;
   updatedAt: string;
 };
-
 
 export type UserChallengeDetailResponse = UserChallengeSummaryResponse
 
@@ -237,6 +247,11 @@ export type AddAnswerReactionDto = {
 };
 
 // Share DTOs
+
+export type NewProgressShareResponse = {
+  id: string;
+};
+
 export type ShareProgressDto = {
   shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement';
   shareTypeId?: string;
@@ -249,9 +264,24 @@ export type AddShareReactionDto = {
   reactionType: 'clap' | 'muscle' | 'party';
 };
 
+export type GetUserSharesDto = {
+  page?: number;
+  limit?: number;
+};
+
+export type GetPublicSharesDto = {
+  shareType: ProgressShare['shareType'];
+  page?: number;
+  limit?: number;
+};
+
+export type DeleteShareDto = {
+  shareId: string;
+};
+
 export type ProgressShareResponse = {
   id: string;
-  shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement';
+  shareType: ProgressShare['shareType'];
   shareTypeId: string;
   contentVersion: string;
   generatedContent: {
@@ -262,7 +292,7 @@ export type ProgressShareResponse = {
   };
   includeInviteLink: boolean;
   isPublic: boolean;
-  status: 'active' | 'hidden' | 'deleted';
+  status: ProgressShare['status'];
   clapCount: number;
   muscleCount: number;
   partyCount: number;

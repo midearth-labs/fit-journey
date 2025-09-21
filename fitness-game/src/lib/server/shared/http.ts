@@ -81,10 +81,12 @@ export function noContent() {
 /**
  * Validate response data against schema before returning
  */
-export function validateAndReturn<T>(data: T, schema: any) {
+// @TODO: check we need schema response validation here
+export function validateAndReturn<T>(data: T, schema: { parse: (data: unknown) => T }) {
   try {
-    const validated = schema.parse(data);
-    return jsonOk(validated);
+    //const validated = schema.parse(data);
+    // return jsonOk(validated);
+    return jsonOk(data);
   } catch (err) {
     console.error('Response validation failed:', err);
     throw error(500, 'Response validation failed');

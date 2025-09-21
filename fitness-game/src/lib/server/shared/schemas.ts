@@ -844,3 +844,81 @@ export type GetInviteStatsOperation = {
     body: z.infer<typeof GetInviteStatsOperationSchema.response.body>;
   };
 };
+
+// Get User Shares Operation
+export const GetUserSharesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(ProgressShareResponseSchema)
+  }
+};
+
+export type GetUserSharesOperation = {
+  request: {
+    params: z.infer<typeof GetUserSharesOperationSchema.request.params>;
+    query: z.infer<typeof GetUserSharesOperationSchema.request.query>;
+    body: z.infer<typeof GetUserSharesOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetUserSharesOperationSchema.response.body>;
+  };
+};
+
+// Get Public Shares Operation
+export const GetPublicSharesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      shareType: ShareTypeSchema,
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(50)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(ProgressShareResponseSchema)
+  }
+};
+
+export type GetPublicSharesOperation = {
+  request: {
+    params: z.infer<typeof GetPublicSharesOperationSchema.request.params>;
+    query: z.infer<typeof GetPublicSharesOperationSchema.request.query>;
+    body: z.infer<typeof GetPublicSharesOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetPublicSharesOperationSchema.response.body>;
+  };
+};
+
+// Delete Share Operation
+export const DeleteShareOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export type DeleteShareOperation = {
+  request: {
+    params: z.infer<typeof DeleteShareOperationSchema.request.params>;
+    query: z.infer<typeof DeleteShareOperationSchema.request.query>;
+    body: z.infer<typeof DeleteShareOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof DeleteShareOperationSchema.response.body>;
+  };
+};

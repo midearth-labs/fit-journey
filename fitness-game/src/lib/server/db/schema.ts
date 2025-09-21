@@ -8,6 +8,7 @@ export const AllLogKeys = [...FiveStarLogKeys] as const;
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
 export const allLogKeysEnum = pgEnum('all_log_keys', AllLogKeys);
+export const recentActiveSharesInterval = '48 hours';
 /**
  * Describes the structure for a single answer submitted by a user for a quiz.
  * An array of these will be stored in the `quizAnswers` JSONB field.
@@ -294,22 +295,26 @@ export const progressShares = pgTable('progress_shares', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   shareType: shareTypeEnum('share_type').notNull(),
-  shareTypeId: text('share_type_id').notNull(),
-  contentVersion: text('content_version').notNull().default('1.0'),
+  shareTypeId: text('share_type_id'),
+  contentVersion: text('content_version').notNull(),
   generatedContent: jsonb('generated_content').notNull(),
-  includeInviteLink: boolean('include_invite_link').notNull().default(false),
-  isPublic: boolean('is_public').notNull().default(true),
-  status: shareStatusEnum('status').notNull().default('active'),
-  clapCount: integer('clap_count').notNull().default(0),
-  muscleCount: integer('muscle_count').notNull().default(0),
-  partyCount: integer('party_count').notNull().default(0),
+  includeInviteLink: boolean('include_invite_link').notNull(),
+  isPublic: boolean('is_public').notNull(),
+  status: shareStatusEnum('status').notNull(),
+  clapCount: integer('clap_count').notNull(),
+  muscleCount: integer('muscle_count').notNull(),
+  partyCount: integer('party_count').notNull(),
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
   return [
-    index('progress_shares_user_index').on(table.userId),
-    index('progress_shares_type_status_index').on(table.shareType, table.status),
+    index('progress_shares_user_index').on(table.userId, table.updatedAt),
+    
+    index('progress_shares_type_status_index').on(table.shareType, table.status, table.createdAt),
     index('progress_shares_type_id_index').on(table.shareType, table.shareTypeId),
+    // Index to find recent public active shares (last 48 hours)
+    index('progress_shares_recent_active_index').on(table.shareType, table.createdAt)
+      .where(sql`${table.status} = 'active' AND ${table.isPublic} = true AND ${table.createdAt} >= NOW() - INTERVAL '${recentActiveSharesInterval}'`),
   ];
 });
 
@@ -423,4 +428,4 @@ export type NewQuestionReaction = InferInsertModel<typeof questionReactions>;
 export type AnswerReaction = InferSelectModel<typeof answerReactions>;
 export type NewAnswerReaction = InferInsertModel<typeof answerReactions>;
 export type ProgressShare = InferSelectModel<typeof progressShares>;
-export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id' | 'updatedAt' | 'clapCount' | 'muscleCount' | 'partyCount'>;
+export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id' | 'updatedAt' | 'clapCount' | 'muscleCount' | 'partyCount' | 'status'>;

@@ -1,7 +1,7 @@
 import { type AuthRequestContext } from '$lib/server/shared/interfaces';
-import { type IAnswersRepository, type IQuestionsRepository, type IUserChallengeRepository, type IAnswerReactionsRepository } from '$lib/server/repositories';
+import { type IAnswersRepository, type IQuestionsRepository, type IUserChallengeRepository } from '$lib/server/repositories';
 import { notFoundCheck, ValidationError } from '$lib/server/shared/errors';
-import type { SubmitAnswerDto, ListAnswersDto, GetAnswerDto, AnswerResponse, NewAnswerResponse, AddAnswerReactionDto } from '$lib/server/shared/interfaces';
+import type { SubmitAnswerDto, ListAnswersDto, GetAnswerDto, AnswerResponse, NewAnswerResponse } from '$lib/server/shared/interfaces';
 import type { IModerationService } from './moderation.service';
 import type { QuestionAnswer } from '$lib/server/db/schema';
 
@@ -9,7 +9,6 @@ export type IAnswersService = {
   submitAnswer(dto: SubmitAnswerDto): Promise<NewAnswerResponse>;
   listAnswers(dto: ListAnswersDto): Promise<AnswerResponse[]>;
   getAnswer(dto: GetAnswerDto): Promise<AnswerResponse>;
-  addReaction(dto: AddAnswerReactionDto): Promise<void>;
 };
 
 export class AnswersService implements IAnswersService {
@@ -19,7 +18,6 @@ export class AnswersService implements IAnswersService {
       readonly questionsRepository: IQuestionsRepository;
       readonly moderationService: IModerationService;
       readonly userChallengeRepository: IUserChallengeRepository;
-      readonly answerReactionsRepository: IAnswerReactionsRepository;
     },
     private readonly requestContext: AuthRequestContext
   ) {}
@@ -86,26 +84,6 @@ export class AnswersService implements IAnswersService {
     const answer = notFoundCheck(await this.dependencies.answersRepository.findById(questionId, answerId), 'Answer');
     
     return this.mapToAnswerResponse(answer);
-  }
-
-  /**
-   * Add a reaction to an answer
-   * POST /social/questions/:questionId/answers/:answerId/reactions
-   */
-  async addReaction(dto: AddAnswerReactionDto): Promise<void> {
-    const { user: { id: userId }, requestDate } = this.requestContext;
-    const { questionId, answerId, reactionType } = dto;
-
-    // Verify answer exists
-    notFoundCheck(await this.dependencies.answersRepository.findById(questionId, answerId), 'Answer');
-
-    // Add the reaction
-    await this.dependencies.answerReactionsRepository.upsertAnswerReaction({
-      answerId,
-      userId,
-      reactionType,
-      createdAt: requestDate
-    });
   }
 
   // #TODO: cache the result of this function, or otherwise add a user flag on the user object on challenge completion

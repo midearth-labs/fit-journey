@@ -9,14 +9,14 @@ import {
   UserLogsRepository,
   QuestionsRepository,
   QuestionReactionsRepository,
-  AnswerReactionsRepository,
   AnswersRepository,
+  ProgressSharesRepository,
 } from '$lib/server/repositories';
-import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, AnswersService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService, type IAnswersService } from '$lib/server/services';
+import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
-import { createServiceFromClass, type ServiceCreatorFromRequestContext } from '../services/shared';
-import type { AuthRequestContext } from './interfaces';
+import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
+import type { AuthRequestContext, MaybeAuthRequestContext } from './interfaces';
 
 /**
  * Service factory that handles dependency injection for API routes
@@ -38,8 +38,8 @@ export class ServiceFactory {
   // Social Features Repositories
   private readonly questionsRepository: QuestionsRepository;
   private readonly questionReactionsRepository: QuestionReactionsRepository;
-  private readonly answerReactionsRepository: AnswerReactionsRepository;
   private readonly answersRepository: AnswersRepository;
+  private readonly progressSharesRepository: ProgressSharesRepository;
   
   // Services
   private readonly challengeContentServiceCreator: ServiceCreatorFromRequestContext<IChallengeContentService>;
@@ -52,6 +52,8 @@ export class ServiceFactory {
   private readonly moderationService: ModerationService;
   private readonly questionsServiceCreator: ServiceCreatorFromRequestContext<IQuestionsService>;
   private readonly answersServiceCreator: ServiceCreatorFromRequestContext<IAnswersService>;
+  private readonly progressSharesServiceCreator: ServiceCreatorFromRequestContext<IProgressSharesService>;
+  private readonly progressSharesUnAuthenticatedServiceCreator: ServiceCreatorFromMaybeAuthRequestContext<IProgressSharesUnAuthenticatedService>;
   
   private constructor(content: Content) {
     const db = getDBInstance();
@@ -70,8 +72,8 @@ export class ServiceFactory {
     // Initialize Social Features repositories
     this.questionsRepository = new QuestionsRepository(db);
     this.questionReactionsRepository = new QuestionReactionsRepository(db);
-    this.answerReactionsRepository = new AnswerReactionsRepository(db);
     this.answersRepository = new AnswersRepository(db);
+    this.progressSharesRepository = new ProgressSharesRepository(db);
     
     // Initialize services
     this.challengeContentServiceCreator = createServiceFromClass(
@@ -109,12 +111,23 @@ export class ServiceFactory {
     );
     this.answersServiceCreator = createServiceFromClass(
       AnswersService,
-      {
+      { 
         answersRepository: this.answersRepository,
         questionsRepository: this.questionsRepository,
         moderationService: this.moderationService,
-        userChallengeRepository: this.userChallengeRepository,
-        answerReactionsRepository: this.answerReactionsRepository
+        userChallengeRepository: this.userChallengeRepository
+      }
+    );
+    this.progressSharesServiceCreator = createServiceFromClass(
+      ProgressSharesService,
+      { 
+        progressSharesRepository: this.progressSharesRepository
+      }
+    );
+    this.progressSharesUnAuthenticatedServiceCreator = createUnAuthServiceFromClass(
+      ProgressSharesUnAuthenticatedService,
+      { 
+        progressSharesRepository: this.progressSharesRepository
       }
     );
   }
@@ -139,6 +152,13 @@ export class ServiceFactory {
       userProfileService: () => this.userProfileServiceCreator(authRequestContext),
       questionsService: () => this.questionsServiceCreator(authRequestContext),
       answersService: () => this.answersServiceCreator(authRequestContext),
+      progressSharesService: () => this.progressSharesServiceCreator(authRequestContext),
+    };
+  }
+
+  public getUnAuthServices(maybeAuthRequestContext: MaybeAuthRequestContext): UnAuthServices {
+    return {
+      progressSharesUnAuthenticatedService: () => this.progressSharesUnAuthenticatedServiceCreator(maybeAuthRequestContext),
     };
   }
   

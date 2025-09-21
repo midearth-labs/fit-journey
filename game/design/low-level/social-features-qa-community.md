@@ -811,58 +811,531 @@ async function createProgressShare(
   return shareRecord[0];
 }
 
-**Generate Share Content Helper**
+**ProgressContentHelper** (Internal Service)
 ```typescript
-async function generateShareContent(
-  shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement',
-  shareTypeId: string,
-  userId: string
-) {
-  switch (shareType) {
-    case 'challenge_completion':
-      const challenge = await getChallengeById(shareTypeId);
-      const userChallenge = await getUserChallenge(userId, shareTypeId);
-      return {
-        title: `Completed ${challenge.name}!`,
-        message: `I just finished the ${challenge.name} challenge! ${challenge.description}`,
-        stats: {
-          duration: challenge.duration,
-          articlesCompleted: userChallenge.knowledgeBaseCompletedCount,
-          logsCompleted: userChallenge.dailyLogCount,
-        },
-        image: challenge.completionImage || '/static/images/challenge-complete.png'
-      };
-      
-    case 'avatar_progression':
-      const avatarLevel = await getAvatarLevel(shareTypeId);
-      return {
-        title: `Leveled up to ${avatarLevel.name}!`,
-        message: `My fitness avatar just reached ${avatarLevel.name}! ${avatarLevel.description}`,
-        stats: {
-          level: avatarLevel.level,
-          totalXP: avatarLevel.totalXP,
-          nextLevelXP: avatarLevel.nextLevelXP,
-        },
-        image: avatarLevel.imageUrl
-      };
-      
-    case 'quiz_achievement':
-      const quiz = await getQuizById(shareTypeId);
-      const userQuizResult = await getUserQuizResult(userId, shareTypeId);
-      return {
-        title: `Scored ${userQuizResult.score}% on ${quiz.title}!`,
-        message: `Just completed the ${quiz.title} quiz with a ${userQuizResult.score}% score!`,
-        stats: {
-          score: userQuizResult.score,
-          totalQuestions: quiz.questions.length,
-          correctAnswers: userQuizResult.correctAnswers,
-        },
-        image: '/static/images/quiz-complete.png'
-      };
-      
-    default:
-      throw new Error('Invalid share type');
+// External template renderer type definition
+type TemplateRenderer<T extends keyof GeneratedContentTypes> = {
+  render: (data: GeneratedContentTypes[T][keyof GeneratedContentTypes[T]]) => string;
+};
+
+// External template registry
+const templateRegistry = new Map<string, TemplateRenderer<any>>();
+
+// External template render functions
+const challengeCompletionV1Renderer: TemplateRenderer<'challenge_completion'> = {
+  render: (data) => {
+    return `
+      <div class="share-content challenge-completion v1">
+        <div class="share-header">
+          <img src="${data.image}" alt="Challenge Complete" class="share-image" />
+          <h3 class="share-title">${data.title}</h3>
+        </div>
+        <div class="share-message">${data.message}</div>
+        <div class="share-stats">
+          <div class="stat-item">
+            <span class="stat-label">Duration:</span>
+            <span class="stat-value">${data.stats.duration}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Articles Completed:</span>
+            <span class="stat-value">${data.stats.articlesCompleted}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Logs Completed:</span>
+            <span class="stat-value">${data.stats.logsCompleted}</span>
+          </div>
+        </div>
+      </div>
+    `;
   }
+};
+
+const challengeCompletionV2Renderer: TemplateRenderer<'challenge_completion'> = {
+  render: (data) => {
+    return `
+      <div class="share-content challenge-completion v2">
+        <div class="share-header">
+          <img src="${data.image}" alt="Challenge Complete" class="share-image" />
+          <h3 class="share-title">${data.title}</h3>
+          ${data.badge ? `<div class="share-badge">${data.badge}</div>` : ''}
+        </div>
+        <div class="share-message">${data.message}</div>
+        <div class="share-stats">
+          <div class="stat-item">
+            <span class="stat-label">Duration:</span>
+            <span class="stat-value">${data.stats.duration}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Articles Completed:</span>
+            <span class="stat-value">${data.stats.articlesCompleted}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Logs Completed:</span>
+            <span class="stat-value">${data.stats.logsCompleted}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Streak Days:</span>
+            <span class="stat-value">${data.stats.streakDays}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+const avatarProgressionV1Renderer: TemplateRenderer<'avatar_progression'> = {
+  render: (data) => {
+    return `
+      <div class="share-content avatar-progression v1">
+        <div class="share-header">
+          <img src="${data.image}" alt="Avatar Level Up" class="share-image" />
+          <h3 class="share-title">${data.title}</h3>
+        </div>
+        <div class="share-message">${data.message}</div>
+        <div class="share-stats">
+          <div class="stat-item">
+            <span class="stat-label">Level:</span>
+            <span class="stat-value">${data.stats.level}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total XP:</span>
+            <span class="stat-value">${data.stats.totalXP}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Next Level XP:</span>
+            <span class="stat-value">${data.stats.nextLevelXP}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+const avatarProgressionV2Renderer: TemplateRenderer<'avatar_progression'> = {
+  render: (data) => {
+    return `
+      <div class="share-content avatar-progression v2">
+        <div class="share-header">
+          <img src="${data.image}" alt="Avatar Level Up" class="share-image" />
+          <h3 class="share-title">${data.title}</h3>
+          ${data.animation ? `<div class="share-animation">${data.animation}</div>` : ''}
+        </div>
+        <div class="share-message">${data.message}</div>
+        <div class="share-stats">
+          <div class="stat-item">
+            <span class="stat-label">Level:</span>
+            <span class="stat-value">${data.stats.level}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total XP:</span>
+            <span class="stat-value">${data.stats.totalXP}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Next Level XP:</span>
+            <span class="stat-value">${data.stats.nextLevelXP}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">XP Gained:</span>
+            <span class="stat-value">${data.stats.xpGained}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+const quizAchievementV1Renderer: TemplateRenderer<'quiz_achievement'> = {
+  render: (data) => {
+    return `
+      <div class="share-content quiz-achievement v1">
+        <div class="share-header">
+          <img src="${data.image}" alt="Quiz Complete" class="share-image" />
+          <h3 class="share-title">${data.title}</h3>
+        </div>
+        <div class="share-message">${data.message}</div>
+        <div class="share-stats">
+          <div class="stat-item">
+            <span class="stat-label">Score:</span>
+            <span class="stat-value">${data.stats.score}%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total Questions:</span>
+            <span class="stat-value">${data.stats.totalQuestions}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Correct Answers:</span>
+            <span class="stat-value">${data.stats.correctAnswers}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+const quizAchievementV2Renderer: TemplateRenderer<'quiz_achievement'> = {
+  render: (data) => {
+    return `
+      <div class="share-content quiz-achievement v2">
+        <div class="share-header">
+          <img src="${data.image}" alt="Quiz Complete" class="share-image" />
+          <h3 class="share-title">${data.title}</h3>
+          ${data.certificate ? `<div class="share-certificate">${data.certificate}</div>` : ''}
+        </div>
+        <div class="share-message">${data.message}</div>
+        <div class="share-stats">
+          <div class="stat-item">
+            <span class="stat-label">Score:</span>
+            <span class="stat-value">${data.stats.score}%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total Questions:</span>
+            <span class="stat-value">${data.stats.totalQuestions}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Correct Answers:</span>
+            <span class="stat-value">${data.stats.correctAnswers}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Time Spent:</span>
+            <span class="stat-value">${data.stats.timeSpent}s</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+// Initialize template registry
+templateRegistry.set('challenge_completion_V1', challengeCompletionV1Renderer);
+templateRegistry.set('challenge_completion_V2', challengeCompletionV2Renderer);
+templateRegistry.set('avatar_progression_V1', avatarProgressionV1Renderer);
+templateRegistry.set('avatar_progression_V2', avatarProgressionV2Renderer);
+templateRegistry.set('quiz_achievement_V1', quizAchievementV1Renderer);
+templateRegistry.set('quiz_achievement_V2', quizAchievementV2Renderer);
+
+// Type definitions for generated content versions
+type GeneratedContentTypes = {
+  challenge_completion: {
+    V1: {
+      title: string;
+      message: string;
+      stats: {
+        duration: string;
+        articlesCompleted: number;
+        logsCompleted: number;
+      };
+      image: string;
+    };
+    V2: {
+      title: string;
+      message: string;
+      stats: {
+        duration: string;
+        articlesCompleted: number;
+        logsCompleted: number;
+        streakDays: number;
+      };
+      image: string;
+      badge?: string;
+    };
+  };
+  avatar_progression: {
+    V1: {
+      title: string;
+      message: string;
+      stats: {
+        level: number;
+        totalXP: number;
+        nextLevelXP: number;
+      };
+      image: string;
+    };
+    V2: {
+      title: string;
+      message: string;
+      stats: {
+        level: number;
+        totalXP: number;
+        nextLevelXP: number;
+        xpGained: number;
+      };
+      image: string;
+      animation?: string;
+    };
+  };
+  quiz_achievement: {
+    V1: {
+      title: string;
+      message: string;
+      stats: {
+        score: number;
+        totalQuestions: number;
+        correctAnswers: number;
+      };
+      image: string;
+    };
+    V2: {
+      title: string;
+      message: string;
+      stats: {
+        score: number;
+        totalQuestions: number;
+        correctAnswers: number;
+        timeSpent: number;
+      };
+      image: string;
+      certificate?: string;
+    };
+  };
+};
+
+class ProgressContentHelper {
+  /**
+   * Generic method to generate share content based on share type and optional share ID
+   * @param shareType - The type of content to generate
+   * @param shareId - Optional ID for specific content (challenge ID, avatar level, quiz ID)
+   * @returns Object containing generated content and version ID
+   */
+  async generateShareContent<T extends keyof GeneratedContentTypes>(
+    shareType: T,
+    shareId?: string
+  ): Promise<{
+    content: GeneratedContentTypes[T][keyof GeneratedContentTypes[T]];
+    versionId: string;
+  }> {
+    const versionId = await this.getLatestVersion(shareType);
+    
+    switch (shareType) {
+      case 'challenge_completion':
+        return this.generateChallengeCompletionContent(shareId, versionId);
+        
+      case 'avatar_progression':
+        return this.generateAvatarProgressionContent(shareId, versionId);
+        
+      case 'quiz_achievement':
+        return this.generateQuizAchievementContent(shareId, versionId);
+        
+      default:
+        throw new Error(`Unsupported share type: ${shareType}`);
+    }
+  }
+
+  /**
+   * Templatized method to render content for Svelte pages
+   * @param shareType - The type of content to render
+   * @param generatedContent - The generated content object
+   * @param contentVersion - The version of the content template to use
+   * @returns HTML string ready for inclusion in Svelte components
+   */
+  renderContent<T extends keyof GeneratedContentTypes>(
+    shareType: T,
+    generatedContent: GeneratedContentTypes[T][keyof GeneratedContentTypes[T]],
+    contentVersion: string
+  ): string {
+    const template = this.getTemplate(shareType, contentVersion);
+    return template.render(generatedContent);
+  }
+
+  private async getLatestVersion(shareType: keyof GeneratedContentTypes): Promise<string> {
+    // In a real implementation, this would check a configuration or database
+    // to determine the latest version for each share type
+    const versionMap: Record<keyof GeneratedContentTypes, string> = {
+      challenge_completion: 'V2',
+      avatar_progression: 'V2',
+      quiz_achievement: 'V2'
+    };
+    
+    return versionMap[shareType];
+  }
+
+  private async generateChallengeCompletionContent(
+    challengeId?: string,
+    versionId: string = 'V1'
+  ): Promise<{
+    content: GeneratedContentTypes['challenge_completion'][keyof GeneratedContentTypes['challenge_completion']];
+    versionId: string;
+  }> {
+    if (!challengeId) {
+      throw new Error('Challenge ID is required for challenge completion content');
+    }
+
+    const challenge = await getChallengeById(challengeId);
+    const userChallenge = await getUserChallenge(challengeId);
+
+    if (versionId === 'V1') {
+      return {
+        content: {
+          title: `Completed ${challenge.name}!`,
+          message: `I just finished the ${challenge.name} challenge! ${challenge.description}`,
+          stats: {
+            duration: challenge.duration,
+            articlesCompleted: userChallenge.knowledgeBaseCompletedCount,
+            logsCompleted: userChallenge.dailyLogCount,
+          },
+          image: challenge.completionImage || '/static/images/challenge-complete.png'
+        },
+        versionId: 'V1'
+      };
+    } else if (versionId === 'V2') {
+      return {
+        content: {
+          title: `Completed ${challenge.name}!`,
+          message: `I just finished the ${challenge.name} challenge! ${challenge.description}`,
+          stats: {
+            duration: challenge.duration,
+            articlesCompleted: userChallenge.knowledgeBaseCompletedCount,
+            logsCompleted: userChallenge.dailyLogCount,
+            streakDays: userChallenge.streakDays || 0,
+          },
+          image: challenge.completionImage || '/static/images/challenge-complete.png',
+          badge: challenge.completionBadge
+        },
+        versionId: 'V2'
+      };
+    }
+
+    throw new Error(`Unsupported version: ${versionId}`);
+  }
+
+  private async generateAvatarProgressionContent(
+    avatarLevelId?: string,
+    versionId: string = 'V1'
+  ): Promise<{
+    content: GeneratedContentTypes['avatar_progression'][keyof GeneratedContentTypes['avatar_progression']];
+    versionId: string;
+  }> {
+    if (!avatarLevelId) {
+      throw new Error('Avatar level ID is required for avatar progression content');
+    }
+
+    const avatarLevel = await getAvatarLevel(avatarLevelId);
+
+    if (versionId === 'V1') {
+      return {
+        content: {
+          title: `Leveled up to ${avatarLevel.name}!`,
+          message: `My fitness avatar just reached ${avatarLevel.name}! ${avatarLevel.description}`,
+          stats: {
+            level: avatarLevel.level,
+            totalXP: avatarLevel.totalXP,
+            nextLevelXP: avatarLevel.nextLevelXP,
+          },
+          image: avatarLevel.imageUrl
+        },
+        versionId: 'V1'
+      };
+    } else if (versionId === 'V2') {
+      return {
+        content: {
+          title: `Leveled up to ${avatarLevel.name}!`,
+          message: `My fitness avatar just reached ${avatarLevel.name}! ${avatarLevel.description}`,
+          stats: {
+            level: avatarLevel.level,
+            totalXP: avatarLevel.totalXP,
+            nextLevelXP: avatarLevel.nextLevelXP,
+            xpGained: avatarLevel.xpGained || 0,
+          },
+          image: avatarLevel.imageUrl,
+          animation: avatarLevel.levelUpAnimation
+        },
+        versionId: 'V2'
+      };
+    }
+
+    throw new Error(`Unsupported version: ${versionId}`);
+  }
+
+  private async generateQuizAchievementContent(
+    quizId?: string,
+    versionId: string = 'V1'
+  ): Promise<{
+    content: GeneratedContentTypes['quiz_achievement'][keyof GeneratedContentTypes['quiz_achievement']];
+    versionId: string;
+  }> {
+    if (!quizId) {
+      throw new Error('Quiz ID is required for quiz achievement content');
+    }
+
+    const quiz = await getQuizById(quizId);
+    const userQuizResult = await getUserQuizResult(quizId);
+
+    if (versionId === 'V1') {
+      return {
+        content: {
+          title: `Scored ${userQuizResult.score}% on ${quiz.title}!`,
+          message: `Just completed the ${quiz.title} quiz with a ${userQuizResult.score}% score!`,
+          stats: {
+            score: userQuizResult.score,
+            totalQuestions: quiz.questions.length,
+            correctAnswers: userQuizResult.correctAnswers,
+          },
+          image: '/static/images/quiz-complete.png'
+        },
+        versionId: 'V1'
+      };
+    } else if (versionId === 'V2') {
+      return {
+        content: {
+          title: `Scored ${userQuizResult.score}% on ${quiz.title}!`,
+          message: `Just completed the ${quiz.title} quiz with a ${userQuizResult.score}% score!`,
+          stats: {
+            score: userQuizResult.score,
+            totalQuestions: quiz.questions.length,
+            correctAnswers: userQuizResult.correctAnswers,
+            timeSpent: userQuizResult.timeSpent || 0,
+          },
+          image: '/static/images/quiz-complete.png',
+          certificate: userQuizResult.certificateUrl
+        },
+        versionId: 'V2'
+      };
+    }
+
+    throw new Error(`Unsupported version: ${versionId}`);
+  }
+
+  private getTemplate<T extends keyof GeneratedContentTypes>(
+    shareType: T,
+    contentVersion: string
+  ): TemplateRenderer<T> {
+    const templateKey = `${shareType}_${contentVersion}`;
+    const template = templateRegistry.get(templateKey);
+    
+    if (!template) {
+      throw new Error(`Template not found for ${shareType} version ${contentVersion}`);
+    }
+    
+    return template;
+  }
+}
+
+// Usage example in SharingService
+const progressContentHelper = new ProgressContentHelper();
+
+async function createProgressShare(
+  userId: string, 
+  shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement',
+  shareTypeId: string?,
+  includeInviteLink: boolean,
+  isPublic: boolean
+) {
+  // Generate content using the helper
+  const { content, versionId } = await progressContentHelper.generateShareContent(shareType, shareTypeId);
+  
+  const shareRecord = await db.insert(progressShares).values({
+    userId,
+    shareType,
+    shareTypeId,
+    contentVersion: versionId,
+    generatedContent: content,
+    includeInviteLink,
+    isPublic,
+    status: 'active',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }).returning();
+  
+  return shareRecord[0];
 }
 ```
 
