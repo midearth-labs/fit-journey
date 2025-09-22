@@ -9,6 +9,7 @@ import {
   UserLogsRepository,
   QuestionsRepository,
   QuestionReactionsRepository,
+  AnswerReactionsRepository,
   AnswersRepository,
   ProgressSharesRepository,
 } from '$lib/server/repositories';
@@ -39,6 +40,7 @@ export class ServiceFactory {
   private readonly questionsRepository: QuestionsRepository;
   private readonly questionReactionsRepository: QuestionReactionsRepository;
   private readonly answersRepository: AnswersRepository;
+  private readonly answerReactionsRepository: AnswerReactionsRepository;
   private readonly progressSharesRepository: ProgressSharesRepository;
   
   // Services
@@ -73,6 +75,7 @@ export class ServiceFactory {
     this.questionsRepository = new QuestionsRepository(db);
     this.questionReactionsRepository = new QuestionReactionsRepository(db);
     this.answersRepository = new AnswersRepository(db);
+    this.answerReactionsRepository = new AnswerReactionsRepository(db);
     this.progressSharesRepository = new ProgressSharesRepository(db);
     
     // Initialize services
@@ -115,7 +118,8 @@ export class ServiceFactory {
         answersRepository: this.answersRepository,
         questionsRepository: this.questionsRepository,
         moderationService: this.moderationService,
-        userChallengeRepository: this.userChallengeRepository
+        userChallengeRepository: this.userChallengeRepository,
+        answerReactionsRepository: this.answerReactionsRepository,
       }
     );
     this.progressSharesServiceCreator = createServiceFromClass(

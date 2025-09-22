@@ -9,3 +9,4 @@ export { type IQuestionsRepository, QuestionsRepository } from './questions.repo
 export { type IQuestionReactionsRepository, QuestionReactionsRepository } from './question-reactions.repository';
 export { type IAnswersRepository, AnswersRepository } from './answers.repository';
 export { type IProgressSharesRepository, ProgressSharesRepository } from './progress-shares.repository';
+export { type IAnswerReactionsRepository, AnswerReactionsRepository } from './answer-reactions.repository';
