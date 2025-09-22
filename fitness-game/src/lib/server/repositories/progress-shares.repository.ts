@@ -8,7 +8,7 @@ export type ProgressShareWithoutContent = Omit<ProgressShare, 'contentVersion' |
 
 export interface IProgressSharesRepository {
   create(data: NewProgressShare): Promise<{id: ProgressShare['id']}>;
-  findById(id: string): Promise<ProgressShare | null>;
+  findActiveById(id: string): Promise<ProgressShare | null>;
   findByIdForUser(id: string, userId: string): Promise<ProgressShare | null>;
   findByUserId(userId: string, page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
   findPublicSharesByShareType(shareType: ProgressShare['shareType'], page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
@@ -44,7 +44,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
     return {id: result[0].id};
   }
 
-  async findById(id: string): Promise<ProgressShare | null> {
+  async findActiveById(id: string): Promise<ProgressShare | null> {
     const result = await this.db.select()
       .from(progressShares)
       .where(and(

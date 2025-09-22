@@ -8,12 +8,14 @@ import type {
   GetPublicSharesDto,
   DeleteShareDto,
   GetUserShareDto,
+  GetShareDto,
   UpdateShareStatusDto,
   NewProgressShareResponse, 
   MaybeAuthRequestContext,
   ProgressShareUserListResponse,
   ProgressSharePublicListResponse,
-  ProgressShareUserDetailResponse
+  ProgressShareUserDetailResponse,
+  ProgressShareDetailResponse
 } from '$lib/server/shared/interfaces';
 import type { ProgressShareWithoutContent } from '../repositories/progress-shares.repository';
 import type { ProgressShare } from '$lib/server/db/schema';
@@ -27,9 +29,9 @@ export type IProgressSharesService = {
   deleteShare(dto: DeleteShareDto): Promise<void>;
 };
 
-//@TODO: add getShare method.
 export type IProgressSharesUnAuthenticatedService = {
     addShareReaction(dto: AddShareReactionDto): Promise<void>;
+    getShare(dto: GetShareDto): Promise<ProgressShareDetailResponse>;
 };
   
 
@@ -42,6 +44,18 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
     ) {}
   
     /**
+     * Get a public progress share by ID
+     * GET /public/api/v1/progress-shares/:shareId
+     */
+    async getShare(dto: GetShareDto): Promise<ProgressShareDetailResponse> {
+      const { progressSharesRepository } = this.dependencies;
+
+      const share = notFoundCheck(await progressSharesRepository.findActiveById(dto.shareId), 'Progress Share');
+      
+      return ProgressSharesUnAuthenticatedService.mapToPublicDetailResponse(share);
+    }
+
+    /**
      * Add reaction to a progress share
      * POST /progress-shares/:shareId/reactions
      */
@@ -51,6 +65,15 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
   
       // Increment reaction count atomically
       await progressSharesRepository.incrementActiveShareReactionCount(dto.shareId, dto.reactionType, requestDate);
+    }
+
+    public static mapToPublicDetailResponse(share: ProgressShare): ProgressShareDetailResponse {
+      const { contentVersion, generatedContent } = share;
+      return {
+        ...ProgressSharesService.mapToPublicListResponse(share),
+        contentVersion,
+        generatedContent: generatedContent,
+      };
     }
   }
 

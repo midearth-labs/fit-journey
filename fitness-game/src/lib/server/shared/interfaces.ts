@@ -290,6 +290,10 @@ export type UpdateShareStatusDto = {
   includeInviteLink: boolean;
 };
 
+export type GetShareDto = {
+  shareId: string;
+};
+
 export type ProgressSharePublicListResponse = {
   id: string;
   userId: string;

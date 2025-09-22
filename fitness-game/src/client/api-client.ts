@@ -26,6 +26,7 @@ import type {
   GetUserShareOperation,
   UpdateShareStatusOperation,
   GetPublicSharesOperation,
+  GetShareOperation,
   DeleteShareOperation,
   GetInviteStatsOperation
 } from '$lib/server/shared/schemas';
@@ -318,6 +319,13 @@ export class ApiClient {
         page: dto.page,
         limit: dto.limit
       }
+    });
+  }
+
+  /** GET /public/api/v1/progress-shares/:shareId */
+  async getShare(shareId: string): Promise<GetShareOperation['response']['body']> {
+    return this.request<GetShareOperation['response']['body']>('/public/api/v1/progress-shares/:shareId', { method: 'GET' }, {
+      params: { shareId }
     });
   }
 

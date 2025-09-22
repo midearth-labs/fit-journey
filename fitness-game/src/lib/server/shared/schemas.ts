@@ -252,6 +252,7 @@ export const AddShareReactionDtoSchema = z.object({
 
 export const ProgressShareResponseSchema = z.object({
   id: UuidSchema,
+  title: z.string(),
   shareType: ShareTypeSchema,
   shareTypeId: z.string(),
   contentVersion: z.string(),
@@ -944,6 +945,31 @@ export type UpdateShareStatusOperation = {
   };
   response: {
     body: z.infer<typeof UpdateShareStatusOperationSchema.response.body>;
+  };
+};
+
+// Get Share Operation (Public)
+export const GetShareOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: ProgressShareResponseSchema
+  }
+};
+
+export type GetShareOperation = {
+  request: {
+    params: z.infer<typeof GetShareOperationSchema.request.params>;
+    query: z.infer<typeof GetShareOperationSchema.request.query>;
+    body: z.infer<typeof GetShareOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetShareOperationSchema.response.body>;
   };
 };
 
