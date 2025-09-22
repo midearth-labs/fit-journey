@@ -7,15 +7,17 @@ import type {
   GetUserSharesDto,
   GetPublicSharesDto,
   DeleteShareDto,
-  ProgressShareResponse,
   NewProgressShareResponse, 
-  MaybeAuthRequestContext
+  MaybeAuthRequestContext,
+  ProgressShareUserListResponse,
+  ProgressSharePublicListResponse
 } from '$lib/server/shared/interfaces';
+import type { ProgressShareWithoutContent } from '../repositories/progress-shares.repository';
 
 export type IProgressSharesService = {
   shareProgress(dto: ShareProgressDto): Promise<NewProgressShareResponse>;
-  getPublicShares(dto: GetPublicSharesDto): Promise<ProgressShareResponse[]>;
-  getUserShares(dto: GetUserSharesDto): Promise<ProgressShareResponse[]>;
+  getPublicShares(dto: GetPublicSharesDto): Promise<ProgressSharePublicListResponse[]>;
+  getUserShares(dto: GetUserSharesDto): Promise<ProgressShareUserListResponse[]>;
   deleteShare(dto: DeleteShareDto): Promise<void>;
 };
 
@@ -67,8 +69,9 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
       
       const { id } = await progressSharesRepository.create({
           userId,
-          shareType: dto.shareType as any,
+          shareType: dto.shareType,
           shareTypeId: dto.shareTypeId || null,
+          title: generatedContent.title,
           contentVersion: generatedContent.versionId,
           generatedContent: generatedContent.content,
           includeInviteLink: dto.includeInviteLink,
@@ -82,28 +85,25 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
      * Get user's progress shares
      * GET /users/me/progress-shares
      */
-    async getUserShares(dto: GetUserSharesDto): Promise<ProgressShareResponse[]> {
+    async getUserShares(dto: GetUserSharesDto): Promise<ProgressShareUserListResponse[]> {
       const { progressSharesRepository } = this.dependencies;
       const { user: { id: userId } } = this.requestContext;
   
-      const page = dto.page || 1;
-      const limit = dto.limit || 20;
-      const offset = (page - 1) * limit;
       const shares = await progressSharesRepository.findByUserId(userId, dto.page, dto.limit);
       
-      return shares.map(share => this.mapToResponse(share));
+      return shares.map(share => ProgressSharesService.mapToUserListResponse(share));
     }
   
     /**
      * Get public progress shares
      * GET /progress-shares
      */
-    async getPublicShares(dto: GetPublicSharesDto): Promise<ProgressShareResponse[]> {
+    async getPublicShares(dto: GetPublicSharesDto): Promise<ProgressSharePublicListResponse[]> {
       const { progressSharesRepository } = this.dependencies;
   
       const shares = await progressSharesRepository.findPublicSharesByShareType(dto.shareType, dto.page, dto.limit)
       
-      return shares.map(share => this.mapToResponse(share));
+      return shares.map(share => ProgressSharesService.mapToPublicListResponse(share));
     }
   
     /**
@@ -117,11 +117,35 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
       await progressSharesRepository.delete({ id: dto.shareId, userId });
     }
   
-    private async generateShareContent(shareType: string, shareTypeId?: string, userId?: string): Promise<{content: any, versionId: string}> {
+    private static mapToPublicListResponse(share: ProgressShareWithoutContent): ProgressSharePublicListResponse {
+      const { id, userId, shareType, title, clapCount, muscleCount, partyCount, createdAt } = share;
+      return {
+        id,
+        userId,
+        shareType,
+        title,
+        clapCount,
+        muscleCount,
+        partyCount,
+        createdAt: createdAt.toISOString(),
+        
+      };
+    }
+  
+    private static mapToUserListResponse(share: ProgressShareWithoutContent): ProgressShareUserListResponse {
+      const { includeInviteLink, isPublic, status } = share;
+      return {
+        ...ProgressSharesService.mapToPublicListResponse(share),
+        includeInviteLink,
+        isPublic,
+        status,
+      };
+    }
+  
+    private async generateShareContent(shareType: string, shareTypeId?: string, userId?: string): Promise<{title: string, content: any, versionId: string}> {
       // TODO: Implement content generation logic based on share type
       // This would integrate with content generation services
       const baseContent = {
-        title: `${shareType.replace('_', ' ').toUpperCase()} Achievement!`,
         message: `I just completed a ${shareType.replace('_', ' ')} milestone!`,
         stats: {},
         image: undefined
@@ -130,9 +154,9 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
       switch (shareType) {
         case 'challenge_completion':
           return {
+            title: 'Challenge Completed! 🎉',
             content: {
               ...baseContent,
-              title: 'Challenge Completed! 🎉',
               message: 'I just finished a fitness challenge! Ready to take on the next one!',
               stats: { challengeId: shareTypeId }
             },
@@ -140,9 +164,9 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
           };
         case 'avatar_progression':
           return {
+            title: 'Avatar Level Up! ⭐',
             content: {
               ...baseContent,
-            title: 'Avatar Level Up! ⭐',
               message: 'My fitness avatar has leveled up! The journey continues!',
               stats: { level: 'up' }
             },
@@ -150,9 +174,9 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
           };
         case 'quiz_achievement':
           return {
+            title: 'Avatar Level Up! ⭐',
             content: {
               ...baseContent,
-            title: 'Quiz Master! 🧠',
             message: 'Perfect score on my fitness knowledge quiz!',
               stats: { score: '100%' }
             },
@@ -161,24 +185,6 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
         default:
           throw new ValidationError(`Unsupported share type: ${shareType}`);
       }
-    }
-  
-    private mapToResponse(share: any): ProgressShareResponse {
-      return {
-        id: share.id,
-        shareType: share.shareType,
-        shareTypeId: share.shareTypeId || '',
-        contentVersion: share.contentVersion,
-        generatedContent: share.generatedContent,
-        includeInviteLink: share.includeInviteLink,
-        isPublic: share.isPublic,
-        status: share.status,
-        clapCount: share.clapCount,
-        muscleCount: share.muscleCount,
-        partyCount: share.partyCount,
-        createdAt: share.createdAt.toISOString(),
-        userId: share.userId
-      };
     }
   }
     

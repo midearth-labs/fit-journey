@@ -123,19 +123,19 @@ export class ApiClient {
 
   /** GET /users/me/profile */
   async getMyProfile(): Promise<GetUserProfileOperation['response']['body']> {
-    return this.request<GetUserProfileOperation['response']['body']>('/users/me/profile', { method: 'GET' });
+    return this.request<GetUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'GET' });
   }
 
   /** PATCH /users/me/profile */
   async updateMyProfile(dto: UpdateUserProfileOperation['request']['body']): Promise<UpdateUserProfileOperation['response']['body']> {
-    await this.request<UpdateUserProfileOperation['response']['body']>('/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
+    await this.request<UpdateUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
   }
 
   // ---------- Logs ----------
 
   /** GET /logs with optional filters */
   async listLogs(dto: ListUserLogsOperation['request']['query']): Promise<ListUserLogsOperation['response']['body']> {
-    return this.request<ListUserLogsOperation['response']['body']>('/logs', { method: 'GET' }, {
+    return this.request<ListUserLogsOperation['response']['body']>('/api/v1/logs', { method: 'GET' }, {
       query: {
         userChallengeId: dto.userChallengeId,
         fromDate: dto.fromDate,
@@ -146,7 +146,7 @@ export class ApiClient {
 
   /** PUT /logs/:logDate */
   async putLog(dto: PutUserLogOperation['request']): Promise<PutUserLogOperation['response']['body']> {
-    await this.request<PutUserLogOperation['response']['body']>('/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
+    await this.request<PutUserLogOperation['response']['body']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
       params: { logDate: dto.params.logDate }
     });
   }
@@ -155,31 +155,31 @@ export class ApiClient {
 
   /** POST /user-challenges */
   async createUserChallenge(dto: CreateUserChallengeOperation['request']['body']): Promise<CreateUserChallengeOperation['response']['body']> {
-    return this.request<CreateUserChallengeOperation['response']['body']>('/user-challenges', { method: 'POST', body: JSON.stringify(dto) });
+    return this.request<CreateUserChallengeOperation['response']['body']>('/api/v1/user-challenges', { method: 'POST', body: JSON.stringify(dto) });
   }
 
   /** GET /user-challenges */
   async listUserChallenges(): Promise<ListUserChallengesOperation['response']['body']> {
-    return this.request<ListUserChallengesOperation['response']['body']>('/user-challenges', { method: 'GET' });
+    return this.request<ListUserChallengesOperation['response']['body']>('/api/v1/user-challenges', { method: 'GET' });
   }
 
   /** GET /user-challenges/:userChallengeId */
   async getUserChallenge(userChallengeId: string): Promise<GetUserChallengeOperation['response']['body']> {
-    return this.request<GetUserChallengeOperation['response']['body']>('/user-challenges/:userChallengeId', { method: 'GET' }, {
+    return this.request<GetUserChallengeOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId', { method: 'GET' }, {
       params: { userChallengeId }
     });
   }
 
   /** PATCH /user-challenges/:userChallengeId/schedule */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleOperation['request']): Promise<UpdateUserChallengeScheduleOperation['response']['body']> {
-    await this.request<UpdateUserChallengeScheduleOperation['response']['body']>('/user-challenges/:userChallengeId/schedule', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
+    await this.request<UpdateUserChallengeScheduleOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/schedule', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
       params: { userChallengeId: dto.params.userChallengeId }
     });
   }
 
   /** DELETE /user-challenges/:userChallengeId */
   async cancelUserChallenge(userChallengeId: string): Promise<CancelUserChallengeOperation['response']['body']> {
-    await this.request<CancelUserChallengeOperation['response']['body']>('/user-challenges/:userChallengeId', { method: 'DELETE' }, {
+    await this.request<CancelUserChallengeOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId', { method: 'DELETE' }, {
       params: { userChallengeId }
     });
   }
@@ -188,7 +188,7 @@ export class ApiClient {
 
   /** GET /user-challenges/:userChallengeId/quizzes */
   async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsOperation['request']): Promise<ListUserChallengeQuizSubmissionsOperation['response']['body']> {
-    return this.request<ListUserChallengeQuizSubmissionsOperation['response']['body']>('/user-challenges/:userChallengeId/quizzes', { method: 'GET' }, {
+    return this.request<ListUserChallengeQuizSubmissionsOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/quizzes', { method: 'GET' }, {
       params: { userChallengeId: dto.params.userChallengeId },
       query: { fromDate: dto.query.fromDate, toDate: dto.query.toDate }
     });
@@ -196,7 +196,7 @@ export class ApiClient {
 
   /** POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId */
   async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizOperation['request']): Promise<SubmitUserChallengeQuizOperation['response']['body']> {
-    await this.request<SubmitUserChallengeQuizOperation['response']['body']>('/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId', {
+    await this.request<SubmitUserChallengeQuizOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId', {
       method: 'POST',
       body: JSON.stringify(dto.body)
     }, {
@@ -208,12 +208,12 @@ export class ApiClient {
 
   /** GET /content/challenges */
   async listChallenges(): Promise<ListChallengesOperation['response']['body']> {
-    return this.request<ListChallengesOperation['response']['body']>('/content/challenges', { method: 'GET' });
+    return this.request<ListChallengesOperation['response']['body']>('/api/v1/content/challenges', { method: 'GET' });
   }
 
   /** GET /content/challenges/:challengeId */
   async getChallengeById(challengeId: string): Promise<GetChallengeOperation['response']['body']> {
-    return this.request<GetChallengeOperation['response']['body']>('/content/challenges/:challengeId', { method: 'GET' }, {
+    return this.request<GetChallengeOperation['response']['body']>('/api/v1/content/challenges/:challengeId', { method: 'GET' }, {
       params: { challengeId }
     });
   }
@@ -224,7 +224,7 @@ export class ApiClient {
 
   /** POST /social/questions */
   async submitQuestion(dto: SubmitQuestionOperation['request']['body']): Promise<SubmitQuestionOperation['response']['body']> {
-    return this.request<SubmitQuestionOperation['response']['body']>('/social/questions', { 
+    return this.request<SubmitQuestionOperation['response']['body']>('/api/v1/social/questions', { 
       method: 'POST', 
       body: JSON.stringify(dto) 
     });
@@ -232,7 +232,7 @@ export class ApiClient {
 
   /** GET /social/questions?articleId=:articleId */
   async listQuestions(dto: ListQuestionsOperation['request']['query']): Promise<ListQuestionsOperation['response']['body']> {
-    return this.request<ListQuestionsOperation['response']['body']>('/social/questions', { method: 'GET' }, {
+    return this.request<ListQuestionsOperation['response']['body']>('/api/v1/social/questions', { method: 'GET' }, {
       query: {
         articleId: dto.articleId,
         page: dto.page,
@@ -243,14 +243,14 @@ export class ApiClient {
 
   /** GET /social/questions/:questionId */
   async getQuestion(questionId: string): Promise<GetQuestionOperation['response']['body']> {
-    return this.request<GetQuestionOperation['response']['body']>('/social/questions/:questionId', { method: 'GET' }, {
+    return this.request<GetQuestionOperation['response']['body']>('/api/v1/social/questions/:questionId', { method: 'GET' }, {
       params: { questionId }
     });
   }
 
   /** POST /social/questions/:questionId/reactions */
   async addQuestionReaction(dto: AddQuestionReactionOperation['request']): Promise<AddQuestionReactionOperation['response']['body']> {
-    await this.request<AddQuestionReactionOperation['response']['body']>('/social/questions/:questionId/reactions', { 
+    await this.request<AddQuestionReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -262,7 +262,7 @@ export class ApiClient {
 
   /** POST /social/questions/:questionId/answers */
   async submitAnswer(dto: SubmitAnswerOperation['request']): Promise<SubmitAnswerOperation['response']['body']> {
-    await this.request<SubmitAnswerOperation['response']['body']>('/social/questions/:questionId/answers', { 
+    await this.request<SubmitAnswerOperation['response']['body']>('/api/v1/social/questions/:questionId/answers', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -272,7 +272,7 @@ export class ApiClient {
 
   /** GET /social/questions/:questionId/answers */
   async listAnswers(dto: ListAnswersOperation['request']): Promise<ListAnswersOperation['response']['body']> {
-    return this.request<ListAnswersOperation['response']['body']>('/social/questions/:questionId/answers', { method: 'GET' }, {
+    return this.request<ListAnswersOperation['response']['body']>('/api/v1/social/questions/:questionId/answers', { method: 'GET' }, {
       params: { questionId: dto.params.questionId },
       query: {
         page: dto.query.page,
@@ -283,14 +283,14 @@ export class ApiClient {
 
   /** GET /social/questions/:questionId/answers/:answerId */
   async getAnswer(questionId: string, answerId: string): Promise<GetAnswerOperation['response']['body']> {
-    return this.request<GetAnswerOperation['response']['body']>('/social/questions/:questionId/answers/:answerId', { method: 'GET' }, {
+    return this.request<GetAnswerOperation['response']['body']>('/api/v1/social/questions/:questionId/answers/:answerId', { method: 'GET' }, {
       params: { questionId, answerId }
     });
   }
 
   /** POST /social/questions/:questionId/answers/:answerId/reactions */
   async addAnswerReaction(dto: AddAnswerReactionOperation['request']): Promise<AddAnswerReactionOperation['response']['body']> {
-    await this.request<AddAnswerReactionOperation['response']['body']>('/social/questions/:questionId/answers/:answerId/reactions', { 
+    await this.request<AddAnswerReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/answers/:answerId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -302,7 +302,7 @@ export class ApiClient {
 
   /** POST /progress-shares */
   async shareProgress(dto: ShareProgressOperation['request']['body']): Promise<ShareProgressOperation['response']['body']> {
-    return this.request<ShareProgressOperation['response']['body']>('/progress-shares', { 
+    return this.request<ShareProgressOperation['response']['body']>('/api/v1/progress-shares', { 
       method: 'POST', 
       body: JSON.stringify(dto) 
     });
@@ -310,7 +310,7 @@ export class ApiClient {
 
   /** GET /progress-shares */
   async getPublicShares(dto: GetPublicSharesOperation['request']['query']): Promise<GetPublicSharesOperation['response']['body']> {
-    return this.request<GetPublicSharesOperation['response']['body']>('/progress-shares', { method: 'GET' }, {
+    return this.request<GetPublicSharesOperation['response']['body']>('/api/v1/progress-shares', { method: 'GET' }, {
       query: {
         shareType: dto.shareType,
         page: dto.page,
@@ -321,7 +321,7 @@ export class ApiClient {
 
   /** GET /users/me/progress-shares */
   async getMyShares(dto: GetUserSharesOperation['request']['query']): Promise<GetUserSharesOperation['response']['body']> {
-    return this.request<GetUserSharesOperation['response']['body']>('/users/me/progress-shares', { method: 'GET' }, {
+    return this.request<GetUserSharesOperation['response']['body']>('/api/v1/users/me/progress-shares', { method: 'GET' }, {
       query: {
         page: dto.page,
         limit: dto.limit
@@ -331,14 +331,14 @@ export class ApiClient {
 
   /** DELETE /progress-shares/:shareId */
   async deleteShare(shareId: string): Promise<DeleteShareOperation['response']['body']> {
-    await this.request<DeleteShareOperation['response']['body']>('/progress-shares/:shareId', { method: 'DELETE' }, {
+    await this.request<DeleteShareOperation['response']['body']>('/api/v1/progress-shares/:shareId', { method: 'DELETE' }, {
       params: { shareId }
     });
   }
 
   /** POST /progress-shares/:shareId/reactions */
   async addShareReaction(dto: AddShareReactionOperation['request']): Promise<AddShareReactionOperation['response']['body']> {
-    await this.request<AddShareReactionOperation['response']['body']>('/progress-shares/:shareId/reactions', { 
+    await this.request<AddShareReactionOperation['response']['body']>('/public/api/v1/progress-shares/:shareId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -351,7 +351,7 @@ export class ApiClient {
 
   /** GET /social/invite/stats */
   async getInviteStats(): Promise<GetInviteStatsOperation['response']['body']> {
-    return this.request<GetInviteStatsOperation['response']['body']>('/social/invite/stats', { method: 'GET' });
+    return this.request<GetInviteStatsOperation['response']['body']>('/api/v1/social/invite/stats', { method: 'GET' });
   }
 }
 

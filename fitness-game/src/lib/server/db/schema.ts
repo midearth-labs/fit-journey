@@ -296,6 +296,7 @@ export const progressShares = pgTable('progress_shares', {
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   shareType: shareTypeEnum('share_type').notNull(),
   shareTypeId: text('share_type_id'),
+  title: text('title').notNull(),
   contentVersion: text('content_version').notNull(),
   generatedContent: jsonb('generated_content').notNull(),
   includeInviteLink: boolean('include_invite_link').notNull(),

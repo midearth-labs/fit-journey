@@ -3,17 +3,37 @@ import { eq, and, desc, sql, count } from 'drizzle-orm';
 import { progressShares, type ProgressShare, type NewProgressShare } from '$lib/server/db/schema';
 
 export type ReactionType = 'clap' | 'muscle' | 'party';
+// Omit the heavy content fields
+export type ProgressShareWithoutContent = Omit<ProgressShare, 'contentVersion' | 'generatedContent'>;
+
 export interface IProgressSharesRepository {
   create(data: NewProgressShare): Promise<{id: ProgressShare['id']}>;
   findById(id: string): Promise<ProgressShare | null>;
-  findByUserId(userId: string, page?: number, limit?: number): Promise<ProgressShare[]>;
-  findPublicSharesByShareType(shareType: ProgressShare['shareType'], page?: number, limit?: number): Promise<ProgressShare[]>;
+  findByUserId(userId: string, page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
+  findPublicSharesByShareType(shareType: ProgressShare['shareType'], page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
   updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'updatedAt' | 'userId'>): Promise<boolean>;
   incrementActiveShareReactionCount(id: string, reactionType: ReactionType, requestDate: Date): Promise<boolean>;
   delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean>;
 }
 
 export class ProgressSharesRepository implements IProgressSharesRepository {
+  // Static constant to define fields without content columns
+  private static readonly FIELDS_WITHOUT_CONTENT = {
+    id: progressShares.id,
+    userId: progressShares.userId,
+    shareType: progressShares.shareType,
+    shareTypeId: progressShares.shareTypeId,
+    title: progressShares.title,
+    includeInviteLink: progressShares.includeInviteLink,
+    isPublic: progressShares.isPublic,
+    status: progressShares.status,
+    clapCount: progressShares.clapCount,
+    muscleCount: progressShares.muscleCount,
+    partyCount: progressShares.partyCount,
+    createdAt: progressShares.createdAt,
+    updatedAt: progressShares.updatedAt
+  } as const;
+
   constructor(private db: NodePgDatabase<any>) {}
 
   async create(data: NewProgressShare): Promise<{id: ProgressShare['id']}> {
@@ -33,10 +53,10 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
   }
 
   // @TODO: check the logic of limit and offset across all repositories
-  async findByUserId(userId: string, page: number = 1, limit: number = 20): Promise<ProgressShare[]> {
+  async findByUserId(userId: string, page: number = 1, limit: number = 20): Promise<ProgressShareWithoutContent[]> {
     const offset = (page - 1) * limit;
     
-    return await this.db.select()
+    return await this.db.select(ProgressSharesRepository.FIELDS_WITHOUT_CONTENT)
       .from(progressShares)
       .where(and(
         eq(progressShares.userId, userId),
@@ -46,11 +66,11 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
       .limit(limit)
       .offset(offset);
   }
-//@TODO: add the index back and ensure it is sorted by createdAt
-  async findPublicSharesByShareType(shareType: ProgressShare['shareType'], page: number = 1, limit: number = 20): Promise<ProgressShare[]> {
+  
+  async findPublicSharesByShareType(shareType: ProgressShare['shareType'], page: number = 1, limit: number = 20): Promise<ProgressShareWithoutContent[]> {
     const offset = (page - 1) * limit;
     
-    return await this.db.select()
+    return await this.db.select(ProgressSharesRepository.FIELDS_WITHOUT_CONTENT)
       .from(progressShares)
       .where(and(
         eq(progressShares.shareType, shareType),

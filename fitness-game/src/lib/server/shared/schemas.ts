@@ -164,6 +164,8 @@ export type NewUserChallengeResponse = z.infer<typeof NewUserChallengeResponseSc
 export type UserChallengeSummaryResponse = z.infer<typeof UserChallengeSummaryResponseSchema>;
 export type UserChallengeDetailResponse = z.infer<typeof UserChallengeDetailResponseSchema>;
 export type UserChallengeProgressResponse = z.infer<typeof UserChallengeProgressResponseSchema>;
+export type ProgressSharePublicListResponse = z.infer<typeof ProgressSharePublicListResponseSchema>;
+export type ProgressShareUserListResponse = z.infer<typeof ProgressShareUserListResponseSchema>;
 
 // --- Social Features Schemas ---
 
@@ -269,6 +271,23 @@ export const ProgressShareResponseSchema = z.object({
   partyCount: z.number().int().min(0),
   createdAt: z.string(),
   userId: UuidSchema
+});
+
+export const ProgressSharePublicListResponseSchema = z.object({
+  id: UuidSchema,
+  userId: UuidSchema,
+  title: z.string(),
+  shareType: ShareTypeSchema,
+  clapCount: z.number().int().min(0),
+  muscleCount: z.number().int().min(0),
+  partyCount: z.number().int().min(0),
+  createdAt: z.string()
+});
+
+export const ProgressShareUserListResponseSchema = ProgressSharePublicListResponseSchema.extend({
+  includeInviteLink: z.boolean(),
+  isPublic: z.boolean(),
+  status: ShareStatusSchema
 });
 
 // Invitation Schemas
@@ -856,7 +875,7 @@ export const GetUserSharesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ProgressShareResponseSchema)
+    body: z.array(ProgressShareUserListResponseSchema)
   }
 };
 
@@ -883,7 +902,7 @@ export const GetPublicSharesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ProgressShareResponseSchema)
+    body: z.array(ProgressSharePublicListResponseSchema)
   }
 };
 

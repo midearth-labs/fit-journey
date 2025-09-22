@@ -279,26 +279,29 @@ export type DeleteShareDto = {
   shareId: string;
 };
 
-export type ProgressShareResponse = {
+export type ProgressSharePublicListResponse = {
   id: string;
-  shareType: ProgressShare['shareType'];
-  shareTypeId: string;
-  contentVersion: string;
-  generatedContent: {
-    title: string;
-    message: string;
-    stats: Record<string, any>;
-    image?: string;
-  };
-  includeInviteLink: boolean;
-  isPublic: boolean;
-  status: ProgressShare['status'];
+  userId: string;
+  title: string;
+  shareType: ProgressShare["shareType"];
   clapCount: number;
   muscleCount: number;
   partyCount: number;
   createdAt: string;
-  userId: string;
+}
+
+export type ProgressSharePublicDetailResponse = ProgressSharePublicListResponse & {
+  contentVersion: string;
+  generatedContent: Record<string, any>;
 };
+
+export type ProgressShareUserListResponse = ProgressSharePublicListResponse & {
+  includeInviteLink: boolean;
+  isPublic: boolean;
+  status: ProgressShare['status'];
+}
+
+export type ProgressShareUserDetailResponse = ProgressShareUserListResponse & ProgressSharePublicDetailResponse;
 
 // Invitation DTOs
 export type InviteStatsResponse = {
