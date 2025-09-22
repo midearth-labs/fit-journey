@@ -298,7 +298,7 @@ export const progressShares = pgTable('progress_shares', {
   shareTypeId: text('share_type_id'),
   title: text('title').notNull(),
   contentVersion: text('content_version').notNull(),
-  generatedContent: jsonb('generated_content').$type<Record<string, any>>().notNull(),
+  generatedContent: jsonb('generated_content').$type<Record<string, unknown>>().notNull(),
   includeInviteLink: boolean('include_invite_link').notNull(),
   isPublic: boolean('is_public').notNull(),
   status: shareStatusEnum('status').notNull(),

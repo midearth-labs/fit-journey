@@ -18,6 +18,7 @@ import {
   ShareTypeSchema,
   ShareStatusSchema
 } from './z.primitives';
+import { ChallengeSchema } from '$lib/server/content/types/challenge';
 
 // --- User Profile Schemas ---
 
@@ -250,22 +251,38 @@ export const AddShareReactionDtoSchema = z.object({
   reactionType: EmojiReactionTypeSchema
 });
 
-export const ProgressShareResponseSchema = z.object({
+// New Progress Share Response Schema (for shareProgress operation)
+export const NewProgressShareResponseSchema = z.object({
+  id: UuidSchema
+});
+
+// Progress Share Public List Response Schema
+export const ProgressSharePublicListResponseSchema = z.object({
   id: UuidSchema,
+  userId: UuidSchema,
   title: z.string(),
   shareType: ShareTypeSchema,
-  shareTypeId: z.string(),
-  contentVersion: z.string(),
-  generatedContent: z.record(z.string(), z.any()),
-  includeInviteLink: z.boolean(),
-  isPublic: z.boolean(),
-  status: ShareStatusSchema,
   clapCount: z.number().int().min(0),
   muscleCount: z.number().int().min(0),
   partyCount: z.number().int().min(0),
-  createdAt: z.string(),
-  userId: UuidSchema
+  createdAt: z.string()
 });
+
+// Progress Share Detail Response Schema (extends public list with content)
+export const ProgressShareDetailResponseSchema = ProgressSharePublicListResponseSchema.extend({
+  contentVersion: z.string(),
+  generatedContent: z.record(z.string(), z.unknown())
+});
+
+// Progress Share User List Response Schema (extends public list with user-specific fields)
+export const ProgressShareUserListResponseSchema = ProgressSharePublicListResponseSchema.extend({
+  includeInviteLink: z.boolean(),
+  isPublic: z.boolean(),
+  status: ShareStatusSchema
+});
+
+// Progress Share User Detail Response Schema (extends user list with content)
+export const ProgressShareUserDetailResponseSchema = ProgressShareUserListResponseSchema.extend(ProgressShareDetailResponseSchema.shape);
 
 // Invitation Schemas
 export const InviteStatsResponseSchema = z.object({
@@ -346,7 +363,7 @@ export const ListUserChallengesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: NewUserChallengeResponseSchema.array()
+    body: UserChallengeSummaryResponseSchema.array()
   }
 };
 
@@ -423,8 +440,7 @@ export const ListChallengesOperationSchema = {
     body: z.void()
   },
   response: {
-    // @TODO: figure out why this is ANY and also the below
-    body: z.any() // Generic content response
+    body: ChallengeSchema.array()
   }
 };
 
@@ -435,7 +451,7 @@ export const GetChallengeOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.any() // Generic content response
+    body: ChallengeSchema
   }
 };
 
@@ -549,7 +565,7 @@ export const ShareProgressOperationSchema = {
     body: ShareProgressDtoSchema
   },
   response: {
-    body: ProgressShareResponseSchema
+    body: NewProgressShareResponseSchema
   }
 };
 
@@ -852,7 +868,7 @@ export const GetUserSharesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ProgressShareResponseSchema)
+    body: z.array(ProgressShareUserListResponseSchema)
   }
 };
 
@@ -879,7 +895,7 @@ export const GetPublicSharesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ProgressShareResponseSchema)
+    body: z.array(ProgressSharePublicListResponseSchema)
   }
 };
 
@@ -904,7 +920,7 @@ export const GetUserShareOperationSchema = {
     body: z.void()
   },
   response: {
-    body: ProgressShareResponseSchema
+    body: ProgressShareUserDetailResponseSchema
   }
 };
 
@@ -958,7 +974,7 @@ export const GetShareOperationSchema = {
     body: z.void()
   },
   response: {
-    body: ProgressShareResponseSchema
+    body: ProgressShareDetailResponseSchema
   }
 };
 

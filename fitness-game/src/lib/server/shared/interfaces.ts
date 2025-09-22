@@ -307,7 +307,7 @@ export type ProgressSharePublicListResponse = {
 
 export type ProgressShareDetailResponse = ProgressSharePublicListResponse & {
   contentVersion: string;
-  generatedContent: Record<string, any>;
+  generatedContent: Record<string, unknown>;
 };
 
 export type ProgressShareUserListResponse = ProgressSharePublicListResponse & {

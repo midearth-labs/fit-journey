@@ -871,5 +871,5 @@ Update the repository AGENTS.MD to favor atomic operations and the "api/v1" rout
 
 ### Prompt 20
 ```
-
+Create a report that if the API return schemas structures are exactly inferred from the return dtos of the Service Methods of the respective services in "src/lib/server/services/". Only flag and report on those that are in violation so that the output is not too verbose. 
 ```

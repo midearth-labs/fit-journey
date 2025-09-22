@@ -215,7 +215,7 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
       };
     }
   
-    private async generateShareContent(shareType: string, shareTypeId?: string, userId?: string): Promise<{title: string, content: any, versionId: string}> {
+    private async generateShareContent(shareType: string, shareTypeId?: string, userId?: string): Promise<{title: string, content: Record<string, unknown>, versionId: string}> {
       // TODO: Implement content generation logic based on share type
       // This would integrate with content generation services
       const baseContent = {
