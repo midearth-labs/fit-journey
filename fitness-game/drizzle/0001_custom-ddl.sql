@@ -33,15 +33,16 @@ CREATE OR REPLACE TRIGGER on_auth_user_created
 
 -- Function to handle user update trigger
 -- This function will be called when a user is updated in Supabase Auth
-CREATE OR REPLACE FUNCTION public.handle_user_update()
+CREATE OR REPLACE FUNCTION public.handle_user_update(allowed_hours INTEGER DEFAULT 48)
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Update inviter_code if user gets confirmed and there is no existing inviter_code in users table
-    -- OR if inviter_code was added to metadata and there is no existing inviter_code in users table
-    IF (NEW.confirmed_at IS NOT NULL 
-        AND OLD.confirmed_at IS NULL)
-       OR (NEW.raw_user_meta_data ? 'inviter_code' 
-           AND (OLD.raw_user_meta_data IS NULL OR NOT (OLD.raw_user_meta_data ? 'inviter_code')))
+    -- Update inviter_code if there is a valid inviter_code in metadata and no existing inviter_code in users table
+    -- Only allow within the specified time window from user creation
+    IF NEW.confirmed_at IS NOT NULL 
+       AND NEW.raw_user_meta_data ? 'inviter_code' 
+       AND NEW.raw_user_meta_data->>'inviter_code' IS NOT NULL
+       AND NEW.raw_user_meta_data->>'inviter_code' != ''
+       AND NEW.created_at >= NOW() - INTERVAL '1 hour' * allowed_hours
     THEN
         UPDATE public.users 
         SET inviter_code = NEW.raw_user_meta_data->>'inviter_code'
@@ -55,7 +56,7 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 -- Trigger to automatically update user records when auth.users is updated
 CREATE OR REPLACE TRIGGER on_auth_user_updated
     AFTER UPDATE ON auth.users
-    FOR EACH ROW EXECUTE FUNCTION public.handle_user_update();
+    FOR EACH ROW EXECUTE FUNCTION public.handle_user_update(48);
 
 -- Function to handle inviter_code update and increment invitation_join_count
 -- This function will be called when a user's inviter_code is updated
