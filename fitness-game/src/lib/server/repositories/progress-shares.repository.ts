@@ -9,9 +9,10 @@ export type ProgressShareWithoutContent = Omit<ProgressShare, 'contentVersion' |
 export interface IProgressSharesRepository {
   create(data: NewProgressShare): Promise<{id: ProgressShare['id']}>;
   findById(id: string): Promise<ProgressShare | null>;
+  findByIdForUser(id: string, userId: string): Promise<ProgressShare | null>;
   findByUserId(userId: string, page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
   findPublicSharesByShareType(shareType: ProgressShare['shareType'], page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
-  updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'updatedAt' | 'userId'>): Promise<boolean>;
+  updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'isPublic' | 'updatedAt' | 'userId' | 'includeInviteLink'>): Promise<boolean>;
   incrementActiveShareReactionCount(id: string, reactionType: ReactionType, requestDate: Date): Promise<boolean>;
   delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean>;
 }
@@ -46,7 +47,22 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
   async findById(id: string): Promise<ProgressShare | null> {
     const result = await this.db.select()
       .from(progressShares)
-      .where(eq(progressShares.id, id))
+      .where(and(
+        eq(progressShares.id, id), 
+        eq(progressShares.status, 'active')
+      ))
+      .limit(1);
+    
+    return result[0] || null;
+  }
+
+  async findByIdForUser(id: string, userId: string): Promise<ProgressShare | null> {
+    const result = await this.db.select()
+      .from(progressShares)
+      .where(and(
+        eq(progressShares.id, id),
+        eq(progressShares.userId, userId)
+      ))
       .limit(1);
     
     return result[0] || null;
@@ -82,11 +98,12 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
       .offset(offset);
   }
 
-  async updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'isPublic' | 'updatedAt' | 'userId'>): Promise<boolean> {
+  async updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'isPublic' | 'updatedAt' | 'userId' | 'includeInviteLink'>): Promise<boolean> {
     const result = await this.db.update(progressShares)
       .set({ 
         status: share.status,
         isPublic: share.isPublic,
+        includeInviteLink: share.includeInviteLink,
         updatedAt: share.updatedAt
       })
       .where(and(

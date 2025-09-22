@@ -164,8 +164,6 @@ export type NewUserChallengeResponse = z.infer<typeof NewUserChallengeResponseSc
 export type UserChallengeSummaryResponse = z.infer<typeof UserChallengeSummaryResponseSchema>;
 export type UserChallengeDetailResponse = z.infer<typeof UserChallengeDetailResponseSchema>;
 export type UserChallengeProgressResponse = z.infer<typeof UserChallengeProgressResponseSchema>;
-export type ProgressSharePublicListResponse = z.infer<typeof ProgressSharePublicListResponseSchema>;
-export type ProgressShareUserListResponse = z.infer<typeof ProgressShareUserListResponseSchema>;
 
 // --- Social Features Schemas ---
 
@@ -257,12 +255,7 @@ export const ProgressShareResponseSchema = z.object({
   shareType: ShareTypeSchema,
   shareTypeId: z.string(),
   contentVersion: z.string(),
-  generatedContent: z.object({
-    title: z.string(),
-    message: z.string(),
-    stats: z.record(z.string(), z.any()),
-    image: z.string().optional()
-  }),
+  generatedContent: z.record(z.string(), z.any()),
   includeInviteLink: z.boolean(),
   isPublic: z.boolean(),
   status: ShareStatusSchema,
@@ -271,23 +264,6 @@ export const ProgressShareResponseSchema = z.object({
   partyCount: z.number().int().min(0),
   createdAt: z.string(),
   userId: UuidSchema
-});
-
-export const ProgressSharePublicListResponseSchema = z.object({
-  id: UuidSchema,
-  userId: UuidSchema,
-  title: z.string(),
-  shareType: ShareTypeSchema,
-  clapCount: z.number().int().min(0),
-  muscleCount: z.number().int().min(0),
-  partyCount: z.number().int().min(0),
-  createdAt: z.string()
-});
-
-export const ProgressShareUserListResponseSchema = ProgressSharePublicListResponseSchema.extend({
-  includeInviteLink: z.boolean(),
-  isPublic: z.boolean(),
-  status: ShareStatusSchema
 });
 
 // Invitation Schemas
@@ -875,7 +851,7 @@ export const GetUserSharesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ProgressShareUserListResponseSchema)
+    body: z.array(ProgressShareResponseSchema)
   }
 };
 
@@ -902,7 +878,7 @@ export const GetPublicSharesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ProgressSharePublicListResponseSchema)
+    body: z.array(ProgressShareResponseSchema)
   }
 };
 
@@ -914,6 +890,60 @@ export type GetPublicSharesOperation = {
   };
   response: {
     body: z.infer<typeof GetPublicSharesOperationSchema.response.body>;
+  };
+};
+
+// Get User Share Operation
+export const GetUserShareOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: ProgressShareResponseSchema
+  }
+};
+
+export type GetUserShareOperation = {
+  request: {
+    params: z.infer<typeof GetUserShareOperationSchema.request.params>;
+    query: z.infer<typeof GetUserShareOperationSchema.request.query>;
+    body: z.infer<typeof GetUserShareOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetUserShareOperationSchema.response.body>;
+  };
+};
+
+// Update Share Status Operation
+export const UpdateShareStatusOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.object({
+      status: ShareStatusSchema,
+      isPublic: z.boolean(),
+      includeInviteLink: z.boolean(),
+    })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export type UpdateShareStatusOperation = {
+  request: {
+    params: z.infer<typeof UpdateShareStatusOperationSchema.request.params>;
+    query: z.infer<typeof UpdateShareStatusOperationSchema.request.query>;
+    body: z.infer<typeof UpdateShareStatusOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof UpdateShareStatusOperationSchema.response.body>;
   };
 };
 

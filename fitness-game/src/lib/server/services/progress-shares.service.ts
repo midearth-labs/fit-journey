@@ -1,5 +1,5 @@
 import { type IProgressSharesRepository } from '$lib/server/repositories';
-import { ValidationError } from '$lib/server/shared/errors';
+import { notFoundCheck, ValidationError } from '$lib/server/shared/errors';
 import type { 
   AuthRequestContext,
   ShareProgressDto, 
@@ -7,17 +7,23 @@ import type {
   GetUserSharesDto,
   GetPublicSharesDto,
   DeleteShareDto,
+  GetUserShareDto,
+  UpdateShareStatusDto,
   NewProgressShareResponse, 
   MaybeAuthRequestContext,
   ProgressShareUserListResponse,
-  ProgressSharePublicListResponse
+  ProgressSharePublicListResponse,
+  ProgressShareUserDetailResponse
 } from '$lib/server/shared/interfaces';
 import type { ProgressShareWithoutContent } from '../repositories/progress-shares.repository';
+import type { ProgressShare } from '$lib/server/db/schema';
 
 export type IProgressSharesService = {
   shareProgress(dto: ShareProgressDto): Promise<NewProgressShareResponse>;
   getPublicShares(dto: GetPublicSharesDto): Promise<ProgressSharePublicListResponse[]>;
   getUserShares(dto: GetUserSharesDto): Promise<ProgressShareUserListResponse[]>;
+  getUserShare(dto: GetUserShareDto): Promise<ProgressShareUserDetailResponse>;
+  updateStatus(dto: UpdateShareStatusDto): Promise<void>;
   deleteShare(dto: DeleteShareDto): Promise<void>;
 };
 
@@ -107,17 +113,49 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
     }
   
     /**
+     * Get a specific progress share for the authenticated user
+     * GET /users/me/progress-shares/:shareId
+     */
+    async getUserShare(dto: GetUserShareDto): Promise<ProgressShareUserDetailResponse> {
+      const { progressSharesRepository } = this.dependencies;
+      const { user: { id: userId } } = this.requestContext;
+
+      const share = notFoundCheck(await progressSharesRepository.findByIdForUser(dto.shareId, userId), 'Progress Sharing');
+      
+      return ProgressSharesService.mapToUserDetailResponse(share);
+    }
+
+    /**
+     * Update the status of a progress share
+     * PUT /users/me/progress-shares/:shareId/status
+     */
+    async updateStatus(dto: UpdateShareStatusDto): Promise<void> {
+      const { progressSharesRepository } = this.dependencies;
+      const { user: { id: userId }, requestDate } = this.requestContext;
+      const { shareId, status, isPublic, includeInviteLink } = dto;
+
+      await progressSharesRepository.updateStatus({
+        id: shareId,
+        userId,
+        status,
+        isPublic,
+        includeInviteLink,
+        updatedAt: requestDate
+      });
+    }
+
+    /**
      * Delete a progress share
      * DELETE /progress-shares/:shareId
      */
     async deleteShare(dto: DeleteShareDto): Promise<void> {
       const { progressSharesRepository } = this.dependencies;
       const { user: { id: userId } } = this.requestContext;
-  
+
       await progressSharesRepository.delete({ id: dto.shareId, userId });
     }
   
-    private static mapToPublicListResponse(share: ProgressShareWithoutContent): ProgressSharePublicListResponse {
+    public static mapToPublicListResponse(share: ProgressShareWithoutContent): ProgressSharePublicListResponse {
       const { id, userId, shareType, title, clapCount, muscleCount, partyCount, createdAt } = share;
       return {
         id,
@@ -136,6 +174,18 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
       const { includeInviteLink, isPublic, status } = share;
       return {
         ...ProgressSharesService.mapToPublicListResponse(share),
+        includeInviteLink,
+        isPublic,
+        status,
+      };
+    }
+
+    private static mapToUserDetailResponse(share: ProgressShare): ProgressShareUserDetailResponse {
+      const { contentVersion, generatedContent, includeInviteLink, isPublic, status } = share;
+      return {
+        ...ProgressSharesService.mapToPublicListResponse(share),
+        contentVersion,
+        generatedContent: generatedContent,
         includeInviteLink,
         isPublic,
         status,

@@ -279,6 +279,17 @@ export type DeleteShareDto = {
   shareId: string;
 };
 
+export type GetUserShareDto = {
+  shareId: string;
+};
+
+export type UpdateShareStatusDto = {
+  shareId: string;
+  status: ProgressShare['status'];
+  isPublic: boolean;
+  includeInviteLink: boolean;
+};
+
 export type ProgressSharePublicListResponse = {
   id: string;
   userId: string;
@@ -290,7 +301,7 @@ export type ProgressSharePublicListResponse = {
   createdAt: string;
 }
 
-export type ProgressSharePublicDetailResponse = ProgressSharePublicListResponse & {
+export type ProgressShareDetailResponse = ProgressSharePublicListResponse & {
   contentVersion: string;
   generatedContent: Record<string, any>;
 };
@@ -301,7 +312,7 @@ export type ProgressShareUserListResponse = ProgressSharePublicListResponse & {
   status: ProgressShare['status'];
 }
 
-export type ProgressShareUserDetailResponse = ProgressShareUserListResponse & ProgressSharePublicDetailResponse;
+export type ProgressShareUserDetailResponse = ProgressShareUserListResponse & ProgressShareDetailResponse;
 
 // Invitation DTOs
 export type InviteStatsResponse = {

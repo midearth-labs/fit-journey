@@ -23,6 +23,8 @@ import type {
   ShareProgressOperation,
   AddShareReactionOperation,
   GetUserSharesOperation,
+  GetUserShareOperation,
+  UpdateShareStatusOperation,
   GetPublicSharesOperation,
   DeleteShareOperation,
   GetInviteStatsOperation
@@ -326,6 +328,23 @@ export class ApiClient {
         page: dto.page,
         limit: dto.limit
       }
+    });
+  }
+
+  /** GET /users/me/progress-shares/:shareId */
+  async getMyShare(shareId: string): Promise<GetUserShareOperation['response']['body']> {
+    return this.request<GetUserShareOperation['response']['body']>('/api/v1/users/me/progress-shares/:shareId', { method: 'GET' }, {
+      params: { shareId }
+    });
+  }
+
+  /** PUT /users/me/progress-shares/:shareId/status */
+  async updateShareStatus(shareId: string, dto: UpdateShareStatusOperation['request']['body']): Promise<UpdateShareStatusOperation['response']['body']> {
+    return this.request<UpdateShareStatusOperation['response']['body']>('/api/v1/users/me/progress-shares/:shareId/status', { 
+      method: 'PUT', 
+      body: JSON.stringify(dto) 
+    }, {
+      params: { shareId }
     });
   }
 
