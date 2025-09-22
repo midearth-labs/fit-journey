@@ -5,8 +5,19 @@
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO public.users (id, email, created_at, updated_at)
-    VALUES (NEW.id, NEW.email, NOW(), NOW());
+    INSERT INTO public.users (id, email, display_name, inviter_code, created_at, updated_at)
+    VALUES (
+        NEW.id, 
+        NEW.email, 
+        NEW.raw_user_meta_data->>'name',
+        CASE 
+            WHEN NEW.confirmed_at IS NOT NULL 
+            THEN NEW.raw_user_meta_data->>'inviter_code'
+            ELSE NULL
+        END,
+        NOW(), 
+        NOW()
+    );
     
     INSERT INTO public.user_metadata (id, created_at, updated_at)
     VALUES (NEW.id, NOW(), NOW());
@@ -19,6 +30,57 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE OR REPLACE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users
     FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- Function to handle user update trigger
+-- This function will be called when a user is updated in Supabase Auth
+CREATE OR REPLACE FUNCTION public.handle_user_update()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Update inviter_code if user gets confirmed and there is no existing inviter_code in users table
+    -- OR if inviter_code was added to metadata and there is no existing inviter_code in users table
+    IF (NEW.confirmed_at IS NOT NULL 
+        AND OLD.confirmed_at IS NULL)
+       OR (NEW.raw_user_meta_data ? 'inviter_code' 
+           AND (OLD.raw_user_meta_data IS NULL OR NOT (OLD.raw_user_meta_data ? 'inviter_code')))
+    THEN
+        UPDATE public.users 
+        SET inviter_code = NEW.raw_user_meta_data->>'inviter_code'
+        WHERE id = NEW.id AND (inviter_code IS NULL OR inviter_code = '');
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Trigger to automatically update user records when auth.users is updated
+CREATE OR REPLACE TRIGGER on_auth_user_updated
+    AFTER UPDATE ON auth.users
+    FOR EACH ROW EXECUTE FUNCTION public.handle_user_update();
+
+-- Function to handle inviter_code update and increment invitation_join_count
+-- This function will be called when a user's inviter_code is updated
+CREATE OR REPLACE FUNCTION public.handle_inviter_code_update()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Check if inviter_code was set to a valid non-empty value and changed
+    IF NEW.inviter_code IS NOT NULL 
+       AND NEW.inviter_code != ''
+       AND (OLD.inviter_code IS NULL OR OLD.inviter_code = '')
+    THEN
+        -- Increment invitation_join_count for the inviter user
+        UPDATE public.users 
+        SET invitation_join_count = invitation_join_count + 1
+        WHERE invitation_code = NEW.inviter_code;
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Trigger to handle inviter_code updates on public.users
+CREATE OR REPLACE TRIGGER on_users_inviter_code_updated
+    AFTER UPDATE OF inviter_code ON public.users
+    FOR EACH ROW EXECUTE FUNCTION public.handle_inviter_code_update();
 
 -- Custom SQL migration file, put your code below! --
 

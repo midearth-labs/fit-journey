@@ -2,13 +2,29 @@
   import { createClient } from '$lib/auth/supabase'
   import { goto } from '$app/navigation'
   
-  let email = ''
-  let password = ''
-  let confirmPassword = ''
-  let loading = false
-  let error = ''
+  interface Props {
+    data: {
+      inviterCode?: string | null
+    }
+  }
+  
+  const { data }: Props = $props()
+  
+  let email = $state('')
+  let password = $state('')
+  let confirmPassword = $state('')
+  let displayName = $state('')
+  let inviterCode = $state(data.inviterCode || '')
+  let loading = $state(false)
+  let error = $state('')
   
   const supabase = createClient()
+  
+  // UUID validation function
+  function isValidUUID(uuid: string): boolean {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+    return uuidRegex.test(uuid)
+  }
   
   async function handleSubmit(event: SubmitEvent) {
     event.preventDefault()
@@ -28,13 +44,31 @@
       return
     }
     
+    // Validate inviterCode if provided
+    if (inviterCode && !isValidUUID(inviterCode)) {
+      error = 'Invalid inviter code format'
+      return
+    }
+    
     loading = true
     error = ''
     
     try {
+      // Prepare metadata
+      const metadata: Record<string, any> = {}
+      if (displayName.trim()) {
+        metadata.name = displayName.trim()
+      }
+      if (inviterCode && isValidUUID(inviterCode)) {
+        metadata.inviter_code = inviterCode
+      }
+      
       const { error: signUpError } = await supabase.auth.signUp({
         email,
-        password
+        password,
+        options: {
+          data: metadata
+        }
       })
       
       if (signUpError) throw signUpError
@@ -52,10 +86,16 @@
     error = ''
     
     try {
+      // Build redirect URL with inviterCode if provided
+      let redirectUrl = `${window.location.origin}/auth/callback`
+      if (inviterCode && isValidUUID(inviterCode)) {
+        redirectUrl += `?inviterCode=${encodeURIComponent(inviterCode)}`
+      }
+      
       const { error: signInError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`
+          redirectTo: redirectUrl
         }
       })
       
@@ -84,6 +124,29 @@
         disabled={loading}
         placeholder="Enter your email"
       />
+    </div>
+    
+    <div class="form-group">
+      <label for="displayName">Display Name (Optional)</label>
+      <input
+        id="displayName"
+        type="text"
+        bind:value={displayName}
+        disabled={loading}
+        placeholder="Enter your display name"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="inviterCode">Inviter Code (Optional)</label>
+      <input
+        id="inviterCode"
+        type="text"
+        bind:value={inviterCode}
+        disabled={loading}
+        placeholder="Enter inviter code"
+      />
+      <small class="form-help">Enter the code shared by someone who invited you</small>
     </div>
     
     <div class="form-group">
@@ -196,6 +259,13 @@
   .form-group input:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+  
+  .form-help {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
   }
   
   .error-message {

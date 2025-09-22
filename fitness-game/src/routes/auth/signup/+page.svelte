@@ -1,5 +1,13 @@
 <script lang="ts">
   import SignUpForm from '$lib/components/auth/SignUpForm.svelte'
+  import type { PageData } from './$types'
+  
+  const { data } = $props<{ data: PageData }>()
+  
+  // Transform page data to component data
+  const signUpData = {
+    inviterCode: data.inviterCode
+  }
 </script>
 
 <svelte:head>
@@ -8,7 +16,7 @@
 
 <div class="auth-page">
   <div class="auth-container">
-    <SignUpForm />
+    <SignUpForm data={signUpData} />
   </div>
 </div>
 

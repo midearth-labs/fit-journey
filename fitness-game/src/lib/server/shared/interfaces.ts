@@ -143,13 +143,13 @@ type Nullable<T> = T | null;
 
 // --- User Profile DTOs ---
 export type UpdateUserProfileDto = {
-  display_name?: Nullable<User['display_name']>;
-  avatar_gender?: Nullable<User['avatar_gender']>;
-  avatar_age_range?: Nullable<User['avatar_age_range']>;
+  display_name?: Nullable<User['displayName']>;
+  avatar_gender?: Nullable<User['avatarGender']>;
+  avatar_age_range?: Nullable<User['avatarAgeRange']>;
   personalizationCountryCodes?: Nullable<User['personalizationCountryCodes']>;
   timezone?: Nullable<User['timezone']>;
-  preferred_reminder_time?: Nullable<User['preferred_reminder_time']>;
-  notification_preferences?: Nullable<User['notification_preferences']>;
+  preferred_reminder_time?: Nullable<User['preferredReminderTime']>;
+  notification_preferences?: Nullable<User['notificationPreferences']>;
 };
 
 export type UserProfileResponse = {

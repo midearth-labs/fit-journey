@@ -67,28 +67,27 @@ export type DailyLogPayload = Satisfies<Partial<SharedType>, {
 export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(), // this will be the FK to Supabase Auth table
   email: text('email').notNull().unique(),
-  display_name: text('display_name'),
-  avatar_gender: avatarGenderEnum('avatar_gender'),
-  avatar_age_range: avatarAgeRangeEnum('avatar_age_range'),
+  displayName: text('display_name'),
+  avatarGender: avatarGenderEnum('avatar_gender'),
+  avatarAgeRange: avatarAgeRangeEnum('avatar_age_range'),
   // country codes for content personalization.
   personalizationCountryCodes: jsonb('personalization_country_codes').$type<string[]>(),
   timezone: text('timezone'), // e.g. UTC, UTC+1, UTC-8
-  preferred_reminder_time: text('preferred_reminder_time'), // e.g. "19:00"
-  notification_preferences: jsonb('notification_preferences').$type<{
+  preferredReminderTime: text('preferred_reminder_time'), // e.g. "19:00"
+  notificationPreferences: jsonb('notification_preferences').$type<{
     daily: boolean;
     social: boolean;
     fitness_level: boolean;
   }>(),
   // Social Features Fields
-  invitationCode: uuid('invitation_code').unique(),
+  invitationCode: uuid('invitation_code').defaultRandom().unique(),
   invitationJoinCount: integer('invitation_join_count').notNull().default(0),
-  inviterUserId: uuid('inviter_user_id').references((): any => users.id, { onDelete: 'set null' }),
+  inviterCode: uuid('inviter_code'),
   created_at: timestamp('created_at').defaultNow().notNull(),
   updated_at: timestamp('updated_at').defaultNow().notNull(),
 }, (table): any => {
   return [
-    index('users_invitation_code_index').on(table.invitationCode),
-    index('users_inviter_index').on(table.inviterUserId),
+    index('users_inviter_code_index').on(table.inviterCode),
   ];
 });
 
@@ -329,7 +328,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
     references: [userMetadata.id],
   }),
   inviter: one(users, {
-    fields: [users.inviterUserId],
+    fields: [users.inviterCode],
     references: [users.id],
   }),
   questions: many(questions),

@@ -15,7 +15,6 @@ This document provides a detailed low-level design for the **Social Features and
 - Viewers can react to shared content using predefined emoji reactions (👏 💪 🎉)
 - Each article has a context-specific Q&A section
 - Beginner-safe environment with clear "No question is too basic here!" messaging
-- Advanced users earn badges for helping newcomers
 - AI + human moderation to prevent intimidation
 - Users must be sufficiently engaged (completed at least one challenge) before accessing social features
 - Dashboard shows invitation join count for each user
@@ -28,7 +27,7 @@ This document provides a detailed low-level design for the **Social Features and
 - **Reliability**: Moderation system must be robust and responsive
 
 **User Journey Reference**:
-This design covers the social engagement journey from a user completing their first challenge, receiving an invitation to join the community, participating in article-specific Q&A, sharing progress with optional invitation links, and eventually becoming a community helper.
+This design covers the social engagement journey from a user completing their first challenge, receiving an invitation to join the community, participating in article-specific Q&A, sharing progress with optional invitation links.
 
 **Dependencies**:
 - **Authentication Service**: Provides user identity and profile data
@@ -44,7 +43,6 @@ This design covers the social engagement journey from a user completing their fi
 - Moderation system with AI filtering and human oversight
 - Simplified invitation system with unique user codes
 - Progress sharing with optional invitation links
-- Community helper badge system
 - Invitation join count tracking
 
 **Out of Scope**:
@@ -128,8 +126,8 @@ graph TB
 - **Dependents**: API Gateway/Router
 
 **Q&A Service**
-- **Primary Responsibility**: Manage article-specific Q&A discussions, moderation, community helper recognition
-- **Secondary Responsibilities**: Content filtering, user eligibility checking, badge management
+- **Primary Responsibility**: Manage article-specific Q&A discussions, moderation
+- **Secondary Responsibilities**: Content filtering, user eligibility checking
 - **Dependencies**: QARepository, ModerationService, AuthService, ContentService
 - **Dependents**: SocialController
 
