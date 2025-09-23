@@ -1,59 +1,8 @@
 <script lang="ts">
-  import { createClient } from '$lib/auth/supabase'
-  import { goto } from '$app/navigation'
-  
   let email = $state('')
   let password = $state('')
   let loading = $state(false)
   let error = $state('')
-  
-  const supabase = createClient()
-  
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault()
-    
-    if (!email || !password) {
-      error = 'Please fill in all fields'
-      return
-    }
-    
-    loading = true
-    error = ''
-    
-    try {
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password
-      })
-      
-      if (signInError) throw signInError
-      
-      goto('/')
-    } catch (err: any) {
-      error = err.message
-    } finally {
-      loading = false
-    }
-  }
-  
-  async function handleGoogleSignIn() {
-    loading = true
-    error = ''
-    
-    try {
-      const { error: signInError } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`
-        }
-      })
-      
-      if (signInError) throw signInError
-    } catch (err: any) {
-      error = err.message
-      loading = false
-    }
-  }
 </script>
 
 <div class="auth-form">
@@ -62,11 +11,12 @@
     <p>Welcome back to FitJourney</p>
   </div>
   
-  <form onsubmit={handleSubmit}>
+  <form method="POST" action="?/signin">
     <div class="form-group">
       <label for="email">Email</label>
       <input
         id="email"
+        name="email"
         type="email"
         bind:value={email}
         required
@@ -79,6 +29,7 @@
       <label for="password">Password</label>
       <input
         id="password"
+        name="password"
         type="password"
         bind:value={password}
         required
@@ -102,15 +53,16 @@
     <span>or</span>
   </div>
   
-  <button 
-    type="button" 
-    class="btn btn-google" 
-    onclick={handleGoogleSignIn}
-    disabled={loading}
-  >
-    <i class="fab fa-google"></i>
-    Continue with Google
-  </button>
+  <form method="POST" action="?/oauthGoogle">
+    <button 
+      type="submit" 
+      class="btn btn-google" 
+      disabled={loading}
+    >
+      <i class="fab fa-google"></i>
+      Continue with Google
+    </button>
+  </form>
   
   <div class="auth-links">
     <a href="/auth/signup">Don't have an account? Sign up</a>

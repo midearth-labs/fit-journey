@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { type Handle, redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
+import { env } from '$env/dynamic/private'
 import { ServiceFactory } from '$lib/server/shared/service-factory'
 import type { AuthRequestContext, MaybeAuthRequestContext } from '$lib/server/shared/interfaces'
 const PROTECTED_ROUTE_PREFIXES = ['/api/v1/']; // prefix paths
@@ -22,7 +22,12 @@ const supabase: Handle = async ({ event, resolve }) => {
    *
    * The Supabase client gets the Auth token from the request cookies.
    */
-  event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+  const supabaseUrl = env.SUPABASE_URL
+  const supabaseAnonKey = env.SUPABASE_ANON_KEY
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error('Missing SUPABASE_URL or SUPABASE_ANON_KEY environment variables')
+  }
+  event.locals.supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
       getAll: () => event.cookies.getAll(),
       /**
@@ -31,9 +36,15 @@ const supabase: Handle = async ({ event, resolve }) => {
        * standard behavior.
        */
       setAll: (cookiesToSet) => {
-        cookiesToSet.forEach(({ name, value, options }) => {
-          event.cookies.set(name, value, { ...options, path: '/' })
-        })
+        //try {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            event.cookies.set(name, value, { ...options, path: '/' })
+          })
+        /*} catch (error) {
+          // Ignore cookie setting errors that occur after response generation
+          // This can happen when Supabase tries to refresh tokens asynchronously
+          console.warn('Failed to set cookies:', error instanceof Error ? error.message : String(error))
+        }*/
       },
     },
   });
@@ -95,9 +106,9 @@ const extractSessionAndUser = async (locals: App.Locals) => {
 }
 
 const authGuard: Handle = async ({ event, resolve }) => {
+  await extractSessionAndUser(event.locals);
+  
   if (['authenticated', 'auth_page'].includes(event.locals.routeType)) {
-    await extractSessionAndUser(event.locals);
-
     // Redirect authenticated users away from auth pages
     if (event.locals.routeType === 'auth_page' && event.locals.user) {
       throw redirect(303, '/')
@@ -116,15 +127,11 @@ const authGuard: Handle = async ({ event, resolve }) => {
       throw redirect(303, '/auth/signin');
     }
   } else {
+    //console.log('this-page-is-unauthenticated', "this-page-is-unauthenticated")
     const serviceUnAuthRequestContext: MaybeAuthRequestContext = {
       requestDate: event.locals.requestDate,
       requestId: event.locals.requestId,
-      getUserContext: async () => {
-        if (event.locals.user === undefined) {
-          await extractSessionAndUser(event.locals);
-        }
-        return event.locals.user || null;
-      }
+      user: event.locals.user,
     }
     event.locals.unAuthServices = serviceFactoryInstance.getUnAuthServices(serviceUnAuthRequestContext)
   }

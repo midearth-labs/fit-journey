@@ -1,38 +1,8 @@
 <script lang="ts">
-  import { createClient } from '$lib/auth/supabase'
-  
   let email = $state('')
   let loading = $state(false)
   let error = $state('')
   let success = $state(false)
-  
-  const supabase = createClient()
-  
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault()
-    
-    if (!email) {
-      error = 'Please enter your email address'
-      return
-    }
-    
-    loading = true
-    error = ''
-    
-    try {
-      const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/auth/reset-password`
-      })
-      
-      if (resetError) throw resetError
-      
-      success = true
-    } catch (err: any) {
-      error = err.message
-    } finally {
-      loading = false
-    }
-  }
 </script>
 
 <svelte:head>
@@ -55,11 +25,12 @@
           <a href="/auth/signin" class="btn btn-primary">Back to Sign In</a>
         </div>
       {:else}
-        <form onsubmit={handleSubmit}>
+        <form method="POST" action="?/resetPassword">
           <div class="form-group">
             <label for="email">Email</label>
             <input
               id="email"
+              name="email"
               type="email"
               bind:value={email}
               required

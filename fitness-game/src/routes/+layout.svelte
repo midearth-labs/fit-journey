@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { invalidate } from '$app/navigation';
 	import { progressStore } from '$lib/stores/progress';
 	import '../app.css';
 
 	let { data, children } = $props();
-	let { session, supabase } = $derived(data);
+	let { session } = $derived(data);
 	let theme = $state('light');
 
 	onMount(() => {
@@ -18,14 +17,7 @@
 		// Load progress
 		progressStore.load();
 		
-		// Listen to auth state changes
-		const { data: authData } = supabase.auth.onAuthStateChange((_, newSession) => {
-			if (newSession?.expires_at !== session?.expires_at) {
-				invalidate('supabase:auth')
-			}
-		})
-		
-		return () => authData.subscription.unsubscribe()
+		return () => {}
 	});
 
 	function toggleTheme() {
@@ -90,9 +82,9 @@
 							<i class="fas fa-user"></i>
 						</div>
 						<span class="user-name">{session.user.email}</span>
-						<button class="btn btn-ghost btn-sm" onclick={() => supabase.auth.signOut()}>
-							Sign Out
-						</button>
+					<form method="POST" action="/auth/signout">
+						<button class="btn btn-ghost btn-sm" type="submit">Sign Out</button>
+					</form>
 					</div>
 				{:else}
 					<div class="auth-actions">

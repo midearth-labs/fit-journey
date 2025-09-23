@@ -11,8 +11,8 @@ declare global {
 			requestDate: Date; // the timestamp/instant of the incoming request
   			requestId: string; // the requestId UUID of the request
 			safeGetSession: () => Promise<{ session: Session | null; user: User | null }>
-			session: Session | null | undefined
-			user: User | null | undefined
+			session: Session | null
+			user: User | null
 			authServices: AuthServices | null
 			unAuthServices: UnAuthServices | null
 			routeType: 'authenticated' | 'unauthenticated' | 'auth_page'

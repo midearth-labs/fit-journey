@@ -29,7 +29,7 @@ export type AuthRequestContext = RequestContext & {
 };
 
 export type MaybeAuthRequestContext = RequestContext & {
-    getUserContext: () => Promise<UserContext | null>;
+    user: UserContext | null;
 };
 
 export type DatesOnEarthAtInstant = { earliest: string, utc: string, latest: string };

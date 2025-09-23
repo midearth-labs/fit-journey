@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { createClient } from '$lib/auth/supabase'
-  import { goto } from '$app/navigation'
+  
   
   interface Props {
     data: {
@@ -18,93 +17,7 @@
   let loading = $state(false)
   let error = $state('')
   
-  const supabase = createClient()
-  
-  // UUID validation function
-  function isValidUUID(uuid: string): boolean {
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
-    return uuidRegex.test(uuid)
-  }
-  
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault()
-    
-    if (!email || !password || !confirmPassword) {
-      error = 'Please fill in all fields'
-      return
-    }
-    
-    if (password !== confirmPassword) {
-      error = 'Passwords do not match'
-      return
-    }
-    
-    if (password.length < 6) {
-      error = 'Password must be at least 6 characters'
-      return
-    }
-    
-    // Validate inviterCode if provided
-    if (inviterCode && !isValidUUID(inviterCode)) {
-      error = 'Invalid inviter code format'
-      return
-    }
-    
-    loading = true
-    error = ''
-    
-    try {
-      // Prepare metadata
-      const metadata: Record<string, any> = {}
-      if (displayName.trim()) {
-        metadata.name = displayName.trim()
-      }
-      if (inviterCode && isValidUUID(inviterCode)) {
-        metadata.inviter_code = inviterCode
-      }
-      
-      const { error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: metadata
-        }
-      })
-      
-      if (signUpError) throw signUpError
-      
-      goto('/')
-    } catch (err: any) {
-      error = err.message
-    } finally {
-      loading = false
-    }
-  }
-  
-  async function handleGoogleSignIn() {
-    loading = true
-    error = ''
-    
-    try {
-      // Build redirect URL with inviterCode if provided
-      let redirectUrl = `${window.location.origin}/auth/callback`
-      if (inviterCode && isValidUUID(inviterCode)) {
-        redirectUrl += `?inviterCode=${encodeURIComponent(inviterCode)}`
-      }
-      
-      const { error: signInError } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: redirectUrl
-        }
-      })
-      
-      if (signInError) throw signInError
-    } catch (err: any) {
-      error = err.message
-      loading = false
-    }
-  }
+  // client only validates fields; submit handled by server actions
 </script>
 
 <div class="auth-form">
@@ -113,11 +26,12 @@
     <p>Join FitJourney and start your fitness journey</p>
   </div>
   
-  <form onsubmit={handleSubmit}>
+  <form method="POST" action="?/signup">
     <div class="form-group">
       <label for="email">Email</label>
       <input
         id="email"
+        name="email"
         type="email"
         bind:value={email}
         required
@@ -130,6 +44,7 @@
       <label for="displayName">Display Name (Optional)</label>
       <input
         id="displayName"
+        name="displayName"
         type="text"
         bind:value={displayName}
         disabled={loading}
@@ -141,6 +56,7 @@
       <label for="inviterCode">Inviter Code (Optional)</label>
       <input
         id="inviterCode"
+        name="inviterCode"
         type="text"
         bind:value={inviterCode}
         disabled={loading}
@@ -153,6 +69,7 @@
       <label for="password">Password</label>
       <input
         id="password"
+        name="password"
         type="password"
         bind:value={password}
         required
@@ -166,6 +83,7 @@
       <label for="confirmPassword">Confirm Password</label>
       <input
         id="confirmPassword"
+        name="confirmPassword"
         type="password"
         bind:value={confirmPassword}
         required
@@ -189,15 +107,17 @@
     <span>or</span>
   </div>
   
-  <button 
-    type="button" 
-    class="btn btn-google" 
-    onclick={handleGoogleSignIn}
-    disabled={loading}
-  >
-    <i class="fab fa-google"></i>
-    Continue with Google
-  </button>
+  <form method="POST" action="?/oauthGoogle">
+    <input type="hidden" name="inviterCode" value={inviterCode} />
+    <button 
+      type="submit" 
+      class="btn btn-google" 
+      disabled={loading}
+    >
+      <i class="fab fa-google"></i>
+      Continue with Google
+    </button>
+  </form>
   
   <div class="auth-links">
     <a href="/auth/signin">Already have an account? Sign in</a>
