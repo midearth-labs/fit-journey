@@ -27,7 +27,7 @@ export class UserProfileService implements IUserProfileService {
 
     // Build updates object: ignore undefined; allow null to explicitly clear fields
     const updates: Partial<User> = {};
-    const allowedKeys = ['display_name', 'avatar_gender', 'avatar_age_range', 'personalizationCountryCodes', 'timezone', 'preferred_reminder_time', 'notification_preferences'] as const satisfies (keyof User & keyof UpdateUserProfileDto)[];
+    const allowedKeys = ['displayName', 'avatarGender', 'avatarAgeRange', 'personalizationCountryCodes', 'timezone', 'preferredReminderTime', 'notificationPreferences'] as const satisfies (keyof User & keyof UpdateUserProfileDto)[];
 
     const assignIfProvided = <T extends keyof User & keyof UpdateUserProfileDto>(key: T) => {
       if (dto[key] !== undefined) {
@@ -40,8 +40,8 @@ export class UserProfileService implements IUserProfileService {
         assignIfProvided(key);
     }
   
-    // Always bump updated_at to request time
-    updates.updated_at = requestDate;
+    // Always bump  to request time
+    updates.updatedAt = requestDate;
 
     await userRepository.update(userId, updates);
   }
@@ -59,13 +59,13 @@ export class UserProfileService implements IUserProfileService {
     return {
       id: user.id,
       email: user.email,
-      display_name: user.display_name,
-      avatar_gender: user.avatar_gender,
-      avatar_age_range: user.avatar_age_range,
+      displayName: user.displayName,
+      avatarGender: user.avatarGender,
+      avatarAgeRange: user.avatarAgeRange,
       personalizationCountryCodes: user.personalizationCountryCodes,
       timezone: user.timezone,
-      preferred_reminder_time: user.preferred_reminder_time,
-      notification_preferences: user.notification_preferences,
+      preferredReminderTime: user.preferredReminderTime,
+      notificationPreferences: user.notificationPreferences,
     };
   }
 }

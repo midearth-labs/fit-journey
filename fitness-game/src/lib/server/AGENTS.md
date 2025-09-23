@@ -233,7 +233,7 @@ for (const key of allowedKeys) {
     assignIfProvided(key);
 }
 
-updates.updated_at = requestDate;
+updates. = requestDate;
 ```
 
 ## Testing Strategy

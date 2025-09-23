@@ -143,25 +143,25 @@ type Nullable<T> = T | null;
 
 // --- User Profile DTOs ---
 export type UpdateUserProfileDto = {
-  display_name?: Nullable<User['displayName']>;
-  avatar_gender?: Nullable<User['avatarGender']>;
-  avatar_age_range?: Nullable<User['avatarAgeRange']>;
+  displayName?: Nullable<User['displayName']>;
+  avatarGender?: Nullable<User['avatarGender']>;
+  avatarAgeRange?: Nullable<User['avatarAgeRange']>;
   personalizationCountryCodes?: Nullable<User['personalizationCountryCodes']>;
   timezone?: Nullable<User['timezone']>;
-  preferred_reminder_time?: Nullable<User['preferredReminderTime']>;
-  notification_preferences?: Nullable<User['notificationPreferences']>;
+  preferredReminderTime?: Nullable<User['preferredReminderTime']>;
+  notificationPreferences?: Nullable<User['notificationPreferences']>;
 };
 
 export type UserProfileResponse = {
   id: string;
   email?: string;
-  display_name: string | null;
-  avatar_gender: string | null;
-  avatar_age_range: string | null;
+  displayName: string | null;
+  avatarGender: string | null;
+  avatarAgeRange: string | null;
   personalizationCountryCodes: string[] | null;
   timezone: string | null;
-  preferred_reminder_time: string | null;
-  notification_preferences: {
+  preferredReminderTime: string | null;
+  notificationPreferences: {
     daily: boolean;
     social: boolean;
     fitness_level: boolean;

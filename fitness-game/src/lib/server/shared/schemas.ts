@@ -23,25 +23,25 @@ import { ChallengeSchema } from '$lib/server/content/types/challenge';
 // --- User Profile Schemas ---
 
 export const UpdateUserProfileDtoSchema = z.object({
-  display_name: DisplayNameSchema.nullable().optional(),
-  avatar_gender: AvatarGenderSchema.nullable().optional(),
-  avatar_age_range: AvatarAgeRangeSchema.nullable().optional(),
+  displayName: DisplayNameSchema.nullable().optional(),
+  avatarGender: AvatarGenderSchema.nullable().optional(),
+  avatarAgeRange: AvatarAgeRangeSchema.nullable().optional(),
   personalizationCountryCodes: z.array(CountryCodeSchema).min(1, 'At least one country code required').nullable().optional(),
   timezone: TimezoneSchema.nullable().optional(),
-  preferred_reminder_time: TimeSchema.nullable().optional(),
-  notification_preferences: NotificationPreferencesSchema.nullable().optional()
+  preferredReminderTime: TimeSchema.nullable().optional(),
+  notificationPreferences: NotificationPreferencesSchema.nullable().optional()
 });
 
 export const UserProfileResponseSchema = z.object({
   id: UuidSchema,
   email: EmailSchema.optional(),
-  display_name: z.string().nullable(),
-  avatar_gender: z.string().nullable(),
-  avatar_age_range: z.string().nullable(),
+  displayName: z.string().nullable(),
+  avatarGender: z.string().nullable(),
+  avatarAgeRange: z.string().nullable(),
   personalizationCountryCodes: z.array(z.string()).nullable(),
   timezone: z.string().nullable(),
-  preferred_reminder_time: z.string().nullable(),
-  notification_preferences: NotificationPreferencesSchema.nullable()
+  preferredReminderTime: z.string().nullable(),
+  notificationPreferences: NotificationPreferencesSchema.nullable()
 });
 
 // --- Log Schemas ---

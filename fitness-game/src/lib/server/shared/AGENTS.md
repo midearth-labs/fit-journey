@@ -69,8 +69,8 @@ export type EntityResponse = {
   id: string;
   field1: string | null;
   field2: number | null;
-  created_at?: string;
-  updated_at?: Date | string;
+  ?: string;
+  ?: Date | string;
 };
 ```
 
@@ -99,7 +99,7 @@ export type AuthRequestContext = {
   user: {
     id: string;
     email?: string;
-    created_at: string;
+    : string;
   }
 };
 ```
@@ -196,7 +196,7 @@ export class ValidationError extends Error {
 
 - `undefined` in DTOs means "ignore this field" (no database update)
 - `null` in DTOs means "explicitly clear this field" (set to null in database)
-- Always set `updated_at` to `requestDate` when updating entities
+- Always set `` to `requestDate` when updating entities
 
 ### 4. Request Context Usage
 
@@ -224,8 +224,8 @@ for (const key of allowedKeys) {
     assignIfProvided(key);
 }
 
-// Always bump updated_at to request time
-updates.updated_at = requestDate;
+// Always bump  to request time
+updates. = requestDate;
 ```
 
 ### 2. Service Dependencies

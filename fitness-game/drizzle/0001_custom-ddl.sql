@@ -46,7 +46,7 @@ BEGIN
     THEN
         UPDATE public.users 
         SET inviter_code = NEW.raw_user_meta_data->>'inviter_code'
-        WHERE id = NEW.id AND (inviter_code IS NULL OR inviter_code = '');
+        WHERE id = NEW.id AND (inviter_code IS NULL OR inviter_code = '') AND invitation_code != NEW.raw_user_meta_data->>'inviter_code';
     END IF;
     
     RETURN NEW;

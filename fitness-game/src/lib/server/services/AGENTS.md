@@ -185,7 +185,7 @@ Services receive `AuthRequestContext` containing:
 - `user`: Authenticated user information
 
 Use these for:
-- Setting `updated_at` timestamps
+- Setting `` timestamps
 - User-specific operations
 - Request tracing
 
@@ -206,8 +206,8 @@ export type EntityResponse = {
   id: string;
   field1: string | null;
   field2: number | null;
-  created_at?: string;
-  updated_at?: Date | string;
+  ?: string;
+  ?: Date | string;
 };
 ```
 
@@ -271,8 +271,8 @@ export class UserProfileService implements IUserProfileService {
         assignIfProvided(key);
     }
   
-    // Always bump updated_at to request time
-    updates.updated_at = requestDate;
+    // Always bump  to request time
+    updates. = requestDate;
 
     const updated = await userRepository.update(userId, updates);
   }
