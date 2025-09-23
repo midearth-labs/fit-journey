@@ -2,10 +2,10 @@
   import { createClient } from '$lib/auth/supabase'
   import { goto } from '$app/navigation'
   
-  let email = ''
-  let password = ''
-  let loading = false
-  let error = ''
+  let email = $state('')
+  let password = $state('')
+  let loading = $state(false)
+  let error = $state('')
   
   const supabase = createClient()
   

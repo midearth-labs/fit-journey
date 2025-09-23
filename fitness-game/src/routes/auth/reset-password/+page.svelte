@@ -1,11 +1,10 @@
 <script lang="ts">
   import { createClient } from '$lib/auth/supabase'
-  import { page } from '$app/stores'
   
-  let email = ''
-  let loading = false
-  let error = ''
-  let success = false
+  let email = $state('')
+  let loading = $state(false)
+  let error = $state('')
+  let success = $state(false)
   
   const supabase = createClient()
   

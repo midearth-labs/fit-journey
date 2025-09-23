@@ -224,15 +224,6 @@ Postconditions: Reaction count is incremented (no individual tracking)
 Error Conditions: Invalid share ID, invalid reaction type
 ```
 
-**GET /api/v1/social/invite/stats**: Get invitation statistics
-```
-Signature: getInviteStats()
-Purpose: Retrieve user's invitation join count and statistics
-Preconditions: User must be authenticated
-Postconditions: Returns invitation statistics for dashboard
-Error Conditions: User not authenticated
-```
-
 ## Data Design
 
 ### Data Models
@@ -1439,3 +1430,10 @@ async function createProgressShare(
 - **Expected Behavior**: Efficient pagination, reasonable response times
 - **Validation**: Check pagination performance, memory usage
 ```
+
+### Implementation Updates
+1. Invitation System
+Invitation Code Generation: Auto-generated at the DB layer in "db/schema.ts"
+Invitation Link Creation: No link creation, the invitation link is just the standard registration page with a param ?inviteCode={user's invitation code}
+Invitation Tracking: This is done using Postgres Triggers in "drizzle/0001_custom-ddl.sql"
+Registration with Invitation Code: That's already implemented on the Sign-up page with SupaBase metadata.
