@@ -10,7 +10,7 @@ import type {
 import type { IQuestionsRepository } from '$lib/server/repositories/questions.repository';
 import type { IQuestionReactionsRepository } from '$lib/server/repositories/question-reactions.repository';
 import type { IModerationService } from './moderation.service';
-import type { IUserChallengeRepository } from '$lib/server/repositories/user-challenge.repository';
+import type { IFeatureAccessControl } from '$lib/server/helpers/feature-access-control.helper';
 import { notFoundCheck, ValidationError } from '$lib/server/shared/errors';
 import type { Question } from '../db/schema';
 
@@ -27,7 +27,7 @@ export class QuestionsService implements IQuestionsService {
       readonly questionsRepository: IQuestionsRepository;
       readonly questionReactionsRepository: IQuestionReactionsRepository;
       readonly moderationService: IModerationService;
-      readonly userChallengeRepository: IUserChallengeRepository;
+      readonly featureAccessControl: IFeatureAccessControl;
     },
     private readonly requestContext: AuthRequestContext
   ) {}
@@ -40,8 +40,7 @@ export class QuestionsService implements IQuestionsService {
     const { user: { id: userId }, requestDate } = this.requestContext;
     const { articleIds, title, body, isAnonymous } = dto;
 
-    // Check if user is eligible for social features (completed at least one challenge)
-    await this.checkSocialFeatureEligibility(userId);
+    await this.dependencies.featureAccessControl.requireFeatureAccess(userId, 'askQuestionsEnabled');
 
     // Moderate content
     const titleModeration = await this.dependencies.moderationService.moderateContent(title, 'question_title');
@@ -116,19 +115,6 @@ export class QuestionsService implements IQuestionsService {
     });
   }
 
-  // #TODO: cache the result of this function, or otherwise add a user flag on the user object on challenge completion
-  private async checkSocialFeatureEligibility(userId: string): Promise<void> {
-    // Check if user has completed at least one challenge
-    const userChallenges = await this.dependencies.userChallengeRepository.findByUserId(userId);
-    const { requestDate } = this.requestContext;
-    const completedChallenges = userChallenges.filter(challenge => 
-      challenge.implicitStatus({ referenceDate: requestDate }) === 'completed'
-    );
-    
-    if (completedChallenges.length === 0) {
-      throw new ValidationError('Complete your first challenge to join the community!');
-    }
-  }
 
   private mapToQuestionResponse(question: Question): QuestionResponse {
     return {

@@ -61,6 +61,15 @@ export type DailyLogPayload = Satisfies<Partial<SharedType>, {
   hydration?: LogValueType<FiveStarValuesType>,
 }>;
 
+export type EnabledFeatures = {
+  askQuestionsEnabled?: boolean;
+  answerQuestionsEnabled?: boolean;
+  shareChallengesEnabled?: boolean;
+  shareProgressEnabled?: boolean;
+  shareReactionsEnabled?: boolean;
+  shareInvitationsEnabled?: boolean;
+  progressAvatarEnabled?: boolean;
+};
 
 // User table - seeded from Supabase Auth table using trigger
 // For user profile submitted information
@@ -83,19 +92,16 @@ export const users = pgTable('users', {
   invitationCode: uuid('invitation_code').defaultRandom().unique(),
   invitationJoinCount: integer('invitation_join_count').notNull().default(0),
   inviterCode: uuid('inviter_code'),
-  created_at: timestamp('created_at').defaultNow().notNull(),
-  updated_at: timestamp('updated_at').defaultNow().notNull(),
-}, (table): any => {
-  return [
-    index('users_inviter_code_index').on(table.inviterCode),
-  ];
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
 // UserMetadata table (which is an extension of the User table for non-user submitted information)
 export const userMetadata = pgTable('user_metadata', {
   id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
-  current_fitness_level: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
-  current_streak_ids: jsonb('current_streak_ids').$type<{
+  enabledFeatures: jsonb('enabled_features').$type<EnabledFeatures>().notNull().default({}),
+  currentFitnessLevel: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
+  currentStreakIds: jsonb('current_streak_ids').$type<{
     dailyMovement?: string;
     cleanEating?: string;
     sleepQuality?: string;
@@ -103,8 +109,8 @@ export const userMetadata = pgTable('user_metadata', {
     quizCompleted?: string;
     quizPassed?: string;
     all?: string;
-  }>(), // each value is a FK to StreakHistory
-  longest_streaks: jsonb('longest_streaks').$type<{
+  }>().notNull().default({}), // each value is a FK to StreakHistory
+  longestStreaks: jsonb('longest_streaks').$type<{
     dailyMovement?: string;
     cleanEating?: string;
     sleepQuality?: string;
@@ -112,10 +118,10 @@ export const userMetadata = pgTable('user_metadata', {
     quizCompleted?: string;
     quizPassed?: string;
     all?: string;
-  }>(), // each value is a FK to StreakHistory
-  last_activity_date: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits, weight, RHR etc
-  created_at: timestamp('created_at').notNull(),
-  updated_at: timestamp('updated_at').notNull(),
+  }>().notNull().default({}), // each value is a FK to StreakHistory
+  lastActivityDate: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits, weight, RHR etc
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
 });
 
 

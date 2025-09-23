@@ -1,5 +1,6 @@
 import { type AuthRequestContext } from '$lib/server/shared/interfaces';
-import { type IAnswersRepository, type IQuestionsRepository, type IUserChallengeRepository, type IAnswerReactionsRepository } from '$lib/server/repositories';
+import { type IAnswersRepository, type IQuestionsRepository, type IAnswerReactionsRepository } from '$lib/server/repositories';
+import type { IFeatureAccessControl } from '$lib/server/helpers/feature-access-control.helper';
 import { notFoundCheck, ValidationError } from '$lib/server/shared/errors';
 import type { SubmitAnswerDto, ListAnswersDto, GetAnswerDto, AnswerResponse, NewAnswerResponse, AddAnswerReactionDto } from '$lib/server/shared/interfaces';
 import type { IModerationService } from './moderation.service';
@@ -18,8 +19,8 @@ export class AnswersService implements IAnswersService {
       readonly answersRepository: IAnswersRepository;
       readonly questionsRepository: IQuestionsRepository;
       readonly moderationService: IModerationService;
-      readonly userChallengeRepository: IUserChallengeRepository;
       readonly answerReactionsRepository: IAnswerReactionsRepository;
+      readonly featureAccessControl: IFeatureAccessControl;
     },
     private readonly requestContext: AuthRequestContext
   ) {}
@@ -32,8 +33,7 @@ export class AnswersService implements IAnswersService {
     const { user: { id: userId }, requestDate } = this.requestContext;
     const { questionId, answer, isAnonymous } = dto;
 
-    // Check if user is eligible for social features (completed at least one challenge)
-    await this.checkSocialFeatureEligibility(userId);
+    await this.dependencies.featureAccessControl.requireFeatureAccess(userId, 'answerQuestionsEnabled');
 
     // Verify question exists
     // @TODO: make sure any notFound check that doesnt use the result, uses a more optimized checkExists method
@@ -107,19 +107,6 @@ export class AnswersService implements IAnswersService {
     });
   }
 
-  // #TODO: cache the result of this function, or otherwise add a user flag on the user object on challenge completion
-  private async checkSocialFeatureEligibility(userId: string): Promise<void> {
-    // Check if user has completed at least one challenge
-    const userChallenges = await this.dependencies.userChallengeRepository.findByUserId(userId);
-    const { requestDate } = this.requestContext;
-    const completedChallenges = userChallenges.filter(challenge => 
-      challenge.implicitStatus({ referenceDate: requestDate }) === 'completed'
-    );
-    
-    if (completedChallenges.length === 0) {
-      throw new ValidationError('Complete your first challenge to join the community!');
-    }
-  }
 
   private mapToAnswerResponse(answer: QuestionAnswer): AnswerResponse {
     return {

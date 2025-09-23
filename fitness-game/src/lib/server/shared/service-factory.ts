@@ -1,6 +1,6 @@
 import { getDBInstance } from '$lib/server/db';
 import { ContentDAOFactory } from '$lib/server/content/daos/dao-factory';
-import { DateTimeHelper, ProgressContentHelper } from '$lib/server/helpers';
+import { DateTimeHelper, ProgressContentHelper, FeatureAccessControl } from '$lib/server/helpers';
 import {
   UserRepository,
   UserMetadataRepository,
@@ -29,6 +29,7 @@ export class ServiceFactory {
   private readonly contentDAOFactory: ContentDAOFactory;
   private readonly dateTimeHelper: DateTimeHelper;
   private readonly progressContentHelper: ProgressContentHelper;
+  private readonly featureAccessControl: FeatureAccessControl;
   
   // Repositories
   private readonly userRepository: UserRepository;
@@ -70,6 +71,11 @@ export class ServiceFactory {
     this.userRepository = new UserRepository(db);
     this.userMetadataRepository = new UserMetadataRepository(db);
     this.userChallengeRepository = new UserChallengeRepository(db, this.dateTimeHelper, this.contentDAOFactory.getDAO('Challenge'));
+    
+    // Initialize feature access control after repositories are ready
+    this.featureAccessControl = new FeatureAccessControl(
+      { userMetadataRepository: this.userMetadataRepository }
+    );
     this.userChallengeProgressRepository = new UserChallengeProgressRepository(db);
     this.userLogsRepository = new UserLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
     
@@ -111,7 +117,7 @@ export class ServiceFactory {
         questionsRepository: this.questionsRepository,
         questionReactionsRepository: this.questionReactionsRepository,
         moderationService: this.moderationService,
-        userChallengeRepository: this.userChallengeRepository
+        featureAccessControl: this.featureAccessControl,
       }
     );
     this.answersServiceCreator = createServiceFromClass(
@@ -120,8 +126,8 @@ export class ServiceFactory {
         answersRepository: this.answersRepository,
         questionsRepository: this.questionsRepository,
         moderationService: this.moderationService,
-        userChallengeRepository: this.userChallengeRepository,
         answerReactionsRepository: this.answerReactionsRepository,
+        featureAccessControl: this.featureAccessControl,
       }
     );
     this.progressSharesServiceCreator = createServiceFromClass(
