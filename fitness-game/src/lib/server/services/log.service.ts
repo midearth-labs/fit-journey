@@ -31,7 +31,7 @@ export class LogService implements ILogService {
   
   /**
    * Put user challenge log
-   * PUT /logs/:logDate
+   * PUT /api/v1/logs/:logDate
    */
   async putUserLog(dto: PutUserLogDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
@@ -66,7 +66,7 @@ export class LogService implements ILogService {
 
   /**
    * List user challenge logs
-   * GET /logs?from=YYYY-MM-DD&to=YYYY-MM-DD&userChallengeId=UUID
+   * GET /api/v1/logs
    */
   async listUserLogs(dto: ListUserLogsDto): Promise<UserLogResponse[]> {
     const { user: { id: userId } } = this.requestContext;

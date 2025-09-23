@@ -35,7 +35,7 @@ export class QuestionsService implements IQuestionsService {
 
   /**
    * Submit a new question for articles
-   * POST /social/questions
+   * POST /api/v1/social/questions
    */
   async submitQuestion(dto: SubmitQuestionDto): Promise<NewQuestionResponse> {
     const { user: { id: userId }, requestDate } = this.requestContext;
@@ -74,7 +74,7 @@ export class QuestionsService implements IQuestionsService {
 
   /**
    * List questions for a specific article
-   * GET /social/questions?articleId=:articleId
+   * GET /api/v1/social/questions
    */
   async listQuestions(dto: ListQuestionsDto): Promise<ListQuestionsResponse[]> {
     const { articleId, page = 1, limit = 20 } = dto;
@@ -86,7 +86,7 @@ export class QuestionsService implements IQuestionsService {
 
   /**
    * Get a question by ID
-   * GET /social/questions/:questionId
+   * GET /api/v1/social/questions/:questionId
    */
   async getQuestion(dto: GetQuestionDto): Promise<GetQuestionResponse> {
     const { questionId } = dto;
@@ -99,7 +99,7 @@ export class QuestionsService implements IQuestionsService {
 
   /**
    * Add a reaction to a question
-   * POST /social/questions/:questionId/reactions
+   * POST /api/v1/social/questions/:questionId/reactions
    */
   async addReaction(dto: AddReactionDto): Promise<void> {
     const { user: { id: userId }, requestDate } = this.requestContext;

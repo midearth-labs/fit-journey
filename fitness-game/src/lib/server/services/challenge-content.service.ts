@@ -16,7 +16,7 @@ export class ChallengeContentService implements IChallengeContentService {
 
   /**
    * Get a challenge by its ID
-   * GET /content/challenges/:challengeId
+   * GET /api/v1/content/challenges/:challengeId
    */
   getChallengeById(dto: {challengeId: string}): Challenge {
     const { challengeDAO } = this.dependencies;
@@ -29,7 +29,7 @@ export class ChallengeContentService implements IChallengeContentService {
 
   /**
    * List all available challenges
-   * GET /content/challenges
+   * GET /api/v1/content/challenges
    */
   listAllChallenges(): Challenge[] {
     const { challengeDAO } = this.dependencies;

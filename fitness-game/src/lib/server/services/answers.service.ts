@@ -27,7 +27,7 @@ export class AnswersService implements IAnswersService {
 
   /**
    * Submit an answer to a question
-   * POST /social/questions/:questionId/answers
+   * POST /api/v1/social/questions/:questionId/answers
    */
   async submitAnswer(dto: SubmitAnswerDto): Promise<NewAnswerResponse> {
     const { user: { id: userId }, requestDate } = this.requestContext;
@@ -62,7 +62,7 @@ export class AnswersService implements IAnswersService {
 
   /**
    * List answers for a question
-   * GET /social/questions/:questionId/answers
+   * GET /api/v1/social/questions/:questionId/answers
    */
   async listAnswers(dto: ListAnswersDto): Promise<ListAnswersResponse[]> {
     const { questionId, page = 1, limit = 20 } = dto;
@@ -78,7 +78,7 @@ export class AnswersService implements IAnswersService {
 
   /**
    * Get an answer by ID
-   * GET /social/questions/:questionId/answers/:answerId
+   * GET /api/v1/social/questions/:questionId/answers/:answerId
    */
   async getAnswer(dto: GetAnswerDto): Promise<GetAnswerResponse> {
     const { questionId, answerId } = dto;
@@ -90,7 +90,7 @@ export class AnswersService implements IAnswersService {
 
   /**
    * Add a reaction to an answer
-   * POST /social/questions/:questionId/answers/:answerId/reactions
+   * POST /api/v1/social/questions/:questionId/answers/:answerId/reactions
    */
   async addReaction(dto: AddAnswerReactionDto): Promise<void> {
     const { user: { id: userId }, requestDate } = this.requestContext;

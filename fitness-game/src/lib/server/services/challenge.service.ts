@@ -36,7 +36,7 @@ export class ChallengeService implements IChallengeService {
 
   /**
    * Create a new user challenge
-   * POST /user-challenges
+   * POST /api/v1/user-challenges
    */
 
   async createUserChallenge(dto: CreateUserChallengeDto): Promise<NewUserChallengeResponse> {
@@ -75,7 +75,7 @@ export class ChallengeService implements IChallengeService {
 
   /**
    * Get a user challenge by ID
-   * GET /user-challenges/:userChallengeId
+   * GET /api/v1/user-challenges/:userChallengeId
    */
   async getUserChallenge(dto: {userChallengeId: string}): Promise<UserChallengeDetailResponse> {
     const { requestDate, user: { id: userId } } = this.requestContext;
@@ -103,7 +103,7 @@ export class ChallengeService implements IChallengeService {
 
   /**
    * Update user challenge schedule
-   * PATCH /user-challenges/:userChallengeId/schedule
+   * PATCH /api/v1/user-challenges/:userChallengeId/schedule
    */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
@@ -137,7 +137,7 @@ export class ChallengeService implements IChallengeService {
 
   /**
    * Cancel a user challenge
-   * DELETE /user-challenges/:userChallengeId
+   * DELETE /api/v1/user-challenges/:userChallengeId
    */
   async cancelChallenge(dto: {userChallengeId: string}): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;

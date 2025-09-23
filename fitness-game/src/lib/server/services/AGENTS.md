@@ -109,61 +109,61 @@ Examples:
 ```ts
 /**
  * Create a new user challenge
- * POST /user-challenges
+ * POST /api/v1/user-challenges
  */
 async createUserChallenge(dto: CreateUserChallengeDto): Promise<NewUserChallengeResponse> { /* ... */ }
 
 /**
  * Get a user challenge by ID
- * GET /user-challenges/:userChallengeId
+ * GET /api/v1/user-challenges/:userChallengeId
  */
 async getUserChallenge(dto: { userChallengeId: string }): Promise<UserChallengeDetailResponse> { /* ... */ }
 
 /**
  * Update user challenge schedule
- * PATCH /user-challenges/:userChallengeId/schedule
+ * PATCH /api/v1/user-challenges/:userChallengeId/schedule
  */
 async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleDto): Promise<void> { /* ... */ }
 
 /**
  * Submit a quiz for a challenge article
- * POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId
+ * POST /api/v1/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId
  */
 async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void> { /* ... */ }
 
 /**
  * List quiz submissions for a user challenge
- * GET /user-challenges/:userChallengeId/quizzes
+ * GET /api/v1/user-challenges/:userChallengeId/quizzes
  */
 async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]> { /* ... */ }
 
 /**
  * Put user challenge log
- * PUT /logs/:logDate
+ * PUT /api/v1/logs/:logDate
  */
 async putUserLog(dto: PutUserLogDto): Promise<void> { /* ... */ }
 
 /**
  * List user challenge logs
- * GET /logs?from=YYYY-MM-DD&to=YYYY-MM-DD&userChallengeId=UUID
+ * GET /api/v1/logs
  */
 async listUserLogs(dto: ListUserLogsDto): Promise<UserLogResponse[]> { /* ... */ }
 
 /**
  * Update the authenticated user's profile preferences
- * PATCH /users/me/profile
+ * PATCH /api/v1/users/me/profile
  */
 async updateUserProfile(dto: UpdateUserProfileDto): Promise<void> { /* ... */ }
 
 /**
  * Get a challenge by its ID
- * GET /content/challenges/:challengeId
+ * GET /api/v1/content/challenges/:challengeId
  */
 getChallengeById(dto: { challengeId: string }): Challenge { /* ... */ }
 
 /**
  * List all available challenges
- * GET /content/challenges
+ * GET /api/v1/content/challenges
  */
 listAllChallenges(): Challenge[] { /* ... */ }
 ```

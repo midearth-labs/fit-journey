@@ -21,7 +21,7 @@ export class UserProfileService implements IUserProfileService {
 
     /**
      * Update the authenticated user's profile preferences
-     * PATCH /users/me/profile
+     * PATCH /api/v1/users/me/profile
      */
   async updateUserProfile(dto: UpdateUserProfileDto): Promise<void> {
     const { userRepository } = this.dependencies;
@@ -50,7 +50,7 @@ export class UserProfileService implements IUserProfileService {
 
   /**
    * Get the authenticated user's profile
-   * GET /users/me/profile
+   * GET /api/v1/users/me/profile
    */
   async getUserProfile(): Promise<UserProfileResponse> {
     const { userRepository, featureAccessControl } = this.dependencies;

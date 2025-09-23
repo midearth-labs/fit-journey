@@ -154,11 +154,11 @@ export const userChallenges = pgTable('user_challenges', {
     // @TODO: @NOTE: might not be safe to modify this index after deployment, might be better to create a new index with the new statuses
     // then update the queries, then drop the old index
     index('user_challenge_status_start_date_not_locked_inactive_index').on(table.status, table.startDate)
-    .where(sql`${table.status} NOT IN ('locked', 'inactive')`).concurrently(),
+    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
     
     // Unique index to ensure a user can only have one challenge per challengeId when status is not locked or inactive
     uniqueIndex('user_challenge_unique_active_index').on(table.userId, table.challengeId)
-    .where(sql`${table.status} NOT IN ('locked', 'inactive')`).concurrently(),
+    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
   ];
 });
 
@@ -229,9 +229,9 @@ export const questions = pgTable('questions', {
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
   return [
-    index('questions_status_index').on(table.status).concurrently(),
-    index('questions_approved_index').on(table.status).where(sql`${table.status} = 'approved'`).concurrently(),
-    index('questions_user_index').on(table.userId).concurrently(),
+    index('questions_status_index').on(table.status),
+    index('questions_approved_index').on(table.status).where(sql`${table.status} = 'approved'`),
+    index('questions_user_index').on(table.userId),
   ];
 });
 
@@ -243,8 +243,8 @@ export const questionArticles = pgTable('question_articles', {
 }, (table) => {
   return [
     primaryKey({ columns: [table.questionId, table.articleId] }),
-    index('question_articles_question_index').on(table.questionId).concurrently(),
-    index('question_articles_article_index').on(table.articleId).concurrently(),
+    index('question_articles_question_index').on(table.questionId),
+    index('question_articles_article_index').on(table.articleId),
   ];
 });
 
@@ -263,9 +263,9 @@ export const questionAnswers = pgTable('question_answers', {
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
   return [
-    index('question_answers_question_index').on(table.questionId).concurrently(),
-    index('question_answers_approved_index').on(table.status).where(sql`${table.status} = 'approved'`).concurrently(),
-    index('question_answers_user_index').on(table.userId).concurrently(),
+    index('question_answers_question_index').on(table.questionId),
+    index('question_answers_approved_index').on(table.status).where(sql`${table.status} = 'approved'`),
+    index('question_answers_user_index').on(table.userId),
   ];
 });
 
@@ -278,7 +278,7 @@ export const questionReactions = pgTable('question_reactions', {
 }, (table) => {
   return [
     primaryKey({ columns: [table.questionId, table.userId] }), // Composite primary key
-    index('question_reactions_question_index').on(table.questionId).concurrently(),
+    index('question_reactions_question_index').on(table.questionId),
   ];
 });
 
@@ -291,7 +291,7 @@ export const answerReactions = pgTable('answer_reactions', {
 }, (table) => {
   return [
     primaryKey({ columns: [table.answerId, table.userId] }), // Composite primary key
-    index('answer_reactions_answer_index').on(table.answerId).concurrently(),
+    index('answer_reactions_answer_index').on(table.answerId),
   ];
 });
 
@@ -314,14 +314,15 @@ export const progressShares = pgTable('progress_shares', {
   updatedAt: timestamp('updated_at').notNull(),
 }, (table) => {
   return [
-    index('progress_shares_user_index').on(table.userId, table.updatedAt).concurrently(),
+    index('progress_shares_user_index').on(table.userId, table.updatedAt),
     
-    index('progress_shares_type_status_index').on(table.shareType, table.status, table.createdAt).concurrently(),
-    index('progress_shares_type_id_index').on(table.shareType, table.shareTypeId).concurrently(),
+    index('progress_shares_type_status_index').on(table.shareType, table.status, table.createdAt),
+    index('progress_shares_type_id_index').on(table.shareType, table.shareTypeId),
     // Index to find recent public active shares (last 48 hours)
+    // Figure out how to make the 48 hours part work:  AND ${table.createdAt} >= NOW() - INTERVAL '${recentActiveSharesInterval}' 
     index('progress_shares_recent_active_index').on(table.shareType, table.createdAt)
-      .concurrently()
-      .where(sql`${table.status} = 'active' AND ${table.isPublic} = true AND ${table.createdAt} >= NOW() - INTERVAL '${recentActiveSharesInterval}'`),
+      
+      .where(sql`${table.status} = 'active' AND ${table.isPublic} = true`),
   ];
 });
 

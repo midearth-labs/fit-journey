@@ -30,7 +30,7 @@ export class ChallengeProgressService implements IChallengeProgressService {
 
     /**
      * Submit a quiz for a challenge article
-     * POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId
+     * POST /api/v1/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId
      */
   async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
@@ -85,7 +85,7 @@ export class ChallengeProgressService implements IChallengeProgressService {
 
   /**
      * List quiz submissions for a user challenge
-     * GET /user-challenges/:userChallengeId/quizzes
+     * GET /api/v1/user-challenges/:userChallengeId/quizzes
      */
   async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsDto): Promise<UserChallengeProgressResponse[]> {
     const { user: { id: userId } } = this.requestContext;

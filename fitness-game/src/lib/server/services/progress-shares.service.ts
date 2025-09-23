@@ -46,7 +46,7 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
   
     /**
      * Get a public progress share by ID
-     * GET /public/api/v1/progress-shares/:shareId
+     * GET /public/api/v1/social/progress-shares/:shareId
      */
     async getShare(dto: GetShareDto): Promise<ProgressShareDetailResponse> {
       const { progressSharesRepository } = this.dependencies;
@@ -58,7 +58,7 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
 
     /**
      * Add reaction to a progress share
-     * POST /progress-shares/:shareId/reactions
+     * POST /public/api/v1/social/progress-shares/:shareId/reactions
      */
     async addShareReaction(dto: AddShareReactionDto): Promise<void> {
       const { progressSharesRepository } = this.dependencies;
@@ -89,7 +89,7 @@ export class ProgressSharesService implements IProgressSharesService {
   
     /**
      * Share user progress (challenge completion, avatar progression, quiz achievement)
-     * POST /progress-shares
+     * POST /api/v1/users/me/social/progress-shares
      */
   async shareProgress(dto: ShareProgressDto): Promise<NewProgressShareResponse> {
     const { progressSharesRepository, progressContentHelper } = this.dependencies;
@@ -114,7 +114,7 @@ export class ProgressSharesService implements IProgressSharesService {
   
     /**
      * Get user's progress shares
-     * GET /users/me/progress-shares
+     * GET /api/v1/users/me/social/progress-shares
      */
     async getUserShares(dto: GetUserSharesDto): Promise<ProgressShareUserListResponse[]> {
       const { progressSharesRepository } = this.dependencies;
@@ -127,7 +127,7 @@ export class ProgressSharesService implements IProgressSharesService {
   
     /**
      * Get public progress shares
-     * GET /progress-shares
+     * GET /api/v1/social/progress-shares
      */
     async getPublicShares(dto: GetPublicSharesDto): Promise<ProgressSharePublicListResponse[]> {
       const { progressSharesRepository } = this.dependencies;
@@ -139,7 +139,7 @@ export class ProgressSharesService implements IProgressSharesService {
   
     /**
      * Get a specific progress share for the authenticated user
-     * GET /users/me/progress-shares/:shareId
+     * GET /api/v1/users/me/social/progress-shares/:shareId
      */
     async getUserShare(dto: GetUserShareDto): Promise<ProgressShareUserDetailResponse> {
       const { progressSharesRepository } = this.dependencies;
@@ -152,7 +152,7 @@ export class ProgressSharesService implements IProgressSharesService {
 
     /**
      * Update the status of a progress share
-     * PUT /users/me/progress-shares/:shareId/status
+     * PUT /api/v1/users/me/social/progress-shares/:shareId/status
      */
     async updateStatus(dto: UpdateShareStatusDto): Promise<void> {
       const { progressSharesRepository } = this.dependencies;
@@ -171,7 +171,7 @@ export class ProgressSharesService implements IProgressSharesService {
 
     /**
      * Delete a progress share
-     * DELETE /progress-shares/:shareId
+     * DELETE /api/v1/social/progress-shares/:shareId
      */
     async deleteShare(dto: DeleteShareDto): Promise<void> {
       const { progressSharesRepository } = this.dependencies;
