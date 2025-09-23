@@ -5,10 +5,28 @@ import {
   type DailyLogPayload, 
   type UserChallenge,
   type AllLogKeysType,
-  type LogValueType,
   type User,
   type ProgressShare,
 } from "$lib/server/db/schema";
+import {
+  type GetUserProfileOperation,
+  type ListUserLogsOperation,
+  type CreateUserChallengeOperation,
+  type ListUserChallengesOperation,
+  type GetUserChallengeOperation,
+  type ListUserChallengeQuizSubmissionsOperation,
+  type SubmitQuestionOperation,
+  type ListQuestionsOperation,
+  type GetQuestionOperation,
+  type SubmitAnswerOperation,
+  type ListAnswersOperation,
+  type GetAnswerOperation,
+  type ShareProgressOperation,
+  type GetUserSharesOperation,
+  type GetPublicSharesOperation,
+  type GetUserShareOperation,
+  type GetShareOperation,
+} from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
 
@@ -81,44 +99,11 @@ export type ListUserChallengeQuizSubmissionsDto = {
 
 // --- Challenge Response Types ---
 
-export type NewUserChallengeResponse = {
-  id: string;
-};
-
-export type UserChallengeSummaryResponse = NewUserChallengeResponse & {
-  challengeId: string;
-  userId: string;
-  startDate: string;
-  originalStartDate: string;
-  status: 'not_started' | 'active' | 'completed' | 'locked' | 'inactive';
-  knowledgeBaseCompletedCount: number;
-  dailyLogCount: number;
-  lastActivityDate?: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type UserChallengeDetailResponse = UserChallengeSummaryResponse
-
-export type UserLogResponse = {
-  logDate: string;
-  // @TODO: decouple the database models from the service layer
-  values: {
-    [Property in keyof DailyLogPayload]?: LogValueType<number>;
-  };
-};
-
-export type UserChallengeProgressResponse = {
-  id: string;
-  userChallengeId: string;
-  knowledgeBaseId: string;
-  allCorrectAnswers: boolean;
-  // @TODO: decouple the database models from the service layer
-  quizAnswers: UserAnswer[];
-  firstAttemptedAt: string;
-  lastAttemptedAt: string;
-  attempts: number;
-};
+export type NewUserChallengeResponse = CreateUserChallengeOperation['response']['body'];
+export type UserChallengeSummaryResponse = ListUserChallengesOperation['response']['body'][0];
+export type UserChallengeDetailResponse = GetUserChallengeOperation['response']['body'];
+export type UserLogResponse = ListUserLogsOperation['response']['body'][0];
+export type UserChallengeProgressResponse = ListUserChallengeQuizSubmissionsOperation['response']['body'][0];
 
 export type ImplicitStatusCheckPayload = {
   referenceDate: Date; // usually requestDate but might be logDate?
@@ -152,21 +137,7 @@ export type UpdateUserProfileDto = {
   notificationPreferences?: Nullable<User['notificationPreferences']>;
 };
 
-export type UserProfileResponse = {
-  id: string;
-  email?: string;
-  displayName: string | null;
-  avatarGender: string | null;
-  avatarAgeRange: string | null;
-  personalizationCountryCodes: string[] | null;
-  timezone: string | null;
-  preferredReminderTime: string | null;
-  notificationPreferences: {
-    daily: boolean;
-    social: boolean;
-    fitness_level: boolean;
-  } | null;
-};
+export type UserProfileResponse = GetUserProfileOperation['response']['body'];
 
 // --- Social Features DTOs ---
 
@@ -188,20 +159,9 @@ export type GetQuestionDto = {
   questionId: string;
 };
 
-export type NewQuestionResponse = {
-  id: string;
-};
-
-export type QuestionResponse = NewQuestionResponse & {
-  title: string;
-  body: string;
-  status: 'pending' | 'approved' | 'rejected' | 'hidden';
-  helpfulCount: number;
-  notHelpfulCount: number;
-  createdAt: string;
-  updatedAt: string;
-  userId: string | null;
-};
+export type NewQuestionResponse = SubmitQuestionOperation['response']['body'];
+export type ListQuestionsResponse = ListQuestionsOperation['response']['body'][0];
+export type GetQuestionResponse = GetQuestionOperation['response']['body'];
 
 // Answer DTOs
 export type SubmitAnswerDto = {
@@ -221,18 +181,9 @@ export type GetAnswerDto = {
   answerId: string;
 };
 
-export type NewAnswerResponse = {
-  id: string;
-};
-
-export type AnswerResponse = NewAnswerResponse & {
-  answer: string;
-  status: 'pending' | 'approved' | 'rejected' | 'hidden';
-  helpfulCount: number;
-  notHelpfulCount: number;
-  createdAt: string;
-  userId: string | null;
-};
+export type NewAnswerResponse = SubmitAnswerOperation['response']['body'];
+export type GetAnswerResponse = GetAnswerOperation['response']['body'];
+export type ListAnswersResponse = ListAnswersOperation['response']['body'][0];
 
 // Reaction DTOs
 export type AddReactionDto = {
@@ -248,9 +199,7 @@ export type AddAnswerReactionDto = {
 
 // Share DTOs
 
-export type NewProgressShareResponse = {
-  id: string;
-};
+export type NewProgressShareResponse = ShareProgressOperation['response']['body'];
 
 export type ShareProgressDto = {
   shareType: ProgressShare['shareType'];
@@ -294,33 +243,7 @@ export type GetShareDto = {
   shareId: string;
 };
 
-export type ProgressSharePublicListResponse = {
-  id: string;
-  userId: string;
-  title: string;
-  shareType: ProgressShare["shareType"];
-  clapCount: number;
-  muscleCount: number;
-  partyCount: number;
-  createdAt: string;
-}
-
-export type ProgressShareDetailResponse = ProgressSharePublicListResponse & {
-  contentVersion: string;
-  generatedContent: Record<string, unknown>;
-};
-
-export type ProgressShareUserListResponse = ProgressSharePublicListResponse & {
-  includeInviteLink: boolean;
-  isPublic: boolean;
-  status: ProgressShare['status'];
-}
-
-export type ProgressShareUserDetailResponse = ProgressShareUserListResponse & ProgressShareDetailResponse;
-
-// Invitation DTOs
-export type InviteStatsResponse = {
-  invitationCode: string;
-  invitationLink: string;
-  invitationJoinCount: number;
-};
+export type ProgressSharePublicListResponse = GetPublicSharesOperation['response']['body'][0];
+export type ProgressShareDetailResponse = GetShareOperation['response']['body'];
+export type ProgressShareUserListResponse = GetUserSharesOperation['response']['body'][0];
+export type ProgressShareUserDetailResponse = GetUserShareOperation['response']['body'];

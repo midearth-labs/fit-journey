@@ -3,7 +3,8 @@ import type {
   SubmitQuestionDto, 
   ListQuestionsDto,
   NewQuestionResponse, 
-  QuestionResponse,
+  ListQuestionsResponse,
+  GetQuestionResponse,
   AddReactionDto,
   GetQuestionDto,
 } from '$lib/server/shared/interfaces';
@@ -16,8 +17,8 @@ import type { Question } from '../db/schema';
 
 export interface IQuestionsService {
   submitQuestion(dto: SubmitQuestionDto): Promise<NewQuestionResponse>;
-  listQuestions(dto: ListQuestionsDto): Promise<QuestionResponse[]>;
-  getQuestion(dto: GetQuestionDto): Promise<QuestionResponse>;
+  listQuestions(dto: ListQuestionsDto): Promise<ListQuestionsResponse[]>;
+  getQuestion(dto: GetQuestionDto): Promise<GetQuestionResponse>;
   addReaction(dto: AddReactionDto): Promise<void>;
 }
 
@@ -75,25 +76,25 @@ export class QuestionsService implements IQuestionsService {
    * List questions for a specific article
    * GET /social/questions?articleId=:articleId
    */
-  async listQuestions(dto: ListQuestionsDto): Promise<QuestionResponse[]> {
+  async listQuestions(dto: ListQuestionsDto): Promise<ListQuestionsResponse[]> {
     const { articleId, page = 1, limit = 20 } = dto;
 
     const questions = await this.dependencies.questionsRepository.findByArticleId(articleId, page, limit);
     
-    return questions.map(question => this.mapToQuestionResponse(question));
+    return questions.map(question => this.mapToListQuestionsResponse(question));
   }
 
   /**
    * Get a question by ID
    * GET /social/questions/:questionId
    */
-  async getQuestion(dto: GetQuestionDto): Promise<QuestionResponse> {
+  async getQuestion(dto: GetQuestionDto): Promise<GetQuestionResponse> {
     const { questionId } = dto;
 
     // Verify question exists
     const question = notFoundCheck(await this.dependencies.questionsRepository.findById(questionId), 'Question');
     
-    return this.mapToQuestionResponse(question);
+    return this.mapToGetQuestionResponse(question);
   }
 
   /**
@@ -116,17 +117,21 @@ export class QuestionsService implements IQuestionsService {
   }
 
 
-  private mapToQuestionResponse(question: Question): QuestionResponse {
-    return {
-      id: question.id,
-      title: question.title,
-      body: question.body,
-      status: question.status,
-      helpfulCount: question.helpfulCount,
-      notHelpfulCount: question.notHelpfulCount,
-      createdAt: question.createdAt.toISOString(),
-      updatedAt: question.updatedAt.toISOString(),
-      userId: question.isAnonymous ? null : question.userId
-    };
-  }
+    private mapToListQuestionsResponse(question: Question): ListQuestionsResponse {
+      return {
+        id: question.id,
+        title: question.title,
+        body: question.body,
+        status: question.status,
+        helpfulCount: question.helpfulCount,
+        notHelpfulCount: question.notHelpfulCount,
+        createdAt: question.createdAt.toISOString(),
+        updatedAt: question.updatedAt.toISOString(),
+        userId: question.isAnonymous ? null : question.userId
+      };
+    }
+
+    private mapToGetQuestionResponse(question: Question): GetQuestionResponse {
+      return this.mapToListQuestionsResponse(question);
+    }
 }

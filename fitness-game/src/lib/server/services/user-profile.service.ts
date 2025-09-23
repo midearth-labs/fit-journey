@@ -3,6 +3,7 @@ import { type IUserRepository } from '$lib/server/repositories';
 import type { UpdateUserProfileDto, UserProfileResponse } from '$lib/server/shared/interfaces';
 import type { User } from '../db/schema';
 import { notFoundCheck } from '../shared/errors';
+import type { IFeatureAccessControl } from '../helpers/feature-access-control.helper';
 
 export type IUserProfileService = {
   updateUserProfile(dto: UpdateUserProfileDto): Promise<void>;
@@ -13,6 +14,7 @@ export class UserProfileService implements IUserProfileService {
   constructor(
     private readonly dependencies: {
       readonly userRepository: IUserRepository;
+      readonly featureAccessControl: IFeatureAccessControl;
     },
     private readonly requestContext: AuthRequestContext
   ) {}
@@ -51,7 +53,7 @@ export class UserProfileService implements IUserProfileService {
    * GET /users/me/profile
    */
   async getUserProfile(): Promise<UserProfileResponse> {
-    const { userRepository } = this.dependencies;
+    const { userRepository, featureAccessControl } = this.dependencies;
     const { user: { id: userId } } = this.requestContext;
 
     const user = notFoundCheck(await userRepository.findById(userId), 'User');
@@ -66,6 +68,8 @@ export class UserProfileService implements IUserProfileService {
       timezone: user.timezone,
       preferredReminderTime: user.preferredReminderTime,
       notificationPreferences: user.notificationPreferences,
+      invitationCode: (await featureAccessControl.hasFeatureAccess(userId, 'shareInvitationsEnabled')) ? user.invitationCode : null,
+      invitationJoinCount: user.invitationJoinCount,
     };
   }
 }

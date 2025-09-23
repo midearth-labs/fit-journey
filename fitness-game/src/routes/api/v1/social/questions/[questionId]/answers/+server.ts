@@ -8,8 +8,8 @@ export const POST: RequestHandler = async (event) => {
     const { answer, isAnonymous } = await parseBody(event, SubmitAnswerOperationSchema.request.body);
     const { answersService } = event.locals.authServices!;
     
-    await answersService().submitAnswer({ questionId, answer, isAnonymous });
-    return noContent();
+    const answerResponse = await answersService().submitAnswer({ questionId, answer, isAnonymous });
+    return validateAndReturn(answerResponse, SubmitAnswerOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
   }

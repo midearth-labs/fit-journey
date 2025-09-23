@@ -2,14 +2,14 @@ import { type AuthRequestContext } from '$lib/server/shared/interfaces';
 import { type IAnswersRepository, type IQuestionsRepository, type IAnswerReactionsRepository } from '$lib/server/repositories';
 import type { IFeatureAccessControl } from '$lib/server/helpers/feature-access-control.helper';
 import { notFoundCheck, ValidationError } from '$lib/server/shared/errors';
-import type { SubmitAnswerDto, ListAnswersDto, GetAnswerDto, AnswerResponse, NewAnswerResponse, AddAnswerReactionDto } from '$lib/server/shared/interfaces';
+import type { SubmitAnswerDto, ListAnswersDto, GetAnswerDto, GetAnswerResponse, NewAnswerResponse, ListAnswersResponse, AddAnswerReactionDto } from '$lib/server/shared/interfaces';
 import type { IModerationService } from './moderation.service';
 import type { QuestionAnswer } from '$lib/server/db/schema';
 
 export type IAnswersService = {
   submitAnswer(dto: SubmitAnswerDto): Promise<NewAnswerResponse>;
-  listAnswers(dto: ListAnswersDto): Promise<AnswerResponse[]>;
-  getAnswer(dto: GetAnswerDto): Promise<AnswerResponse>;
+  listAnswers(dto: ListAnswersDto): Promise<ListAnswersResponse[]>;
+  getAnswer(dto: GetAnswerDto): Promise<GetAnswerResponse>;
   addReaction(dto: AddAnswerReactionDto): Promise<void>;
 };
 
@@ -64,7 +64,7 @@ export class AnswersService implements IAnswersService {
    * List answers for a question
    * GET /social/questions/:questionId/answers
    */
-  async listAnswers(dto: ListAnswersDto): Promise<AnswerResponse[]> {
+  async listAnswers(dto: ListAnswersDto): Promise<ListAnswersResponse[]> {
     const { questionId, page = 1, limit = 20 } = dto;
 
     // Verify question exists
@@ -73,19 +73,19 @@ export class AnswersService implements IAnswersService {
 
     const answers = await this.dependencies.answersRepository.findByQuestionId(questionId, page, limit);
 
-    return answers.map(answer => this.mapToAnswerResponse(answer));
+    return answers.map(answer => this.mapToListAnswersResponse(answer));
   }
 
   /**
    * Get an answer by ID
    * GET /social/questions/:questionId/answers/:answerId
    */
-  async getAnswer(dto: GetAnswerDto): Promise<AnswerResponse> {
+  async getAnswer(dto: GetAnswerDto): Promise<GetAnswerResponse> {
     const { questionId, answerId } = dto;
 
     const answer = notFoundCheck(await this.dependencies.answersRepository.findById(questionId, answerId), 'Answer');
     
-    return this.mapToAnswerResponse(answer);
+    return this.mapToGetAnswerResponse(answer);
   }
 
   /**
@@ -108,7 +108,7 @@ export class AnswersService implements IAnswersService {
   }
 
 
-  private mapToAnswerResponse(answer: QuestionAnswer): AnswerResponse {
+  private mapToListAnswersResponse(answer: QuestionAnswer): ListAnswersResponse {
     return {
       id: answer.id,
       answer: answer.answer,
@@ -118,6 +118,10 @@ export class AnswersService implements IAnswersService {
       createdAt: answer.createdAt.toISOString(),
       userId: answer.isAnonymous ? null : answer.userId,
     };
+  }
+
+  private mapToGetAnswerResponse(answer: QuestionAnswer): GetAnswerResponse {
+    return this.mapToListAnswersResponse(answer);
   }
 
 }

@@ -38,7 +38,7 @@ export const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 
 export const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful']);
 export const emojiReactionEnum = pgEnum('emoji_reaction_type', ['clap', 'muscle', 'party']);
 export const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
-export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden', 'deleted']);
+export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
 
 export type AllLogKeysType = (typeof AllLogKeys)[number];
 export const FiveStarValues = [1, 2, 3, 4, 5] as const;
@@ -89,7 +89,7 @@ export const users = pgTable('users', {
     fitness_level: boolean;
   }>(),
   // Social Features Fields
-  invitationCode: uuid('invitation_code').defaultRandom().unique(),
+  invitationCode: uuid('invitation_code').defaultRandom().notNull().unique(),
   invitationJoinCount: integer('invitation_join_count').notNull().default(0),
   inviterCode: uuid('inviter_code'),
   createdAt: timestamp('created_at').defaultNow().notNull(),

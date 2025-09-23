@@ -106,7 +106,7 @@ export class ServiceFactory {
     );
     this.userProfileServiceCreator = createServiceFromClass(
       UserProfileService,
-      { userRepository: this.userRepository }
+      { userRepository: this.userRepository, featureAccessControl: this.featureAccessControl }
     );
     
     // Initialize Social Features services

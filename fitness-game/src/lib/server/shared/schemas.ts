@@ -41,7 +41,9 @@ export const UserProfileResponseSchema = z.object({
   personalizationCountryCodes: z.array(z.string()).nullable(),
   timezone: z.string().nullable(),
   preferredReminderTime: z.string().nullable(),
-  notificationPreferences: NotificationPreferencesSchema.nullable()
+  notificationPreferences: NotificationPreferencesSchema.nullable(),
+  invitationCode: UuidSchema.nullable(),
+  invitationJoinCount: z.number().int().min(0),
 });
 
 // --- Log Schemas ---
@@ -150,21 +152,6 @@ export const UserChallengeProgressResponseSchema = z.object({
   lastAttemptedAt: z.string(),
   attempts: z.number().int().min(1)
 });
-
-// Export inferred types for TypeScript usage
-export type UpdateUserProfileDto = z.infer<typeof UpdateUserProfileDtoSchema>;
-export type UserProfileResponse = z.infer<typeof UserProfileResponseSchema>;
-export type PutUserLogDto = z.infer<typeof PutUserLogDtoSchema>;
-export type ListUserLogsDto = z.infer<typeof ListUserLogsQuerySchema>;
-export type UserLogResponse = z.infer<typeof UserLogResponseSchema>;
-export type CreateUserChallengeDto = z.infer<typeof CreateUserChallengeDtoSchema>;
-export type UpdateUserChallengeScheduleDto = z.infer<typeof UpdateUserChallengeScheduleDtoSchema>;
-export type SubmitUserChallengeQuizDto = z.infer<typeof SubmitUserChallengeQuizDtoSchema>;
-export type ListUserChallengeQuizSubmissionsDto = z.infer<typeof ListUserChallengeQuizSubmissionsDtoSchema>;
-export type NewUserChallengeResponse = z.infer<typeof NewUserChallengeResponseSchema>;
-export type UserChallengeSummaryResponse = z.infer<typeof UserChallengeSummaryResponseSchema>;
-export type UserChallengeDetailResponse = z.infer<typeof UserChallengeDetailResponseSchema>;
-export type UserChallengeProgressResponse = z.infer<typeof UserChallengeProgressResponseSchema>;
 
 // --- Social Features Schemas ---
 
@@ -295,6 +282,11 @@ export const InviteStatsResponseSchema = z.object({
 export const NewQuestionResponseSchema = z.object({
   id: UuidSchema
 });
+
+export const NewAnswerResponseSchema = z.object({
+  id: UuidSchema
+});
+
 
 // --- Consolidated Operation Schemas ---
 
@@ -511,7 +503,7 @@ export const SubmitAnswerOperationSchema = {
     })
   },
   response: {
-    body: z.void()
+    body: NewAnswerResponseSchema
   }
 };
 
@@ -577,18 +569,6 @@ export const AddShareReactionOperationSchema = {
   },
   response: {
     body: z.void()
-  }
-};
-
-// Social Invitation Operations
-export const GetInviteStatsOperationSchema = {
-  request: {
-    params: z.object({}),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: InviteStatsResponseSchema
   }
 };
 
@@ -843,17 +823,6 @@ export type AddShareReactionOperation = {
   };
   response: {
     body: z.infer<typeof AddShareReactionOperationSchema.response.body>;
-  };
-};
-
-export type GetInviteStatsOperation = {
-  request: {
-    params: z.infer<typeof GetInviteStatsOperationSchema.request.params>;
-    query: z.infer<typeof GetInviteStatsOperationSchema.request.query>;
-    body: z.infer<typeof GetInviteStatsOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof GetInviteStatsOperationSchema.response.body>;
   };
 };
 

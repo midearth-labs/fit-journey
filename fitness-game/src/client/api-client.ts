@@ -27,8 +27,7 @@ import type {
   UpdateShareStatusOperation,
   GetPublicSharesOperation,
   GetShareOperation,
-  DeleteShareOperation,
-  GetInviteStatsOperation
+  DeleteShareOperation
 } from '$lib/server/shared/schemas';
 
 /**
@@ -131,7 +130,7 @@ export class ApiClient {
 
   /** PATCH /users/me/profile */
   async updateMyProfile(dto: UpdateUserProfileOperation['request']['body']): Promise<UpdateUserProfileOperation['response']['body']> {
-    await this.request<UpdateUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
+    return this.request<UpdateUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
   }
 
   // ---------- Logs ----------
@@ -149,7 +148,7 @@ export class ApiClient {
 
   /** PUT /logs/:logDate */
   async putLog(dto: PutUserLogOperation['request']): Promise<PutUserLogOperation['response']['body']> {
-    await this.request<PutUserLogOperation['response']['body']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
+    return this.request<PutUserLogOperation['response']['body']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
       params: { logDate: dto.params.logDate }
     });
   }
@@ -175,14 +174,14 @@ export class ApiClient {
 
   /** PATCH /user-challenges/:userChallengeId/schedule */
   async updateUserChallengeSchedule(dto: UpdateUserChallengeScheduleOperation['request']): Promise<UpdateUserChallengeScheduleOperation['response']['body']> {
-    await this.request<UpdateUserChallengeScheduleOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/schedule', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
+    return this.request<UpdateUserChallengeScheduleOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/schedule', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
       params: { userChallengeId: dto.params.userChallengeId }
     });
   }
 
   /** DELETE /user-challenges/:userChallengeId */
   async cancelUserChallenge(userChallengeId: string): Promise<CancelUserChallengeOperation['response']['body']> {
-    await this.request<CancelUserChallengeOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId', { method: 'DELETE' }, {
+    return this.request<CancelUserChallengeOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId', { method: 'DELETE' }, {
       params: { userChallengeId }
     });
   }
@@ -199,7 +198,7 @@ export class ApiClient {
 
   /** POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId */
   async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizOperation['request']): Promise<SubmitUserChallengeQuizOperation['response']['body']> {
-    await this.request<SubmitUserChallengeQuizOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId', {
+    return this.request<SubmitUserChallengeQuizOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId', {
       method: 'POST',
       body: JSON.stringify(dto.body)
     }, {
@@ -253,7 +252,7 @@ export class ApiClient {
 
   /** POST /social/questions/:questionId/reactions */
   async addQuestionReaction(dto: AddQuestionReactionOperation['request']): Promise<AddQuestionReactionOperation['response']['body']> {
-    await this.request<AddQuestionReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/reactions', { 
+    return this.request<AddQuestionReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -265,7 +264,7 @@ export class ApiClient {
 
   /** POST /social/questions/:questionId/answers */
   async submitAnswer(dto: SubmitAnswerOperation['request']): Promise<SubmitAnswerOperation['response']['body']> {
-    await this.request<SubmitAnswerOperation['response']['body']>('/api/v1/social/questions/:questionId/answers', { 
+    return this.request<SubmitAnswerOperation['response']['body']>('/api/v1/social/questions/:questionId/answers', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -293,7 +292,7 @@ export class ApiClient {
 
   /** POST /social/questions/:questionId/answers/:answerId/reactions */
   async addAnswerReaction(dto: AddAnswerReactionOperation['request']): Promise<AddAnswerReactionOperation['response']['body']> {
-    await this.request<AddAnswerReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/answers/:answerId/reactions', { 
+    return this.request<AddAnswerReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/answers/:answerId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -358,14 +357,14 @@ export class ApiClient {
 
   /** DELETE /progress-shares/:shareId */
   async deleteShare(shareId: string): Promise<DeleteShareOperation['response']['body']> {
-    await this.request<DeleteShareOperation['response']['body']>('/api/v1/progress-shares/:shareId', { method: 'DELETE' }, {
+    return this.request<DeleteShareOperation['response']['body']>('/api/v1/progress-shares/:shareId', { method: 'DELETE' }, {
       params: { shareId }
     });
   }
 
   /** POST /progress-shares/:shareId/reactions */
   async addShareReaction(dto: AddShareReactionOperation['request']): Promise<AddShareReactionOperation['response']['body']> {
-    await this.request<AddShareReactionOperation['response']['body']>('/public/api/v1/progress-shares/:shareId/reactions', { 
+    return this.request<AddShareReactionOperation['response']['body']>('/public/api/v1/progress-shares/:shareId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -373,13 +372,6 @@ export class ApiClient {
     });
   }
 
-
-  // ---------- Invitations ----------
-
-  /** GET /social/invite/stats */
-  async getInviteStats(): Promise<GetInviteStatsOperation['response']['body']> {
-    return this.request<GetInviteStatsOperation['response']['body']>('/api/v1/social/invite/stats', { method: 'GET' });
-  }
 }
 
 export default ApiClient;
