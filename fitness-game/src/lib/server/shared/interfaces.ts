@@ -253,7 +253,7 @@ export type NewProgressShareResponse = {
 };
 
 export type ShareProgressDto = {
-  shareType: 'challenge_completion' | 'avatar_progression' | 'quiz_achievement';
+  shareType: ProgressShare['shareType'];
   shareTypeId?: string;
   includeInviteLink: boolean;
   isPublic: boolean;

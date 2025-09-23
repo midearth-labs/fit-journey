@@ -1,6 +1,6 @@
 import { getDBInstance } from '$lib/server/db';
 import { ContentDAOFactory } from '$lib/server/content/daos/dao-factory';
-import { DateTimeHelper } from '$lib/server/helpers/date-time.helper';
+import { DateTimeHelper, ProgressContentHelper } from '$lib/server/helpers';
 import {
   UserRepository,
   UserMetadataRepository,
@@ -28,6 +28,7 @@ export class ServiceFactory {
   
   private readonly contentDAOFactory: ContentDAOFactory;
   private readonly dateTimeHelper: DateTimeHelper;
+  private readonly progressContentHelper: ProgressContentHelper;
   
   // Repositories
   private readonly userRepository: UserRepository;
@@ -63,6 +64,7 @@ export class ServiceFactory {
     
     // Initialize helpers
     this.dateTimeHelper = new DateTimeHelper();
+    this.progressContentHelper = new ProgressContentHelper();
     
     // Initialize repositories
     this.userRepository = new UserRepository(db);
@@ -125,7 +127,8 @@ export class ServiceFactory {
     this.progressSharesServiceCreator = createServiceFromClass(
       ProgressSharesService,
       { 
-        progressSharesRepository: this.progressSharesRepository
+        progressSharesRepository: this.progressSharesRepository,
+        progressContentHelper: this.progressContentHelper
       }
     );
     this.progressSharesUnAuthenticatedServiceCreator = createUnAuthServiceFromClass(

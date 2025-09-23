@@ -1,4 +1,5 @@
 import { type IProgressSharesRepository } from '$lib/server/repositories';
+import { type IProgressContentHelper } from '$lib/server/helpers';
 import { notFoundCheck, ValidationError } from '$lib/server/shared/errors';
 import type { 
   AuthRequestContext,
@@ -77,24 +78,25 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
     }
   }
 
-  export class ProgressSharesService implements IProgressSharesService {
-    constructor(
-      private readonly dependencies: {
-        readonly progressSharesRepository: IProgressSharesRepository;
-      },
-      private readonly requestContext: AuthRequestContext
-    ) {}
+export class ProgressSharesService implements IProgressSharesService {
+  constructor(
+    private readonly dependencies: {
+      readonly progressSharesRepository: IProgressSharesRepository;
+      readonly progressContentHelper: IProgressContentHelper;
+    },
+    private readonly requestContext: AuthRequestContext
+  ) {}
   
     /**
      * Share user progress (challenge completion, avatar progression, quiz achievement)
      * POST /progress-shares
      */
-    async shareProgress(dto: ShareProgressDto): Promise<NewProgressShareResponse> {
-      const { progressSharesRepository } = this.dependencies;
-      const { user: { id: userId }, requestDate } = this.requestContext;
-  
-      // Generate content based on share type
-      const generatedContent = await this.generateShareContent(dto.shareType, dto.shareTypeId, userId);
+  async shareProgress(dto: ShareProgressDto): Promise<NewProgressShareResponse> {
+    const { progressSharesRepository, progressContentHelper } = this.dependencies;
+    const { user: { id: userId }, requestDate } = this.requestContext;
+
+    // Generate content based on share type
+    const generatedContent = await progressContentHelper.generateShareContent(dto.shareType, dto.shareTypeId, userId);
       
       const { id } = await progressSharesRepository.create({
           userId,
@@ -215,49 +217,5 @@ export class ProgressSharesUnAuthenticatedService implements IProgressSharesUnAu
       };
     }
   
-    private async generateShareContent(shareType: string, shareTypeId?: string, userId?: string): Promise<{title: string, content: Record<string, unknown>, versionId: string}> {
-      // TODO: Implement content generation logic based on share type
-      // This would integrate with content generation services
-      const baseContent = {
-        message: `I just completed a ${shareType.replace('_', ' ')} milestone!`,
-        stats: {},
-        image: undefined
-      };
-  
-      switch (shareType) {
-        case 'challenge_completion':
-          return {
-            title: 'Challenge Completed! 🎉',
-            content: {
-              ...baseContent,
-              message: 'I just finished a fitness challenge! Ready to take on the next one!',
-              stats: { challengeId: shareTypeId }
-            },
-            versionId: '1.0'
-          };
-        case 'avatar_progression':
-          return {
-            title: 'Avatar Level Up! ⭐',
-            content: {
-              ...baseContent,
-              message: 'My fitness avatar has leveled up! The journey continues!',
-              stats: { level: 'up' }
-            },
-            versionId: '1.0'
-          };
-        case 'quiz_achievement':
-          return {
-            title: 'Avatar Level Up! ⭐',
-            content: {
-              ...baseContent,
-            message: 'Perfect score on my fitness knowledge quiz!',
-              stats: { score: '100%' }
-            },
-            versionId: '1.0'
-          };
-        default:
-          throw new ValidationError(`Unsupported share type: ${shareType}`);
-      }
-    }
   }
     

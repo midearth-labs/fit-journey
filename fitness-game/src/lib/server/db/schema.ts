@@ -37,7 +37,7 @@ export const questionStatusEnum = pgEnum('question_status', ['pending', 'approve
 export const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 'rejected', 'hidden']);
 export const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful']);
 export const emojiReactionEnum = pgEnum('emoji_reaction_type', ['clap', 'muscle', 'party']);
-export const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement']);
+export const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
 export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden', 'deleted']);
 
 export type AllLogKeysType = (typeof AllLogKeys)[number];

@@ -57,5 +57,5 @@ export const QuestionStatusSchema = z.enum(['pending', 'approved', 'rejected', '
 export const AnswerStatusSchema = z.enum(['pending', 'approved', 'rejected', 'hidden']);
 export const ReactionTypeSchema = z.enum(['helpful', 'not_helpful']);
 export const EmojiReactionTypeSchema = z.enum(['clap', 'muscle', 'party']);
-export const ShareTypeSchema = z.enum(['challenge_completion', 'avatar_progression', 'quiz_achievement']);
+export const ShareTypeSchema = z.enum(['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
 export const ShareStatusSchema = z.enum(['active', 'hidden']);
