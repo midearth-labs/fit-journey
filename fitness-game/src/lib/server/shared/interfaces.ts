@@ -26,6 +26,12 @@ import {
   type GetPublicSharesOperation,
   type GetUserShareOperation,
   type GetShareOperation,
+  type CreateChallengeOperation,
+  type UpdateChallengeOperation,
+  type JoinChallengeOperation,
+  type LeaveChallengeOperation,
+  type GetChallengeOperation,
+  type ListPublicChallengesOperation,
 } from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
@@ -247,3 +253,51 @@ export type ProgressSharePublicListResponse = GetPublicSharesOperation['response
 export type ProgressShareDetailResponse = GetShareOperation['response']['body'];
 export type ProgressShareUserListResponse = GetUserSharesOperation['response']['body'][0];
 export type ProgressShareUserDetailResponse = GetUserShareOperation['response']['body'];
+
+// --- Challenges V2 DTOs ---
+
+export type CreateChallengeDto = {
+  name: string;
+  description: string;
+  goals: string[];
+  startDate: string; // YYYY-MM-DD
+  durationDays: number;
+  joinType: 'personal' | 'public' | 'invite-code';
+  maxMembers?: number; // default based on joinType
+};
+
+export type UpdateChallengeDto = {
+  challengeId: string;
+  name?: string;
+  description?: string | null;
+  goals?: string[];
+  startDate?: string;
+  durationDays?: number;
+  joinType?: 'personal' | 'public' | 'invite-code';
+  maxMembers?: number;
+};
+
+export type JoinChallengeDto = { 
+  challengeId: string; 
+  inviteCode?: string 
+};
+
+export type LeaveChallengeDto = { 
+  challengeId: string 
+};
+
+export type GetChallengeDto = {
+  challengeId: string;
+};
+
+export type ListPublicChallengesDto = {
+  page: number;
+  limit: number;
+};
+
+// --- Challenges V2 Response Types ---
+
+export type CreateChallengeResponse = CreateChallengeOperation['response']['body'];
+export type JoinChallengeResponse = JoinChallengeOperation['response']['body'];
+export type ChallengeResponse = GetChallengeOperation['response']['body'];
+export type ListChallengeResponse = ListPublicChallengesOperation['response']['body'][0];

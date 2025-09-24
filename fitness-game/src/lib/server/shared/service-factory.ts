@@ -12,8 +12,10 @@ import {
   AnswerReactionsRepository,
   AnswersRepository,
   ProgressSharesRepository,
+  ChallengesRepository,
+  ChallengeSubscribersRepository,
 } from '$lib/server/repositories';
-import { ChallengeService, ChallengeContentService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type IChallengeContentService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices } from '$lib/server/services';
+import { ChallengeService, LogService, ChallengeProgressService, UserProfileService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type IChallengeService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -44,13 +46,15 @@ export class ServiceFactory {
   private readonly answersRepository: AnswersRepository;
   private readonly answerReactionsRepository: AnswerReactionsRepository;
   private readonly progressSharesRepository: ProgressSharesRepository;
+  private readonly challengesRepository: ChallengesRepository;
+  private readonly challengeSubscribersRepository: ChallengeSubscribersRepository;
   
   // Services
-  private readonly challengeContentServiceCreator: ServiceCreatorFromRequestContext<IChallengeContentService>;
   private readonly challengeServiceCreator: ServiceCreatorFromRequestContext<IChallengeService>;
   private readonly challengeProgressServiceCreator: ServiceCreatorFromRequestContext<IChallengeProgressService>;
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
   private readonly userProfileServiceCreator: ServiceCreatorFromRequestContext<IUserProfileService>;
+  private readonly challengesServiceCreator: ServiceCreatorFromRequestContext<IChallengesService>;
   
   // Social Features Services
   private readonly moderationService: ModerationService;
@@ -85,13 +89,10 @@ export class ServiceFactory {
     this.answersRepository = new AnswersRepository(db);
     this.answerReactionsRepository = new AnswerReactionsRepository(db);
     this.progressSharesRepository = new ProgressSharesRepository(db);
+    this.challengesRepository = new ChallengesRepository(db);
+    this.challengeSubscribersRepository = new ChallengeSubscribersRepository(db);
     
     // Initialize services
-    this.challengeContentServiceCreator = createServiceFromClass(
-        ChallengeContentService,
-        { challengeDAO: this.contentDAOFactory.getDAO('Challenge') }
-    );
-    
     this.challengeServiceCreator = createServiceFromClass(
       ChallengeService,
       { userChallengeRepository: this.userChallengeRepository, dateTimeHelper: this.dateTimeHelper }
@@ -143,6 +144,10 @@ export class ServiceFactory {
         progressSharesRepository: this.progressSharesRepository
       }
     );
+    this.challengesServiceCreator = createServiceFromClass(
+      ChallengesService,
+      { challengesRepository: this.challengesRepository, challengeSubscribersRepository: this.challengeSubscribersRepository, dateTimeHelper: this.dateTimeHelper }
+    );
   }
   
   /**
@@ -158,7 +163,6 @@ export class ServiceFactory {
   
   public getAuthServices(authRequestContext: AuthRequestContext): AuthServices {
     return {
-      challengeContentService: () => this.challengeContentServiceCreator(authRequestContext),
       challengeService: () => this.challengeServiceCreator(authRequestContext),
       challengeProgressService: () => this.challengeProgressServiceCreator(authRequestContext),
       logService: () => this.logServiceCreator(authRequestContext),
@@ -166,6 +170,7 @@ export class ServiceFactory {
       questionsService: () => this.questionsServiceCreator(authRequestContext),
       answersService: () => this.answersServiceCreator(authRequestContext),
       progressSharesService: () => this.progressSharesServiceCreator(authRequestContext),
+      challengesService: () => this.challengesServiceCreator(authRequestContext),
     };
   }
 
@@ -185,6 +190,8 @@ export class ServiceFactory {
       userChallengeRepository: this.userChallengeRepository,
       userChallengeProgressRepository: this.userChallengeProgressRepository,
       userLogsRepository: this.userLogsRepository,
+      challengesRepository: this.challengesRepository,
+      challengeSubscribersRepository: this.challengeSubscribersRepository,
     };
   }
   

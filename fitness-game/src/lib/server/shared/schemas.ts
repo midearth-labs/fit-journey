@@ -18,7 +18,7 @@ import {
   ShareTypeSchema,
   ShareStatusSchema
 } from './z.primitives';
-import { ChallengeSchema } from '$lib/server/content/types/challenge';
+// import { ChallengeSchema } from '$lib/server/content/types/challenge'; // Old content system schema
 
 // --- User Profile Schemas ---
 
@@ -83,6 +83,27 @@ export const UserLogResponseSchema = z.object({
 });
 
 // --- Challenge Schemas (for future use) ---
+// V2 Challenges DTO Schemas
+export const CreateChallengeDtoSchema = z.object({
+  name: z.string().trim().min(1).max(120),
+  description: z.string().trim().max(2000),
+  goals: z.array(z.string().trim().min(1)).min(1).max(10),
+  startDate: IsoDateSchema,
+  durationDays: z.number().int().min(1).max(365),
+  joinType: z.enum(['personal', 'public', 'invite-code']),
+  maxMembers: z.number().int().min(1).max(1000).optional(),
+});
+
+export const UpdateChallengeDtoSchema = CreateChallengeDtoSchema.partial();
+
+export const JoinChallengeDtoSchema = z.object({
+  challengeId: UuidSchema,
+  inviteCode: UuidSchema.optional(),
+});
+
+export const LeaveChallengeDtoSchema = z.object({
+  challengeId: UuidSchema,
+});
 
 export const CreateUserChallengeDtoSchema = z.object({
   challengeId: UuidSchema,
@@ -424,26 +445,92 @@ export const SubmitUserChallengeQuizOperationSchema = {
   }
 };
 
-// Content Operations
-export const ListChallengesOperationSchema = {
+export const GetChallengeParamsSchema = z.object({ challengeId: UuidSchema });
+
+// New challenge response schema for V2 challenges
+export const ChallengeResponseSchema = z.object({
+  id: UuidSchema,
+  name: z.string(),
+  description: z.string().nullable().optional(),
+  goals: z.array(z.string()),
+  startDate: IsoDateSchema,
+  durationDays: z.number().int(),
+  joinType: z.enum(['personal', 'public', 'invite-code']),
+  maxMembers: z.number().int(),
+  membersCount: z.number().int(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  ownerUserId: UuidSchema.nullable()
+});
+
+// Challenges V2 Operations
+export const CreateChallengeOperationSchema = {
   request: {
     params: z.object({}),
     query: z.object({}),
-    body: z.void()
+    body: CreateChallengeDtoSchema
   },
   response: {
-    body: ChallengeSchema.array()
+    body: z.object({ id: UuidSchema })
   }
 };
 
 export const GetChallengeOperationSchema = {
+  request: {
+    params: GetChallengeParamsSchema,
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: ChallengeResponseSchema
+  }
+};
+
+
+export const UpdateChallengeOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: UpdateChallengeDtoSchema
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export const JoinChallengeOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.object({ inviteCode: UuidSchema.optional() })
+  },
+  response: {
+    body: z.object({ id: UuidSchema })
+  }
+};
+
+export const LeaveChallengeOperationSchema = {
   request: {
     params: z.object({ challengeId: UuidSchema }),
     query: z.object({}),
     body: z.void()
   },
   response: {
-    body: ChallengeSchema
+    body: z.void()
+  }
+};
+
+export const ListPublicChallengesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(ChallengeResponseSchema)
   }
 };
 
@@ -572,6 +659,97 @@ export const AddShareReactionOperationSchema = {
   }
 };
 
+// Get User Shares Operation
+export const GetUserSharesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(ProgressShareUserListResponseSchema)
+  }
+};
+
+// Get Public Shares Operation
+export const GetPublicSharesOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      shareType: ShareTypeSchema,
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(50)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(ProgressSharePublicListResponseSchema)
+  }
+};
+
+// Get User Share Operation
+export const GetUserShareOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: ProgressShareUserDetailResponseSchema
+  }
+};
+
+// Update Share Status Operation
+export const UpdateShareStatusOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.object({
+      status: ShareStatusSchema,
+      isPublic: z.boolean(),
+      includeInviteLink: z.boolean(),
+    })
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+// Get Share Operation (Public)
+export const GetShareOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: ProgressShareDetailResponseSchema
+  }
+};
+
+// Delete Share Operation
+export const DeleteShareOperationSchema = {
+  request: {
+    params: z.object({
+      shareId: UuidSchema
+    }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.void()
+  }
+};
+
 // Export inferred operation types
 export type GetUserProfileOperation = {
   request: {
@@ -694,17 +872,6 @@ export type SubmitUserChallengeQuizOperation = {
   };
 };
 
-export type ListChallengesOperation = {
-  request: {
-    params: z.infer<typeof ListChallengesOperationSchema.request.params>;
-    query: z.infer<typeof ListChallengesOperationSchema.request.query>;
-    body: z.infer<typeof ListChallengesOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof ListChallengesOperationSchema.response.body>;
-  };
-};
-
 export type GetChallengeOperation = {
   request: {
     params: z.infer<typeof GetChallengeOperationSchema.request.params>;
@@ -713,6 +880,61 @@ export type GetChallengeOperation = {
   };
   response: {
     body: z.infer<typeof GetChallengeOperationSchema.response.body>;
+  };
+};
+
+export type CreateChallengeOperation = {
+  request: {
+    params: z.infer<typeof CreateChallengeOperationSchema.request.params>;
+    query: z.infer<typeof CreateChallengeOperationSchema.request.query>;
+    body: z.infer<typeof CreateChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof CreateChallengeOperationSchema.response.body>;
+  };
+};
+
+export type UpdateChallengeOperation = {
+  request: {
+    params: z.infer<typeof UpdateChallengeOperationSchema.request.params>;
+    query: z.infer<typeof UpdateChallengeOperationSchema.request.query>;
+    body: z.infer<typeof UpdateChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof UpdateChallengeOperationSchema.response.body>;
+  };
+};
+
+export type JoinChallengeOperation = {
+  request: {
+    params: z.infer<typeof JoinChallengeOperationSchema.request.params>;
+    query: z.infer<typeof JoinChallengeOperationSchema.request.query>;
+    body: z.infer<typeof JoinChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof JoinChallengeOperationSchema.response.body>;
+  };
+};
+
+export type LeaveChallengeOperation = {
+  request: {
+    params: z.infer<typeof LeaveChallengeOperationSchema.request.params>;
+    query: z.infer<typeof LeaveChallengeOperationSchema.request.query>;
+    body: z.infer<typeof LeaveChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof LeaveChallengeOperationSchema.response.body>;
+  };
+};
+
+export type ListPublicChallengesOperation = {
+  request: {
+    params: z.infer<typeof ListPublicChallengesOperationSchema.request.params>;
+    query: z.infer<typeof ListPublicChallengesOperationSchema.request.query>;
+    body: z.infer<typeof ListPublicChallengesOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListPublicChallengesOperationSchema.response.body>;
   };
 };
 
@@ -826,21 +1048,6 @@ export type AddShareReactionOperation = {
   };
 };
 
-// Get User Shares Operation
-export const GetUserSharesOperationSchema = {
-  request: {
-    params: z.object({}),
-    query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
-    }),
-    body: z.void()
-  },
-  response: {
-    body: z.array(ProgressShareUserListResponseSchema)
-  }
-};
-
 export type GetUserSharesOperation = {
   request: {
     params: z.infer<typeof GetUserSharesOperationSchema.request.params>;
@@ -850,22 +1057,6 @@ export type GetUserSharesOperation = {
   response: {
     body: z.infer<typeof GetUserSharesOperationSchema.response.body>;
   };
-};
-
-// Get Public Shares Operation
-export const GetPublicSharesOperationSchema = {
-  request: {
-    params: z.object({}),
-    query: z.object({
-      shareType: ShareTypeSchema,
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(50)
-    }),
-    body: z.void()
-  },
-  response: {
-    body: z.array(ProgressSharePublicListResponseSchema)
-  }
 };
 
 export type GetPublicSharesOperation = {
@@ -879,20 +1070,6 @@ export type GetPublicSharesOperation = {
   };
 };
 
-// Get User Share Operation
-export const GetUserShareOperationSchema = {
-  request: {
-    params: z.object({
-      shareId: UuidSchema
-    }),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: ProgressShareUserDetailResponseSchema
-  }
-};
-
 export type GetUserShareOperation = {
   request: {
     params: z.infer<typeof GetUserShareOperationSchema.request.params>;
@@ -902,24 +1079,6 @@ export type GetUserShareOperation = {
   response: {
     body: z.infer<typeof GetUserShareOperationSchema.response.body>;
   };
-};
-
-// Update Share Status Operation
-export const UpdateShareStatusOperationSchema = {
-  request: {
-    params: z.object({
-      shareId: UuidSchema
-    }),
-    query: z.object({}),
-    body: z.object({
-      status: ShareStatusSchema,
-      isPublic: z.boolean(),
-      includeInviteLink: z.boolean(),
-    })
-  },
-  response: {
-    body: z.void()
-  }
 };
 
 export type UpdateShareStatusOperation = {
@@ -933,20 +1092,6 @@ export type UpdateShareStatusOperation = {
   };
 };
 
-// Get Share Operation (Public)
-export const GetShareOperationSchema = {
-  request: {
-    params: z.object({
-      shareId: UuidSchema
-    }),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: ProgressShareDetailResponseSchema
-  }
-};
-
 export type GetShareOperation = {
   request: {
     params: z.infer<typeof GetShareOperationSchema.request.params>;
@@ -956,20 +1101,6 @@ export type GetShareOperation = {
   response: {
     body: z.infer<typeof GetShareOperationSchema.response.body>;
   };
-};
-
-// Delete Share Operation
-export const DeleteShareOperationSchema = {
-  request: {
-    params: z.object({
-      shareId: UuidSchema
-    }),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: z.void()
-  }
 };
 
 export type DeleteShareOperation = {

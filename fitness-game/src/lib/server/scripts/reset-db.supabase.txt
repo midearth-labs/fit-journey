@@ -14,3 +14,8 @@ DROP FUNCTION IF EXISTS public.increment_knowledge_base_completed_count CASCADE;
 DROP FUNCTION IF EXISTS public.decrement_knowledge_base_completed_count CASCADE;
 DROP FUNCTION IF EXISTS public.increment_habits_logged_count CASCADE;
 DROP FUNCTION IF EXISTS public.decrement_habits_logged_count CASCADE;
+
+
+
+INSERT INTO "public"."users" ("id", "email", "created_at", "updated_at") VALUES ('25bab121-f6d2-4ce5-b0d1-2159e71ca63f', 'admin@midearthlabs.dev', '2025-08-29 02:48:36.579089', '2025-08-29 02:48:36.579089');
+INSERT INTO "public"."user_profiles" ("id", "current_fitness_level", "created_at", "updated_at") VALUES ('25bab121-f6d2-4ce5-b0d1-2159e71ca63f', '0', '2025-08-29 02:48:36.579089', '2025-08-29 02:48:36.579089');

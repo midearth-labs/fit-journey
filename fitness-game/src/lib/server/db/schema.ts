@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique, uniqueIndex, primaryKey } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique, uniqueIndex, primaryKey, check } from 'drizzle-orm/pg-core';
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
@@ -24,7 +24,7 @@ export type UserAnswer = {
  * Defines the lifecycle status of a user's participation in a challenge.
  * (Unchanged from previous design)
  */
-export const userChallengeStatusEnum = pgEnum('user_challenge_status', [
+export const challengeStatusEnum = pgEnum('user_challenge_status', [
   'not_started',
   'active',
   'completed',
@@ -39,6 +39,9 @@ export const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful
 export const emojiReactionEnum = pgEnum('emoji_reaction_type', ['clap', 'muscle', 'party']);
 export const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
 export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
+
+// Challenge V2 Enums
+export const challengeJoinTypeEnum = pgEnum('challenge_join_type', ['personal', 'public', 'invite-code']);
 
 export type AllLogKeysType = (typeof AllLogKeys)[number];
 export const FiveStarValues = [1, 2, 3, 4, 5] as const;
@@ -140,7 +143,7 @@ export const userChallenges = pgTable('user_challenges', {
 
   startDate: date('start_date').notNull(),
   originalStartDate: date('original_start_date').notNull(),
-  status: userChallengeStatusEnum('status').notNull(),
+  status: challengeStatusEnum('status').notNull(),
 
   knowledgeBaseCompletedCount: integer('knowledge_base_completed_count').notNull(),
   dailyLogCount: integer('daily_log_count').notNull(),
@@ -217,7 +220,7 @@ export const userLogs = pgTable('user_logs', {
 // Questions table
 export const questions = pgTable('questions', {
   id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
   title: text('title').notNull(),
   body: text('body').notNull(),
   isAnonymous: boolean('is_anonymous').notNull(),
@@ -252,7 +255,7 @@ export const questionArticles = pgTable('question_articles', {
 export const questionAnswers = pgTable('question_answers', {
   id: uuid('id').primaryKey().defaultRandom(),
   questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
   answer: text('answer').notNull(),
   isAnonymous: boolean('is_anonymous').notNull(),
   status: answerStatusEnum('status').notNull(),
@@ -272,7 +275,7 @@ export const questionAnswers = pgTable('question_answers', {
 // Question Reactions table
 export const questionReactions = pgTable('question_reactions', {
   questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
   reactionType: reactionTypeEnum('reaction_type').notNull(),
   createdAt: timestamp('created_at').notNull(),
 }, (table) => {
@@ -285,7 +288,7 @@ export const questionReactions = pgTable('question_reactions', {
 // Answer Reactions table
 export const answerReactions = pgTable('answer_reactions', {
   answerId: uuid('answer_id').notNull().references(() => questionAnswers.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
   reactionType: reactionTypeEnum('reaction_type').notNull(),
   createdAt: timestamp('created_at').notNull(),
 }, (table) => {
@@ -439,6 +442,74 @@ export const userLogsRelations = relations(userLogs, ({ one }) => ({
   }),
 }));
 
+/**
+ * CHALLENGES (V2)
+ * User-created challenge instances decoupled from articles.
+ */
+export const challenges = pgTable('challenges', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  ownerUserId: uuid('owner_user_id').references(() => users.id, { onDelete: 'set null' }),
+  name: text('name').notNull(),
+  description: text('description').notNull(),
+  status: challengeStatusEnum('status').notNull(),
+  // goals: array of predefined habit IDs (by string ID)
+  goals: jsonb('goals').$type<string[]>().notNull(),
+  joinType: challengeJoinTypeEnum('join_type').notNull(),
+  inviteCode: uuid('invite_code').notNull().defaultRandom(), // required when joinType = invite-code; unique when present
+  startDate: date('start_date').notNull(),
+  durationDays: integer('duration_days').notNull(),
+  maxMembers: integer('max_members').notNull(),
+  membersCount: integer('members_count').notNull(),
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
+}, (table) => {
+  return [
+    // Public listing optimization
+    index('challenges_public_list_index')
+      .on(table.startDate, table.createdAt)
+      .where(sql`${table.joinType} = 'public'`),
+    // Discoverability: do not index invite/personal for listing beyond defaults
+    check('challenges_members_non_negative', sql`${table.membersCount} >= 0`),
+    check('challenges_max_members_min', sql`${table.maxMembers} >= 1`),
+    check('challenges_members_within_max', sql`${table.membersCount} <= ${table.maxMembers}`),
+    check('challenges_personal_max_one', sql`${table.joinType} != 'personal' OR ${table.maxMembers} = 1`),
+  ];
+});
+
+export const challengeSubscribers = pgTable('challenge_subscribers', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  challengeId: uuid('challenge_id').notNull().references(() => challenges.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  joinedAt: timestamp('joined_at').notNull(),
+  dailyLogCount: integer('daily_log_count').notNull(),
+  lastActivityDate: timestamp('last_activity_date'),
+}, (table) => {
+  return [
+    // would this index satisfy queries on just challengeId?
+    uniqueIndex('challenge_subscribers_unique_member').on(table.challengeId, table.userId),
+    index('challenge_subscribers_user_index').on(table.userId, table.joinedAt),
+  ];
+});
+
+export const challengesRelations = relations(challenges, ({ one, many }) => ({
+  creator: one(users, {
+    fields: [challenges.ownerUserId],
+    references: [users.id],
+  }),
+  subscribers: many(challengeSubscribers),
+}));
+
+export const challengeSubscribersRelations = relations(challengeSubscribers, ({ one }) => ({
+  challenge: one(challenges, {
+    fields: [challengeSubscribers.challengeId],
+    references: [challenges.id],
+  }),
+  user: one(users, {
+    fields: [challengeSubscribers.userId],
+    references: [users.id],
+  }),
+}));
+
 // Export types
 export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
@@ -465,3 +536,9 @@ export type AnswerReaction = InferSelectModel<typeof answerReactions>;
 export type NewAnswerReaction = InferInsertModel<typeof answerReactions>;
 export type ProgressShare = InferSelectModel<typeof progressShares>;
 export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id' | 'updatedAt' | 'clapCount' | 'muscleCount' | 'partyCount' | 'status'>;
+
+// Challenges V2 Types
+export type Challenge = InferSelectModel<typeof challenges>;
+export type NewChallenge = Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status'>;
+export type ChallengeSubscriber = InferSelectModel<typeof challengeSubscribers>;
+export type NewChallengeSubscriber = Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'dailyLogCount' | 'lastActivityDate'>;

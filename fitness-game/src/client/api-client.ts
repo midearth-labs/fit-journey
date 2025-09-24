@@ -10,8 +10,6 @@ import type {
   CancelUserChallengeOperation,
   ListUserChallengeQuizSubmissionsOperation,
   SubmitUserChallengeQuizOperation,
-  ListChallengesOperation,
-  GetChallengeOperation,
   SubmitQuestionOperation,
   ListQuestionsOperation,
   GetQuestionOperation,
@@ -27,7 +25,12 @@ import type {
   UpdateShareStatusOperation,
   GetPublicSharesOperation,
   GetShareOperation,
-  DeleteShareOperation
+  DeleteShareOperation,
+  CreateChallengeOperation,
+  UpdateChallengeOperation,
+  JoinChallengeOperation,
+  LeaveChallengeOperation,
+  ListPublicChallengesOperation
 } from '$lib/server/shared/schemas';
 
 /**
@@ -206,16 +209,37 @@ export class ApiClient {
     });
   }
 
-  // ---------- Content (public-like, but still under /api) ----------
+  // ---------- Challenges V2 ----------
 
-  /** GET /content/challenges */
-  async listChallenges(): Promise<ListChallengesOperation['response']['body']> {
-    return this.request<ListChallengesOperation['response']['body']>('/api/v1/content/challenges', { method: 'GET' });
+  /** GET /api/v1/challenges */
+  async listPublicChallenges(query: ListPublicChallengesOperation['request']['query']): Promise<ListPublicChallengesOperation['response']['body']> {
+    return this.request<ListPublicChallengesOperation['response']['body']>('/api/v1/challenges', { method: 'GET' }, {
+      query
+    });
   }
 
-  /** GET /content/challenges/:challengeId */
-  async getChallengeById(challengeId: string): Promise<GetChallengeOperation['response']['body']> {
-    return this.request<GetChallengeOperation['response']['body']>('/api/v1/content/challenges/:challengeId', { method: 'GET' }, {
+  /** POST /api/v1/users/me/challenges */
+  async createChallenge(dto: CreateChallengeOperation['request']['body']): Promise<CreateChallengeOperation['response']['body']> {
+    return this.request<CreateChallengeOperation['response']['body']>('/api/v1/users/me/challenges', { method: 'POST', body: JSON.stringify(dto) });
+  }
+
+  /** PATCH /api/v1/users/me/challenges/:challengeId */
+  async updateChallenge(dto: UpdateChallengeOperation['request']): Promise<UpdateChallengeOperation['response']['body']> {
+    return this.request<UpdateChallengeOperation['response']['body']>('/api/v1/users/me/challenges/:challengeId', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
+      params: { challengeId: dto.params.challengeId }
+    });
+  }
+
+  /** POST /api/v1/challenges/:challengeId/join */
+  async joinChallenge(dto: JoinChallengeOperation['request']): Promise<JoinChallengeOperation['response']['body']> {
+    return this.request<JoinChallengeOperation['response']['body']>('/api/v1/challenges/:challengeId/join', { method: 'POST', body: JSON.stringify(dto.body) }, {
+      params: { challengeId: dto.params.challengeId }
+    });
+  }
+
+  /** POST /api/v1/challenges/:challengeId/leave */
+  async leaveChallenge(challengeId: string): Promise<LeaveChallengeOperation['response']['body']> {
+    return this.request<LeaveChallengeOperation['response']['body']>('/api/v1/challenges/:challengeId/leave', { method: 'POST' }, {
       params: { challengeId }
     });
   }

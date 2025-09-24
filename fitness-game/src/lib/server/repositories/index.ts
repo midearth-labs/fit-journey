@@ -10,3 +10,5 @@ export { type IQuestionReactionsRepository, QuestionReactionsRepository } from '
 export { type IAnswersRepository, AnswersRepository } from './answers.repository';
 export { type IProgressSharesRepository, ProgressSharesRepository } from './progress-shares.repository';
 export { type IAnswerReactionsRepository, AnswerReactionsRepository } from './answer-reactions.repository';
+export { type IChallengesRepository, ChallengesRepository } from './challenges.repository';
+export { type IChallengeSubscribersRepository, ChallengeSubscribersRepository } from './challenge-subscribers.repository';
