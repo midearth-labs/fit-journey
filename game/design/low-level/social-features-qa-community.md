@@ -1433,7 +1433,7 @@ async function createProgressShare(
 
 ### Implementation Updates
 1. Invitation System
-Invitation Code Generation: Auto-generated at the DB layer in "db/schema.ts"
-Invitation Link Creation: No link creation, the invitation link is just the standard registration page with a param ?inviteCode={user's invitation code}
-Invitation Tracking: This is done using Postgres Triggers in "drizzle/0001_custom-ddl.sql"
+Invitation Code Generation: Auto-generated at the DB layer in "fitness-game/src/lib/server/db/schema.ts"
+Invitation Link Creation: No link creation service, the invitation link is just the standard registration page with a param ?inviteCode={user's invitation code}, the user's invitationCode is in the invitationCode property in the user profile.
+Invitation Tracking: This is done using Postgres Triggers in "/fitness-game/drizzle/0001_custom-ddl.sql"
 Registration with Invitation Code: That's already implemented on the Sign-up page with SupaBase metadata.

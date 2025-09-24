@@ -1,0 +1,304 @@
+[
+    {
+      "id": "q1",
+      "text": "What do you think \"free weights\" means in a gym context?",
+      "category": "knowledge",
+      "answers": [
+        {
+          "text": "Dumbbells and barbells you can move around freely",
+          "tags": ["intermediate", "some_knowledge"]
+        },
+        {
+          "text": "Equipment that doesn\"t cost extra to use",
+          "tags": ["complete_beginner", "gym_anxiety"],
+          "weight": 2
+        },
+        {
+          "text": "I think I know but not 100% sure",
+          "tags": ["some_knowledge", "cautious"]
+        },
+        {
+          "text": "Weights not attached to machines - I use them regularly",
+          "tags": ["intermediate", "action_oriented"],
+          "weight": 2
+        },
+        {
+          "text": "The complimentary snacks at the gym juice bar",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "What do you think is most important for weight loss?",
+      "category": "knowledge",
+      "answers": [
+        {
+          "text": "Eating less calories than you burn",
+          "tags": ["data_driven", "intermediate"],
+          "weight": 2
+        },
+        {
+          "text": "Cutting out all carbs completely",
+          "tags": ["some_knowledge", "weight_loss"]
+        },
+        {
+          "text": "Lots of cardio exercise",
+          "tags": ["some_knowledge", "action_oriented"]
+        },
+        {
+          "text": "I honestly don\"t know where to start",
+          "tags": ["complete_beginner", "needs_motivation"],
+          "weight": 2
+        },
+        {
+          "text": "Hiring a personal chef and moving to a yoga retreat",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "If someone said \"I'm doing 3 sets of 10 reps,\" what would you think they mean?",
+      "category": "knowledge",
+      "answers": [
+        {
+          "text": "Three groups of ten repetitions of an exercise",
+          "tags": ["intermediate", "some_knowledge"]
+        },
+        {
+          "text": "That sounds familiar but I couldn\"t explain it",
+          "tags": ["some_knowledge", "cautious"]
+        },
+        {
+          "text": "No idea - is that a workout thing?",
+          "tags": ["complete_beginner"],
+          "weight": 2
+        },
+        {
+          "text": "Standard exercise format - I program my own workouts",
+          "tags": ["intermediate", "self_motivated"],
+          "weight": 2
+        },
+        {
+          "text": "They\"re really into sales - 3 sets of 10 customer reps",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Your friend invites you to a spin class tomorrow morning. Your first thought is:",
+      "category": "barriers",
+      "answers": [
+        {
+          "text": "Sure! I love trying new workout classes",
+          "tags": ["socially_motivated", "action_oriented"],
+          "weight": 2
+        },
+        {
+          "text": "I'd go but I have no idea what to expect",
+          "tags": ["gym_anxiety", "complete_beginner"]
+        },
+        {
+          "text": "Maybe, but I'll probably bail last minute like usual",
+          "tags": ["restart_anxiety", "needs_motivation"],
+          "weight": 2
+        },
+        {
+          "text": "Can\"t - too many work/family commitments",
+          "tags": ["time_poor", "busy_parent"]
+        },
+        {
+          "text": "Is that the class where we make pottery?",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "Which of these sounds most like your ideal Saturday morning?",
+      "category": "preference",
+      "answers": [
+        {
+          "text": "Sleeping in - I need my weekend recovery",
+          "tags": ["weekend_only", "time_poor"]
+        },
+        {
+          "text": "Kids' activities and errands - family comes first",
+          "tags": ["busy_parent", "time_poor"],
+          "weight": 2
+        },
+        {
+          "text": "Checking my fitness tracker stats from the week",
+          "tags": ["data_driven", "analytical"],
+          "weight": 2
+        },
+        {
+          "text": "Meeting friends for a workout or active brunch",
+          "tags": ["socially_motivated", "social"],
+          "weight": 2
+        },
+        {
+          "text": "Training my pet hamster to run a tiny obstacle course",
+          "tags": ["time_flexible"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "You see someone doing squats at the gym. What goes through your mind?",
+      "category": "situation",
+      "answers": [
+        {
+          "text": "I check their form and depth - always learning",
+          "tags": ["intermediate", "analytical"]
+        },
+        {
+          "text": "I wonder if they'd help me learn that exercise",
+          "tags": ["socially_motivated", "some_knowledge"]
+        },
+        {
+          "text": "That looks hard - I'd hurt myself trying that",
+          "tags": ["complete_beginner", "injury_concern"],
+          "weight": 2
+        },
+        {
+          "text": "I should be doing those but never feel confident enough",
+          "tags": ["gym_anxiety", "some_knowledge"]
+        },
+        {
+          "text": "Why are they sitting down and standing up repeatedly?",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "text": "Your doctor says you should 'get more exercise.' Your honest reaction is:",
+      "category": "goals",
+      "answers": [
+        {
+          "text": "I know, I know - but where do I even start?",
+          "tags": ["health_focus", "needs_motivation"],
+          "weight": 2
+        },
+        {
+          "text": "Already on it - just need to be more consistent",
+          "tags": ["restart_anxiety", "some_knowledge"]
+        },
+        {
+          "text": "Time to track everything and optimize my health metrics",
+          "tags": ["data_driven", "health_focus"],
+          "weight": 2
+        },
+        {
+          "text": "Great, another thing to squeeze into my packed schedule",
+          "tags": ["time_poor", "busy_professional"],
+          "weight": 2
+        },
+        {
+          "text": "Does vigorously clicking the TV remote count?",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "When you hear 'muscle soreness,' you think:",
+      "category": "knowledge",
+      "answers": [
+        {
+          "text": "DOMS - usually peaks 24-48 hours after exercise",
+          "tags": ["intermediate", "analytical"],
+          "weight": 2
+        },
+        {
+          "text": "That feeling after I tried working out that one time",
+          "tags": ["restart_anxiety", "complete_beginner"]
+        },
+        {
+          "text": "The reason I stopped my last workout program",
+          "tags": ["injury_concern", "cautious"],
+          "weight": 2
+        },
+        {
+          "text": "Good pain that means I'm making progress",
+          "tags": ["some_knowledge", "action_oriented"]
+        },
+        {
+          "text": "What happens when you sleep on your TV remote",
+          "tags": ["complete_beginner"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "If you had 20 free minutes right now, you would most likely:",
+      "category": "situation",
+      "answers": [
+        {
+          "text": "Knock out a quick workout - every minute counts",
+          "tags": ["self_motivated", "action_oriented"],
+          "weight": 2
+        },
+        {
+          "text": "Research the perfect workout plan (again)",
+          "tags": ["analytical", "cautious"]
+        },
+        {
+          "text": "Rest - I'm already exhausted from everything else",
+          "tags": ["time_poor", "busy_parent"]
+        },
+        {
+          "text": "Text a friend to see if they want to walk",
+          "tags": ["socially_motivated", "social"],
+          "weight": 2
+        },
+        {
+          "text": "Finally organize my collection of unused gym membership cards",
+          "tags": ["restart_anxiety"],
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "What would make you most likely to stick with an exercise program?",
+      "category": "preference",
+      "answers": [
+        {
+          "text": "Seeing measurable improvements in my numbers",
+          "tags": ["data_driven", "self_motivated"],
+          "weight": 2
+        },
+        {
+          "text": "Having a workout buddy or group to meet",
+          "tags": ["socially_motivated", "social"],
+          "weight": 2
+        },
+        {
+          "text": "Quick workouts that fit my crazy schedule",
+          "tags": ["time_poor", "busy_professional"],
+          "weight": 2
+        },
+        {
+          "text": "Understanding why each exercise matters",
+          "tags": ["analytical", "cautious"]
+        },
+        {
+          "text": "If Netflix added a 'burn calories to unlock next episode' feature",
+          "tags": ["needs_motivation"],
+          "weight": 0.5
+        }
+      ]
+    }
+  ]

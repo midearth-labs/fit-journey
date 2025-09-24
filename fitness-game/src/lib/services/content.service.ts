@@ -1,4 +1,5 @@
 import type { Article, Question, Category, LearningPhase } from '$lib/types/content';
+import type { PersonaQuestion, PersonaLearningPath } from '$lib/types/fitness-persona-calculator';
 
 class ContentService {
   private cache = new Map<string, any>();
@@ -29,6 +30,14 @@ class ContentService {
 
   async loadQuestions(categoryId: string): Promise<Question[]> {
     return this.loadData(`questions/${categoryId}.json`);
+  }
+
+  async loadPersonaQuestions(): Promise<PersonaQuestion[]> {
+    return this.loadData('persona-calculator/questions.json');
+  }
+
+  async loadPersonaLearningPaths(): Promise<PersonaLearningPath[]> {
+    return this.loadData('persona-calculator/learning-paths.json');
   }
 
   async loadAllArticles(): Promise<Article[]> {

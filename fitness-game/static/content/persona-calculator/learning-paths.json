@@ -1,0 +1,195 @@
+[
+    {
+      "id": "path1",
+      "name": "Complete Beginner",
+      "description": "For those with zero fitness experience",
+      "articles": ["split1", "split2", "split3", "split4", "split5", "split10"],
+      "personaWeights": {
+        "complete_beginner": 3,
+        "gym_anxiety": 2,
+        "cautious": 2,
+        "needs_motivation": 1
+      }
+    },
+    {
+      "id": "path2",
+      "name": "Busy Professional",
+      "description": "Limited time, needs efficiency",
+      "articles": ["split4", "split1", "split3", "split6", "split7"],
+      "personaWeights": {
+        "busy_professional": 3,
+        "time_poor": 3,
+        "action_oriented": 2,
+        "self_motivated": 1
+      }
+    },
+    {
+      "id": "path3",
+      "name": "Motivation Seeker",
+      "description": "Struggles with consistency",
+      "articles": ["split2", "split1", "split10", "split6", "split4"],
+      "personaWeights": {
+        "needs_motivation": 3,
+        "restart_anxiety": 2,
+        "socially_motivated": 2,
+        "time_flexible": 1
+      }
+    },
+    {
+      "id": "path4",
+      "name": "Health-Focused",
+      "description": "Managing conditions or prevention",
+      "articles": ["split7", "split1", "split3", "split5", "split8"],
+      "personaWeights": {
+        "health_focus": 3,
+        "cautious": 2,
+        "injury_concern": 2,
+        "analytical": 1
+      }
+    },
+    {
+      "id": "path5",
+      "name": "Ready for Action",
+      "description": "Some knowledge, wants to start properly",
+      "articles": ["split5", "split6", "split9", "split8", "split10"],
+      "personaWeights": {
+        "action_oriented": 3,
+        "some_knowledge": 2,
+        "self_motivated": 2,
+        "time_flexible": 1
+      }
+    },
+    {
+      "id": "path6",
+      "name": "Knowledge Builder",
+      "description": "Loves learning, methodical approach",
+      "articles": ["split1", "split3", "split5", "split6", "split7", "split8", "split9"],
+      "personaWeights": {
+        "analytical": 3,
+        "data_driven": 2,
+        "intermediate": 2,
+        "self_motivated": 1
+      }
+    },
+    {
+      "id": "path7",
+      "name": "Restart Champion",
+      "description": "For those who've tried and stopped multiple times",
+      "articles": ["split10", "split2", "split4", "split1", "split6"],
+      "personaWeights": {
+        "restart_anxiety": 3,
+        "needs_motivation": 2,
+        "some_knowledge": 2,
+        "time_poor": 1
+      }
+    },
+    {
+      "id": "path8",
+      "name": "Home Warrior",
+      "description": "No gym access/preference",
+      "articles": ["split4", "split5", "split3", "split1", "split7"],
+      "personaWeights": {
+        "no_gym_access": 3,
+        "time_poor": 2,
+        "student": 2,
+        "cautious": 1
+      }
+    },
+    {
+      "id": "path9",
+      "name": "Data-Driven Optimizer",
+      "description": "Loves metrics and tracking",
+      "articles": ["split6", "split7", "split3", "split8", "split5", "split9"],
+      "personaWeights": {
+        "data_driven": 3,
+        "analytical": 2,
+        "intermediate": 2,
+        "self_motivated": 1
+      }
+    },
+    {
+      "id": "path10",
+      "name": "Social Butterfly",
+      "description": "Needs community and accountability",
+      "articles": ["split2", "split9", "split10", "split1", "split6"],
+      "personaWeights": {
+        "socially_motivated": 3,
+        "social": 3,
+        "gym_anxiety": 1,
+        "needs_motivation": 1
+      }
+    },
+    {
+      "id": "path11",
+      "name": "Recovery-First",
+      "description": "Coming from injury or chronic pain",
+      "articles": ["split7", "split5", "split1", "split4", "split10"],
+      "personaWeights": {
+        "injury_concern": 3,
+        "cautious": 2,
+        "health_focus": 2,
+        "analytical": 1
+      }
+    },
+    {
+      "id": "path12",
+      "name": "Weight Loss Focus",
+      "description": "Primary goal is fat loss",
+      "articles": ["split3", "split8", "split1", "split6", "split4", "split7"],
+      "personaWeights": {
+        "weight_loss": 3,
+        "data_driven": 2,
+        "health_focus": 1,
+        "needs_motivation": 1
+      }
+    },
+    {
+      "id": "path13",
+      "name": "Strength Builder",
+      "description": "Wants to build muscle/strength",
+      "articles": ["split5", "split8", "split9", "split6", "split10"],
+      "personaWeights": {
+        "muscle_gain": 3,
+        "action_oriented": 2,
+        "self_motivated": 2,
+        "intermediate": 1
+      }
+    },
+    {
+      "id": "path14",
+      "name": "Mindset-First",
+      "description": "Needs psychological foundation before physical",
+      "articles": ["split2", "split10", "split1", "split7", "split3"],
+      "personaWeights": {
+        "needs_motivation": 3,
+        "gym_anxiety": 2,
+        "restart_anxiety": 2,
+        "cautious": 1
+      }
+    },
+    {
+      "id": "path15",
+      "name": "Weekend Warrior",
+      "description": "Limited to weekends for exercise",
+      "articles": ["split4", "split7", "split5", "split3", "split10"],
+      "personaWeights": {
+        "weekend_only": 3,
+        "time_poor": 2,
+        "busy_parent": 2,
+        "health_focus": 1
+      }
+    },
+    {
+      "id": "path16",
+      "name": "Parent Mode",
+      "description": "Juggling family responsibilities",
+      "articles": ["split4", "split2", "split3", "split1", "split7"],
+      "personaWeights": {
+        "busy_parent": 3,
+        "time_poor": 2,
+        "needs_motivation": 2,
+        "health_focus": 1
+      }
+    }
+  ]
+  
