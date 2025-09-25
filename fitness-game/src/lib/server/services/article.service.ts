@@ -23,7 +23,7 @@ import {
 } from '$lib/server/shared/interfaces';
 import { ValidationError, notFoundCheck } from '$lib/server/shared/errors';
 import { type IUserArticlesRepository } from '$lib/server/repositories';
-import { type IKnowledgeBaseDAO } from '$lib/server/content/daos';
+import { type IKnowledgeBaseDAO, type IQuestionsDAO } from '$lib/server/content/daos';
 import { transitionTo, ARTICLE_STATE_TRANSITIONS_V2, type TransitionMapV2, type TransitionDetailsOf } from '$lib/server/helpers/article-state-machine-helper-v2';
 
 export type IArticleService = {
@@ -44,6 +44,7 @@ export class ArticleService implements IArticleService {
     private readonly dependencies: {
       readonly userArticlesRepository: IUserArticlesRepository;
       readonly knowledgeBaseDAO: IKnowledgeBaseDAO;
+      readonly questionsDAO: IQuestionsDAO;
     },
     private readonly requestContext: AuthRequestContext
   ) {}
@@ -55,7 +56,7 @@ export class ArticleService implements IArticleService {
   private async transitionTo<K extends keyof typeof ARTICLE_STATE_TRANSITIONS_V2 & string>(
     articleId: string,
     transitionKey: K,
-    details: Omit<TransitionDetailsOf<typeof ARTICLE_STATE_TRANSITIONS_V2, K>, 'articleId' | 'requestDate' | 'userId'>
+    details: Omit<TransitionDetailsOf<typeof ARTICLE_STATE_TRANSITIONS_V2, K>, 'articleId' | 'requestDate' | 'userId' | 'article'>
   ): Promise<{ id: string }> {
     const { user: { id: userId }, requestDate } = this.requestContext;
     const { userArticlesRepository, knowledgeBaseDAO } = this.dependencies;
@@ -78,6 +79,7 @@ export class ArticleService implements IArticleService {
         articleId,
         requestDate,
         userId,
+        article,
         ...details
       } as TransitionDetailsOf<typeof ARTICLE_STATE_TRANSITIONS_V2, K>
     );
@@ -104,8 +106,22 @@ export class ArticleService implements IArticleService {
    * POST /api/v1/users/me/articles/:articleId/quiz/submit
    */
   async submitQuiz(dto: SubmitQuizDto): Promise<SubmitQuizResponse> {
+    const { questionsDAO } = this.dependencies;
+      // Process each answer and validate the question itself
+      const answersWithQuestions = dto.quizAnswers.map(answer => {
+        const question = questionsDAO.getById(answer.questionId);
+        if (!question) {
+          throw new ValidationError(`Question with ID ${answer.questionId} not found`);
+        }
+        if (question.knowledge_base_id !== dto.articleId) {
+          throw new ValidationError(`Question with ID ${answer.questionId} does not belong to article with ID ${dto.articleId}`);
+        }
+        return { question, answer };
+      });
+
+
     await this.transitionTo(dto.articleId, 'SUBMIT_QUIZ', {
-      quizAnswers: dto.quizAnswers
+      answersWithQuestions
     });
   }
 

@@ -1,6 +1,8 @@
 import { type NewUserArticle, type UserArticle } from '$lib/server/db/schema';
 import { ValidationError, notFoundCheck } from '$lib/server/shared/errors';
 import { type ArticleLogStatus } from '$lib/server/helpers/article-state-machine.helper';
+import type { KnowledgeBase, Question } from '../content/types';
+import type { IQuestionsDAO } from '../content/daos';
 
 /**
  * Article State Machine Helper v2
@@ -23,6 +25,7 @@ export type StateTransitionDetailsBase = {
   readonly articleId: string;
   readonly requestDate: Date;
   readonly userId: string;
+  readonly article: KnowledgeBase;
 };
 type OverrideFields = 'id' | 'createdAt' | 'updatedAt' | 'userId' | 'articleId';
 export type UpdateArticle = Omit<UserArticle, OverrideFields>;
@@ -44,7 +47,7 @@ export type StateTransitionV2<Details extends StateTransitionDetailsBase> = {
   /**
    * Optional additional guard. Return false to reject the transition.
    */
-  readonly preconditionCheck?: (currentArticle: UpdateArticle, details: Details) => boolean;
+  readonly preconditionCheck?: (currentArticle: UpdateArticle, details: Details) => Promise<void>;
 
   /**
    * Compute the next `UserArticle` snapshot from the current one.
@@ -91,7 +94,6 @@ export async function transitionTo<TMap extends TransitionMapV2, K extends keyof
   details: TransitionDetailsOf<TMap, K>
 ): Promise<{ id: UserArticle['id'] }> {
   const definition = transitions[key];
-  // @TODO: Add ArticleID existence check here
 
   return await repo.transactionUpdateArticle(userId, articleId, requestDate, async (existing) => {
     // Not existing row path
@@ -114,11 +116,7 @@ export async function transitionTo<TMap extends TransitionMapV2, K extends keyof
       );
     }
 
-    if (definition.preconditionCheck && !definition.preconditionCheck(existing, details)) {
-      throw new ValidationError(
-        `Precondition check failed for transition ${String(key)}`
-      );
-    }
+    await definition.preconditionCheck?.(existing, details);
 
     // Compute next snapshot
     const next = definition.existsStateChange(existing, details);
@@ -189,20 +187,27 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
   SUBMIT_QUIZ: {
     preconditionStates: ['knowledge_check_in_progress'],
     existsStateChange: (current, details: StateTransitionDetailsBase & {
-      quizAnswers: Array<{ questionId: string; answerIndex: number; hintUsed: boolean }>
+      answersWithQuestions: Array<{ question: Question; answer: { questionId: string; answerIndex: number; hintUsed: boolean } }>,
     }) => {
-        // @TODO: use KnowledgeBase Dao to load article questions and calculate isCorrect
-      const now = details.requestDate;
-      const allCorrect = details.quizAnswers.every(a => true);
+      const { answersWithQuestions, requestDate: now } = details;
+      
+      // Process each answer and validate against the correct answer
+      const quizAnswers = answersWithQuestions.map(answerWithQuestion => {
+        const {question, answer} = answerWithQuestion;
+        
+        return {
+          question_id: answer.questionId,
+          answer_index: answer.answerIndex,
+          is_correct: answer.answerIndex === question.correct_answer_index,
+          hint_used: answer.hintUsed,
+        };
+      });
+
+      const allCorrect = quizAnswers.every(answer => answer.is_correct);
       return {
         status: 'knowledge_check_complete',
         quizAllCorrectAnswers: allCorrect,
-        quizAnswers: details.quizAnswers.map(a => ({
-          question_id: a.questionId,
-          answer_index: a.answerIndex,
-          is_correct: true,
-          hint_used: a.hintUsed,
-        })),
+        quizAnswers,
         quizFirstAttemptedAt: current.quizFirstAttemptedAt ?? now,
         quizCompletedAt: now,
         quizAttempts: current.quizAttempts + 1,
@@ -212,7 +217,15 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
 
   RETRY_QUIZ: {
     preconditionStates: ['knowledge_check_complete'],
-    preconditionCheck: (current, details: StateTransitionDetailsBase & { userWantsToRetry?: boolean }) => !current.quizAllCorrectAnswers || details.userWantsToRetry === true,
+    preconditionCheck: async (current, details: StateTransitionDetailsBase & { userWantsToRetry?: boolean }) => {
+        if (current.quizAllCorrectAnswers) {
+            if (details.userWantsToRetry) {
+                console.warn('Quiz for this article has already been submitted. Resetting prior submission.');
+            } else {
+                throw new ValidationError('Quiz for this article has already been submitted with a perfect score. Do you really want to retry?');
+            }
+        }
+    },
     existsStateChange: (_, details: StateTransitionDetailsBase & { userWantsToRetry?: boolean }) => {
       const now = details.requestDate;
       return {
@@ -227,8 +240,11 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
 
   START_PRACTICAL: {
     preconditionStates: ['knowledge_check_complete'],
-    // @Load up article and check if it has practicals
-    preconditionCheck: (_, details: StateTransitionDetailsBase) => true,
+    preconditionCheck: async (_, details: StateTransitionDetailsBase) => {
+        if ((details.article.practicals ?? []).length === 0) {
+            throw new ValidationError('This article does not have practical activities.');
+        }
+    },
     existsStateChange: () => {
       return {
         status: 'practical_in_progress',
