@@ -31,7 +31,17 @@ import type {
   ListChallengesJoinedByUserOperation,
   ListChallengeJoinedByUserMembersOperation,
   GetChallengeJoinedByUserSubscriptionOperation,
-  DeleteUserChallengeOperation
+  DeleteUserChallengeOperation,
+  LogReadOperation,
+  StartQuizOperation,
+  SubmitQuizOperation,
+  RetryQuizOperation,
+  StartPracticalOperation,
+  CompletePracticalOperation,
+  SkipPracticalOperation,
+  CompleteArticleOperation,
+  ListUserArticlesOperation,
+  GetUserArticleOperation
 } from '$lib/server/shared/schemas';
 
 /**
@@ -404,6 +414,81 @@ export class ApiClient {
       body: JSON.stringify(dto.body) 
     }, {
       params: { shareId: dto.params.shareId }
+    });
+  }
+
+  // --- Article Service Methods ---
+
+  /** POST /api/v1/users/me/articles/:articleId/read */
+  async logRead(articleId: string): Promise<LogReadOperation['response']['body']> {
+    return this.request<LogReadOperation['response']['body']>('/api/v1/users/me/articles/:articleId/read', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/quiz/start */
+  async startQuiz(articleId: string): Promise<StartQuizOperation['response']['body']> {
+    return this.request<StartQuizOperation['response']['body']>('/api/v1/users/me/articles/:articleId/quiz/start', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/quiz/submit */
+  async submitQuiz(dto: SubmitQuizOperation['request']): Promise<SubmitQuizOperation['response']['body']> {
+    return this.request<SubmitQuizOperation['response']['body']>('/api/v1/users/me/articles/:articleId/quiz/submit', { 
+      method: 'POST', 
+      body: JSON.stringify(dto.body) 
+    }, {
+      params: { articleId: dto.params.articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/quiz/retry */
+  async retryQuiz(articleId: string): Promise<RetryQuizOperation['response']['body']> {
+    return this.request<RetryQuizOperation['response']['body']>('/api/v1/users/me/articles/:articleId/quiz/retry', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/practical/start */
+  async startPractical(articleId: string): Promise<StartPracticalOperation['response']['body']> {
+    return this.request<StartPracticalOperation['response']['body']>('/api/v1/users/me/articles/:articleId/practical/start', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/practical/complete */
+  async completePractical(articleId: string): Promise<CompletePracticalOperation['response']['body']> {
+    return this.request<CompletePracticalOperation['response']['body']>('/api/v1/users/me/articles/:articleId/practical/complete', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/practical/skip */
+  async skipPractical(articleId: string): Promise<SkipPracticalOperation['response']['body']> {
+    return this.request<SkipPracticalOperation['response']['body']>('/api/v1/users/me/articles/:articleId/practical/skip', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** POST /api/v1/users/me/articles/:articleId/complete */
+  async completeArticle(articleId: string): Promise<CompleteArticleOperation['response']['body']> {
+    return this.request<CompleteArticleOperation['response']['body']>('/api/v1/users/me/articles/:articleId/complete', { method: 'POST' }, {
+      params: { articleId }
+    });
+  }
+
+  /** GET /api/v1/users/me/articles */
+  async listUserArticles(dto: ListUserArticlesOperation['request']): Promise<ListUserArticlesOperation['response']['body']> {
+    return this.request<ListUserArticlesOperation['response']['body']>('/api/v1/users/me/articles', { method: 'GET' }, {
+      query: dto.query
+    });
+  }
+
+  /** GET /api/v1/users/me/articles/:articleId */
+  async getUserArticle(articleId: string): Promise<GetUserArticleOperation['response']['body']> {
+    return this.request<GetUserArticleOperation['response']['body']>('/api/v1/users/me/articles/:articleId', { method: 'GET' }, {
+      params: { articleId }
     });
   }
 

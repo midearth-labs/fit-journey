@@ -35,6 +35,16 @@ import {
   type GetChallengeJoinedByUserSubscriptionOperation,
   type ListChallengesJoinedByUserOperation,
   type DeleteUserChallengeOperation,
+  type LogReadOperation,
+  type StartQuizOperation,
+  type SubmitQuizOperation,
+  type RetryQuizOperation,
+  type StartPracticalOperation,
+  type CompletePracticalOperation,
+  type SkipPracticalOperation,
+  type CompleteArticleOperation,
+  type ListUserArticlesOperation,
+  type GetUserArticleOperation,
 } from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
@@ -336,3 +346,37 @@ export type ListChallengesOwnedByUserResponse = ListChallengesOwnedByUserOperati
 export type ListChallengeJoinedByUserMembersResponse = ListChallengeJoinedByUserMembersOperation['response']['body'][0];
 export type GetChallengeJoinedByUserSubscriptionResponse = GetChallengeJoinedByUserSubscriptionOperation['response']['body'];
 export type ListChallengesJoinedByUserResponse = ListChallengesJoinedByUserOperation['response']['body'][0];
+
+// --- Article Service DTOs ---
+
+export type LogReadDto = { articleId: string };
+export type StartQuizDto = { articleId: string };
+export type SubmitQuizDto = { articleId: string; quizAnswers: Array<{
+  questionId: string;
+  answerIndex: number;
+  hintUsed: boolean;
+}> };
+export type RetryQuizDto = { articleId: string; userWantsToRetry?: boolean };
+export type StartPracticalDto = { articleId: string };
+export type CompletePracticalDto = { articleId: string };
+export type SkipPracticalDto = { articleId: string };
+export type CompleteArticleDto = { articleId: string };
+export type ListUserArticlesDto = { page: number; limit: number };
+export type GetUserArticleDto = { articleId: string };
+
+// Response types inferred from consolidated schemas
+export type LogReadResponse = LogReadOperation['response']['body'];
+export type StartQuizResponse = StartQuizOperation['response']['body'];
+export type SubmitQuizResponse = SubmitQuizOperation['response']['body'];
+export type RetryQuizResponse = RetryQuizOperation['response']['body'];
+export type StartPracticalResponse = StartPracticalOperation['response']['body'];
+export type CompletePracticalResponse = CompletePracticalOperation['response']['body'];
+export type SkipPracticalResponse = SkipPracticalOperation['response']['body'];
+export type CompleteArticleResponse = CompleteArticleOperation['response']['body'];
+
+export type ListUserArticlesResponse = ListUserArticlesOperation['response']['body'];
+export type GetUserArticleResponse = GetUserArticleOperation['response']['body'];
+
+// Back-compat aliases for service/consumer code
+export type UserArticleSummaryResponse = ListUserArticlesResponse[number];
+export type UserArticleDetailResponse = GetUserArticleResponse;

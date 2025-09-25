@@ -28,6 +28,9 @@ export const KnowledgeBaseSchema = UUIDSchema.extend(BaseContentSchema.shape).ex
     passage_text: z.string().describe('Passage text in markdown format containing 0 to 2 image urls. Between 30 to 40 seconds of reading time.'),
     image_urls: z.array(ImageSchema).min(0).max(2).describe('The images to be referenced in the article markdown. Between 0 to 2 images.'),
   })).min(1).max(3).describe('Between 1 and 3 passages for each knowledge base article.'),
+  practicals: z.array(z.object({
+    id: UUIDSchema.shape.id.describe('The ID of the practical. Must be a UUID, unique and immutable.'),
+  })).min(1).max(3).describe('Between 1 and 3 practicals for each knowledge base article.').nullish(),
 });
 
 export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>;

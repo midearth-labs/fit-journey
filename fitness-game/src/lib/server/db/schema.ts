@@ -32,6 +32,14 @@ export const challengeStatusEnum = pgEnum('user_challenge_status', [
   'inactive',
 ]);
 
+export const articleLogStatusEnum = pgEnum('article_log_status', [
+  'reading_in_progress',
+  'knowledge_check_in_progress', 
+  'knowledge_check_complete',
+  'practical_in_progress',
+  'completed'
+]);
+
 // Social Features Enums
 export const questionStatusEnum = pgEnum('question_status', ['pending', 'approved', 'rejected', 'hidden']);
 export const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 'rejected', 'hidden']);
@@ -170,6 +178,7 @@ export const userChallenges = pgTable('user_challenges', {
  * Tracks a user's progress on a specific article/quiz within their challenge.
  */
 // Drizzle Schema
+// @TODO: Remove this
 export const userChallengeProgress = pgTable('user_challenge_progress', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
@@ -192,7 +201,43 @@ export const userChallengeProgress = pgTable('user_challenge_progress', {
 }, (table) => {
   return [
     // A user should only have one progress record per article in their challenge.
-    unique('user_challenge_article_unique').on(table.userChallengeId, table.knowledgeBaseId),
+    uniqueIndex('user_challenge_article_unique').on(table.userChallengeId, table.knowledgeBaseId),
+  ];
+});
+
+/**
+ * USER ARTICLES
+ * Tracks a user's independent progress on articles (decoupled from challenges).
+ * This table replaces the challenge-dependent article progress tracking.
+ */
+export const userArticles = pgTable('user_articles', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  articleId: text('article_id').notNull(), // references static JSON articles
+  
+  // Reading tracking
+  firstReadDate: timestamp('first_read_date').notNull(),
+  lastReadDate: timestamp('last_read_date').notNull(),
+  
+  // Status tracking
+  status: articleLogStatusEnum('status').notNull(),
+  
+  // Quiz tracking
+  quizAllCorrectAnswers: boolean('quiz_all_correct_answers'),
+  quizFirstAttemptedAt: timestamp('quiz_first_attempted_at'),
+  quizAttempts: integer('quiz_attempts').notNull(),
+  quizStartedAt: timestamp('quiz_started_at'),
+  quizCompletedAt: timestamp('quiz_completed_at'),
+  
+  // Quiz answers storage (similar to existing logic)
+  quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>(),
+  
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
+}, (table) => {
+  return [
+    // Unique index to ensure one record per user per article
+    uniqueIndex('user_article_unique_index').on(table.userId, table.articleId),
   ];
 });
 
@@ -349,6 +394,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   answerReactions: many(answerReactions),
   userChallenges: many(userChallenges),
   userLogs: many(userLogs),
+  userArticles: many(userArticles),
 }));
 
 export const userProfilesRelations = relations(userMetadata, ({ one }) => ({
@@ -510,6 +556,14 @@ export const challengeSubscribersRelations = relations(challengeSubscribers, ({ 
   }),
 }));
 
+export const userArticlesRelations = relations(userArticles, ({ one }) => ({
+  user: one(users, {
+    fields: [userArticles.userId],
+    references: [users.id],
+  }),
+}));
+
+
 // Export types
 export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
@@ -542,3 +596,9 @@ export type Challenge = InferSelectModel<typeof challenges>;
 export type NewChallenge = Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status'>;
 export type ChallengeSubscriber = InferSelectModel<typeof challengeSubscribers>;
 export type NewChallengeSubscriber = Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'dailyLogCount' | 'lastActivityDate'>;
+
+// User Articles Types
+export type UserArticle = InferSelectModel<typeof userArticles>;
+export type NewUserArticle = Omit<InferInsertModel<typeof userArticles>, 'id' | 'userId' | 'articleId' |
+ 'quizAllCorrectAnswers' | 'quizFirstAttemptedAt' | 'quizStartedAt' | 'quizCompletedAt' | 'quizAnswers' | 
+ 'updatedAt' | 'createdAt'>;

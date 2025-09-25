@@ -1,0 +1,270 @@
+import { type NewUserArticle, type UserArticle } from '$lib/server/db/schema';
+import { ValidationError, notFoundCheck } from '$lib/server/shared/errors';
+import { type ArticleLogStatus } from '$lib/server/helpers/article-state-machine.helper';
+
+/**
+ * Article State Machine Helper v2
+ *
+ * Generic, strongly-typed transition engine that delegates persistence to a
+ * repository method `transactionUpdateArticle`. Service methods should only
+ * call `transitionTo(transitions, repo, userId, articleId, key, details)`.
+ *
+ * The engine enforces:
+ *  - Not-exists handling via optional `notExistsStateChange`
+ *  - Precondition states check
+ *  - Optional `preconditionCheck`
+ *  - Required `existsStateChange`
+ *
+ * Consumers define a const transitions map with per-key Details types to get
+ * fully inferred parameter types for `transitionTo`.
+ */
+
+export type StateTransitionDetailsBase = {
+  readonly articleId: string;
+  readonly requestDate: Date;
+  readonly userId: string;
+};
+type OverrideFields = 'id' | 'createdAt' | 'updatedAt' | 'userId' | 'articleId';
+export type UpdateArticle = Omit<UserArticle, OverrideFields>;
+export type OverrideArticleFields = Pick<UserArticle, OverrideFields>;
+export type PartialUpdateArticle = Partial<UpdateArticle>;
+
+export type StateTransitionV2<Details extends StateTransitionDetailsBase> = {
+  /**
+   * When no existing `UserArticle` row is found. If omitted, a not-found
+   * validation error will be thrown.
+   */
+  readonly notExistsStateChange?: (details: Details) => NewUserArticle;
+
+  /**
+   * Allowed current states for this transition when an article already exists.
+   */
+  readonly preconditionStates: ReadonlyArray<ArticleLogStatus>;
+
+  /**
+   * Optional additional guard. Return false to reject the transition.
+   */
+  readonly preconditionCheck?: (currentArticle: UpdateArticle, details: Details) => boolean;
+
+  /**
+   * Compute the next `UserArticle` snapshot from the current one.
+   */
+  readonly existsStateChange: (currentArticle: UpdateArticle, details: Details) => PartialUpdateArticle;
+};
+
+export type TransitionMapV2 = Record<string, StateTransitionV2<any>>;
+
+export type TransitionDetailsOf<TMap extends TransitionMapV2, K extends keyof TMap> =
+  TMap[K] extends StateTransitionV2<infer D> ? D : never;
+
+/**
+ * Repository contract required by the V2 state machine engine.
+ *
+ * Implementations should:
+ *  - Begin a DB transaction
+ *  - Select the `UserArticle` with `FOR UPDATE`
+ *  - Invoke `callback(existingArticle)` (allowing it to throw for rollback)
+ *  - Insert when not exists; Update when exists
+ *  - Return `{ id }` of the upserted row
+ */
+export type ArticleTransactionCallback = (existingArticle: UserArticle | null) => Promise<NewUserArticle | PartialUpdateArticle> 
+export interface IUserArticlesStateTxRepository {
+  transactionUpdateArticle(
+    userId: string,
+    articleId: string,
+    requestDate: Date,
+    callback: ArticleTransactionCallback
+  ): Promise<{ id: UserArticle['id'] }>;
+}
+
+/**
+ * Transition runner. Delegates all persistence to the repository while keeping
+ * transition rules inside the state machine.
+ */
+export async function transitionTo<TMap extends TransitionMapV2, K extends keyof TMap & string>(
+  transitions: TMap,
+  repo: IUserArticlesStateTxRepository,
+  userId: string,
+  articleId: string,
+  requestDate: Date,
+  key: K,
+  details: TransitionDetailsOf<TMap, K>
+): Promise<{ id: UserArticle['id'] }> {
+  const definition = transitions[key];
+  // @TODO: Add ArticleID existence check here
+
+  return await repo.transactionUpdateArticle(userId, articleId, requestDate, async (existing) => {
+    // Not existing row path
+    if (!existing) {
+      if (definition.notExistsStateChange) {
+        const next = definition.notExistsStateChange(details);
+        return next;
+      }
+
+      // If no `notExistsStateChange`, this is a not-found scenario for this transition
+      notFoundCheck(null, 'User Article');
+      // `notFoundCheck` throws, but keep TS happy with a fallback
+      throw new ValidationError('Article not found');
+    }
+
+    // Existing row path: preconditions
+    if (!definition.preconditionStates.includes(existing.status)) {
+      throw new ValidationError(
+        `Cannot transition from ${existing.status} using ${String(key)}`
+      );
+    }
+
+    if (definition.preconditionCheck && !definition.preconditionCheck(existing, details)) {
+      throw new ValidationError(
+        `Precondition check failed for transition ${String(key)}`
+      );
+    }
+
+    // Compute next snapshot
+    const next = definition.existsStateChange(existing, details);
+    return next;
+  });
+}
+
+/**
+ * Utility to narrow transition keys and detail types via a const object.
+ * Example usage:
+ *
+ * const transitions = defineTransitions({
+ *   START_QUIZ: {
+ *     preconditionStates: ['reading_in_progress', 'knowledge_check_complete'],
+ *     existsStateChange: (current, details: { articleId: string; requestDate: Date }) => ({
+ *       status: 'knowledge_check_in_progress',
+ *       quizStartedAt: details.requestDate,
+ *       updatedAt: details.requestDate,
+ *     })
+ *   }
+ * } as const);
+ */
+export function defineTransitions<TMap extends TransitionMapV2>(map: TMap) {
+  return map;
+}
+
+
+// Concrete transitions map built on V2 engine
+export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
+  LOG_READ: {
+    preconditionStates: [
+      'reading_in_progress',
+      //'knowledge_check_complete',
+      //'practical_in_progress'
+    ],
+    notExistsStateChange: (details: { requestDate: Date; }) => {
+      const now = details.requestDate;
+      // Build a fresh snapshot; repository will persist it
+      return {
+        status: 'reading_in_progress',
+        firstReadDate: now,
+        lastReadDate: now,
+        quizAttempts: 0,
+      } satisfies NewUserArticle;
+    },
+    existsStateChange: (_, details: { requestDate: Date }) => {
+      const now = details.requestDate;
+      return {
+        status: 'reading_in_progress',
+        lastReadDate: now,
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  START_QUIZ: {
+    preconditionStates: [
+      'reading_in_progress',
+    ],
+    existsStateChange: (_, details: StateTransitionDetailsBase) => {
+      const now = details.requestDate;
+      return {
+        status: 'knowledge_check_in_progress',
+        quizStartedAt: now,
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  SUBMIT_QUIZ: {
+    preconditionStates: ['knowledge_check_in_progress'],
+    existsStateChange: (current, details: StateTransitionDetailsBase & {
+      quizAnswers: Array<{ questionId: string; answerIndex: number; hintUsed: boolean }>
+    }) => {
+        // @TODO: use KnowledgeBase Dao to load article questions and calculate isCorrect
+      const now = details.requestDate;
+      const allCorrect = details.quizAnswers.every(a => true);
+      return {
+        status: 'knowledge_check_complete',
+        quizAllCorrectAnswers: allCorrect,
+        quizAnswers: details.quizAnswers.map(a => ({
+          question_id: a.questionId,
+          answer_index: a.answerIndex,
+          is_correct: true,
+          hint_used: a.hintUsed,
+        })),
+        quizFirstAttemptedAt: current.quizFirstAttemptedAt ?? now,
+        quizCompletedAt: now,
+        quizAttempts: current.quizAttempts + 1,
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  RETRY_QUIZ: {
+    preconditionStates: ['knowledge_check_complete'],
+    preconditionCheck: (current, details: StateTransitionDetailsBase & { userWantsToRetry?: boolean }) => !current.quizAllCorrectAnswers || details.userWantsToRetry === true,
+    existsStateChange: (_, details: StateTransitionDetailsBase & { userWantsToRetry?: boolean }) => {
+      const now = details.requestDate;
+      return {
+        status: 'knowledge_check_in_progress',
+        quizAllCorrectAnswers: false,
+        quizAnswers: null,
+        quizStartedAt: now,
+        quizCompletedAt: null,
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  START_PRACTICAL: {
+    preconditionStates: ['knowledge_check_complete'],
+    // @Load up article and check if it has practicals
+    preconditionCheck: (_, details: StateTransitionDetailsBase) => true,
+    existsStateChange: () => {
+      return {
+        status: 'practical_in_progress',
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  COMPLETE_PRACTICAL: {
+    preconditionStates: ['practical_in_progress'],
+    existsStateChange: (_, details: StateTransitionDetailsBase) => {
+      return {
+        status: 'completed',
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  SKIP_PRACTICAL: {
+    preconditionStates: ['knowledge_check_complete'],
+    existsStateChange: (_, details: StateTransitionDetailsBase) => {
+      return {
+        status: 'completed',
+      } satisfies PartialUpdateArticle;
+    },
+  },
+
+  COMPLETE_ARTICLE: {
+    preconditionStates: [
+      'knowledge_check_complete',
+      'practical_in_progress'
+    ],
+    existsStateChange: (_, details: StateTransitionDetailsBase) => {
+      return {
+        status: 'completed',
+      } satisfies PartialUpdateArticle;
+    },
+  },
+} as const);
+
+

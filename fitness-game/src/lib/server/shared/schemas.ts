@@ -1163,3 +1163,222 @@ export type DeleteUserChallengeOperation = {
     body: z.infer<typeof DeleteUserChallengeOperationSchema.response.body>;
   };
 };
+
+// --- Article Service Operation Schemas ---
+
+export const LogReadOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const StartQuizOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const SubmitQuizOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+    body: z.object({
+      quizAnswers: z.array(z.object({
+        questionId: z.string(),
+        answerIndex: z.number().min(0).max(4),
+        hintUsed: z.boolean()
+      }))
+    }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const RetryQuizOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const StartPracticalOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const CompletePracticalOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const SkipPracticalOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const CompleteArticleOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.void(),
+  }
+};
+
+export const ListUserArticlesOperationSchema = {
+  request: {
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(100)
+    }),
+  },
+  response: {
+    body: z.array(z.object({
+      articleId: z.string(),
+      status: z.string(),
+      firstReadDate: z.string().nullable(),
+      lastReadDate: z.string().nullable(),
+      quizAttempts: z.number(),
+      quizAllCorrectAnswers: z.boolean(),
+    })),
+  }
+};
+
+export const GetUserArticleOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+  },
+  response: {
+    body: z.object({
+      articleId: z.string(),
+      status: z.string(),
+      firstReadDate: z.string().nullable(),
+      lastReadDate: z.string().nullable(),
+      quizAttempts: z.number(),
+      quizAllCorrectAnswers: z.boolean(),
+      quizFirstAttemptedAt: z.string().nullable(),
+      quizLastAttemptedAt: z.string().nullable(),
+      quizStartedAt: z.string().nullable(),
+      quizCompletedAt: z.string().nullable(),
+      quizAnswers: z.array(z.object({
+        questionId: z.string(),
+        answer: z.string(),
+        is_correct: z.boolean()
+      })).nullable(),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  }
+};
+
+// Article Operation Types
+export type LogReadOperation = {
+  request: {
+    params: z.infer<typeof LogReadOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof LogReadOperationSchema.response.body>;
+  };
+};
+
+export type StartQuizOperation = {
+  request: {
+    params: z.infer<typeof StartQuizOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof StartQuizOperationSchema.response.body>;
+  };
+};
+
+export type SubmitQuizOperation = {
+  request: {
+    params: z.infer<typeof SubmitQuizOperationSchema.request.params>;
+    body: z.infer<typeof SubmitQuizOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof SubmitQuizOperationSchema.response.body>;
+  };
+};
+
+export type RetryQuizOperation = {
+  request: {
+    params: z.infer<typeof RetryQuizOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof RetryQuizOperationSchema.response.body>;
+  };
+};
+
+export type StartPracticalOperation = {
+  request: {
+    params: z.infer<typeof StartPracticalOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof StartPracticalOperationSchema.response.body>;
+  };
+};
+
+export type CompletePracticalOperation = {
+  request: {
+    params: z.infer<typeof CompletePracticalOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof CompletePracticalOperationSchema.response.body>;
+  };
+};
+
+export type SkipPracticalOperation = {
+  request: {
+    params: z.infer<typeof SkipPracticalOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof SkipPracticalOperationSchema.response.body>;
+  };
+};
+
+export type CompleteArticleOperation = {
+  request: {
+    params: z.infer<typeof CompleteArticleOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof CompleteArticleOperationSchema.response.body>;
+  };
+};
+
+export type ListUserArticlesOperation = {
+  request: {
+    query: z.infer<typeof ListUserArticlesOperationSchema.request.query>;
+  };
+  response: {
+    body: z.infer<typeof ListUserArticlesOperationSchema.response.body>;
+  };
+};
+
+export type GetUserArticleOperation = {
+  request: {
+    params: z.infer<typeof GetUserArticleOperationSchema.request.params>;
+  };
+  response: {
+    body: z.infer<typeof GetUserArticleOperationSchema.response.body>;
+  };
+};

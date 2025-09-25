@@ -162,7 +162,7 @@ entityService: () => this.entityServiceCreator(authRequestContext),
 
 - **Services**: Must NOT import from `schema.ts`
 - **Repositories**: CAN import from `schema.ts` (they are the data access layer)
-- **Shared**: Use DTOs and interfaces, not schema types
+- **Shared**: Use DTOs and interfaces, not db schema types
 
 ### 2. Dependency Injection
 

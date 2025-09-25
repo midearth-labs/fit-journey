@@ -7,10 +7,12 @@ import type { IModerationService } from './moderation.service';
 import type { IAnswersService } from './answers.service';
 import type { IProgressSharesService, IProgressSharesUnAuthenticatedService } from './progress-shares.service';
 import type { IChallengesService } from './challenges.service';
+import type { IArticleService } from './article.service';
 
 export { type IChallengeProgressService, ChallengeProgressService } from './challenge-progress.service';
 export { type ILogService, LogService } from './log.service';
 export { type IUserProfileService, UserProfileService } from './user-profile.service';
+export { type IArticleService, ArticleService } from './article.service';
 
 // Social Features Services
 export { type IQuestionsService, QuestionsService } from './questions.service';
@@ -24,6 +26,7 @@ export type AuthServices = {
   challengeProgressService: () => IChallengeProgressService
   logService: () => ILogService
   userProfileService: () => IUserProfileService
+  articleService: () => IArticleService
   questionsService: () => IQuestionsService
   answersService: () => IAnswersService
   progressSharesService: () => IProgressSharesService,
