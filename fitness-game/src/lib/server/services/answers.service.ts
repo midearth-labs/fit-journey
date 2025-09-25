@@ -65,7 +65,7 @@ export class AnswersService implements IAnswersService {
    * GET /api/v1/social/questions/:questionId/answers
    */
   async listAnswers(dto: ListAnswersDto): Promise<ListAnswersResponse[]> {
-    const { questionId, page = 1, limit = 20 } = dto;
+    const { questionId, page, limit } = dto;
 
     // Verify question exists
     // @TODO: make sure any notFound check that doesnt use the result, uses a more optimized checkExists method

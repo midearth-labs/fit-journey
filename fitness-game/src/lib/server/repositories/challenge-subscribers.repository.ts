@@ -12,7 +12,8 @@ export class ChallengeSubscribersRepository implements IChallengeSubscribersRepo
   constructor(private db: NodePgDatabase<any>) {}
 
   async findByChallengeAndUser(challengeId: string, userId: string): Promise<ChallengeSubscriber | null> {
-    const [row] = await this.db.select().from(challengeSubscribers).where(and(eq(challengeSubscribers.challengeId, challengeId), eq(challengeSubscribers.userId, userId))).limit(1);
+    const [row] = await this.db.select().from(challengeSubscribers)
+    .where(and(eq(challengeSubscribers.challengeId, challengeId), eq(challengeSubscribers.userId, userId))).limit(1);
     return row ?? null;
   }
 

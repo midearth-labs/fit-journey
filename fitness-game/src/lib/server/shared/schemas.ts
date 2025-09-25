@@ -91,10 +91,10 @@ export const CreateChallengeDtoSchema = z.object({
   startDate: IsoDateSchema,
   durationDays: z.number().int().min(1).max(365),
   joinType: z.enum(['personal', 'public', 'invite-code']),
-  maxMembers: z.number().int().min(1).max(1000).optional(),
+  maxMembers: z.number().int().min(1).max(1000).default(1),
 });
 
-export const UpdateChallengeDtoSchema = CreateChallengeDtoSchema.partial();
+export const UpdateChallengeDtoSchema = CreateChallengeDtoSchema;
 
 export const JoinChallengeDtoSchema = z.object({
   challengeId: UuidSchema,
@@ -144,24 +144,6 @@ export const ListUserChallengeQuizSubmissionsDtoSchema = z.object({
 );
 
 // Response schemas
-export const NewUserChallengeResponseSchema = z.object({
-  id: UuidSchema
-});
-
-export const UserChallengeSummaryResponseSchema = NewUserChallengeResponseSchema.extend({
-  challengeId: UuidSchema,
-  userId: UuidSchema,
-  startDate: IsoDateSchema,
-  originalStartDate: IsoDateSchema,
-  status: z.enum(['not_started', 'active', 'completed', 'locked', 'inactive']),
-  knowledgeBaseCompletedCount: z.number().int().min(0),
-  dailyLogCount: z.number().int().min(0),
-  lastActivityDate: IsoDateSchema.optional(),
-  createdAt: z.string(),
-  updatedAt: z.string()
-});
-
-export const UserChallengeDetailResponseSchema = UserChallengeSummaryResponseSchema;
 
 export const UserChallengeProgressResponseSchema = z.object({
   id: UuidSchema,
@@ -358,60 +340,6 @@ export const PutUserLogOperationSchema = {
 };
 
 // User Challenge Operations
-export const CreateUserChallengeOperationSchema = {
-  request: {
-    params: z.object({}),
-    query: z.object({}),
-    body: CreateUserChallengeDtoSchema
-  },
-  response: {
-    body: NewUserChallengeResponseSchema
-  }
-};
-
-export const ListUserChallengesOperationSchema = {
-  request: {
-    params: z.object({}),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: UserChallengeSummaryResponseSchema.array()
-  }
-};
-
-export const GetUserChallengeOperationSchema = {
-  request: {
-    params: z.object({ userChallengeId: UuidSchema }),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: UserChallengeDetailResponseSchema
-  }
-};
-
-export const UpdateUserChallengeScheduleOperationSchema = {
-  request: {
-    params: z.object({ userChallengeId: UuidSchema }),
-    query: z.object({}),
-    body: z.object({ newStartDate: IsoDateSchema })
-  },
-  response: {
-    body: z.void()
-  }
-};
-
-export const CancelUserChallengeOperationSchema = {
-  request: {
-    params: z.object({ userChallengeId: UuidSchema }),
-    query: z.object({}),
-    body: z.void()
-  },
-  response: {
-    body: z.void()
-  }
-};
 
 // User Challenge Quiz Operations
 export const ListUserChallengeQuizSubmissionsOperationSchema = {
@@ -448,9 +376,16 @@ export const SubmitUserChallengeQuizOperationSchema = {
 export const GetChallengeParamsSchema = z.object({ challengeId: UuidSchema });
 
 // New challenge response schema for V2 challenges
-export const ChallengeResponseSchema = z.object({
+export const GetUserChallengeResponseSchema = z.object({
   id: UuidSchema,
   name: z.string(),
+  status: z.enum([
+    'not_started',
+    'active',
+    'completed',
+    'locked',
+    'inactive',
+  ]),
   description: z.string().nullable().optional(),
   goals: z.array(z.string()),
   startDate: IsoDateSchema,
@@ -463,8 +398,13 @@ export const ChallengeResponseSchema = z.object({
   ownerUserId: UuidSchema.nullable()
 });
 
+export const ListChallengesOwnedByUserResponseSchema = GetUserChallengeResponseSchema.extend({});
+export const ListChallengeJoinedByUserMembersResponseSchema = GetUserChallengeResponseSchema.extend({});
+export const ListPublicChallengesResponseSchema = GetUserChallengeResponseSchema.extend({});
+export const GetChallengeResponseSchema = GetUserChallengeResponseSchema.extend({});
+
 // Challenges V2 Operations
-export const CreateChallengeOperationSchema = {
+export const CreateUserChallengeOperationSchema = {
   request: {
     params: z.object({}),
     query: z.object({}),
@@ -482,12 +422,12 @@ export const GetChallengeOperationSchema = {
     body: z.void()
   },
   response: {
-    body: ChallengeResponseSchema
+    body: GetChallengeResponseSchema
   }
 };
 
 
-export const UpdateChallengeOperationSchema = {
+export const UpdateUserChallengeOperationSchema = {
   request: {
     params: z.object({ challengeId: UuidSchema }),
     query: z.object({}),
@@ -530,7 +470,105 @@ export const ListPublicChallengesOperationSchema = {
     body: z.void()
   },
   response: {
-    body: z.array(ChallengeResponseSchema)
+    body: z.array(ListPublicChallengesResponseSchema)
+  }
+};
+
+// User Challenge Management Operations
+export const GetUserChallengeOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: GetUserChallengeResponseSchema
+  }
+};
+
+export const ListChallengesOwnedByUserOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(ListChallengesOwnedByUserResponseSchema)
+  }
+};
+
+export const ListChallengeJoinedByUserMembersOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(z.object({
+      id: UuidSchema,
+      userId: UuidSchema.nullable(),
+      joinedAt: z.string(),
+      dailyLogCount: z.number().int().min(0),
+    }))
+  }
+};
+
+export const GetChallengeJoinedByUserSubscriptionOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.object({
+      id: UuidSchema,
+      joinedAt: z.string(),
+      dailyLogCount: z.number().int().min(0),
+      lastActivityDate: z.string().optional()
+    })
+  }
+};
+
+export const ListChallengesJoinedByUserOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      limit: z.coerce.number().int().min(1).max(100).default(20)
+    }),
+    body: z.void()
+  },
+  response: {
+    body: z.array(GetUserChallengeResponseSchema.pick({
+      id: true,
+      name: true,
+      status: true,
+      durationDays: true,
+      startDate: true,
+      joinType: true,
+      membersCount: true,
+    }).extend({
+      joinedAt: z.string(),
+      dailyLogCount: z.number().int().min(0),
+      lastActivityDate: z.string().optional()
+    }))
+  }
+};
+
+export const DeleteUserChallengeOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.void()
   }
 };
 
@@ -795,60 +833,6 @@ export type PutUserLogOperation = {
   };
 };
 
-export type CreateUserChallengeOperation = {
-  request: {
-    params: z.infer<typeof CreateUserChallengeOperationSchema.request.params>;
-    query: z.infer<typeof CreateUserChallengeOperationSchema.request.query>;
-    body: z.infer<typeof CreateUserChallengeOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof CreateUserChallengeOperationSchema.response.body>;
-  };
-};
-
-export type ListUserChallengesOperation = {
-  request: {
-    params: z.infer<typeof ListUserChallengesOperationSchema.request.params>;
-    query: z.infer<typeof ListUserChallengesOperationSchema.request.query>;
-    body: z.infer<typeof ListUserChallengesOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof ListUserChallengesOperationSchema.response.body>;
-  };
-};
-
-export type GetUserChallengeOperation = {
-  request: {
-    params: z.infer<typeof GetUserChallengeOperationSchema.request.params>;
-    query: z.infer<typeof GetUserChallengeOperationSchema.request.query>;
-    body: z.infer<typeof GetUserChallengeOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof GetUserChallengeOperationSchema.response.body>;
-  };
-};
-
-export type UpdateUserChallengeScheduleOperation = {
-  request: {
-    params: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.request.params>;
-    query: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.request.query>;
-    body: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof UpdateUserChallengeScheduleOperationSchema.response.body>;
-  };
-};
-
-export type CancelUserChallengeOperation = {
-  request: {
-    params: z.infer<typeof CancelUserChallengeOperationSchema.request.params>;
-    query: z.infer<typeof CancelUserChallengeOperationSchema.request.query>;
-    body: z.infer<typeof CancelUserChallengeOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof CancelUserChallengeOperationSchema.response.body>;
-  };
-};
 
 export type ListUserChallengeQuizSubmissionsOperation = {
   request: {
@@ -883,25 +867,25 @@ export type GetChallengeOperation = {
   };
 };
 
-export type CreateChallengeOperation = {
+export type CreateUserChallengeOperation = {
   request: {
-    params: z.infer<typeof CreateChallengeOperationSchema.request.params>;
-    query: z.infer<typeof CreateChallengeOperationSchema.request.query>;
-    body: z.infer<typeof CreateChallengeOperationSchema.request.body>;
+    params: z.infer<typeof CreateUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof CreateUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof CreateUserChallengeOperationSchema.request.body>;
   };
   response: {
-    body: z.infer<typeof CreateChallengeOperationSchema.response.body>;
+    body: z.infer<typeof CreateUserChallengeOperationSchema.response.body>;
   };
 };
 
-export type UpdateChallengeOperation = {
+export type UpdateUserChallengeOperation = {
   request: {
-    params: z.infer<typeof UpdateChallengeOperationSchema.request.params>;
-    query: z.infer<typeof UpdateChallengeOperationSchema.request.query>;
-    body: z.infer<typeof UpdateChallengeOperationSchema.request.body>;
+    params: z.infer<typeof UpdateUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof UpdateUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof UpdateUserChallengeOperationSchema.request.body>;
   };
   response: {
-    body: z.infer<typeof UpdateChallengeOperationSchema.response.body>;
+    body: z.infer<typeof UpdateUserChallengeOperationSchema.response.body>;
   };
 };
 
@@ -1111,5 +1095,71 @@ export type DeleteShareOperation = {
   };
   response: {
     body: z.infer<typeof DeleteShareOperationSchema.response.body>;
+  };
+};
+
+export type GetUserChallengeOperation = {
+  request: {
+    params: z.infer<typeof GetUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof GetUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof GetUserChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetUserChallengeOperationSchema.response.body>;
+  };
+};
+
+export type ListChallengesOwnedByUserOperation = {
+  request: {
+    params: z.infer<typeof ListChallengesOwnedByUserOperationSchema.request.params>;
+    query: z.infer<typeof ListChallengesOwnedByUserOperationSchema.request.query>;
+    body: z.infer<typeof ListChallengesOwnedByUserOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListChallengesOwnedByUserOperationSchema.response.body>;
+  };
+};
+
+export type ListChallengeJoinedByUserMembersOperation = {
+  request: {
+    params: z.infer<typeof ListChallengeJoinedByUserMembersOperationSchema.request.params>;
+    query: z.infer<typeof ListChallengeJoinedByUserMembersOperationSchema.request.query>;
+    body: z.infer<typeof ListChallengeJoinedByUserMembersOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListChallengeJoinedByUserMembersOperationSchema.response.body>;
+  };
+};
+
+export type GetChallengeJoinedByUserSubscriptionOperation = {
+  request: {
+    params: z.infer<typeof GetChallengeJoinedByUserSubscriptionOperationSchema.request.params>;
+    query: z.infer<typeof GetChallengeJoinedByUserSubscriptionOperationSchema.request.query>;
+    body: z.infer<typeof GetChallengeJoinedByUserSubscriptionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetChallengeJoinedByUserSubscriptionOperationSchema.response.body>;
+  };
+};
+
+export type ListChallengesJoinedByUserOperation = {
+  request: {
+    params: z.infer<typeof ListChallengesJoinedByUserOperationSchema.request.params>;
+    query: z.infer<typeof ListChallengesJoinedByUserOperationSchema.request.query>;
+    body: z.infer<typeof ListChallengesJoinedByUserOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof ListChallengesJoinedByUserOperationSchema.response.body>;
+  };
+};
+
+export type DeleteUserChallengeOperation = {
+  request: {
+    params: z.infer<typeof DeleteUserChallengeOperationSchema.request.params>;
+    query: z.infer<typeof DeleteUserChallengeOperationSchema.request.query>;
+    body: z.infer<typeof DeleteUserChallengeOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof DeleteUserChallengeOperationSchema.response.body>;
   };
 };

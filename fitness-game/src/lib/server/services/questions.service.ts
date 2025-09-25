@@ -77,7 +77,7 @@ export class QuestionsService implements IQuestionsService {
    * GET /api/v1/social/questions
    */
   async listQuestions(dto: ListQuestionsDto): Promise<ListQuestionsResponse[]> {
-    const { articleId, page = 1, limit = 20 } = dto;
+    const { articleId, page, limit } = dto;
 
     const questions = await this.dependencies.questionsRepository.findByArticleId(articleId, page, limit);
     

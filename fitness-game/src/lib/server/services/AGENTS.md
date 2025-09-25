@@ -104,6 +104,32 @@ Conventions:
 - Second line: `METHOD /path/:param` with route params prefixed by `:`
 - Place the block immediately above the method definition
 
+### 5. Authenticated User API Patterns
+
+**CRITICAL**: Any service method with "User" in the name must follow these patterns:
+
+#### URL Structure
+- All authenticated user APIs MUST be prefixed with `/api/v1/users/me/`
+- The "User" in the method name refers to the authenticated user, NOT a user in the request payload
+- Examples:
+  - `getUserChallenge` → `GET /api/v1/users/me/challenges/:challengeId`
+  - `listChallengesOwnedByUser` → `GET /api/v1/users/me/challenges/owned`
+  - `deleteUserChallenge` → `DELETE /api/v1/users/me/challenges/:challengeId`
+
+#### Repository Ownership Checks
+- All repository methods that power authenticated user APIs MUST include a `userId` ownership check
+- Do NOT mix or reuse existing repositories that are not authenticated user facing
+- Create separate repository methods for authenticated user operations
+- Examples:
+  ```typescript
+  // ✅ Correct - includes userId ownership check
+  async findByIdForUser(id: string, userId: string): Promise<Entity | null>
+  async listOwnedByUser(userId: string, page: number, limit: number): Promise<Entity[]>
+  
+  // ❌ Incorrect - no ownership check
+  async findById(id: string): Promise<Entity | null>
+  ```
+
 Examples:
 
 ```ts
@@ -155,6 +181,38 @@ async listUserLogs(dto: ListUserLogsDto): Promise<UserLogResponse[]> { /* ... */
  */
 async updateUserProfile(dto: UpdateUserProfileDto): Promise<void> { /* ... */ }
 
+// ✅ Authenticated User API Examples (with "User" in method name)
+/**
+ * Get a challenge by its ID (owned by user)
+ * GET /api/v1/users/me/challenges/:challengeId
+ */
+async getUserChallenge(dto: GetUserChallengeDto): Promise<GetUserChallengeResponse> { /* ... */ }
+
+/**
+ * List challenges owned by the authenticated user
+ * GET /api/v1/users/me/challenges/owned
+ */
+async listChallengesOwnedByUser(dto: ListChallengesOwnedByUserDto): Promise<ListChallengesOwnedByUserResponse[]> { /* ... */ }
+
+/**
+ * List members of a challenge (only if user owns the challenge)
+ * GET /api/v1/users/me/challenges/:challengeId/members
+ */
+async listChallengeMembers(dto: ListChallengeMembersDto): Promise<ListChallengeMembersResponse[]> { /* ... */ }
+
+/**
+ * List challenges joined by the authenticated user
+ * GET /api/v1/users/me/challenges/joined
+ */
+async listChallengesJoinedByUser(dto: ListChallengesJoinedByUserDto): Promise<ListChallengesJoinedByUserResponse[]> { /* ... */ }
+
+/**
+ * Delete a user challenge (only if conditions are met)
+ * DELETE /api/v1/users/me/challenges/:challengeId
+ */
+async deleteUserChallenge(dto: DeleteUserChallengeDto): Promise<void> { /* ... */ }
+
+// ✅ Public/Content API Examples (no "User" in method name)
 /**
  * Get a challenge by its ID
  * GET /api/v1/content/challenges/:challengeId
@@ -326,3 +384,58 @@ Common dependencies include:
 - Other services (avoid circular dependencies)
 
 Dependencies are injected via the constructor and accessed through `this.dependencies`.
+
+## Repository Patterns for Authenticated User APIs
+
+### Ownership Check Requirements
+
+When implementing repository methods for authenticated user APIs:
+
+1. **Always include userId parameter**: All methods must accept `userId` as a parameter
+2. **Enforce ownership in queries**: Use `WHERE` clauses to ensure data belongs to the authenticated user
+3. **Separate authenticated from public methods**: Don't mix authenticated user methods with public methods
+4. **Use descriptive method names**: Include "ForUser" or "ByUser" in method names to indicate ownership
+
+### Examples
+
+```typescript
+// ✅ Correct Repository Patterns
+export interface IChallengesRepository {
+  // Public methods (no ownership check)
+  findById(id: string): Promise<Challenge | null>;
+  listPublicUpcoming(page: number, limit: number): Promise<Challenge[]>;
+  
+  // Authenticated user methods (with ownership check)
+  findByIdForUser(id: string, userId: string): Promise<Challenge | null>;
+  listOwnedByUser(userId: string, page: number, limit: number): Promise<Challenge[]>;
+  listMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Member[]>;
+  canDeleteChallenge(challengeId: string, userId: string): Promise<boolean>;
+}
+
+// ✅ Implementation with ownership checks
+async findByIdForUser(id: string, userId: string): Promise<Challenge | null> {
+  const [row] = await this.db
+    .select()
+    .from(challenges)
+    .where(and(eq(challenges.id, id), eq(challenges.ownerUserId, userId)))
+    .limit(1);
+  return row ?? null;
+}
+
+// ❌ Incorrect - no ownership check
+async findById(id: string): Promise<Challenge | null> {
+  const [row] = await this.db
+    .select()
+    .from(challenges)
+    .where(eq(challenges.id, id))
+    .limit(1);
+  return row ?? null;
+}
+```
+
+### Security Benefits
+
+- **Data Isolation**: Users can only access their own data
+- **Authorization**: Ownership is enforced at the database level
+- **Audit Trail**: Clear separation between public and authenticated operations
+- **Type Safety**: Method signatures clearly indicate ownership requirements

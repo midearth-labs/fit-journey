@@ -1,30 +1,49 @@
 import { 
   type AuthRequestContext,
-  type CreateChallengeDto,
-  type UpdateChallengeDto,
+  type CreateUserChallengeDto,
+  type UpdateUserChallengeDto,
   type JoinChallengeDto,
   type LeaveChallengeDto,
   type GetChallengeDto,
   type ListPublicChallengesDto,
-  type CreateChallengeResponse,
+  type CreateUserChallengeResponse,
   type JoinChallengeResponse,
   type ChallengeResponse,
-  type ListChallengeResponse
+  type ListChallengeResponse,
+  type GetUserChallengeDto,
+  type ListChallengesOwnedByUserDto,
+  type ListChallengeJoinedByUserMembersDto,
+  type GetChallengeJoinedByUserSubscriptionDto,
+  type ListChallengesJoinedByUserDto,
+  type DeleteUserChallengeDto,
+  type GetUserChallengeResponse,
+  type ListChallengesOwnedByUserResponse,
+  type ListChallengeJoinedByUserMembersResponse,
+  type GetChallengeJoinedByUserSubscriptionResponse,
+  type ListChallengesJoinedByUserResponse,
+  type UpdateUserChallengeResponse,
+  type LeaveChallengeOperationResponse,
+  type DeleteUserChallengeOperationResponse,
 } from '$lib/server/shared/interfaces';
 import { type IChallengesRepository, type IChallengeSubscribersRepository } from '$lib/server/repositories';
 import { type Challenge, type NewChallenge } from '$lib/server/db/schema';
 import { notFoundCheck, ValidationError } from '../shared/errors';
 import type { IDateTimeHelper } from '../helpers';
 
-// @TODO: add listChallengesOwnedByUser methods, add listChallengeMembers, listChallengesJoinedByUser methods
-// add deleteChallenge method (only if the challenge is not started or is personal or has no other members)
 export type IChallengesService = {
-  createChallenge(dto: CreateChallengeDto): Promise<CreateChallengeResponse>;
-  updateChallenge(dto: UpdateChallengeDto): Promise<void>;
+  createUserChallenge(dto: CreateUserChallengeDto): Promise<CreateUserChallengeResponse>;
+  updateUserChallenge(dto: UpdateUserChallengeDto): Promise<void>;
   joinChallenge(dto: JoinChallengeDto): Promise<JoinChallengeResponse>;
   leaveChallenge(dto: LeaveChallengeDto): Promise<void>;
-  getChallenge(dto: GetChallengeDto): Promise<ChallengeResponse | null>;
+  getChallenge(dto: GetChallengeDto): Promise<ChallengeResponse>;
   listPublicChallenges(dto: ListPublicChallengesDto): Promise<ListChallengeResponse[]>;
+  // User challenge management methods
+  getUserChallenge(dto: GetUserChallengeDto): Promise<GetUserChallengeResponse>;
+  listChallengesOwnedByUser(dto: ListChallengesOwnedByUserDto): Promise<ListChallengesOwnedByUserResponse[]>;
+  listChallengeJoinedByUserMembers(dto: ListChallengeJoinedByUserMembersDto): Promise<ListChallengeJoinedByUserMembersResponse[]>;
+  getChallengeJoinedByUserSubscription(dto: GetChallengeJoinedByUserSubscriptionDto): Promise<GetChallengeJoinedByUserSubscriptionResponse>;
+  listChallengesJoinedByUser(dto: ListChallengesJoinedByUserDto): Promise<ListChallengesJoinedByUserResponse[]>;
+  deleteUserChallenge(dto: DeleteUserChallengeDto): Promise<void>;
 };
 
 export class ChallengesService implements IChallengesService {
@@ -41,10 +60,10 @@ export class ChallengesService implements IChallengesService {
    * Create a new challenge and auto-subscribe the owner
    * POST /api/v1/users/me/challenges
    */
-  async createChallenge(dto: CreateChallengeDto): Promise<CreateChallengeResponse> {
+  async createUserChallenge(dto: CreateUserChallengeDto): Promise<CreateUserChallengeResponse> {
     const { user: { id: userId }, requestDate } = this.requestContext;
     // @TODO: extract these to constants or put the default value in schema
-    const maxMembers = dto.joinType === 'personal' ? 1 : (dto.maxMembers ?? 50);
+    const maxMembers = dto.joinType === 'personal' ? 1 : (dto.maxMembers);
 
     const payload: NewChallenge = {
       ownerUserId: userId,
@@ -66,11 +85,29 @@ export class ChallengesService implements IChallengesService {
    * Update a challenge before start and before any member joins
    * PATCH /api/v1/users/me/challenges/:challengeId
    */
-  async updateChallenge(dto: UpdateChallengeDto): Promise<void> {
+  async updateUserChallenge(dto: UpdateUserChallengeDto): Promise<UpdateUserChallengeResponse> {
     const { requestDate } = this.requestContext;
+    const { challengesRepository, dateTimeHelper } = this.dependencies;
+
     const { challengeId, ...updates } = dto;
+    const challenge = notFoundCheck(await challengesRepository.findById(dto.challengeId), 'Challenge');
+    
+    if (updates.joinType === 'personal') {
+      updates.maxMembers = 1;
+    }
+
+    if (updates.maxMembers < challenge.membersCount) {
+      throw new ValidationError('Max members cannot be less than the current members count');
+    }
+
+    // Similar to join logic, check if challenge has already started
+    const requestLocalDates = dateTimeHelper.getPossibleDatesOnEarthAtInstant(requestDate);
+    if (requestLocalDates.earliest >= challenge.startDate) {
+      throw new ValidationError('Challenge has already started');
+    }
+
     // Service-level validation will be added later (lock checks, deprecated goals, etc.)
-    await this.dependencies.challengesRepository.update(challengeId, { ...updates, updatedAt: requestDate } as any);
+    await this.dependencies.challengesRepository.update(challengeId, { ...updates, updatedAt: requestDate });
   }
 
   /**
@@ -82,8 +119,8 @@ export class ChallengesService implements IChallengesService {
     const { dateTimeHelper, challengesRepository, challengeSubscribersRepository } = this.dependencies;
 
     const challenge = notFoundCheck(await challengesRepository.findById(dto.challengeId), 'Challenge');
-    const existingSubscriber = await challengeSubscribersRepository.findByChallengeAndUser(dto.challengeId, userId);
-    if (existingSubscriber) return { id: existingSubscriber.id };
+    const existingSubscription = await challengeSubscribersRepository.findByChallengeAndUser(dto.challengeId, userId);
+    if (existingSubscription) return { id: existingSubscription.id };
 
     // @TODO: this must be the implicit status check
     // No joins after startDate (use timezone-aware comparison helper already used elsewhere)
@@ -106,18 +143,34 @@ export class ChallengesService implements IChallengesService {
    * Leave a challenge (removes the subscription)
    * POST /api/v1/challenges/:challengeId/leave
    */
-  async leaveChallenge(dto: LeaveChallengeDto): Promise<void> {
+  async leaveChallenge(dto: LeaveChallengeDto): Promise<LeaveChallengeOperationResponse> {
     const { user: { id: userId } } = this.requestContext;
-    await this.dependencies.challengesRepository.leave(dto.challengeId, userId);
+    const { challengesRepository } = this.dependencies;
+
+    // Check if the challenge exists and get its details
+    const challenge = notFoundCheck(await challengesRepository.findById(dto.challengeId), 'Challenge');
+
+    // Prevent owner from leaving their own challenge
+    if (challenge.ownerUserId === userId) {
+      throw new ValidationError('Challenge owners cannot leave their own challenge');
+    }
+
+    await challengesRepository.leave(dto.challengeId, userId);
   }
 
   /**
    * Get a challenge by ID
    * GET /api/v1/challenges/:challengeId
    */
-  async getChallenge(dto: GetChallengeDto): Promise<ChallengeResponse | null> {
-    const challenge = await this.dependencies.challengesRepository.findById(dto.challengeId);
-    if (!challenge) return null;
+  async getChallenge(dto: GetChallengeDto): Promise<ChallengeResponse> {
+    const { user: { id: userId } } = this.requestContext;
+    const challenge = notFoundCheck(await(async () => { 
+      const challenge = await this.dependencies.challengesRepository.findById(dto.challengeId);
+      if (challenge && challenge.joinType === 'personal' && challenge.ownerUserId !== userId) return null;
+      return challenge;
+    }
+    )(), 'Challenge');
+
     return this.mapToChallengeResponse(challenge);
   }
 
@@ -126,14 +179,134 @@ export class ChallengesService implements IChallengesService {
    * GET /api/v1/challenges
    */
   async listPublicChallenges(dto: ListPublicChallengesDto): Promise<ListChallengeResponse[]> {
-    const challenges = await this.dependencies.challengesRepository.listPublicUpcoming(dto.page, dto.limit);
+    const { page, limit } = dto;
+    const challenges = await this.dependencies.challengesRepository.listPublicUpcoming(page, limit);
     return challenges.map(challenge => this.mapToChallengeResponse(challenge));
+  }
+
+  /**
+   * Get a challenge by its ID (owned by user)
+   * GET /api/v1/users/me/challenges/:challengeId
+   */
+  async getUserChallenge(dto: GetUserChallengeDto): Promise<GetUserChallengeResponse> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+
+    const challenge = notFoundCheck(
+      await challengesRepository.findByIdForUser(dto.challengeId, userId),
+      'Challenge'
+    );
+
+    return this.mapToChallengeResponse(challenge);
+  }
+
+  /**
+   * List challenges owned by the authenticated user
+   * GET /api/v1/users/me/challenges/owned
+   */
+  async listChallengesOwnedByUser(dto: ListChallengesOwnedByUserDto): Promise<ListChallengesOwnedByUserResponse[]> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+    const { page, limit } = dto;
+
+
+    const challenges = await challengesRepository.listOwnedByUser(userId, page, limit);
+    return challenges.map(challenge => this.mapToChallengeResponse(challenge));
+  }
+
+  /**
+   * List members of a challenge (only if user is a member of the challenge)
+   * GET /api/v1/users/me/challenges/joined/:challengeId/members
+   */
+  async listChallengeJoinedByUserMembers(dto: ListChallengeJoinedByUserMembersDto): Promise<ListChallengeJoinedByUserMembersResponse[]> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+    const { page, limit } = dto;
+
+    const members = await challengesRepository.listJoinedByUserMembers(dto.challengeId, userId, page, limit);
+
+    return members.map(member => ({
+      id: member.id,
+      userId: member.userId,
+      joinedAt: member.joinedAt.toISOString(),
+      dailyLogCount: member.dailyLogCount,
+    }));
+  }
+
+  /**
+   * Get user's subscription to a challenge (only if user is a member of the challenge)
+   * GET /api/v1/users/me/challenges/joined/:challengeId/subscription
+   */
+  async getChallengeJoinedByUserSubscription(dto: GetChallengeJoinedByUserSubscriptionDto): Promise<GetChallengeJoinedByUserSubscriptionResponse> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+
+    const subscription = notFoundCheck(
+      await challengesRepository.getJoinedByUserSubscription(dto.challengeId, userId),
+      'Challenge subscription'
+    );
+
+    return {
+      id: subscription.id,
+      joinedAt: subscription.joinedAt.toISOString(),
+      dailyLogCount: subscription.dailyLogCount,
+      lastActivityDate: subscription.lastActivityDate?.toISOString()
+    };
+  }
+
+  /**
+   * List challenges joined by the authenticated user
+   * GET /api/v1/users/me/challenges/joined
+   */
+  async listChallengesJoinedByUser(dto: ListChallengesJoinedByUserDto): Promise<ListChallengesJoinedByUserResponse[]> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+    const { page, limit } = dto;
+
+    const challenges = await challengesRepository.listJoinedByUser(userId, page, limit);
+    return challenges.map(challenge => ({
+      id: challenge.id,
+      name: challenge.name,
+      status: challenge.status,
+      joinType: challenge.joinType,
+      startDate: challenge.startDate,
+      durationDays: challenge.durationDays,
+      membersCount: challenge.membersCount,
+      joinedAt: challenge.joinedAt.toISOString(),
+      dailyLogCount: challenge.dailyLogCount,
+      lastActivityDate: challenge.lastActivityDate?.toISOString()
+    }));
+  }
+
+  /**
+   * Delete a user challenge (only if conditions are met)
+   * DELETE /api/v1/users/me/challenges/:challengeId
+   */
+  async deleteUserChallenge(dto: DeleteUserChallengeDto): Promise<DeleteUserChallengeOperationResponse> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId } } = this.requestContext;
+    const challenge = notFoundCheck(await challengesRepository.findByIdForUser(dto.challengeId, userId), 'Challenge');
+    
+    // Can delete if:
+    // 1. Challenge is not started (status = 'not_started')
+    // 2. Challenge is personal (joinType = 'personal')
+    // 3. Challenge has no other members (membersCount <= 1, which includes the owner)
+    // @TODO: make sure this logic is synced up with the repo layer delete
+    if (challenge.status === 'not_started' || 
+           challenge.joinType === 'personal' || 
+           challenge.membersCount <= 1) {
+      throw new ValidationError('Challenge cannot be deleted. It must be not started, personal, or have no other members.');
+    }
+
+    // Delete the challenge
+    await challengesRepository.delete(dto.challengeId, userId);
   }
 
   private mapToChallengeResponse(challenge: Challenge): ChallengeResponse {
     return {
       id: challenge.id,
       name: challenge.name,
+      status: challenge.status,
       description: challenge.description,
       goals: challenge.goals,
       startDate: challenge.startDate,

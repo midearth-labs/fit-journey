@@ -12,8 +12,6 @@ import {
   type GetUserProfileOperation,
   type ListUserLogsOperation,
   type CreateUserChallengeOperation,
-  type ListUserChallengesOperation,
-  type GetUserChallengeOperation,
   type ListUserChallengeQuizSubmissionsOperation,
   type SubmitQuestionOperation,
   type ListQuestionsOperation,
@@ -26,12 +24,17 @@ import {
   type GetPublicSharesOperation,
   type GetUserShareOperation,
   type GetShareOperation,
-  type CreateChallengeOperation,
-  type UpdateChallengeOperation,
+  type UpdateUserChallengeOperation,
   type JoinChallengeOperation,
   type LeaveChallengeOperation,
   type GetChallengeOperation,
   type ListPublicChallengesOperation,
+  type GetUserChallengeOperation,
+  type ListChallengesOwnedByUserOperation,
+  type ListChallengeJoinedByUserMembersOperation,
+  type GetChallengeJoinedByUserSubscriptionOperation,
+  type ListChallengesJoinedByUserOperation,
+  type DeleteUserChallengeOperation,
 } from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
@@ -69,11 +72,6 @@ export type Offsets = {
 
 // --- Challenge DTOs ---
 
-export type CreateUserChallengeDto = {
-  challengeId: string;
-  startDate: string; // YYYY-MM-DD format
-};
-
 export type UpdateUserChallengeScheduleDto = {
   userChallengeId: string;
   newStartDate: string; // YYYY-MM-DD format
@@ -105,9 +103,6 @@ export type ListUserChallengeQuizSubmissionsDto = {
 
 // --- Challenge Response Types ---
 
-export type NewUserChallengeResponse = CreateUserChallengeOperation['response']['body'];
-export type UserChallengeSummaryResponse = ListUserChallengesOperation['response']['body'][0];
-export type UserChallengeDetailResponse = GetUserChallengeOperation['response']['body'];
 export type UserLogResponse = ListUserLogsOperation['response']['body'][0];
 export type UserChallengeProgressResponse = ListUserChallengeQuizSubmissionsOperation['response']['body'][0];
 
@@ -157,8 +152,8 @@ export type SubmitQuestionDto = {
 
 export type ListQuestionsDto = {
   articleId: string;
-  page?: number;
-  limit?: number;
+  page: number;
+  limit: number;
 };
 
 export type GetQuestionDto = {
@@ -178,8 +173,8 @@ export type SubmitAnswerDto = {
 
 export type ListAnswersDto = {
   questionId: string;
-  page?: number;
-  limit?: number;
+  page: number;
+  limit: number;
 };
 
 export type GetAnswerDto = {
@@ -220,14 +215,14 @@ export type AddShareReactionDto = {
 };
 
 export type GetUserSharesDto = {
-  page?: number;
-  limit?: number;
+  page: number;
+  limit: number;
 };
 
 export type GetPublicSharesDto = {
   shareType: ProgressShare['shareType'];
-  page?: number;
-  limit?: number;
+  page: number;
+  limit: number;
 };
 
 export type DeleteShareDto = {
@@ -256,25 +251,25 @@ export type ProgressShareUserDetailResponse = GetUserShareOperation['response'][
 
 // --- Challenges V2 DTOs ---
 
-export type CreateChallengeDto = {
+export type CreateUserChallengeDto = {
   name: string;
   description: string;
   goals: string[];
   startDate: string; // YYYY-MM-DD
   durationDays: number;
   joinType: 'personal' | 'public' | 'invite-code';
-  maxMembers?: number; // default based on joinType
+  maxMembers: number;
 };
 
-export type UpdateChallengeDto = {
+export type UpdateUserChallengeDto = {
   challengeId: string;
-  name?: string;
-  description?: string | null;
-  goals?: string[];
-  startDate?: string;
-  durationDays?: number;
-  joinType?: 'personal' | 'public' | 'invite-code';
-  maxMembers?: number;
+  name: string;
+  description: string;
+  goals: string[];
+  startDate: string;
+  durationDays: number;
+  joinType: 'personal' | 'public' | 'invite-code';
+  maxMembers: number;
 };
 
 export type JoinChallengeDto = { 
@@ -295,9 +290,49 @@ export type ListPublicChallengesDto = {
   limit: number;
 };
 
+// --- User Challenge Management DTOs ---
+
+export type GetUserChallengeDto = {
+  challengeId: string;
+};
+
+export type ListChallengesOwnedByUserDto = {
+  page: number;
+  limit: number;
+};
+
+export type ListChallengeJoinedByUserMembersDto = {
+  challengeId: string;
+  page: number;
+  limit: number;
+};
+
+export type GetChallengeJoinedByUserSubscriptionDto = {
+  challengeId: string;
+};
+
+export type ListChallengesJoinedByUserDto = {
+  page: number;
+  limit: number;
+};
+
+export type DeleteUserChallengeDto = {
+  challengeId: string;
+};
+
 // --- Challenges V2 Response Types ---
 
-export type CreateChallengeResponse = CreateChallengeOperation['response']['body'];
+export type CreateUserChallengeResponse = CreateUserChallengeOperation['response']['body'];
 export type JoinChallengeResponse = JoinChallengeOperation['response']['body'];
 export type ChallengeResponse = GetChallengeOperation['response']['body'];
 export type ListChallengeResponse = ListPublicChallengesOperation['response']['body'][0];
+export type UpdateUserChallengeResponse = UpdateUserChallengeOperation['response']['body'];
+export type LeaveChallengeOperationResponse = LeaveChallengeOperation['response']['body'];
+export type DeleteUserChallengeOperationResponse = DeleteUserChallengeOperation['response']['body'];
+// --- User Challenge Management Response Types ---
+
+export type GetUserChallengeResponse = GetUserChallengeOperation['response']['body'];
+export type ListChallengesOwnedByUserResponse = ListChallengesOwnedByUserOperation['response']['body'][0];
+export type ListChallengeJoinedByUserMembersResponse = ListChallengeJoinedByUserMembersOperation['response']['body'][0];
+export type GetChallengeJoinedByUserSubscriptionResponse = GetChallengeJoinedByUserSubscriptionOperation['response']['body'];
+export type ListChallengesJoinedByUserResponse = ListChallengesJoinedByUserOperation['response']['body'][0];

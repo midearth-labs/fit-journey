@@ -218,7 +218,62 @@ Repositories should let database errors bubble up to services. Services handle b
 - Use `returning()` for insert/update operations when you need the result
 - **Prefer atomic operations over multiple database calls**
 
-### 7. Avoiding N+1 Query Patterns (CRITICAL)
+### 7. Authenticated User Repository Patterns (CRITICAL)
+
+**CRITICAL**: Repository methods that power authenticated user APIs must follow these patterns:
+
+#### Ownership Check Requirements
+
+1. **Always include userId parameter**: All methods must accept `userId` as a parameter
+2. **Enforce ownership in queries**: Use `WHERE` clauses to ensure data belongs to the authenticated user
+3. **Separate authenticated from public methods**: Don't mix authenticated user methods with public methods
+4. **Use descriptive method names**: Include "ForUser" or "ByUser" in method names to indicate ownership
+
+#### Examples
+
+```typescript
+// ✅ Correct Repository Patterns
+export interface IChallengesRepository {
+  // Public methods (no ownership check)
+  findById(id: string): Promise<Challenge | null>;
+  listPublicUpcoming(page: number, limit: number): Promise<Challenge[]>;
+  
+  // Authenticated user methods (with ownership check)
+  findByIdForUser(id: string, userId: string): Promise<Challenge | null>;
+  listOwnedByUser(userId: string, page: number, limit: number): Promise<Challenge[]>;
+  listMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Member[]>;
+  canDeleteChallenge(challengeId: string, userId: string): Promise<boolean>;
+}
+
+// ✅ Implementation with ownership checks
+async findByIdForUser(id: string, userId: string): Promise<Challenge | null> {
+  const [row] = await this.db
+    .select()
+    .from(challenges)
+    .where(and(eq(challenges.id, id), eq(challenges.ownerUserId, userId)))
+    .limit(1);
+  return row ?? null;
+}
+
+// ❌ Incorrect - no ownership check
+async findById(id: string): Promise<Challenge | null> {
+  const [row] = await this.db
+    .select()
+    .from(challenges)
+    .where(eq(challenges.id, id))
+    .limit(1);
+  return row ?? null;
+}
+```
+
+#### Security Benefits
+
+- **Data Isolation**: Users can only access their own data
+- **Authorization**: Ownership is enforced at the database level
+- **Audit Trail**: Clear separation between public and authenticated operations
+- **Type Safety**: Method signatures clearly indicate ownership requirements
+
+### 8. Avoiding N+1 Query Patterns (CRITICAL)
 
 **NEVER implement N+1 query patterns in repositories.** This is a critical performance anti-pattern that can severely impact application performance.
 
@@ -628,3 +683,6 @@ export class UserRepository implements IUserRepository, IUserInternalRepository 
 8. **Documentation**: Document complex queries and business rules
 9. **Return Values**: Update/upsert/delete methods should return boolean indicating affected rows
 10. **Service Integration**: Services should check boolean return values to handle operation failures
+11. **Authenticated User Patterns**: Always include userId ownership checks for authenticated user APIs
+12. **Method Separation**: Keep public and authenticated user methods separate in repository interfaces
+13. **Security First**: Enforce data isolation at the database level through WHERE clauses
