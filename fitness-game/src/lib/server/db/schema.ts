@@ -174,38 +174,6 @@ export const userChallenges = pgTable('user_challenges', {
 });
 
 /**
- * USER CHALLENGE PROGRESS
- * Tracks a user's progress on a specific article/quiz within their challenge.
- */
-// Drizzle Schema
-// @TODO: Remove this
-export const userChallengeProgress = pgTable('user_challenge_progress', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  userChallengeId: uuid('user_challenge_id').notNull().references(() => userChallenges.id, { onDelete: 'cascade' }),
-  
-  // NOTE: 'knowledgeBaseId' corresponds to an ID in your static JSON.
-  knowledgeBaseId: text('knowledge_base_id').notNull(),
-
-  allCorrectAnswers: boolean('all_correct_answers').notNull(), // Whether all questions were answered correctly
-  
-  /**
-   * NEW: Stores all user answers for this quiz in a single JSONB field.
-   * This is ideal for batch submissions.
-   */
-  quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>().notNull(),
-
-  firstAttemptedAt: timestamp('first_attempted_at').notNull(),
-  lastAttemptedAt: timestamp('last_attempted_at').notNull(),
-  attempts: integer('attempts').notNull(),
-}, (table) => {
-  return [
-    // A user should only have one progress record per article in their challenge.
-    uniqueIndex('user_challenge_article_unique').on(table.userChallengeId, table.knowledgeBaseId),
-  ];
-});
-
-/**
  * USER ARTICLES
  * Tracks a user's independent progress on articles (decoupled from challenges).
  * This table replaces the challenge-dependent article progress tracking.
@@ -467,18 +435,6 @@ export const userChallengesRelations = relations(userChallenges, ({ one, many })
     fields: [userChallenges.userId],
     references: [users.id],
   }),
-  progress: many(userChallengeProgress),
-}));
-
-export const userChallengeProgressRelations = relations(userChallengeProgress, ({ one }) => ({
-  user: one(users, {
-    fields: [userChallengeProgress.userId],
-    references: [users.id],
-  }),
-  userChallenge: one(userChallenges, {
-    fields: [userChallengeProgress.userChallengeId],
-    references: [userChallenges.id],
-  }),
 }));
 
 export const userLogsRelations = relations(userLogs, ({ one }) => ({
@@ -571,8 +527,6 @@ export type UserMetadata = InferSelectModel<typeof userMetadata>;
 export type NewUserMetadata = InferInsertModel<typeof userMetadata>;
 export type UserChallenge = InferSelectModel<typeof userChallenges>;
 export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'dailyLogCount'>;
-export type UserChallengeProgress = InferSelectModel<typeof userChallengeProgress>;
-export type NewUserChallengeProgress = Omit<InferInsertModel<typeof userChallengeProgress>, 'id' | 'attempts' | 'lastAttemptedAt'>;
 export type UserLog = InferSelectModel<typeof userLogs>;
 export type NewUserLog = Omit<InferInsertModel<typeof userLogs>, 'id' | 'updatedAt'>;
 export type UpdateUserChallenge = Partial<UserChallenge> & Pick<UserChallenge, 'updatedAt' | 'id' | 'userId'>;

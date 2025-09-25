@@ -339,43 +339,9 @@ export const PutUserLogOperationSchema = {
   }
 };
 
-// User Challenge Operations
-
-// User Challenge Quiz Operations
-export const ListUserChallengeQuizSubmissionsOperationSchema = {
-  request: {
-    params: z.object({ userChallengeId: UuidSchema }),
-    query: z.object({
-      fromDate: IsoDateSchema.optional(),
-      toDate: IsoDateSchema.optional()
-    }),
-    body: z.void()
-  },
-  response: {
-    body: UserChallengeProgressResponseSchema.array()
-  }
-};
-
-export const SubmitUserChallengeQuizOperationSchema = {
-  request: {
-    params: z.object({ 
-      userChallengeId: UuidSchema,
-      knowledgeBaseId: UuidSchema 
-    }),
-    query: z.object({}),
-    body: z.object({
-      quizAnswers: z.array(UserAnswerSchema).min(1, 'At least one answer required'),
-      overrideSubmission: z.boolean().optional()
-    })
-  },
-  response: {
-    body: z.void()
-  }
-};
-
+// New challenge response schema for V2 challenges
 export const GetChallengeParamsSchema = z.object({ challengeId: UuidSchema });
 
-// New challenge response schema for V2 challenges
 export const GetUserChallengeResponseSchema = z.object({
   id: UuidSchema,
   name: z.string(),
@@ -830,29 +796,6 @@ export type PutUserLogOperation = {
   };
   response: {
     body: z.infer<typeof PutUserLogOperationSchema.response.body>;
-  };
-};
-
-
-export type ListUserChallengeQuizSubmissionsOperation = {
-  request: {
-    params: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.request.params>;
-    query: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.request.query>;
-    body: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof ListUserChallengeQuizSubmissionsOperationSchema.response.body>;
-  };
-};
-
-export type SubmitUserChallengeQuizOperation = {
-  request: {
-    params: z.infer<typeof SubmitUserChallengeQuizOperationSchema.request.params>;
-    query: z.infer<typeof SubmitUserChallengeQuizOperationSchema.request.query>;
-    body: z.infer<typeof SubmitUserChallengeQuizOperationSchema.request.body>;
-  };
-  response: {
-    body: z.infer<typeof SubmitUserChallengeQuizOperationSchema.response.body>;
   };
 };
 

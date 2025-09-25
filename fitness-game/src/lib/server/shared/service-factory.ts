@@ -5,7 +5,6 @@ import {
   UserRepository,
   UserMetadataRepository,
   UserChallengeRepository,
-  UserChallengeProgressRepository,
   UserArticlesRepository,
   UserLogsRepository,
   QuestionsRepository,
@@ -16,7 +15,7 @@ import {
   ChallengesRepository,
   ChallengeSubscribersRepository,
 } from '$lib/server/repositories';
-import { LogService, ChallengeProgressService, UserProfileService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type IChallengeProgressService, type AuthServices, type ILogService, type IUserProfileService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
+import { LogService, UserProfileService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type AuthServices, type ILogService, type IUserProfileService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -38,7 +37,6 @@ export class ServiceFactory {
   private readonly userRepository: UserRepository;
   private readonly userMetadataRepository: UserMetadataRepository;
   private readonly userChallengeRepository: UserChallengeRepository;
-  private readonly userChallengeProgressRepository: UserChallengeProgressRepository;
   private readonly userArticlesRepository: UserArticlesRepository;
   private readonly userLogsRepository: UserLogsRepository;
   
@@ -52,7 +50,6 @@ export class ServiceFactory {
   private readonly challengeSubscribersRepository: ChallengeSubscribersRepository;
   
   // Services
-  private readonly challengeProgressServiceCreator: ServiceCreatorFromRequestContext<IChallengeProgressService>;
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
   private readonly userProfileServiceCreator: ServiceCreatorFromRequestContext<IUserProfileService>;
   private readonly articleServiceCreator: ServiceCreatorFromRequestContext<IArticleService>;
@@ -82,7 +79,6 @@ export class ServiceFactory {
     this.featureAccessControl = new FeatureAccessControl(
       { userMetadataRepository: this.userMetadataRepository }
     );
-    this.userChallengeProgressRepository = new UserChallengeProgressRepository(db);
     this.userArticlesRepository = new UserArticlesRepository(db);
     this.userLogsRepository = new UserLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
     
@@ -96,10 +92,6 @@ export class ServiceFactory {
     this.challengesRepository = new ChallengesRepository(db, this.challengeSubscribersRepository);
     
     // Initialize services
-    this.challengeProgressServiceCreator = createServiceFromClass(
-      ChallengeProgressService,
-      { userChallengeRepository: this.userChallengeRepository, userChallengeProgressRepository: this.userChallengeProgressRepository, challengeDAO: this.contentDAOFactory.getDAO('Challenge') }
-    );
     this.logServiceCreator = createServiceFromClass(
       LogService,
       { userChallengeRepository: this.userChallengeRepository, userLogsRepository: this.userLogsRepository, dateTimeHelper: this.dateTimeHelper }
@@ -166,7 +158,6 @@ export class ServiceFactory {
   
   public getAuthServices(authRequestContext: AuthRequestContext): AuthServices {
     return {
-      challengeProgressService: () => this.challengeProgressServiceCreator(authRequestContext),
       logService: () => this.logServiceCreator(authRequestContext),
       userProfileService: () => this.userProfileServiceCreator(authRequestContext),
       articleService: () => this.articleServiceCreator(authRequestContext),
@@ -191,7 +182,6 @@ export class ServiceFactory {
       userRepository: this.userRepository,
       userMetadataRepository: this.userMetadataRepository,
       userChallengeRepository: this.userChallengeRepository,
-      userChallengeProgressRepository: this.userChallengeProgressRepository,
       userLogsRepository: this.userLogsRepository,
       challengesRepository: this.challengesRepository,
       challengeSubscribersRepository: this.challengeSubscribersRepository,

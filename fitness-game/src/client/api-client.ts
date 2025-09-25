@@ -4,8 +4,6 @@ import type {
   ListUserLogsOperation,
   PutUserLogOperation,
   CreateUserChallengeOperation,
-  ListUserChallengeQuizSubmissionsOperation,
-  SubmitUserChallengeQuizOperation,
   SubmitQuestionOperation,
   ListQuestionsOperation,
   GetQuestionOperation,
@@ -164,26 +162,6 @@ export class ApiClient {
   async putLog(dto: PutUserLogOperation['request']): Promise<PutUserLogOperation['response']['body']> {
     return this.request<PutUserLogOperation['response']['body']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
       params: { logDate: dto.params.logDate }
-    });
-  }
-
-  // ---------- User Challenge Quizzes ----------
-
-  /** GET /user-challenges/:userChallengeId/quizzes */
-  async listUserChallengeQuizSubmissions(dto: ListUserChallengeQuizSubmissionsOperation['request']): Promise<ListUserChallengeQuizSubmissionsOperation['response']['body']> {
-    return this.request<ListUserChallengeQuizSubmissionsOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/quizzes', { method: 'GET' }, {
-      params: { userChallengeId: dto.params.userChallengeId },
-      query: { fromDate: dto.query.fromDate, toDate: dto.query.toDate }
-    });
-  }
-
-  /** POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId */
-  async submitUserChallengeQuiz(dto: SubmitUserChallengeQuizOperation['request']): Promise<SubmitUserChallengeQuizOperation['response']['body']> {
-    return this.request<SubmitUserChallengeQuizOperation['response']['body']>('/api/v1/user-challenges/:userChallengeId/quizzes/:knowledgeBaseId', {
-      method: 'POST',
-      body: JSON.stringify(dto.body)
-    }, {
-      params: { userChallengeId: dto.params.userChallengeId, knowledgeBaseId: dto.params.knowledgeBaseId }
     });
   }
 

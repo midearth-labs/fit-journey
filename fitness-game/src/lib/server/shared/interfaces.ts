@@ -12,7 +12,6 @@ import {
   type GetUserProfileOperation,
   type ListUserLogsOperation,
   type CreateUserChallengeOperation,
-  type ListUserChallengeQuizSubmissionsOperation,
   type SubmitQuestionOperation,
   type ListQuestionsOperation,
   type GetQuestionOperation,
@@ -82,18 +81,6 @@ export type Offsets = {
 
 // --- Challenge DTOs ---
 
-export type UpdateUserChallengeScheduleDto = {
-  userChallengeId: string;
-  newStartDate: string; // YYYY-MM-DD format
-};
-
-export type SubmitUserChallengeQuizDto = {
-  userChallengeId: string;
-  knowledgeBaseId: string;
-  quizAnswers: UserAnswer[];
-  overrideSubmission?: boolean;
-};
-
 export type PutUserLogDto = {
   logDate: string; // YYYY-MM-DD format
   values: DailyLogPayload;
@@ -104,17 +91,9 @@ export type ListUserLogsDto = {
   fromDate?: string; // YYYY-MM-DD format
   toDate?: string; // YYYY-MM-DD format
 };
-
-export type ListUserChallengeQuizSubmissionsDto = {
-  userChallengeId: string;
-  fromDate?: string; // YYYY-MM-DD format
-  toDate?: string; // YYYY-MM-DD format
-};
-
 // --- Challenge Response Types ---
 
 export type UserLogResponse = ListUserLogsOperation['response']['body'][0];
-export type UserChallengeProgressResponse = ListUserChallengeQuizSubmissionsOperation['response']['body'][0];
 
 export type ImplicitStatusCheckPayload = {
   referenceDate: Date; // usually requestDate but might be logDate?

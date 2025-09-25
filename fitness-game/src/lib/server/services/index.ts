@@ -1,5 +1,3 @@
-
-import type { IChallengeProgressService } from './challenge-progress.service';
 import type { ILogService } from './log.service';
 import type { IUserProfileService } from './user-profile.service';
 import type { IQuestionsService } from './questions.service';
@@ -8,8 +6,6 @@ import type { IAnswersService } from './answers.service';
 import type { IProgressSharesService, IProgressSharesUnAuthenticatedService } from './progress-shares.service';
 import type { IChallengesService } from './challenges.service';
 import type { IArticleService } from './article.service';
-
-export { type IChallengeProgressService, ChallengeProgressService } from './challenge-progress.service';
 export { type ILogService, LogService } from './log.service';
 export { type IUserProfileService, UserProfileService } from './user-profile.service';
 export { type IArticleService, ArticleService } from './article.service';
@@ -23,7 +19,6 @@ export { type IProgressSharesService, ProgressSharesService, type IProgressShare
 export { type IChallengesService, ChallengesService } from './challenges.service';
 
 export type AuthServices = {
-  challengeProgressService: () => IChallengeProgressService
   logService: () => ILogService
   userProfileService: () => IUserProfileService
   articleService: () => IArticleService
