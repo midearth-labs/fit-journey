@@ -36,7 +36,7 @@ export type IChallengesRepository = {
   getJoinedByUserSubscription(challengeId: string, userId: string): Promise<JoinedByUserMember | null>;
   listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUserWithImplicitStatus>>;
   findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata>;
-  batchUpdateChallengeStatuses(requestDate: Date): Promise<void>;
+  batchUpdateChallengeStatusesLimit(requestDate: Date, limit: number): Promise<void>;
 };
 
 export class ChallengesRepository implements IChallengesRepository {
@@ -298,17 +298,17 @@ export class ChallengesRepository implements IChallengesRepository {
       );
 
     // @TODO: how to make this use the ImplicitStatusCheckPayload approach?
-    const active = rows.filter((c) =>
-      this.isChallengeLoggable(this.getRealChallengeStatus({ referenceDate: requestDate, challengeId: c.id }, { status: c.status, startDate: c.startDate, durationDays: c.durationDays }))
+    const active = rows.filter((challenge) =>
+      this.isChallengeLoggable(this.createImplicitStatusCallback(challenge)({ referenceDate: requestDate }))
     );
 
     const activeChallengeLoggingKeys = convertToUniqueTrackingKeys(active
-      .flatMap((c) => c.goals));
+      .flatMap((challenge) => challenge.goals));
 
-    const earliestStartDate = active.map((c) => c.startDate).sort()[0];
+    const earliestStartDate = active.map((challenge) => challenge.startDate).sort()[0];
 
     const latestEndDate = active
-      .map((c) => this.dateTimeHelper.daysOffset(c.startDate, c.durationDays))
+      .map((challenge) => this.dateTimeHelper.daysOffset(challenge.startDate, challenge.durationDays))
       .sort()
       .reverse()[0];
 
@@ -398,6 +398,77 @@ export class ChallengesRepository implements IChallengesRepository {
         // We use: start_date <= (DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})
         lte(challenges.startDate, sql`(DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})`)
       ));
+  }
+
+  public async batchUpdateChallengeStatusesLimit(requestDate: Date, limit: number): Promise<void> {
+    // Compute boundary dates once (same as full-batch version)
+    const { earliestDateOnEarthWithGrace, earliestDateOnEarth, latestDateOnEarth } = this.getInferredStatusBoundaryDatesForBatchUpdate(requestDate);
+
+    // 1) Lock expired challenges (outside grace period)
+    {
+      const toUpdate = this.db.$with('to_update_lock').as(
+        this.db
+          .select({ id: challenges.id })
+          .from(challenges)
+          .where(and(
+            notInArray(challenges.status, ['locked', 'inactive']),
+            lte(challenges.startDate, sql`(DATE ${earliestDateOnEarthWithGrace}) - (interval '1 day' * ${challenges.durationDays})`)
+          ))
+          .orderBy(challenges.id)
+          .limit(limit)
+          .for('update', { skipLocked: true })
+      );
+
+      await this.db
+        .with(toUpdate)
+        .update(challenges)
+        .set({ status: 'locked', updatedAt: requestDate })
+        .where(sql`${challenges.id} in (select id from ${toUpdate})`);
+    }
+
+    // 2) Activate pending challenges
+    {
+      const toUpdate = this.db.$with('to_update_activate').as(
+        this.db
+          .select({ id: challenges.id })
+          .from(challenges)
+          .where(and(
+            eq(challenges.status, 'not_started'),
+            lte(challenges.startDate, latestDateOnEarth)
+          ))
+          .orderBy(challenges.id)
+          .limit(limit)
+          .for('update', { skipLocked: true })
+      );
+
+      await this.db
+        .with(toUpdate)
+        .update(challenges)
+        .set({ status: 'active', updatedAt: requestDate })
+        .where(sql`${challenges.id} in (select id from ${toUpdate})`);
+    }
+
+    // 3) Complete active challenges when end date has passed globally
+    {
+      const toUpdate = this.db.$with('to_update_complete').as(
+        this.db
+          .select({ id: challenges.id })
+          .from(challenges)
+          .where(and(
+            eq(challenges.status, 'active'),
+            lte(challenges.startDate, sql`(DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})`)
+          ))
+          .orderBy(challenges.id)
+          .limit(limit)
+          .for('update', { skipLocked: true })
+      );
+
+      await this.db
+        .with(toUpdate)
+        .update(challenges)
+        .set({ status: 'completed', updatedAt: requestDate })
+        .where(sql`${challenges.id} in (select id from ${toUpdate})`);
+    }
   }
 
     /**

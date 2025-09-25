@@ -21,7 +21,6 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
       .select()
       .from(userArticles)
       .where(and(eq(userArticles.userId, userId), eq(userArticles.articleId, articleId)))
-      .for('update')
       .limit(1);
     
     return result || null;

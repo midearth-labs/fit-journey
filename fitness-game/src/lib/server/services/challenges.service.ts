@@ -62,8 +62,15 @@ export class ChallengesService implements IChallengesService {
    */
   async createUserChallenge(dto: CreateUserChallengeDto): Promise<CreateUserChallengeResponse> {
     const { user: { id: userId }, requestDate } = this.requestContext;
+    const { dateTimeHelper } = this.dependencies;
     // @TODO: extract these to constants or put the default value in schema
     const maxMembers = dto.joinType === 'personal' ? 1 : (dto.maxMembers);
+
+    // Validate startDate is not in the past anywhere in the world
+    const { latest: latestPossibleDate } = dateTimeHelper.getPossibleDatesOnEarthAtInstant(dateTimeHelper.getUtcNow());
+    if (dto.startDate < latestPossibleDate) {
+      throw new ValidationError('Start date must be a future date');
+    }
 
     const payload: NewChallenge = {
       ownerUserId: userId,
@@ -95,6 +102,12 @@ export class ChallengesService implements IChallengesService {
     // Similar to join logic, check if challenge has already started
     if (challenge.implicitStatus({ referenceDate: requestDate }) !== 'not_started') {
       throw new ValidationError('Challenge is not editable anymore');
+    }
+
+    // Validate startDate is not in the past anywhere in the world
+    const { latest: latestPossibleDate } = dateTimeHelper.getPossibleDatesOnEarthAtInstant(dateTimeHelper.getUtcNow());
+    if (updates.startDate < latestPossibleDate) {
+      throw new ValidationError('Start date must be a future date');
     }
 
     if (updates.joinType === 'personal') {
