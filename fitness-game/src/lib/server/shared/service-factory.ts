@@ -4,7 +4,6 @@ import { DateTimeHelper, ProgressContentHelper, FeatureAccessControl } from '$li
 import {
   UserRepository,
   UserMetadataRepository,
-  UserChallengeRepository,
   UserArticlesRepository,
   UserLogsRepository,
   QuestionsRepository,
@@ -36,7 +35,6 @@ export class ServiceFactory {
   // Repositories
   private readonly userRepository: UserRepository;
   private readonly userMetadataRepository: UserMetadataRepository;
-  private readonly userChallengeRepository: UserChallengeRepository;
   private readonly userArticlesRepository: UserArticlesRepository;
   private readonly userLogsRepository: UserLogsRepository;
   
@@ -73,14 +71,12 @@ export class ServiceFactory {
     // Initialize repositories
     this.userRepository = new UserRepository(db);
     this.userMetadataRepository = new UserMetadataRepository(db);
-    this.userChallengeRepository = new UserChallengeRepository(db, this.dateTimeHelper, this.contentDAOFactory.getDAO('Challenge'));
-    
     // Initialize feature access control after repositories are ready
     this.featureAccessControl = new FeatureAccessControl(
       { userMetadataRepository: this.userMetadataRepository }
     );
     this.userArticlesRepository = new UserArticlesRepository(db);
-    this.userLogsRepository = new UserLogsRepository(db, this.contentDAOFactory.getDAO('Challenge'), this.dateTimeHelper);
+    this.userLogsRepository = new UserLogsRepository(db, this.dateTimeHelper);
     
     // Initialize Social Features repositories
     this.questionsRepository = new QuestionsRepository(db);
@@ -89,12 +85,12 @@ export class ServiceFactory {
     this.answerReactionsRepository = new AnswerReactionsRepository(db);
     this.progressSharesRepository = new ProgressSharesRepository(db);
     this.challengeSubscribersRepository = new ChallengeSubscribersRepository(db);
-    this.challengesRepository = new ChallengesRepository(db, this.challengeSubscribersRepository);
+    this.challengesRepository = new ChallengesRepository(db, this.challengeSubscribersRepository, this.dateTimeHelper);
     
     // Initialize services
     this.logServiceCreator = createServiceFromClass(
       LogService,
-      { userChallengeRepository: this.userChallengeRepository, userLogsRepository: this.userLogsRepository, dateTimeHelper: this.dateTimeHelper }
+      { challengesRepository: this.challengesRepository, userLogsRepository: this.userLogsRepository, dateTimeHelper: this.dateTimeHelper }
     );
     this.userProfileServiceCreator = createServiceFromClass(
       UserProfileService,
@@ -181,7 +177,6 @@ export class ServiceFactory {
     return {
       userRepository: this.userRepository,
       userMetadataRepository: this.userMetadataRepository,
-      userChallengeRepository: this.userChallengeRepository,
       userLogsRepository: this.userLogsRepository,
       challengesRepository: this.challengesRepository,
       challengeSubscribersRepository: this.challengeSubscribersRepository,

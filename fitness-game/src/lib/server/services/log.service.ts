@@ -9,7 +9,7 @@ import {
 } from '$lib/server/shared/errors';
 import { type AllLogKeysType } from '$lib/server/db/schema';
 import { type IDateTimeHelper } from '../helpers/date-time.helper';
-import { type IUserChallengeRepository, type IUserLogsRepository } from '$lib/server/repositories';
+import { type IChallengesRepository, type IUserLogsRepository } from '$lib/server/repositories';
 import { type UserLog } from '$lib/server/db/schema';
 
 
@@ -21,7 +21,7 @@ export type ILogService = {
 export class LogService implements ILogService {
   constructor(
     private readonly dependencies: {
-      readonly userChallengeRepository: IUserChallengeRepository;
+      readonly challengesRepository: IChallengesRepository;
       readonly userLogsRepository: IUserLogsRepository;
       readonly dateTimeHelper: IDateTimeHelper;
     },
@@ -35,11 +35,11 @@ export class LogService implements ILogService {
    */
   async putUserLog(dto: PutUserLogDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, dateTimeHelper, userLogsRepository } = this.dependencies;
+    const { challengesRepository, dateTimeHelper, userLogsRepository } = this.dependencies;
     
     //@TODO: Use this to generate warnings in response, if challenge tracking keys are not set, and if log date is outside all active challenge period
     const {activeChallengeLoggingKeys, earliestStartDate, latestEndDate} = 
-      await userChallengeRepository.findAllActiveChallengeMetadata(userId, { requestDate });
+      await challengesRepository.findAllActiveChallengeMetadata(userId, { requestDate });
 
     // Validate log date is not in the future and not before start date
     // @TODO double check this logic, and also that you cant log for a date outside the challenge period range
@@ -70,7 +70,7 @@ export class LogService implements ILogService {
    */
   async listUserLogs(dto: ListUserLogsDto): Promise<UserLogResponse[]> {
     const { user: { id: userId } } = this.requestContext;
-    const { userChallengeRepository, userLogsRepository } = this.dependencies;
+    const { challengesRepository, userLogsRepository } = this.dependencies;
 
     // Validate date range
     // @TODO: add this to Zod refine validation
@@ -78,11 +78,11 @@ export class LogService implements ILogService {
       throw new ValidationError('From date must be before or equal to to date');
     }
 
-    const findForUserChallenge = async (userChallengeId: string) => {
-      const challenge = await userChallengeRepository.findById(userChallengeId, userId);
+    const findForUserChallenge = async (challengeId: string) => {
+      const challenge = await challengesRepository.findByIdForUser(challengeId, userId);
       if (challenge) {
         return userLogsRepository.findByUserChallengeAndDateRange(
-          {id: userChallengeId, startDate: challenge.startDate},
+          challenge,
           userId,
           dto.fromDate,
           dto.toDate

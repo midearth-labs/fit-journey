@@ -18,6 +18,7 @@ import {
   ShareTypeSchema,
   ShareStatusSchema
 } from './z.primitives';
+import { CHALLENGE_CONSTANTS } from '../content/types/constants';
 // import { ChallengeSchema } from '$lib/server/content/types/challenge'; // Old content system schema
 
 // --- User Profile Schemas ---
@@ -89,7 +90,7 @@ export const CreateChallengeDtoSchema = z.object({
   description: z.string().trim().max(2000),
   goals: z.array(z.string().trim().min(1)).min(1).max(10),
   startDate: IsoDateSchema,
-  durationDays: z.number().int().min(1).max(365),
+  durationDays: z.number().int().min(1).max(CHALLENGE_CONSTANTS.MAX_CHALLENGE_DURATION_DAYS),
   joinType: z.enum(['personal', 'public', 'invite-code']),
   maxMembers: z.number().int().min(1).max(1000).default(1),
 });

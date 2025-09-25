@@ -137,43 +137,6 @@ export const userMetadata = pgTable('user_metadata', {
 
 
 /**
- * USER CHALLENGES
- * Represents a specific user's instance of a challenge.
- * This table is central to tracking a user's journey.
- */
-export const userChallenges = pgTable('user_challenges', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  
-  // NOTE: 'challengeId' is just a string. Your application must validate
-  // that this ID exists in your static JSON challenge definitions.
-  challengeId: text('challenge_id').notNull(),
-
-  startDate: date('start_date').notNull(),
-  originalStartDate: date('original_start_date').notNull(),
-  status: challengeStatusEnum('status').notNull(),
-
-  knowledgeBaseCompletedCount: integer('knowledge_base_completed_count').notNull(),
-  dailyLogCount: integer('daily_log_count').notNull(),
-  lastActivityDate: timestamp('last_activity_date'),
-  
-  createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at').notNull(),
-}, (table) => {
-  return [
-    // Index to find challenges by status and startDate
-    // @TODO: @NOTE: might not be safe to modify this index after deployment, might be better to create a new index with the new statuses
-    // then update the queries, then drop the old index
-    index('user_challenge_status_start_date_not_locked_inactive_index').on(table.status, table.startDate)
-    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
-    
-    // Unique index to ensure a user can only have one challenge per challengeId when status is not locked or inactive
-    uniqueIndex('user_challenge_unique_active_index').on(table.userId, table.challengeId)
-    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
-  ];
-});
-
-/**
  * USER ARTICLES
  * Tracks a user's independent progress on articles (decoupled from challenges).
  * This table replaces the challenge-dependent article progress tracking.
@@ -360,7 +323,6 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   progressShares: many(progressShares),
   questionReactions: many(questionReactions),
   answerReactions: many(answerReactions),
-  userChallenges: many(userChallenges),
   userLogs: many(userLogs),
   userArticles: many(userArticles),
 }));
@@ -430,13 +392,6 @@ export const progressSharesRelations = relations(progressShares, ({ one }) => ({
   }),
 }));
 
-export const userChallengesRelations = relations(userChallenges, ({ one, many }) => ({
-  user: one(users, {
-    fields: [userChallenges.userId],
-    references: [users.id],
-  }),
-}));
-
 export const userLogsRelations = relations(userLogs, ({ one }) => ({
   user: one(users, {
     fields: [userLogs.userId],
@@ -470,6 +425,15 @@ export const challenges = pgTable('challenges', {
     index('challenges_public_list_index')
       .on(table.startDate, table.createdAt)
       .where(sql`${table.joinType} = 'public'`),
+
+
+    // Index to find challenges by status and startDate
+    // @TODO: @NOTE: might not be safe to modify this index after deployment, might be better to create a new index with the new statuses
+    // then update the queries, then drop the old index
+    index('challenge_status_start_date_not_locked_inactive_index').on(table.status, table.startDate)
+    .where(sql`${table.status} NOT IN ('locked', 'inactive')`),
+    
+
     // Discoverability: do not index invite/personal for listing beyond defaults
     check('challenges_members_non_negative', sql`${table.membersCount} >= 0`),
     check('challenges_max_members_min', sql`${table.maxMembers} >= 1`),
@@ -525,11 +489,8 @@ export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
 export type UserMetadata = InferSelectModel<typeof userMetadata>;
 export type NewUserMetadata = InferInsertModel<typeof userMetadata>;
-export type UserChallenge = InferSelectModel<typeof userChallenges>;
-export type NewUserChallenge = Omit<InferInsertModel<typeof userChallenges>, 'id' | 'updatedAt' | 'lastActivityDate' | 'status' | 'knowledgeBaseCompletedCount' | 'dailyLogCount'>;
 export type UserLog = InferSelectModel<typeof userLogs>;
 export type NewUserLog = Omit<InferInsertModel<typeof userLogs>, 'id' | 'updatedAt'>;
-export type UpdateUserChallenge = Partial<UserChallenge> & Pick<UserChallenge, 'updatedAt' | 'id' | 'userId'>;
 
 // Social Features Types
 export type Question = InferSelectModel<typeof questions>;

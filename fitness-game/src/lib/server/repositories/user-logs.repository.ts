@@ -1,14 +1,17 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, gte, lte, sql, inArray } from 'drizzle-orm';
-import { userLogs, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType } from '$lib/server/db/schema';
+import { userLogs, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType, type Challenge } from '$lib/server/db/schema';
 import type { IChallengeDAO } from '../content/daos';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
+import { convertToUniqueTrackingKeys } from '../shared/utils';
+
+type ChallengeFilterDetails = Pick<Challenge, 'id' | 'startDate' | 'durationDays' | 'goals'>;
 
 export type IUserLogsRepository = {
     upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<boolean>;
-    findByUserChallenge(challenge: {id: string, startDate: string}, userId: string): Promise<UserLog[]>;
-    findByUserChallengeAndDateRange(challenge: {id: string, startDate: string}, userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
-    findByUserChallengeAndDate(challenge: {id: string, startDate: string}, userId: string, logDate: string): Promise<UserLog[]>;
+    findByUserChallenge(challenge: ChallengeFilterDetails, userId: string): Promise<UserLog[]>;
+    findByUserChallengeAndDateRange(challenge: ChallengeFilterDetails, userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
+    findByUserChallengeAndDate(challenge: ChallengeFilterDetails, userId: string, logDate: string): Promise<UserLog[]>;
     findByUser(userId: string): Promise<UserLog[]>;
     findByUserDateRange(userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
     findByUserDate(userId: string, logDate: string): Promise<UserLog[]>;
@@ -18,7 +21,6 @@ export type IUserLogsRepository = {
 export class UserLogsRepository implements IUserLogsRepository {
   constructor(
     private db: NodePgDatabase<any>,
-    private readonly challengeDAO: IChallengeDAO,
     private readonly dateTimeHelper: IDateTimeHelper,
   ) {}
 
@@ -112,23 +114,23 @@ export class UserLogsRepository implements IUserLogsRepository {
    * Uses the userChallenge's startDate as fromDate and calculates toDate as startDate + challenge.durationDays
    * Filters by the challenge's tracking keys
    */
-  async findByUserChallenge({id: challengeId, startDate}: {id: string, startDate: string}, userId: string): Promise<UserLog[]> {
-    return await this.findByUserChallengeAndDateRange({id: challengeId, startDate}, userId);
+  async findByUserChallenge(challenge: ChallengeFilterDetails, userId: string): Promise<UserLog[]> {
+    return await this.findByUserChallengeAndDateRange(challenge, userId);
   }
 
   /**
    * Find habit logs for a user challenge within a date range
    */
   async findByUserChallengeAndDateRange(
-    challenge: {id: string, startDate: string},
+    challenge: ChallengeFilterDetails,
     userId: string,
     userFromDate?: string, 
     userEndDate?: string
   ): Promise<UserLog[]> {
-     const {id: challengeId, startDate: challengeStartDate} = challenge;
+     const {id: challengeId, startDate: challengeStartDate, durationDays, goals} = challenge;
      // Get the challenge to access durationDays and tracking keys
-     const {durationDays, loggingKeys: trackingKeys} = this.challengeDAO.getByIdOrThrow(challengeId, () => new Error(`Challenge ${challengeId} not found`));
      const challengeEndDate = this.dateTimeHelper.daysOffset(challengeStartDate, durationDays);
+     const trackingKeys = convertToUniqueTrackingKeys(goals);
 
    // If userFromDate or userEndDate is provided, they must fall within the challenge period
      // Use the later date between userFromDate and startDate
@@ -153,7 +155,7 @@ export class UserLogsRepository implements IUserLogsRepository {
    * Find log record for a specific date within a user challenge
    */
   async findByUserChallengeAndDate(
-    challenge: {id: string, startDate: string},
+    challenge: ChallengeFilterDetails,
     userId: string,
     logDate: string
   ): Promise<UserLog[]> {

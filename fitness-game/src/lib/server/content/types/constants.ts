@@ -25,7 +25,8 @@ export const CONTENT_DIRECTORIES = {
 
 // Content Generation Constants
 export const CHALLENGE_CONSTANTS = {
-  DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS: 48
+  DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS: 48,
+  MAX_CHALLENGE_DURATION_DAYS: 100,
 } as const;
 
 // Time Constants

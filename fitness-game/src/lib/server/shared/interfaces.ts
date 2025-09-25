@@ -3,7 +3,6 @@
 import {
   type UserAnswer, 
   type DailyLogPayload, 
-  type UserChallenge,
   type AllLogKeysType,
   type User,
   type ProgressShare,
@@ -102,10 +101,6 @@ export type ImplicitStatusCheckPayload = {
 
 export type ActiveChallengesStatusCheckPayload = {
   requestDate: Date;
-};
-
-export type UserChallengeWithImplicitStatus = UserChallenge & {
-  implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => UserChallenge['status'];
 };
 
 export type ActiveChallengeMetadata = {

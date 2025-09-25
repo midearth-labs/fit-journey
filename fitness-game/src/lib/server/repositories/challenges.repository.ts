@@ -1,30 +1,52 @@
-import { and, count, eq, lte, or, sql } from 'drizzle-orm';
+import { and, count, eq, lte, or, sql, lt, inArray, notInArray } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { challenges, challengeSubscribers, type Challenge, type ChallengeSubscriber, type NewChallenge, type NewChallengeSubscriber } from '$lib/server/db/schema';
+import { challenges, challengeSubscribers, type Challenge, type ChallengeSubscriber, type NewChallenge, type NewChallengeSubscriber, AllLogKeys, type AllLogKeysType } from '$lib/server/db/schema';
 import { ValidationError } from '../shared/errors';
 import type { IChallengeSubscribersRepository } from './challenge-subscribers.repository';
+import type { ActiveChallengeMetadata, ActiveChallengesStatusCheckPayload, ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
+import type { IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
+import { CHALLENGE_CONSTANTS } from '../content/types/constants';
+import { convertToUniqueTrackingKeys } from '../shared/utils';
 
 export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'dailyLogCount' | 'lastActivityDate'>;
+
 type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'membersCount'> & 
     Pick<ChallengeSubscriber, 'joinedAt' | 'dailyLogCount' | 'lastActivityDate'>;
 
+// Enriched types with implicit status
+export type ChallengeWithImplicitStatus = Challenge & {
+  implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => Challenge['status'];
+};
+
+export type JoinedByUserWithImplicitStatus = JoinedByUser & {
+  implicitStatus: (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => Challenge['status'];
+};
+
 export type IChallengesRepository = {
   create(challenge: NewChallenge): Promise<{ id: string }>;
-  findById(id: string): Promise<Challenge | null>;
-  findByIdForUser(id: string, userId: string): Promise<Challenge | null>;
+  findById(id: string): Promise<ChallengeWithImplicitStatus | null>;
+  findByIdForUser(id: string, userId: string): Promise<ChallengeWithImplicitStatus | null>;
   update(id: string, updates: Partial<Challenge>): Promise<boolean>;
   delete(id: string, userId: string): Promise<boolean>;
   join(subscriber: NewChallengeSubscriber, tx?: NodePgDatabase<any>, ): Promise<{id: string}>;
   leave(challengeId: string, userId: string): Promise<boolean>;
-  listPublicUpcoming(page: number, limit: number): Promise<Challenge[]>;
-  listOwnedByUser(userId: string, page: number, limit: number): Promise<Challenge[]>;
+  listPublicUpcoming(page: number, limit: number): Promise<ChallengeWithImplicitStatus[]>;
+  listOwnedByUser(userId: string, page: number, limit: number): Promise<ChallengeWithImplicitStatus[]>;
   listJoinedByUserMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Array<JoinedByUserMember>>;
   getJoinedByUserSubscription(challengeId: string, userId: string): Promise<JoinedByUserMember | null>;
-  listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUser>>;
+  listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUserWithImplicitStatus>>;
+  findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata>;
+  batchUpdateChallengeStatuses(requestDate: Date): Promise<void>;
 };
 
 export class ChallengesRepository implements IChallengesRepository {
-  constructor(private db: NodePgDatabase<any>, private challengeSubscribersRepository: IChallengeSubscribersRepository) {}
+  constructor(private db: NodePgDatabase<any>, private challengeSubscribersRepository: IChallengeSubscribersRepository, private dateTimeHelper: IDateTimeHelper) {}
+
+  // Helper method to create implicit status callback
+  private createImplicitStatusCallback(challenge: Pick<Challenge, 'id' | 'status' | 'startDate' | 'durationDays'>) {
+    return (payload: Pick<ImplicitStatusCheckPayload, 'referenceDate'>) => 
+      this.getRealChallengeStatus({ ...payload, challengeId: challenge.id }, challenge);
+  }
 
   async create(challenge: NewChallenge): Promise<{ id: string }> {
    const newChallenge = await this.db.transaction(async (tx) => {
@@ -42,9 +64,12 @@ export class ChallengesRepository implements IChallengesRepository {
     return newChallenge;
   }
 
-  async findById(id: string): Promise<Challenge | null> {
+  async findById(id: string): Promise<ChallengeWithImplicitStatus | null> {
     const [row] = await this.db.select().from(challenges).where(eq(challenges.id, id)).limit(1);
-    return row ?? null;
+    return row ? {
+      ...row,
+      implicitStatus: this.createImplicitStatusCallback(row)
+    } : null;
   }
 
   async update(id: string, updates: Partial<Challenge>): Promise<boolean> {
@@ -134,7 +159,7 @@ export class ChallengesRepository implements IChallengesRepository {
     await this.addToMembersCountTx(tx, challengeId, -1);
   }
 
-  async listPublicUpcoming(page: number, limit: number): Promise<Challenge[]> {
+  async listPublicUpcoming(page: number, limit: number): Promise<ChallengeWithImplicitStatus[]> {
     const offset = (page - 1) * limit;
     
     // Rely on partial index for joinType = 'public'
@@ -145,19 +170,25 @@ export class ChallengesRepository implements IChallengesRepository {
       .orderBy(challenges.startDate, challenges.createdAt)
       .limit(limit)
       .offset(offset);
-    return rows;
+    return rows.map(row => ({
+      ...row,
+      implicitStatus: this.createImplicitStatusCallback(row)
+    }));
   }
 
-  async findByIdForUser(id: string, userId: string): Promise<Challenge | null> {
+  async findByIdForUser(id: string, userId: string): Promise<ChallengeWithImplicitStatus | null> {
     const [row] = await this.db
       .select()
       .from(challenges)
       .where(and(eq(challenges.id, id), eq(challenges.ownerUserId, userId)))
       .limit(1);
-    return row ?? null;
+    return row ? {
+      ...row,
+      implicitStatus: this.createImplicitStatusCallback(row)
+    } : null;
   }
 
-  async listOwnedByUser(userId: string, page: number, limit: number): Promise<Challenge[]> {
+  async listOwnedByUser(userId: string, page: number, limit: number): Promise<ChallengeWithImplicitStatus[]> {
     const offset = (page - 1) * limit;
     
     const rows = await this.db
@@ -167,7 +198,10 @@ export class ChallengesRepository implements IChallengesRepository {
       .orderBy(challenges.createdAt)
       .limit(limit)
       .offset(offset);
-    return rows;
+    return rows.map(row => ({
+      ...row,
+      implicitStatus: this.createImplicitStatusCallback(row)
+    }));
   }
 
   async listJoinedByUserMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Array<JoinedByUserMember>> {
@@ -193,7 +227,7 @@ export class ChallengesRepository implements IChallengesRepository {
     return rows;
   }
   
-  async listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUser>> {
+  async listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUserWithImplicitStatus>> {
     const offset = (page - 1) * limit;
     
     const rows = await this.db
@@ -216,7 +250,10 @@ export class ChallengesRepository implements IChallengesRepository {
       .limit(limit)
       .offset(offset);
     
-    return rows;
+    return rows.map(row => ({
+      ...row,
+      implicitStatus: this.createImplicitStatusCallback(row)
+    }));
   }
 
   async getJoinedByUserSubscription(challengeId: string, userId: string): Promise<JoinedByUserMember | null> {
@@ -237,5 +274,164 @@ export class ChallengesRepository implements IChallengesRepository {
     
     return row ?? null;
   }
+
+  // --- Migrated logic from UserChallengeRepository (adapted for V2 challenges) ---
+
+  async findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata> {
+    const { requestDate } = payload;
+    // Query challenges joined by the user with fields required for status computation and logging keys
+    const rows = await this.db
+      .select({
+        id: challenges.id,
+        status: challenges.status,
+        startDate: challenges.startDate,
+        durationDays: challenges.durationDays,
+        goals: challenges.goals,
+      })
+      .from(challenges)
+      .innerJoin(challengeSubscribers, eq(challenges.id, challengeSubscribers.challengeId))
+      .where(
+        and(
+          eq(challengeSubscribers.userId, userId), 
+          inArray(challenges.status, ['active', 'completed', 'not_started'])
+        )
+      );
+
+    // @TODO: how to make this use the ImplicitStatusCheckPayload approach?
+    const active = rows.filter((c) =>
+      this.isChallengeLoggable(this.getRealChallengeStatus({ referenceDate: requestDate, challengeId: c.id }, { status: c.status, startDate: c.startDate, durationDays: c.durationDays }))
+    );
+
+    const activeChallengeLoggingKeys = convertToUniqueTrackingKeys(active
+      .flatMap((c) => c.goals));
+
+    const earliestStartDate = active.map((c) => c.startDate).sort()[0];
+
+    const latestEndDate = active
+      .map((c) => this.dateTimeHelper.daysOffset(c.startDate, c.durationDays))
+      .sort()
+      .reverse()[0];
+
+    return { activeChallengeLoggingKeys, earliestStartDate, latestEndDate };
+  }
+
+  private isChallengeLoggable(status: Challenge['status']): boolean {
+    return ['active', 'completed'].includes(status);
+  }
+
+  private getRealChallengeStatus(
+    payload: ImplicitStatusCheckPayload,
+    challenge: Pick<Challenge, 'status' | 'startDate' | 'durationDays'>
+  ): Challenge['status'] {
+    const { referenceDate: requestDate } = payload;
+
+    // Guard: explicit locked or inactive remain as-is
+    if (challenge.status === 'locked' || challenge.status === 'inactive') {
+      return challenge.status;
+    }
+
+    const { earliestAllowedStartDate, latestDateOnEarth, earliestDateOnEarth } = this.getInferredStatusBoundaryDates(challenge.durationDays, requestDate);
+
+    // Outside grace window → locked
+    if (earliestAllowedStartDate >= challenge.startDate) {
+      return 'locked';
+    }
+
+    // State transitions for non-locked
+    switch (challenge.status) {
+      case 'completed':
+        return 'completed';
+      case 'active': {
+        // start_date <= earliestDateOnEarth - durationDays days
+        // We use: start_date <= (DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})
+        
+        // Consider a challenge completed when its end date has passed globally
+        const endDate = this.dateTimeHelper.daysOffset(earliestDateOnEarth, - challenge.durationDays);
+        if (challenge.startDate <= endDate) {
+          return 'completed';
+        }
+        return 'active';
+      }
+      case 'not_started':
+        if (latestDateOnEarth >= challenge.startDate) {
+          return 'active';
+        }
+        return 'not_started';
+      default:
+        throw new Error(`Invalid or unhandled challenge status: ${challenge.status}`);
+    }
+  }
+
+  public async batchUpdateChallengeStatuses(requestDate: Date): Promise<void> {
+    // Compute boundary dates once
+    // We'll operate on all challenges regardless of duration; completion uses durationDays per row is not directly expressible
+    // We update per-rule where possible with available columns
+    // @TODO: use some artificial maxbound date based on today and max durationDays to set a limit on the queries
+    // to help range-scan performance
+    const { earliestDateOnEarthWithGrace, earliestDateOnEarth, latestDateOnEarth } = this.getInferredStatusBoundaryDatesForBatchUpdate(requestDate);
+     
+    // 1) Lock expired challenges (outside grace period): startDate <= earliestDateOnEarthWithGrace
+    await this.db.update(challenges)
+      .set({ status: 'locked', updatedAt: requestDate })
+      .where(and(
+        // status NOT IN ('locked','inactive')
+        notInArray(challenges.status, ['locked', 'inactive']),
+        // start_date <= earliestDateOnEarthWithGrace - durationDays days
+        // We use: start_date <= (DATE ${earliestDateOnEarthWithGrace}) - (interval '1 day' * ${challenges.durationDays})
+        lte(challenges.startDate, sql`(DATE ${earliestDateOnEarthWithGrace}) - (interval '1 day' * ${challenges.durationDays})`)
+      ));
+
+    // 2) Activate pending challenges: not_started and startDate <= latestDateOnEarth
+    await this.db.update(challenges)
+      .set({ status: 'active', updatedAt: requestDate })
+      .where(and(
+        eq(challenges.status, 'not_started'),
+        lte(challenges.startDate, latestDateOnEarth)
+      ));
+
+    // 3) Complete active challenges when end date has passed globally: startDate + durationDays <= earliestDateOnEarth
+    await this.db.update(challenges)
+      .set({ status: 'completed', updatedAt: requestDate })
+      .where(and(
+        eq(challenges.status, 'active'),
+        // start_date <= earliestDateOnEarth - durationDays days
+        // We use: start_date <= (DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})
+        lte(challenges.startDate, sql`(DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})`)
+      ));
+  }
+
+    /**
+     * 
+     * @param challengeDays 
+     * @param requestDate 
+     * @returns 
+     * earliestAllowedStartDate The calculated date for the grace period lock check.
+     * latestDateOnEarth The earliest current date anywhere on Earth, for activation checks.
+     */
+    private getInferredStatusBoundaryDates(
+      challengeDays: number,
+      requestDate: Date,
+  ) {
+      const { earliest: earliestAllowedStartDate } = this.dateTimeHelper.getDatesFromInstantWithOffset(
+          requestDate,
+          { days: -challengeDays, hours: -CHALLENGE_CONSTANTS.DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS }
+      );
+      const { latest: latestDateOnEarth, earliest: earliestDateOnEarth } = this.dateTimeHelper.getPossibleDatesOnEarthAtInstant(requestDate);
+      return { earliestAllowedStartDate, latestDateOnEarth, earliestDateOnEarth };
+  }
+
+/**
+ * For the batch update, we don't need to pass the challengeDays because we will 
+ * dynamically inject it in the queries
+ * @param requestDate 
+ * @returns 
+ */
+  private getInferredStatusBoundaryDatesForBatchUpdate(
+    requestDate: Date,
+) {
+    const { earliestAllowedStartDate, latestDateOnEarth, earliestDateOnEarth } = this.getInferredStatusBoundaryDates(0, requestDate);
+    
+    return { earliestDateOnEarthWithGrace: earliestAllowedStartDate, latestDateOnEarth, earliestDateOnEarth };
+}
 }
 
