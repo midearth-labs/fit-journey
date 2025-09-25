@@ -1,7 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, gte, lte, sql, inArray } from 'drizzle-orm';
 import { userLogs, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType, type Challenge } from '$lib/server/db/schema';
-import type { IChallengeDAO } from '../content/daos';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
 import { convertToUniqueTrackingKeys } from '../shared/utils';
 

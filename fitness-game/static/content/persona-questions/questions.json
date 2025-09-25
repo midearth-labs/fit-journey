@@ -1,6 +1,7 @@
 [
     {
       "id": "q1",
+      "is_active": true,
       "text": "What do you think \"free weights\" means in a gym context?",
       "category": "knowledge",
       "answers": [
@@ -31,6 +32,7 @@
     },
     {
       "id": "q2",
+      "is_active": true,
       "text": "What do you think is most important for weight loss?",
       "category": "knowledge",
       "answers": [
@@ -61,6 +63,7 @@
     },
     {
       "id": "q3",
+      "is_active": true,
       "text": "If someone said \"I'm doing 3 sets of 10 reps,\" what would you think they mean?",
       "category": "knowledge",
       "answers": [
@@ -91,6 +94,7 @@
     },
     {
       "id": "q4",
+      "is_active": true,
       "text": "Your friend invites you to a spin class tomorrow morning. Your first thought is:",
       "category": "barriers",
       "answers": [
@@ -121,6 +125,7 @@
     },
     {
       "id": "q5",
+      "is_active": true,
       "text": "Which of these sounds most like your ideal Saturday morning?",
       "category": "preference",
       "answers": [
@@ -152,6 +157,7 @@
     },
     {
       "id": "q6",
+      "is_active": true,
       "text": "You see someone doing squats at the gym. What goes through your mind?",
       "category": "situation",
       "answers": [
@@ -181,6 +187,7 @@
     },
     {
       "id": "q7",
+      "is_active": true,
       "text": "Your doctor says you should 'get more exercise.' Your honest reaction is:",
       "category": "goals",
       "answers": [
@@ -212,6 +219,7 @@
     },
     {
       "id": "q8",
+      "is_active": true,
       "text": "When you hear 'muscle soreness,' you think:",
       "category": "knowledge",
       "answers": [
@@ -242,6 +250,7 @@
     },
     {
       "id": "q9",
+      "is_active": true,
       "text": "If you had 20 free minutes right now, you would most likely:",
       "category": "situation",
       "answers": [
@@ -272,6 +281,7 @@
     },
     {
       "id": "q10",
+      "is_active": true,
       "text": "What would make you most likely to stick with an exercise program?",
       "category": "preference",
       "answers": [

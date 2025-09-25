@@ -46,7 +46,8 @@ export class ContentLoader {
         KnowledgeBase: await this.loadContentType('KnowledgeBase'),
         //StreakType: await this.loadContentType('StreakType'),
         //AvatarAsset: await this.loadContentType('AvatarAsset'),
-        Challenge: await this.loadContentType('Challenge'),
+        LearningPath: await this.loadContentType('LearningPath'),
+        PersonaQuestion: await this.loadContentType('PersonaQuestion'),
       }
     } catch (error) {
       console.error(`Failed to load content`);

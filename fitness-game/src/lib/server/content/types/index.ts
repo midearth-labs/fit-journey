@@ -3,12 +3,13 @@
 
 import { z } from 'zod';
 import { type ContentType } from './constants';
-import { type ContentCategory, ContentCategorySchema } from './content-category';
+import {  ContentCategorySchema } from './content-category';
 import { type Question, QuestionSchema } from './question';
 import { type KnowledgeBase, KnowledgeBaseSchema } from './knowledge-base';
 import { type StreakType, StreakTypeSchema } from './streak-type';
 import { type AvatarAsset, AvatarAssetSchema } from './avatar-asset';
-import { type Challenge, ChallengeSchema } from './challenge';
+import { type LearningPath, LearningPathSchema } from './learning-paths';
+import { type PersonaQuestion, PersonaQuestionSchema } from './persona-question';
 
 export * from './common';
 export * from './content-category';
@@ -16,6 +17,8 @@ export * from './knowledge-base';
 export * from './question';
 export * from './streak-type';
 export * from './avatar-asset';
+export * from './learning-paths';
+export * from './persona-question';
 
 // Mapping from ContentType to Zod schema for runtime validation
 export const ContentTypeToSchema = {
@@ -24,7 +27,9 @@ export const ContentTypeToSchema = {
   KnowledgeBase: KnowledgeBaseSchema,
   // StreakType: StreakTypeSchema,
   // AvatarAsset: AvatarAssetSchema,
-  Challenge: ChallengeSchema,
+  //Challenge: ChallengeSchema,
+  LearningPath: LearningPathSchema,
+  PersonaQuestion: PersonaQuestionSchema,
 } as const;
 type ContentTypeToSchemaType = typeof ContentTypeToSchema;
 

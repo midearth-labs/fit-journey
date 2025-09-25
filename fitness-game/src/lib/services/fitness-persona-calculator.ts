@@ -1,46 +1,46 @@
 import type { PersonaLearningPath, PersonaAnswerOption, PersonaQuizResult } from '../types/fitness-persona-calculator';
-import { PersonaTags } from '../types/fitness-persona-calculator';
+import type { PersonaTags } from '$lib/server/content/types/learning-paths';
 
 // Static mapping of PersonaTags to their descriptions
 const personaDescriptions: Record<PersonaTags, string> = {
   // Knowledge Level
-  [PersonaTags.COMPLETE_BEGINNER]: 'complete fitness beginner',
-  [PersonaTags.SOME_KNOWLEDGE]: 'fitness learner with some experience',
-  [PersonaTags.INTERMEDIATE]: 'intermediate fitness enthusiast',
+  'complete_beginner': 'complete fitness beginner',
+  'some_knowledge': 'fitness learner with some experience',
+  'intermediate': 'intermediate fitness enthusiast',
   
   // Time Availability
-  [PersonaTags.TIME_POOR]: 'time-constrained individual',
-  [PersonaTags.TIME_FLEXIBLE]: 'flexible schedule exerciser',
-  [PersonaTags.WEEKEND_ONLY]: 'weekend warrior',
+  'time_poor': 'time-constrained individual',
+  'time_flexible': 'flexible schedule exerciser',
+  'weekend_only': 'weekend warrior',
   
   // Motivation Type
-  [PersonaTags.NEEDS_MOTIVATION]: 'motivation-seeking learner',
-  [PersonaTags.SELF_MOTIVATED]: 'self-driven exerciser',
-  [PersonaTags.SOCIALLY_MOTIVATED]: 'socially-motivated exerciser',
-  [PersonaTags.DATA_DRIVEN]: 'data-driven optimizer',
+  'needs_motivation': 'motivation-seeking learner',
+  'self_motivated': 'self-driven exerciser',
+  'socially_motivated': 'socially-motivated exerciser',
+  'data_driven': 'data-driven optimizer',
   
   // Goals
-  [PersonaTags.WEIGHT_LOSS]: 'weight loss focused',
-  [PersonaTags.MUSCLE_GAIN]: 'strength building focused',
-  [PersonaTags.HEALTH_FOCUS]: 'health-conscious individual',
-  [PersonaTags.GENERAL_FITNESS]: 'general fitness enthusiast',
+  'weight_loss': 'weight loss focused',
+  'muscle_gain': 'strength building focused',
+  'health_focus': 'health-conscious individual',
+  'general_fitness': 'general fitness enthusiast',
   
   // Barriers
-  [PersonaTags.GYM_ANXIETY]: 'gym-anxious beginner',
-  [PersonaTags.RESTART_ANXIETY]: 'restart warrior',
-  [PersonaTags.INJURY_CONCERN]: 'injury-conscious exerciser',
-  [PersonaTags.NO_GYM_ACCESS]: 'home workout enthusiast',
+  'gym_anxiety': 'gym-anxious beginner',
+  'restart_anxiety': 'restart warrior',
+  'injury_concern': 'injury-conscious exerciser',
+  'no_gym_access': 'home workout enthusiast',
   
   // Life Situation
-  [PersonaTags.BUSY_PARENT]: 'busy parent',
-  [PersonaTags.BUSY_PROFESSIONAL]: 'busy professional',
-  [PersonaTags.STUDENT]: 'student athlete',
+  'busy_parent': 'busy parent',
+  'busy_professional': 'busy professional',
+  'student': 'student athlete',
   
   // Personality
-  [PersonaTags.ANALYTICAL]: 'analytical learner',
-  [PersonaTags.ACTION_ORIENTED]: 'action-oriented starter',
-  [PersonaTags.CAUTIOUS]: 'cautious exerciser',
-  [PersonaTags.SOCIAL]: 'social exerciser'
+  'analytical': 'analytical learner',
+  'action_oriented': 'action-oriented starter',
+  'cautious': 'cautious exerciser',
+  'social': 'social exerciser'
 };
 
 // Mutually-exclusive persona groups. Only the highest-scoring tag in each group is retained.
@@ -48,61 +48,61 @@ const mutuallyExclusiveGroups: Map<string, PersonaTags[]> = new Map<string, Pers
   [
     'knowledge',
     [
-      PersonaTags.COMPLETE_BEGINNER,
-      PersonaTags.SOME_KNOWLEDGE,
-      PersonaTags.INTERMEDIATE
+      'complete_beginner',
+      'some_knowledge',
+      'intermediate'
     ]
   ],
   [
     'time',
     [
-      PersonaTags.TIME_POOR,
-      PersonaTags.TIME_FLEXIBLE,
-      PersonaTags.WEEKEND_ONLY
+      'time_poor',
+      'time_flexible',
+      'weekend_only'
     ]
   ],
   [
     'motivation',
     [
-      PersonaTags.NEEDS_MOTIVATION,
-      PersonaTags.SELF_MOTIVATED,
-      PersonaTags.SOCIALLY_MOTIVATED,
-      PersonaTags.DATA_DRIVEN
+      'needs_motivation',
+      'self_motivated',
+      'socially_motivated',
+      'data_driven'
     ]
   ],
   [
     'goals',
     [
-      PersonaTags.WEIGHT_LOSS,
-      PersonaTags.MUSCLE_GAIN,
-      PersonaTags.HEALTH_FOCUS,
-      PersonaTags.GENERAL_FITNESS
+      'weight_loss',
+      'muscle_gain',
+      'health_focus',
+      'general_fitness'
     ]
   ],
   [
     'barriers',
     [
-      PersonaTags.GYM_ANXIETY,
-      PersonaTags.RESTART_ANXIETY,
-      PersonaTags.INJURY_CONCERN,
-      PersonaTags.NO_GYM_ACCESS
+      'gym_anxiety',
+      'restart_anxiety',
+      'injury_concern',
+      'no_gym_access'
     ]
   ],
   [
     'life',
     [
-      PersonaTags.BUSY_PARENT,
-      PersonaTags.BUSY_PROFESSIONAL,
-      PersonaTags.STUDENT
+      'busy_parent',
+      'busy_professional',
+      'student'
     ]
   ],
   [
     'personality',
     [
-      PersonaTags.ANALYTICAL,
-      PersonaTags.ACTION_ORIENTED,
-      PersonaTags.CAUTIOUS,
-      PersonaTags.SOCIAL
+      'analytical',
+      'action_oriented',
+      'cautious',
+      'social'
     ]
   ]
 ]);
@@ -122,7 +122,10 @@ export class FitnessPersonaCalculator {
       const personaScores = new Map<PersonaTags, number>();
   
       // Initialize all persona tags with 0
-      Object.values(PersonaTags).forEach(tag => {
+      // @@TODO: use PersonaTags enum instead of personaDescriptions
+      const allPersonaTags: PersonaTags[] = Object.keys(personaDescriptions) as PersonaTags[];
+      
+      allPersonaTags.forEach(tag => {
         personaScores.set(tag, 0);
       });
   
@@ -217,7 +220,7 @@ export class FitnessPersonaCalculator {
   
       // Calculate match scores for each path
       const pathScores = this.paths.map(path => {
-        const matchScore = this.calculatePathMatchScore(userPersonaScores, path.personaWeights);
+        const matchScore = this.calculatePathMatchScore(userPersonaScores, path.personaWeights || {});
         return {
           path,
           matchScore,

@@ -8,7 +8,8 @@ import { KnowledgeBaseDAO } from './knowledge-base-dao';
 import { AvatarAssetDAO } from './avatar-asset-dao';
 import { StreakTypeDAO } from './streak-type-dao';
 import { type ContentType } from '../types/constants';
-import { ChallengeDAO } from './challenge';
+import { LearningPathDAO } from './learning-path-dao';
+import { PersonaQuestionDAO } from './persona-question-dao';
 
 export type ContentDaos = {
   ContentCategory: ContentCategoryDAO;
@@ -16,7 +17,8 @@ export type ContentDaos = {
   KnowledgeBase: KnowledgeBaseDAO;
   //StreakType: StreakTypeDAO;
   //AvatarAsset: AvatarAssetDAO;
-  Challenge: ChallengeDAO;
+  LearningPath: LearningPathDAO;
+  PersonaQuestion: PersonaQuestionDAO;
 };
 
 export class ContentDAOFactory {
@@ -36,7 +38,8 @@ export class ContentDAOFactory {
       KnowledgeBase: new KnowledgeBaseDAO(content.KnowledgeBase),
       //StreakType: new StreakTypeDAO(content.StreakType),
       //AvatarAsset: new AvatarAssetDAO(content.AvatarAsset),
-      Challenge: new ChallengeDAO(content.Challenge),
+      LearningPath: new LearningPathDAO(content.LearningPath),
+      PersonaQuestion: new PersonaQuestionDAO(content.PersonaQuestion),
     });
   }
 

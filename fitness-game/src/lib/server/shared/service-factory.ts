@@ -98,7 +98,7 @@ export class ServiceFactory {
     );
     this.articleServiceCreator = createServiceFromClass(
       ArticleService,
-      { userArticlesRepository: this.userArticlesRepository, knowledgeBaseDAO: this.contentDAOFactory.getDAO('KnowledgeBase') }
+      { userArticlesRepository: this.userArticlesRepository, knowledgeBaseDAO: this.contentDAOFactory.getDAO('KnowledgeBase'), questionsDAO: this.contentDAOFactory.getDAO('Question') }
     );
     
     // Initialize Social Features services

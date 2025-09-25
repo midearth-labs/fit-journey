@@ -5,7 +5,8 @@ export const ContentTypes = [
   'KnowledgeBase',
   //'StreakType',
   //'AvatarAsset',
-  'Challenge'
+  'LearningPath',
+  'PersonaQuestion'
 ] as const;
 
 
@@ -20,7 +21,8 @@ export const CONTENT_DIRECTORIES = {
   KnowledgeBase: 'knowledge-base',
   //StreakType: 'streak-types',
   //AvatarAsset: 'avatar-assets',
-  Challenge: 'challenges',
+  LearningPath: 'learning-paths',
+  PersonaQuestion: 'persona-questions',
 } as const satisfies Record<ContentType, string>;
 
 // Content Generation Constants
