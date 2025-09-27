@@ -1326,3 +1326,117 @@ export type GetUserArticleOperation = {
     body: z.infer<typeof GetUserArticleOperationSchema.response.body>;
   };
 };
+
+// --- Calendar Integration Schemas ---
+
+// Calendar Settings DTO Schema
+export const UpdateCalendarSettingsDtoSchema = z.object({
+  challengeReminderTime: TimeSchema.nullable().optional(),
+  articleReminderFrequency: z.enum(['daily', 'weekly', 'biweekly']).nullable().optional(),
+  articleReminderTime: TimeSchema.nullable().optional(),
+  timezone: TimezoneSchema.nullable().optional(),
+  enableCalendarIntegration: z.boolean().optional()
+});
+
+// Calendar Settings Response Schema
+export const CalendarSettingsResponseSchema = z.object({
+  calendarCode: UuidSchema.nullable(),
+  challengeReminderTime: z.string().nullable(),
+  articleReminderFrequency: z.string().nullable(),
+  articleReminderTime: z.string().nullable(),
+  timezone: z.string().nullable(),
+  enableCalendarIntegration: z.boolean(),
+  calendarUrl: z.string().nullable(),
+  createdAt: z.string(),
+  updatedAt: z.string()
+});
+
+// Calendar Operations
+export const UpdateCalendarSettingsOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: UpdateCalendarSettingsDtoSchema
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export const GetCalendarSettingsOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: CalendarSettingsResponseSchema
+  }
+};
+
+export const DownloadUserCalendarOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.instanceof(Blob) // ICS content
+  }
+};
+
+export const GetPublicCalendarOperationSchema = {
+  request: {
+    params: z.object({ calendarCode: UuidSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.instanceof(Blob) // ICS content
+  }
+};
+
+// Calendar Operation Types
+export type UpdateCalendarSettingsOperation = {
+  request: {
+    params: z.infer<typeof UpdateCalendarSettingsOperationSchema.request.params>;
+    query: z.infer<typeof UpdateCalendarSettingsOperationSchema.request.query>;
+    body: z.infer<typeof UpdateCalendarSettingsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof UpdateCalendarSettingsOperationSchema.response.body>;
+  };
+};
+
+export type GetCalendarSettingsOperation = {
+  request: {
+    params: z.infer<typeof GetCalendarSettingsOperationSchema.request.params>;
+    query: z.infer<typeof GetCalendarSettingsOperationSchema.request.query>;
+    body: z.infer<typeof GetCalendarSettingsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetCalendarSettingsOperationSchema.response.body>;
+  };
+};
+
+export type DownloadUserCalendarOperation = {
+  request: {
+    params: z.infer<typeof DownloadUserCalendarOperationSchema.request.params>;
+    query: z.infer<typeof DownloadUserCalendarOperationSchema.request.query>;
+    body: z.infer<typeof DownloadUserCalendarOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof DownloadUserCalendarOperationSchema.response.body>;
+  };
+};
+
+export type GetPublicCalendarOperation = {
+  request: {
+    params: z.infer<typeof GetPublicCalendarOperationSchema.request.params>;
+    query: z.infer<typeof GetPublicCalendarOperationSchema.request.query>;
+    body: z.infer<typeof GetPublicCalendarOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetPublicCalendarOperationSchema.response.body>;
+  };
+};

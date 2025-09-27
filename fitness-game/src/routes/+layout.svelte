@@ -15,7 +15,7 @@
 		document.documentElement.setAttribute('data-theme', theme);
 		
 		// Load progress
-		progressStore.load();
+		//progressStore.load();
 		
 		return () => {}
 	});

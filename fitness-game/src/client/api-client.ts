@@ -39,7 +39,11 @@ import type {
   SkipPracticalOperation,
   CompleteArticleOperation,
   ListUserArticlesOperation,
-  GetUserArticleOperation
+  GetUserArticleOperation,
+  UpdateCalendarSettingsOperation,
+  GetCalendarSettingsOperation,
+  DownloadUserCalendarOperation,
+  GetPublicCalendarOperation
 } from '$lib/server/shared/schemas';
 
 /**
@@ -1328,6 +1332,137 @@ export class ApiClient {
   async getUserArticle(articleId: string): Promise<GetUserArticleOperation['response']['body']> {
     return this.request<GetUserArticleOperation['response']['body']>('/api/v1/users/me/articles/:articleId', { method: 'GET' }, {
       params: { articleId }
+    });
+  }
+
+  // ---------- Calendar Integration & Reminders ----------
+  // Powers: Calendar synchronization, reminder management, challenge scheduling, article reading reminders
+
+  /** 
+   * GET /api/v1/users/me/calendar/settings
+   * 
+   * Retrieves the user's calendar integration settings including reminder preferences,
+   * timezone configuration, and calendar subscription information.
+   * 
+   * Returns calendar settings object with:
+   * - calendarCode: Unique identifier for calendar subscription (nullable if not enabled)
+   * - challengeReminderTime: Daily reminder time for challenges (HH:MM format)
+   * - articleReminderFrequency: Frequency for article reading reminders (daily/weekly/biweekly)
+   * - articleReminderTime: Time for article reading reminders (HH:MM format)
+   * - timezone: User's timezone for proper scheduling
+   * - enableCalendarIntegration: Whether calendar integration is enabled
+   * - calendarUrl: Public URL for calendar subscription (nullable if not enabled)
+   * - Creation and update timestamps
+   * 
+   * Features powered:
+   * - Calendar integration management
+   * - Reminder preference configuration
+   * - Timezone-aware scheduling
+   * - Calendar subscription setup
+   * - User preference persistence
+   * 
+   * Used in: Calendar settings pages, reminder configuration interfaces, integration setup
+   */
+  async getCalendarSettings(): Promise<GetCalendarSettingsOperation['response']['body']> {
+    return this.request<GetCalendarSettingsOperation['response']['body']>('/api/v1/users/me/calendar/settings', { method: 'GET' });
+  }
+
+  /** 
+   * PATCH /api/v1/users/me/calendar/settings
+   * 
+   * Updates the user's calendar integration settings and reminder preferences.
+   * Enables users to customize their calendar experience and reminder timing.
+   * 
+   * Request body supports updating:
+   * - challengeReminderTime: Daily reminder time for challenges (HH:MM format, nullable to clear)
+   * - articleReminderFrequency: Frequency for article reminders (daily/weekly/biweekly, nullable to clear)
+   * - articleReminderTime: Time for article reading reminders (HH:MM format, nullable to clear)
+   * - timezone: User's timezone for proper scheduling (nullable to clear)
+   * - enableCalendarIntegration: Whether to enable calendar integration
+   * 
+   * Features powered:
+   * - Personalized reminder scheduling
+   * - Calendar integration toggle
+   * - Timezone-aware reminder management
+   * - Flexible reminder frequency control
+   * - User preference customization
+   * 
+   * Used in: Calendar settings interfaces, reminder configuration flows, integration management
+   */
+  async updateCalendarSettings(dto: UpdateCalendarSettingsOperation['request']['body']): Promise<UpdateCalendarSettingsOperation['response']['body']> {
+    return this.request<UpdateCalendarSettingsOperation['response']['body']>('/api/v1/users/me/calendar/settings', { 
+      method: 'PATCH', 
+      body: JSON.stringify(dto) 
+    });
+  }
+
+  /** 
+   * GET /api/v1/users/me/calendar/download
+   * 
+   * Downloads a static iCalendar (.ics) file containing the user's current
+   * challenge reminders and article reading reminders. Perfect for users who
+   * prefer simple download-and-import workflows over URL subscriptions.
+   * 
+   * Returns:
+   * - Content-Type: text/calendar; charset=utf-8
+   * - Content-Disposition: attachment; filename="fitjourney-calendar-{date}.ics"
+   * - ICS content with current challenge and article reminders
+   * 
+   * Calendar content includes:
+   * - Daily challenge reminders for active challenges (with RRULE for duration)
+   * - Weekly/bi-weekly article reading reminders
+   * - Challenge milestone celebrations
+   * - Challenge end date notifications
+   * - User-customized reminder times and frequencies
+   * 
+   * Features powered:
+   * - Static calendar file generation
+   * - Universal calendar app compatibility
+   * - Offline calendar access
+   * - User-controlled reminder timing
+   * - Challenge-specific reminder customization
+   * 
+   * Used in: Calendar download interfaces, offline calendar management, simple integration workflows
+   */
+  async downloadUserCalendar(): Promise<DownloadUserCalendarOperation['response']['body']> {
+    return this.request<DownloadUserCalendarOperation['response']['body']>('/api/v1/users/me/calendar/download', { method: 'GET' });
+  }
+
+  /** 
+   * GET /public/api/v1/calendar/:calendarCode
+   * 
+   * Provides a dynamic calendar subscription URL that returns live iCalendar (.ics) content.
+   * Enables users to subscribe to their FitJourney calendar for automatic updates as
+   * their challenges and article progress changes.
+   * 
+   * Path parameters:
+   * - calendarCode: Unique identifier for the user's calendar subscription
+   * 
+   * Returns:
+   * - Content-Type: text/calendar; charset=utf-8
+   * - Live ICS content that updates automatically
+   * - Real-time challenge and article reminder updates
+   * 
+   * Calendar content includes:
+   * - Dynamic challenge reminders that update as challenges progress
+   * - Adaptive article reading reminders based on completion status
+   * - Real-time milestone and achievement notifications
+   * - Automatic challenge status updates (active → completed → locked)
+   * - User preference changes reflected immediately
+   * 
+   * Features powered:
+   * - Dynamic calendar subscription
+   * - Real-time reminder updates
+   * - Automatic challenge progress synchronization
+   * - Live article completion tracking
+   * - Seamless calendar app integration
+   * - No manual re-download required
+   * 
+   * Used in: Calendar subscription URLs, dynamic integration workflows, real-time reminder management
+   */
+  async getPublicCalendar(calendarCode: string): Promise<string> {
+    return this.request<string>('/public/api/v1/calendar/:calendarCode', { method: 'GET' }, {
+      params: { calendarCode }
     });
   }
 
