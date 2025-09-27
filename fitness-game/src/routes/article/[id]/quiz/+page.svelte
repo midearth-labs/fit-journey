@@ -5,6 +5,7 @@
 	import { contentService } from '$lib/services/content.service';
 	import { progressStore } from '$lib/stores/progress';
 	import type { Article, Question } from '$lib/types/content';
+	import { marked } from 'marked';
 
 	let article: Article | null = null;
 	let questions: Question[] = [];
@@ -13,6 +14,7 @@
 	let selectedAnswer: number | null = null;
 	let showResults = false;
 	let score = 0;
+	let renderedPassages: { [key: string]: string } = {};
 
 	onMount(async () => {
 		const articleId = $page.params.id;
@@ -27,6 +29,13 @@
 			article = articleData;
 			questions = questionsData;
 			answers = new Array(questions.length).fill(null);
+			
+			// Pre-render passage content
+			if (article?.passages) {
+				for (const passage of article.passages) {
+					renderedPassages[passage.id] = await renderMarkdown(passage.passage_text);
+				}
+			}
 		} catch (error) {
 			console.error('Error loading quiz:', error);
 		}
@@ -80,16 +89,8 @@
 		}
 	}
 
-	function renderMarkdown(content: string): string {
-		// @TODO: THIS SHOULD USE THE MARKED LIBRARY
-		// Simple markdown rendering
-		return content
-			.replace(/^### (.*$)/gim, '<h3>$1</h3>')
-			.replace(/^## (.*$)/gim, '<h2>$1</h2>')
-			.replace(/^# (.*$)/gim, '<h1>$1</h1>')
-			.replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-			.replace(/\*(.*)\*/gim, '<em>$1</em>')
-			.replace(/\n/gim, '<br>');
+	async function renderMarkdown(content: string): Promise<string> {
+		return (await marked.parse(content)).replace(/<h1>.*?<\/h1>/g, '');
 	}
 </script>
 
@@ -129,7 +130,7 @@
 					{#if passage}
 						<div class="passage-container">
 							<h4 class="passage-title">{passage.title}</h4>
-							<div class="passage-text">{@html renderMarkdown(passage.passage_text)}</div>
+							<div class="passage-text">{@html renderedPassages[passage.id]}</div>
 						</div>
 					{/if}
 					

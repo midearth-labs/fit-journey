@@ -1,5 +1,4 @@
-import { writable } from 'svelte/store';
-import { browser } from '$app/environment';
+import { writable } from '$lib/stores/local-storage-store';
 
 interface Progress {
   completedArticles: string[];
@@ -17,25 +16,15 @@ const defaultProgress: Progress = {
   categoryProgress: {}
 };
 
+const BROWSER_STORAGE_KEY = 'fitjourney-progress';
+
 function createProgressStore() {
-  const { subscribe, set, update } = writable<Progress>(defaultProgress);
+  const { subscribe, set, update } = writable<Progress>(BROWSER_STORAGE_KEY, defaultProgress);
 
   return {
     subscribe,
-    load: () => {
-      if (browser) {
-        const stored = localStorage.getItem('fitjourney-progress');
-        if (stored) {
-          set(JSON.parse(stored));
-        }
-      }
-    },
-    save: (progress: Progress) => {
-      if (browser) {
-        localStorage.setItem('fitjourney-progress', JSON.stringify(progress));
-        set(progress);
-      }
-    },
+    set,
+    update,
     markArticleCompleted: (articleId: string) => {
       update(progress => {
         if (!progress.completedArticles.includes(articleId)) {

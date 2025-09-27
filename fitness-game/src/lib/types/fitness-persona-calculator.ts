@@ -12,7 +12,7 @@ import type {
 
 export type { 
   PersonaTags, 
-  LearningPath as PersonaLearningPath,
+  LearningPath,
   PersonaAnswerOption, 
   PersonaQuestion 
 };

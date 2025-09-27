@@ -1,4 +1,4 @@
-import type { PersonaLearningPath, PersonaAnswerOption, PersonaQuestion, PersonaQuizResult } from '../../types/fitness-persona-calculator';
+import type { LearningPath, PersonaAnswerOption, PersonaQuestion, PersonaQuizResult } from '../../types/fitness-persona-calculator';
 import { FitnessPersonaCalculator } from '../../services/fitness-persona-calculator';
 
 import { readFileSync } from 'fs';
@@ -10,18 +10,18 @@ import { join } from 'path';
  */
 export function loadPersonaCalculatorData(): {
   questions: PersonaQuestion[];
-  learningPaths: PersonaLearningPath[];
+  learningPaths: LearningPath[];
 } {
   try {
     // Load questions
-    const questionsPath = join(process.cwd(), 'static/content/persona-calculator/questions.json');
+    const questionsPath = join(process.cwd(), 'static/content/persona-questions/questions.json');
     const questionsData = readFileSync(questionsPath, 'utf-8');
     const questions: PersonaQuestion[] = JSON.parse(questionsData);
 
     // Load learning paths
-    const pathsPath = join(process.cwd(), 'static/content/persona-calculator/learning-paths.json');
+    const pathsPath = join(process.cwd(), 'static/content/learning-paths/learning.json');
     const pathsData = readFileSync(pathsPath, 'utf-8');
-    const learningPaths: PersonaLearningPath[] = JSON.parse(pathsData);
+    const learningPaths: LearningPath[] = JSON.parse(pathsData);
 
     return {
       questions,

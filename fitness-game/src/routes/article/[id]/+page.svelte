@@ -4,8 +4,11 @@
 	import { goto } from '$app/navigation';
 	import { contentService } from '$lib/services/content.service';
 	import type { Article } from '$lib/types/content';
+	import { marked } from 'marked';
 
 	let article: Article | null = null;
+	let renderedBody: string = '';
+	let renderedPassages: { [key: string]: string } = {};
 
 	onMount(async () => {
 		const articleId = $page.params.id;
@@ -13,6 +16,14 @@
 		
 		try {
 			article = await contentService.getArticleById(articleId);
+			if (article) {
+				renderedBody = await renderMarkdown(article.body);
+				if (article.passages) {
+					for (const passage of article.passages) {
+						renderedPassages[passage.id] = await renderMarkdown(passage.passage_text);
+					}
+				}
+			}
 		} catch (error) {
 			console.error('Error loading article:', error);
 		}
@@ -34,15 +45,8 @@
 		return nameMap[categoryId] || categoryId;
 	}
 
-	function renderMarkdown(content: string): string {
-		// Simple markdown rendering - in a real app you'd use a proper markdown parser
-		return content
-			.replace(/^### (.*$)/gim, '<h3>$1</h3>')
-			.replace(/^## (.*$)/gim, '<h2>$1</h2>')
-			.replace(/^# (.*$)/gim, '<h1>$1</h1>')
-			.replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-			.replace(/\*(.*)\*/gim, '<em>$1</em>')
-			.replace(/\n/gim, '<br>');
+	async function renderMarkdown(content: string): Promise<string> {
+		return (await marked.parse(content)).replace(/<h1>.*?<\/h1>/g, '');
 	}
 </script>
 
@@ -66,7 +70,7 @@
 		</div>
 		<div class="article-content">
 			<div class="article-body">
-				{@html renderMarkdown(article.body)}
+				{@html renderedBody}
 			</div>
 			{#if article.passages && article.passages.length > 0}
 				<div class="passages-section">
@@ -74,7 +78,7 @@
 					{#each article.passages as passage}
 						<div class="passage-container">
 							<h4 class="passage-title">{passage.title}</h4>
-							<div class="passage-text">{@html renderMarkdown(passage.passage_text)}</div>
+							<div class="passage-text">{@html renderedPassages[passage.id]}</div>
 						</div>
 					{/each}
 				</div>

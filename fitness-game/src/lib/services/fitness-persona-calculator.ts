@@ -1,4 +1,4 @@
-import type { PersonaLearningPath, PersonaAnswerOption, PersonaQuizResult } from '../types/fitness-persona-calculator';
+import type { LearningPath, PersonaAnswerOption, PersonaQuizResult } from '../types/fitness-persona-calculator';
 import type { PersonaTags } from '$lib/server/content/types/learning-paths';
 
 // Static mapping of PersonaTags to their descriptions
@@ -109,9 +109,9 @@ const mutuallyExclusiveGroups: Map<string, PersonaTags[]> = new Map<string, Pers
 
 // Main Scoring Algorithm
 export class FitnessPersonaCalculator {
-    private paths: PersonaLearningPath[];
+    private paths: LearningPath[];
   
-    constructor(paths: PersonaLearningPath[]) {
+    constructor(paths: LearningPath[]) {
       this.paths = paths;
     }
   
