@@ -5,28 +5,29 @@
   import { personaQuizStore } from '$lib/stores/persona-quiz';
   import type { PersonaQuestion, LearningPath, PersonaAnswerOption, PersonaQuizResult } from '$lib/types/fitness-persona-calculator';
 
-  export let onComplete: (result: PersonaQuizResult) => void = () => {};
+  interface Props {
+    onComplete?: (result: PersonaQuizResult) => void;
+  }
+  
+  const { onComplete = () => {} }: Props = $props();
 
-  let questions: PersonaQuestion[] = [];
-  let learningPaths: LearningPath[] = [];
-  let currentQuestion: PersonaQuestion | null = null;
-  let isLoading = true;
-  let error: string | null = null;
-  let timeRemaining = 60; // 60 seconds total
+  let questions: PersonaQuestion[] = $state([]);
+  let learningPaths: LearningPath[] = $state([]);
+  let currentQuestion: PersonaQuestion | null = $state(null);
+  let isLoading = $state(true);
+  let error: string | null = $state(null);
+  let timeRemaining = $state(60); // 60 seconds total
   let timerInterval: ReturnType<typeof setInterval> | null = null;
-  let isSubmitting = false;
+  let isSubmitting = $state(false);
   let calculator: FitnessPersonaCalculator | null = null;
 
   // Reactive store values
-  $: progress = $personaQuizStore;
-  $: currentQuestionIndex = progress.currentQuestionIndex;
-  $: isCompleted = progress.isCompleted;
-  $: answers = progress.answers;
+  let progress = $derived($personaQuizStore);
+  let currentQuestionIndex = $derived(progress.currentQuestionIndex);
+  let isCompleted = $derived(progress.isCompleted);
+  let answers = $derived(progress.answers);
 
   onMount(async () => {
-    // Load progress from localStorage
-    //personaQuizStore.load();
-    
     try {
       // Load questions and learning paths
       const [questionsData, learningPathsData] = await Promise.all([
@@ -99,10 +100,10 @@
       timerInterval = null;
     }
     
-      // Auto-submit with current answers
-      if (!isCompleted && answers.size > 0) {
-        submitQuiz();
-      }
+    // Auto-submit with current answers
+    if (!isCompleted && Object.keys(answers).length > 0) {
+      submitQuiz();
+    }
   }
 
   function selectAnswer(answerIndex: number) {
@@ -179,24 +180,32 @@
   }
 
   // Calculate progress percentage
-  $: progressPercentage = questions.length > 0 ? (currentQuestionIndex / questions.length) * 100 : 0;
+  let progressPercentage = $derived(questions.length > 0 ? (currentQuestionIndex / questions.length) * 100 : 0);
 </script>
 
 <div class="persona-quiz-container">
   {#if isLoading}
     <div class="loading-state">
-      <div class="spinner"></div>
+      <div class="loading-spinner"></div>
       <p>Loading your personalized fitness assessment...</p>
     </div>
   {:else if error}
     <div class="error-state">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
       <h2>Oops! Something went wrong</h2>
       <p>{error}</p>
-      <button on:click={restartQuiz} class="btn-primary">Try Again</button>
+      <button onclick={restartQuiz} class="btn btn-primary">
+        <i class="fas fa-redo"></i>
+        Try Again
+      </button>
     </div>
   {:else if isCompleted && progress.result}
     <div class="results-state">
-      <div class="success-icon">🎉</div>
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
       <h2>Assessment Complete!</h2>
       <div class="persona-result">
         <h3>Your Fitness Profile</h3>
@@ -204,9 +213,16 @@
         
         <div class="recommended-path">
           <h4>Recommended Learning Path</h4>
-          <div class="path-card">
-            <h5>{progress.result.recommendedPath.name}</h5>
-            <p>{progress.result.recommendedPath.description}</p>
+          <div class="path-card primary">
+            <div class="path-header">
+              <div class="path-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="path-info">
+                <h5>{progress.result.recommendedPath.name}</h5>
+                <p>{progress.result.recommendedPath.description}</p>
+              </div>
+            </div>
             <div class="match-score">
               {progress.result.rankedPaths[0].matchPercentage}% match
             </div>
@@ -217,8 +233,15 @@
           <h4>Alternative Options</h4>
           {#each progress.result.rankedPaths.slice(1, 4) as path, index}
             <div class="path-card alternative">
-              <h5>{path.path.name}</h5>
-              <p>{path.path.description}</p>
+              <div class="path-header">
+                <div class="path-icon">
+                  <i class="fas fa-{index === 0 ? 'medal' : index === 1 ? 'award' : 'certificate'}"></i>
+                </div>
+                <div class="path-info">
+                  <h5>{path.path.name}</h5>
+                  <p>{path.path.description}</p>
+                </div>
+              </div>
               <div class="match-score">{path.matchPercentage}% match</div>
             </div>
           {/each}
@@ -226,34 +249,48 @@
       </div>
       
       <div class="quiz-stats">
-        <p>Completed in {formatTime(Math.floor((progress.endTime! - progress.startTime!) / 1000))}</p>
-        <p>Answered {answers.size} of {questions.length} questions</p>
+        <div class="stat-item">
+          <i class="fas fa-clock"></i>
+          <span>Completed in {formatTime(Math.floor((progress.endTime! - progress.startTime!) / 1000))}</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-question-circle"></i>
+          <span>Answered {Object.keys(answers).length} of {questions.length} questions</span>
+        </div>
       </div>
       
-      <button on:click={restartQuiz} class="btn-secondary">Take Assessment Again</button>
+      <button onclick={restartQuiz} class="btn btn-outline">
+        <i class="fas fa-redo"></i>
+        Take Assessment Again
+      </button>
     </div>
   {:else if currentQuestion}
     <div class="quiz-state">
       <!-- Header with timer and progress -->
       <div class="quiz-header">
         <div class="timer">
-          <span class="timer-icon">⏱️</span>
+          <i class="fas fa-clock"></i>
           <span class="timer-text" class:timer-warning={timeRemaining <= 10}>
             {formatTime(timeRemaining)}
           </span>
         </div>
         
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: {progressPercentage}%"></div>
-        </div>
-        
-        <div class="question-counter">
-          Question {currentQuestionIndex + 1} of {questions.length}
+        <div class="progress-section">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: {progressPercentage}%"></div>
+          </div>
+          <div class="question-counter">
+            Question {currentQuestionIndex + 1} of {questions.length}
+          </div>
         </div>
       </div>
 
       <!-- Question -->
       <div class="question-container">
+        <div class="question-type">
+          <i class="fas fa-brain"></i>
+          <span>Fitness Assessment</span>
+        </div>
         <h2 class="question-text">{currentQuestion.text}</h2>
         <p class="question-category">{currentQuestion.category}</p>
       </div>
@@ -263,10 +300,14 @@
         {#each currentQuestion.answers as answer, index}
           <button
             class="answer-option"
-            on:click={() => selectAnswer(index)}
+            onclick={() => selectAnswer(index)}
             disabled={isSubmitting}
           >
-            <span class="answer-letter">{String.fromCharCode(65 + index)}</span>
+            <div class="option-radio">
+              {#if answers[currentQuestion.id] === index}
+                <div class="radio-selected"></div>
+              {/if}
+            </div>
             <span class="answer-text">{answer.text}</span>
           </button>
         {/each}
@@ -275,13 +316,15 @@
       <!-- Navigation -->
       <div class="quiz-navigation">
         {#if currentQuestionIndex > 0}
-          <button on:click={goBack} class="btn-secondary" disabled={isSubmitting}>
-            ← Previous
+          <button onclick={goBack} class="btn btn-outline" disabled={isSubmitting}>
+            <i class="fas fa-arrow-left"></i>
+            Previous
           </button>
         {/if}
         
         <div class="quiz-actions">
-          <button on:click={restartQuiz} class="btn-outline" disabled={isSubmitting}>
+          <button onclick={restartQuiz} class="btn btn-ghost" disabled={isSubmitting}>
+            <i class="fas fa-redo"></i>
             Start Over
           </button>
         </div>
@@ -289,9 +332,15 @@
     </div>
   {:else}
     <div class="error-state">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
       <h2>No questions available</h2>
       <p>Unable to load quiz questions. Please try again.</p>
-      <button on:click={restartQuiz} class="btn-primary">Retry</button>
+      <button onclick={restartQuiz} class="btn btn-primary">
+        <i class="fas fa-redo"></i>
+        Retry
+      </button>
     </div>
   {/if}
 </div>
@@ -300,24 +349,24 @@
   .persona-quiz-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--space-6);
     min-height: 60vh;
   }
 
   /* Loading State */
   .loading-state {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: var(--space-16) var(--space-8);
   }
 
-  .spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #007bff;
-    border-radius: 50%;
+  .loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--gray-200);
+    border-top: 4px solid var(--primary-color);
+    border-radius: var(--radius-full);
     animation: spin 1s linear infinite;
-    margin: 0 auto 1rem;
+    margin: 0 auto var(--space-4);
   }
 
   @keyframes spin {
@@ -325,50 +374,83 @@
     100% { transform: rotate(360deg); }
   }
 
+  .loading-state p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
   /* Error State */
   .error-state {
     text-align: center;
-    padding: 2rem;
-    background: #fee;
-    border: 1px solid #fcc;
-    border-radius: 8px;
-    margin: 2rem 0;
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border: 1px solid var(--danger-color);
+    border-radius: var(--radius-xl);
+    margin: var(--space-6) 0;
+    box-shadow: var(--shadow-md);
+  }
+
+  .error-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 75, 75, 0.1);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+    color: var(--danger-color);
+    font-size: 1.5rem;
   }
 
   .error-state h2 {
-    color: #c33;
-    margin-bottom: 1rem;
+    color: var(--danger-color);
+    margin-bottom: var(--space-4);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .error-state p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
   }
 
   /* Quiz State */
   .quiz-state {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--bg-card);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
+    border: 1px solid var(--gray-200);
   }
 
   .quiz-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-inverse);
+    padding: var(--space-6);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .timer {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-weight: bold;
-    font-size: 1.2rem;
+    gap: var(--space-2);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .timer i {
+    font-size: 1rem;
   }
 
   .timer-warning {
-    color: #ff6b6b;
+    color: var(--warning-color);
     animation: pulse 1s infinite;
   }
 
@@ -377,66 +459,108 @@
     50% { opacity: 0.7; }
   }
 
-  .progress-bar {
+  .progress-section {
     flex: 1;
+    margin: 0 var(--space-4);
+  }
+
+  .progress-bar {
+    width: 100%;
     height: 8px;
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    margin: 0 1rem;
+    border-radius: var(--radius-full);
     overflow: hidden;
+    margin-bottom: var(--space-2);
   }
 
   .progress-fill {
     height: 100%;
-    background: white;
-    transition: width 0.3s ease;
+    background: var(--text-inverse);
+    transition: width var(--transition-normal);
+    border-radius: var(--radius-full);
   }
 
   .question-counter {
     font-weight: 500;
+    font-size: 0.9rem;
+    text-align: center;
   }
 
   .question-container {
-    padding: 2rem;
-    border-bottom: 1px solid #eee;
+    padding: var(--space-8);
+    border-bottom: 1px solid var(--gray-200);
   }
 
-  .question-text {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-    line-height: 1.4;
-  }
-
-  .question-category {
-    color: #666;
-    font-size: 0.9rem;
+  .question-type {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--text-inverse);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: var(--space-4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
+  .question-text {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  .question-category {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
   .answers-container {
-    padding: 1.5rem 2rem;
+    padding: var(--space-6) var(--space-8);
   }
 
   .answer-option {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    background: white;
+    padding: var(--space-5);
+    margin-bottom: var(--space-3);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    background: var(--bg-secondary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
     text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .answer-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(88, 204, 2, 0.1), transparent);
+    transition: left var(--transition-normal);
+  }
+
+  .answer-option:hover::before {
+    left: 100%;
   }
 
   .answer-option:hover:not(:disabled) {
-    border-color: #007bff;
-    background: #f8f9ff;
-    transform: translateY(-1px);
+    border-color: var(--primary-color);
+    background: var(--bg-card);
+    transform: translateX(4px);
   }
 
   .answer-option:disabled {
@@ -444,210 +568,291 @@
     cursor: not-allowed;
   }
 
-  .answer-letter {
+  .option-radio {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: #007bff;
-    color: white;
-    border-radius: 50%;
-    font-weight: bold;
-    margin-right: 1rem;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--gray-400);
+    border-radius: var(--radius-full);
+    margin-right: var(--space-4);
     flex-shrink: 0;
+    transition: all var(--transition-fast);
+  }
+
+  .answer-option:hover .option-radio {
+    border-color: var(--primary-color);
+  }
+
+  .radio-selected {
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color);
+    border-radius: var(--radius-full);
   }
 
   .answer-text {
     flex: 1;
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--text-primary);
   }
 
   .quiz-navigation {
-    padding: 1.5rem 2rem;
+    padding: var(--space-6) var(--space-8);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f8f9fa;
-    border-top: 1px solid #eee;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--gray-200);
   }
 
   .quiz-actions {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-3);
   }
 
   /* Results State */
   .results-state {
     text-align: center;
-    padding: 2rem;
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
   }
 
   .success-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--success-color), var(--primary-dark));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-6);
+    color: var(--text-inverse);
+    font-size: 2rem;
+    box-shadow: var(--shadow-lg);
   }
 
   .results-state h2 {
-    color: #28a745;
-    margin-bottom: 2rem;
+    color: var(--success-color);
+    margin-bottom: var(--space-8);
+    font-size: 2rem;
+    font-weight: 700;
   }
 
   .persona-result {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    margin: 2rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+    border: 1px solid var(--gray-200);
+  }
+
+  .persona-result h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 
   .persona-description {
-    font-size: 1.2rem;
-    color: #007bff;
-    font-weight: 500;
-    margin: 1rem 0 2rem;
-    padding: 1rem;
-    background: #f8f9ff;
-    border-radius: 8px;
-    border-left: 4px solid #007bff;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
   }
 
   .recommended-path {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .recommended-path h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+    font-size: 1.25rem;
+    font-weight: 600;
   }
 
   .path-card {
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    transition: all 0.2s ease;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
   }
 
-  .path-card.alternative {
-    border-color: #dee2e6;
+  .path-card.primary {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
   }
 
-  .path-card h5 {
-    color: #333;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+  .path-card.primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   }
 
-  .path-card p {
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+  .path-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .path-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .path-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-inverse);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .path-info h5 {
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .path-info p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
   }
 
   .match-score {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--text-inverse);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
     display: inline-block;
-    background: #007bff;
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
   }
 
-  .alternative-paths .match-score {
-    background: #6c757d;
+  .alternative-paths {
+    margin-bottom: var(--space-8);
+  }
+
+  .alternative-paths h4 {
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .alternative-paths .path-card {
+    margin-bottom: var(--space-4);
   }
 
   .quiz-stats {
-    margin: 2rem 0;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    color: #666;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
   }
 
-  .quiz-stats p {
-    margin: 0.5rem 0;
-  }
-
-  /* Buttons */
-  .btn-primary, .btn-secondary, .btn-outline {
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-secondary);
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
+  }
+
+  .stat-item i {
+    color: var(--primary-color);
     font-size: 1rem;
-  }
-
-  .btn-primary {
-    background: #007bff;
-    color: white;
-  }
-
-  .btn-primary:hover:not(:disabled) {
-    background: #0056b3;
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    background: #6c757d;
-    color: white;
-  }
-
-  .btn-secondary:hover:not(:disabled) {
-    background: #545b62;
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: #6c757d;
-    border: 2px solid #6c757d;
-  }
-
-  .btn-outline:hover:not(:disabled) {
-    background: #6c757d;
-    color: white;
-  }
-
-  .btn-primary:disabled, .btn-secondary:disabled, .btn-outline:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
   }
 
   /* Responsive Design */
   @media (max-width: 768px) {
     .persona-quiz-container {
-      padding: 1rem;
+      padding: var(--space-4);
     }
 
     .quiz-header {
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--space-3);
       text-align: center;
     }
 
-    .progress-bar {
+    .progress-section {
       margin: 0;
-      order: 2;
+      width: 100%;
+    }
+
+    .question-container {
+      padding: var(--space-6);
     }
 
     .question-text {
       font-size: 1.25rem;
     }
 
-    .answer-option {
-      padding: 0.75rem;
+    .answers-container {
+      padding: var(--space-4) var(--space-6);
     }
 
     .quiz-navigation {
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--space-4);
     }
 
     .quiz-actions {
+      width: 100%;
       justify-content: center;
+    }
+
+    .path-header {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--space-3);
+    }
+
+    .quiz-stats {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .question-container {
+      padding: var(--space-4);
+    }
+
+    .answers-container {
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .answer-option {
+      padding: var(--space-4);
+    }
+
+    .quiz-navigation {
+      padding: var(--space-4);
     }
   }
 </style>

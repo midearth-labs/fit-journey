@@ -1,351 +1,631 @@
-# Server Layer Architecture Guide
+# Server Architecture and Design Patterns - FitJourney
 
-This document provides a high-level overview of the server architecture and how all components work together.
+This document outlines the server-side architecture, API design, and backend patterns within the `src/lib/server` directory, focusing on maintainable, scalable, and type-safe backend development.
 
 ## Architecture Overview
 
-The server follows a layered architecture with clear separation of concerns:
+The server layer follows a modern Node.js architecture with:
+- **API Routes**: RESTful endpoints with Zod validation
+- **Database Layer**: PostgreSQL with Drizzle ORM
+- **Authentication**: Supabase-based auth with session management
+- **Services**: Business logic and data processing
+- **Repositories**: Data access layer abstraction
+- **Schemas**: Type-safe request/response validation
+
+## Design System - Backend Architecture
+
+### Core Design Principles
+
+**1. Type Safety First**
+- **Zod Schemas**: All API endpoints use Zod for validation
+- **TypeScript**: Strict typing throughout the codebase
+- **Drizzle ORM**: Type-safe database operations
+- **API Client**: Generated types from server schemas
+
+**2. Layered Architecture**
+```
+API Routes → Services → Repositories → Database
+     ↓           ↓           ↓
+  Validation  Business   Data Access
+             Logic      Layer
+```
+
+**3. Error Handling**
+- **Consistent Error Responses**: Standardized error format
+- **HTTP Status Codes**: Proper status code usage
+- **Error Boundaries**: Graceful error handling
+- **Logging**: Comprehensive error logging
+
+**4. Security Patterns**
+- **Authentication**: Supabase session-based auth
+- **Authorization**: Role-based access control
+- **Input Validation**: Zod schema validation
+- **SQL Injection Prevention**: Drizzle ORM protection
+
+## Directory Structure
 
 ```
-┌─────────────────────────────────────┐
-│           API Routes                 │
-├─────────────────────────────────────┤
-│           Services                   │
-├─────────────────────────────────────┤
-│         Repositories                 │
-├─────────────────────────────────────┤
-│         Database Schema              │
-└─────────────────────────────────────┘
+src/lib/server/
+├── shared/              # Shared utilities and schemas
+│   ├── schemas.ts      # Zod validation schemas
+│   ├── constants.ts    # Application constants
+│   └── types.ts        # Shared type definitions
+├── db/                 # Database configuration
+│   ├── schema.ts       # Drizzle schema definitions
+│   └── connection.ts   # Database connection
+├── repositories/       # Data access layer
+├── services/          # Business logic layer
+├── helpers/           # Utility functions
+└── scripts/          # Development and maintenance scripts
 ```
 
-## Component Relationships
+## API Design Patterns
 
-### 1. Service Factory Pattern
+### Request/Response Schema Pattern
 
-The `ServiceFactory` is the central orchestrator that:
-- Manages all dependencies
-- Creates service instances with proper dependency injection
-- Provides a singleton pattern for consistent service access
-
+**Zod Schema Definition**:
 ```typescript
-// Usage in API routes
-const serviceFactory = await ServiceFactory.getInstance();
-const authServices = serviceFactory.getAuthServices(requestContext);
-const userProfileService = authServices.userProfileService();
+// Example: User Profile Update
+export const UpdateUserProfileSchema = z.object({
+  displayName: z.string().min(1).max(100).optional(),
+  avatarGender: z.enum(['male', 'female', 'non-binary']).optional(),
+  avatarAgeRange: z.enum(['teen', 'young-adult', 'adult', 'senior']).optional(),
+  personalizationCountryCodes: z.array(z.string().length(2)).optional(),
+  timezone: z.string().optional(),
+  preferredReminderTime: z.string().regex(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/).optional(),
+  notificationPreferences: z.object({
+    email: z.boolean().optional(),
+    push: z.boolean().optional(),
+    sms: z.boolean().optional()
+  }).optional()
+});
+
+export type UpdateUserProfileRequest = z.infer<typeof UpdateUserProfileSchema>;
 ```
 
-### 2. Dependency Injection Flow
-
-```
-ServiceFactory
-├── Repositories (data access)
-├── Helpers (utilities)
-├── Content DAOs (content access)
-└── Services (business logic)
-    ├── Dependencies injected via constructor
-    └── Request context provided per request
-```
-
-### 3. Data Flow
-
-```
-API Request
-├── AuthRequestContext (user, requestDate, requestId)
-├── Service Layer (business logic)
-├── Repository Layer (data access)
-├── Database (PostgreSQL via Drizzle)
-└── Response (DTOs)
-```
-
-## Implementation Checklist
-
-When implementing new functionality, follow this checklist:
-
-### 1. Define DTOs in `shared/interfaces.ts`
-
+**API Route Implementation**:
 ```typescript
-// Input DTO
-export type UpdateEntityDto = {
-  field1?: string | null;
-  field2?: number | null;
-};
-
-// Response DTO (if needed)
-export type EntityResponse = {
-  id: string;
-  field1: string | null;
-  field2: number | null;
-};
+// PATCH /api/v1/users/me/profile
+export async function PATCH({ request, locals }: RequestEvent) {
+  try {
+    const body = await request.json();
+    const validatedData = UpdateUserProfileSchema.parse(body);
+    
+    const updatedProfile = await userService.updateProfile(
+      locals.session.user.id, 
+      validatedData
+    );
+    
+    return json({ success: true, data: updatedProfile });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return json({ error: 'Validation failed', details: error.errors }, { status: 400 });
+    }
+    return json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
 ```
 
-### 2. Create/Update Repository
+### Error Handling Pattern
 
+**Standardized Error Response**:
 ```typescript
-// repositories/entity.repository.ts
-export interface IEntityRepository {
-  update(id: string, updates: Partial<Entity>): Promise<Entity | null>;
-  findById(id: string): Promise<Entity | null>;
+interface ApiError {
+  error: string;
+  details?: any;
+  code?: string;
 }
 
-export class EntityRepository implements IEntityRepository {
-  constructor(private db: NodePgDatabase<any>) {}
+// Error handling utility
+export function handleApiError(error: unknown): Response {
+  if (error instanceof z.ZodError) {
+    return json({
+      error: 'Validation failed',
+      details: error.errors,
+      code: 'VALIDATION_ERROR'
+    }, { status: 400 });
+  }
   
-  // Implementation...
+  if (error instanceof DatabaseError) {
+    return json({
+      error: 'Database operation failed',
+      code: 'DATABASE_ERROR'
+    }, { status: 500 });
+  }
+  
+  return json({
+    error: 'Internal server error',
+    code: 'INTERNAL_ERROR'
+  }, { status: 500 });
 }
 ```
 
-### 3. Export Repository
+## Database Layer
 
+### Drizzle Schema Patterns
+
+**User Profile Schema**:
 ```typescript
-// repositories/index.ts
-export { type IEntityRepository, EntityRepository } from './entity.repository';
+export const userProfiles = pgTable('user_profiles', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  displayName: varchar('display_name', { length: 100 }),
+  avatarGender: varchar('avatar_gender', { length: 20 }),
+  avatarAgeRange: varchar('avatar_age_range', { length: 20 }),
+  personalizationCountryCodes: json('personalization_country_codes').$type<string[]>(),
+  timezone: varchar('timezone', { length: 50 }),
+  preferredReminderTime: varchar('preferred_reminder_time', { length: 5 }),
+  notificationPreferences: json('notification_preferences').$type<NotificationPreferences>(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull()
+});
 ```
 
-### 4. Create Service
+**Relationships**:
+```typescript
+export const userProfilesRelations = relations(userProfiles, ({ one }) => ({
+  user: one(users, {
+    fields: [userProfiles.userId],
+    references: [users.id]
+  })
+}));
+```
+
+### Repository Pattern
+
+**Base Repository**:
+```typescript
+export abstract class BaseRepository<T> {
+  protected db: DrizzleDatabase;
+  
+  constructor(db: DrizzleDatabase) {
+    this.db = db;
+  }
+  
+  protected async executeQuery<R>(query: () => Promise<R>): Promise<R> {
+    try {
+      return await query();
+    } catch (error) {
+      console.error('Database query failed:', error);
+      throw new DatabaseError('Query execution failed');
+    }
+  }
+}
+```
+
+**User Profile Repository**:
+```typescript
+export class UserProfileRepository extends BaseRepository<UserProfile> {
+  async findByUserId(userId: string): Promise<UserProfile | null> {
+    return this.executeQuery(async () => {
+      const result = await this.db
+        .select()
+        .from(userProfiles)
+        .where(eq(userProfiles.userId, userId))
+        .limit(1);
+      
+      return result[0] || null;
+    });
+  }
+  
+  async update(userId: string, data: Partial<UserProfile>): Promise<UserProfile> {
+    return this.executeQuery(async () => {
+      const result = await this.db
+        .update(userProfiles)
+        .set({ ...data, updatedAt: new Date() })
+        .where(eq(userProfiles.userId, userId))
+        .returning();
+      
+      if (!result[0]) {
+        throw new NotFoundError('User profile not found');
+      }
+      
+      return result[0];
+    });
+  }
+}
+```
+
+## Service Layer
+
+### Business Logic Patterns
+
+**User Service**:
+```typescript
+export class UserService {
+  private profileRepository: UserProfileRepository;
+  
+  constructor(db: DrizzleDatabase) {
+    this.profileRepository = new UserProfileRepository(db);
+  }
+  
+  async updateProfile(userId: string, data: UpdateUserProfileRequest): Promise<UserProfile> {
+    // Validate business rules
+    if (data.preferredReminderTime) {
+      this.validateReminderTime(data.preferredReminderTime);
+    }
+    
+    if (data.personalizationCountryCodes) {
+      this.validateCountryCodes(data.personalizationCountryCodes);
+    }
+    
+    // Update profile
+    const updatedProfile = await this.profileRepository.update(userId, data);
+    
+    // Trigger side effects
+    await this.updateUserPreferences(userId, data);
+    
+    return updatedProfile;
+  }
+  
+  private validateReminderTime(time: string): void {
+    const [hours, minutes] = time.split(':').map(Number);
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+      throw new ValidationError('Invalid reminder time format');
+    }
+  }
+  
+  private validateCountryCodes(codes: string[]): void {
+    const validCodes = ['US', 'CA', 'GB', 'AU', 'DE', 'FR', 'ES', 'IT'];
+    const invalidCodes = codes.filter(code => !validCodes.includes(code));
+    if (invalidCodes.length > 0) {
+      throw new ValidationError(`Invalid country codes: ${invalidCodes.join(', ')}`);
+    }
+  }
+}
+```
+
+### Challenge Service Pattern
+
+**Challenge Management**:
+```typescript
+export class ChallengeService {
+  private challengeRepository: ChallengeRepository;
+  private userChallengeRepository: UserChallengeRepository;
+  
+  async createChallenge(userId: string, data: CreateChallengeRequest): Promise<Challenge> {
+    // Validate challenge data
+    this.validateChallengeData(data);
+    
+    // Create challenge
+    const challenge = await this.challengeRepository.create({
+      ...data,
+      ownerId: userId,
+      status: 'not_started'
+    });
+    
+    // Auto-join creator
+    await this.userChallengeRepository.create({
+      userId,
+      challengeId: challenge.id,
+      joinedAt: new Date()
+    });
+    
+    return challenge;
+  }
+  
+  async joinChallenge(userId: string, challengeId: string, inviteCode?: string): Promise<void> {
+    const challenge = await this.challengeRepository.findById(challengeId);
+    if (!challenge) {
+      throw new NotFoundError('Challenge not found');
+    }
+    
+    // Validate join conditions
+    if (challenge.joinType === 'invite-code' && !inviteCode) {
+      throw new ValidationError('Invite code required');
+    }
+    
+    if (challenge.joinType === 'invite-code' && challenge.inviteCode !== inviteCode) {
+      throw new ValidationError('Invalid invite code');
+    }
+    
+    // Check if user already joined
+    const existingJoin = await this.userChallengeRepository.findByUserAndChallenge(userId, challengeId);
+    if (existingJoin) {
+      throw new ValidationError('User already joined this challenge');
+    }
+    
+    // Join challenge
+    await this.userChallengeRepository.create({
+      userId,
+      challengeId,
+      joinedAt: new Date()
+    });
+  }
+}
+```
+
+## Authentication & Authorization
+
+### Session Management
+
+**Supabase Integration**:
+```typescript
+// Authentication helper
+export async function getSession(request: Request): Promise<Session | null> {
+  const supabase = createServerClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get: (name: string) => request.headers.get('cookie')?.split(';')
+          .find(c => c.trim().startsWith(`${name}=`))?.split('=')[1],
+        set: () => {}, // Handled by Supabase
+        remove: () => {} // Handled by Supabase
+      }
+    }
+  );
+  
+  const { data: { session } } = await supabase.auth.getSession();
+  return session;
+}
+```
+
+**Route Protection**:
+```typescript
+export async function requireAuth(request: Request): Promise<Session> {
+  const session = await getSession(request);
+  if (!session) {
+    throw new UnauthorizedError('Authentication required');
+  }
+  return session;
+}
+```
+
+### Authorization Patterns
+
+**Role-Based Access**:
+```typescript
+export async function requireRole(session: Session, requiredRole: string): Promise<void> {
+  const userRole = await getUserRole(session.user.id);
+  if (userRole !== requiredRole) {
+    throw new ForbiddenError('Insufficient permissions');
+  }
+}
+
+export async function requireOwnershipOrRole(
+  session: Session, 
+  resourceOwnerId: string, 
+  requiredRole: string
+): Promise<void> {
+  const userRole = await getUserRole(session.user.id);
+  const isOwner = session.user.id === resourceOwnerId;
+  
+  if (!isOwner && userRole !== requiredRole) {
+    throw new ForbiddenError('Access denied');
+  }
+}
+```
+
+## Data Validation
+
+### Zod Schema Patterns
+
+**Complex Validation**:
+```typescript
+export const CreateChallengeSchema = z.object({
+  name: z.string().min(1).max(120),
+  description: z.string().min(10).max(2000),
+  goals: z.array(z.string().min(1).max(200)).min(1).max(10),
+  startDate: z.string().datetime(),
+  durationDays: z.number().int().min(1).max(365),
+  joinType: z.enum(['personal', 'public', 'invite-code']),
+  maxMembers: z.number().int().min(1).max(1000).default(1)
+}).refine(data => {
+  const startDate = new Date(data.startDate);
+  const now = new Date();
+  return startDate >= now;
+}, {
+  message: "Start date must be in the future",
+  path: ["startDate"]
+});
+```
+
+**Conditional Validation**:
+```typescript
+export const JoinChallengeSchema = z.object({
+  inviteCode: z.string().optional()
+}).refine(data => {
+  // This will be validated in the service layer based on challenge type
+  return true;
+});
+```
+
+## Error Handling
+
+### Custom Error Classes
 
 ```typescript
-// services/entity.service.ts
-export type IEntityService = {
-  updateEntity(dto: UpdateEntityDto): Promise<void>;
-};
-
-export class EntityService implements IEntityService {
+export class ApiError extends Error {
   constructor(
-    private readonly dependencies: {
-      readonly entityRepository: IEntityRepository;
-    },
-    private readonly requestContext: AuthRequestContext
-  ) {}
-  
-  // Implementation...
+    public message: string,
+    public statusCode: number = 500,
+    public code?: string
+  ) {
+    super(message);
+    this.name = 'ApiError';
+  }
+}
+
+export class ValidationError extends ApiError {
+  constructor(message: string, public details?: any) {
+    super(message, 400, 'VALIDATION_ERROR');
+  }
+}
+
+export class NotFoundError extends ApiError {
+  constructor(resource: string) {
+    super(`${resource} not found`, 404, 'NOT_FOUND');
+  }
+}
+
+export class UnauthorizedError extends ApiError {
+  constructor(message: string = 'Unauthorized') {
+    super(message, 401, 'UNAUTHORIZED');
+  }
+}
+
+export class ForbiddenError extends ApiError {
+  constructor(message: string = 'Forbidden') {
+    super(message, 403, 'FORBIDDEN');
+  }
 }
 ```
 
-### 5. Export Service
+### Global Error Handler
 
 ```typescript
-// services/index.ts
-export { type IEntityService, EntityService } from './entity.service';
-
-export type AuthServices = {
-  // ... existing services
-  entityService: () => IEntityService
-}
-```
-
-### 6. Register in ServiceFactory
-
-```typescript
-// shared/service-factory.ts
-// Import
-import { EntityService, type IEntityService } from '$lib/server/services';
-import { EntityRepository } from '$lib/server/repositories';
-
-// Add properties
-private readonly entityRepository: EntityRepository;
-private readonly entityServiceCreator: ServiceCreatorFromRequestContext<IEntityService>;
-
-// Initialize in constructor
-this.entityRepository = new EntityRepository(db);
-this.entityServiceCreator = createServiceFromClass(
-  EntityService,
-  { entityRepository: this.entityRepository }
-);
-
-// Add to getAuthServices
-entityService: () => this.entityServiceCreator(authRequestContext),
-```
-
-## Key Design Principles
-
-### 1. Schema Decoupling
-
-- **Services**: Must NOT import from `schema.ts`
-- **Repositories**: CAN import from `schema.ts` (they are the data access layer)
-- **Shared**: Use DTOs and interfaces, not db schema types
-
-### 2. Dependency Injection
-
-- All dependencies injected via constructor
-- ServiceFactory manages all dependency creation
-- Services receive request context per request
-
-### 3. Type Safety
-
-- Use TypeScript's type system extensively
-- Leverage `satisfies` for type checking
-- Define clear interfaces for all components
-
-### 4. Error Handling
-
-- Use consistent error types from `shared/errors.ts`
-- Let database errors bubble up to services
-- Services handle business logic validation
-
-## Common Patterns
-
-### 1. Service Method Pattern
-
-```typescript
-async methodName(dto: SomeDto): Promise<ReturnType> {
-  const { repositoryName, helperName } = this.dependencies;
-  const { user: { id: userId }, requestDate } = this.requestContext;
+export function handleError(error: unknown): Response {
+  console.error('API Error:', error);
   
-  // Validation
-  if (someCondition) {
-    throw new ValidationError('Error message');
+  if (error instanceof ApiError) {
+    return json({
+      error: error.message,
+      code: error.code
+    }, { status: error.statusCode });
   }
   
-  // Business logic
-  const result = await repositoryName.someMethod(userId, dto);
-  
-  // Response mapping (if needed)
-  return this.mapToResponse(result);
-}
-```
-
-### 2. Repository Method Pattern
-
-```typescript
-async methodName(id: string, data: SomeData): Promise<Entity | null> {
-  const result = await this.db.select()
-    .from(entities)
-    .where(eq(entities.id, id))
-    .limit(1);
-  
-  return result[0] || null;
-}
-```
-
-### 3. DTO Update Pattern
-
-```typescript
-const updates: Partial<Entity> = {};
-const allowedKeys = ['field1', 'field2'] as const satisfies (keyof Entity & keyof UpdateDto)[];
-
-const assignIfProvided = <T extends keyof Entity & keyof UpdateDto>(key: T) => {
-  if (dto[key] !== undefined) {
-    updates[key] = dto[key]
+  if (error instanceof z.ZodError) {
+    return json({
+      error: 'Validation failed',
+      details: error.errors,
+      code: 'VALIDATION_ERROR'
+    }, { status: 400 });
   }
-};
-
-for (const key of allowedKeys) {
-    assignIfProvided(key);
+  
+  return json({
+    error: 'Internal server error',
+    code: 'INTERNAL_ERROR'
+  }, { status: 500 });
 }
-
-updates. = requestDate;
 ```
 
-## Testing Strategy
+## API Client Integration
 
-### 1. Unit Tests
+### Type-Safe API Client
 
-- **Services**: Mock dependencies, test business logic
-- **Repositories**: Use test database, test data access
-- **Shared**: Test utilities and type definitions
+**Generated Types**:
+```typescript
+// Auto-generated from server schemas
+export interface GetUserProfileOperation {
+  request: {
+    params: {};
+    query: {};
+    body: {};
+  };
+  response: {
+    body: {
+      success: boolean;
+      data: UserProfile;
+    };
+  };
+}
 
-### 2. Integration Tests
+export interface UpdateUserProfileOperation {
+  request: {
+    params: {};
+    query: {};
+    body: UpdateUserProfileRequest;
+  };
+  response: {
+    body: {
+      success: boolean;
+      data: UserProfile;
+    };
+  };
+}
+```
 
-- Test service + repository integration
-- Test API route + service integration
-- Use test database for realistic scenarios
+**Client Implementation**:
+```typescript
+export class ApiClient {
+  async getMyProfile(): Promise<GetUserProfileOperation['response']['body']> {
+    return this.request<GetUserProfileOperation['response']['body']>(
+      '/api/v1/users/me/profile', 
+      { method: 'GET' }
+    );
+  }
+  
+  async updateMyProfile(dto: UpdateUserProfileOperation['request']['body']): Promise<UpdateUserProfileOperation['response']['body']> {
+    return this.request<UpdateUserProfileOperation['response']['body']>(
+      '/api/v1/users/me/profile', 
+      { method: 'PATCH', body: JSON.stringify(dto) }
+    );
+  }
+}
+```
 
-### 3. E2E Tests
+## Development Guidelines
 
-- Test complete user workflows
-- Use Playwright for browser automation
-- Test authentication and authorization
+### API Design
+1. **Use RESTful conventions** for endpoint naming
+2. **Implement proper HTTP status codes**
+3. **Use Zod schemas for all validation**
+4. **Provide consistent error responses**
+5. **Document API endpoints clearly**
 
-## Performance Considerations
+### Database Design
+1. **Use Drizzle ORM for type safety**
+2. **Implement proper foreign key relationships**
+3. **Use appropriate indexes for performance**
+4. **Follow naming conventions consistently**
+5. **Implement soft deletes where appropriate**
 
-### 1. Database Queries
+### Service Layer
+1. **Keep business logic in services**
+2. **Use repositories for data access**
+3. **Implement proper error handling**
+4. **Add comprehensive logging**
+5. **Write unit tests for business logic**
 
-- Use appropriate indexes
-- Limit result sets with pagination
-- Use `limit(1)` for single entity queries
-- Consider query optimization
+### Security
+1. **Validate all input data**
+2. **Implement proper authentication**
+3. **Use authorization checks**
+4. **Sanitize user input**
+5. **Implement rate limiting**
 
-### 2. Service Instantiation
+## Testing Patterns
 
-- ServiceFactory uses singleton pattern
-- Services created per request (lightweight)
-- Dependencies created once and reused
+### Unit Testing
+```typescript
+describe('UserService', () => {
+  let userService: UserService;
+  let mockRepository: jest.Mocked<UserProfileRepository>;
+  
+  beforeEach(() => {
+    mockRepository = createMockRepository();
+    userService = new UserService(mockRepository);
+  });
+  
+  it('should update user profile successfully', async () => {
+    const userId = 'user-123';
+    const updateData = { displayName: 'New Name' };
+    
+    mockRepository.update.mockResolvedValue(mockUserProfile);
+    
+    const result = await userService.updateProfile(userId, updateData);
+    
+    expect(mockRepository.update).toHaveBeenCalledWith(userId, updateData);
+    expect(result).toEqual(mockUserProfile);
+  });
+});
+```
 
-### 3. Memory Usage
+### Integration Testing
+```typescript
+describe('User Profile API', () => {
+  it('should update user profile', async () => {
+    const response = await request(app)
+      .patch('/api/v1/users/me/profile')
+      .set('Authorization', `Bearer ${validToken}`)
+      .send({ displayName: 'New Name' })
+      .expect(200);
+    
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.displayName).toBe('New Name');
+  });
+});
+```
 
-- Use streaming for large datasets
-- Implement proper cleanup
-- Monitor memory usage in production
-
-## Security Considerations
-
-### 1. Authentication
-
-- All services receive authenticated user context
-- User ID validated at service layer
-- No direct database access from API routes
-
-### 2. Authorization
-
-- Implement role-based access control
-- Validate permissions at service layer
-- Use repository methods for data access
-
-### 3. Input Validation
-
-- Validate all inputs at service layer
-- Use DTOs for type safety
-- Sanitize user inputs
-
-## Monitoring and Logging
-
-### 1. Request Tracing
-
-- Use `requestId` for request tracing
-- Log service method calls
-- Track performance metrics
-
-### 2. Error Handling
-
-- Log errors with context
-- Use structured logging
-- Implement error reporting
-
-### 3. Metrics
-
-- Track service performance
-- Monitor database queries
-- Measure user engagement
-
-## Deployment Considerations
-
-### 1. Environment Configuration
-
-- Use environment variables for configuration
-- Separate development/staging/production configs
-- Secure sensitive data
-
-### 2. Database Migrations
-
-- Use Drizzle migrations
-- Test migrations in staging
-- Backup before production migrations
-
-### 3. Scaling
-
-- Design for horizontal scaling
-- Use connection pooling
-- Implement caching strategies
-
-## Best Practices Summary
-
-1. **Follow the layered architecture**
-2. **Use dependency injection consistently**
-3. **Maintain schema decoupling**
-4. **Write comprehensive tests**
-5. **Handle errors gracefully**
-6. **Use TypeScript effectively**
-7. **Document complex logic**
-8. **Monitor performance**
-9. **Secure all endpoints**
-10. **Plan for scaling**
+This documentation serves as a comprehensive guide for backend development in FitJourney, ensuring consistency, maintainability, and scalability across the server-side codebase.

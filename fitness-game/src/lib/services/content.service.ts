@@ -1,4 +1,4 @@
-import type { Article, Question, Category, LearningPhase } from '$lib/types/content';
+import type { Article, Question, Category } from '$lib/types/content';
 import type { PersonaQuestion, LearningPath } from '$lib/types/fitness-persona-calculator';
 
 class ContentService {
@@ -76,63 +76,6 @@ class ContentService {
     }
   }
 
-  async getLearningPhases(): Promise<LearningPhase[]> {
-    const categories = await this.loadCategories();
-    const allArticles = await this.loadAllArticles();
-
-    const phases: LearningPhase[] = [
-      {
-        id: 'phase-1',
-        name: 'Foundation Building',
-        description: 'Essential knowledge base before specialized topics',
-        dayRange: [1, 6],
-        categories: ['fitness-foundation'],
-        articles: allArticles.filter(a => a.day >= 1 && a.day <= 6)
-      },
-      {
-        id: 'phase-2',
-        name: 'Core Knowledge Introduction',
-        description: 'Practical application foundations',
-        dayRange: [7, 18],
-        categories: ['nutrition-essentials', 'health-lifestyle', 'exercise-types-goals', 'body-mechanics'],
-        articles: allArticles.filter(a => a.day >= 7 && a.day <= 18)
-      },
-      {
-        id: 'phase-3',
-        name: 'Movement Mastery',
-        description: 'Advanced nutrition, movement literacy and goal refinement',
-        dayRange: [19, 30],
-        categories: ['nutrition-essentials', 'health-lifestyle', 'exercise-types-goals', 'body-mechanics'],
-        articles: allArticles.filter(a => a.day >= 19 && a.day <= 30)
-      },
-      {
-        id: 'phase-4',
-        name: 'Practical Application',
-        description: 'Hands-on implementation and technique mastery',
-        dayRange: [31, 46],
-        categories: ['equipment-gym-basics', 'exercise-fundamentals'],
-        articles: allArticles.filter(a => a.day >= 31 && a.day <= 46)
-      },
-      {
-        id: 'phase-5',
-        name: 'Integration Foundation',
-        description: 'Holistic wellness introduction',
-        dayRange: [47, 52],
-        categories: ['recovery-injury-prevention', 'mindset-motivation'],
-        articles: allArticles.filter(a => a.day >= 47 && a.day <= 52)
-      },
-      {
-        id: 'phase-6',
-        name: 'Mastery & Sustainability',
-        description: 'Long-term success and lifestyle integration',
-        dayRange: [53, 70],
-        categories: ['recovery-injury-prevention', 'mindset-motivation'],
-        articles: allArticles.filter(a => a.day >= 53 && a.day <= 70)
-      }
-    ];
-
-    return phases;
-  }
 }
 
 export const contentService = new ContentService();
