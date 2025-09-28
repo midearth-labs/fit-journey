@@ -7,6 +7,8 @@ This document outlines the UI artifacts and components within the `src/lib` dire
 The UI layer follows a modern Svelte 5 architecture with:
 - **Components**: Reusable UI components using Svelte 5's new syntax
 - **Stores**: Reactive state management using Svelte stores
+  - Use `import { page } from '$app/state';` and not `import { page } from '$app/stores';`
+  - Use $effect to subscribe to stores.
 - **Services**: Client-side business logic and data fetching
 - **Types**: TypeScript interfaces for type safety
 - **Styles**: CSS custom properties and modern styling patterns

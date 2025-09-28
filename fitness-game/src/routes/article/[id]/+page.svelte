@@ -1,26 +1,57 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import { contentService } from '$lib/services/content.service';
+	import { guestGatingStore } from '$lib/stores/guest-gating';
+	import GuestGatingModal from '$lib/components/GuestGatingModal.svelte';
 	import type { Article } from '$lib/types/content';
 	import { marked } from 'marked';
 
-	let article: Article | null = null;
-	let renderedBody: string = '';
-	let renderedPassages: { [key: string]: string } = {};
+	interface Props {
+		data: {
+			session: any;
+			user: any;
+		};
+	}
+
+	const { data }: Props = $props();
+
+	let article = $state<Article | null>(null);
+	let renderedBody = $state('');
+	let renderedPassages = $state<{ [key: string]: string }>({});
+	let showGatingModal = $state(false);
+	let isAuthenticated = $state(!!data.session);
+	let categoryName = $state<string>('');
 
 	onMount(async () => {
-		const articleId = $page.params.id;
+		const articleId = page.params.id;
 		if (!articleId) return;
 		
 		try {
 			article = await contentService.getArticleById(articleId);
 			if (article) {
-				renderedBody = await renderMarkdown(article.body);
-				if (article.passages) {
-					for (const passage of article.passages) {
+				const nonNullArticle = article;
+				renderedBody = await renderMarkdown(nonNullArticle.body);
+				if (nonNullArticle.passages) {
+					for (const passage of nonNullArticle.passages) {
 						renderedPassages[passage.id] = await renderMarkdown(passage.passage_text);
+					}
+				}
+				
+				// Load categories and find the category name
+				
+				const categories = await contentService.loadCategories();
+				const category = categories.find(cat => cat.id === nonNullArticle.content_category_id);
+				categoryName = category?.name || nonNullArticle.content_category_id;
+				
+				// Track article read for guest gating
+				if (!isAuthenticated) {
+					guestGatingStore.logArticleRead(articleId);
+					
+					// Check if we should show the gating modal
+					if (guestGatingStore.shouldShowNudge()) {
+						showGatingModal = true;
 					}
 				}
 			}
@@ -29,24 +60,13 @@
 		}
 	});
 
-	function getCategoryName(categoryId: string): string {
-		// @TODO: THIS SHOULD BE AUTOMATICALLY GENERATED FROM THE CATEGORIES
-		const nameMap: Record<string, string> = {
-			'fitness-foundation': 'Fitness Foundation',
-			'exercise-fundamentals': 'Exercise Fundamentals',
-			'equipment-gym-basics': 'Equipment & Gym Basics',
-			'nutrition-essentials': 'Nutrition Essentials',
-			'exercise-types-goals': 'Exercise Types & Goals',
-			'body-mechanics': 'Body Mechanics',
-			'recovery-injury-prevention': 'Recovery & Injury Prevention',
-			'mindset-motivation': 'Mindset & Motivation',
-			'health-lifestyle': 'Health & Lifestyle'
-		};
-		return nameMap[categoryId] || categoryId;
-	}
 
 	async function renderMarkdown(content: string): Promise<string> {
 		return (await marked.parse(content)).replace(/<h1>.*?<\/h1>/g, '');
+	}
+
+	function handleCloseGatingModal() {
+		showGatingModal = false;
 	}
 </script>
 
@@ -56,7 +76,7 @@
 			<div class="article-meta">
 				<span>Day {article.day}</span>
 				<span>•</span>
-				<span>{getCategoryName(article.content_category_id)}</span>
+				<span>{categoryName}</span>
 				<span>•</span>
 				<span>{article.read_time} min read</span>
 			</div>
@@ -106,4 +126,10 @@
 		</div>
 	</div>
 {/if}
+
+<!-- Guest Gating Modal -->
+<GuestGatingModal 
+	isOpen={showGatingModal} 
+	onClose={handleCloseGatingModal} 
+/>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { progressStore } from '$lib/stores/progress';
+	import { AuthUtils } from '$lib/utils/auth-utils';
 	import '../app.css';
 
 	let { data, children } = $props();
@@ -16,6 +16,11 @@
 		
 		// Load progress
 		//progressStore.load();
+		
+		// Clear guest gating state if user is authenticated
+		if (session?.user) {
+			AuthUtils.clearGuestGatingState();
+		}
 		
 		return () => {}
 	});

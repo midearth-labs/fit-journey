@@ -1,4 +1,4 @@
-import type { LearningPath, PersonaAnswerOption, PersonaQuestion, PersonaQuizResult } from '../../types/fitness-persona-calculator';
+import type { LearningPath, PersonaAnswerOption, PersonaQuestion, PersonaAssessmentResult } from '../../types/fitness-persona-calculator';
 import { FitnessPersonaCalculator } from '../../services/fitness-persona-calculator';
 
 import { readFileSync } from 'fs';
@@ -36,7 +36,7 @@ export function loadPersonaCalculatorData(): {
 /**
  * Usage Example - Test function for persona calculator
  */
-export async function runQuizExample(): Promise<PersonaQuizResult> {
+export async function runAssessmentExample(): Promise<PersonaAssessmentResult> {
   try {
     // Load data using the new function
     const { questions, learningPaths } = loadPersonaCalculatorData();
@@ -56,7 +56,7 @@ export async function runQuizExample(): Promise<PersonaQuizResult> {
     ]);
   
     const scorer = new FitnessPersonaCalculator(learningPaths);
-    const result = scorer.scoreQuiz(userAnswers);
+    const result = scorer.scoreAssessment(userAnswers);
   
     console.log('Your Profile:', result.primaryPersona);
     console.log('\nRecommended Learning Path:', result.recommendedPath.name);
@@ -69,7 +69,7 @@ export async function runQuizExample(): Promise<PersonaQuizResult> {
   
     return result;
   } catch (error) {
-    console.error('Error running quiz example:', error);
+    console.error('Error running assessment example:', error);
     throw error;
   }
 }
@@ -81,7 +81,7 @@ export async function testPersonaCalculator(): Promise<void> {
   console.log('🧪 Testing Persona Calculator...\n');
   
   try {
-    const result = await runQuizExample();
+    const result = await runAssessmentExample();
     
     console.log('\n✅ Persona Calculator Test Results:');
     console.log(`- Primary Persona: ${result.primaryPersona}`);
