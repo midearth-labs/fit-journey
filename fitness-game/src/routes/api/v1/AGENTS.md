@@ -19,8 +19,8 @@ Mirror REST paths with SvelteKit routing:
 - `GET /user-challenges/:userChallengeId` → `user-challenges/[userChallengeId]/+server.ts`
 - `DELETE /user-challenges/:userChallengeId` → `user-challenges/[userChallengeId]/+server.ts`
 - `PATCH /user-challenges/:userChallengeId/schedule` → `user-challenges/[userChallengeId]/schedule/+server.ts`
-- `POST /user-challenges/:userChallengeId/quizzes/:knowledgeBaseId` → `user-challenges/[userChallengeId]/quizzes/[knowledgeBaseId]/+server.ts`
-- `GET /user-challenges/:userChallengeId/quizzes` → `user-challenges/[userChallengeId]/quizzes/+server.ts`
+- `POST /user-challenges/:userChallengeId/assessmentzes/:knowledgeBaseId` → `user-challenges/[userChallengeId]/assessmentzes/[knowledgeBaseId]/+server.ts`
+- `GET /user-challenges/:userChallengeId/assessmentzes` → `user-challenges/[userChallengeId]/assessmentzes/+server.ts`
 - `GET /content/challenges/:challengeId` → `content/challenges/[challengeId]/+server.ts`
 - `GET /content/challenges` → `content/challenges/+server.ts`
 

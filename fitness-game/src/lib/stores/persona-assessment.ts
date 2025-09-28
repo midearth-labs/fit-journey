@@ -1,16 +1,16 @@
 import { writable } from '$lib/stores/local-storage-store';
-import type { PersonaAnswerOption, PersonaQuizResult } from '$lib/types/fitness-persona-calculator';
+import type { PersonaAnswerOption, PersonaAssessmentResult } from '$lib/types/fitness-persona-calculator';
 
-interface PersonaQuizProgress {
+interface PersonaAssessmentProgress {
   currentQuestionIndex: number;
   answers: Record<string, number>;
   isCompleted: boolean;
-  result: PersonaQuizResult | null;
+  result: PersonaAssessmentResult | null;
   startTime: number | null;
   endTime: number | null;
 }
 
-const defaultProgress: PersonaQuizProgress = {
+const defaultProgress: PersonaAssessmentProgress = {
   currentQuestionIndex: 0,
   answers: {},
   isCompleted: false,
@@ -19,16 +19,16 @@ const defaultProgress: PersonaQuizProgress = {
   endTime: null
 };
 
-const BROWSER_STORAGE_KEY = 'fitjourney-persona-quiz';
+const BROWSER_STORAGE_KEY = 'fitjourney-persona-assessment';
 
-function createPersonaQuizStore() {
-  const { subscribe, set, update } = writable<PersonaQuizProgress>(BROWSER_STORAGE_KEY, defaultProgress);
+function createPersonaAssessmentStore() {
+  const { subscribe, set, update } = writable<PersonaAssessmentProgress>(BROWSER_STORAGE_KEY, defaultProgress);
 
   return {
     subscribe,
     set,
     update,
-    startQuiz: () => {
+    startAssessment: () => {
       update(progress => ({
         ...defaultProgress,
         startTime: Date.now()
@@ -46,7 +46,7 @@ function createPersonaQuizStore() {
         };
       });
     },
-    completeQuiz: (result: PersonaQuizResult) => {
+    completeAssessment: (result: PersonaAssessmentResult) => {
       update(progress => ({
         ...progress,
         isCompleted: true,
@@ -60,7 +60,7 @@ function createPersonaQuizStore() {
         currentQuestionIndex: questionIndex
       }));
     },
-    getQuizDuration: (): number | null => {
+    getAssessmentDuration: (): number | null => {
       let duration: number | null = null;
       subscribe(progress => {
         if (progress.startTime && progress.endTime) {
@@ -72,4 +72,4 @@ function createPersonaQuizStore() {
   };
 }
 
-export const personaQuizStore = createPersonaQuizStore();
+export const personaAssessmentStore = createPersonaAssessmentStore();

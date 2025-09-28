@@ -1,18 +1,18 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import PersonaQuiz from '$lib/components/PersonaQuiz.svelte';
-  import { personaQuizStore } from '$lib/stores/persona-quiz';
-  import type { PersonaQuizResult } from '$lib/types/fitness-persona-calculator';
+  import PersonaAssessment from '$lib/components/PersonaAssessment.svelte';
+  import { personaAssessmentStore } from '$lib/stores/persona-assessment';
+  import type { PersonaAssessmentResult } from '$lib/types/fitness-persona-calculator';
 
   let showWelcome = $state(true);
-  let hasCompletedQuiz = $state(false);
+  let hasCompletedAssessment = $state(false);
 
   onMount(() => {
     // Subscribe to store changes to check completion status
-    const unsubscribe = personaQuizStore.subscribe(progress => {
+    const unsubscribe = personaAssessmentStore.subscribe(progress => {
       if (progress.isCompleted) {
-        hasCompletedQuiz = true;
+        hasCompletedAssessment = true;
         showWelcome = false;
       }
     });
@@ -21,12 +21,12 @@
     return unsubscribe;
   });
 
-  function startQuiz() {
+  function startAssessment() {
     showWelcome = false;
   }
 
-  function handleQuizComplete(result: PersonaQuizResult) {
-    console.log('Quiz completed with result:', result);
+  function handleAssessmentComplete(result: PersonaAssessmentResult) {
+    console.log('Assessment completed with result:', result);
     
     // Redirect to results page or show conversion flow
     setTimeout(() => {
@@ -39,10 +39,10 @@
     goto('/progress');
   }
 
-  function retakeQuiz() {
-    personaQuizStore.startQuiz();
+  function retakeAssessment() {
+    personaAssessmentStore.startAssessment();
     showWelcome = true;
-    hasCompletedQuiz = false;
+    hasCompletedAssessment = false;
   }
 </script>
 
@@ -51,7 +51,7 @@
   <meta name="description" content="Take our 60-second fitness assessment to discover your personalized learning path and fitness profile." />
 </svelte:head>
 
-<div class="persona-quiz-page">
+<div class="persona-assessment-page">
   {#if showWelcome}
     <div class="welcome-section">
       <div class="container">
@@ -122,16 +122,16 @@
           </div>
 
           <div class="cta-section">
-            <button onclick={startQuiz} class="btn btn-primary btn-lg">
+            <button onclick={startAssessment} class="btn btn-primary btn-lg">
               <i class="fas fa-brain"></i>
               Start Your Assessment
             </button>
             
-            {#if hasCompletedQuiz}
-              <div class="quiz-options">
+            {#if hasCompletedAssessment}
+              <div class="assessment-options">
                 <p>Already taken the assessment?</p>
-                <div class="quiz-actions">
-                  <button onclick={retakeQuiz} class="btn btn-outline">
+                <div class="assessment-actions">
+                  <button onclick={retakeAssessment} class="btn btn-outline">
                     <i class="fas fa-redo"></i>
                     Retake Assessment
                   </button>
@@ -152,9 +152,9 @@
       </div>
     </div>
   {:else}
-    <div class="quiz-section">
+    <div class="assessment-section">
       <div class="container">
-        <div class="quiz-header-page">
+        <div class="assessment-header-page">
           <button onclick={() => showWelcome = true} class="btn btn-ghost">
             <i class="fas fa-arrow-left"></i>
             Back to Overview
@@ -162,14 +162,14 @@
           <h2>Fitness Assessment</h2>
         </div>
         
-        <PersonaQuiz onComplete={handleQuizComplete} />
+        <PersonaAssessment onComplete={handleAssessmentComplete} />
       </div>
     </div>
   {/if}
 </div>
 
 <style>
-  .persona-quiz-page {
+  .persona-assessment-page {
     min-height: 100vh;
     background: linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%);
     padding: var(--space-8) 0;
@@ -340,19 +340,19 @@
     margin-bottom: var(--space-8);
   }
 
-  .quiz-options {
+  .assessment-options {
     margin-top: var(--space-8);
     padding-top: var(--space-8);
     border-top: 1px solid var(--gray-200);
   }
 
-  .quiz-options p {
+  .assessment-options p {
     color: var(--text-secondary);
     margin-bottom: var(--space-4);
     font-weight: 500;
   }
 
-  .quiz-actions {
+  .assessment-actions {
     display: flex;
     gap: var(--space-4);
     justify-content: center;
@@ -381,19 +381,19 @@
     margin: 0;
   }
 
-  /* Quiz Section */
-  .quiz-section {
+  /* Assessment Section */
+  .assessment-section {
     padding: var(--space-8) 0;
   }
 
-  .quiz-header-page {
+  .assessment-header-page {
     display: flex;
     align-items: center;
     gap: var(--space-4);
     margin-bottom: var(--space-8);
   }
 
-  .quiz-header-page h2 {
+  .assessment-header-page h2 {
     color: var(--text-primary);
     font-size: 2rem;
     margin: 0;
@@ -402,7 +402,7 @@
 
   /* Responsive Design */
   @media (max-width: 768px) {
-    .persona-quiz-page {
+    .persona-assessment-page {
       padding: var(--space-4) 0;
     }
 
@@ -416,17 +416,17 @@
       gap: var(--space-4);
     }
 
-    .quiz-header-page {
+    .assessment-header-page {
       flex-direction: column;
       align-items: flex-start;
       gap: var(--space-2);
     }
 
-    .quiz-header-page h2 {
+    .assessment-header-page h2 {
       font-size: 1.5rem;
     }
 
-    .quiz-actions {
+    .assessment-actions {
       flex-direction: column;
       align-items: center;
     }

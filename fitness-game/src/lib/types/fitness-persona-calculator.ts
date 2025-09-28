@@ -17,13 +17,13 @@ export type {
   PersonaQuestion 
 };
     
-export type PersonaQuizResult = {
+export type PersonaAssessmentResult = {
   userPersonaScores: Map<PersonaTags, number>;
   rankedPaths: {
-    path: LearningPath;
+    path: Pick<LearningPath, 'id' | 'name'>;
     matchScore: number;
     matchPercentage: number;
   }[];
   primaryPersona: string; // Description of user's primary characteristics
-  recommendedPath: LearningPath;
+  recommendedPath: Pick<LearningPath, 'id' | 'name'>;
 }

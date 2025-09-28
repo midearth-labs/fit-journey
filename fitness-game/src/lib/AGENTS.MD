@@ -191,7 +191,7 @@ The UI layer follows a modern Svelte 5 architecture with:
 src/lib/
 ├── components/           # Reusable UI components
 │   ├── auth/            # Authentication components
-│   └── PersonaQuiz.svelte # Fitness assessment component
+│   └── PersonaAssessment.svelte # Fitness assessment component
 ├── stores/              # Reactive state management
 ├── services/            # Client-side business logic
 ├── types/               # TypeScript type definitions
@@ -236,7 +236,7 @@ interface Props {
 const { data }: Props = $props()
 ```
 
-### PersonaQuiz Component (`components/PersonaQuiz.svelte`)
+### PersonaAssessment Component (`components/PersonaAssessment.svelte`)
 
 **Purpose**: Interactive fitness assessment with timer and progress tracking
 
@@ -292,10 +292,10 @@ interface Progress {
 progressStore.load()                    // Load from localStorage
 progressStore.save(progress)            // Save to localStorage
 progressStore.markArticleCompleted(id)  // Mark article as complete
-progressStore.markQuestionCompleted(id, correct) // Track quiz results
+progressStore.markQuestionCompleted(id, correct) // Track assessment results
 ```
 
-### Persona Quiz Store (`stores/persona-quiz.ts`)
+### Persona Assessment Store (`stores/persona-assessment.ts`)
 
 **Purpose**: Manages fitness assessment state and progress
 
@@ -308,20 +308,20 @@ progressStore.markQuestionCompleted(id, correct) // Track quiz results
 
 **API**:
 ```typescript
-interface PersonaQuizProgress {
+interface PersonaAssessmentProgress {
   currentQuestionIndex: number;
   answers: Record<string, number>;
   isCompleted: boolean;
-  result: PersonaQuizResult | null;
+  result: PersonaAssessmentResult | null;
   startTime: number | null;
   endTime: number | null;
 }
 
 // Store methods
-personaQuizStore.startQuiz()           // Initialize quiz
-personaQuizStore.answerQuestion(id, index) // Record answer
-personaQuizStore.completeQuiz(result)  // Finish quiz
-personaQuizStore.goBackToQuestion(index) // Navigate back
+personaAssessmentStore.startAssessment()           // Initialize assessment
+personaAssessmentStore.answerQuestion(id, index) // Record answer
+personaAssessmentStore.completeAssessment(result)  // Finish assessment
+personaAssessmentStore.goBackToQuestion(index) // Navigate back
 ```
 
 ## Services
@@ -348,14 +348,14 @@ contentService.getArticleById(id): Promise<Article | null>
 contentService.getQuestionsForArticle(id): Promise<Question[]>
 
 
-// Persona quiz
+// Persona assessment
 contentService.loadPersonaQuestions(): Promise<PersonaQuestion[]>
 contentService.loadLearningPaths(): Promise<LearningPath[]>
 ```
 
 ### Fitness Persona Calculator (`services/fitness-persona-calculator.ts`)
 
-**Purpose**: Calculates user fitness persona based on quiz responses
+**Purpose**: Calculates user fitness persona based on assessment responses
 
 **Key Features**:
 - Persona scoring algorithm
@@ -366,7 +366,7 @@ contentService.loadLearningPaths(): Promise<LearningPath[]>
 **API**:
 ```typescript
 class FitnessPersonaCalculator {
-  scoreQuiz(userAnswers: Map<string, PersonaAnswerOption>): PersonaQuizResult
+  scoreAssessment(userAnswers: Map<string, PersonaAnswerOption>): PersonaAssessmentResult
 }
 ```
 
@@ -465,9 +465,9 @@ let theme = $state('light');
 - **Trust signals** section with "No Judgment Zone" messaging
 - **Duolingo-inspired styling** with green color palette and card-based layout
 
-**Persona Quiz Page (`routes/persona-quiz/+page.svelte`)**:
+**Persona Assessment Page (`routes/persona-assessment/+page.svelte`)**:
 - **Welcome section** with feature highlights and assessment preview
-- **Quiz integration** with PersonaQuiz component
+- **Assessment integration** with PersonaAssessment component
 - **Conversion flow** from assessment to personalized results
 - **Consistent design** following the established design system
 
@@ -475,7 +475,7 @@ let theme = $state('light');
 - Markdown rendering with `marked` library
 - Character story passages
 - Key takeaways section
-- Navigation to quiz
+- Navigation to assessment
 
 ## Static Assets
 
@@ -486,9 +486,9 @@ let theme = $state('light');
 static/content/
 ├── categories/          # Category definitions
 ├── knowledge-base/     # Article content by category
-├── questions/          # Quiz questions by category
+├── questions/          # Assessment questions by category
 ├── learning-paths/    # Learning path definitions
-├── persona-questions/ # Fitness persona quiz
+├── persona-questions/ # Fitness persona assessment
 └── avatar-assets/    # Character avatars
 ```
 
@@ -587,7 +587,7 @@ const userProfile = await apiClient.getMyProfile();
 ### Component Library Expansion
 - Reusable form components
 - Data visualization components
-- Interactive quiz components
+- Interactive assessment components
 - Social sharing components
 - Progress tracking widgets
 

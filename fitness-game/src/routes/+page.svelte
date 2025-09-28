@@ -55,7 +55,7 @@
 	}
 
 	function startPersonaTest() {
-		goto('/persona-quiz');
+		goto('/persona-assessment');
 	}
 
 	function browseArticles() {
@@ -172,7 +172,7 @@
 				<div class="step-number">1</div>
 				<div class="step-content">
 					<h3>Take the Test</h3>
-					<p>Answer 8 quick questions about your fitness goals, experience, and preferences</p>
+					<p>Answer 10 quick questions about your fitness goals, experience, and preferences</p>
 				</div>
 			</div>
 			<div class="step-card fade-in">

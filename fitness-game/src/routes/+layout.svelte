@@ -37,8 +37,8 @@
 
 <svelte:head>
 	<title>FitJourney - Master Fitness in 70 Days</title>
-	<meta name="description" content="Transform your fitness knowledge with our interactive 70-day learning journey. Master nutrition, exercise, and wellness through engaging articles and quizzes." />
-	<meta name="keywords" content="fitness learning, nutrition education, exercise knowledge, wellness journey, fitness quiz, health education" />
+	<meta name="description" content="Transform your fitness knowledge with our interactive 70-day learning journey. Master nutrition, exercise, and wellness through engaging articles and assessmentzes." />
+	<meta name="keywords" content="fitness learning, nutrition education, exercise knowledge, wellness journey, fitness assessment, health education" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">

@@ -3,7 +3,11 @@ import type { Actions, PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ url }) => {
   const inviterCode = url.searchParams.get('inviterCode')
-  return { inviterCode }
+  const fromAssessment = url.searchParams.get('fromAssessment') === '1'
+  return { 
+    inviterCode,
+    fromAssessment
+  }
 }
 
 export const actions: Actions = {
@@ -14,6 +18,7 @@ export const actions: Actions = {
     const confirmPassword = String(form.get('confirmPassword') || '').trim()
     const displayName = String(form.get('displayName') || '').trim()
     const inviterCode = String(form.get('inviterCode') || '').trim()
+    const learningPaths = String(form.get('learningPaths') || '').trim()
 
     if (!email || !password || !confirmPassword) return fail(400, { error: 'Please fill in all fields' })
     if (password !== confirmPassword) return fail(400, { error: 'Passwords do not match' })
@@ -25,6 +30,7 @@ export const actions: Actions = {
     const metadata: Record<string, any> = {}
     if (displayName) metadata.name = displayName
     if (inviterCode) metadata.inviter_code = inviterCode
+    if (learningPaths) metadata.learning_paths = learningPaths.split(',')
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -39,11 +45,13 @@ export const actions: Actions = {
   oauthGoogle: async ({ url, request, locals: { supabase } }) => {
     const form = await request.formData()
     const inviterCode = String(form.get('inviterCode') || '').trim()
+    const learningPaths = String(form.get('learningPaths') || '').trim()
 
     if (inviterCode && !validateInviterCode(inviterCode)) return fail(400, { error: 'Invalid inviter code format' })
 
     const redirectUrl = new URL('/auth/callback', url.origin)
     if (inviterCode) redirectUrl.searchParams.set('inviterCode', inviterCode)
+    if (learningPaths) redirectUrl.searchParams.set('learningPaths', learningPaths)
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',

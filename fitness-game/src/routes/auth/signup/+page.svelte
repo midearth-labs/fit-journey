@@ -6,7 +6,8 @@
   
   // Transform page data to component data
   const signUpData = {
-    inviterCode: data.inviterCode
+    inviterCode: data.inviterCode,
+    fromAssessment: data.fromAssessment
   }
 </script>
 

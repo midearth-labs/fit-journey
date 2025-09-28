@@ -4,45 +4,61 @@ import type { PageServerLoad } from './$types'
 export const load: PageServerLoad = async ({ url, locals: { supabase } }) => {
   const code = url.searchParams.get('code')
   const inviterCode = url.searchParams.get('inviterCode')
+  const learningPaths = url.searchParams.get('learningPaths')
   
   if (code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     
     if (!error) {
-      // If there's an inviterCode and the user was successfully authenticated,
-      // we need to update their metadata with the inviter code
-      if (inviterCode) {
+      // If there's an inviterCode or learningPaths and the user was successfully authenticated,
+      // we need to update their metadata
+      if (inviterCode || learningPaths) {
         const { data: { user } } = await supabase.auth.getUser()
         if (user) {
-          // UUID validation
-          const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
-          if (uuidRegex.test(inviterCode)) {
-            // Check if user already has a valid inviter_code
-            const existingInviterCode = user.user_metadata?.inviter_code
-            
-            // Only update if no inviter_code exists or if existing one is invalid
-            if (!existingInviterCode || !uuidRegex.test(existingInviterCode)) {
-              // Preserve existing metadata and add/update inviter_code
-              const updatedMetadata = {
-                ...user.user_metadata,
-                inviter_code: inviterCode
-              }
+          const updatedMetadata = { ...user.user_metadata }
+          let doUpdate: boolean = false
+          // Handle inviter code
+          if (inviterCode) {
+            // UUID validation
+            const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+            if (uuidRegex.test(inviterCode)) {
+              // Check if user already has a valid inviter_code
+              const existingInviterCode = user.user_metadata?.inviter_code
               
-              const { error: updateError } = await supabase.auth.updateUser({
-                data: updatedMetadata
-              })
-              
-              if (updateError) {
-                console.error('Failed to update user metadata with inviter code:', updateError)
+              // Only update if no inviter_code exists
+              if (!existingInviterCode) {
+                updatedMetadata.inviter_code = inviterCode
+                doUpdate = true
+                console.log('Will update user metadata with inviter code: ', inviterCode)
               } else {
-                console.log('Successfully updated user metadata with inviter code')
+                console.warn('User already has a valid inviter_code, skipping update')
               }
             } else {
-              console.log('User already has a valid inviter_code, skipping update')
+              console.log('Invalid inviter code format, skipping update')
+            }
+          }
+          
+          // Handle learning paths
+          if (learningPaths) {
+            updatedMetadata.learning_paths = learningPaths.split(',')
+            doUpdate = true
+            console.log('Will update user metadata with learning paths:', learningPaths.split(','))
+          }
+          
+          if (doUpdate) {
+            const { error: updateError } = await supabase.auth.updateUser({
+              data: updatedMetadata
+            })
+
+            if (updateError) {
+              console.error('Failed to update user metadata: ', updateError)
+            } else {
+              console.info('Successfully updated user metadata')
             }
           } else {
-            console.log('Invalid inviter code format, skipping update')
+            console.info('No updates to user metadata')
           }
+          
         }
       }
       

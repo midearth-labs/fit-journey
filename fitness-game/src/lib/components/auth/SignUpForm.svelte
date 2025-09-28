@@ -1,9 +1,10 @@
 <script lang="ts">
-  
+  import { personaAssessmentStore } from '$lib/stores/persona-assessment';
   
   interface Props {
     data: {
-      inviterCode?: string | null
+      inviterCode?: string | null;
+      fromAssessment?: boolean;
     }
   }
   
@@ -17,6 +18,10 @@
   let loading = $state(false)
   let error = $state('')
   
+  // Get assessment results from store if fromAssessment is true
+  let assessmentResults = $derived(data.fromAssessment ? $personaAssessmentStore.result : null);
+  let learningPathIds = $derived(assessmentResults ? assessmentResults.rankedPaths.map(path => path.path.id).slice(0, 3) : []);
+  
   // client only validates fields; submit handled by server actions
 </script>
 
@@ -24,9 +29,33 @@
   <div class="auth-header">
     <h2>Sign Up</h2>
     <p>Join FitJourney and start your fitness journey</p>
+    
+    {#if data.fromAssessment && assessmentResults}
+      <div class="personalized-paths">
+        <div class="paths-badge">
+          <i class="fas fa-star"></i>
+          <span>Your Personalized Learning Paths</span>
+        </div>
+        <p class="paths-description">
+          Based on your fitness assessment, we've prepared these learning paths just for you:
+        </p>
+        <div class="paths-list">
+          {#each assessmentResults.rankedPaths.slice(0, 3) as pathResult}
+            <div class="path-item">
+              <i class="fas fa-check-circle"></i>
+              <span>{pathResult.path.name} ({pathResult.matchPercentage}% match)</span>
+            </div>
+          {/each}
+        </div>
+      </div>
+    {/if}
   </div>
   
   <form method="POST" action="?/signup">
+    {#if data.fromAssessment && learningPathIds.length > 0}
+      <input type="hidden" name="learningPaths" value={learningPathIds.join(',')} />
+    {/if}
+    
     <div class="form-group">
       <label for="email">Email</label>
       <input
@@ -109,6 +138,9 @@
   
   <form method="POST" action="?/oauthGoogle">
     <input type="hidden" name="inviterCode" value={inviterCode} />
+    {#if data.fromAssessment && learningPathIds.length > 0}
+      <input type="hidden" name="learningPaths" value={learningPathIds.join(',')} />
+    {/if}
     <button 
       type="submit" 
       class="btn btn-google" 
@@ -147,6 +179,54 @@
   .auth-header p {
     margin: 0;
     color: var(--text-secondary);
+  }
+
+  .personalized-paths {
+    background: linear-gradient(135deg, rgba(88, 204, 2, 0.05), rgba(28, 176, 246, 0.05));
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-top: var(--space-4);
+    border: 1px solid rgba(88, 204, 2, 0.2);
+  }
+
+  .paths-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--text-inverse);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .paths-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-3);
+    line-height: 1.5;
+  }
+
+  .paths-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .path-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .path-item i {
+    color: var(--primary-color);
+    font-size: 0.875rem;
   }
   
   .form-group {

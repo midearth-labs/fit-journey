@@ -1,4 +1,4 @@
-import type { LearningPath, PersonaAnswerOption, PersonaQuizResult } from '../types/fitness-persona-calculator';
+import type { LearningPath, PersonaAnswerOption, PersonaAssessmentResult } from '../types/fitness-persona-calculator';
 import type { PersonaTags } from '$lib/server/content/types/learning-paths';
 
 // Static mapping of PersonaTags to their descriptions
@@ -213,7 +213,7 @@ export class FitnessPersonaCalculator {
     /**
      * Main scoring function
      */
-    public scoreQuiz(userAnswers: Map<string, PersonaAnswerOption>): PersonaQuizResult {
+    public scoreAssessment(userAnswers: Map<string, PersonaAnswerOption>): PersonaAssessmentResult {
       // Calculate user's persona scores
       const rawPersonaScores = this.calculatePersonaScores(userAnswers);
       const userPersonaScores = this.reduceToTopPerGroup(rawPersonaScores);
@@ -222,7 +222,7 @@ export class FitnessPersonaCalculator {
       const pathScores = this.paths.map(path => {
         const matchScore = this.calculatePathMatchScore(userPersonaScores, path.personaWeights || {});
         return {
-          path,
+          path: { id: path.id, name: path.name },
           matchScore,
           matchPercentage: 0 // Will be calculated after normalization
         };
