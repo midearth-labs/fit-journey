@@ -29,7 +29,7 @@ export class UserProfileService implements IUserProfileService {
 
     // Build updates object: ignore undefined; allow null to explicitly clear fields
     const updates: Partial<User> = {};
-    const allowedKeys = ['displayName', 'avatarGender', 'avatarAgeRange', 'personalizationCountryCodes', 'timezone', 'preferredReminderTime', 'notificationPreferences'] as const satisfies (keyof User & keyof UpdateUserProfileDto)[];
+    const allowedKeys = ['displayName', 'avatarGender', 'avatarAgeRange', 'personalizationCountryCodes', 'learningPaths', 'timezone', 'preferredReminderTime', 'notificationPreferences'] as const satisfies (keyof User & keyof UpdateUserProfileDto)[];
 
     const assignIfProvided = <T extends keyof User & keyof UpdateUserProfileDto>(key: T) => {
       if (dto[key] !== undefined) {
@@ -65,6 +65,7 @@ export class UserProfileService implements IUserProfileService {
       avatarGender: user.avatarGender,
       avatarAgeRange: user.avatarAgeRange,
       personalizationCountryCodes: user.personalizationCountryCodes,
+      learningPaths: user.learningPaths,
       timezone: user.timezone,
       preferredReminderTime: user.preferredReminderTime,
       notificationPreferences: user.notificationPreferences,

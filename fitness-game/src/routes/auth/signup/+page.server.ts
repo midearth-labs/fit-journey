@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ url }) => {
 }
 
 export const actions: Actions = {
-  signup: async ({ request, locals: { supabase } }) => {
+  signup: async ({ request, locals: { supabase, serviceFactory } }) => {
     const form = await request.formData()
     const email = String(form.get('email') || '').trim()
     const password = String(form.get('password') || '').trim()
@@ -30,7 +30,13 @@ export const actions: Actions = {
     const metadata: Record<string, any> = {}
     if (displayName) metadata.name = displayName
     if (inviterCode) metadata.inviter_code = inviterCode
-    if (learningPaths) metadata.learning_paths = learningPaths.split(',')
+    if (learningPaths) {
+      const helper = serviceFactory.getLearningPathHelper()
+      const validPaths = helper.filterValidLearningPaths(learningPaths.split(','))
+      if (validPaths) {
+        metadata.learning_paths = validPaths
+      }
+    }
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -42,7 +48,7 @@ export const actions: Actions = {
     throw redirect(303, '/')
   },
 
-  oauthGoogle: async ({ url, request, locals: { supabase } }) => {
+  oauthGoogle: async ({ url, request, locals: { supabase, serviceFactory } }) => {
     const form = await request.formData()
     const inviterCode = String(form.get('inviterCode') || '').trim()
     const learningPaths = String(form.get('learningPaths') || '').trim()
@@ -51,7 +57,13 @@ export const actions: Actions = {
 
     const redirectUrl = new URL('/auth/callback', url.origin)
     if (inviterCode) redirectUrl.searchParams.set('inviterCode', inviterCode)
-    if (learningPaths) redirectUrl.searchParams.set('learningPaths', learningPaths)
+    if (learningPaths) {
+      const helper = serviceFactory.getLearningPathHelper()
+      const validPaths = helper.filterValidLearningPaths(learningPaths.split(','))
+      if (validPaths) {
+        redirectUrl.searchParams.set('learningPaths', validPaths.join(','))
+      }
+    }
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',

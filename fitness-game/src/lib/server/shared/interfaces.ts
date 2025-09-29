@@ -117,6 +117,7 @@ export type UpdateUserProfileDto = {
   avatarGender?: Nullable<User['avatarGender']>;
   avatarAgeRange?: Nullable<User['avatarAgeRange']>;
   personalizationCountryCodes?: Nullable<User['personalizationCountryCodes']>;
+  learningPaths?: Nullable<User['learningPaths']>;
   timezone?: Nullable<User['timezone']>;
   preferredReminderTime?: Nullable<User['preferredReminderTime']>;
   notificationPreferences?: Nullable<User['notificationPreferences']>;

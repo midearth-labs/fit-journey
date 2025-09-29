@@ -2,6 +2,7 @@
 // for information about these interfaces
 import type { User, Session, SupabaseClient } from '@supabase/supabase-js'
 import type { AuthServices, UnAuthServices } from '$lib/server/services'
+import type { IServiceFactory } from '$lib/server/shared/service-factory'
 
 declare global {
 	namespace App {
@@ -16,6 +17,7 @@ declare global {
 			authServices: AuthServices | null
 			unAuthServices: UnAuthServices | null
 			routeType: 'authenticated' | 'unauthenticated' | 'auth_page'
+			serviceFactory: IServiceFactory
 		}
 		interface PageData {
 			session: Session | null

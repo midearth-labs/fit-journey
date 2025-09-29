@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async ({ url, locals: { supabase } }) => {
+export const load: PageServerLoad = async ({ url, locals: { supabase, serviceFactory } }) => {
   const code = url.searchParams.get('code')
   const inviterCode = url.searchParams.get('inviterCode')
   const learningPaths = url.searchParams.get('learningPaths')
@@ -40,9 +40,15 @@ export const load: PageServerLoad = async ({ url, locals: { supabase } }) => {
           
           // Handle learning paths
           if (learningPaths) {
-            updatedMetadata.learning_paths = learningPaths.split(',')
-            doUpdate = true
-            console.log('Will update user metadata with learning paths:', learningPaths.split(','))
+            const helper = serviceFactory.getLearningPathHelper()
+            const validPaths = helper.filterValidLearningPaths(learningPaths.split(','))
+            if (validPaths) {
+              updatedMetadata.learning_paths = validPaths
+              doUpdate = true
+              console.log('Will update user metadata with validated learning paths:', updatedMetadata.learning_paths)
+            } else {
+              console.log('No valid learning paths found in callback, skipping update for learning paths')
+            }
           }
           
           if (doUpdate) {

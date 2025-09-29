@@ -1,9 +1,17 @@
 import { type NewUserArticle, type UserArticle } from '$lib/server/db/schema';
 import { ValidationError, notFoundCheck } from '$lib/server/shared/errors';
-import { type ArticleLogStatus } from '$lib/server/helpers/article-state-machine.helper';
 import type { KnowledgeBase, Question } from '../content/types';
-import type { IQuestionsDAO } from '../content/daos';
 
+export const ArticleLogStatusKeys = [
+    'reading_in_progress',
+    'knowledge_check_in_progress',
+    'knowledge_check_complete',
+    'practical_in_progress',
+    'completed'
+  ] as const;
+  
+  export type ArticleLogStatus = (typeof ArticleLogStatusKeys)[number];
+  
 /**
  * Article State Machine Helper v2
  *

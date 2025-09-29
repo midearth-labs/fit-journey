@@ -92,6 +92,8 @@ export const users = pgTable('users', {
   avatarAgeRange: avatarAgeRangeEnum('avatar_age_range'),
   // country codes for content personalization.
   personalizationCountryCodes: jsonb('personalization_country_codes').$type<string[]>(),
+  // learning paths the user is currently following (by string identifier)
+  learningPaths: jsonb('learning_paths').$type<string[]>(),
   timezone: text('timezone'), // e.g. UTC, UTC+1, UTC-8
   preferredReminderTime: text('preferred_reminder_time'), // e.g. "19:00"
   notificationPreferences: jsonb('notification_preferences').$type<{

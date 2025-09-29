@@ -28,6 +28,7 @@ export const UpdateUserProfileDtoSchema = z.object({
   avatarGender: AvatarGenderSchema.nullable().optional(),
   avatarAgeRange: AvatarAgeRangeSchema.nullable().optional(),
   personalizationCountryCodes: z.array(CountryCodeSchema).min(1, 'At least one country code required').nullable().optional(),
+  learningPaths: z.array(z.string().min(1)).nullable().optional(),
   timezone: TimezoneSchema.nullable().optional(),
   preferredReminderTime: TimeSchema.nullable().optional(),
   notificationPreferences: NotificationPreferencesSchema.nullable().optional()
@@ -40,6 +41,7 @@ export const UserProfileResponseSchema = z.object({
   avatarGender: z.string().nullable(),
   avatarAgeRange: z.string().nullable(),
   personalizationCountryCodes: z.array(z.string()).nullable(),
+  learningPaths: z.array(z.string()).nullable(),
   timezone: z.string().nullable(),
   preferredReminderTime: z.string().nullable(),
   notificationPreferences: NotificationPreferencesSchema.nullable(),

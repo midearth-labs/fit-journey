@@ -1,6 +1,6 @@
 import { getDBInstance } from '$lib/server/db';
 import { ContentDAOFactory } from '$lib/server/content/daos/dao-factory';
-import { DateTimeHelper, ProgressContentHelper, FeatureAccessControl } from '$lib/server/helpers';
+import { DateTimeHelper, ProgressContentHelper, FeatureAccessControl, LearningPathHelper } from '$lib/server/helpers';
 import {
   UserRepository,
   UserMetadataRepository,
@@ -31,6 +31,7 @@ export class ServiceFactory {
   private readonly dateTimeHelper: DateTimeHelper;
   private readonly progressContentHelper: ProgressContentHelper;
   private readonly featureAccessControl: FeatureAccessControl;
+  private readonly learningPathHelper: LearningPathHelper;
   
   // Repositories
   private readonly userRepository: UserRepository;
@@ -68,6 +69,7 @@ export class ServiceFactory {
     // Initialize helpers
     this.dateTimeHelper = new DateTimeHelper();
     this.progressContentHelper = new ProgressContentHelper();
+    this.learningPathHelper = new LearningPathHelper(this.contentDAOFactory.getDAO('LearningPath'));
     
     // Initialize repositories
     this.userRepository = new UserRepository(db);
@@ -202,4 +204,13 @@ export class ServiceFactory {
   public getDateTimeHelper(): DateTimeHelper {
     return this.dateTimeHelper;
   }
+
+  /**
+   * Get learning path helper
+   */
+  public getLearningPathHelper(): LearningPathHelper {
+    return this.learningPathHelper;
+  }
 }
+
+export { type ServiceFactory as IServiceFactory };

@@ -149,6 +149,7 @@ export class ApiClient {
    * - Avatar customization settings (gender, age range)
    * - Personalization preferences (country codes, timezone, reminder time)
    * - Notification preferences
+   * - Learning path preferences (learningPaths)
    * - Invitation system data (invitation code, join count)
    * 
    * Features powered:
@@ -175,6 +176,7 @@ export class ApiClient {
    * - avatarGender: Gender selection for avatar customization (male/female/non-binary)
    * - avatarAgeRange: Age range for avatar appearance (teen/young-adult/adult/senior)
    * - personalizationCountryCodes: Array of country codes for localized content
+   * - learningPaths: Array of learning path identifiers the user wants to follow
    * - timezone: User's timezone for challenge scheduling and reminders
    * - preferredReminderTime: Daily reminder time (HH:MM format)
    * - notificationPreferences: Detailed notification settings

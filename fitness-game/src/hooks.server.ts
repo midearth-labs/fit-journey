@@ -13,6 +13,7 @@ const serviceFactoryInstance = await ServiceFactory.getInstance();
 const requestWrapper: Handle = async ({ event, resolve }) => {
   event.locals.requestDate = new Date();
   event.locals.requestId = crypto.randomUUID();
+  event.locals.serviceFactory = serviceFactoryInstance;
   return resolve(event);
 }
 

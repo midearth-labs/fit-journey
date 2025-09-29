@@ -2,7 +2,7 @@ import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, sql } from 'drizzle-orm';
 import { userArticles, type UserArticle, type NewUserArticle, userMetadata } from '$lib/server/db/schema';
 import { type IUserArticlesStateTxRepository, type OverrideArticleFields, type PartialUpdateArticle, type UpdateArticle } from '$lib/server/helpers/article-state-machine-helper-v2';
-import type { ArticleLogStatus } from '$lib/server/helpers/article-state-machine.helper';
+import type { ArticleLogStatus } from '$lib/server/helpers/article-state-machine-helper-v2';
 
 type UpdateArticleResponse = {id: UserArticle['id']};
 export interface IUserArticlesRepository {

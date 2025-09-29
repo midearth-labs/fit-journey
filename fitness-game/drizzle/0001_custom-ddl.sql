@@ -5,7 +5,7 @@
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO public.users (id, email, display_name, inviter_code, created_at, updated_at)
+    INSERT INTO public.users (id, email, display_name, inviter_code, learning_paths, created_at, updated_at)
     VALUES (
         NEW.id, 
         NEW.email, 
@@ -15,6 +15,7 @@ BEGIN
             THEN NEW.raw_user_meta_data->>'inviter_code'
             ELSE NULL
         END,
+        NEW.raw_user_meta_data->>'learning_paths',
         NOW(), 
         NOW()
     );
