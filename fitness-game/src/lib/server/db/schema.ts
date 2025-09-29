@@ -112,6 +112,14 @@ export const userMetadata = pgTable('user_metadata', {
   id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   enabledFeatures: jsonb('enabled_features').$type<EnabledFeatures>().notNull().default({}),
   currentFitnessLevel: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
+  articlesCompleted: integer('articles_read').notNull().default(0),
+  articlesCompletedWithPerfectScore: integer('articles_completed_with_perfect_score').notNull().default(0),
+  challengesStarted: integer('challenges_started').notNull().default(0),
+  challengesJoined: integer('challenges_joined').notNull().default(0),
+  daysLogged: integer('days_logged').notNull().default(0),
+  questionsAsked: integer('questions_asked').notNull().default(0),
+  questionsAnswered: integer('questions_answered').notNull().default(0),
+  progressShares: integer('progress_shares').notNull().default(0),
   currentStreakIds: jsonb('current_streak_ids').$type<{
     dailyMovement?: string;
     cleanEating?: string;
@@ -405,7 +413,7 @@ export const userLogsRelations = relations(userLogs, ({ one }) => ({
  */
 export const challenges = pgTable('challenges', {
   id: uuid('id').primaryKey().defaultRandom(),
-  ownerUserId: uuid('owner_user_id').references(() => users.id, { onDelete: 'set null' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
   name: text('name').notNull(),
   description: text('description').notNull(),
   status: challengeStatusEnum('status').notNull(),
@@ -459,7 +467,7 @@ export const challengeSubscribers = pgTable('challenge_subscribers', {
 
 export const challengesRelations = relations(challenges, ({ one, many }) => ({
   creator: one(users, {
-    fields: [challenges.ownerUserId],
+    fields: [challenges.userId],
     references: [users.id],
   }),
   subscribers: many(challengeSubscribers),
@@ -483,6 +491,8 @@ export const userArticlesRelations = relations(userArticles, ({ one }) => ({
   }),
 }));
 
+type WithNonNullableUserId<T extends {userId?: string | null}> = T & {userId: NonNullable<T['userId']>};
+
 
 // Export types
 export type User = InferSelectModel<typeof users>;
@@ -494,23 +504,23 @@ export type NewUserLog = Omit<InferInsertModel<typeof userLogs>, 'id' | 'updated
 
 // Social Features Types
 export type Question = InferSelectModel<typeof questions>;
-export type NewQuestion = Omit<InferInsertModel<typeof questions>, 'id' | 'updatedAt' | 'helpfulCount' | 'notHelpfulCount'>;
+export type NewQuestion = WithNonNullableUserId<Omit<InferInsertModel<typeof questions>, 'id' | 'updatedAt' | 'helpfulCount' | 'notHelpfulCount'>>;
 export type QuestionArticle = InferSelectModel<typeof questionArticles>;
 export type NewQuestionArticle = InferInsertModel<typeof questionArticles>;
 export type QuestionAnswer = InferSelectModel<typeof questionAnswers>;
-export type NewQuestionAnswer = Omit<InferInsertModel<typeof questionAnswers>, 'id' | 'updatedAt' | 'helpfulCount' | 'notHelpfulCount'>;
+export type NewQuestionAnswer = WithNonNullableUserId<Omit<InferInsertModel<typeof questionAnswers>, 'id' | 'updatedAt' | 'helpfulCount' | 'notHelpfulCount'>>;
 export type QuestionReaction = InferSelectModel<typeof questionReactions>;
-export type NewQuestionReaction = InferInsertModel<typeof questionReactions>;
+export type NewQuestionReaction = WithNonNullableUserId<InferInsertModel<typeof questionReactions>>;
 export type AnswerReaction = InferSelectModel<typeof answerReactions>;
-export type NewAnswerReaction = InferInsertModel<typeof answerReactions>;
+export type NewAnswerReaction = WithNonNullableUserId<InferInsertModel<typeof answerReactions>>;
 export type ProgressShare = InferSelectModel<typeof progressShares>;
 export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id' | 'updatedAt' | 'clapCount' | 'muscleCount' | 'partyCount' | 'status'>;
 
 // Challenges V2 Types
 export type Challenge = InferSelectModel<typeof challenges>;
-export type NewChallenge = Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status'>;
+export type NewChallenge = WithNonNullableUserId<Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status'>>;
 export type ChallengeSubscriber = InferSelectModel<typeof challengeSubscribers>;
-export type NewChallengeSubscriber = Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'dailyLogCount' | 'lastActivityDate'>;
+export type NewChallengeSubscriber = WithNonNullableUserId<Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'dailyLogCount' | 'lastActivityDate'>>;
 
 // User Articles Types
 export type UserArticle = InferSelectModel<typeof userArticles>;

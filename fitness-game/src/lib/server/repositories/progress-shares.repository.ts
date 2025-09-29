@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, desc, sql, count } from 'drizzle-orm';
-import { progressShares, type ProgressShare, type NewProgressShare } from '$lib/server/db/schema';
+import { progressShares, userMetadata, type ProgressShare, type NewProgressShare } from '$lib/server/db/schema';
 
 export type ReactionType = 'clap' | 'muscle' | 'party';
 // Omit the heavy content fields
@@ -38,10 +38,23 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
   constructor(private db: NodePgDatabase<any>) {}
 
   async create(data: NewProgressShare): Promise<{id: ProgressShare['id']}> {
-    const result = await this.db.insert(progressShares)
-      .values({...data, updatedAt: data.createdAt, clapCount: 0, muscleCount: 0, partyCount: 0, status: 'active'})
-      .returning();
-    return {id: result[0].id};
+    const result = await this.db.transaction(async (tx) => {
+      const [shareResult] = await tx.insert(progressShares)
+        .values({...data, updatedAt: data.createdAt, clapCount: 0, muscleCount: 0, partyCount: 0, status: 'active'})
+        .returning();
+
+      // Update user metadata to increment progressShares counter
+      await tx
+        .update(userMetadata)
+        .set({
+          progressShares: sql`${userMetadata.progressShares} + 1`,
+          updatedAt: data.createdAt,
+        })
+        .where(eq(userMetadata.id, data.userId));
+
+      return shareResult;
+    });
+    return {id: result.id};
   }
 
   async findActiveById(id: string): Promise<ProgressShare | null> {
@@ -137,11 +150,26 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
   }
 
   async delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean> {
-    const result = await this.db.delete(progressShares)
-      .where(and(
-        eq(progressShares.id, share.id),
-        eq(progressShares.userId, share.userId)
-      ));
+    const result = await this.db.transaction(async (tx) => {
+      const deleteResult = await tx.delete(progressShares)
+        .where(and(
+          eq(progressShares.id, share.id),
+          eq(progressShares.userId, share.userId)
+        ));
+
+      // Update user metadata to decrement progressShares counter
+      if (deleteResult.rowCount > 0) {
+        await tx
+          .update(userMetadata)
+          .set({
+            progressShares: sql`${userMetadata.progressShares} - 1`,
+            updatedAt: new Date(),
+          })
+          .where(eq(userMetadata.id, share.userId));
+      }
+
+      return deleteResult;
+    });
     
     return result.rowCount > 0;
   }

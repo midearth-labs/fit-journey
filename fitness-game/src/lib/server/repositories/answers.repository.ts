@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq, and, desc } from 'drizzle-orm';
-import { questionAnswers, type QuestionAnswer, type NewQuestionAnswer } from '$lib/server/db/schema';
+import { eq, and, desc, sql } from 'drizzle-orm';
+import { questionAnswers, userMetadata, type QuestionAnswer, type NewQuestionAnswer } from '$lib/server/db/schema';
 
 export interface IAnswersRepository {
   create(data: NewQuestionAnswer): Promise<{id: QuestionAnswer['id']}>;
@@ -16,10 +16,24 @@ export class AnswersRepository implements IAnswersRepository, IAnswersInternalRe
   constructor(private db: NodePgDatabase<any>) {}
 
   async create(data: NewQuestionAnswer): Promise<{id: QuestionAnswer['id']}> {
-    const result = await this.db.insert(questionAnswers)
-      .values({...data, updatedAt: data.createdAt, helpfulCount: 0, notHelpfulCount: 0})
-      .returning({id: questionAnswers.id});
-    return result[0];
+    const result = await this.db.transaction(async (tx) => {
+      const [answerResult] = await tx.insert(questionAnswers)
+        .values({...data, updatedAt: data.createdAt, helpfulCount: 0, notHelpfulCount: 0})
+        .returning({id: questionAnswers.id});
+
+      // Update user metadata to increment questionsAnswered counter
+      await tx
+        .update(userMetadata)
+        .set({
+          questionsAnswered: sql`${userMetadata.questionsAnswered} + 1`,
+          updatedAt: data.createdAt,
+        })
+        .where(eq(userMetadata.id, data.userId));
+      
+
+      return answerResult;
+    });
+    return result;
   }
 
   async findByQuestionId(questionId: string, page: number, limit: number): Promise<QuestionAnswer[]> {

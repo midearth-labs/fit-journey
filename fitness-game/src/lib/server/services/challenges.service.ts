@@ -73,7 +73,7 @@ export class ChallengesService implements IChallengesService {
     }
 
     const payload: NewChallenge = {
-      ownerUserId: userId,
+      userId: userId,
       name: dto.name,
       description: dto.description,
       goals: dto.goals,
@@ -155,18 +155,18 @@ export class ChallengesService implements IChallengesService {
    * POST /api/v1/challenges/:challengeId/leave
    */
   async leaveChallenge(dto: LeaveChallengeDto): Promise<LeaveChallengeOperationResponse> {
-    const { user: { id: userId } } = this.requestContext;
+    const { user: { id: userId }, requestDate } = this.requestContext;
     const { challengesRepository } = this.dependencies;
 
     // Check if the challenge exists and get its details
     const challenge = notFoundCheck(await challengesRepository.findById(dto.challengeId), 'Challenge');
 
     // Prevent owner from leaving their own challenge
-    if (challenge.ownerUserId === userId) {
+    if (challenge.userId === userId) {
       throw new ValidationError('Challenge owners cannot leave their own challenge');
     }
 
-    await challengesRepository.leave(dto.challengeId, userId);
+    await challengesRepository.leave(dto.challengeId, userId, requestDate);
   }
 
   /**
@@ -177,7 +177,7 @@ export class ChallengesService implements IChallengesService {
     const { user: { id: userId }, requestDate } = this.requestContext;
     const challenge = notFoundCheck(await(async () => { 
       const challenge = await this.dependencies.challengesRepository.findById(dto.challengeId);
-      if (challenge && challenge.joinType === 'personal' && challenge.ownerUserId !== userId) return null;
+      if (challenge && challenge.joinType === 'personal' && challenge.userId !== userId) return null;
       return challenge;
     }
     )(), 'Challenge');
@@ -296,7 +296,7 @@ export class ChallengesService implements IChallengesService {
    */
   async deleteUserChallenge(dto: DeleteUserChallengeDto): Promise<DeleteUserChallengeOperationResponse> {
     const { challengesRepository } = this.dependencies;
-    const { user: { id: userId } } = this.requestContext;
+    const { user: { id: userId }, requestDate } = this.requestContext;
     const challenge = notFoundCheck(await challengesRepository.findByIdForUser(dto.challengeId, userId), 'Challenge');
     
     // Can delete if:
@@ -311,7 +311,7 @@ export class ChallengesService implements IChallengesService {
     }
 
     // Delete the challenge
-    await challengesRepository.delete(dto.challengeId, userId);
+    await challengesRepository.delete(dto.challengeId, userId, requestDate);
   }
 
   private mapToChallengeResponse(challenge: ChallengeWithImplicitStatus, referenceDate: Date): ChallengeResponse {
@@ -328,7 +328,7 @@ export class ChallengesService implements IChallengesService {
       membersCount: challenge.membersCount,
       createdAt: challenge.createdAt.toISOString(),
       updatedAt: challenge.updatedAt.toISOString(),
-      ownerUserId: challenge.ownerUserId,
+      userId: challenge.userId,
     };
   }
 }

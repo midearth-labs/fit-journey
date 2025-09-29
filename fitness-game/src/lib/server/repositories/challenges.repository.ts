@@ -1,6 +1,6 @@
 import { and, count, eq, lte, or, sql, lt, inArray, notInArray } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { challenges, challengeSubscribers, type Challenge, type ChallengeSubscriber, type NewChallenge, type NewChallengeSubscriber, AllLogKeys, type AllLogKeysType } from '$lib/server/db/schema';
+import { challenges, challengeSubscribers, userMetadata, type Challenge, type ChallengeSubscriber, type NewChallenge, type NewChallengeSubscriber } from '$lib/server/db/schema';
 import { ValidationError } from '../shared/errors';
 import type { IChallengeSubscribersRepository } from './challenge-subscribers.repository';
 import type { ActiveChallengeMetadata, ActiveChallengesStatusCheckPayload, ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
@@ -27,9 +27,9 @@ export type IChallengesRepository = {
   findById(id: string): Promise<ChallengeWithImplicitStatus | null>;
   findByIdForUser(id: string, userId: string): Promise<ChallengeWithImplicitStatus | null>;
   update(id: string, updates: Partial<Challenge>): Promise<boolean>;
-  delete(id: string, userId: string): Promise<boolean>;
+  delete(id: string, userId: string, requestDate: Date): Promise<boolean>;
   join(subscriber: NewChallengeSubscriber, tx?: NodePgDatabase<any>, ): Promise<{id: string}>;
-  leave(challengeId: string, userId: string): Promise<boolean>;
+  leave(challengeId: string, userId: string, requestDate: Date): Promise<boolean>;
   listPublicUpcoming(page: number, limit: number): Promise<ChallengeWithImplicitStatus[]>;
   listOwnedByUser(userId: string, page: number, limit: number): Promise<ChallengeWithImplicitStatus[]>;
   listJoinedByUserMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Array<JoinedByUserMember>>;
@@ -57,7 +57,17 @@ export class ChallengesRepository implements IChallengesRepository {
         .returning({ id: challenges.id });
 
       // Auto-subscribe owner inside the same transaction
-      await this.join({ challengeId: newChallenge.id, userId: challenge.ownerUserId, joinedAt: challenge.createdAt }, tx);
+      await this.join({ challengeId: newChallenge.id, userId: challenge.userId, joinedAt: challenge.createdAt }, tx);
+
+      // Update user metadata to increment challengesStarted counter
+      await tx
+        .update(userMetadata)
+        .set({
+          challengesStarted: sql`${userMetadata.challengesStarted} + 1`,
+          updatedAt: challenge.createdAt,
+        })
+        .where(eq(userMetadata.id, challenge.userId));
+      
 
       return newChallenge
     });
@@ -73,7 +83,7 @@ export class ChallengesRepository implements IChallengesRepository {
   }
 
   async update(id: string, updates: Partial<Challenge>): Promise<boolean> {
-    if (!updates.ownerUserId) {
+    if (!updates.userId) {
       throw new ValidationError('Owner user ID is required');
     }
 
@@ -82,13 +92,13 @@ export class ChallengesRepository implements IChallengesRepository {
     .where(
       and(
         eq(challenges.id, id), 
-        eq(challenges.ownerUserId, updates.ownerUserId)
+        eq(challenges.userId, updates.userId)
       )
     );
     return (res.rowCount ?? 0) > 0;
   }
 
-  async delete(id: string, userId: string): Promise<boolean> {
+  async delete(id: string, userId: string, requestDate: Date): Promise<boolean> {
     // @TODO: make sure this logic is synced up with the service layer deleteUserChallenge
     // SQL equivalent:
     // DELETE FROM challenges 
@@ -99,20 +109,35 @@ export class ChallengesRepository implements IChallengesRepository {
     //     OR join_type = 'personal' 
     //     OR members_count <= 1
     //   );
-    const res = await this.db.delete(challenges).where(
-      and(
-        eq(challenges.id, id), 
-        eq(challenges.ownerUserId, userId),
+    const result = await this.db.transaction(async (tx) => {
+      const deleteResult = await tx.delete(challenges).where(
         and(
-          or(
-            eq(challenges.status, 'not_started'),
-            eq(challenges.joinType, 'personal'),
-            lte(challenges.membersCount, 1),
+          eq(challenges.id, id), 
+          eq(challenges.userId, userId),
+          and(
+            or(
+              eq(challenges.status, 'not_started'),
+              eq(challenges.joinType, 'personal'),
+              lte(challenges.membersCount, 1),
+            )
           )
         )
-      )
-    );
-    return (res.rowCount ?? 0) > 0;
+      );
+
+      // Update user metadata to decrement challengesStarted counter
+      if (deleteResult.rowCount > 0) {
+        await tx
+          .update(userMetadata)
+          .set({
+            challengesStarted: sql`${userMetadata.challengesStarted} - 1`,
+            updatedAt: requestDate,
+          })
+          .where(eq(userMetadata.id, userId));
+      }
+
+      return deleteResult;
+    });
+    return (result.rowCount ?? 0) > 0;
   }
 
   async join(subscriber: NewChallengeSubscriber, parentTx?: NodePgDatabase<any>): Promise<{id: string}> {
@@ -122,20 +147,39 @@ export class ChallengesRepository implements IChallengesRepository {
       .returning({ id: challengeSubscribers.id });
       
       await this.incrementMembersCountTx(tx, subscriber.challengeId);
+
+      // Update user metadata to increment challengesJoined counter
+      await tx
+        .update(userMetadata)
+        .set({
+          challengesJoined: sql`${userMetadata.challengesJoined} + 1`,
+          updatedAt: subscriber.joinedAt,
+        })
+        .where(eq(userMetadata.id, subscriber.userId));
+
       return newSubscriber;
     });
     return newSubscriber;
   }
 
-  async leave(challengeId: string, userId: string): Promise<boolean> {
+  async leave(challengeId: string, userId: string, requestDate: Date): Promise<boolean> {
     let affected = false;
     await this.db.transaction(async (tx) => {
-      const res = await tx
+      const deleteResult = await tx
         .delete(challengeSubscribers)
         .where(and(eq(challengeSubscribers.challengeId, challengeId), eq(challengeSubscribers.userId, userId)));
-      const deletedCount = res.rowCount > 0;
-      if (deletedCount) {
+      if (deleteResult.rowCount > 0) {
         await this.decrementMembersCountTx(tx, challengeId);
+
+        // Update user metadata to decrement challengesJoined counter
+        await tx
+          .update(userMetadata)
+          .set({
+            challengesJoined: sql`${userMetadata.challengesJoined} - 1`,
+            updatedAt: requestDate,
+          })
+          .where(eq(userMetadata.id, userId));
+
         affected = true;
       }
     });
@@ -180,7 +224,7 @@ export class ChallengesRepository implements IChallengesRepository {
     const [row] = await this.db
       .select()
       .from(challenges)
-      .where(and(eq(challenges.id, id), eq(challenges.ownerUserId, userId)))
+      .where(and(eq(challenges.id, id), eq(challenges.userId, userId)))
       .limit(1);
     return row ? {
       ...row,
@@ -194,7 +238,7 @@ export class ChallengesRepository implements IChallengesRepository {
     const rows = await this.db
       .select()
       .from(challenges)
-      .where(eq(challenges.ownerUserId, userId))
+      .where(eq(challenges.userId, userId))
       .orderBy(challenges.createdAt)
       .limit(limit)
       .offset(offset);

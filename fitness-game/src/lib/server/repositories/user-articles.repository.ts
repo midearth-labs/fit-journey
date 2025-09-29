@@ -1,13 +1,14 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, sql } from 'drizzle-orm';
-import { userArticles, type UserArticle, type NewUserArticle } from '$lib/server/db/schema';
+import { userArticles, type UserArticle, type NewUserArticle, userMetadata } from '$lib/server/db/schema';
 import { type IUserArticlesStateTxRepository, type OverrideArticleFields, type PartialUpdateArticle, type UpdateArticle } from '$lib/server/helpers/article-state-machine-helper-v2';
 import type { ArticleLogStatus } from '$lib/server/helpers/article-state-machine.helper';
 
+type UpdateArticleResponse = {id: UserArticle['id']};
 export interface IUserArticlesRepository {
   findByUserAndArticle(userId: string, articleId: string): Promise<UserArticle | null>;
   listByUser(userId: string, page?: number, limit?: number): Promise<UserArticle[]>;
-  transactionUpdateArticle(userId: string, articleId: string, requestDate: Date, callback: (existingArticle: UserArticle | null) => Promise<UpdateArticle | NewUserArticle>): Promise<{ id: UserArticle['id'] }>;
+  transactionUpdateArticle(userId: string, articleId: string, requestDate: Date, callback: (existingArticle: UserArticle | null) => Promise<UpdateArticle | NewUserArticle>): Promise<UpdateArticleResponse>;
 }
 
 export class UserArticlesRepository implements IUserArticlesRepository, IUserArticlesStateTxRepository {
@@ -48,7 +49,7 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
     articleId: string,
     requestDate: Date,
     callback: (existingArticle: UserArticle | null) => Promise<UpdateArticle | NewUserArticle>
-  ): Promise<{ id: UserArticle['id'] }> {
+  ): Promise<UpdateArticleResponse> {
     return await this.db.transaction(async (tx) => {
       const [existing] = await tx
         .select()
@@ -56,9 +57,14 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
         .where(and(eq(userArticles.userId, userId), eq(userArticles.articleId, articleId)))
         .for('update')
         .limit(1);
-
+      
+      let result: UpdateArticleResponse | null = null;
+      const counterTransitionCheckStatuses: ArticleLogStatus[] = ['completed'];
+      const oldStatus = existing?.status || undefined;
+      let newStatus: ArticleLogStatus | undefined = undefined;
       if (existing) {
         const updateArticle = await callback(existing) as PartialUpdateArticle;
+        newStatus = updateArticle.status;
         const [updated] = await tx
           .update(userArticles)
           .set({
@@ -77,10 +83,10 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
         if (!updated) {
           throw new Error(`Failed to update user article: ${userId}, ${articleId}`);
         }
-        return { id: updated.id };
+        result = { id: updated.id };
       } else {
         const newArticle = await callback(null) as NewUserArticle;
-
+        newStatus = newArticle.status;
         const [inserted] = await tx
             .insert(userArticles)
             .values({
@@ -88,7 +94,7 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
             articleId,
             firstReadDate: newArticle.firstReadDate,
             lastReadDate: newArticle.lastReadDate,
-            status: newArticle.status,
+            status: newStatus,
             quizAttempts: newArticle.quizAttempts,
             createdAt: requestDate,
             updatedAt: requestDate,
@@ -98,8 +104,26 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
         if (!inserted) {
             throw new Error(`Failed to insert user article: ${userId}, ${articleId}`);
         }
-        return { id: inserted.id };
+        result = { id: inserted.id };
     }
+
+    // Update user metadata to recompute articlesRead count in a single query
+    // if we are moving towards or away from a counter status, we need to update the articlesRead count
+    if ((newStatus && counterTransitionCheckStatuses.includes(newStatus)) || 
+        (oldStatus && counterTransitionCheckStatuses.includes(oldStatus))) {
+        const counterStatus: ArticleLogStatus = 'completed';
+        await tx
+        .update(userMetadata)
+        .set({
+            articlesCompleted: sql`(SELECT COUNT(*) FROM ${userArticles} WHERE ${userArticles.userId} = ${userId} AND ${userArticles.status} = ${counterStatus})`,
+            articlesCompletedWithPerfectScore: sql`(SELECT COUNT(*) FROM ${userArticles} WHERE ${userArticles.userId} = ${userId} AND ${userArticles.status} = ${counterStatus} AND ${userArticles.quizAllCorrectAnswers} = true)`,
+            updatedAt: requestDate,
+        })
+        .where(eq(userMetadata.id, userId));
+        // End of Selection
+    }
+
+    return result;
     });
   }
 }

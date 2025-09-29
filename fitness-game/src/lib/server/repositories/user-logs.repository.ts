@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, gte, lte, sql, inArray } from 'drizzle-orm';
-import { userLogs, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType, type Challenge } from '$lib/server/db/schema';
+import { userLogs, userMetadata, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType, type Challenge } from '$lib/server/db/schema';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
 import { convertToUniqueTrackingKeys } from '../shared/utils';
 
@@ -95,8 +95,19 @@ export class UserLogsRepository implements IUserLogsRepository {
         
         affectedRows += deleteResult.rowCount;
       }
+
+      // Update user metadata to recompute daysLogged count
+      // Count distinct log dates for the user
+      if (affectedRows > 0) {
+        await tx
+          .update(userMetadata)
+          .set({
+            daysLogged: sql`(SELECT COUNT(DISTINCT ${userLogs.logDate}) FROM ${userLogs} WHERE ${userLogs.userId} = ${logData.userId})`,
+            updatedAt: logData.createdAt,
+          })
+          .where(eq(userMetadata.id, logData.userId));
+      }
     });
-    // @TODO: Add logic to correct the user challenge progress count in triggers
     
     return affectedRows > 0;
   }

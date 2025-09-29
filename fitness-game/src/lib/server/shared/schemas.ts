@@ -362,7 +362,7 @@ export const GetUserChallengeResponseSchema = z.object({
   membersCount: z.number().int(),
   createdAt: z.string(),
   updatedAt: z.string(),
-  ownerUserId: UuidSchema.nullable()
+  userId: UuidSchema.nullable()
 });
 
 export const ListChallengesOwnedByUserResponseSchema = GetUserChallengeResponseSchema.extend({});

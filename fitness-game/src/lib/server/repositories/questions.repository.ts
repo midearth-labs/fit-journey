@@ -1,6 +1,6 @@
 import { eq, and, desc, sql, inArray } from 'drizzle-orm';
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { questions, questionArticles, type Question, type NewQuestion, type NewQuestionArticle } from '$lib/server/db/schema';
+import { questions, questionArticles, userMetadata, type Question, type NewQuestion } from '$lib/server/db/schema';
 
 export interface IQuestionsRepository {
   create(question: NewQuestion, articleIds: string[]): Promise<{id: Question['id']}>;
@@ -32,6 +32,16 @@ export class QuestionsRepository implements IQuestionsRepository, IQuestionsInte
           }))
         );
       }
+
+      // Update user metadata to increment questionsAsked counter
+      await tx
+        .update(userMetadata)
+        .set({
+          questionsAsked: sql`${userMetadata.questionsAsked} + 1`,
+          updatedAt: question.createdAt,
+        })
+        .where(eq(userMetadata.id, question.userId));
+      
       
       return questionResult;
     });
