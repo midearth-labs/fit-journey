@@ -189,10 +189,15 @@ export const userArticles = pgTable('user_articles', {
  * Primary key is a UUID that is NOT auto-generated (managed externally).
  */
 export const articleTracking = pgTable('article_tracking', {
-  id: text('article_id').primaryKey(),
+  id: text('article_id').notNull(),
+  partitionKey: integer('partition_key').notNull(),
   readCount: bigint('read_count', {mode: 'number'}).notNull().default(0),
   completedCount: bigint('completed_count', {mode: 'number'}).notNull().default(0),
   completedWithPerfectScore: bigint('completed_with_perfect_score', {mode: 'number'}).notNull().default(0),
+}, (table) => {
+  return [
+    primaryKey({ columns: [table.id, table.partitionKey] }),
+  ];
 });
 
 export const userLogs = pgTable('user_logs', {

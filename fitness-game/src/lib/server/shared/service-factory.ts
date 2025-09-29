@@ -1,17 +1,28 @@
 import { getDBInstance } from '$lib/server/db';
 import { ContentDAOFactory } from '$lib/server/content/daos/dao-factory';
-import { DateTimeHelper, ProgressContentHelper, FeatureAccessControl, LearningPathHelper } from '$lib/server/helpers';
+import { DateTimeHelper, type IDateTimeHelper, ProgressContentHelper, type IProgressContentHelper, FeatureAccessControl, type IFeatureAccessControl, LearningPathHelper, type ILearningPathHelper, PartitionGenerator, type IPartitionGenerator } from '$lib/server/helpers';
 import {
+  type IUserRepository,
   UserRepository,
+  type IUserMetadataRepository,
   UserMetadataRepository,
+  type IUserArticlesRepository,
   UserArticlesRepository,
+  type IUserLogsRepository,
   UserLogsRepository,
+  type IQuestionsRepository,
   QuestionsRepository,
+  type IQuestionReactionsRepository,
   QuestionReactionsRepository,
+  type IAnswerReactionsRepository,
   AnswerReactionsRepository,
+  type IAnswersRepository,
   AnswersRepository,
+  type IProgressSharesRepository,
   ProgressSharesRepository,
+  type IChallengesRepository,
   ChallengesRepository,
+  type IChallengeSubscribersRepository,
   ChallengeSubscribersRepository,
 } from '$lib/server/repositories';
 import { LogService, UserProfileService, UserMetadataService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type AuthServices, type ILogService, type IUserProfileService, type IUserMetadataService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
@@ -19,34 +30,42 @@ import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
 import type { AuthRequestContext, MaybeAuthRequestContext } from './interfaces';
+import type { IContentDAOFactory } from '../content/daos';
+
+export type IServiceFactory = {
+  getAuthServices(authRequestContext: AuthRequestContext): AuthServices;
+  getUnAuthServices(maybeAuthRequestContext: MaybeAuthRequestContext): UnAuthServices;
+  getLearningPathHelper(): ILearningPathHelper;
+};
 
 /**
  * Service factory that handles dependency injection for API routes
  * This ensures consistent service instantiation across all API endpoints
  */
-export class ServiceFactory {
-  private static instance: ServiceFactory;
+export class ServiceFactory implements IServiceFactory {
+  private static instance: IServiceFactory;
   
-  private readonly contentDAOFactory: ContentDAOFactory;
-  private readonly dateTimeHelper: DateTimeHelper;
-  private readonly progressContentHelper: ProgressContentHelper;
-  private readonly featureAccessControl: FeatureAccessControl;
-  private readonly learningPathHelper: LearningPathHelper;
+  private readonly contentDAOFactory: IContentDAOFactory;
+  private readonly dateTimeHelper: IDateTimeHelper;
+  private readonly progressContentHelper: IProgressContentHelper;
+  private readonly featureAccessControl: IFeatureAccessControl;
+  private readonly learningPathHelper: ILearningPathHelper;
+  private readonly partitionGenerator: IPartitionGenerator;
   
   // Repositories
-  private readonly userRepository: UserRepository;
-  private readonly userMetadataRepository: UserMetadataRepository;
-  private readonly userArticlesRepository: UserArticlesRepository;
-  private readonly userLogsRepository: UserLogsRepository;
+  private readonly userRepository: IUserRepository;
+  private readonly userMetadataRepository: IUserMetadataRepository;
+  private readonly userArticlesRepository: IUserArticlesRepository;
+  private readonly userLogsRepository: IUserLogsRepository;
   
   // Social Features Repositories
-  private readonly questionsRepository: QuestionsRepository;
-  private readonly questionReactionsRepository: QuestionReactionsRepository;
-  private readonly answersRepository: AnswersRepository;
-  private readonly answerReactionsRepository: AnswerReactionsRepository;
-  private readonly progressSharesRepository: ProgressSharesRepository;
-  private readonly challengesRepository: ChallengesRepository;
-  private readonly challengeSubscribersRepository: ChallengeSubscribersRepository;
+  private readonly questionsRepository: IQuestionsRepository;
+  private readonly questionReactionsRepository: IQuestionReactionsRepository;
+  private readonly answersRepository: IAnswersRepository;
+  private readonly answerReactionsRepository: IAnswerReactionsRepository;
+  private readonly progressSharesRepository: IProgressSharesRepository;
+  private readonly challengesRepository: IChallengesRepository;
+  private readonly challengeSubscribersRepository: IChallengeSubscribersRepository;
   
   // Services
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
@@ -70,6 +89,7 @@ export class ServiceFactory {
     this.dateTimeHelper = new DateTimeHelper();
     this.progressContentHelper = new ProgressContentHelper();
     this.learningPathHelper = new LearningPathHelper(this.contentDAOFactory.getDAO('LearningPath'));
+    this.partitionGenerator = new PartitionGenerator();
     
     // Initialize repositories
     this.userRepository = new UserRepository(db);
@@ -78,7 +98,7 @@ export class ServiceFactory {
     this.featureAccessControl = new FeatureAccessControl(
       { userMetadataRepository: this.userMetadataRepository }
     );
-    this.userArticlesRepository = new UserArticlesRepository(db);
+    this.userArticlesRepository = new UserArticlesRepository(db, this.partitionGenerator);
     this.userLogsRepository = new UserLogsRepository(db, this.dateTimeHelper);
     
     // Initialize Social Features repositories
@@ -151,7 +171,7 @@ export class ServiceFactory {
   /**
    * Get singleton instance of ServiceFactory
    */
-  public static async getInstance(): Promise<ServiceFactory> {
+  public static async getInstance(): Promise<IServiceFactory> {
     if (!ServiceFactory.instance) {
       const contentLoader = await ContentLoader.initialize();
       ServiceFactory.instance = new ServiceFactory(contentLoader.getContent());
@@ -179,38 +199,9 @@ export class ServiceFactory {
   }
   
   /**
-   * Get all repositories (for advanced use cases)
-   */
-  public getRepositories() {
-    return {
-      userRepository: this.userRepository,
-      userMetadataRepository: this.userMetadataRepository,
-      userLogsRepository: this.userLogsRepository,
-      challengesRepository: this.challengesRepository,
-      challengeSubscribersRepository: this.challengeSubscribersRepository,
-    };
-  }
-  
-  /**
-   * Get content DAO factory
-   */
-  public getContentDAOFactory(): ContentDAOFactory {
-    return this.contentDAOFactory;
-  }
-  
-  /**
-   * Get date time helper
-   */
-  public getDateTimeHelper(): DateTimeHelper {
-    return this.dateTimeHelper;
-  }
-
-  /**
    * Get learning path helper
    */
-  public getLearningPathHelper(): LearningPathHelper {
+  public getLearningPathHelper(): ILearningPathHelper {
     return this.learningPathHelper;
   }
 }
-
-export { type ServiceFactory as IServiceFactory };

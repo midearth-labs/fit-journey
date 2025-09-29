@@ -1,6 +1,7 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, sql } from 'drizzle-orm';
 import { userArticles, type UserArticle, type NewUserArticle, userMetadata, articleTracking } from '$lib/server/db/schema';
+import { type IPartitionGenerator } from '$lib/server/helpers';
 import { type IUserArticlesStateTxRepository, type OverrideArticleFields, type PartialUpdateArticle, type UpdateArticle } from '$lib/server/helpers/article-state-machine-helper-v2';
 import type { ArticleLogStatus } from '$lib/server/helpers/article-state-machine-helper-v2';
 
@@ -12,7 +13,7 @@ export interface IUserArticlesRepository {
 }
 
 export class UserArticlesRepository implements IUserArticlesRepository, IUserArticlesStateTxRepository {
-  constructor(private db: NodePgDatabase<any>) {}
+  constructor(private db: NodePgDatabase<any>, private partitionGenerator: IPartitionGenerator) {}
 
   /**
    * Find user article
@@ -135,16 +136,18 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
         .where(eq(userMetadata.id, userId));
 
       // Upsert into article_tracking by articleId with atomic increments
+      const articlePartitionKey = this.partitionGenerator.generateRandomForArticle();
       await tx
         .insert(articleTracking)
         .values({
           id: articleId,
+          partitionKey: articlePartitionKey,
           readCount: deltaRead,
           completedCount: deltaCompleted,
           completedWithPerfectScore: deltaPerfect,
         })
         .onConflictDoUpdate({
-          target: [articleTracking.id],
+          target: [articleTracking.id, articleTracking.partitionKey],
           set: {
             readCount: sql`${articleTracking.readCount} + ${deltaRead}`,
             completedCount: sql`${articleTracking.completedCount} + ${deltaCompleted}`,

@@ -99,7 +99,9 @@ export class UserLogsRepository implements IUserLogsRepository {
       // Update user metadata to recompute daysLogged count
       // Count distinct log dates for the user
       if (affectedRows > 0) {
-        // will use this index: user_daily_log_unique 
+        // @TODO: PERFORMANCE: This uses this index: user_daily_log_unique, 
+        // this query should be performant as it uses the index 
+        // but if profiling says otherwise, we will adjust
         await tx
           .update(userMetadata)
           .set({
