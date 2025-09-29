@@ -1,4 +1,7 @@
+// @TODO: keep this number and the list of articles in sync with the sql script
+// otherwise, an exception will occur.
 export const ARTICLE_KEY_SPACE = 10;
+
 
 export type IPartitionGenerator = {
   generateRandomForArticle(): number;

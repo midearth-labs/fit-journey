@@ -44,7 +44,9 @@ import type {
   UpdateCalendarSettingsOperation,
   GetCalendarSettingsOperation,
   DownloadUserCalendarOperation,
-  GetPublicCalendarOperation
+  GetPublicCalendarOperation,
+  GetGlobalStatisticsOperation,
+  GetArticleStatisticsOperation
 } from '$lib/server/shared/schemas';
 
 /**
@@ -1485,9 +1487,76 @@ export class ApiClient {
    * 
    * Used in: Calendar subscription URLs, dynamic integration workflows, real-time reminder management
    */
-  async getPublicCalendar(calendarCode: string): Promise<string> {
-    return this.request<string>('/public/api/v1/calendar/:calendarCode', { method: 'GET' }, {
+  async getPublicCalendar(calendarCode: string): Promise<GetPublicCalendarOperation['response']['body']> {
+    return this.request<GetPublicCalendarOperation['response']['body']>('/public/api/v1/calendar/:calendarCode', { method: 'GET' }, {
       params: { calendarCode }
+    });
+  }
+
+  // ---------- Statistics & Analytics ----------
+  // Powers: Global analytics, article performance metrics, system insights
+
+  /** 
+   * GET /public/api/v1/statistics/global
+   * 
+   * Retrieves global statistics across all users and activities in the system.
+   * Provides comprehensive insights into platform usage and engagement metrics.
+   * 
+   * Returns global statistics object with:
+   * - userCount: Total number of registered users
+   * - invitationJoinCount: Total invitations accepted across all users
+   * - articleReadCount: Total article reads across all users
+   * - articleCompletedCount: Total articles completed across all users
+   * - articleCompletedWithPerfectScore: Total articles completed with perfect quiz scores
+   * - challengesStarted: Total challenges started across all users
+   * - challengesJoined: Total challenge participations across all users
+   * - daysLogged: Total daily habit log entries across all users
+   * - questionsAsked: Total questions asked in the community
+   * - questionsAnswered: Total answers provided in the community
+   * - progressShares: Total progress shares created by users
+   * 
+   * Features powered:
+   * - Platform analytics and insights
+   * - System performance monitoring
+   * - Community engagement metrics
+   * - Content performance analysis
+   * - User growth tracking
+   * - [Placeholder] Real-time analytics dashboard
+   * 
+   * Used in: Admin dashboards, platform analytics, system monitoring, public statistics
+   */
+  async getGlobalStatistics(): Promise<GetGlobalStatisticsOperation['response']['body']> {
+    return this.request<GetGlobalStatisticsOperation['response']['body']>('/public/api/v1/statistics/global', { method: 'GET' });
+  }
+
+  /** 
+   * GET /public/api/v1/statistics/articles/:articleId
+   * 
+   * Retrieves detailed statistics for a specific article including engagement
+   * metrics and performance data across all users.
+   * 
+   * Path parameters:
+   * - articleId: Unique identifier for the article
+   * 
+   * Returns article statistics object with:
+   * - articleId: The article identifier
+   * - readCount: Total number of times this article has been read
+   * - completedCount: Total number of times this article has been completed
+   * - completedWithPerfectScore: Total completions with perfect quiz scores
+   * 
+   * Features powered:
+   * - Article performance analytics
+   * - Content engagement tracking
+   * - Learning effectiveness measurement
+   * - Content optimization insights
+   * - Popular content identification
+   * - [Placeholder] Article recommendation algorithms
+   * 
+   * Used in: Article analytics dashboards, content performance reports, learning insights
+   */
+  async getArticleStatistics(articleId: string): Promise<GetArticleStatisticsOperation['response']['body']> {
+    return this.request<GetArticleStatisticsOperation['response']['body']>('/public/api/v1/statistics/articles/:articleId', { method: 'GET' }, {
+      params: { articleId }
     });
   }
 

@@ -43,6 +43,8 @@ import {
   type CompleteArticleOperation,
   type ListUserArticlesOperation,
   type GetUserArticleOperation,
+  type GetGlobalStatisticsOperation,
+  type GetArticleStatisticsOperation,
 } from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
@@ -358,3 +360,7 @@ export type GetUserArticleResponse = GetUserArticleOperation['response']['body']
 // Back-compat aliases for service/consumer code
 export type UserArticleSummaryResponse = ListUserArticlesResponse[number];
 export type UserArticleDetailResponse = GetUserArticleResponse;
+
+// --- Statistics Response Types ---
+export type GlobalStatisticsResponse = GetGlobalStatisticsOperation['response']['body'];
+export type ArticleStatisticsResponse = GetArticleStatisticsOperation['response']['body'];

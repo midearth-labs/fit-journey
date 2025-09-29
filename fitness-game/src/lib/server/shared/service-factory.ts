@@ -24,8 +24,10 @@ import {
   ChallengesRepository,
   type IChallengeSubscribersRepository,
   ChallengeSubscribersRepository,
+  type IStatisticsRepository,
+  StatisticsRepository,
 } from '$lib/server/repositories';
-import { LogService, UserProfileService, UserMetadataService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type AuthServices, type ILogService, type IUserProfileService, type IUserMetadataService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
+import { LogService, UserProfileService, UserMetadataService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type AuthServices, type ILogService, type IUserProfileService, type IUserMetadataService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService, StatisticsService, type IStatisticsService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -66,6 +68,7 @@ export class ServiceFactory implements IServiceFactory {
   private readonly progressSharesRepository: IProgressSharesRepository;
   private readonly challengesRepository: IChallengesRepository;
   private readonly challengeSubscribersRepository: IChallengeSubscribersRepository;
+  private readonly statisticsRepository: IStatisticsRepository;
   
   // Services
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
@@ -80,6 +83,7 @@ export class ServiceFactory implements IServiceFactory {
   private readonly answersServiceCreator: ServiceCreatorFromRequestContext<IAnswersService>;
   private readonly progressSharesServiceCreator: ServiceCreatorFromRequestContext<IProgressSharesService>;
   private readonly progressSharesUnAuthenticatedServiceCreator: ServiceCreatorFromMaybeAuthRequestContext<IProgressSharesUnAuthenticatedService>;
+  private readonly statisticsServiceCreator: ServiceCreatorFromMaybeAuthRequestContext<IStatisticsService>;
   
   private constructor(content: Content) {
     const db = getDBInstance();
@@ -109,6 +113,7 @@ export class ServiceFactory implements IServiceFactory {
     this.progressSharesRepository = new ProgressSharesRepository(db);
     this.challengeSubscribersRepository = new ChallengeSubscribersRepository(db);
     this.challengesRepository = new ChallengesRepository(db, this.challengeSubscribersRepository, this.dateTimeHelper);
+    this.statisticsRepository = new StatisticsRepository(db);
     
     // Initialize services
     this.logServiceCreator = createServiceFromClass(
@@ -166,6 +171,10 @@ export class ServiceFactory implements IServiceFactory {
       ChallengesService,
       { challengesRepository: this.challengesRepository, challengeSubscribersRepository: this.challengeSubscribersRepository, dateTimeHelper: this.dateTimeHelper }
     );
+    this.statisticsServiceCreator = createUnAuthServiceFromClass(
+      StatisticsService,
+      { statisticsRepository: this.statisticsRepository }
+    );
   }
   
   /**
@@ -195,6 +204,7 @@ export class ServiceFactory implements IServiceFactory {
   public getUnAuthServices(maybeAuthRequestContext: MaybeAuthRequestContext): UnAuthServices {
     return {
       progressSharesUnAuthenticatedService: () => this.progressSharesUnAuthenticatedServiceCreator(maybeAuthRequestContext),
+      statisticsService: () => this.statisticsServiceCreator(maybeAuthRequestContext),
     };
   }
   

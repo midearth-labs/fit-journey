@@ -1490,3 +1490,72 @@ export type GetPublicCalendarOperation = {
     body: z.infer<typeof GetPublicCalendarOperationSchema.response.body>;
   };
 };
+
+// --- Statistics Schemas ---
+
+export const GlobalStatisticsResponseSchema = z.object({
+  userCount: z.number().int().min(0),
+  invitationJoinCount: z.number().int().min(0),
+  articleReadCount: z.number().int().min(0),
+  articleCompletedCount: z.number().int().min(0),
+  articleCompletedWithPerfectScore: z.number().int().min(0),
+  challengesStarted: z.number().int().min(0),
+  challengesJoined: z.number().int().min(0),
+  daysLogged: z.number().int().min(0),
+  questionsAsked: z.number().int().min(0),
+  questionsAnswered: z.number().int().min(0),
+  progressShares: z.number().int().min(0),
+});
+
+export const ArticleStatisticsResponseSchema = z.object({
+  id: z.string(),
+  readCount: z.number().int().min(0),
+  completedCount: z.number().int().min(0),
+  completedWithPerfectScore: z.number().int().min(0),
+});
+
+// Statistics Operations
+export const GetGlobalStatisticsOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: GlobalStatisticsResponseSchema
+  }
+};
+
+export const GetArticleStatisticsOperationSchema = {
+  request: {
+    params: z.object({ articleId: z.string() }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: ArticleStatisticsResponseSchema.nullable()
+  }
+};
+
+// Statistics Operation Types
+export type GetGlobalStatisticsOperation = {
+  request: {
+    params: z.infer<typeof GetGlobalStatisticsOperationSchema.request.params>;
+    query: z.infer<typeof GetGlobalStatisticsOperationSchema.request.query>;
+    body: z.infer<typeof GetGlobalStatisticsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetGlobalStatisticsOperationSchema.response.body>;
+  };
+};
+
+export type GetArticleStatisticsOperation = {
+  request: {
+    params: z.infer<typeof GetArticleStatisticsOperationSchema.request.params>;
+    query: z.infer<typeof GetArticleStatisticsOperationSchema.request.query>;
+    body: z.infer<typeof GetArticleStatisticsOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetArticleStatisticsOperationSchema.response.body>;
+  };
+};

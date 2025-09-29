@@ -11,3 +11,4 @@ export { type IProgressSharesRepository, ProgressSharesRepository } from './prog
 export { type IAnswerReactionsRepository, AnswerReactionsRepository } from './answer-reactions.repository';
 export { type IChallengesRepository, ChallengesRepository, type ChallengeWithImplicitStatus, type JoinedByUserWithImplicitStatus } from './challenges.repository';
 export { type IChallengeSubscribersRepository, ChallengeSubscribersRepository } from './challenge-subscribers.repository';
+export { type IStatisticsRepository, StatisticsRepository } from './statistics.repository';

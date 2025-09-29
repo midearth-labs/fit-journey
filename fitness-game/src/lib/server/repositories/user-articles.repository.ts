@@ -135,25 +135,24 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
         })
         .where(eq(userMetadata.id, userId));
 
-      // Upsert into article_tracking by articleId with atomic increments
+      // Update article_tracking by articleId with atomic increments
       const articlePartitionKey = this.partitionGenerator.generateRandomForArticle();
-      await tx
-        .insert(articleTracking)
-        .values({
-          id: articleId,
-          partitionKey: articlePartitionKey,
-          readCount: deltaRead,
-          completedCount: deltaCompleted,
-          completedWithPerfectScore: deltaPerfect,
+      const [updatedArticleTracking] = await tx
+        .update(articleTracking)
+        .set({
+          readCount: sql`${articleTracking.readCount} + ${deltaRead}`,
+          completedCount: sql`${articleTracking.completedCount} + ${deltaCompleted}`,
+          completedWithPerfectScore: sql`${articleTracking.completedWithPerfectScore} + ${deltaPerfect}`,
         })
-        .onConflictDoUpdate({
-          target: [articleTracking.id, articleTracking.partitionKey],
-          set: {
-            readCount: sql`${articleTracking.readCount} + ${deltaRead}`,
-            completedCount: sql`${articleTracking.completedCount} + ${deltaCompleted}`,
-            completedWithPerfectScore: sql`${articleTracking.completedWithPerfectScore} + ${deltaPerfect}`,
-          },
-        });
+        .where(and(
+          eq(articleTracking.id, articleId),
+          eq(articleTracking.partitionKey, articlePartitionKey)
+        ));
+
+      if (updatedArticleTracking.rowCount === 0) {
+        // @TODO: Add a metric here with an alarm on one single data-point
+        console.error(`Failed to update article tracking: ${articleId}, ${articlePartitionKey}`);
+      }
     }
 
     return result;

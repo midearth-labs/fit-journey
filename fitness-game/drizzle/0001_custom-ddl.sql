@@ -367,15 +367,88 @@ BEGIN
     END LOOP;
 END $$;
 
--- Seed article_tracking rows for partition keys 1..10 so UPDATE-only logic works day 1
--- Note: This creates a placeholder entry for each partition key, but actual article tracking
--- will be handled by the application layer when articles are accessed
+-- Seed article_tracking rows for all 70 articles with partition keys 1..10
 DO $$
 DECLARE
-    i integer;
+    article_ids text[] := ARRAY[
+        '550e8400-e29b-41d4-a716-446655440001',
+        '550e8400-e29b-41d4-a716-446655440002',
+        '550e8400-e29b-41d4-a716-446655440003',
+        '550e8400-e29b-41d4-a716-446655440004',
+        '550e8400-e29b-41d4-a716-446655440005',
+        '550e8400-e29b-41d4-a716-446655440006',
+        '550e8400-e29b-41d4-a716-446655440007',
+        '550e8400-e29b-41d4-a716-446655440008',
+        '550e8400-e29b-41d4-a716-446655440009',
+        '550e8400-e29b-41d4-a716-446655440010',
+        '550e8400-e29b-41d4-a716-446655440011',
+        '550e8400-e29b-41d4-a716-446655440012',
+        '6ba7b810-9dad-11d1-80b4-00c04fd430c8',
+        '6ba7b811-9dad-11d1-80b4-00c04fd430c8',
+        '6ba7b812-9dad-11d1-80b4-00c04fd430c8',
+        '6ba7b813-9dad-11d1-80b4-00c04fd430c8',
+        '6ba7b814-9dad-11d1-80b4-00c04fd430c8',
+        '8ba7b810-9dad-11d1-80b4-00c04fd430c8',
+        '8ba7b811-9dad-11d1-80b4-00c04fd430c8',
+        '8ba7b812-9dad-11d1-80b4-00c04fd430c8',
+        '8ba7b813-9dad-11d1-80b4-00c04fd430c8',
+        '8ba7b814-9dad-11d1-80b4-00c04fd430c8',
+        '8ba7b815-9dad-11d1-80b4-00c04fd430c8',
+        '9ba7b810-9dad-11d1-80b4-00c04fd430c8',
+        '9ba7b811-9dad-11d1-80b4-00c04fd430c8',
+        '9ba7b812-9dad-11d1-80b4-00c04fd430c8',
+        '9ba7b813-9dad-11d1-80b4-00c04fd430c8',
+        '9ba7b814-9dad-11d1-80b4-00c04fd430c8',
+        '9ba7b815-9dad-11d1-80b4-00c04fd430c8',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d479',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d480',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d481',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d482',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d483',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d484',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d485',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d486',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d487',
+        'a47ac10b-58cc-4372-a567-0e02b2c3d488',
+        'b47ac10b-58cc-4372-a567-0e02b2c3d479',
+        'b47ac10b-58cc-4372-a567-0e02b2c3d480',
+        'b47ac10b-58cc-4372-a567-0e02b2c3d481',
+        'b47ac10b-58cc-4372-a567-0e02b2c3d482',
+        'b47ac10b-58cc-4372-a567-0e02b2c3d483',
+        'b47ac10b-58cc-4372-a567-0e02b2c3d484',
+        'c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f9',
+        'c47ac10b-58cc-4372-a567-0e02b2c3d479',
+        'c47ac10b-58cc-4372-a567-0e02b2c3d480',
+        'c47ac10b-58cc-4372-a567-0e02b2c3d481',
+        'c47ac10b-58cc-4372-a567-0e02b2c3d482',
+        'c47ac10b-58cc-4372-a567-0e02b2c3d483',
+        'd47ac10b-58cc-4372-a567-0e02b2c3d479',
+        'd47ac10b-58cc-4372-a567-0e02b2c3d480',
+        'd47ac10b-58cc-4372-a567-0e02b2c3d481',
+        'd47ac10b-58cc-4372-a567-0e02b2c3d482',
+        'd47ac10b-58cc-4372-a567-0e02b2c3d483',
+        'd47ac10b-58cc-4372-a567-0e02b2c3d484',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d479',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d480',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d481',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d482',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d483',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d484',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d485',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d486',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d487',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d488',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d489',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d490',
+        'f47ac10b-58cc-4372-a567-0e02b2c3d491'
+    ];
+    article_id text;
+    partition_key integer;
 BEGIN
-    FOR i IN 1..10 LOOP
-        INSERT INTO public.article_tracking (id, partition_key) VALUES ('__placeholder__', i)
-        ON CONFLICT (id, partition_key) DO NOTHING;
+    FOREACH article_id IN ARRAY article_ids LOOP
+        FOR partition_key IN 1..10 LOOP
+            INSERT INTO public.article_tracking (id, partition_key) 
+            VALUES (article_id, partition_key)
+        END LOOP;
     END LOOP;
 END $$;
