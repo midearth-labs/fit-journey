@@ -47,6 +47,31 @@ export const UserProfileResponseSchema = z.object({
   invitationJoinCount: z.number().int().min(0),
 });
 
+export const EnabledFeaturesSchema = z.object({
+  askQuestionsEnabled: z.boolean().optional(),
+  answerQuestionsEnabled: z.boolean().optional(),
+  shareChallengesEnabled: z.boolean().optional(),
+  shareProgressEnabled: z.boolean().optional(),
+  shareReactionsEnabled: z.boolean().optional(),
+  shareInvitationsEnabled: z.boolean().optional(),
+  progressAvatarEnabled: z.boolean().optional(),
+});
+
+export const UserMetadataResponseSchema = z.object({
+  id: UuidSchema,
+  enabledFeatures: EnabledFeaturesSchema,
+  currentFitnessLevel: z.number().int().min(-5).max(5),
+  articlesCompleted: z.number().int().min(0),
+  articlesCompletedWithPerfectScore: z.number().int().min(0),
+  challengesStarted: z.number().int().min(0),
+  challengesJoined: z.number().int().min(0),
+  daysLogged: z.number().int().min(0),
+  questionsAsked: z.number().int().min(0),
+  questionsAnswered: z.number().int().min(0),
+  progressShares: z.number().int().min(0),
+  lastActivityDate: z.string().nullable(),
+});
+
 // --- Log Schemas ---
 
 export const DailyLogPayloadSchema = z.object({
@@ -314,6 +339,17 @@ export const UpdateUserProfileOperationSchema = {
   },
   response: {
     body: z.void()
+  }
+};
+
+export const GetUserMetadataOperationSchema = {
+  request: {
+    params: z.object({}),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: UserMetadataResponseSchema
   }
 };
 
@@ -775,6 +811,17 @@ export type UpdateUserProfileOperation = {
   };
   response: {
     body: z.infer<typeof UpdateUserProfileOperationSchema.response.body>;
+  };
+};
+
+export type GetUserMetadataOperation = {
+  request: {
+    params: z.infer<typeof GetUserMetadataOperationSchema.request.params>;
+    query: z.infer<typeof GetUserMetadataOperationSchema.request.query>;
+    body: z.infer<typeof GetUserMetadataOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof GetUserMetadataOperationSchema.response.body>;
   };
 };
 

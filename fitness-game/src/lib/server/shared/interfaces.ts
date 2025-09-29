@@ -1,7 +1,6 @@
 // --- Data Structures ---
 
 import {
-  type UserAnswer, 
   type DailyLogPayload, 
   type AllLogKeysType,
   type User,
@@ -9,6 +8,7 @@ import {
 } from "$lib/server/db/schema";
 import {
   type GetUserProfileOperation,
+  type GetUserMetadataOperation,
   type ListUserLogsOperation,
   type CreateUserChallengeOperation,
   type SubmitQuestionOperation,
@@ -123,6 +123,9 @@ export type UpdateUserProfileDto = {
 };
 
 export type UserProfileResponse = GetUserProfileOperation['response']['body'];
+
+// --- User Metadata DTOs ---
+export type UserMetadataResponse = GetUserMetadataOperation['response']['body'];
 
 // --- Social Features DTOs ---
 

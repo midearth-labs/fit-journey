@@ -14,7 +14,7 @@ import {
   ChallengesRepository,
   ChallengeSubscribersRepository,
 } from '$lib/server/repositories';
-import { LogService, UserProfileService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type AuthServices, type ILogService, type IUserProfileService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
+import { LogService, UserProfileService, UserMetadataService, ArticleService, QuestionsService, ModerationService, AnswersService, ProgressSharesService, type AuthServices, type ILogService, type IUserProfileService, type IUserMetadataService, type IArticleService, type IQuestionsService, type IAnswersService, type IProgressSharesService, type IProgressSharesUnAuthenticatedService, ProgressSharesUnAuthenticatedService, type UnAuthServices, ChallengesService, type IChallengesService } from '$lib/server/services';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
 import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
@@ -50,6 +50,7 @@ export class ServiceFactory {
   // Services
   private readonly logServiceCreator: ServiceCreatorFromRequestContext<ILogService>;
   private readonly userProfileServiceCreator: ServiceCreatorFromRequestContext<IUserProfileService>;
+  private readonly userMetadataServiceCreator: ServiceCreatorFromRequestContext<IUserMetadataService>;
   private readonly articleServiceCreator: ServiceCreatorFromRequestContext<IArticleService>;
   private readonly challengesServiceCreator: ServiceCreatorFromRequestContext<IChallengesService>;
   
@@ -95,6 +96,10 @@ export class ServiceFactory {
     this.userProfileServiceCreator = createServiceFromClass(
       UserProfileService,
       { userRepository: this.userRepository, featureAccessControl: this.featureAccessControl }
+    );
+    this.userMetadataServiceCreator = createServiceFromClass(
+      UserMetadataService,
+      { userMetadataRepository: this.userMetadataRepository }
     );
     this.articleServiceCreator = createServiceFromClass(
       ArticleService,
@@ -156,6 +161,7 @@ export class ServiceFactory {
     return {
       logService: () => this.logServiceCreator(authRequestContext),
       userProfileService: () => this.userProfileServiceCreator(authRequestContext),
+      userMetadataService: () => this.userMetadataServiceCreator(authRequestContext),
       articleService: () => this.articleServiceCreator(authRequestContext),
       questionsService: () => this.questionsServiceCreator(authRequestContext),
       answersService: () => this.answersServiceCreator(authRequestContext),

@@ -1,5 +1,6 @@
 import type {
   GetUserProfileOperation,
+  GetUserMetadataOperation,
   UpdateUserProfileOperation,
   ListUserLogsOperation,
   PutUserLogOperation,
@@ -189,6 +190,28 @@ export class ApiClient {
    */
   async updateMyProfile(dto: UpdateUserProfileOperation['request']['body']): Promise<UpdateUserProfileOperation['response']['body']> {
     return this.request<UpdateUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
+  }
+
+  /**
+   * GET /users/me/metadata
+   * 
+   * Retrieves the authenticated user's metadata including:
+   * - Feature flags and enabled capabilities
+   * - Current fitness level and progression metrics
+   * - Activity statistics (articles completed, challenges joined, etc.)
+   * - Streak information and achievement data
+   * - Last activity timestamp
+   * 
+   * This data is used for:
+   * - Dashboard analytics and progress visualization
+   * - Feature gating and capability checks
+   * - Gamification elements (streaks, achievements)
+   * - Personalization algorithms
+   * 
+   * Used in: Dashboard, progress tracking, feature toggles, analytics
+   */
+  async getMyMetadata(): Promise<GetUserMetadataOperation['response']['body']> {
+    return this.request<GetUserMetadataOperation['response']['body']>('/api/v1/users/me/metadata', { method: 'GET' });
   }
 
   // ---------- Daily Habit Logging & Progress Tracking ----------
