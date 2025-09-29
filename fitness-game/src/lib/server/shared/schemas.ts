@@ -63,6 +63,7 @@ export const UserMetadataResponseSchema = z.object({
   id: UuidSchema,
   enabledFeatures: EnabledFeaturesSchema,
   currentFitnessLevel: z.number().int().min(-5).max(5),
+  articlesRead: z.number().int().min(0),
   articlesCompleted: z.number().int().min(0),
   articlesCompletedWithPerfectScore: z.number().int().min(0),
   challengesStarted: z.number().int().min(0),

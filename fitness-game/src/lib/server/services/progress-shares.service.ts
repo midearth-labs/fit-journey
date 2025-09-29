@@ -175,9 +175,9 @@ export class ProgressSharesService implements IProgressSharesService {
      */
     async deleteShare(dto: DeleteShareDto): Promise<void> {
       const { progressSharesRepository } = this.dependencies;
-      const { user: { id: userId } } = this.requestContext;
+      const { user: { id: userId }, requestDate } = this.requestContext;
 
-      await progressSharesRepository.delete({ id: dto.shareId, userId });
+      await progressSharesRepository.delete({ id: dto.shareId, userId }, requestDate);
     }
   
     public static mapToPublicListResponse(share: ProgressShareWithoutContent): ProgressSharePublicListResponse {

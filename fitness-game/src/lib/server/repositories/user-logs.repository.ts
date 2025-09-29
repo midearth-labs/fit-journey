@@ -72,7 +72,7 @@ export class UserLogsRepository implements IUserLogsRepository {
             set: {
               // Dynamically update logValue based on the conflicting row's logValue
               logValue: sql`EXCLUDED.log_value`,
-              updatedAt: logData.createdAt,
+              updatedAt: sql`GREATEST(${userLogs.updatedAt}, EXCLUDED.updated_at)`,
             },
             // This makes sure we only update the log for the user
             setWhere: sql`${userLogs.userId} = EXCLUDED.userId`
@@ -99,11 +99,12 @@ export class UserLogsRepository implements IUserLogsRepository {
       // Update user metadata to recompute daysLogged count
       // Count distinct log dates for the user
       if (affectedRows > 0) {
+        // will use this index: user_daily_log_unique 
         await tx
           .update(userMetadata)
           .set({
             daysLogged: sql`(SELECT COUNT(DISTINCT ${userLogs.logDate}) FROM ${userLogs} WHERE ${userLogs.userId} = ${logData.userId})`,
-            updatedAt: logData.createdAt,
+            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${logData.createdAt})`,
           })
           .where(eq(userMetadata.id, logData.userId));
       }

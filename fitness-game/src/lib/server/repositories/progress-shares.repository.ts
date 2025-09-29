@@ -14,7 +14,7 @@ export interface IProgressSharesRepository {
   findPublicSharesByShareType(shareType: ProgressShare['shareType'], page?: number, limit?: number): Promise<ProgressShareWithoutContent[]>;
   updateStatus(share: Pick<ProgressShare, 'id' | 'status' | 'isPublic' | 'updatedAt' | 'userId' | 'includeInviteLink'>): Promise<boolean>;
   incrementActiveShareReactionCount(id: string, reactionType: ReactionType, requestDate: Date): Promise<boolean>;
-  delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean>;
+  delete(share: Pick<ProgressShare, 'id' | 'userId'>, requestDate: Date): Promise<boolean>;
 }
 
 export class ProgressSharesRepository implements IProgressSharesRepository {
@@ -48,7 +48,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
         .update(userMetadata)
         .set({
           progressShares: sql`${userMetadata.progressShares} + 1`,
-          updatedAt: data.createdAt,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${data.createdAt})`,
         })
         .where(eq(userMetadata.id, data.userId));
 
@@ -117,7 +117,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
         status: share.status,
         isPublic: share.isPublic,
         includeInviteLink: share.includeInviteLink,
-        updatedAt: share.updatedAt
+        updatedAt: sql`GREATEST(${progressShares.updatedAt}, ${share.updatedAt})`
       })
       .where(and(
         eq(progressShares.id, share.id),
@@ -139,7 +139,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
     const result = await this.db.update(progressShares)
       .set({ 
         [incrementField.name]: sql`${incrementField.field} + 1`,
-        updatedAt: requestDate
+        updatedAt: sql`GREATEST(${progressShares.updatedAt}, ${requestDate})`
       })
       .where(and(
         eq(progressShares.id, id),
@@ -149,7 +149,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
     return result.rowCount > 0;
   }
 
-  async delete(share: Pick<ProgressShare, 'id' | 'userId'>): Promise<boolean> {
+  async delete(share: Pick<ProgressShare, 'id' | 'userId'>, requestDate: Date): Promise<boolean> {
     const result = await this.db.transaction(async (tx) => {
       const deleteResult = await tx.delete(progressShares)
         .where(and(
@@ -163,7 +163,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
           .update(userMetadata)
           .set({
             progressShares: sql`${userMetadata.progressShares} - 1`,
-            updatedAt: new Date(),
+            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
           })
           .where(eq(userMetadata.id, share.userId));
       }

@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean, integer, date, jsonb, uuid, pgEnum, index, unique, uniqueIndex, primaryKey, check } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, boolean, integer, bigint, date, jsonb, uuid, pgEnum, index, unique, primaryKey, check } from 'drizzle-orm/pg-core';
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
@@ -114,6 +114,7 @@ export const userMetadata = pgTable('user_metadata', {
   id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   enabledFeatures: jsonb('enabled_features').$type<EnabledFeatures>().notNull().default({}),
   currentFitnessLevel: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
+  articlesRead: integer('articles_read').notNull().default(0),
   articlesCompleted: integer('articles_read').notNull().default(0),
   articlesCompletedWithPerfectScore: integer('articles_completed_with_perfect_score').notNull().default(0),
   challengesStarted: integer('challenges_started').notNull().default(0),
@@ -178,8 +179,20 @@ export const userArticles = pgTable('user_articles', {
 }, (table) => {
   return [
     // Unique index to ensure one record per user per article
-    uniqueIndex('user_article_unique_index').on(table.userId, table.articleId),
+    unique('user_article_unique_index').on(table.userId, table.articleId),
   ];
+});
+
+/**
+ * ARTICLE TRACKING
+ * Tracks aggregate engagement metrics for each article across all users.
+ * Primary key is a UUID that is NOT auto-generated (managed externally).
+ */
+export const articleTracking = pgTable('article_tracking', {
+  id: text('article_id').primaryKey(),
+  readCount: bigint('read_count', {mode: 'number'}).notNull().default(0),
+  completedCount: bigint('completed_count', {mode: 'number'}).notNull().default(0),
+  completedWithPerfectScore: bigint('completed_with_perfect_score', {mode: 'number'}).notNull().default(0),
 });
 
 export const userLogs = pgTable('user_logs', {
@@ -197,6 +210,7 @@ export const userLogs = pgTable('user_logs', {
   return [
     // Ensures a user can only have ONE log entry per day per user.
     // This makes updates (UPSERTs) simple and prevents duplicate data.
+    //unique is preferrable to uniqueIndex as you get the unique index for free https://www.postgresql.org/docs/current/indexes-unique.html
     unique('user_daily_log_unique').on(table.userId, table.logDate, table.logKey),
   ];
 });
@@ -462,7 +476,7 @@ export const challengeSubscribers = pgTable('challenge_subscribers', {
 }, (table) => {
   return [
     // would this index satisfy queries on just challengeId?
-    uniqueIndex('challenge_subscribers_unique_member').on(table.challengeId, table.userId),
+    unique('challenge_subscribers_unique_member').on(table.challengeId, table.userId),
     index('challenge_subscribers_user_index').on(table.userId, table.joinedAt),
   ];
 });
@@ -529,3 +543,7 @@ export type UserArticle = InferSelectModel<typeof userArticles>;
 export type NewUserArticle = Omit<InferInsertModel<typeof userArticles>, 'id' | 'userId' | 'articleId' |
  'quizAllCorrectAnswers' | 'quizFirstAttemptedAt' | 'quizStartedAt' | 'quizCompletedAt' | 'quizAnswers' | 
  'updatedAt' | 'createdAt'>;
+
+// Article Tracking Types
+export type ArticleTracking = InferSelectModel<typeof articleTracking>;
+export type NewArticleTracking = InferInsertModel<typeof articleTracking>;

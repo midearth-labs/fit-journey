@@ -29,6 +29,7 @@ export class UserMetadataService implements IUserMetadataService {
       id: userMetadata.id,
       enabledFeatures: userMetadata.enabledFeatures,
       currentFitnessLevel: userMetadata.currentFitnessLevel,
+      articlesRead: userMetadata.articlesRead,
       articlesCompleted: userMetadata.articlesCompleted,
       articlesCompletedWithPerfectScore: userMetadata.articlesCompletedWithPerfectScore,
       challengesStarted: userMetadata.challengesStarted,

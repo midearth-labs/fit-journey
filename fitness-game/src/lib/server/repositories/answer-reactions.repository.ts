@@ -44,7 +44,9 @@ export class AnswerReactionsRepository implements IAnswerReactionsRepository {
       if (wasInserted) {
         const countField = reaction.reactionType === 'helpful' ? 'helpfulCount' : 'notHelpfulCount';
         await tx.update(questionAnswers)
-          .set({ [countField]: sql`${questionAnswers[countField]} + 1` })
+          .set({ 
+            [countField]: sql`${questionAnswers[countField]} + 1`,
+          })
           .where(eq(questionAnswers.id, reaction.answerId));
       } else {
         const [newCountField, oldCountField] = reaction.reactionType === 'helpful'

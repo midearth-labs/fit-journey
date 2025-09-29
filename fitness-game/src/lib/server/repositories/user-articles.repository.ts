@@ -1,6 +1,6 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { eq, and, sql } from 'drizzle-orm';
-import { userArticles, type UserArticle, type NewUserArticle, userMetadata } from '$lib/server/db/schema';
+import { userArticles, type UserArticle, type NewUserArticle, userMetadata, articleTracking } from '$lib/server/db/schema';
 import { type IUserArticlesStateTxRepository, type OverrideArticleFields, type PartialUpdateArticle, type UpdateArticle } from '$lib/server/helpers/article-state-machine-helper-v2';
 import type { ArticleLogStatus } from '$lib/server/helpers/article-state-machine-helper-v2';
 
@@ -59,9 +59,10 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
         .limit(1);
       
       let result: UpdateArticleResponse | null = null;
-      const counterTransitionCheckStatuses: ArticleLogStatus[] = ['completed'];
       const oldStatus = existing?.status || undefined;
+      const oldQuizAllCorrect = existing?.quizAllCorrectAnswers === true;
       let newStatus: ArticleLogStatus | undefined = undefined;
+      let newQuizAllCorrect: boolean = oldQuizAllCorrect;
       if (existing) {
         const updateArticle = await callback(existing) as PartialUpdateArticle;
         newStatus = updateArticle.status;
@@ -78,11 +79,14 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
             updatedAt: requestDate,
           } satisfies OverrideArticleFields)
           .where(and(eq(userArticles.userId, existing.userId), eq(userArticles.articleId, existing.articleId)))
-          .returning({ id: userArticles.id });
+          .returning({ id: userArticles.id, status: userArticles.status, quizAllCorrectAnswers: userArticles.quizAllCorrectAnswers });
 
         if (!updated) {
           throw new Error(`Failed to update user article: ${userId}, ${articleId}`);
         }
+        // Use actual persisted values
+        newStatus = updated.status as ArticleLogStatus;
+        newQuizAllCorrect = updated.quizAllCorrectAnswers === true;
         result = { id: updated.id };
       } else {
         const newArticle = await callback(null) as NewUserArticle;
@@ -99,28 +103,54 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
             createdAt: requestDate,
             updatedAt: requestDate,
             })
-            .returning({ id: userArticles.id });
+            .returning({ id: userArticles.id, status: userArticles.status, quizAllCorrectAnswers: userArticles.quizAllCorrectAnswers });
 
         if (!inserted) {
             throw new Error(`Failed to insert user article: ${userId}, ${articleId}`);
         }
+        newStatus = inserted.status as ArticleLogStatus;
+        newQuizAllCorrect = inserted.quizAllCorrectAnswers === true;
         result = { id: inserted.id };
     }
 
-    // Update user metadata to recompute articlesRead count in a single query
-    // if we are moving towards or away from a counter status, we need to update the articlesRead count
-    if ((newStatus && counterTransitionCheckStatuses.includes(newStatus)) || 
-        (oldStatus && counterTransitionCheckStatuses.includes(oldStatus))) {
-        const counterStatus: ArticleLogStatus = 'completed';
-        await tx
+    // Compute deltas and update user metadata atomically only when needed
+    const isInsert = !existing;
+    const deltaRead = isInsert ? 1 : 0;
+    const wasCompleted = oldStatus === 'completed';
+    const nowCompleted = newStatus === 'completed';
+    const deltaCompleted = (nowCompleted ? 1 : 0) - (wasCompleted ? 1 : 0);
+    const oldPerfect = wasCompleted && (oldQuizAllCorrect === true);
+    const newPerfect = nowCompleted && (newQuizAllCorrect === true);
+    const deltaPerfect = (newPerfect ? 1 : 0) - (oldPerfect ? 1 : 0);
+
+    if (deltaRead !== 0 || deltaCompleted !== 0 || deltaPerfect !== 0) {
+      await tx
         .update(userMetadata)
         .set({
-            articlesCompleted: sql`(SELECT COUNT(*) FROM ${userArticles} WHERE ${userArticles.userId} = ${userId} AND ${userArticles.status} = ${counterStatus})`,
-            articlesCompletedWithPerfectScore: sql`(SELECT COUNT(*) FROM ${userArticles} WHERE ${userArticles.userId} = ${userId} AND ${userArticles.status} = ${counterStatus} AND ${userArticles.quizAllCorrectAnswers} = true)`,
-            updatedAt: requestDate,
+          articlesRead: sql`${userMetadata.articlesRead} + ${deltaRead}`,
+          articlesCompleted: sql`${userMetadata.articlesCompleted} + ${deltaCompleted}`,
+          articlesCompletedWithPerfectScore: sql`${userMetadata.articlesCompletedWithPerfectScore} + ${deltaPerfect}`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
         })
         .where(eq(userMetadata.id, userId));
-        // End of Selection
+
+      // Upsert into article_tracking by articleId with atomic increments
+      await tx
+        .insert(articleTracking)
+        .values({
+          id: articleId,
+          readCount: deltaRead,
+          completedCount: deltaCompleted,
+          completedWithPerfectScore: deltaPerfect,
+        })
+        .onConflictDoUpdate({
+          target: [articleTracking.id],
+          set: {
+            readCount: sql`${articleTracking.readCount} + ${deltaRead}`,
+            completedCount: sql`${articleTracking.completedCount} + ${deltaCompleted}`,
+            completedWithPerfectScore: sql`${articleTracking.completedWithPerfectScore} + ${deltaPerfect}`,
+          },
+        });
     }
 
     return result;

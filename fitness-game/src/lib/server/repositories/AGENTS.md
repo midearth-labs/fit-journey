@@ -96,6 +96,38 @@ this.repositoryName = new RepositoryName(db);
 
 ## Repository Design Principles
 
+### 0. Monotonic updatedAt with SQL GREATEST (CRITICAL)
+
+Always ensure `updatedAt` never goes backwards. When mutating rows based on a request timestamp (e.g., `requestDate`) or when incrementing/decrementing counters, set `updatedAt` using SQL `GREATEST(existing_updated_at, incoming_time)`.
+
+Guidelines:
+
+```typescript
+// Counters or any mutation on an entity with updatedAt
+await db.update(entities)
+  .set({
+    someCount: sql`${entities.someCount} + 1`,
+    updatedAt: sql`GREATEST(${entities.updatedAt}, ${requestDate})`,
+  })
+  .where(eq(entities.id, id));
+
+// Upserts that carry createdAt/updatedAt
+await db.insert(entities)
+  .values({ /* ... */, createdAt: requestDate, updatedAt: requestDate })
+  .onConflictDoUpdate({
+    target: [/* ... */],
+    set: {
+      /* ... other fields ... */
+      updatedAt: sql`GREATEST(${entities.updatedAt}, EXCLUDED.updated_at)`,
+    },
+  });
+
+```
+
+Notes:
+- Prefer `GREATEST(table.updated_at, ${requestDate})` over raw assignment to avoid clock skew and retry out-of-order updates.
+- For server-generated timestamps, `NOW()` can be used as the incoming time: `GREATEST(table.updated_at, NOW())`.
+
 ### 1. Atomic Operations (CRITICAL)
 
 **ALWAYS prefer atomic operations over separate read-then-write patterns.** This prevents race conditions and ensures data consistency.
