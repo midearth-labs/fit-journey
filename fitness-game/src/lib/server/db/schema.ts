@@ -200,6 +200,32 @@ export const articleTracking = pgTable('article_tracking', {
   ];
 });
 
+/**
+ * GLOBAL TRACKING
+ * Aggregates system-wide counters across users, user metadata and articles.
+ * Uses a partition key to enable concurrent increments without contention.
+ */
+export const globalTracking = pgTable('global_tracking', {
+  partitionKey: integer('partition_key').primaryKey(),
+
+  // Users table aggregates
+  userCount: bigint('user_count', { mode: 'number' }).notNull().default(0),
+  invitationJoinCount: bigint('invitation_join_count', { mode: 'number' }).notNull().default(0),
+
+  // Article tracking aggregates (from articleTracking)
+  articleReadCount: bigint('article_read_count', { mode: 'number' }).notNull().default(0),
+  articleCompletedCount: bigint('article_completed_count', { mode: 'number' }).notNull().default(0),
+  articleCompletedWithPerfectScore: bigint('article_completed_with_perfect_score', { mode: 'number' }).notNull().default(0),
+
+  // User metadata aggregates (mirror fields on userMetadata)
+  challengesStarted: bigint('challenges_started', { mode: 'number' }).notNull().default(0),
+  challengesJoined: bigint('challenges_joined', { mode: 'number' }).notNull().default(0),
+  daysLogged: bigint('days_logged', { mode: 'number' }).notNull().default(0),
+  questionsAsked: bigint('questions_asked', { mode: 'number' }).notNull().default(0),
+  questionsAnswered: bigint('questions_answered', { mode: 'number' }).notNull().default(0),
+  progressShares: bigint('progress_shares', { mode: 'number' }).notNull().default(0),
+});
+
 export const userLogs = pgTable('user_logs', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
@@ -552,3 +578,7 @@ export type NewUserArticle = Omit<InferInsertModel<typeof userArticles>, 'id' | 
 // Article Tracking Types
 export type ArticleTracking = InferSelectModel<typeof articleTracking>;
 export type NewArticleTracking = InferInsertModel<typeof articleTracking>;
+
+// Global Tracking Types
+export type GlobalTracking = InferSelectModel<typeof globalTracking>;
+export type NewGlobalTracking = InferInsertModel<typeof globalTracking>;

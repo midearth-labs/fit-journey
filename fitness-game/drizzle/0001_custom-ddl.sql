@@ -158,3 +158,224 @@ CREATE OR REPLACE TRIGGER trigger_decrement_daily_log_count
     FOR EACH ROW
     EXECUTE FUNCTION public.decrement_daily_log_count();
 
+
+-- =============================================
+-- Global Tracking Upsert + Triggers
+-- =============================================
+
+-- Helper function: upsert deltas into global_tracking using random partition key (1..50)
+CREATE OR REPLACE FUNCTION public.upsert_global_tracking(
+    p_user_count bigint DEFAULT 0,
+    p_invitation_join_count bigint DEFAULT 0,
+    p_article_read_count bigint DEFAULT 0,
+    p_article_completed_count bigint DEFAULT 0,
+    p_article_completed_with_perfect_score bigint DEFAULT 0,
+    p_challenges_started bigint DEFAULT 0,
+    p_challenges_joined bigint DEFAULT 0,
+    p_days_logged bigint DEFAULT 0,
+    p_questions_asked bigint DEFAULT 0,
+    p_questions_answered bigint DEFAULT 0,
+    p_progress_shares bigint DEFAULT 0
+)
+RETURNS VOID AS $$
+DECLARE
+    v_partition_key integer := FLOOR(random() * 100)::integer + 1;
+BEGIN
+    UPDATE public.global_tracking SET
+        user_count = user_count + p_user_count,
+        invitation_join_count = invitation_join_count + p_invitation_join_count,
+        article_read_count = article_read_count + p_article_read_count,
+        article_completed_count = article_completed_count + p_article_completed_count,
+        article_completed_with_perfect_score = article_completed_with_perfect_score + p_article_completed_with_perfect_score,
+        challenges_started = challenges_started + p_challenges_started,
+        challenges_joined = challenges_joined + p_challenges_joined,
+        days_logged = days_logged + p_days_logged,
+        questions_asked = questions_asked + p_questions_asked,
+        questions_answered = questions_answered + p_questions_answered,
+        progress_shares = progress_shares + p_progress_shares
+    WHERE partition_key = v_partition_key;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Users: maintain user_count and invitation_join_count
+CREATE OR REPLACE FUNCTION public.global_track_users_ins()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        1, -- user_count
+        COALESCE(NEW.invitation_join_count, 0) -- invitation_join_count
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.global_track_users_del()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        -1, -- user_count
+        -COALESCE(OLD.invitation_join_count, 0) -- invitation_join_count
+    );
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.global_track_users_upd()
+RETURNS TRIGGER AS $$
+DECLARE
+    v_delta bigint := COALESCE(NEW.invitation_join_count, 0) - COALESCE(OLD.invitation_join_count, 0);
+BEGIN
+    IF v_delta <> 0 THEN
+        PERFORM public.upsert_global_tracking(0, v_delta);
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE TRIGGER trg_global_users_ins
+    AFTER INSERT ON public.users
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_users_ins();
+
+CREATE OR REPLACE TRIGGER trg_global_users_del
+    AFTER DELETE ON public.users
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_users_del();
+
+CREATE OR REPLACE TRIGGER trg_global_users_upd_invite_join
+    AFTER UPDATE OF invitation_join_count ON public.users
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_users_upd();
+
+-- Article Tracking: maintain article_* aggregates
+CREATE OR REPLACE FUNCTION public.global_track_article_tracking_ins()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        0, 0,
+        COALESCE(NEW.read_count, 0),
+        COALESCE(NEW.completed_count, 0),
+        COALESCE(NEW.completed_with_perfect_score, 0)
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.global_track_article_tracking_del()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        0, 0,
+        -COALESCE(OLD.read_count, 0),
+        -COALESCE(OLD.completed_count, 0),
+        -COALESCE(OLD.completed_with_perfect_score, 0)
+    );
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.global_track_article_tracking_upd()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        0, 0,
+        COALESCE(NEW.read_count, 0) - COALESCE(OLD.read_count, 0),
+        COALESCE(NEW.completed_count, 0) - COALESCE(OLD.completed_count, 0),
+        COALESCE(NEW.completed_with_perfect_score, 0) - COALESCE(OLD.completed_with_perfect_score, 0)
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE TRIGGER trg_global_article_tracking_ins
+    AFTER INSERT ON public.article_tracking
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_article_tracking_ins();
+
+CREATE OR REPLACE TRIGGER trg_global_article_tracking_del
+    AFTER DELETE ON public.article_tracking
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_article_tracking_del();
+
+CREATE OR REPLACE TRIGGER trg_global_article_tracking_upd
+    AFTER UPDATE ON public.article_tracking
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_article_tracking_upd();
+
+-- User Metadata: maintain many counters
+CREATE OR REPLACE FUNCTION public.global_track_user_metadata_ins()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        0, 0, 0, 0, 0,
+        COALESCE(NEW.challenges_started, 0),
+        COALESCE(NEW.challenges_joined, 0),
+        COALESCE(NEW.days_logged, 0),
+        COALESCE(NEW.questions_asked, 0),
+        COALESCE(NEW.questions_answered, 0),
+        COALESCE(NEW.progress_shares, 0)
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.global_track_user_metadata_del()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        0, 0, 0, 0, 0,
+        -COALESCE(OLD.challenges_started, 0),
+        -COALESCE(OLD.challenges_joined, 0),
+        -COALESCE(OLD.days_logged, 0),
+        -COALESCE(OLD.questions_asked, 0),
+        -COALESCE(OLD.questions_answered, 0),
+        -COALESCE(OLD.progress_shares, 0)
+    );
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.global_track_user_metadata_upd()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM public.upsert_global_tracking(
+        0, 0, 0, 0, 0,
+        COALESCE(NEW.challenges_started, 0) - COALESCE(OLD.challenges_started, 0),
+        COALESCE(NEW.challenges_joined, 0) - COALESCE(OLD.challenges_joined, 0),
+        COALESCE(NEW.days_logged, 0) - COALESCE(OLD.days_logged, 0),
+        COALESCE(NEW.questions_asked, 0) - COALESCE(OLD.questions_asked, 0),
+        COALESCE(NEW.questions_answered, 0) - COALESCE(OLD.questions_answered, 0),
+        COALESCE(NEW.progress_shares, 0) - COALESCE(OLD.progress_shares, 0)
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE TRIGGER trg_global_user_metadata_ins
+    AFTER INSERT ON public.user_metadata
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_user_metadata_ins();
+
+CREATE OR REPLACE TRIGGER trg_global_user_metadata_del
+    AFTER DELETE ON public.user_metadata
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_user_metadata_del();
+
+CREATE OR REPLACE TRIGGER trg_global_user_metadata_upd
+    AFTER UPDATE ON public.user_metadata
+    FOR EACH ROW EXECUTE FUNCTION public.global_track_user_metadata_upd();
+
+-- Seed global_tracking rows for partition keys 1..100 so UPDATE-only logic works day 1
+DO $$
+DECLARE
+    i integer;
+BEGIN
+    FOR i IN 1..100 LOOP
+        INSERT INTO public.global_tracking (partition_key) VALUES (i)
+    END LOOP;
+END $$;
+
+-- Seed article_tracking rows for partition keys 1..10 so UPDATE-only logic works day 1
+-- Note: This creates a placeholder entry for each partition key, but actual article tracking
+-- will be handled by the application layer when articles are accessed
+DO $$
+DECLARE
+    i integer;
+BEGIN
+    FOR i IN 1..10 LOOP
+        INSERT INTO public.article_tracking (id, partition_key) VALUES ('__placeholder__', i)
+        ON CONFLICT (id, partition_key) DO NOTHING;
+    END LOOP;
+END $$;
