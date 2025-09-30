@@ -84,33 +84,6 @@ CREATE OR REPLACE TRIGGER on_users_inviter_code_updated
     AFTER UPDATE OF inviter_code ON public.users
     FOR EACH ROW EXECUTE FUNCTION public.handle_inviter_code_update();
 
--- Custom SQL migration file, put your code below! --
-
--- Function to increment knowledge_base_completed_count
-CREATE OR REPLACE FUNCTION public.increment_knowledge_base_completed_count()
-RETURNS TRIGGER AS $$
-BEGIN
-    UPDATE user_challenges 
-    SET knowledge_base_completed_count = knowledge_base_completed_count + 1, last_activity_date = GREATEST(last_activity_date, NEW.updated_at)
-    WHERE id = NEW.user_challenge_id AND user_id = NEW.user_id;
-    UPDATE user_metadata
-    SET last_activity_date = GREATEST(last_activity_date, NEW.last_attempted_at)
-    WHERE id = NEW.user_id;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Function to decrement knowledge_base_completed_count
-CREATE OR REPLACE FUNCTION public.decrement_knowledge_base_completed_count()
-RETURNS TRIGGER AS $$
-BEGIN
-    UPDATE user_challenges 
-    SET knowledge_base_completed_count = knowledge_base_completed_count - 1
-    WHERE id = OLD.user_challenge_id AND user_id = OLD.user_id;
-    RETURN OLD;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
 -- Function to increment daily_log_count
 CREATE OR REPLACE FUNCTION public.increment_daily_log_count()
 RETURNS TRIGGER AS $$
@@ -135,17 +108,6 @@ BEGIN
     RETURN OLD;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Triggers for user_challenge_progress table
-CREATE OR REPLACE TRIGGER trigger_increment_knowledge_base_count
-    AFTER INSERT ON user_challenge_progress
-    FOR EACH ROW
-    EXECUTE FUNCTION public.increment_knowledge_base_completed_count();
-
-CREATE OR REPLACE TRIGGER trigger_decrement_knowledge_base_count
-    AFTER DELETE ON user_challenge_progress
-    FOR EACH ROW
-    EXECUTE FUNCTION public.decrement_knowledge_base_completed_count();
 
 -- Triggers for user_logs table
 CREATE OR REPLACE TRIGGER trigger_increment_daily_log_count
@@ -356,99 +318,3 @@ CREATE OR REPLACE TRIGGER trg_global_user_metadata_del
 CREATE OR REPLACE TRIGGER trg_global_user_metadata_upd
     AFTER UPDATE ON public.user_metadata
     FOR EACH ROW EXECUTE FUNCTION public.global_track_user_metadata_upd();
-
--- Seed global_tracking rows for partition keys 1..100 so UPDATE-only logic works day 1
-DO $$
-DECLARE
-    i integer;
-BEGIN
-    FOR i IN 1..100 LOOP
-        INSERT INTO public.global_tracking (partition_key) VALUES (i)
-    END LOOP;
-END $$;
-
--- Seed article_tracking rows for all 70 articles with partition keys 1..10
-DO $$
-DECLARE
-    article_ids text[] := ARRAY[
-        '550e8400-e29b-41d4-a716-446655440001',
-        '550e8400-e29b-41d4-a716-446655440002',
-        '550e8400-e29b-41d4-a716-446655440003',
-        '550e8400-e29b-41d4-a716-446655440004',
-        '550e8400-e29b-41d4-a716-446655440005',
-        '550e8400-e29b-41d4-a716-446655440006',
-        '550e8400-e29b-41d4-a716-446655440007',
-        '550e8400-e29b-41d4-a716-446655440008',
-        '550e8400-e29b-41d4-a716-446655440009',
-        '550e8400-e29b-41d4-a716-446655440010',
-        '550e8400-e29b-41d4-a716-446655440011',
-        '550e8400-e29b-41d4-a716-446655440012',
-        '6ba7b810-9dad-11d1-80b4-00c04fd430c8',
-        '6ba7b811-9dad-11d1-80b4-00c04fd430c8',
-        '6ba7b812-9dad-11d1-80b4-00c04fd430c8',
-        '6ba7b813-9dad-11d1-80b4-00c04fd430c8',
-        '6ba7b814-9dad-11d1-80b4-00c04fd430c8',
-        '8ba7b810-9dad-11d1-80b4-00c04fd430c8',
-        '8ba7b811-9dad-11d1-80b4-00c04fd430c8',
-        '8ba7b812-9dad-11d1-80b4-00c04fd430c8',
-        '8ba7b813-9dad-11d1-80b4-00c04fd430c8',
-        '8ba7b814-9dad-11d1-80b4-00c04fd430c8',
-        '8ba7b815-9dad-11d1-80b4-00c04fd430c8',
-        '9ba7b810-9dad-11d1-80b4-00c04fd430c8',
-        '9ba7b811-9dad-11d1-80b4-00c04fd430c8',
-        '9ba7b812-9dad-11d1-80b4-00c04fd430c8',
-        '9ba7b813-9dad-11d1-80b4-00c04fd430c8',
-        '9ba7b814-9dad-11d1-80b4-00c04fd430c8',
-        '9ba7b815-9dad-11d1-80b4-00c04fd430c8',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d479',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d480',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d481',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d482',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d483',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d484',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d485',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d486',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d487',
-        'a47ac10b-58cc-4372-a567-0e02b2c3d488',
-        'b47ac10b-58cc-4372-a567-0e02b2c3d479',
-        'b47ac10b-58cc-4372-a567-0e02b2c3d480',
-        'b47ac10b-58cc-4372-a567-0e02b2c3d481',
-        'b47ac10b-58cc-4372-a567-0e02b2c3d482',
-        'b47ac10b-58cc-4372-a567-0e02b2c3d483',
-        'b47ac10b-58cc-4372-a567-0e02b2c3d484',
-        'c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f9',
-        'c47ac10b-58cc-4372-a567-0e02b2c3d479',
-        'c47ac10b-58cc-4372-a567-0e02b2c3d480',
-        'c47ac10b-58cc-4372-a567-0e02b2c3d481',
-        'c47ac10b-58cc-4372-a567-0e02b2c3d482',
-        'c47ac10b-58cc-4372-a567-0e02b2c3d483',
-        'd47ac10b-58cc-4372-a567-0e02b2c3d479',
-        'd47ac10b-58cc-4372-a567-0e02b2c3d480',
-        'd47ac10b-58cc-4372-a567-0e02b2c3d481',
-        'd47ac10b-58cc-4372-a567-0e02b2c3d482',
-        'd47ac10b-58cc-4372-a567-0e02b2c3d483',
-        'd47ac10b-58cc-4372-a567-0e02b2c3d484',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d479',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d480',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d481',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d482',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d483',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d484',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d485',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d486',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d487',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d488',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d489',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d490',
-        'f47ac10b-58cc-4372-a567-0e02b2c3d491'
-    ];
-    article_id text;
-    partition_key integer;
-BEGIN
-    FOREACH article_id IN ARRAY article_ids LOOP
-        FOR partition_key IN 1..10 LOOP
-            INSERT INTO public.article_tracking (id, partition_key) 
-            VALUES (article_id, partition_key)
-        END LOOP;
-    END LOOP;
-END $$;

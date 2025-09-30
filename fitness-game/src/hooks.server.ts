@@ -4,7 +4,7 @@ import { sequence } from '@sveltejs/kit/hooks'
 import { env } from '$env/dynamic/private'
 import { ServiceFactory } from '$lib/server/shared/service-factory'
 import type { AuthRequestContext, MaybeAuthRequestContext } from '$lib/server/shared/interfaces'
-const PROTECTED_ROUTE_PREFIXES = ['/api/v1/']; // prefix paths
+const PROTECTED_ROUTE_PREFIXES = ['/api/v1/', '/app/']; // prefix paths
 const PROTECTED_ROUTES = ['/protected'] as string[]; //exact paths
 
 // Preload the single instance of ServiceFactory

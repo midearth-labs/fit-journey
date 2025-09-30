@@ -199,8 +199,8 @@ export const SubmitQuestionDtoSchema = z.object({
 
 export const ListQuestionsQuerySchema = z.object({
   articleId: z.string().min(1, 'Article ID cannot be empty'),
-  page: z.coerce.number().int().min(1).default(1),
-  limit: z.coerce.number().int().min(1).max(100).default(20)
+  page: z.coerce.number().int().min(1).prefault(1).optional(),
+  limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
 });
 
 export const GetQuestionParamsSchema = z.object({
@@ -228,8 +228,8 @@ export const SubmitAnswerDtoSchema = z.object({
 
 export const ListAnswersQuerySchema = z.object({
   questionId: UuidSchema,
-  page: z.coerce.number().int().min(1).default(1),
-  limit: z.coerce.number().int().min(1).max(100).default(20)
+  page: z.coerce.number().int().min(1).prefault(1).optional(),
+  limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
 });
 
 export const GetAnswerParamsSchema = z.object({
@@ -472,8 +472,8 @@ export const ListPublicChallengesOperationSchema = {
   request: {
     params: z.object({}),
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
     }),
     body: z.void()
   },
@@ -498,8 +498,8 @@ export const ListChallengesOwnedByUserOperationSchema = {
   request: {
     params: z.object({}),
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
     }),
     body: z.void()
   },
@@ -512,8 +512,8 @@ export const ListChallengeJoinedByUserMembersOperationSchema = {
   request: {
     params: z.object({ challengeId: UuidSchema }),
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
     }),
     body: z.void()
   },
@@ -547,8 +547,8 @@ export const ListChallengesJoinedByUserOperationSchema = {
   request: {
     params: z.object({}),
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
     }),
     body: z.void()
   },
@@ -644,8 +644,8 @@ export const ListAnswersOperationSchema = {
   request: {
     params: z.object({ questionId: UuidSchema }),
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
     }),
     body: z.void()
   },
@@ -710,8 +710,8 @@ export const GetUserSharesOperationSchema = {
   request: {
     params: z.object({}),
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(20).optional()
     }),
     body: z.void()
   },
@@ -726,8 +726,8 @@ export const GetPublicSharesOperationSchema = {
     params: z.object({}),
     query: z.object({
       shareType: ShareTypeSchema,
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(50)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(50).optional()
     }),
     body: z.void()
   },
@@ -1244,8 +1244,8 @@ export const CompleteArticleOperationSchema = {
 export const ListUserArticlesOperationSchema = {
   request: {
     query: z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(100)
+      page: z.coerce.number().int().min(1).prefault(1).optional(),
+      limit: z.coerce.number().int().min(1).max(100).prefault(100).optional()
     }),
   },
   response: {

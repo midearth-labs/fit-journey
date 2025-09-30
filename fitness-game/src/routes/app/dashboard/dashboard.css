@@ -1,0 +1,398 @@
+/* Dashboard Specific Styles with Tailwind Integration */
+@import "tailwindcss" reference;
+
+/* Green Theme Variables - Matching main site */
+:root {
+	--dashboard-primary: #58cc02;
+	--dashboard-primary-dark: #4bb300;
+	--dashboard-primary-light: #7ceb00;
+	--dashboard-secondary: #1cb0f6;
+	--dashboard-accent: #ff9600;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+	@apply mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+	@apply mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+/* Card Base Styles */
+.dashboard-card {
+	@apply rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+	border: 1px solid #e5e5e5;
+}
+
+.dashboard-card-header {
+	@apply mb-6 flex items-center justify-between;
+}
+
+.dashboard-card-title {
+	@apply text-xl font-bold text-gray-900;
+}
+
+/* Header Section */
+.dashboard-header {
+	@apply flex items-center justify-between rounded-2xl p-6 text-white shadow-lg;
+	background: linear-gradient(135deg, var(--dashboard-primary), var(--dashboard-primary-dark));
+}
+
+.dashboard-greeting {
+	@apply text-3xl font-bold sm:text-4xl;
+}
+
+.dashboard-subtitle {
+	@apply mt-2 text-base opacity-90 sm:text-lg;
+}
+
+/* Quick Stats */
+.quick-stats {
+	@apply mt-4 flex flex-wrap gap-6 sm:mt-0;
+}
+
+.stat-item {
+	@apply text-center;
+}
+
+.stat-value {
+	@apply block text-3xl font-bold;
+}
+
+.stat-label {
+	@apply mt-1 block text-sm opacity-90;
+}
+
+/* Focus Card */
+.focus-card {
+	@apply col-span-full rounded-2xl bg-white p-8 shadow-lg;
+	background: linear-gradient(135deg, rgba(88, 204, 2, 0.05), rgba(28, 176, 246, 0.05));
+}
+
+.focus-primary-action {
+	@apply mb-6 text-center;
+}
+
+.focus-title {
+	@apply mb-2 text-2xl font-bold text-gray-900;
+}
+
+.focus-time {
+	@apply mb-4 text-sm text-gray-600;
+}
+
+.focus-button {
+	@apply inline-flex items-center gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+	background: linear-gradient(135deg, var(--dashboard-primary), var(--dashboard-primary-dark));
+}
+
+/* Checklist */
+.checklist {
+	@apply space-y-3;
+}
+
+.checklist-item {
+	@apply flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-50;
+}
+
+.checklist-checkbox {
+	@apply h-5 w-5 rounded border-2 border-gray-300 text-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
+}
+
+.checklist-label {
+	@apply flex-1 text-base font-medium text-gray-700;
+}
+
+.checklist-label-optional {
+	@apply opacity-70;
+}
+
+/* Progress Bar */
+.progress-bar {
+	@apply mb-4 h-2 overflow-hidden rounded-full bg-gray-200;
+}
+
+.progress-fill {
+	@apply h-full rounded-full transition-all duration-300;
+	background: linear-gradient(90deg, var(--dashboard-primary), var(--dashboard-secondary));
+}
+
+/* Analytics - Habit Grid */
+.habit-grid {
+	@apply my-6 grid grid-cols-7 gap-2;
+}
+
+.day-column {
+	@apply text-center;
+}
+
+.day-label {
+	@apply mb-2 text-xs text-gray-600;
+}
+
+.habit-dots {
+	@apply flex flex-col gap-1;
+}
+
+.habit-dot {
+	@apply flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-sm transition-all duration-300;
+}
+
+.habit-dot-active {
+	@apply scale-110;
+	background: var(--dashboard-primary);
+}
+
+.mood-indicator {
+	@apply mt-2 text-xl;
+}
+
+/* Positive Message */
+.positive-message {
+	@apply mt-4 text-center font-semibold;
+	color: var(--dashboard-primary);
+}
+
+.mood-insight {
+	@apply mt-2 text-center text-sm text-gray-600;
+}
+
+/* Insights */
+.insight-list {
+	@apply space-y-4;
+}
+
+.insight-item {
+	@apply flex items-start gap-4 rounded-xl p-4;
+}
+
+.insight-positive {
+	@apply bg-green-50;
+}
+
+.insight-neutral {
+	@apply bg-blue-50;
+}
+
+.insight-suggestion {
+	@apply bg-orange-50;
+}
+
+.insight-icon {
+	@apply text-3xl;
+}
+
+.insight-content {
+	@apply flex-1;
+}
+
+.insight-title {
+	@apply mb-1 font-bold text-gray-900;
+}
+
+.insight-message {
+	@apply text-sm text-gray-600;
+}
+
+/* Community Pulse */
+.community-stats {
+	@apply grid gap-4 sm:grid-cols-2;
+}
+
+.community-stat {
+	@apply rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 p-4 text-center;
+}
+
+.community-stat-value {
+	@apply block text-2xl font-bold;
+	color: var(--dashboard-primary);
+}
+
+.community-stat-label {
+	@apply mt-1 block text-sm text-gray-600;
+}
+
+/* Achievements */
+.achievement-grid {
+	@apply grid gap-4 sm:grid-cols-2;
+}
+
+.achievement-item {
+	@apply rounded-xl border-2 p-4 transition-all;
+}
+
+.achievement-earned {
+	@apply border-green-500 bg-green-50;
+}
+
+.achievement-locked {
+	@apply border-gray-300 bg-gray-50 opacity-75;
+}
+
+.achievement-header {
+	@apply mb-2 flex items-center justify-between;
+}
+
+.achievement-name {
+	@apply font-bold text-gray-900;
+}
+
+.achievement-badge {
+	@apply text-2xl;
+}
+
+.achievement-description {
+	@apply mb-2 text-sm text-gray-600;
+}
+
+.achievement-progress {
+	@apply h-2 overflow-hidden rounded-full bg-gray-200;
+}
+
+.achievement-progress-fill {
+	@apply h-full rounded-full;
+	background: var(--dashboard-primary);
+}
+
+/* Safety Options */
+.safety-container {
+	@apply mt-8 border-t border-gray-200 pt-8 text-center;
+}
+
+.safety-link {
+	@apply mx-2 border-none bg-transparent text-sm text-gray-500 underline transition-colors hover:text-green-600;
+}
+
+/* Modal */
+.modal-overlay {
+	@apply fixed inset-0 z-50 flex items-center justify-center bg-black/50;
+}
+
+.modal-content {
+	@apply w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl;
+}
+
+.modal-title {
+	@apply mb-4 text-2xl font-bold text-gray-900;
+}
+
+.modal-text {
+	@apply mb-6 text-gray-600;
+}
+
+.modal-buttons {
+	@apply flex gap-3;
+}
+
+.modal-button {
+	@apply flex-1 rounded-lg px-6 py-3 font-semibold transition-all;
+}
+
+.modal-button-primary {
+	@apply text-white shadow-md hover:shadow-lg;
+	background: linear-gradient(135deg, var(--dashboard-primary), var(--dashboard-primary-dark));
+}
+
+.modal-button-secondary {
+	@apply border-2 border-gray-300 text-gray-700 hover:bg-gray-50;
+}
+
+/* Radio Options */
+.radio-option {
+	@apply mb-3 flex items-center gap-3 rounded-lg border-2 border-gray-200 p-4 transition-all hover:border-green-500;
+}
+
+.radio-option input[type='radio'] {
+	@apply h-4 w-4 text-green-600 focus:ring-2 focus:ring-green-500;
+}
+
+.radio-option label {
+	@apply flex-1 cursor-pointer text-sm font-medium text-gray-700;
+}
+
+/* Loading States */
+.skeleton {
+	@apply animate-pulse rounded-lg bg-gray-200;
+}
+
+.skeleton-text {
+	@apply h-4 bg-gray-200;
+}
+
+.skeleton-title {
+	@apply h-8 w-3/4 bg-gray-200;
+}
+
+/* Encouragement Badge */
+.encouragement-badge {
+	@apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold;
+	background: rgba(88, 204, 2, 0.1);
+	color: var(--dashboard-primary);
+	border: 1px solid rgba(88, 204, 2, 0.2);
+}
+
+/* Error State */
+.error-banner {
+	@apply mb-6 rounded-xl border-2 border-red-300 bg-red-50 p-6 text-center;
+}
+
+.error-message {
+	@apply mb-4 text-lg font-semibold text-red-800;
+}
+
+.error-button {
+	@apply rounded-lg bg-red-600 px-6 py-2 font-semibold text-white transition-colors hover:bg-red-700;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+	.dashboard-header {
+		@apply flex-col text-center;
+	}
+
+	.quick-stats {
+		@apply w-full justify-center;
+	}
+
+	.dashboard-grid {
+		@apply grid-cols-1;
+	}
+
+	.habit-grid {
+		@apply gap-1;
+	}
+
+	.habit-dot {
+		@apply h-6 w-6 text-xs;
+	}
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+	.dashboard-card {
+		@apply bg-gray-800 text-white;
+		border-color: #374151;
+	}
+
+	.dashboard-card-title {
+		@apply text-white;
+	}
+
+	.checklist-label {
+		@apply text-gray-200;
+	}
+
+	.modal-content {
+		@apply bg-gray-800;
+	}
+
+	.modal-title {
+		@apply text-white;
+	}
+
+	.modal-text {
+		@apply text-gray-300;
+	}
+}

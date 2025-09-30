@@ -174,7 +174,7 @@ return validateAndReturn(result, SomeResponseSchema);
 
 ## API Client Integration
 
-**CRITICAL**: Every new API endpoint MUST have a corresponding method in `src/client/api-client.ts`. This ensures the frontend can consume the API consistently.
+**CRITICAL**: Every new API endpoint MUST have a corresponding method in `src/lib/client/api-client.ts`. This ensures the frontend can consume the API consistently.
 
 ### Adding API Client Methods
 
@@ -240,7 +240,7 @@ async deleteEndpoint(param: string): Promise<DeleteEndpointOperation['response']
 7. Call service via `event.locals.unAuthServices!` and return.
 8. Use 204 for void writes; validate reads.
 9. Rely on `handleServiceError()` for consistent errors.
-10. **ALWAYS add or update the corresponding method in `src/client/api-client.ts`** using operation types.
+10. **ALWAYS add or update the corresponding method in `src/lib/client/api-client.ts`** using operation types.
 
 ## References
 

@@ -25,7 +25,8 @@
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio",
-		"db:generate:custom-ddl": "drizzle-kit generate --custom --name=custom-ddl"
+		"db:generate:custom-ddl": "drizzle-kit generate --custom --name=custom-ddl",
+		"db:generate:custom-dml": "drizzle-kit generate --custom --name=custom-dml"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",

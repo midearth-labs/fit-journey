@@ -17,7 +17,7 @@ export const GET: RequestHandler = async (event) => {
   try {
     const dto = parseQuery(event, ListQuestionsOperationSchema.request.query);
     const { questionsService } = event.locals.authServices!;
-    const questions = await questionsService().listQuestions(dto);
+    const questions = await questionsService().listQuestions({...dto, page: dto.page!, limit: dto.limit!});
     return validateAndReturn(questions, ListQuestionsOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);

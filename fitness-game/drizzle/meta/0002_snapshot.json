@@ -1,6 +1,6 @@
 {
-  "id": "dfca31e1-cea4-46de-bc9c-5ba1df8642ba",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "d504fe56-422f-4b33-ae38-d1df86723628",
+  "prevId": "135f9c31-dcbb-42d0-9ef8-9adfe22f1db3",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -46,37 +46,37 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "answer_reactions_answer_id_question_answers_id_fk": {
           "name": "answer_reactions_answer_id_question_answers_id_fk",
           "tableFrom": "answer_reactions",
-          "tableTo": "question_answers",
           "columnsFrom": [
             "answer_id"
           ],
+          "tableTo": "question_answers",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "answer_reactions_user_id_users_id_fk": {
           "name": "answer_reactions_user_id_users_id_fk",
           "tableFrom": "answer_reactions",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {
@@ -207,48 +207,48 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "challenge_subscribers_challenge_id_challenges_id_fk": {
           "name": "challenge_subscribers_challenge_id_challenges_id_fk",
           "tableFrom": "challenge_subscribers",
-          "tableTo": "challenges",
           "columnsFrom": [
             "challenge_id"
           ],
+          "tableTo": "challenges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "challenge_subscribers_user_id_users_id_fk": {
           "name": "challenge_subscribers_user_id_users_id_fk",
           "tableFrom": "challenge_subscribers",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "challenge_subscribers_unique_member": {
           "name": "challenge_subscribers_unique_member",
-          "nullsNotDistinct": false,
           "columns": [
             "challenge_id",
             "user_id"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       },
       "policies": {},
@@ -366,10 +366,10 @@
             }
           ],
           "isUnique": false,
-          "where": "\"challenges\".\"join_type\" = 'public'",
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "where": "\"challenges\".\"join_type\" = 'public'",
+          "concurrently": false
         },
         "challenge_status_start_date_not_locked_inactive_index": {
           "name": "challenge_status_start_date_not_locked_inactive_index",
@@ -388,25 +388,25 @@
             }
           ],
           "isUnique": false,
-          "where": "\"challenges\".\"status\" NOT IN ('locked', 'inactive')",
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "where": "\"challenges\".\"status\" NOT IN ('locked', 'inactive')",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "challenges_user_id_users_id_fk": {
           "name": "challenges_user_id_users_id_fk",
           "tableFrom": "challenges",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {},
@@ -644,9 +644,9 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         },
         "progress_shares_type_status_index": {
           "name": "progress_shares_type_status_index",
@@ -671,9 +671,9 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         },
         "progress_shares_type_id_index": {
           "name": "progress_shares_type_id_index",
@@ -692,9 +692,9 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         },
         "progress_shares_recent_active_index": {
           "name": "progress_shares_recent_active_index",
@@ -713,25 +713,25 @@
             }
           ],
           "isUnique": false,
-          "where": "\"progress_shares\".\"status\" = 'active' AND \"progress_shares\".\"is_public\" = true",
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "where": "\"progress_shares\".\"status\" = 'active' AND \"progress_shares\".\"is_public\" = true",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "progress_shares_user_id_users_id_fk": {
           "name": "progress_shares_user_id_users_id_fk",
           "tableFrom": "progress_shares",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -825,9 +825,9 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         },
         "question_answers_approved_index": {
           "name": "question_answers_approved_index",
@@ -840,10 +840,10 @@
             }
           ],
           "isUnique": false,
-          "where": "\"question_answers\".\"status\" = 'approved'",
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "where": "\"question_answers\".\"status\" = 'approved'",
+          "concurrently": false
         },
         "question_answers_user_index": {
           "name": "question_answers_user_index",
@@ -856,37 +856,37 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "question_answers_question_id_questions_id_fk": {
           "name": "question_answers_question_id_questions_id_fk",
           "tableFrom": "question_answers",
-          "tableTo": "questions",
           "columnsFrom": [
             "question_id"
           ],
+          "tableTo": "questions",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "question_answers_user_id_users_id_fk": {
           "name": "question_answers_user_id_users_id_fk",
           "tableFrom": "question_answers",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {},
@@ -930,9 +930,9 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         },
         "question_articles_article_index": {
           "name": "question_articles_article_index",
@@ -945,24 +945,24 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "question_articles_question_id_questions_id_fk": {
           "name": "question_articles_question_id_questions_id_fk",
           "tableFrom": "question_articles",
-          "tableTo": "questions",
           "columnsFrom": [
             "question_id"
           ],
+          "tableTo": "questions",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -1021,37 +1021,37 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "question_reactions_question_id_questions_id_fk": {
           "name": "question_reactions_question_id_questions_id_fk",
           "tableFrom": "question_reactions",
-          "tableTo": "questions",
           "columnsFrom": [
             "question_id"
           ],
+          "tableTo": "questions",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "question_reactions_user_id_users_id_fk": {
           "name": "question_reactions_user_id_users_id_fk",
           "tableFrom": "question_reactions",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {
@@ -1153,9 +1153,9 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         },
         "questions_approved_index": {
           "name": "questions_approved_index",
@@ -1168,10 +1168,10 @@
             }
           ],
           "isUnique": false,
-          "where": "\"questions\".\"status\" = 'approved'",
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "where": "\"questions\".\"status\" = 'approved'",
+          "concurrently": false
         },
         "questions_user_index": {
           "name": "questions_user_index",
@@ -1184,24 +1184,24 @@
             }
           ],
           "isUnique": false,
-          "concurrently": false,
+          "with": {},
           "method": "btree",
-          "with": {}
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "questions_user_id_users_id_fk": {
           "name": "questions_user_id_users_id_fk",
           "tableFrom": "questions",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {},
@@ -1306,26 +1306,26 @@
         "user_articles_user_id_users_id_fk": {
           "name": "user_articles_user_id_users_id_fk",
           "tableFrom": "user_articles",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "user_article_unique_index": {
           "name": "user_article_unique_index",
-          "nullsNotDistinct": false,
           "columns": [
             "user_id",
             "article_id"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       },
       "policies": {},
@@ -1386,27 +1386,27 @@
         "user_logs_user_id_users_id_fk": {
           "name": "user_logs_user_id_users_id_fk",
           "tableFrom": "user_logs",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "user_daily_log_unique": {
           "name": "user_daily_log_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "user_id",
             "log_date",
             "log_key"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       },
       "policies": {},
@@ -1531,15 +1531,15 @@
         "user_metadata_id_users_id_fk": {
           "name": "user_metadata_id_users_id_fk",
           "tableFrom": "user_metadata",
-          "tableTo": "users",
           "columnsFrom": [
             "id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -1656,17 +1656,17 @@
       "uniqueConstraints": {
         "users_email_unique": {
           "name": "users_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         },
         "users_invitation_code_unique": {
           "name": "users_invitation_code_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "invitation_code"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       },
       "policies": {},
@@ -1794,10 +1794,10 @@
     }
   },
   "schemas": {},
+  "views": {},
   "sequences": {},
   "roles": {},
   "policies": {},
-  "views": {},
   "_meta": {
     "columns": {},
     "schemas": {},

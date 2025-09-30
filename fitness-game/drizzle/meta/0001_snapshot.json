@@ -1,6 +1,6 @@
 {
-  "id": "acb4816d-09f8-45c2-a33a-c967c7d029c8",
-  "prevId": "7090cf69-f261-4d52-9bcf-cd34b81241e3",
+  "id": "135f9c31-dcbb-42d0-9ef8-9adfe22f1db3",
+  "prevId": "dfca31e1-cea4-46de-bc9c-5ba1df8642ba",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -18,7 +18,7 @@
           "name": "user_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "reaction_type": {
           "name": "reaction_type",
@@ -48,7 +48,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         }
       },
       "foreignKeys": {
@@ -76,7 +76,7 @@
             "id"
           ],
           "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {
@@ -88,6 +88,441 @@
           ]
         }
       },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.article_tracking": {
+      "name": "article_tracking",
+      "schema": "",
+      "columns": {
+        "article_id": {
+          "name": "article_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "partition_key": {
+          "name": "partition_key",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "read_count": {
+          "name": "read_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "completed_count": {
+          "name": "completed_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "completed_with_perfect_score": {
+          "name": "completed_with_perfect_score",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "article_tracking_article_id_partition_key_pk": {
+          "name": "article_tracking_article_id_partition_key_pk",
+          "columns": [
+            "article_id",
+            "partition_key"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.challenge_subscribers": {
+      "name": "challenge_subscribers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "challenge_id": {
+          "name": "challenge_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "joined_at": {
+          "name": "joined_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "daily_log_count": {
+          "name": "daily_log_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_activity_date": {
+          "name": "last_activity_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "challenge_subscribers_user_index": {
+          "name": "challenge_subscribers_user_index",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "joined_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "with": {},
+          "method": "btree",
+          "concurrently": false
+        }
+      },
+      "foreignKeys": {
+        "challenge_subscribers_challenge_id_challenges_id_fk": {
+          "name": "challenge_subscribers_challenge_id_challenges_id_fk",
+          "tableFrom": "challenge_subscribers",
+          "columnsFrom": [
+            "challenge_id"
+          ],
+          "tableTo": "challenges",
+          "columnsTo": [
+            "id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        },
+        "challenge_subscribers_user_id_users_id_fk": {
+          "name": "challenge_subscribers_user_id_users_id_fk",
+          "tableFrom": "challenge_subscribers",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "tableTo": "users",
+          "columnsTo": [
+            "id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "set null"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "challenge_subscribers_unique_member": {
+          "name": "challenge_subscribers_unique_member",
+          "columns": [
+            "challenge_id",
+            "user_id"
+          ],
+          "nullsNotDistinct": false
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.challenges": {
+      "name": "challenges",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "user_challenge_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "goals": {
+          "name": "goals",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "join_type": {
+          "name": "join_type",
+          "type": "challenge_join_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "invite_code": {
+          "name": "invite_code",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "start_date": {
+          "name": "start_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "duration_days": {
+          "name": "duration_days",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_members": {
+          "name": "max_members",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "members_count": {
+          "name": "members_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "challenges_public_list_index": {
+          "name": "challenges_public_list_index",
+          "columns": [
+            {
+              "expression": "start_date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "with": {},
+          "method": "btree",
+          "where": "\"challenges\".\"join_type\" = 'public'",
+          "concurrently": false
+        },
+        "challenge_status_start_date_not_locked_inactive_index": {
+          "name": "challenge_status_start_date_not_locked_inactive_index",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "start_date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "with": {},
+          "method": "btree",
+          "where": "\"challenges\".\"status\" NOT IN ('locked', 'inactive')",
+          "concurrently": false
+        }
+      },
+      "foreignKeys": {
+        "challenges_user_id_users_id_fk": {
+          "name": "challenges_user_id_users_id_fk",
+          "tableFrom": "challenges",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "tableTo": "users",
+          "columnsTo": [
+            "id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "set null"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "challenges_members_non_negative": {
+          "name": "challenges_members_non_negative",
+          "value": "\"challenges\".\"members_count\" >= 0"
+        },
+        "challenges_max_members_min": {
+          "name": "challenges_max_members_min",
+          "value": "\"challenges\".\"max_members\" >= 1"
+        },
+        "challenges_members_within_max": {
+          "name": "challenges_members_within_max",
+          "value": "\"challenges\".\"members_count\" <= \"challenges\".\"max_members\""
+        },
+        "challenges_personal_max_one": {
+          "name": "challenges_personal_max_one",
+          "value": "\"challenges\".\"join_type\" != 'personal' OR \"challenges\".\"max_members\" = 1"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.global_tracking": {
+      "name": "global_tracking",
+      "schema": "",
+      "columns": {
+        "partition_key": {
+          "name": "partition_key",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_count": {
+          "name": "user_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "invitation_join_count": {
+          "name": "invitation_join_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "article_read_count": {
+          "name": "article_read_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "article_completed_count": {
+          "name": "article_completed_count",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "article_completed_with_perfect_score": {
+          "name": "article_completed_with_perfect_score",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "challenges_started": {
+          "name": "challenges_started",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "challenges_joined": {
+          "name": "challenges_joined",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "days_logged": {
+          "name": "days_logged",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "questions_asked": {
+          "name": "questions_asked",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "questions_answered": {
+          "name": "questions_answered",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "progress_shares": {
+          "name": "progress_shares",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -211,7 +646,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         },
         "progress_shares_type_status_index": {
           "name": "progress_shares_type_status_index",
@@ -238,7 +673,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         },
         "progress_shares_type_id_index": {
           "name": "progress_shares_type_id_index",
@@ -259,7 +694,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         },
         "progress_shares_recent_active_index": {
           "name": "progress_shares_recent_active_index",
@@ -280,8 +715,8 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "where": "\"progress_shares\".\"status\" = 'active' AND \"progress_shares\".\"is_public\" = true AND \"progress_shares\".\"created_at\" >= NOW() - INTERVAL '$1'",
-          "concurrently": true
+          "where": "\"progress_shares\".\"status\" = 'active' AND \"progress_shares\".\"is_public\" = true",
+          "concurrently": false
         }
       },
       "foreignKeys": {
@@ -326,7 +761,7 @@
           "name": "user_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "answer": {
           "name": "answer",
@@ -392,7 +827,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         },
         "question_answers_approved_index": {
           "name": "question_answers_approved_index",
@@ -408,7 +843,7 @@
           "with": {},
           "method": "btree",
           "where": "\"question_answers\".\"status\" = 'approved'",
-          "concurrently": true
+          "concurrently": false
         },
         "question_answers_user_index": {
           "name": "question_answers_user_index",
@@ -423,7 +858,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         }
       },
       "foreignKeys": {
@@ -451,7 +886,7 @@
             "id"
           ],
           "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {},
@@ -497,7 +932,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         },
         "question_articles_article_index": {
           "name": "question_articles_article_index",
@@ -512,7 +947,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         }
       },
       "foreignKeys": {
@@ -558,7 +993,7 @@
           "name": "user_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "reaction_type": {
           "name": "reaction_type",
@@ -588,7 +1023,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         }
       },
       "foreignKeys": {
@@ -616,7 +1051,7 @@
             "id"
           ],
           "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {
@@ -648,7 +1083,7 @@
           "name": "user_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "title": {
           "name": "title",
@@ -720,7 +1155,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         },
         "questions_approved_index": {
           "name": "questions_approved_index",
@@ -736,7 +1171,7 @@
           "with": {},
           "method": "btree",
           "where": "\"questions\".\"status\" = 'approved'",
-          "concurrently": true
+          "concurrently": false
         },
         "questions_user_index": {
           "name": "questions_user_index",
@@ -751,7 +1186,7 @@
           "isUnique": false,
           "with": {},
           "method": "btree",
-          "concurrently": true
+          "concurrently": false
         }
       },
       "foreignKeys": {
@@ -766,7 +1201,7 @@
             "id"
           ],
           "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "set null"
         }
       },
       "compositePrimaryKeys": {},
@@ -775,8 +1210,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.user_challenge_progress": {
-      "name": "user_challenge_progress",
+    "public.user_articles": {
+      "name": "user_articles",
       "schema": "",
       "columns": {
         "id": {
@@ -792,150 +1227,64 @@
           "primaryKey": false,
           "notNull": true
         },
-        "user_challenge_id": {
-          "name": "user_challenge_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "knowledge_base_id": {
-          "name": "knowledge_base_id",
+        "article_id": {
+          "name": "article_id",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "all_correct_answers": {
-          "name": "all_correct_answers",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "quiz_answers": {
-          "name": "quiz_answers",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "first_attempted_at": {
-          "name": "first_attempted_at",
+        "first_read_date": {
+          "name": "first_read_date",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true
         },
-        "last_attempted_at": {
-          "name": "last_attempted_at",
+        "last_read_date": {
+          "name": "last_read_date",
           "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "attempts": {
-          "name": "attempts",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "user_challenge_progress_user_id_users_id_fk": {
-          "name": "user_challenge_progress_user_id_users_id_fk",
-          "tableFrom": "user_challenge_progress",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "tableTo": "users",
-          "columnsTo": [
-            "id"
-          ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
-        },
-        "user_challenge_progress_user_challenge_id_user_challenges_id_fk": {
-          "name": "user_challenge_progress_user_challenge_id_user_challenges_id_fk",
-          "tableFrom": "user_challenge_progress",
-          "columnsFrom": [
-            "user_challenge_id"
-          ],
-          "tableTo": "user_challenges",
-          "columnsTo": [
-            "id"
-          ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "user_challenge_article_unique": {
-          "name": "user_challenge_article_unique",
-          "columns": [
-            "user_challenge_id",
-            "knowledge_base_id"
-          ],
-          "nullsNotDistinct": false
-        }
-      },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.user_challenges": {
-      "name": "user_challenges",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "challenge_id": {
-          "name": "challenge_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "start_date": {
-          "name": "start_date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "original_start_date": {
-          "name": "original_start_date",
-          "type": "date",
           "primaryKey": false,
           "notNull": true
         },
         "status": {
           "name": "status",
-          "type": "user_challenge_status",
+          "type": "article_log_status",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
-        "knowledge_base_completed_count": {
-          "name": "knowledge_base_completed_count",
-          "type": "integer",
+        "quiz_all_correct_answers": {
+          "name": "quiz_all_correct_answers",
+          "type": "boolean",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
-        "daily_log_count": {
-          "name": "daily_log_count",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "last_activity_date": {
-          "name": "last_activity_date",
+        "quiz_first_attempted_at": {
+          "name": "quiz_first_attempted_at",
           "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quiz_attempts": {
+          "name": "quiz_attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quiz_started_at": {
+          "name": "quiz_started_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quiz_completed_at": {
+          "name": "quiz_completed_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quiz_answers": {
+          "name": "quiz_answers",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
@@ -952,56 +1301,11 @@
           "notNull": true
         }
       },
-      "indexes": {
-        "user_challenge_status_start_date_not_locked_inactive_index": {
-          "name": "user_challenge_status_start_date_not_locked_inactive_index",
-          "columns": [
-            {
-              "expression": "status",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "start_date",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "with": {},
-          "method": "btree",
-          "where": "\"user_challenges\".\"status\" NOT IN ('locked', 'inactive')",
-          "concurrently": true
-        },
-        "user_challenge_unique_active_index": {
-          "name": "user_challenge_unique_active_index",
-          "columns": [
-            {
-              "expression": "user_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "challenge_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "with": {},
-          "method": "btree",
-          "where": "\"user_challenges\".\"status\" NOT IN ('locked', 'inactive')",
-          "concurrently": true
-        }
-      },
+      "indexes": {},
       "foreignKeys": {
-        "user_challenges_user_id_users_id_fk": {
-          "name": "user_challenges_user_id_users_id_fk",
-          "tableFrom": "user_challenges",
+        "user_articles_user_id_users_id_fk": {
+          "name": "user_articles_user_id_users_id_fk",
+          "tableFrom": "user_articles",
           "columnsFrom": [
             "user_id"
           ],
@@ -1014,7 +1318,16 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "user_article_unique_index": {
+          "name": "user_article_unique_index",
+          "columns": [
+            "user_id",
+            "article_id"
+          ],
+          "nullsNotDistinct": false
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -1124,6 +1437,62 @@
           "notNull": true,
           "default": 0
         },
+        "articles_read": {
+          "name": "articles_read",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "articles_completed_with_perfect_score": {
+          "name": "articles_completed_with_perfect_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "challenges_started": {
+          "name": "challenges_started",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "challenges_joined": {
+          "name": "challenges_joined",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "days_logged": {
+          "name": "days_logged",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "questions_asked": {
+          "name": "questions_asked",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "questions_answered": {
+          "name": "questions_answered",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "progress_shares": {
+          "name": "progress_shares",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
         "current_streak_ids": {
           "name": "current_streak_ids",
           "type": "jsonb",
@@ -1222,6 +1591,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "learning_paths": {
+          "name": "learning_paths",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
         "timezone": {
           "name": "timezone",
           "type": "text",
@@ -1307,7 +1682,9 @@
         "dailyMovement",
         "cleanEating",
         "sleepQuality",
-        "hydration"
+        "hydration",
+        "moodCheck",
+        "energyLevel"
       ]
     },
     "public.answer_status": {
@@ -1318,6 +1695,17 @@
         "approved",
         "rejected",
         "hidden"
+      ]
+    },
+    "public.article_log_status": {
+      "name": "article_log_status",
+      "schema": "public",
+      "values": [
+        "reading_in_progress",
+        "knowledge_check_in_progress",
+        "knowledge_check_complete",
+        "practical_in_progress",
+        "completed"
       ]
     },
     "public.avatar_age_range": {
@@ -1337,6 +1725,26 @@
       "values": [
         "male",
         "female"
+      ]
+    },
+    "public.challenge_join_type": {
+      "name": "challenge_join_type",
+      "schema": "public",
+      "values": [
+        "personal",
+        "public",
+        "invite-code"
+      ]
+    },
+    "public.user_challenge_status": {
+      "name": "user_challenge_status",
+      "schema": "public",
+      "values": [
+        "not_started",
+        "active",
+        "completed",
+        "locked",
+        "inactive"
       ]
     },
     "public.emoji_reaction_type": {
@@ -1382,17 +1790,6 @@
         "avatar_progression",
         "quiz_achievement",
         "invitation_count"
-      ]
-    },
-    "public.user_challenge_status": {
-      "name": "user_challenge_status",
-      "schema": "public",
-      "values": [
-        "not_started",
-        "active",
-        "completed",
-        "locked",
-        "inactive"
       ]
     }
   },

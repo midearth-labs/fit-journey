@@ -18,10 +18,10 @@ export const POST: RequestHandler = async (event) => {
 export const GET: RequestHandler = async (event) => {
   try {
     const { questionId } = parseParams(event, ListAnswersOperationSchema.request.params);
-    const { page, limit } = parseQuery(event, ListAnswersOperationSchema.request.query);
+    const {  page, limit  } = parseQuery(event, ListAnswersOperationSchema.request.query);
     const { answersService } = event.locals.authServices!;
     
-    const answers = await answersService().listAnswers({ questionId, page, limit });
+    const answers = await answersService().listAnswers({ questionId,  page: page!, limit: limit!  });
     return validateAndReturn(answers, ListAnswersOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);

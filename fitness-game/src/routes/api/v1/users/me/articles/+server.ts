@@ -6,7 +6,7 @@ export const GET: RequestHandler = async (event) => {
   try {
     const dto = parseQuery(event, ListUserArticlesOperationSchema.request.query);
     const { articleService } = event.locals.authServices!;
-    const articles = await articleService().listUserArticles(dto);
+    const articles = await articleService().listUserArticles({...dto, page: dto.page!, limit: dto.limit!});
     return validateAndReturn(articles, ListUserArticlesOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);

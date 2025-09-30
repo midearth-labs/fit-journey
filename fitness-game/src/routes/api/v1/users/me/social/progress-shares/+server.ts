@@ -6,7 +6,7 @@ export const GET: RequestHandler = async (event) => {
   try {
     const dto = parseQuery(event, GetUserSharesOperationSchema.request.query);
     const { progressSharesService } = event.locals.authServices!;
-    const shares = await progressSharesService().getUserShares(dto);
+    const shares = await progressSharesService().getUserShares({...dto, page: dto.page!, limit: dto.limit!});
     return validateAndReturn(shares, GetUserSharesOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);
