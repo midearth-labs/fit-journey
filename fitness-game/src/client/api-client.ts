@@ -63,8 +63,13 @@ export class ApiClient {
    * Create a new ApiClient.
    * @param baseUrl Base URL to prefix all API calls, e.g. "/api/v1" or "https://host/api/v1"
    * @param headers Optional default headers (e.g. authentication). Values are merged per request.
+   * @param fetch Optional fetch implementation (e.g. for SSR or testing)
    */
-  constructor(baseUrl: string, headers?: Record<string, string>) {
+  constructor(
+    baseUrl: string,
+    headers?: Record<string, string>,
+    private fetch: typeof window.fetch = window.fetch
+  ) {
     this.baseUrl = baseUrl.replace(/\/$/, '');
     this.defaultHeaders = {
       'Content-Type': 'application/json',
@@ -106,7 +111,7 @@ export class ApiClient {
     const origin = typeof window === 'undefined' ? 'http://localhost' : window.location.origin;
     const finalUrl = href.startsWith(origin) ? href.slice(origin.length) : href;
 
-    const res = await fetch(finalUrl, {
+    const res = await this.fetch(finalUrl, {
       credentials: 'include',
       ...init,
       headers: {

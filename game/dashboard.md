@@ -47,12 +47,12 @@ export function createApiClient(fetch?: typeof window.fetch) {
 ## Server-Side Data Loading
 
 ```typescript
-// app/dashboard/+page.server.ts
-import type { PageServerLoad } from './$types';
+// app/dashboard/+page.ts
+import type { PageLoad } from './$types';
 import { createApiClient } from '$lib/api-client';
 import { getSevenDaysAgo, getToday } from '$lib/utils/dates';
 
-export const load: PageServerLoad = async ({ fetch, cookies }) => {
+export const load: PageLoad = async ({ fetch }) => {
   const client = createApiClient(fetch);
   
   try {
@@ -849,7 +849,7 @@ export class DashboardConfig {
 
 ```typescript
 // app/dashboard/stores/dashboard.svelte.ts
-import { writable, derived } from 'svelte/store';
+import { derived } from 'svelte/store';
 
 class DashboardStore {
   #metadata = $state(null);
@@ -896,7 +896,7 @@ export const dashboardStore = new DashboardStore();
 ## Implementation Checklist
 
 - [ ] Set up API client with proper error handling
-- [ ] Create page server load function for SSR data
+- [ ] CSR Only pages. Do not use SSR or SSG. Use dynamic imports to help with performance.
 - [ ] Implement HeaderSection with greeting logic
 - [ ] Build TodaysFocus with smart action determination
 - [ ] Create ProgressAnalytics with mood tracking via logs
