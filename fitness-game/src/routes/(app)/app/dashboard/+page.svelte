@@ -29,7 +29,7 @@
 	const insightGen = new InsightGenerator();
 
 	// Dashboard config
-	const dashboardConfig = $derived(new DashboardConfig(metadata));
+	const dashboardConfig = $derived(new DashboardConfig(metadata, profile, globalStats));
 
 	// Calculate derived data
 	const achievements = $derived(achievementCalc.calculate(metadata));
@@ -40,11 +40,11 @@
 		await dashboardStore.loadDashboard();
 
 		// Lazy load additional data based on engagement
-		if (metadata?.articlesCompletedCount && metadata.articlesCompletedCount > 0) {
+		if (metadata?.articlesCompleted && metadata.articlesCompleted > 0) {
 			await dashboardStore.loadProfile();
 		}
 
-		if (metadata?.challengesJoinedCount && metadata.challengesJoinedCount > 0) {
+		if (metadata?.challengesJoined && metadata.challengesJoined > 0) {
 			await dashboardStore.loadChallenges();
 		}
 	});

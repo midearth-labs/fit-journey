@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import type { ApiResponse } from '$lib/client/api-client';
 
-	let { metadata } = $props<{ metadata: any }>();
+	// Type inference from ApiClient
+	type UserMetadata = ApiResponse['getMyMetadata']
+
+	let { metadata } = $props<{ metadata: UserMetadata | null }>();
 
 	let checklist = $state([
 		{ id: 'read', label: "Read today's article", completed: false, optional: false },

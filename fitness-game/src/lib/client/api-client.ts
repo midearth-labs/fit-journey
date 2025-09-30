@@ -49,6 +49,57 @@ import type {
   GetArticleStatisticsOperation
 } from '$lib/server/shared/schemas';
 
+export type ApiResponse = {
+  getMyProfile: GetUserProfileOperation['response']['body'];
+  updateMyProfile: UpdateUserProfileOperation['response']['body'];
+  getMyMetadata: GetUserMetadataOperation['response']['body'];
+  listLogs: ListUserLogsOperation['response']['body'];
+  putLog: PutUserLogOperation['response']['body'];
+  listPublicChallenges: ListPublicChallengesOperation['response']['body'];
+  createChallenge: CreateUserChallengeOperation['response']['body'];
+  getUserChallenge: GetUserChallengeOperation['response']['body'];
+  updateUserChallenge: UpdateUserChallengeOperation['response']['body'];
+  deleteUserChallenge: DeleteUserChallengeOperation['response']['body'];
+  joinChallenge: JoinChallengeOperation['response']['body'];
+  leaveChallenge: LeaveChallengeOperation['response']['body'];
+  listChallengesOwnedByUser: ListChallengesOwnedByUserOperation['response']['body'];
+  listChallengesJoinedByUser: ListChallengesJoinedByUserOperation['response']['body'];
+  listChallengeJoinedByUserMembers: ListChallengeJoinedByUserMembersOperation['response']['body'];
+  getChallengeJoinedByUserSubscription: GetChallengeJoinedByUserSubscriptionOperation['response']['body'];
+  submitQuestion: SubmitQuestionOperation['response']['body'];
+  listQuestions: ListQuestionsOperation['response']['body'];
+  getQuestion: GetQuestionOperation['response']['body'];
+  addQuestionReaction: AddQuestionReactionOperation['response']['body'];
+  submitAnswer: SubmitAnswerOperation['response']['body'];
+  listAnswers: ListAnswersOperation['response']['body'];
+  getAnswer: GetAnswerOperation['response']['body'];
+  addAnswerReaction: AddAnswerReactionOperation['response']['body'];
+  shareProgress: ShareProgressOperation['response']['body'];
+  getPublicShares: GetPublicSharesOperation['response']['body'];
+  getShare: GetShareOperation['response']['body'];
+  getMyShares: GetUserSharesOperation['response']['body'];
+  getMyShare: GetUserShareOperation['response']['body'];
+  updateShareStatus: UpdateShareStatusOperation['response']['body'];
+  deleteShare: DeleteShareOperation['response']['body'];
+  addShareReaction: AddShareReactionOperation['response']['body'];
+  logRead: LogReadOperation['response']['body'];
+  startQuiz: StartQuizOperation['response']['body'];
+  submitQuiz: SubmitQuizOperation['response']['body'];
+  retryQuiz: RetryQuizOperation['response']['body'];
+  startPractical: StartPracticalOperation['response']['body'];
+  completePractical: CompletePracticalOperation['response']['body'];
+  skipPractical: SkipPracticalOperation['response']['body'];
+  completeArticle: CompleteArticleOperation['response']['body'];
+  listUserArticles: ListUserArticlesOperation['response']['body'];
+  getUserArticle: GetUserArticleOperation['response']['body'];
+  getCalendarSettings: GetCalendarSettingsOperation['response']['body'];
+  updateCalendarSettings: UpdateCalendarSettingsOperation['response']['body'];
+  downloadUserCalendar: DownloadUserCalendarOperation['response']['body'];
+  getPublicCalendar: GetPublicCalendarOperation['response']['body'];
+  getGlobalStatistics: GetGlobalStatisticsOperation['response']['body'];
+  getArticleStatistics: GetArticleStatisticsOperation['response']['body'];
+}
+
 /**
  * Lightweight API client for calling the server's /api/v1 endpoints.
  * - Accepts a baseUrl in the constructor and composes full request URLs
@@ -168,8 +219,8 @@ export class ApiClient {
    * 
    * Used in: Profile pages, dashboard headers, avatar displays, settings panels
    */
-  async getMyProfile(): Promise<GetUserProfileOperation['response']['body']> {
-    return this.request<GetUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'GET' });
+  async getMyProfile(): Promise<ApiResponse['getMyProfile']> {
+    return this.request<ApiResponse['getMyProfile']>('/api/v1/users/me/profile', { method: 'GET' });
   }
 
   /** 
@@ -197,8 +248,8 @@ export class ApiClient {
    * 
    * Used in: Profile setup flows, settings pages, onboarding wizards
    */
-  async updateMyProfile(dto: UpdateUserProfileOperation['request']['body']): Promise<UpdateUserProfileOperation['response']['body']> {
-    return this.request<UpdateUserProfileOperation['response']['body']>('/api/v1/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
+  async updateMyProfile(dto: UpdateUserProfileOperation['request']['body']): Promise<ApiResponse['updateMyProfile']> {
+    return this.request<ApiResponse['updateMyProfile']>('/api/v1/users/me/profile', { method: 'PATCH', body: JSON.stringify(dto) });
   }
 
   /**
@@ -219,8 +270,8 @@ export class ApiClient {
    * 
    * Used in: Dashboard, progress tracking, feature toggles, analytics
    */
-  async getMyMetadata(): Promise<GetUserMetadataOperation['response']['body']> {
-    return this.request<GetUserMetadataOperation['response']['body']>('/api/v1/users/me/metadata', { method: 'GET' });
+  async getMyMetadata(): Promise<ApiResponse['getMyMetadata']> {
+    return this.request<ApiResponse['getMyMetadata']>('/api/v1/users/me/metadata', { method: 'GET' });
   }
 
   // ---------- Daily Habit Logging & Progress Tracking ----------
@@ -250,8 +301,8 @@ export class ApiClient {
    * 
    * Used in: Dashboard analytics, progress charts, streak displays, challenge progress views
    */
-  async listLogs(dto: ListUserLogsOperation['request']['query']): Promise<ListUserLogsOperation['response']['body']> {
-    return this.request<ListUserLogsOperation['response']['body']>('/api/v1/logs', { method: 'GET' }, {
+  async listLogs(dto: ListUserLogsOperation['request']['query']): Promise<ApiResponse['listLogs']> {
+    return this.request<ApiResponse['listLogs']>('/api/v1/logs', { method: 'GET' }, {
       query: {
         userChallengeId: dto.userChallengeId,
         fromDate: dto.fromDate,
@@ -287,8 +338,8 @@ export class ApiClient {
    * 
    * Used in: Daily habit logging interfaces, challenge completion tracking, streak management
    */
-  async putLog(dto: PutUserLogOperation['request']): Promise<PutUserLogOperation['response']['body']> {
-    return this.request<PutUserLogOperation['response']['body']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
+  async putLog(dto: PutUserLogOperation['request']): Promise<ApiResponse['putLog']> {
+    return this.request<ApiResponse['putLog']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
       params: { logDate: dto.params.logDate }
     });
   }
@@ -319,8 +370,8 @@ export class ApiClient {
    * 
    * Used in: Challenge discovery pages, homepage featured challenges, search results
    */
-  async listPublicChallenges(query: ListPublicChallengesOperation['request']['query']): Promise<ListPublicChallengesOperation['response']['body']> {
-    return this.request<ListPublicChallengesOperation['response']['body']>('/api/v1/challenges', { method: 'GET' }, {
+  async listPublicChallenges(query: ListPublicChallengesOperation['request']['query']): Promise<ApiResponse['listPublicChallenges']> {
+    return this.request<ApiResponse['listPublicChallenges']>('/api/v1/challenges', { method: 'GET' }, {
       query
     });
   }
@@ -349,8 +400,8 @@ export class ApiClient {
    * 
    * Used in: Challenge creation wizards, personal journey setup, social challenge hosting
    */
-  async createChallenge(dto: CreateUserChallengeOperation['request']['body']): Promise<CreateUserChallengeOperation['response']['body']> {
-    return this.request<CreateUserChallengeOperation['response']['body']>('/api/v1/users/me/challenges', { method: 'POST', body: JSON.stringify(dto) });
+  async createChallenge(dto: CreateUserChallengeOperation['request']['body']): Promise<ApiResponse['createChallenge']> {
+    return this.request<ApiResponse['createChallenge']>('/api/v1/users/me/challenges', { method: 'POST', body: JSON.stringify(dto) });
   }
 
   /** 
@@ -376,8 +427,8 @@ export class ApiClient {
    * 
    * Used in: Challenge detail pages, owner dashboards, progress tracking views
    */
-  async getUserChallenge(challengeId: string): Promise<GetUserChallengeOperation['response']['body']> {
-    return this.request<GetUserChallengeOperation['response']['body']>('/api/v1/users/me/challenges/:challengeId', { method: 'GET' }, {
+  async getUserChallenge(challengeId: string): Promise<ApiResponse['getUserChallenge']> {
+    return this.request<ApiResponse['getUserChallenge']>('/api/v1/users/me/challenges/:challengeId', { method: 'GET' }, {
       params: { challengeId }
     });
   }
@@ -405,8 +456,8 @@ export class ApiClient {
    * 
    * Used in: Challenge editing interfaces, goal adjustment workflows, schedule management
    */
-  async updateUserChallenge(dto: UpdateUserChallengeOperation['request']): Promise<UpdateUserChallengeOperation['response']['body']> {
-    return this.request<UpdateUserChallengeOperation['response']['body']>('/api/v1/users/me/challenges/:challengeId', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
+  async updateUserChallenge(dto: UpdateUserChallengeOperation['request']): Promise<ApiResponse['updateUserChallenge']> {
+    return this.request<ApiResponse['updateUserChallenge']>('/api/v1/users/me/challenges/:challengeId', { method: 'PATCH', body: JSON.stringify(dto.body) }, {
       params: { challengeId: dto.params.challengeId }
     });
   }
@@ -428,8 +479,8 @@ export class ApiClient {
    * 
    * Used in: Challenge management interfaces, account cleanup workflows
    */
-  async deleteUserChallenge(challengeId: string): Promise<DeleteUserChallengeOperation['response']['body']> {
-    return this.request<DeleteUserChallengeOperation['response']['body']>('/api/v1/users/me/challenges/:challengeId', { method: 'DELETE' }, {
+  async deleteUserChallenge(challengeId: string): Promise<ApiResponse['deleteUserChallenge']> {
+    return this.request<ApiResponse['deleteUserChallenge']>('/api/v1/users/me/challenges/:challengeId', { method: 'DELETE' }, {
       params: { challengeId }
     });
   }
@@ -455,8 +506,8 @@ export class ApiClient {
    * 
    * Used in: Challenge joining interfaces, invitation acceptance flows, social discovery
    */
-  async joinChallenge(dto: JoinChallengeOperation['request']): Promise<JoinChallengeOperation['response']['body']> {
-    return this.request<JoinChallengeOperation['response']['body']>('/api/v1/challenges/:challengeId/join', { method: 'POST', body: JSON.stringify(dto.body) }, {
+  async joinChallenge(dto: JoinChallengeOperation['request']): Promise<ApiResponse['joinChallenge']> {
+    return this.request<ApiResponse['joinChallenge']>('/api/v1/challenges/:challengeId/join', { method: 'POST', body: JSON.stringify(dto.body) }, {
       params: { challengeId: dto.params.challengeId }
     });
   }
@@ -478,8 +529,8 @@ export class ApiClient {
    * 
    * Used in: Challenge management interfaces, participation withdrawal flows
    */
-  async leaveChallenge(challengeId: string): Promise<LeaveChallengeOperation['response']['body']> {
-    return this.request<LeaveChallengeOperation['response']['body']>('/api/v1/challenges/:challengeId/leave', { method: 'POST' }, {
+  async leaveChallenge(challengeId: string): Promise<ApiResponse['leaveChallenge']> {
+    return this.request<ApiResponse['leaveChallenge']>('/api/v1/challenges/:challengeId/leave', { method: 'POST' }, {
       params: { challengeId }
     });
   }
@@ -507,8 +558,8 @@ export class ApiClient {
    * 
    * Used in: Creator dashboards, challenge management pages, hosting analytics
    */
-  async listChallengesOwnedByUser(query: ListChallengesOwnedByUserOperation['request']['query']): Promise<ListChallengesOwnedByUserOperation['response']['body']> {
-    return this.request<ListChallengesOwnedByUserOperation['response']['body']>('/api/v1/users/me/challenges/owned', { method: 'GET' }, {
+  async listChallengesOwnedByUser(query: ListChallengesOwnedByUserOperation['request']['query']): Promise<ApiResponse['listChallengesOwnedByUser']> {
+    return this.request<ApiResponse['listChallengesOwnedByUser']>('/api/v1/users/me/challenges/owned', { method: 'GET' }, {
       query
     });
   }
@@ -537,8 +588,8 @@ export class ApiClient {
    * 
    * Used in: Personal dashboards, participation tracking, progress monitoring
    */
-  async listChallengesJoinedByUser(query: ListChallengesJoinedByUserOperation['request']['query']): Promise<ListChallengesJoinedByUserOperation['response']['body']> {
-    return this.request<ListChallengesJoinedByUserOperation['response']['body']>('/api/v1/users/me/challenges/joined', { method: 'GET' }, {
+  async listChallengesJoinedByUser(query: ListChallengesJoinedByUserOperation['request']['query']): Promise<ApiResponse['listChallengesJoinedByUser']> {
+    return this.request<ApiResponse['listChallengesJoinedByUser']>('/api/v1/users/me/challenges/joined', { method: 'GET' }, {
       query
     });
   }
@@ -570,8 +621,8 @@ export class ApiClient {
    * 
    * Used in: Challenge community pages, member leaderboards, social engagement views
    */
-  async listChallengeJoinedByUserMembers(challengeId: string, query: ListChallengeJoinedByUserMembersOperation['request']['query']): Promise<ListChallengeJoinedByUserMembersOperation['response']['body']> {
-    return this.request<ListChallengeJoinedByUserMembersOperation['response']['body']>('/api/v1/users/me/challenges/joined/:challengeId/members', { method: 'GET' }, {
+  async listChallengeJoinedByUserMembers(challengeId: string, query: ListChallengeJoinedByUserMembersOperation['request']['query']): Promise<ApiResponse['listChallengeJoinedByUserMembers']> {
+    return this.request<ApiResponse['listChallengeJoinedByUserMembers']>('/api/v1/users/me/challenges/joined/:challengeId/members', { method: 'GET' }, {
       params: { challengeId },
       query
     });
@@ -600,8 +651,8 @@ export class ApiClient {
    * 
    * Used in: Personal challenge progress views, subscription management, activity tracking
    */
-  async getChallengeJoinedByUserSubscription(challengeId: string): Promise<GetChallengeJoinedByUserSubscriptionOperation['response']['body']> {
-    return this.request<GetChallengeJoinedByUserSubscriptionOperation['response']['body']>('/api/v1/users/me/challenges/joined/:challengeId/subscription', { method: 'GET' }, {
+  async getChallengeJoinedByUserSubscription(challengeId: string): Promise<ApiResponse['getChallengeJoinedByUserSubscription']> {
+    return this.request<ApiResponse['getChallengeJoinedByUserSubscription']>('/api/v1/users/me/challenges/joined/:challengeId/subscription', { method: 'GET' }, {
       params: { challengeId }
     });
   }
@@ -632,8 +683,8 @@ export class ApiClient {
    * 
    * Used in: Article discussion sections, community Q&A interfaces, learning support
    */
-  async submitQuestion(dto: SubmitQuestionOperation['request']['body']): Promise<SubmitQuestionOperation['response']['body']> {
-    return this.request<SubmitQuestionOperation['response']['body']>('/api/v1/social/questions', { 
+  async submitQuestion(dto: SubmitQuestionOperation['request']['body']): Promise<ApiResponse['submitQuestion']> {
+    return this.request<ApiResponse['submitQuestion']>('/api/v1/social/questions', { 
       method: 'POST', 
       body: JSON.stringify(dto) 
     });
@@ -664,8 +715,8 @@ export class ApiClient {
    * 
    * Used in: Article discussion pages, Q&A browsing interfaces, community discovery
    */
-  async listQuestions(dto: ListQuestionsOperation['request']['query']): Promise<ListQuestionsOperation['response']['body']> {
-    return this.request<ListQuestionsOperation['response']['body']>('/api/v1/social/questions', { method: 'GET' }, {
+  async listQuestions(dto: ListQuestionsOperation['request']['query']): Promise<ApiResponse['listQuestions']> {
+    return this.request<ApiResponse['listQuestions']>('/api/v1/social/questions', { method: 'GET' }, {
       query: {
         articleId: dto.articleId,
         page: dto.page,
@@ -697,8 +748,8 @@ export class ApiClient {
    * 
    * Used in: Question detail pages, community moderation, user contribution views
    */
-  async getQuestion(questionId: string): Promise<GetQuestionOperation['response']['body']> {
-    return this.request<GetQuestionOperation['response']['body']>('/api/v1/social/questions/:questionId', { method: 'GET' }, {
+  async getQuestion(questionId: string): Promise<ApiResponse['getQuestion']> {
+    return this.request<ApiResponse['getQuestion']>('/api/v1/social/questions/:questionId', { method: 'GET' }, {
       params: { questionId }
     });
   }
@@ -724,8 +775,8 @@ export class ApiClient {
    * 
    * Used in: Question interaction interfaces, community moderation, quality assessment
    */
-  async addQuestionReaction(dto: AddQuestionReactionOperation['request']): Promise<AddQuestionReactionOperation['response']['body']> {
-    return this.request<AddQuestionReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/reactions', { 
+  async addQuestionReaction(dto: AddQuestionReactionOperation['request']): Promise<ApiResponse['addQuestionReaction']> {
+    return this.request<ApiResponse['addQuestionReaction']>('/api/v1/social/questions/:questionId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -757,8 +808,8 @@ export class ApiClient {
    * 
    * Used in: Question answering interfaces, community contribution flows, learning support
    */
-  async submitAnswer(dto: SubmitAnswerOperation['request']): Promise<SubmitAnswerOperation['response']['body']> {
-    return this.request<SubmitAnswerOperation['response']['body']>('/api/v1/social/questions/:questionId/answers', { 
+  async submitAnswer(dto: SubmitAnswerOperation['request']): Promise<ApiResponse['submitAnswer']> {
+    return this.request<ApiResponse['submitAnswer']>('/api/v1/social/questions/:questionId/answers', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -793,8 +844,8 @@ export class ApiClient {
    * 
    * Used in: Question detail pages, answer browsing interfaces, community discovery
    */
-  async listAnswers(dto: ListAnswersOperation['request']): Promise<ListAnswersOperation['response']['body']> {
-    return this.request<ListAnswersOperation['response']['body']>('/api/v1/social/questions/:questionId/answers', { method: 'GET' }, {
+  async listAnswers(dto: ListAnswersOperation['request']): Promise<ApiResponse['listAnswers']> {
+    return this.request<ApiResponse['listAnswers']>('/api/v1/social/questions/:questionId/answers', { method: 'GET' }, {
       params: { questionId: dto.params.questionId },
       query: {
         page: dto.query.page,
@@ -827,8 +878,8 @@ export class ApiClient {
    * 
    * Used in: Answer detail pages, community moderation, contribution analysis
    */
-  async getAnswer(questionId: string, answerId: string): Promise<GetAnswerOperation['response']['body']> {
-    return this.request<GetAnswerOperation['response']['body']>('/api/v1/social/questions/:questionId/answers/:answerId', { method: 'GET' }, {
+  async getAnswer(questionId: string, answerId: string): Promise<ApiResponse['getAnswer']> {
+    return this.request<ApiResponse['getAnswer']>('/api/v1/social/questions/:questionId/answers/:answerId', { method: 'GET' }, {
       params: { questionId, answerId }
     });
   }
@@ -855,8 +906,8 @@ export class ApiClient {
    * 
    * Used in: Answer interaction interfaces, community moderation, quality assessment
    */
-  async addAnswerReaction(dto: AddAnswerReactionOperation['request']): Promise<AddAnswerReactionOperation['response']['body']> {
-    return this.request<AddAnswerReactionOperation['response']['body']>('/api/v1/social/questions/:questionId/answers/:answerId/reactions', { 
+  async addAnswerReaction(dto: AddAnswerReactionOperation['request']): Promise<ApiResponse['addAnswerReaction']> {
+    return this.request<ApiResponse['addAnswerReaction']>('/api/v1/social/questions/:questionId/answers/:answerId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -887,8 +938,8 @@ export class ApiClient {
    * 
    * Used in: Progress sharing interfaces, achievement celebration flows, social motivation
    */
-  async shareProgress(dto: ShareProgressOperation['request']['body']): Promise<ShareProgressOperation['response']['body']> {
-    return this.request<ShareProgressOperation['response']['body']>('/api/v1/users/me/social/progress-shares', { 
+  async shareProgress(dto: ShareProgressOperation['request']['body']): Promise<ApiResponse['shareProgress']> {
+    return this.request<ApiResponse['shareProgress']>('/api/v1/users/me/social/progress-shares', { 
       method: 'POST', 
       body: JSON.stringify(dto) 
     });
@@ -920,8 +971,8 @@ export class ApiClient {
    * 
    * Used in: Community feeds, inspiration galleries, social discovery pages
    */
-  async getPublicShares(dto: GetPublicSharesOperation['request']['query']): Promise<GetPublicSharesOperation['response']['body']> {
-    return this.request<GetPublicSharesOperation['response']['body']>('/api/v1/social/progress-shares', { method: 'GET' }, {
+  async getPublicShares(dto: GetPublicSharesOperation['request']['query']): Promise<ApiResponse['getPublicShares']> {
+    return this.request<ApiResponse['getPublicShares']>('/api/v1/social/progress-shares', { method: 'GET' }, {
       query: {
         shareType: dto.shareType,
         page: dto.page,
@@ -954,8 +1005,8 @@ export class ApiClient {
    * 
    * Used in: Public share viewing, social media embeds, viral sharing links
    */
-  async getShare(shareId: string): Promise<GetShareOperation['response']['body']> {
-    return this.request<GetShareOperation['response']['body']>('/public/api/v1/social/progress-shares/:shareId', { method: 'GET' }, {
+  async getShare(shareId: string): Promise<ApiResponse['getShare']> {
+    return this.request<ApiResponse['getShare']>('/public/api/v1/social/progress-shares/:shareId', { method: 'GET' }, {
       params: { shareId }
     });
   }
@@ -984,8 +1035,8 @@ export class ApiClient {
    * 
    * Used in: Personal sharing dashboards, share management interfaces, privacy controls
    */
-  async getMyShares(dto: GetUserSharesOperation['request']['query']): Promise<GetUserSharesOperation['response']['body']> {
-    return this.request<GetUserSharesOperation['response']['body']>('/api/v1/users/me/social/progress-shares', { method: 'GET' }, {
+  async getMyShares(dto: GetUserSharesOperation['request']['query']): Promise<ApiResponse['getMyShares']> {
+    return this.request<ApiResponse['getMyShares']>('/api/v1/users/me/social/progress-shares', { method: 'GET' }, {
       query: {
         page: dto.page,
         limit: dto.limit
@@ -1016,8 +1067,8 @@ export class ApiClient {
    * 
    * Used in: Share detail pages, share editing interfaces, analytics dashboards
    */
-  async getMyShare(shareId: string): Promise<GetUserShareOperation['response']['body']> {
-    return this.request<GetUserShareOperation['response']['body']>('/api/v1/users/me/social/progress-shares/:shareId', { method: 'GET' }, {
+  async getMyShare(shareId: string): Promise<ApiResponse['getMyShare']> {
+    return this.request<ApiResponse['getMyShare']>('/api/v1/users/me/social/progress-shares/:shareId', { method: 'GET' }, {
       params: { shareId }
     });
   }
@@ -1044,8 +1095,8 @@ export class ApiClient {
    * 
    * Used in: Share management interfaces, privacy settings, content control
    */
-  async updateShareStatus(shareId: string, dto: UpdateShareStatusOperation['request']['body']): Promise<UpdateShareStatusOperation['response']['body']> {
-    return this.request<UpdateShareStatusOperation['response']['body']>('/api/v1/users/me/social/progress-shares/:shareId/status', { 
+  async updateShareStatus(shareId: string, dto: UpdateShareStatusOperation['request']['body']): Promise<ApiResponse['updateShareStatus']> {
+    return this.request<ApiResponse['updateShareStatus']>('/api/v1/users/me/social/progress-shares/:shareId/status', { 
       method: 'PUT', 
       body: JSON.stringify(dto) 
     }, {
@@ -1070,8 +1121,8 @@ export class ApiClient {
    * 
    * Used in: Share management interfaces, content deletion workflows, privacy controls
    */
-  async deleteShare(shareId: string): Promise<DeleteShareOperation['response']['body']> {
-    return this.request<DeleteShareOperation['response']['body']>('/api/v1/social/progress-shares/:shareId', { method: 'DELETE' }, {
+  async deleteShare(shareId: string): Promise<ApiResponse['deleteShare']> {
+    return this.request<ApiResponse['deleteShare']>('/api/v1/social/progress-shares/:shareId', { method: 'DELETE' }, {
       params: { shareId }
     });
   }
@@ -1097,8 +1148,8 @@ export class ApiClient {
    * 
    * Used in: Public share viewing, social media integration, community engagement
    */
-  async addShareReaction(dto: AddShareReactionOperation['request']): Promise<AddShareReactionOperation['response']['body']> {
-    return this.request<AddShareReactionOperation['response']['body']>('/public/api/v1/social/progress-shares/:shareId/reactions', { 
+  async addShareReaction(dto: AddShareReactionOperation['request']): Promise<ApiResponse['addShareReaction']> {
+    return this.request<ApiResponse['addShareReaction']>('/public/api/v1/social/progress-shares/:shareId/reactions', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -1127,8 +1178,8 @@ export class ApiClient {
    * 
    * Used in: Article reading interfaces, progress tracking, learning analytics
    */
-  async logRead(articleId: string): Promise<LogReadOperation['response']['body']> {
-    return this.request<LogReadOperation['response']['body']>('/api/v1/users/me/articles/:articleId/read', { method: 'POST' }, {
+  async logRead(articleId: string): Promise<ApiResponse['logRead']> {
+    return this.request<ApiResponse['logRead']>('/api/v1/users/me/articles/:articleId/read', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1151,8 +1202,8 @@ export class ApiClient {
    * 
    * Used in: Article quiz interfaces, knowledge assessment flows, learning validation
    */
-  async startQuiz(articleId: string): Promise<StartQuizOperation['response']['body']> {
-    return this.request<StartQuizOperation['response']['body']>('/api/v1/users/me/articles/:articleId/quiz/start', { method: 'POST' }, {
+  async startQuiz(articleId: string): Promise<ApiResponse['startQuiz']> {
+    return this.request<ApiResponse['startQuiz']>('/api/v1/users/me/articles/:articleId/quiz/start', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1178,8 +1229,8 @@ export class ApiClient {
    * 
    * Used in: Quiz submission interfaces, learning progress tracking, performance analytics
    */
-  async submitQuiz(dto: SubmitQuizOperation['request']): Promise<SubmitQuizOperation['response']['body']> {
-    return this.request<SubmitQuizOperation['response']['body']>('/api/v1/users/me/articles/:articleId/quiz/submit', { 
+  async submitQuiz(dto: SubmitQuizOperation['request']): Promise<ApiResponse['submitQuiz']> {
+    return this.request<ApiResponse['submitQuiz']>('/api/v1/users/me/articles/:articleId/quiz/submit', { 
       method: 'POST', 
       body: JSON.stringify(dto.body) 
     }, {
@@ -1205,8 +1256,8 @@ export class ApiClient {
    * 
    * Used in: Quiz retry interfaces, learning reinforcement flows, knowledge retention
    */
-  async retryQuiz(articleId: string): Promise<RetryQuizOperation['response']['body']> {
-    return this.request<RetryQuizOperation['response']['body']>('/api/v1/users/me/articles/:articleId/quiz/retry', { method: 'POST' }, {
+  async retryQuiz(articleId: string): Promise<ApiResponse['retryQuiz']> {
+    return this.request<ApiResponse['retryQuiz']>('/api/v1/users/me/articles/:articleId/quiz/retry', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1229,8 +1280,8 @@ export class ApiClient {
    * 
    * Used in: Practical application interfaces, hands-on learning flows, skill development
    */
-  async startPractical(articleId: string): Promise<StartPracticalOperation['response']['body']> {
-    return this.request<StartPracticalOperation['response']['body']>('/api/v1/users/me/articles/:articleId/practical/start', { method: 'POST' }, {
+  async startPractical(articleId: string): Promise<ApiResponse['startPractical']> {
+    return this.request<ApiResponse['startPractical']>('/api/v1/users/me/articles/:articleId/practical/start', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1253,8 +1304,8 @@ export class ApiClient {
    * 
    * Used in: Practical completion interfaces, skill development tracking, learning milestones
    */
-  async completePractical(articleId: string): Promise<CompletePracticalOperation['response']['body']> {
-    return this.request<CompletePracticalOperation['response']['body']>('/api/v1/users/me/articles/:articleId/practical/complete', { method: 'POST' }, {
+  async completePractical(articleId: string): Promise<ApiResponse['completePractical']> {
+    return this.request<ApiResponse['completePractical']>('/api/v1/users/me/articles/:articleId/practical/complete', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1277,8 +1328,8 @@ export class ApiClient {
    * 
    * Used in: Learning path management, practical session interfaces, flexible learning flows
    */
-  async skipPractical(articleId: string): Promise<SkipPracticalOperation['response']['body']> {
-    return this.request<SkipPracticalOperation['response']['body']>('/api/v1/users/me/articles/:articleId/practical/skip', { method: 'POST' }, {
+  async skipPractical(articleId: string): Promise<ApiResponse['skipPractical']> {
+    return this.request<ApiResponse['skipPractical']>('/api/v1/users/me/articles/:articleId/practical/skip', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1301,8 +1352,8 @@ export class ApiClient {
    * 
    * Used in: Article completion interfaces, learning milestone tracking, progress analytics
    */
-  async completeArticle(articleId: string): Promise<CompleteArticleOperation['response']['body']> {
-    return this.request<CompleteArticleOperation['response']['body']>('/api/v1/users/me/articles/:articleId/complete', { method: 'POST' }, {
+  async completeArticle(articleId: string): Promise<ApiResponse['completeArticle']> {
+    return this.request<ApiResponse['completeArticle']>('/api/v1/users/me/articles/:articleId/complete', { method: 'POST' }, {
       params: { articleId }
     });
   }
@@ -1332,8 +1383,8 @@ export class ApiClient {
    * 
    * Used in: Learning dashboards, progress tracking interfaces, analytics reports
    */
-  async listUserArticles(dto: ListUserArticlesOperation['request']): Promise<ListUserArticlesOperation['response']['body']> {
-    return this.request<ListUserArticlesOperation['response']['body']>('/api/v1/users/me/articles', { method: 'GET' }, {
+  async listUserArticles(dto: ListUserArticlesOperation['request']): Promise<ApiResponse['listUserArticles']> {
+    return this.request<ApiResponse['listUserArticles']>('/api/v1/users/me/articles', { method: 'GET' }, {
       query: dto.query
     });
   }
@@ -1363,8 +1414,8 @@ export class ApiClient {
    * 
    * Used in: Article detail pages, learning analytics dashboards, performance analysis
    */
-  async getUserArticle(articleId: string): Promise<GetUserArticleOperation['response']['body']> {
-    return this.request<GetUserArticleOperation['response']['body']>('/api/v1/users/me/articles/:articleId', { method: 'GET' }, {
+  async getUserArticle(articleId: string): Promise<ApiResponse['getUserArticle']> {
+    return this.request<ApiResponse['getUserArticle']>('/api/v1/users/me/articles/:articleId', { method: 'GET' }, {
       params: { articleId }
     });
   }
@@ -1397,8 +1448,8 @@ export class ApiClient {
    * 
    * Used in: Calendar settings pages, reminder configuration interfaces, integration setup
    */
-  async getCalendarSettings(): Promise<GetCalendarSettingsOperation['response']['body']> {
-    return this.request<GetCalendarSettingsOperation['response']['body']>('/api/v1/users/me/calendar/settings', { method: 'GET' });
+  async getCalendarSettings(): Promise<ApiResponse['getCalendarSettings']> {
+    return this.request<ApiResponse['getCalendarSettings']>('/api/v1/users/me/calendar/settings', { method: 'GET' });
   }
 
   /** 
@@ -1423,8 +1474,8 @@ export class ApiClient {
    * 
    * Used in: Calendar settings interfaces, reminder configuration flows, integration management
    */
-  async updateCalendarSettings(dto: UpdateCalendarSettingsOperation['request']['body']): Promise<UpdateCalendarSettingsOperation['response']['body']> {
-    return this.request<UpdateCalendarSettingsOperation['response']['body']>('/api/v1/users/me/calendar/settings', { 
+  async updateCalendarSettings(dto: UpdateCalendarSettingsOperation['request']['body']): Promise<ApiResponse['updateCalendarSettings']> {
+    return this.request<ApiResponse['updateCalendarSettings']>('/api/v1/users/me/calendar/settings', { 
       method: 'PATCH', 
       body: JSON.stringify(dto) 
     });
@@ -1458,8 +1509,8 @@ export class ApiClient {
    * 
    * Used in: Calendar download interfaces, offline calendar management, simple integration workflows
    */
-  async downloadUserCalendar(): Promise<DownloadUserCalendarOperation['response']['body']> {
-    return this.request<DownloadUserCalendarOperation['response']['body']>('/api/v1/users/me/calendar/download', { method: 'GET' });
+  async downloadUserCalendar(): Promise<ApiResponse['downloadUserCalendar']> {
+    return this.request<ApiResponse['downloadUserCalendar']>('/api/v1/users/me/calendar/download', { method: 'GET' });
   }
 
   /** 
@@ -1494,8 +1545,8 @@ export class ApiClient {
    * 
    * Used in: Calendar subscription URLs, dynamic integration workflows, real-time reminder management
    */
-  async getPublicCalendar(calendarCode: string): Promise<GetPublicCalendarOperation['response']['body']> {
-    return this.request<GetPublicCalendarOperation['response']['body']>('/public/api/v1/calendar/:calendarCode', { method: 'GET' }, {
+  async getPublicCalendar(calendarCode: string): Promise<ApiResponse['getPublicCalendar']> {
+    return this.request<ApiResponse['getPublicCalendar']>('/public/api/v1/calendar/:calendarCode', { method: 'GET' }, {
       params: { calendarCode }
     });
   }
@@ -1532,8 +1583,8 @@ export class ApiClient {
    * 
    * Used in: Admin dashboards, platform analytics, system monitoring, public statistics
    */
-  async getGlobalStatistics(): Promise<GetGlobalStatisticsOperation['response']['body']> {
-    return this.request<GetGlobalStatisticsOperation['response']['body']>('/public/api/v1/statistics/global', { method: 'GET' });
+  async getGlobalStatistics(): Promise<ApiResponse['getGlobalStatistics']> {
+    return this.request<ApiResponse['getGlobalStatistics']>('/public/api/v1/statistics/global', { method: 'GET' });
   }
 
   /** 
@@ -1561,8 +1612,8 @@ export class ApiClient {
    * 
    * Used in: Article analytics dashboards, content performance reports, learning insights
    */
-  async getArticleStatistics(articleId: string): Promise<GetArticleStatisticsOperation['response']['body']> {
-    return this.request<GetArticleStatisticsOperation['response']['body']>('/public/api/v1/statistics/articles/:articleId', { method: 'GET' }, {
+  async getArticleStatistics(articleId: string): Promise<ApiResponse['getArticleStatistics']> {
+    return this.request<ApiResponse['getArticleStatistics']>('/public/api/v1/statistics/articles/:articleId', { method: 'GET' }, {
       params: { articleId }
     });
   }

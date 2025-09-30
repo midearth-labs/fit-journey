@@ -47,6 +47,7 @@ export const UserProfileResponseSchema = z.object({
   notificationPreferences: NotificationPreferencesSchema.nullable(),
   invitationCode: UuidSchema.nullable(),
   invitationJoinCount: z.number().int().min(0),
+  createdAt: IsoDateSchema,
 });
 
 export const EnabledFeaturesSchema = z.object({
@@ -1507,6 +1508,7 @@ export const GlobalStatisticsResponseSchema = z.object({
   questionsAsked: z.number().int().min(0),
   questionsAnswered: z.number().int().min(0),
   progressShares: z.number().int().min(0),
+  serverDate: IsoDateSchema,
 });
 
 export const ArticleStatisticsResponseSchema = z.object({

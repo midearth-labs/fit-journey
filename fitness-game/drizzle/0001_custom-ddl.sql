@@ -16,12 +16,12 @@ BEGIN
             ELSE NULL
         END,
         NEW.raw_user_meta_data->>'learning_paths',
-        NOW(), 
-        NOW()
+        NEW.created_at, 
+        NEW.created_at
     );
     
     INSERT INTO public.user_metadata (id, created_at, updated_at)
-    VALUES (NEW.id, NOW(), NOW());
+    VALUES (NEW.id, NEW.created_at, NEW.created_at);
     
     RETURN NEW;
 END;

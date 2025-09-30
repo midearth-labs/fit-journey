@@ -1,7 +1,13 @@
 <script lang="ts">
+	import type { ApiResponse } from '$lib/client/api-client';
+
+	// Type inference from ApiClient
+	type UserMetadata = ApiResponse['getMyMetadata']
+	type UserLogs = ApiResponse['listLogs']
+
 	let { logs, metadata, detailed = false } = $props<{
-		logs: any[];
-		metadata: any;
+		logs: UserLogs;
+		metadata: UserMetadata | null;
 		detailed?: boolean;
 	}>();
 

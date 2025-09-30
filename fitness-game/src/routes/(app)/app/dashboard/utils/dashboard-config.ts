@@ -1,18 +1,25 @@
+import type { ApiResponse } from '$lib/client/api-client';
+
+// Type inference from ApiClient
+type UserMetadata = ApiResponse['getMyMetadata']
+type UserProfile = ApiResponse['getMyProfile']
+type GlobalStatistics = ApiResponse['getGlobalStatistics']
+
 /**
  * Dashboard Configuration - Controls progressive disclosure of features
  */
 export class DashboardConfig {
-	constructor(private metadata: any | null) {}
+	constructor(private metadata: UserMetadata | null, private profile: UserProfile | null, private globalStats: GlobalStatistics | null) {}
 
 	get accountAgeDays(): number {
-		if (!this.metadata?.createdAt) return 0;
-		const created = new Date(this.metadata.createdAt);
-		const now = new Date();
+		if (!this.profile?.createdAt || !this.globalStats?.serverDate) return 0;
+		const created = new Date(this.profile.createdAt);
+		const now = new Date(this.globalStats.serverDate);
 		return Math.floor((now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24));
 	}
-
+	
 	get engagementLevel(): number {
-		return this.metadata?.articlesCompletedCount || 0;
+		return this.metadata?.articlesCompleted || 0;
 	}
 
 	get showAnalytics(): boolean {
@@ -40,6 +47,6 @@ export class DashboardConfig {
 	}
 
 	get showChallenges(): boolean {
-		return this.accountAgeDays > 7 || (this.metadata?.challengesJoinedCount || 0) > 0;
+		return this.accountAgeDays > 7 || (this.metadata?.challengesJoined || 0) > 0;
 	}
 }

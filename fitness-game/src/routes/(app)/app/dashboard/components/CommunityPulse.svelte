@@ -1,5 +1,10 @@
 <script lang="ts">
-	let { globalStats, anonymous = false } = $props<{ globalStats: any; anonymous?: boolean }>();
+	import type { ApiResponse } from '$lib/client/api-client';
+
+	// Type inference from ApiClient
+	type GlobalStatistics = ApiResponse['getGlobalStatistics']
+
+	let { globalStats, anonymous = false } = $props<{ globalStats: GlobalStatistics | null; anonymous?: boolean }>();
 </script>
 
 <div class="dashboard-card">

@@ -1,15 +1,22 @@
-import { ApiClient } from '$lib/client/api-client';
+import { ApiClient, type ApiResponse } from '$lib/client/api-client';
+
+// Type inference from ApiClient methods
+type UserMetadata = ApiResponse['getMyMetadata']
+type GlobalStatistics = ApiResponse['getGlobalStatistics']
+type UserLogs = ApiResponse['listLogs']
+type UserProfile = ApiResponse['getMyProfile']
+type UserChallenges = ApiResponse['listChallengesJoinedByUser']
 
 /**
  * Dashboard Store - Centralized data management for dashboard
  * Handles fetching, caching, and state for dashboard data
  */
 class DashboardStore {
-	#metadata = $state<any>(null);
-	#globalStats = $state<any>(null);
-	#logs = $state<any[]>([]);
-	#profile = $state<any>(null);
-	#challenges = $state<any[]>([]);
+	#metadata = $state<UserMetadata | null>(null);
+	#globalStats = $state<GlobalStatistics | null>(null);
+	#logs = $state<UserLogs>([]);
+	#profile = $state<UserProfile | null>(null);
+	#challenges = $state<UserChallenges>([]);
 	#lastFetch = $state<number | null>(null);
 	#loading = $state(false);
 	#error = $state<string | null>(null);
@@ -68,13 +75,13 @@ class DashboardStore {
 		this.#error = null;
 
 		try {
-			const sevenDaysAgo = new Date();
+			const globalStats = await this.apiClient.getGlobalStatistics();
+			const sevenDaysAgo = new Date(globalStats.serverDate);
 			sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-			const today = new Date();
+			const today = new Date(globalStats.serverDate);
 
-			const [metadata, globalStats, logs] = await Promise.all([
+			const [metadata, logs] = await Promise.all([
 				this.apiClient.getMyMetadata(),
-				this.apiClient.getGlobalStatistics(),
 				this.apiClient.listLogs({
 					fromDate: sevenDaysAgo.toISOString().split('T')[0],
 					toDate: today.toISOString().split('T')[0]
@@ -130,7 +137,7 @@ class DashboardStore {
 	/**
 	 * Update metadata (e.g., after completing an action)
 	 */
-	updateMetadata(updates: Partial<any>) {
+	updateMetadata(updates: Partial<UserMetadata>) {
 		if (this.#metadata) {
 			this.#metadata = { ...this.#metadata, ...updates };
 		}

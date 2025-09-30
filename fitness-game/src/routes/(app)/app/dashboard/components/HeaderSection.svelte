@@ -1,5 +1,11 @@
 <script lang="ts">
-	let { metadata, profile } = $props<{ metadata: any; profile: any }>();
+	import type { ApiResponse } from '$lib/client/api-client';
+
+	// Type inference from ApiClient
+	type UserMetadata = ApiResponse['getMyMetadata']
+	type UserProfile = ApiResponse['getMyProfile']
+
+	let { metadata, profile } = $props<{ metadata: UserMetadata | null; profile: UserProfile | null }>();
 
 	function getTimeBasedGreeting(): string {
 		const hour = new Date().getHours();

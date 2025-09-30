@@ -71,6 +71,7 @@ export class UserProfileService implements IUserProfileService {
       notificationPreferences: user.notificationPreferences,
       invitationCode: (await featureAccessControl.hasFeatureAccess(userId, 'shareInvitationsEnabled')) ? user.invitationCode : null,
       invitationJoinCount: user.invitationJoinCount,
+      createdAt: user.createdAt.toISOString(),
     };
   }
 }

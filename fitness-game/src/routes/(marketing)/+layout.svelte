@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { AuthUtils } from '$lib/utils/auth-utils';
-	import '../app.css';
+	import './app.css';
 
 	let { data, children } = $props();
 	let { session } = $derived(data);

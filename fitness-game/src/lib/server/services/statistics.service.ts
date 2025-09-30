@@ -20,13 +20,17 @@ export class StatisticsService implements IStatisticsService {
     private readonly dependencies: {
       readonly statisticsRepository: IStatisticsRepository;
     },
-    private readonly _: MaybeAuthRequestContext
+    private readonly requestContext: MaybeAuthRequestContext
   ) {}
 
   async getGlobal(): Promise<GlobalStatisticsResponse> {
     const { statisticsRepository } = this.dependencies;
+    const { requestDate } = this.requestContext;
     
-    return await statisticsRepository.getGlobalStatistics();
+    return {
+      ...(await statisticsRepository.getGlobalStatistics()),
+      serverDate: requestDate.toISOString(),
+    };
   }
 
   async getArticle(articleId: string): Promise<ArticleStatisticsResponse> {

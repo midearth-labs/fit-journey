@@ -1,3 +1,9 @@
+import type { ApiResponse } from '$lib/client/api-client';
+
+// Type inference from ApiClient
+type UserMetadata = ApiResponse['getMyMetadata']
+type UserLogs = ApiResponse['listLogs']
+
 export type Insight = {
 	id: string;
 	type: 'positive' | 'neutral' | 'suggestion';
@@ -10,37 +16,31 @@ export type Insight = {
  * Insight Generator - Generates smart insights from user data
  */
 export class InsightGenerator {
-	generate(metadata: any, logs: any[]): Insight[] {
+	generate(metadata: UserMetadata | null, logs: UserLogs): Insight[] {
 		const insights: Insight[] = [];
 
 		if (!metadata) return insights;
 
 		// Consistency insight
 		if (logs.length >= 5) {
-			const activeDays = logs.filter(
-				(log) =>
-					log.values?.dailyMovement ||
-					log.values?.cleanEating ||
-					log.values?.sleepQuality ||
-					log.values?.hydration
-			).length;
+			const activeDays = logs.length;
 
 			if (activeDays >= 5) {
 				insights.push({
 					id: 'consistency',
 					type: 'positive',
 					title: 'Great Consistency!',
-					message: `You've been active ${activeDays} out of ${logs.length} days this week`,
+					message: `You've been active and tracking yourself for ${activeDays} out of the last 7 days`,
 					icon: '🔥'
 				});
 			}
 		}
 
 		// Learning progress insight
-		if (metadata.articlesCompletedCount > 0) {
+		if (metadata.articlesCompleted > 0) {
 			const quizRate =
-				metadata.quizzesPassedCount > 0
-					? (metadata.quizzesPassedCount / metadata.articlesCompletedCount) * 100
+				metadata.articlesCompletedWithPerfectScore > 0
+					? (metadata.articlesCompletedWithPerfectScore / metadata.articlesCompleted) * 100
 					: 0;
 
 			if (quizRate >= 80) {
@@ -48,25 +48,25 @@ export class InsightGenerator {
 					id: 'quiz_master',
 					type: 'positive',
 					title: 'Quiz Master!',
-					message: `You're passing ${Math.round(quizRate)}% of your quizzes`,
+					message: `You're passing ${Math.round(quizRate)}% of your quizzes with perfect score`,
 					icon: '🎯'
 				});
 			}
 		}
 
 		// Engagement suggestion
-		if (metadata.articlesCompletedCount >= 3 && metadata.challengesJoinedCount === 0) {
+		if (metadata.articlesCompleted >= 3 && metadata.challengesJoined === 0) {
 			insights.push({
 				id: 'join_challenge',
 				type: 'suggestion',
 				title: 'Ready for a Challenge?',
-				message: 'Try joining a community challenge to stay motivated',
+				message: 'Try creating your personal challenge or joining a community challenge to stay motivated',
 				icon: '💪'
 			});
 		}
 
 		// Community participation
-		if (metadata.questionsAskedCount > 0 || metadata.questionsAnsweredCount > 0) {
+		if (metadata.questionsAsked > 0 || metadata.questionsAnswered > 0) {
 			insights.push({
 				id: 'community_active',
 				type: 'positive',
