@@ -81,7 +81,9 @@ export const DailyLogPayloadSchema = z.object({
   dailyMovement: DailyLogValueSchema.optional(),
   cleanEating: DailyLogValueSchema.optional(),
   sleepQuality: DailyLogValueSchema.optional(),
-  hydration: DailyLogValueSchema.optional()
+  hydration: DailyLogValueSchema.optional(),
+  moodCheck: DailyLogValueSchema.optional(),
+  energyLevel: DailyLogValueSchema.optional()
 }).refine(
   (data) => Object.keys(data).length > 0,
   'At least one log value must be provided'

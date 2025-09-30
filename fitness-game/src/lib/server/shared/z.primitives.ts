@@ -43,7 +43,7 @@ export const YesNoValueSchema = z.union([
 export const DailyLogValueSchema = FiveStarValueSchema;
 
 // Log keys
-export const AllLogKeysSchema = z.enum(['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration']);
+  export const AllLogKeysSchema = z.enum(['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel']);
 
 // Notification preferences schema
 export const NotificationPreferencesSchema = z.object({

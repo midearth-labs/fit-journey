@@ -2,7 +2,7 @@ import { pgTable, text, timestamp, boolean, integer, bigint, date, jsonb, uuid, 
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
-export const FiveStarLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration'] as const;
+export const FiveStarLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel'] as const;
 export const AllLogKeys = [...FiveStarLogKeys] as const;
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
@@ -70,6 +70,8 @@ export type DailyLogPayload = Satisfies<Partial<SharedType>, {
   cleanEating?: LogValueType<FiveStarValuesType>,
   sleepQuality?: LogValueType<FiveStarValuesType>,
   hydration?: LogValueType<FiveStarValuesType>,
+  moodCheck?: LogValueType<FiveStarValuesType>,
+  energyLevel?: LogValueType<FiveStarValuesType>,
 }>;
 
 export type EnabledFeatures = {

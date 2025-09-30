@@ -330,6 +330,52 @@
     ]
   },
   {
+    "id": "moodCheck",
+    "title": "Mood Master",
+    "display_title": "Mood Check",
+    "type": "boolean",
+    "description": "Check in with your mood and track your mood throughout the day",
+    "is_active": true,
+    "sort_order": 7,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Improves mood and reduces symptoms of anxiety and depression",
+      "Enhances sleep quality and energy levels",
+      "Supports healthy weight management and metabolism"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Mood check!",
+        "medium": "Every mood check brings you closer to your goals!",
+        "long": "Consistency is the key to transformation. Every day you complete a mood check, you're building a stronger, healthier version of yourself."
+      }
+    ]
+  },
+  {
+    "id": "energyLevel",
+    "title": "Energy Level Master",
+    "display_title": "Energy Level",
+    "type": "boolean",
+    "description": "Check in with your energy level and track your energy level throughout the day",
+    "is_active": true,
+    "sort_order": 8,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Improves mood and reduces symptoms of anxiety and depression",
+      "Enhances sleep quality and energy levels",
+      "Supports healthy weight management and metabolism"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Energy level check!",
+        "medium": "Every energy level check brings you closer to your goals!",
+        "long": "Consistency is the key to transformation. Every day you complete an energy level check, you're building a stronger, healthier version of yourself."
+      }
+    ]
+  },
+  {
     "id": "all",
     "title": "Wellness Warrior",
     "display_title": "Perfect Day",

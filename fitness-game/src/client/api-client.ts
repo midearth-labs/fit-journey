@@ -269,6 +269,8 @@ export class ApiClient {
    * - cleanEating: Nutrition quality assessment (nutritious food choices)
    * - sleepQuality: Sleep tracking (7-9 hours of restorative sleep)
    * - hydration: Water intake monitoring (adequate daily hydration)
+   * - moodCheck: Mood tracking (how the user feels)
+   * - energyLevel: Energy level tracking (how the user feels)
    * 
    * Features powered:
    * - Daily wellness habit tracking

@@ -9,6 +9,8 @@ export const LoggingKeysSchema = z.enum([
   "cleanEating", 
   "sleepQuality",
   "hydration",
+  "moodCheck",
+  "energyLevel",
 ]);
 
 export const StreakTypeSchema = BaseContentSchema.extend({
