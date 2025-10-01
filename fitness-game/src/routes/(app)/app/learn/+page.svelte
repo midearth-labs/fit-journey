@@ -12,6 +12,7 @@
   import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '$lib/components/ui/tooltip';
   import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '$lib/components/ui/table';
   import { Skeleton } from '$lib/components/ui/skeleton';
+  import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '$lib/components/ui/select';
   
   const apiClient = new ApiClient('');
 
@@ -21,7 +22,7 @@
   let allArticles: Article[] = $state([]);
   let learningPaths: LearningPath[] = $state([]);
   let sortedLearningPaths: LearningPath[] = $state([]);
-  let selectedLearningPathId: string | null = $state(null);
+  let selectedLearningPathId: string | undefined = $state(undefined);
 
   // user data
   let userProfile: ApiResponse['getMyProfile'] | null = $state(null);
@@ -29,7 +30,7 @@
 
   // pagination
   let page = $state(1);
-  let perPage = $state(10);
+  let perPage = $state("10");
 
   let filteredAndSortedArticles = $derived.by(() => {
     if (!selectedLearningPathId) return allArticles;
@@ -49,21 +50,16 @@
   });
 
   function totalPages(): number {
-    return Math.max(1, Math.ceil(filteredAndSortedArticles.length / perPage));
+    return Math.max(1, Math.ceil(filteredAndSortedArticles.length / parseInt(perPage)));
   }
   function pageItems(): Article[] {
-    const start = (page - 1) * perPage;
+    const start = (page - 1) * parseInt(perPage);
     const arr = filteredAndSortedArticles;
-    return arr.slice(start, start + perPage);
+    return arr.slice(start, start + parseInt(perPage));
   }
 
   function setPage(next: number) {
     page = Math.max(1, Math.min(totalPages(), next));
-  }
-
-  function setPerPage(n: number) {
-    perPage = n;
-    setPage(1);
   }
 
   function slugify(input: string): string {
@@ -170,27 +166,34 @@
       </div>
       <div class="flex items-center gap-3">
         <div class="w-[260px]">
-          <label class="sr-only" for="lp">Learning-Paths</label>
-          <select id="lp" class="h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            bind:value={selectedLearningPathId}
-            onchange={() => setPage(1)}
-          >
-            {#each sortedLearningPaths as lp}
-              <option value={lp.id}>{lp.name}</option>
-            {/each}
-          </select>
+          <Select type="single" bind:value={selectedLearningPathId} onValueChange={(v: string) => { setPage(1); }}>
+            <SelectTrigger aria-label="Learning Paths">
+              <span>{selectedLearningPathId ? sortedLearningPaths.find(lp => lp.id === selectedLearningPathId)?.name : 'Learning-Paths'}</span>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Learning-Paths</SelectLabel>
+                {#each sortedLearningPaths as lp}
+                  <SelectItem value={lp.id}>{lp.name}</SelectItem>
+                {/each}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
 
         <div class="flex items-center gap-2">
           <span class="text-sm text-muted-foreground">Items per page</span>
-          <select class="h-9 w-[100px] rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            bind:value={perPage}
-            onchange={(e) => setPerPage(parseInt((e.target as HTMLSelectElement).value))}
-          >
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-          </select>
+          <Select type="single" bind:value={perPage}
+          onValueChange={(_: string) => setPage(1)}>
+            <SelectTrigger class="w-[100px]">
+              <span>{perPage}</span>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="20">20</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
     </Card.Header>
