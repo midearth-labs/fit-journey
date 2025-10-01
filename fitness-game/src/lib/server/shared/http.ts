@@ -1,6 +1,7 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
-import { ValidationError } from './errors';
+import { AuthorizationError, ResourceNotFoundError, ValidationError } from './errors';
+import z from 'zod';
 
 /**
  * Parse request body as JSON and validate with Zod schema
@@ -56,6 +57,12 @@ export function parseParams<T>(event: RequestEvent, schema: { parse: (data: unkn
 export function handleServiceError(err: unknown, requestId?: string): never {
   if (err instanceof ValidationError) {
     throw error(400, err.message);
+  } else if (err instanceof ResourceNotFoundError) {
+    throw error(404, err.message);
+  } else if (err instanceof AuthorizationError) {
+    throw error(401, err.message);
+  } else if (err instanceof z.ZodError) {
+    throw error(400, err.issues.map(e => e.message).join('\n'));
   }
 
   // Log unexpected errors (in production, you'd want proper logging)
