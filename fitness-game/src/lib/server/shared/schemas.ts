@@ -19,6 +19,7 @@ import {
   ShareStatusSchema
 } from './z.primitives';
 import { CHALLENGE_CONSTANTS } from '../content/types/constants';
+import { articleLogStatusKeys } from '../db/schema';
 // import { ChallengeSchema } from '$lib/server/content/types/challenge'; // Old content system schema
 
 // --- User Profile Schemas ---
@@ -1310,9 +1311,9 @@ export const ListUserArticlesOperationSchema = {
   response: {
     body: z.array(z.object({
       articleId: z.string(),
-      status: z.string(),
-      firstReadDate: z.string().nullable(),
-      lastReadDate: z.string().nullable(),
+      status: z.enum(articleLogStatusKeys),
+      firstReadDate: z.string(),
+      lastReadDate: z.string(),
       quizAttempts: z.number(),
       quizAllCorrectAnswers: z.boolean(),
     })),

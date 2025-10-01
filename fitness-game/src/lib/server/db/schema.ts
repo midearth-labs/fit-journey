@@ -32,13 +32,8 @@ export const challengeStatusEnum = pgEnum('user_challenge_status', [
   'inactive',
 ]);
 
-export const articleLogStatusEnum = pgEnum('article_log_status', [
-  'reading_in_progress',
-  'knowledge_check_in_progress', 
-  'knowledge_check_complete',
-  'practical_in_progress',
-  'completed'
-]);
+export const articleLogStatusKeys = ['reading_in_progress', 'knowledge_check_in_progress', 'knowledge_check_complete', 'practical_in_progress', 'completed'] as const;
+export const articleLogStatusEnum = pgEnum('article_log_status', articleLogStatusKeys);
 
 // Social Features Enums
 export const questionStatusEnum = pgEnum('question_status', ['pending', 'approved', 'rejected', 'hidden']);
