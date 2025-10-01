@@ -218,7 +218,7 @@
 								<span>{getCategoryName(article.content_category_id)}</span>
 							</div>
 							<h3 class="article-title">{article.title}</h3>
-							<p class="article-excerpt">{getArticleExcerpt(article.body)}</p>
+							<p class="article-excerpt">{getArticleExcerpt(article.key_takeaways.join(' '))}</p>
 							<div class="article-tags">
 								{#each article.tags as tag}
 									<span class="tag">{tag}</span>

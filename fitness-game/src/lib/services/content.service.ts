@@ -1,4 +1,4 @@
-import type { Article, Question, Category } from '$lib/types/content';
+import type { Article, ArticleDetail, Question, Category } from '$lib/types/content';
 import type { PersonaQuestion, LearningPath } from '$lib/types/fitness-persona-calculator';
 
 class ContentService {
@@ -25,7 +25,7 @@ class ContentService {
   }
 
   async loadArticles(categoryId: string): Promise<Article[]> {
-    return this.loadData(`knowledge-base/${categoryId}.json`);
+    return (await this.loadAllArticles()).filter(article => article.content_category_id === categoryId);
   }
 
   async loadQuestions(categoryId: string): Promise<Question[]> {
@@ -41,24 +41,11 @@ class ContentService {
   }
 
   async loadAllArticles(): Promise<Article[]> {
-    const categories = await this.loadCategories();
-    const allArticles: Article[] = [];
-
-    for (const category of categories) {
-      try {
-        const articles = await this.loadArticles(category.id);
-        allArticles.push(...articles);
-      } catch (error) {
-        console.warn(`Failed to load articles for category ${category.id}:`, error);
-      }
-    }
-
-    return allArticles.sort((a, b) => a.day - b.day);
+    return this.loadData(`knowledge-base/articles.json`);
   }
 
-  async getArticleById(articleId: string): Promise<Article | null> {
-    const allArticles = await this.loadAllArticles();
-    return allArticles.find(article => article.id === articleId) || null;
+  async getArticleById(articleId: string): Promise<ArticleDetail | null> {
+    return this.loadData(`knowledge-base/articles/${articleId}.article.json`);
   }
 
   async getQuestionsForArticle(articleId: string): Promise<Question[]> {

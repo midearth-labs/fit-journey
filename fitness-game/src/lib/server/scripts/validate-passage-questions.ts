@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { QuestionSchema } from '$lib/server/content/types/question';
-import { KnowledgeBaseSchema } from '$lib/server/content/types/knowledge-base';
+import { KnowledgeBaseDetailSchema } from '$lib/server/content/types/knowledge-base';
 
 interface ValidationResult {
   isValid: boolean;
@@ -64,7 +64,7 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
   };
 
   const questionsDir = path.join(process.cwd(), 'static', 'content', 'questions');
-  const knowledgeBaseDir = path.join(process.cwd(), 'static', 'content', 'knowledge-base');
+  const knowledgeBaseDir = path.join(process.cwd(), 'static', 'content', 'knowledge-base', 'articles');
 
   // Load all question files
   const questionFiles = fs.readdirSync(questionsDir).filter(file => file.endsWith('.json'));
@@ -79,19 +79,17 @@ function validatePassageQuestions(forceUpdate: boolean = false): ValidationResul
     try {
       const filePath = path.join(knowledgeBaseDir, file);
       const content = fs.readFileSync(filePath, 'utf-8');
-      const knowledgeBases = JSON.parse(content);
+      const kb = JSON.parse(content);
       
-      for (const kb of knowledgeBases) {
-        // Validate against schema
-        const parsed = KnowledgeBaseSchema.safeParse(kb);
-        if (!parsed.success) {
-          result.errors.push(`Knowledge base ${kb.id} in ${file} failed validation: ${parsed.error.message}`);
-          result.isValid = false;
-          continue;
-        }
-        
-        knowledgeBaseMap.set(kb.id, parsed.data);
+      // Validate against schema
+      const parsed = KnowledgeBaseDetailSchema.safeParse(kb);
+      if (!parsed.success) {
+        result.errors.push(`Knowledge base ${kb.id} in ${file} failed validation: ${parsed.error.message}`);
+        result.isValid = false;
+        continue;
       }
+      
+      knowledgeBaseMap.set(kb.id, parsed.data);
     } catch (error) {
       result.errors.push(`Failed to load knowledge base file ${file}: ${error}`);
       result.isValid = false;

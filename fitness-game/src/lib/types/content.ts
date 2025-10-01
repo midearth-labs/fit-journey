@@ -1,2 +1,2 @@
-import type { KnowledgeBase as Article, Question, ContentCategory as Category } from "$lib/server/content/types";
-export type { Article, Question, Category };
+import type { KnowledgeBaseList as Article, KnowledgeBaseDetail as ArticleDetail, Question, ContentCategory as Category } from "$lib/server/content/types";
+export type { Article, ArticleDetail, Question, Category };

@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { type ContentType } from './constants';
 import {  ContentCategorySchema } from './content-category';
 import { type Question, QuestionSchema } from './question';
-import { type KnowledgeBase, KnowledgeBaseSchema } from './knowledge-base';
+import { type KnowledgeBaseDetail, KnowledgeBaseDetailSchema } from './knowledge-base';
 import { type StreakType, StreakTypeSchema } from './streak-type';
 import { type AvatarAsset, AvatarAssetSchema } from './avatar-asset';
 import { type LearningPath, LearningPathSchema } from './learning-paths';
@@ -24,7 +24,7 @@ export * from './persona-question';
 export const ContentTypeToSchema = {
   ContentCategory: ContentCategorySchema,
   Question: QuestionSchema,
-  KnowledgeBase: KnowledgeBaseSchema,
+  KnowledgeBase: KnowledgeBaseDetailSchema,
   // StreakType: StreakTypeSchema,
   // AvatarAsset: AvatarAssetSchema,
   //Challenge: ChallengeSchema,

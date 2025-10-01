@@ -1,0 +1,1822 @@
+[
+  {
+    "id": "9ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-22T10:00:00Z",
+    "updated_at": "2024-01-22T10:00:00Z",
+    "is_active": true,
+    "sort_order": 22,
+    "slug": "fundamental-movement-patterns",
+    "content_category_id": "body-mechanics",
+    "day": 22,
+    "title": "Fundamental Movement Patterns: Some Core Building Blocks (Push, Pull, Hinge, Squat, Rotation)",
+    "icon": "activity",
+    "tags": [
+      "movement-patterns",
+      "squat",
+      "hinge",
+      "push",
+      "pull"
+    ],
+    "read_time": 5,
+    "word_count": 1450,
+    "key_takeaways": [
+      "Every exercise is built from just 5 fundamental movement patterns you already do daily",
+      "Mastering these patterns prevents injury and improves all physical activities",
+      "Start with bodyweight versions and focus on quality over quantity"
+    ]
+  },
+  {
+    "id": "9ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 23,
+    "slug": "what-is-your-core-and-how-do-you-engage-it",
+    "content_category_id": "body-mechanics",
+    "day": 23,
+    "title": "What Is Your Core, and How Do You Engage It?",
+    "icon": "layers",
+    "tags": [
+      "core",
+      "anatomy",
+      "stability",
+      "function",
+      "training"
+    ],
+    "read_time": 5,
+    "word_count": 1650,
+    "key_takeaways": [
+      "Your core is a 360-degree system of muscles, not just your abs—engaging it properly means coordinating your breathing with gentle bracing, not sucking in your stomach",
+      "Different activities require different levels of core engagement—from automatic during walking to conscious bracing during heavy lifting",
+      "Start with breathing exercises and progress gradually through dead bugs, planks, and bird dogs to build functional core strength safely"
+    ]
+  },
+  {
+    "id": "9ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-24T10:00:00Z",
+    "updated_at": "2024-01-24T10:00:00Z",
+    "is_active": true,
+    "sort_order": 24,
+    "slug": "flexibility-vs-mobility",
+    "content_category_id": "body-mechanics",
+    "day": 24,
+    "title": "Flexibility vs Mobility: What's the Difference and Why You Need Both",
+    "icon": "stretch-horizontal",
+    "tags": [
+      "flexibility",
+      "mobility",
+      "movement",
+      "stretching",
+      "injury-prevention"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Flexibility is passive range of motion; mobility is active control through that range - you need both for safe, effective movement",
+      "Test your flexibility-mobility gap by comparing passive vs active range of motion to identify your specific needs",
+      "Build both with a balanced approach: dynamic mobility work before workouts, static flexibility after, plus daily CARs for integration"
+    ]
+  },
+  {
+    "id": "9ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 40,
+    "slug": "protect-your-back-mastering-the-hip-hinge",
+    "content_category_id": "body-mechanics",
+    "day": 40,
+    "title": "Protect Your Back: Mastering the Hip Hinge",
+    "icon": "shield-check",
+    "tags": [
+      "hip-hinge",
+      "deadlift",
+      "back-pain",
+      "form",
+      "movement-pattern"
+    ],
+    "read_time": 5,
+    "word_count": 1650,
+    "key_takeaways": [
+      "The hip hinge protects your spine by using your hips as the primary hinge point rather than rounding your back",
+      "Practice the wall drill daily to ingrain the movement pattern before adding any weight",
+      "Use hip hinge mechanics for all daily activities involving picking things up from the ground"
+    ]
+  },
+  {
+    "id": "9ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 41,
+    "slug": "balance-coordination-basics",
+    "content_category_id": "body-mechanics",
+    "day": 41,
+    "title": "Balance & Coordination: Your Injury Prevention Insurance",
+    "icon": "balance",
+    "tags": [
+      "balance",
+      "coordination",
+      "stability",
+      "prevention",
+      "skills"
+    ],
+    "read_time": 5,
+    "word_count": 1426,
+    "key_takeaways": [
+      "Start with 5 minutes daily of simple balance exercises like single-leg stands and heel-to-toe walks",
+      "Progress gradually from stable to unstable surfaces and from eyes open to eyes closed",
+      "Integrate balance practice into daily activities like teeth brushing or waiting for coffee"
+    ]
+  },
+  {
+    "id": "9ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 42,
+    "slug": "the-mind-muscle-connection-feeling-the-right-muscles-work",
+    "content_category_id": "body-mechanics",
+    "day": 42,
+    "title": "The Mind-Muscle Connection: Feeling the Right Muscles Work",
+    "icon": "brain",
+    "tags": [
+      "mind-muscle",
+      "technique",
+      "form",
+      "body-awareness",
+      "training"
+    ],
+    "read_time": 5,
+    "word_count": 1450,
+    "key_takeaways": [
+      "Start with light weights and slow tempos to build neural pathways before chasing heavy loads",
+      "Use touch and visualization to enhance awareness of target muscles during exercises",
+      "Focus on connection during isolation work and learning phases, performance during complex movements"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 43,
+    "slug": "gym-equipment-basics-part1-cardio",
+    "content_category_id": "equipment-gym-basics",
+    "day": 43,
+    "title": "Common Gym Equipment Identification: Cardio Zone Decoded (Part 1/5)",
+    "icon": "heart",
+    "tags": [
+      "equipment",
+      "cardio",
+      "gym",
+      "identification",
+      "basics"
+    ],
+    "read_time": 5,
+    "word_count": 1650,
+    "key_takeaways": [
+      "Start with the machine that feels least intimidating - usually the recumbent bike or treadmill at walking pace",
+      "Always warm up for 5 minutes at an easy pace before increasing intensity on any cardio machine",
+      "The rowing machine provides the most complete workout but requires learning proper form - it's worth the effort"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 44,
+    "slug": "gym-equipment-basics-part2-free-weights-upper-body",
+    "content_category_id": "equipment-gym-basics",
+    "day": 44,
+    "title": "Common Gym Equipment Identification: Free Weights - Upper Body (Part 2/5)",
+    "icon": "dumbbell",
+    "tags": [
+      "equipment",
+      "weights",
+      "gym",
+      "identification",
+      "strength"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Start with lighter weights to master form before progressing to heavier loads",
+      "Each type of free weight (dumbbells, barbells, kettlebells) offers unique benefits for upper body training",
+      "Always prioritize safety and proper gym etiquette when using free weights"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 45,
+    "slug": "gym-equipment-basics-part3-free-weights-lower-body",
+    "content_category_id": "equipment-gym-basics",
+    "day": 45,
+    "title": "Common Gym Equipment Identification: Free Weights - Lower Body (Part 3/5)",
+    "icon": "leg",
+    "tags": [
+      "equipment",
+      "weights",
+      "gym",
+      "identification",
+      "strength"
+    ],
+    "read_time": 4,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Always prioritize safety equipment (collars, safety bars) when using free weights for lower body exercises",
+      "Start with bodyweight and dumbbells before progressing to barbell exercises",
+      "The trap bar is an excellent beginner-friendly alternative to traditional deadlifts"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 46,
+    "slug": "home-equipment-alternatives",
+    "content_category_id": "equipment-gym-basics",
+    "day": 46,
+    "title": "No Gym? No Problem: Home Equipment Alternatives",
+    "icon": "home",
+    "tags": [
+      "home",
+      "alternatives",
+      "equipment",
+      "budget",
+      "creative"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Your home already contains everything needed for effective workouts - water jugs, backpacks, chairs, and towels can replace expensive gym equipment",
+      "Start with bodyweight exercises and gradually add household items for resistance as you progress over 8 weeks",
+      "Create a dedicated workout space (even just 6x6 feet) and establish routines to maintain consistency without gym atmosphere"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 47,
+    "slug": "gym-equipment-basics-part4-machines-upper-body",
+    "content_category_id": "equipment-gym-basics",
+    "day": 47,
+    "title": "Common Gym Equipment Identification: Machines - Upper Body (Part 4/5)",
+    "icon": "settings",
+    "tags": [
+      "equipment",
+      "machines",
+      "gym",
+      "identification",
+      "strength"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Upper body machines provide safe, guided movement patterns perfect for building initial strength and confidence",
+      "Master the 'Big Five' machines (chest press, lat pulldown, shoulder press, seated row, assisted pull-up) for a complete upper body workout",
+      "Always adjust machines to fit your body and note your settings for consistency in future workouts"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 48,
+    "slug": "gym-equipment-basics-part5-machines-lower-body",
+    "content_category_id": "equipment-gym-basics",
+    "day": 48,
+    "title": "Common Gym Equipment Identification: Machines - Lower Body (Part 5/5)",
+    "icon": "settings",
+    "tags": [
+      "equipment",
+      "machines",
+      "gym",
+      "identification",
+      "usage"
+    ],
+    "read_time": 5,
+    "word_count": 1650,
+    "key_takeaways": [
+      "Lower body machines provide safe, guided movement patterns perfect for beginners to build strength without worrying about balance",
+      "Proper setup and adjustment of each machine is crucial - take the time to position pads, seats, and supports correctly for your body",
+      "These machines allow you to safely train legs to fatigue and can be combined into an effective 20-30 minute lower body workout"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 49,
+    "slug": "equipment-safety-protocols-hygiene",
+    "content_category_id": "equipment-gym-basics",
+    "day": 49,
+    "title": "Gym Equipment Safety and Hygiene: The Unwritten Rules That Keep You Safe",
+    "icon": "shield-alert",
+    "tags": [
+      "safety",
+      "equipment",
+      "hygiene",
+      "etiquette",
+      "protocols"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Always perform a 10-second safety check before using any equipment - inspect cables, pins, and stability",
+      "Wipe equipment before AND after use, allowing disinfectant 10 seconds to work effectively",
+      "Know emergency protocol locations on day one and maintain a 6-foot safety bubble during workouts"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 50,
+    "slug": "equipment-setup-adjustment",
+    "content_category_id": "equipment-gym-basics",
+    "day": 50,
+    "title": "Machine Adjustments: Making Equipment Fit Your Body",
+    "icon": "sliders",
+    "tags": [
+      "adjustment",
+      "setup",
+      "machines",
+      "customization",
+      "comfort"
+    ],
+    "read_time": 4,
+    "word_count": 892,
+    "key_takeaways": [
+      "Always adjust machines to your body - the 30 seconds spent prevents injury and improves effectiveness",
+      "Machine pivot points should align with your joints for proper biomechanics",
+      "Record your settings in your phone to save time and maintain consistency"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 51,
+    "slug": "appropriate-gym-wear",
+    "content_category_id": "equipment-gym-basics",
+    "day": 51,
+    "title": "What to Wear: Gym Attire That Works (Not Just Looks Good)",
+    "icon": "shirt",
+    "tags": [
+      "sweat-wicking",
+      "attire",
+      "practical",
+      "comfort",
+      "function"
+    ],
+    "read_time": 5,
+    "word_count": 1420,
+    "key_takeaways": [
+      "Invest in proper footwear first - it's the only non-negotiable piece of gym attire",
+      "Moisture-wicking fabrics are essential for comfort and hygiene - cotton is your enemy in the gym",
+      "You can build a functional gym wardrobe for under $100 with smart shopping at discount retailers"
+    ]
+  },
+  {
+    "id": "a47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 52,
+    "slug": "equipment-sharing-peak-hours",
+    "content_category_id": "equipment-gym-basics",
+    "day": 52,
+    "title": "Gym Etiquette: Sharing Equipment Like a Pro",
+    "icon": "users",
+    "tags": [
+      "sharing",
+      "peak-hours",
+      "etiquette",
+      "time-management",
+      "wiping-and-reracking"
+    ],
+    "read_time": 5,
+    "word_count": 1650,
+    "key_takeaways": [
+      "Always wipe down equipment and re-rack weights—these two habits alone will earn respect from everyone",
+      "During peak hours (6-8 AM, 12-1 PM, 5-8 PM), be prepared to share equipment through 'working in' or adjust your workout plan",
+      "Communication is key: a polite 'How many sets left?' or 'Mind if I work in?' solves most equipment conflicts before they start"
+    ]
+  },
+  {
+    "id": "b47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 53,
+    "slug": "breathing-during-exercise",
+    "content_category_id": "exercise-fundamentals",
+    "day": 53,
+    "title": "Breathing 101: Why You're Probably Doing It Wrong",
+    "icon": "wind",
+    "tags": [
+      "breathing",
+      "technique",
+      "fundamentals",
+      "oxygen",
+      "performance"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Exhale during the hardest part of any exercise movement, inhale during the easier return phase",
+      "Practice belly breathing daily to improve oxygen delivery and exercise performance",
+      "Never hold your breath during exercise unless you're an experienced lifter using specific techniques"
+    ]
+  },
+  {
+    "id": "b47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 54,
+    "slug": "posture-alignment-cues",
+    "content_category_id": "exercise-fundamentals",
+    "day": 54,
+    "title": "Posture Cues That Click: Finding Your Perfect Form",
+    "icon": "move",
+    "tags": [
+      "posture",
+      "alignment",
+      "form",
+      "cues",
+      "technique"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Good posture cues should create alignment with minimal effort - if you're straining, try a different cue",
+      "Build a personal library of cues that make sense to YOUR body rather than forcing generic instructions",
+      "Practice alignment without load first to program proper patterns before adding weight or resistance"
+    ]
+  },
+  {
+    "id": "b47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 55,
+    "slug": "exercise-progression-principles",
+    "content_category_id": "exercise-fundamentals",
+    "day": 55,
+    "title": "From Zero to Hero: Smart Exercise Progression Strategies",
+    "icon": "trending-up",
+    "tags": [
+      "progression",
+      "advancement",
+      "strategy",
+      "development",
+      "growth"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Progress by increasing only ONE variable at a time (volume, intensity, frequency, density, or complexity) and stay at each level for at least 2 weeks",
+      "Use the 5-10% rule for measurable progressions and always prioritize perfect form over heavier weights or more reps",
+      "Regression is sometimes the smartest progression—scaling back when needed prevents injury and enables long-term success"
+    ]
+  },
+  {
+    "id": "b47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 56,
+    "slug": "bodyweight-movement-mastery",
+    "content_category_id": "exercise-fundamentals",
+    "day": 56,
+    "title": "Bodyweight Basics: The Foundation Before the Weights",
+    "icon": "user",
+    "tags": [
+      "bodyweight",
+      "foundation",
+      "basics",
+      "movement",
+      "strength"
+    ],
+    "read_time": 5,
+    "word_count": 1150,
+    "key_takeaways": [
+      "Master bodyweight exercises before adding external weights to build proper movement patterns and baseline strength",
+      "Focus on the Big Five movements (push-ups, squats, lunges, planks, glute bridges) and their progressions",
+      "Progress through increasing reps, slowing tempo, or advancing to harder variations rather than rushing to add weight"
+    ]
+  },
+  {
+    "id": "b47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 57,
+    "slug": "common-form-mistakes",
+    "content_category_id": "exercise-fundamentals",
+    "day": 57,
+    "title": "Form Mistakes Everyone Makes (And How to Fix Them)",
+    "icon": "alert-triangle",
+    "tags": [
+      "form",
+      "mistakes",
+      "correction",
+      "technique",
+      "improvement"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Film yourself regularly - visual feedback is invaluable for identifying and correcting form mistakes",
+      "Always prioritize perfect form over heavy weight - ego lifting leads to injuries",
+      "Focus on fixing one form issue at a time rather than trying to perfect everything at once"
+    ]
+  },
+  {
+    "id": "b47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 58,
+    "slug": "exercise-modifications-levels",
+    "content_category_id": "exercise-fundamentals",
+    "day": 58,
+    "title": "Exercise Modifications: Making Every Move Work for You",
+    "icon": "settings-2",
+    "tags": [
+      "modifications",
+      "adaptations",
+      "accessibility",
+      "variations",
+      "customization"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Modifications are tools for progress, not signs of weakness - they help you maintain perfect form while building strength",
+      "Every exercise exists on a spectrum from easiest to hardest - find your starting point and progress systematically",
+      "Use the SAFE method (Stability, Angle, Form, Effort) to create appropriate modifications for any exercise"
+    ]
+  },
+  {
+    "id": "8ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 19,
+    "slug": "cardio-vs-strength-false-choice",
+    "content_category_id": "exercise-types-goals",
+    "day": 19,
+    "title": "Cardio vs Strength: Why It's Not Actually a Competition",
+    "icon": "zap",
+    "tags": [
+      "cardio",
+      "strength",
+      "exercise-types",
+      "balance",
+      "education"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Cardio and strength training are complementary, not competitive - combining both produces superior health and fitness outcomes",
+      "The 'interference effect' is only a concern for elite athletes - beginners benefit from doing both types of exercise",
+      "Start with WHO guidelines: 150 min moderate cardio + 2 strength sessions weekly, then adjust based on your goals and preferences"
+    ]
+  },
+  {
+    "id": "8ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-12-01T10:00:00Z",
+    "updated_at": "2024-12-01T10:00:00Z",
+    "is_active": true,
+    "sort_order": 20,
+    "slug": "smart-goals-fitness-reality",
+    "content_category_id": "exercise-types-goals",
+    "day": 20,
+    "title": "SMART Goals That Actually Work (Not the Ones That Sound Good)",
+    "icon": "target",
+    "tags": [
+      "goals",
+      "planning",
+      "smart",
+      "realistic",
+      "motivation"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Focus on process goals you can control (like 'exercise 3x per week') rather than outcome goals you can't directly control (like 'lose 10 pounds')",
+      "Start with ONE specific, measurable goal from the beginner's menu rather than trying to change everything at once",
+      "Build systems and schedules instead of relying on motivation, and adjust goals based on actual progress without shame"
+    ]
+  },
+  {
+    "id": "8ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 21,
+    "slug": "beginner-workout-frequency",
+    "content_category_id": "exercise-types-goals",
+    "day": 21,
+    "title": "How Often Should Beginners Work Out? The Goldilocks Zone",
+    "icon": "calendar",
+    "tags": [
+      "frequency",
+      "schedule",
+      "beginner",
+      "balance",
+      "recovery"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Start with 2-3 workout days per week and build gradually - consistency beats intensity",
+      "Rest days are when your body actually gets stronger through recovery and adaptation",
+      "Listen to your body's signals and adjust frequency based on recovery, not ambition"
+    ]
+  },
+  {
+    "id": "8ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 37,
+    "slug": "exercise-alignment-with-goals",
+    "content_category_id": "exercise-types-goals",
+    "day": 37,
+    "title": "Matching Exercises to Goals: Your Personal Exercise Menu",
+    "icon": "menu",
+    "tags": [
+      "goals",
+      "exercise-selection",
+      "planning",
+      "customization",
+      "strategy"
+    ],
+    "read_time": 5,
+    "word_count": 1150,
+    "key_takeaways": [
+      "Match your exercise selection directly to your primary fitness goal - different goals require different exercise strategies",
+      "Use the 70/30 rule: 70% of exercises should directly support your main goal, 30% for supporting work and balance",
+      "Create a structured weekly 'menu' that includes main exercises, supporting work, and recovery activities for sustainable progress"
+    ]
+  },
+  {
+    "id": "8ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 38,
+    "slug": "progressive-overload-explained",
+    "content_category_id": "exercise-types-goals",
+    "day": 38,
+    "title": "Progressive Overload: The Only Rule That Really Matters",
+    "icon": "trending-up",
+    "tags": [
+      "progression",
+      "overload",
+      "strength",
+      "principles",
+      "growth"
+    ],
+    "read_time": 5,
+    "word_count": 1450,
+    "key_takeaways": [
+      "Progressive overload can be achieved through 6 different methods - weight, reps, sets, form, rest time, or tempo",
+      "Track your workouts consistently and aim for small, sustainable increases rather than dramatic jumps",
+      "Use the 2-for-2 rule or double progression method to know exactly when to increase difficulty"
+    ]
+  },
+  {
+    "id": "8ba7b815-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 39,
+    "slug": "tracking-fitness-progress",
+    "content_category_id": "exercise-types-goals",
+    "day": 39,
+    "title": "Tracking Progress: Numbers That Lie vs Metrics That Matter",
+    "icon": "bar-chart-3",
+    "tags": [
+      "tracking",
+      "progress",
+      "metrics",
+      "measurement",
+      "assessment"
+    ],
+    "read_time": 5,
+    "word_count": 950,
+    "key_takeaways": [
+      "Daily weight fluctuations of 3-5 pounds are normal and don't reflect real progress - track weekly averages instead",
+      "Performance metrics (strength gains, endurance improvements) and consistency are better progress indicators than scale weight",
+      "Create a personal tracking system combining 2-3 performance metrics, monthly measurements, and life quality improvements"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 1,
+    "slug": "what-is-fitness-really",
+    "content_category_id": "fitness-foundation",
+    "day": 1,
+    "title": "What Is Fitness Really? Debunking the Instagram Myths",
+    "icon": "help-circle",
+    "tags": [
+      "beginner",
+      "fitness-basics",
+      "myths",
+      "foundation",
+      "getting-started"
+    ],
+    "read_time": 5,
+    "word_count": 892,
+    "key_takeaways": [
+      "Real fitness is about sustainable movement that fits your life, not Instagram-perfect workouts",
+      "Success is measured in how you feel and function, not just how you look",
+      "Starting slowly with 10 minutes of any movement is perfectly valid and effective"
+    ]
+  },
+  {
+    "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 2,
+    "slug": "before-you-start-safety-first",
+    "content_category_id": "fitness-foundation",
+    "day": 2,
+    "title": "Before You Start: The Safety Checklist Nobody Talks About",
+    "icon": "shield-check",
+    "tags": [
+      "safety",
+      "health-check",
+      "beginner",
+      "preparation",
+      "medical"
+    ],
+    "read_time": 5,
+    "word_count": 945,
+    "key_takeaways": [
+      "Complete the PAR-Q questionnaire and consult a doctor if you have any health conditions before starting exercise",
+      "Learn to distinguish between normal exercise discomfort and warning signs that require stopping immediately",
+      "Starting slower than you think necessary is the fastest path to long-term success and injury prevention"
+    ]
+  },
+  {
+    "id": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 3,
+    "slug": "fitness-where-you-are",
+    "content_category_id": "fitness-foundation",
+    "day": 3,
+    "title": "Fitness Can Meet You Where You Are (Yes, Even on Your Couch)",
+    "icon": "map-pin",
+    "tags": [
+      "adaptability",
+      "mindset",
+      "beginner",
+      "accessibility",
+      "motivation"
+    ],
+    "read_time": 5,
+    "word_count": 923,
+    "key_takeaways": [
+      "You can start exercising exactly where you are with no equipment, using everyday activities as fitness opportunities",
+      "Every movement counts, whether it's 2 minutes or 20, in gym clothes or pajamas",
+      "Breaking the all-or-nothing mindset and starting with micro-workouts leads to sustainable fitness habits"
+    ]
+  },
+  {
+    "id": "6ba7b812-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 4,
+    "slug": "gradual-progression-tortoise-wins",
+    "content_category_id": "fitness-foundation",
+    "day": 4,
+    "title": "Why the Tortoise Always Wins: The Science of Starting Slow",
+    "icon": "turtle",
+    "tags": [
+      "progression",
+      "consistency",
+      "beginner",
+      "science",
+      "habits"
+    ],
+    "read_time": 5,
+    "word_count": 967,
+    "key_takeaways": [
+      "Following the 10% weekly progression rule prevents injury and ensures sustainable fitness development",
+      "Starting with just 2-10 minutes daily builds stronger habits than aggressive programs that lead to burnout",
+      "Your body adapts on biological time - muscles in weeks, tendons in months - respecting this prevents setbacks"
+    ]
+  },
+  {
+    "id": "6ba7b813-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 5,
+    "slug": "fitness-language-decoded",
+    "content_category_id": "fitness-foundation",
+    "day": 5,
+    "title": "Fitness Language Decoded: From Reps to RIR Without the Confusion",
+    "icon": "book-open",
+    "tags": [
+      "terminology",
+      "education",
+      "beginner",
+      "vocabulary",
+      "basics"
+    ],
+    "read_time": 5,
+    "word_count": 1021,
+    "key_takeaways": [
+      "Fitness terminology is simpler than it seems - most terms describe basic concepts like counting repetitions or effort levels",
+      "Understanding common acronyms (HIIT, DOMS, RPE) and equipment names removes intimidation from gym environments",
+      "Knowing the language helps you communicate effectively with trainers and other gym-goers for better support and safety"
+    ]
+  },
+  {
+    "id": "6ba7b814-9dad-11d1-80b4-00c04fd430c8",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 6,
+    "slug": "when-to-get-help",
+    "content_category_id": "fitness-foundation",
+    "day": 6,
+    "title": "When to DIY vs When to Get Help: Your Fitness Support Guide",
+    "icon": "helping-hand",
+    "tags": [
+      "guidance",
+      "professional-help",
+      "safety",
+      "resources",
+      "support"
+    ],
+    "read_time": 5,
+    "word_count": 1043,
+    "key_takeaways": [
+      "Professional help is crucial for injuries, complex movements, or specific health conditions, but basic fitness can start DIY",
+      "Budget-friendly options like group training, online coaching, and workout buddies provide support without breaking the bank",
+      "The best approach often combines professional guidance for foundation with DIY practice and community support for sustainability"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "created_at": "2024-01-13T00:00:00Z",
+    "updated_at": "2024-01-13T00:00:00Z",
+    "is_active": true,
+    "sort_order": 13,
+    "slug": "stress-exercise-mental-health",
+    "content_category_id": "health-lifestyle",
+    "day": 13,
+    "title": "Exercise as Medicine: The Mental Health Benefits Nobody Mentions",
+    "icon": "heart",
+    "tags": [
+      "mental-health",
+      "stress",
+      "wellness",
+      "benefits",
+      "holistic"
+    ],
+    "read_time": 5,
+    "word_count": 1050,
+    "key_takeaways": [
+      "Just 20 minutes of moderate exercise can reduce anxiety symptoms for up to 12 hours",
+      "Exercise triggers the same brain chemicals targeted by antidepressant medications, but naturally",
+      "Consistency matters more than intensity - daily 15-minute walks beat sporadic intense workouts for mental health"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "created_at": "2024-01-14T00:00:00Z",
+    "updated_at": "2024-01-14T00:00:00Z",
+    "is_active": true,
+    "sort_order": 14,
+    "slug": "sedentary-life-movement-hacks",
+    "content_category_id": "health-lifestyle",
+    "day": 14,
+    "title": "Desk Job Survival: Sneaking Movement Into Your 9-to-5",
+    "icon": "monitor",
+    "tags": [
+      "office",
+      "movement",
+      "lifestyle",
+      "practical",
+      "daily"
+    ],
+    "read_time": 5,
+    "word_count": 1100,
+    "key_takeaways": [
+      "Just 5 minutes of movement every hour adds up to over 3 hours of activity weekly",
+      "The 20-8-2 rule: Sit for 20 minutes, stand for 8, move for 2 every half hour",
+      "Small, frequent movements throughout the day are more valuable than one gym session followed by 10 hours of sitting"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "created_at": "2024-01-15T00:00:00Z",
+    "updated_at": "2024-01-15T00:00:00Z",
+    "is_active": true,
+    "sort_order": 15,
+    "slug": "sleep-secret-weapon",
+    "content_category_id": "health-lifestyle",
+    "day": 15,
+    "title": "Sleep: Your Secret Fitness Weapon (That's Free)",
+    "icon": "moon",
+    "tags": [
+      "sleep",
+      "recovery",
+      "health",
+      "performance",
+      "wellness"
+    ],
+    "read_time": 4,
+    "word_count": 850,
+    "key_takeaways": [
+      "Sleep is when your body releases 70% of growth hormone for muscle repair and fat burning",
+      "Aim for 7.5-9 hours of consistent sleep, same schedule even on weekends",
+      "Poor sleep increases hunger hormones by 28% and decreases fullness signals by 18%"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "created_at": "2024-11-15T10:00:00Z",
+    "updated_at": "2024-11-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 16,
+    "slug": "minimum-effective-dose-exercise",
+    "content_category_id": "health-lifestyle",
+    "day": 16,
+    "title": "The Minimum Effective Dose: How Little Exercise Actually Works",
+    "icon": "minimize-2",
+    "tags": [
+      "guidelines",
+      "minimum",
+      "efficiency",
+      "science",
+      "practical"
+    ],
+    "read_time": 5,
+    "word_count": 1150,
+    "key_takeaways": [
+      "Just 15 minutes of daily moderate exercise provides significant health benefits and adds years to life expectancy",
+      "Exercise snacking with 1-3 minute bursts throughout the day can be as effective as longer continuous workouts",
+      "Define your personal non-negotiable minimum to maintain during busy periods - consistency beats intensity"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 17,
+    "slug": "sarcopenia-muscle-loss-prevention",
+    "content_category_id": "health-lifestyle",
+    "day": 17,
+    "title": "Sarcopenia: Why Your Future Self Needs You to Start Now",
+    "icon": "clock",
+    "tags": [
+      "aging",
+      "muscle",
+      "prevention",
+      "health",
+      "longevity"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Start strength training now—every year of delay means more muscle lost and harder recovery",
+      "Aim for 2-3 strength sessions weekly and distribute protein intake evenly across meals (25-30g per meal)",
+      "Focus on functional movements that translate to daily activities to maintain independence as you age"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d485",
+    "created_at": "2024-01-18T10:00:00Z",
+    "updated_at": "2024-01-18T10:00:00Z",
+    "is_active": true,
+    "sort_order": 18,
+    "slug": "managing-health-conditions-exercise",
+    "content_category_id": "health-lifestyle",
+    "day": 18,
+    "title": "Exercise With Health Conditions: Your Personalized Playbook",
+    "icon": "stethoscope",
+    "tags": [
+      "health-conditions",
+      "medical",
+      "adaptation",
+      "safety",
+      "management"
+    ],
+    "read_time": 5,
+    "word_count": 1450,
+    "key_takeaways": [
+      "Always get medical clearance before starting exercise with any health condition",
+      "Adapt exercises to your specific limitations rather than avoiding movement entirely",
+      "Track symptoms alongside workouts to identify patterns and optimize your program"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d486",
+    "created_at": "2024-01-31T00:00:00Z",
+    "updated_at": "2024-01-31T00:00:00Z",
+    "is_active": true,
+    "sort_order": 31,
+    "slug": "consistency-over-intensity",
+    "content_category_id": "health-lifestyle",
+    "day": 31,
+    "title": "Why Showing Up at 50% Beats 100% Once a Week",
+    "icon": "repeat",
+    "tags": [
+      "consistency",
+      "habits",
+      "sustainability",
+      "mindset",
+      "success"
+    ],
+    "read_time": 5,
+    "word_count": 1426,
+    "key_takeaways": [
+      "Exercising at 50% intensity four times per week builds more fitness than one 100% effort workout",
+      "Create a 'minimum effective dose' workout that you can do even on your worst days to maintain momentum",
+      "Track consistency (showing up) rather than intensity to build a lasting exercise identity"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d487",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 32,
+    "slug": "lifestyle-factors-fitness-success",
+    "content_category_id": "health-lifestyle",
+    "day": 32,
+    "title": "The Lifestyle Factors That Make or Break Your Fitness",
+    "icon": "life-buoy",
+    "tags": [
+      "lifestyle",
+      "habits",
+      "success",
+      "holistic",
+      "factors"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Fitness success depends more on lifestyle factors (sleep, stress, social support) than just exercise alone - they multiply rather than add to your results",
+      "Start by identifying and improving your weakest lifestyle factor first, as it's likely bottlenecking your progress",
+      "Small 1% improvements in multiple lifestyle areas compound into dramatic fitness transformations over time"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d488",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 33,
+    "slug": "age-appropriate-exercise",
+    "content_category_id": "health-lifestyle",
+    "day": 33,
+    "title": "Exercise Through the Ages: What Changes and What Doesn't",
+    "icon": "calendar-days",
+    "tags": [
+      "age",
+      "adaptation",
+      "lifespan",
+      "safety",
+      "progression"
+    ],
+    "read_time": 5,
+    "word_count": 1420,
+    "key_takeaways": [
+      "Exercise principles remain the same across ages, but application and recovery needs change - adjust frequency and intensity, not enthusiasm",
+      "Strength training becomes increasingly critical with age to combat muscle loss and maintain bone density",
+      "Every age has unique advantages - use them strategically rather than fighting against natural changes"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d489",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 34,
+    "slug": "disease-prevention-exercise",
+    "content_category_id": "health-lifestyle",
+    "day": 34,
+    "title": "Exercise as Prevention: The Diseases You're Avoiding Right Now",
+    "icon": "shield",
+    "tags": [
+      "prevention",
+      "disease",
+      "health",
+      "benefits",
+      "longevity"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Every single workout provides immediate cellular-level protection against multiple diseases - you're literally building your body's defense system in real-time",
+      "Just 150 minutes of moderate exercise weekly can reduce your risk of major diseases by 20-58%, with benefits starting from as little as 15 minutes daily",
+      "The protective effects of exercise compound over time - consistency over years creates an entirely different health trajectory than your sedentary peers"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d490",
+    "created_at": "2024-12-20T10:00:00Z",
+    "updated_at": "2024-12-20T10:00:00Z",
+    "is_active": true,
+    "sort_order": 35,
+    "slug": "health-markers-tracking",
+    "content_category_id": "health-lifestyle",
+    "day": 35,
+    "title": "Beyond the Scale: Health Markers That Actually Matter",
+    "icon": "activity",
+    "tags": [
+      "tracking",
+      "health-markers",
+      "progress",
+      "measurement",
+      "data"
+    ],
+    "read_time": 5,
+    "word_count": 1420,
+    "key_takeaways": [
+      "Weight is just one metric - track multiple health markers including heart rate, blood pressure, body measurements, and functional fitness for a complete picture",
+      "Focus on trends over time rather than daily fluctuations, and celebrate non-scale victories like improved energy and strength",
+      "Create a simple weekly and monthly tracking system that includes both measurable data and subjective feelings about your health"
+    ]
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d491",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 36,
+    "slug": "wearables-apps-fitness-tech",
+    "content_category_id": "health-lifestyle",
+    "day": 36,
+    "title": "Fitness Tech 101: Making Wearables Work for You",
+    "icon": "smartphone",
+    "tags": [
+      "technology",
+      "wearables",
+      "tracking",
+      "apps",
+      "tools"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Start with free smartphone apps before investing in expensive trackers - consistency matters more than fancy features",
+      "Focus on trends over daily numbers - trackers aren't perfectly accurate but they're consistently inaccurate",
+      "Choose 1-3 metrics to track initially (steps, sleep, workout duration) rather than overwhelming yourself with all available data"
+    ]
+  },
+  {
+    "id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 65,
+    "slug": "overcoming-gym-anxiety",
+    "content_category_id": "mindset-motivation",
+    "day": 65,
+    "title": "Gym Anxiety is Real: Your Confidence-Building Toolkit",
+    "icon": "smile",
+    "tags": [
+      "anxiety",
+      "confidence",
+      "mindset",
+      "gym",
+      "psychology"
+    ],
+    "read_time": 5,
+    "word_count": 1435,
+    "key_takeaways": [
+      "Gym anxiety affects most beginners and is completely normal—use the exposure ladder technique to gradually build comfort",
+      "Focus on familiarization first: the gym becomes less scary through repetition, not sudden confidence",
+      "Practical tools like off-peak timing, headphones, and the 5-4-3-2-1 grounding technique can manage anxiety in real-time"
+    ]
+  },
+  {
+    "id": "d47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 66,
+    "slug": "habit-formation-science",
+    "content_category_id": "mindset-motivation",
+    "day": 66,
+    "title": "The 21-Day Myth: How Habits Actually Form",
+    "icon": "calendar-check",
+    "tags": [
+      "habits",
+      "behavior",
+      "science",
+      "consistency",
+      "psychology"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Habit formation takes 18-254 days (average 66), not 21 days - complexity and individual factors determine your timeline",
+      "Start ridiculously small and use implementation intentions ('I will X at Y time in Z place') to triple your success rate",
+      "Never miss twice - missing one day doesn't break a habit, but missing two days starts forming a new pattern"
+    ]
+  },
+  {
+    "id": "d47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 67,
+    "slug": "motivation-vs-discipline",
+    "content_category_id": "mindset-motivation",
+    "day": 67,
+    "title": "Motivation vs Discipline: Why Waiting to 'Feel Like It' Doesn't Work",
+    "icon": "zap",
+    "tags": [
+      "motivation",
+      "discipline",
+      "mindset",
+      "consistency",
+      "success"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Stop waiting for motivation - it's unreliable and temporary. Build discipline instead through consistent small actions.",
+      "Action creates motivation, not the other way around. Start with just 2 minutes if needed.",
+      "Treat workouts like non-negotiable appointments and use strategies like habit stacking and streak tracking to build consistency."
+    ]
+  },
+  {
+    "id": "d47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 68,
+    "slug": "plateaus-setbacks-comebacks",
+    "content_category_id": "mindset-motivation",
+    "day": 68,
+    "title": "Plateaus & Setbacks: Your Comeback Strategy Guide",
+    "icon": "trending-down",
+    "tags": [
+      "plateaus",
+      "setbacks",
+      "resilience",
+      "strategy",
+      "progress"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Plateaus are proof of adaptation, not failure - change one variable at a time to break through",
+      "Use the 50% rule when coming back from setbacks to prevent re-injury and build sustainable momentum",
+      "Track different metrics during plateaus and focus on process goals rather than outcome goals"
+    ]
+  },
+  {
+    "id": "d47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 69,
+    "slug": "social-support-fitness-success",
+    "content_category_id": "mindset-motivation",
+    "day": 69,
+    "title": "Finding Your Fitness Tribe: Why Going Solo Is Harder",
+    "icon": "users",
+    "tags": [
+      "community",
+      "support",
+      "social",
+      "accountability",
+      "success"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "Social support increases fitness adherence by 50% - find at least one accountability partner",
+      "Build a diverse support network including accountability partners, mentors, cheerleaders, and communities",
+      "Set healthy boundaries while remaining open to connection - your journey can inspire others"
+    ]
+  },
+  {
+    "id": "d47ac10b-58cc-4372-a567-0e02b2c3d484",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 70,
+    "slug": "long-term-fitness-sustainability",
+    "content_category_id": "mindset-motivation",
+    "day": 70,
+    "title": "Building a Fitness Life: From 'Have To' to 'Want To'",
+    "icon": "heart",
+    "tags": [
+      "sustainability",
+      "lifestyle",
+      "long-term",
+      "mindset",
+      "transformation"
+    ],
+    "read_time": 5,
+    "word_count": 1850,
+    "key_takeaways": [
+      "Sustainable fitness comes from shifting your identity from someone who 'has to exercise' to someone who naturally incorporates movement into their life",
+      "Focus on building autonomy, mastery, and purpose in your fitness practice rather than relying on external motivation",
+      "Create flexible systems and environments that support your fitness identity while allowing for life's natural ebbs and flows"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440001",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 7,
+    "slug": "macros-101-understanding-carbs-proteins-and-fats",
+    "content_category_id": "nutrition-essentials",
+    "day": 7,
+    "title": "Macros 101: Understanding Carbs, Proteins, and Fats",
+    "icon": "pie-chart",
+    "tags": [
+      "nutrition",
+      "macros",
+      "labels",
+      "food",
+      "basics"
+    ],
+    "read_time": 4,
+    "word_count": 750,
+    "key_takeaways": [
+      "All three macronutrients are essential - protein for building/repair, carbs for energy, fats for hormones and vitamin absorption",
+      "Start by simply including all three macros at each meal rather than obsessing over perfect ratios",
+      "Focus on whole food sources for most of your intake, with flexibility for treats"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440002",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 8,
+    "slug": "calories-explained-what-energy-in-energy-out-really-means",
+    "content_category_id": "nutrition-essentials",
+    "day": 8,
+    "title": "Calories Explained: What 'Energy In, Energy Out' Really Means",
+    "icon": "calculator",
+    "tags": [
+      "calories",
+      "CICO",
+      "metabolism",
+      "weight loss",
+      "nutrition basics"
+    ],
+    "read_time": 5,
+    "word_count": 850,
+    "key_takeaways": [
+      "Weight change is determined by calories in vs calories out, but many factors affect both sides of the equation",
+      "Most people underestimate calories eaten and overestimate calories burned",
+      "Start by tracking your normal intake for awareness before making changes"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440003",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 9,
+    "slug": "meal-timing-around-workouts",
+    "content_category_id": "nutrition-essentials",
+    "day": 9,
+    "title": "Meal Timing Around Workouts: Fueling Your Performance",
+    "icon": "clock",
+    "tags": [
+      "meal-timing",
+      "myths",
+      "nutrition",
+      "science",
+      "practical"
+    ],
+    "read_time": 5,
+    "word_count": 900,
+    "key_takeaways": [
+      "The 30-minute post-workout window is largely a myth - you have several hours to refuel effectively",
+      "Pre-workout nutrition depends on timing, intensity, and personal preference",
+      "Total daily nutrition matters more than perfect timing for most people"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440004",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 10,
+    "slug": "more-than-thirst-why-hydration-is-your-fitness-superpower",
+    "content_category_id": "nutrition-essentials",
+    "day": 10,
+    "title": "More Than Thirst: Why Hydration is Your Fitness Superpower",
+    "icon": "droplets",
+    "tags": [
+      "hydration",
+      "water",
+      "performance",
+      "health",
+      "basics"
+    ],
+    "read_time": 5,
+    "word_count": 980,
+    "key_takeaways": [
+      "Start hydrating 2-4 hours before exercise and drink half your body weight in ounces daily as a baseline",
+      "Use the urine color test to monitor hydration status throughout the day",
+      "Add electrolytes for workouts over 60 minutes or in hot conditions"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440005",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 11,
+    "slug": "reading-nutrition-labels-detective",
+    "content_category_id": "nutrition-essentials",
+    "day": 11,
+    "title": "Nutrition Label Detective: Finding Hidden Calories (Part 1/2)",
+    "icon": "search",
+    "tags": [
+      "labels",
+      "calories",
+      "education",
+      "practical",
+      "awareness"
+    ],
+    "read_time": 5,
+    "word_count": 1050,
+    "key_takeaways": [
+      "Always check serving size first—it's the most common source of calorie confusion",
+      "Look for hidden sugars under multiple names in the ingredients list",
+      "Ignore front-of-package claims and focus on the actual nutrition facts panel"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440006",
+    "created_at": "2024-01-12T00:00:00Z",
+    "updated_at": "2024-01-12T00:00:00Z",
+    "is_active": true,
+    "sort_order": 12,
+    "slug": "reading-nutrition-labels-mastery",
+    "content_category_id": "nutrition-essentials",
+    "day": 12,
+    "title": "Nutrition Label Detective: Mastering Serving Sizes (Part 2/2)",
+    "icon": "ruler",
+    "tags": [
+      "labels",
+      "servings",
+      "education",
+      "practical",
+      "skills"
+    ],
+    "read_time": 4,
+    "word_count": 1150,
+    "key_takeaways": [
+      "Most 'personal-sized' packages contain 2-3 servings - always check the servings per container before assuming",
+      "Use your hand and common objects as portion guides: palm = 3oz protein, fist = 1 cup, thumb = 1oz cheese",
+      "Restaurant portions are typically 2-4 times standard serving sizes - consider sharing or boxing half immediately"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440007",
+    "created_at": "2024-01-25T00:00:00Z",
+    "updated_at": "2024-01-25T00:00:00Z",
+    "is_active": true,
+    "sort_order": 25,
+    "slug": "balanced-meals-building-blocks",
+    "content_category_id": "nutrition-essentials",
+    "day": 25,
+    "title": "Building Balanced Meals: The Plate Method That Actually Works",
+    "icon": "circle",
+    "tags": [
+      "meals",
+      "balance",
+      "practical",
+      "nutrition",
+      "planning"
+    ],
+    "read_time": 5,
+    "word_count": 1150,
+    "key_takeaways": [
+      "Use the visual plate method: 1/2 vegetables, 1/4 protein, 1/4 complex carbs, thumb-sized healthy fats",
+      "Adjust proportions based on your goals but maintain the basic framework for nutritional balance",
+      "Apply the method flexibly to restaurants, meal prep, and different cuisines for sustainable healthy eating"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440008",
+    "created_at": "2024-01-26T10:00:00Z",
+    "updated_at": "2024-01-26T10:00:00Z",
+    "is_active": true,
+    "sort_order": 26,
+    "slug": "nutrient-dense-choices",
+    "content_category_id": "nutrition-essentials",
+    "day": 26,
+    "title": "Nutrient Dense vs Calorie Dense: The Food Quality Spectrum",
+    "icon": "star",
+    "tags": [
+      "nutrients",
+      "calories",
+      "quality",
+      "choices",
+      "education"
+    ],
+    "read_time": 5,
+    "word_count": 1420,
+    "key_takeaways": [
+      "Focus on getting more nutrients per calorie by choosing whole, minimally processed foods most of the time",
+      "Use the 80/20 approach - 80% nutrient-dense choices, 20% whatever you enjoy for sustainable healthy eating",
+      "Volume eating with nutrient-dense foods lets you eat satisfying portions while managing calories naturally"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440009",
+    "created_at": "2025-01-15T00:00:00Z",
+    "updated_at": "2025-01-15T00:00:00Z",
+    "is_active": true,
+    "sort_order": 27,
+    "slug": "calorie-deficit-without-muscle-loss",
+    "content_category_id": "nutrition-essentials",
+    "day": 27,
+    "title": "Losing Fat, Not Muscle: The Protein Priority Principle",
+    "icon": "beef",
+    "tags": [
+      "protein",
+      "muscle",
+      "fat-loss",
+      "nutrition",
+      "strategy"
+    ],
+    "read_time": 5,
+    "word_count": 1450,
+    "key_takeaways": [
+      "Aim for 1.6-2.2g of protein per kg of body weight daily to preserve muscle during fat loss",
+      "Distribute protein intake evenly across meals (25-40g per meal) rather than loading at dinner",
+      "Combine adequate protein with resistance training 2-3x per week for optimal muscle preservation"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440010",
+    "created_at": "2024-01-28T10:00:00Z",
+    "updated_at": "2024-01-28T10:00:00Z",
+    "is_active": true,
+    "sort_order": 28,
+    "slug": "hidden-calories-exposed",
+    "content_category_id": "nutrition-essentials",
+    "day": 28,
+    "title": "The Sneaky Calorie Bombs: Nuts, Drinks, and Dressings Exposed",
+    "icon": "bomb",
+    "tags": [
+      "calories",
+      "awareness",
+      "tracking",
+      "hidden",
+      "education"
+    ],
+    "read_time": 5,
+    "word_count": 1247,
+    "key_takeaways": [
+      "Healthy foods like nuts, avocado, and olive oil can still be calorie bombs - awareness of portion sizes is crucial for weight management",
+      "Liquid calories from drinks and dressings often go uncounted but can add 500-1000+ calories daily",
+      "Success comes from measuring and pre-portioning calorie-dense foods, not eliminating them entirely"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440011",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 29,
+    "slug": "kitchen-scale-game-changer",
+    "content_category_id": "nutrition-essentials",
+    "day": 29,
+    "title": "Kitchen Scale Mastery: The $20 Tool That Changes Everything",
+    "icon": "scale",
+    "tags": [
+      "tools",
+      "measurement",
+      "accuracy",
+      "practical",
+      "tracking"
+    ],
+    "read_time": 5,
+    "word_count": 1050,
+    "key_takeaways": [
+      "Most people underestimate their calorie intake by 30-50% due to poor portion estimation - a scale provides objective truth",
+      "Start with a one-week observation period weighing your normal foods to understand your actual intake without changing anything",
+      "The goal is developing 'scale vision' over 2-3 months, not weighing forever - it's a tool for education and awareness"
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440012",
+    "created_at": "2024-01-30T10:00:00Z",
+    "updated_at": "2024-01-30T10:00:00Z",
+    "is_active": true,
+    "sort_order": 30,
+    "slug": "carbs-fats-friends-not-enemies",
+    "content_category_id": "nutrition-essentials",
+    "day": 30,
+    "title": "Carbs & Fats: Why They're Friends, Not Enemies",
+    "icon": "handshake",
+    "tags": [
+      "carbs",
+      "fats",
+      "myths",
+      "nutrition",
+      "balance"
+    ],
+    "read_time": 5,
+    "word_count": 1847,
+    "key_takeaways": [
+      "Both carbs and fats are essential nutrients - eliminating either can harm your health and performance",
+      "Focus on quality sources: complex carbs with fiber and unsaturated fats should make up most of your intake",
+      "Combining carbs and fats in meals improves satiety, blood sugar control, and nutrient absorption"
+    ]
+  },
+  {
+    "id": "c47ac10b-58cc-4372-a567-0e02b2c3d483",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 59,
+    "slug": "recovery-nutrition-timing",
+    "content_category_id": "recovery-injury-prevention",
+    "day": 59,
+    "title": "Recovery Nutrition: What to Eat After Your Workout",
+    "icon": "utensils",
+    "tags": [
+      "nutrition",
+      "recovery",
+      "post-workout",
+      "timing",
+      "fuel"
+    ],
+    "read_time": 5,
+    "word_count": 980,
+    "key_takeaways": [
+      "Post-workout nutrition doesn't require expensive supplements – chocolate milk and whole foods work just as well",
+      "Aim for a 2:1 or 3:1 ratio of carbs to protein within 1-2 hours after exercise for optimal recovery",
+      "Match your recovery nutrition to your workout intensity – a walk needs less than a strength session"
+    ]
+  },
+  {
+    "id": "c47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 60,
+    "slug": "muscle-soreness-vs-pain",
+    "content_category_id": "recovery-injury-prevention",
+    "day": 60,
+    "title": "Muscle Soreness vs Pain: Learning to Listen to Your Body",
+    "icon": "ear",
+    "tags": [
+      "pain",
+      "soreness",
+      "injury",
+      "awareness",
+      "safety"
+    ],
+    "read_time": 5,
+    "word_count": 1250,
+    "key_takeaways": [
+      "DOMS (muscle soreness) appears 24-72 hours after exercise and improves with movement, while pain is sharp, immediate, and worsens with activity",
+      "Use the 5-point assessment protocol (location, movement, symmetry, timeline, quality) to evaluate whether discomfort is normal or concerning",
+      "Develop body awareness through consistent check-ins and tracking patterns—knowing your normal helps you recognize when something's wrong"
+    ]
+  },
+  {
+    "id": "c47ac10b-58cc-4372-a567-0e02b2c3d482",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 61,
+    "slug": "overtraining-warning-signs",
+    "content_category_id": "recovery-injury-prevention",
+    "day": 61,
+    "title": "Overtraining: When More Isn't Better",
+    "icon": "alert-circle",
+    "tags": [
+      "overtraining",
+      "rest",
+      "balance",
+      "warning-signs",
+      "recovery"
+    ],
+    "read_time": 5,
+    "word_count": 1680,
+    "key_takeaways": [
+      "Overtraining occurs when exercise damage accumulates faster than your body can recover - rest is where actual strength gains happen",
+      "Track subjective markers like mood, energy, and motivation daily - consistent scores below 6/10 signal time to reduce training",
+      "Implement the 80/20 rule: 80% moderate intensity workouts and mandatory deload weeks every 4-6 weeks prevent overtraining"
+    ]
+  },
+  {
+    "id": "c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f9",
+    "created_at": "2025-01-15T09:00:00Z",
+    "updated_at": "2025-01-15T09:00:00Z",
+    "is_active": true,
+    "sort_order": 62,
+    "slug": "the-unsung-hero-why-quality-sleep-is-non-negotiable",
+    "content_category_id": "recovery-injury-prevention",
+    "day": 62,
+    "title": "The Unsung Hero: Why Quality Sleep is Non-Negotiable",
+    "icon": "moon",
+    "tags": [
+      "sleep",
+      "recovery",
+      "rest",
+      "growth hormone",
+      "performance"
+    ],
+    "read_time": 5,
+    "word_count": 1050,
+    "key_takeaways": [
+      "Sleep is when muscle repair and growth actually happen through growth hormone release",
+      "Poor sleep directly reduces strength, increases injury risk, and sabotages fat loss through hormone disruption",
+      "Implement the 3-2-1 pre-sleep routine and maintain consistent sleep-wake times for optimal recovery"
+    ]
+  },
+  {
+    "id": "c47ac10b-58cc-4372-a567-0e02b2c3d480",
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "is_active": true,
+    "sort_order": 63,
+    "slug": "active-recovery-strategies",
+    "content_category_id": "recovery-injury-prevention",
+    "day": 63,
+    "title": "Active Recovery: Moving to Heal, Not Just Rest",
+    "icon": "refresh-cw",
+    "tags": [
+      "active-recovery",
+      "movement",
+      "healing",
+      "strategy",
+      "restoration"
+    ],
+    "read_time": 5,
+    "word_count": 1850,
+    "key_takeaways": [
+      "Active recovery uses low-intensity movement (3-4/10 effort) to speed healing without creating more muscle damage",
+      "Best activities include walking, swimming, yoga, and light stretching - lasting 15-45 minutes",
+      "Schedule active recovery after hard training days or when feeling run down, but avoid turning it into another workout"
+    ]
+  },
+  {
+    "id": "c47ac10b-58cc-4372-a567-0e02b2c3d481",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "is_active": true,
+    "sort_order": 64,
+    "slug": "rice-protocol-injury-basics",
+    "content_category_id": "recovery-injury-prevention",
+    "day": 64,
+    "title": "RICE Protocol & Beyond: First Aid for Fitness",
+    "icon": "first-aid",
+    "tags": [
+      "injury",
+      "rice",
+      "first-aid",
+      "treatment",
+      "acute-care"
+    ],
+    "read_time": 5,
+    "word_count": 1485,
+    "key_takeaways": [
+      "Master the RICE protocol but understand the modern PEACE & LOVE approach for comprehensive injury care",
+      "Know the red flags that require immediate medical attention versus injuries you can manage yourself",
+      "Build a proper fitness first aid kit and have an action plan before you need it"
+    ]
+  }
+]

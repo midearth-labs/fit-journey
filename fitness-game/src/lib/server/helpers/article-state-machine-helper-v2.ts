@@ -1,6 +1,6 @@
 import { type NewUserArticle, type UserArticle } from '$lib/server/db/schema';
 import { ValidationError, notFoundCheck } from '$lib/server/shared/errors';
-import type { KnowledgeBase, Question } from '../content/types';
+import type { KnowledgeBaseList, Question } from '../content/types';
 
 export const ArticleLogStatusKeys = [
     'reading_in_progress',
@@ -33,7 +33,7 @@ export type StateTransitionDetailsBase = {
   readonly articleId: string;
   readonly requestDate: Date;
   readonly userId: string;
-  readonly article: KnowledgeBase;
+  readonly article: KnowledgeBaseList;
 };
 type OverrideFields = 'id' | 'createdAt' | 'updatedAt' | 'userId' | 'articleId';
 export type UpdateArticle = Omit<UserArticle, OverrideFields>;

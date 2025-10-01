@@ -1,0 +1,119 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440001",
+  "created_at": "2024-01-15T10:00:00Z",
+  "updated_at": "2024-01-15T10:00:00Z",
+  "is_active": true,
+  "sort_order": 7,
+  "slug": "macros-101-understanding-carbs-proteins-and-fats",
+  "content_category_id": "nutrition-essentials",
+  "day": 7,
+  "lede_image": {
+    "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/lede-macros-plate.png",
+    "description": "A colorful balanced plate showing portions of lean protein, complex carbohydrates, and healthy fats with clear visual sections",
+    "width": 1200,
+    "height": 630,
+    "prompt_generation_string": "Professional food photography of a divided plate showing grilled chicken breast (protein section), brown rice and vegetables (carbs section), avocado and nuts (fats section), bright natural lighting, educational infographic style overlay showing macro percentages"
+  },
+  "title": "Macros 101: Understanding Carbs, Proteins, and Fats",
+  "body": "# The Three Building Blocks Your Body Actually Needs\n\nLet's clear something up right away: despite what social media might tell you, none of the three macronutrients are evil. Your body needs all of them, just like a car needs gas, oil, AND coolant to run properly. Today, we're breaking down what these mysterious \"macros\" actually do and why tracking them (even loosely) can be a game-changer.\n\n![Macronutrient Overview](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/macro-overview-infographic.png)\n\n## Protein: Your Body's Construction Crew\n\n**What it does:** Think of protein as the construction workers in your body. They're constantly building, repairing, and maintaining everything from your muscles to your hair, skin, and even hormones. After a workout, protein helps repair those tiny muscle tears that make you stronger.\n\n**How much you need:** A good starting point is 0.7-1g per pound of body weight if you're active. So if you weigh 150 pounds, aim for 105-150g of protein daily. Yes, that might seem like a lot at first!\n\n**Best sources:**\n- Lean meats (chicken, turkey, lean beef)\n- Fish and seafood\n- Eggs and egg whites\n- Greek yogurt and cottage cheese\n- Beans, lentils, and tofu\n- Protein powder (when whole foods aren't convenient)\n\n**Reality check:** You don't need to chug protein shakes all day. A palm-sized portion of protein at each meal plus a protein-rich snack usually gets you there.\n\n![Protein Sources](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/protein-sources-grid.png)\n\n## Carbohydrates: Your Body's Preferred Fuel\n\n**What they do:** Carbs are like the gas in your tank – they're your body's favorite source of quick energy. Your brain alone uses about 130g of carbs daily just to function normally. They also help you push through workouts and recover afterward.\n\n**How much you need:** This varies widely based on activity level, but 45-65% of your total calories is a common range. For someone eating 2000 calories, that's 225-325g of carbs.\n\n**Best sources:**\n- Whole grains (oats, quinoa, brown rice)\n- Fruits (especially berries, apples, bananas)\n- Vegetables (sweet potatoes, squash, broccoli)\n- Legumes (beans, lentils, chickpeas)\n\n**The truth about \"bad\" carbs:** Simple carbs (like candy) aren't evil – they're just less filling and don't provide many nutrients. Think of them as pocket money versus your paycheck. Fine occasionally, but you can't live on them.\n\n## Fats: Your Body's Swiss Army Knife\n\n**What they do:** Fats help absorb vitamins, produce hormones, protect organs, and yes, they're also a source of energy. Without enough fat, you might feel cold, have dry skin, or experience mood swings.\n\n**How much you need:** About 20-35% of your total calories. For that 2000-calorie diet, that's roughly 44-78g of fat daily.\n\n**Best sources:**\n- Avocados\n- Nuts and seeds\n- Olive oil and coconut oil\n- Fatty fish (salmon, mackerel)\n- Nut butters\n\n**Plot twist:** Eating fat doesn't automatically make you fat. Eating too many total calories does that, regardless of whether they come from fat, carbs, or even protein.\n\n![Healthy Fats](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/healthy-fats-sources.png)\n\n## Finding Your Balance\n\nHere's where beginners often get stuck: there's no perfect macro ratio for everyone. A construction worker needs different fuel than an office worker. A marathon runner needs different ratios than a powerlifter.\n\n**Start simple:**\n1. Include a protein source at every meal\n2. Don't fear carbs – choose mostly whole food sources\n3. Add some healthy fats to keep you satisfied\n4. Pay attention to how different ratios make you feel\n\n## Common Macro Myths Busted\n\n**Myth 1:** \"Carbs after 6 PM turn straight to fat\"\n**Truth:** Your body doesn't have a clock that changes how it processes food. Total daily intake matters more than timing.\n\n**Myth 2:** \"You need protein immediately after working out\"\n**Truth:** You have a several-hour window. Don't panic if you can't slam a shake immediately.\n\n**Myth 3:** \"Fat makes you fat\"\n**Truth:** Excess calories make you gain weight, not specific macronutrients.\n\n![Macro Myths Debunked](/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/myths-vs-facts.png)\n\n## Your Action Plan\n\n1. **This week:** Just start noticing what you eat. No judgment, just awareness.\n2. **Next week:** Try to include all three macros at each meal.\n3. **Eventually:** Consider tracking for a few days to see where you naturally land.\n\nRemember: You don't need to be perfect. Even having a rough idea of your macro intake puts you ahead of 90% of people. The goal isn't to obsess over every gram – it's to understand what you're eating so you can make informed choices that support your goals.",
+  "tags": [
+    "nutrition",
+    "macros",
+    "labels",
+    "food",
+    "basics"
+  ],
+  "learn_more_links": [
+    {
+      "type": "youtube_short",
+      "url": "https://youtube.com/shorts/macro_basics_explained",
+      "title": "Macros Explained in 60 Seconds",
+      "description": "Quick visual guide to understanding macronutrients",
+      "duration_seconds": 60
+    },
+    {
+      "type": "article",
+      "url": "https://examine.com/nutrition/macronutrients",
+      "title": "The Science of Macronutrients",
+      "description": "Evidence-based deep dive into macro requirements"
+    },
+    {
+      "type": "app_store",
+      "url": "https://apps.apple.com/app/myfitnesspal",
+      "title": "MyFitnessPal - Macro Tracking Made Easy",
+      "description": "Free app to track your daily macro intake"
+    }
+  ],
+  "affiliate_links": [
+    {
+      "type": "amazon",
+      "url": "https://amazon.com/dp/food-scale-digital",
+      "title": "Digital Food Scale for Accurate Tracking",
+      "description": "Precise measurements make macro tracking much easier - essential kitchen tool"
+    },
+    {
+      "type": "amazon",
+      "url": "https://amazon.com/dp/meal-prep-containers",
+      "title": "Meal Prep Containers with Portion Sections",
+      "description": "Pre-portioned containers help visualize macro balance"
+    },
+    {
+      "type": "other",
+      "url": "https://rp.diet/app",
+      "title": "RP Diet App - Automated Macro Calculator",
+      "description": "Science-based app that calculates and adjusts your macros automatically"
+    }
+  ],
+  "image_urls": [
+    {
+      "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/macro-overview-infographic.png",
+      "description": "Infographic showing the three macronutrients with their calorie values (protein 4cal/g, carbs 4cal/g, fat 9cal/g) and primary functions",
+      "width": 800,
+      "height": 600,
+      "prompt_generation_string": "Clean educational infographic showing three colored sections for protein, carbohydrates, and fats with icons, calorie values per gram, and bullet points of main functions"
+    },
+    {
+      "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/protein-sources-grid.png",
+      "description": "Grid of common protein sources with gram amounts per serving",
+      "width": 800,
+      "height": 800,
+      "prompt_generation_string": "3x3 grid of protein foods with serving sizes and protein grams labeled: chicken breast (25g), Greek yogurt (20g), eggs (6g each), tofu (10g), lentils (18g), salmon (22g), cottage cheese (15g), beef (26g), protein powder scoop (25g)"
+    },
+    {
+      "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/healthy-fats-sources.png",
+      "description": "Visual guide to healthy fat sources and portion sizes",
+      "width": 800,
+      "height": 600,
+      "prompt_generation_string": "Arranged display of healthy fats: whole avocado, handful of mixed nuts, tablespoon of olive oil, salmon fillet, almond butter jar, with portion size callouts"
+    },
+    {
+      "path": "/images/knowledge-base/550e8400-e29b-41d4-a716-446655440001/myths-vs-facts.png",
+      "description": "Split comparison showing common macro myths on left and facts on right",
+      "width": 800,
+      "height": 600,
+      "prompt_generation_string": "Split infographic design with red 'MYTH' section on left and green 'FACT' section on right, showing 3 macro misconceptions and their truth"
+    }
+  ],
+  "read_time": 4,
+  "word_count": 750,
+  "key_takeaways": [
+    "All three macronutrients are essential - protein for building/repair, carbs for energy, fats for hormones and vitamin absorption",
+    "Start by simply including all three macros at each meal rather than obsessing over perfect ratios",
+    "Focus on whole food sources for most of your intake, with flexibility for treats"
+  ],
+  "passages": [
+    {
+      "id": "019127ed-1cc3-40ed-9f22-edc9c4f47425",
+      "title": "Sarah's Macro Confusion at the Gym Cafe",
+      "passage_text": "Sarah stared at the gym cafe menu, completely overwhelmed. \"I don't get it,\" she told Emma, who'd just finished her workout. \"This protein smoothie has 40g of protein but also 50g of carbs. Is that bad?\"\n\nEmma smiled, remembering her own confusion months ago. \"Not at all! After a workout, your body actually needs both. The protein helps repair your muscles, and the carbs refill your energy stores.\"\n\n\"But Instagram keeps telling me carbs are evil,\" Sarah protested.\n\n\"Instagram also tells people to do juice cleanses,\" Emma laughed. \"Look, I aim for about 30g of protein per meal, plenty of carbs from whole foods, and some healthy fats. I stopped demonizing food groups and started feeling so much better.\"\n\nSarah pulled out her phone. \"There's an app for tracking this stuff, right?\"\n\n\"Sure, but start simple,\" Emma advised. \"Just try to get some protein at each meal first. You can get fancy with exact numbers later.\"",
+      "image_urls": []
+    },
+    {
+      "id": "ea30fdfc-c053-45d7-aa5c-f4937d8c1017",
+      "title": "Mike's Protein Obsession Reality Check",
+      "passage_text": "Mike loaded his fifth scoop of protein powder into his shaker. His friend Jordan raised an eyebrow. \"Dude, that's like 125 grams in one shake.\"\n\n\"Gotta maximize gains,\" Mike grunted, still sore from yesterday's workout.\n\nJordan, ever the researcher, pulled up an article on his phone. \"Actually, studies show your body can only use about 25-40g of protein at once for muscle building. The rest just becomes expensive pee or gets stored as energy.\"\n\n\"But more is better, right?\"\n\n\"Not really. You're drinking 500 calories of just protein powder. You could eat a whole meal with all three macros for that,\" Jordan explained. \"Plus, where are your carbs for energy? No wonder you're dragging during workouts.\"\n\nMike looked at his shake skeptically. \"So I should eat... carbs?\"\n\n\"Your muscles literally run on glycogen, which comes from carbs. You're trying to build a house with just bricks and no mortar.\"",
+      "image_urls": []
+    }
+  ],
+  "icon": "pie-chart"
+}

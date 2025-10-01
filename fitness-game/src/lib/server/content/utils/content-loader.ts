@@ -83,7 +83,7 @@ export class ContentLoader {
 
     const contentMap: Content[T]['map'] = new Map();
     const contentList: Content[T]['list'] = [];
-    const schema = z.array(ContentTypeToSchema[contentType]);
+    const arraySchema = z.array(ContentTypeToSchema[contentType]);
     
     for (const file of jsonFiles) {
       console.debug(`Loading content file: ${file} `);
@@ -91,7 +91,7 @@ export class ContentLoader {
       const rawContent = await this.loadContentFile(filePath);
 
       try {
-        const parsedContent = schema.parse(rawContent);
+        const parsedContent = arraySchema.parse(rawContent instanceof Array ? rawContent : [rawContent]);
         parsedContent.forEach((item, index) => {
           if (contentMap.has(item.id)) {
             throw new Error(`Content ${contentType}: Item with id ${item.id} already exists: ${filePath} at index ${index}`);
