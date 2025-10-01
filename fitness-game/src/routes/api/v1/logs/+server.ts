@@ -11,7 +11,7 @@ export const GET: RequestHandler = async (event) => {
     const { logService } = event.locals.authServices!;
     
     // Call service
-    const logs = await logService().listUserLogs(dto);
+    const logs = await logService().listUserLogs({...dto, page: dto.page!, limit: dto.limit!});
     
     // Validate response and return
     return validateAndReturn(logs, ListUserLogsOperationSchema.response.body);

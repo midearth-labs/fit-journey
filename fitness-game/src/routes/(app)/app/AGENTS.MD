@@ -1186,3 +1186,713 @@ let { name, age = 0 } = $props();
 
 *CRITICAL*
 - This directory and sub-directories contain CSR Only pages. Do not use SSR or SSG. Use dynamic imports to help with javascript asset loading performance.
+
+---
+
+## FitJourney Dashboard Architecture
+
+### Design System
+
+#### ShadCN Svelte Integration
+
+Use ShadCN Svelte components for consistent, accessible UI:
+
+```bash
+# Install components as needed
+npx shadcn-svelte@latest add [component-name]
+```
+
+**Installed Components:**
+- `card` - Container components
+- `sidebar` - Navigation sidebar
+- `button` - Interactive buttons
+- `badge` - Status indicators
+- `progress` - Progress bars
+- `tabs` - Tabbed content
+- `skeleton` - Loading states
+- `tooltip` - Contextual help
+- `separator` - Visual dividers
+- `sheet` - Modal overlays
+
+**Usage:**
+```svelte
+<script>
+  import * as Card from '$lib/components/ui/card';
+  import { Button } from '$lib/components/ui/button';
+  import { Badge } from '$lib/components/ui/badge';
+</script>
+
+<Card.Root>
+  <Card.Header>
+    <Card.Title>Title</Card.Title>
+    <Card.Description>Description</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    <!-- Content -->
+  </Card.Content>
+  <Card.Footer>
+    <Button>Action</Button>
+  </Card.Footer>
+</Card.Root>
+```
+
+#### Theme Configuration (OKLCH Color Space)
+
+**Centralized Theme Location:**
+- Primary: `/src/app.css` - CSS variables
+- Secondary: `/src/lib/config/theme.ts` - Programmatic access
+
+**Light Green Theme (Default):**
+```css
+:root {
+  /* Primary - Fresh Green */
+  --primary: oklch(0.55 0.15 150);
+  --primary-foreground: oklch(0.99 0.005 142);
+  
+  /* Secondary - Light Green */
+  --secondary: oklch(0.95 0.02 145);
+  --secondary-foreground: oklch(0.25 0.04 152);
+  
+  /* Accent - Vibrant Green */
+  --accent: oklch(0.92 0.03 145);
+  --accent-foreground: oklch(0.25 0.04 152);
+  
+  /* Muted - Very Light Green */
+  --muted: oklch(0.96 0.01 145);
+  --muted-foreground: oklch(0.48 0.02 152);
+  
+  /* Chart colors - Green themed */
+  --chart-1: oklch(0.55 0.15 150);
+  --chart-2: oklch(0.65 0.12 160);
+  --chart-3: oklch(0.45 0.18 145);
+  --chart-4: oklch(0.75 0.10 155);
+  --chart-5: oklch(0.60 0.13 148);
+}
+```
+
+**OKLCH Format:** `oklch(L C H)`
+- **L** (Lightness): 0-1 (0=black, 1=white)
+- **C** (Chroma): 0+ (saturation)
+- **H** (Hue): 0-360° (150°=green, 240°=blue, 310°=purple)
+
+**Quick Theme Change:**
+```css
+/* Blue Theme: Change hue from 150 to 240 */
+--primary: oklch(0.55 0.15 240);
+
+/* Purple Theme: Change hue from 150 to 310 */
+--primary: oklch(0.55 0.15 310);
+```
+
+#### Icon System (Lucide Svelte)
+
+Use lucide-svelte for consistent iconography:
+
+```svelte
+<script>
+  import { Home, BookOpen, Trophy, Settings } from 'lucide-svelte';
+</script>
+
+<Home class="h-4 w-4" />
+<BookOpen class="h-5 w-5 text-primary" />
+```
+
+**Dynamic Icons (Svelte 5):**
+```svelte
+<script>
+  import { Home } from 'lucide-svelte';
+  
+  let { icon } = $props();
+</script>
+
+<!-- Svelte 5 - components are dynamic by default -->
+<icon.component class="h-4 w-4" />
+```
+
+---
+
+### Layout Architecture
+
+#### Full-Width Dashboard Layout
+
+**Structure:**
+```
+├── Sidebar (collapsible)
+│   ├── Header (logo/brand)
+│   ├── Main Navigation
+│   ├── Secondary Navigation
+│   └── Footer Links
+├── Main Content Area
+│   ├── Top Header Bar
+│   │   ├── Page Title
+│   │   └── Quick Actions
+│   └── Dynamic Content
+```
+
+**Implementation:**
+```svelte
+<!-- +layout.svelte -->
+<script lang="ts">
+  import * as Sidebar from '$lib/components/ui/sidebar';
+  import { Button } from '$lib/components/ui/button';
+  
+  let { children } = $props();
+</script>
+
+<Sidebar.Provider>
+  <Sidebar.Root variant="inset">
+    <Sidebar.Header>
+      <!-- Brand/Logo -->
+    </Sidebar.Header>
+    
+    <Sidebar.Content>
+      <Sidebar.Group>
+        <Sidebar.GroupLabel>Main Menu</Sidebar.GroupLabel>
+        <Sidebar.GroupContent>
+          <!-- Navigation Items -->
+        </Sidebar.GroupContent>
+      </Sidebar.Group>
+    </Sidebar.Content>
+    
+    <Sidebar.Footer>
+      <!-- Settings/Help -->
+    </Sidebar.Footer>
+  </Sidebar.Root>
+  
+  <Sidebar.Inset>
+    <header class="sticky top-0 z-10">
+      <Sidebar.Trigger />
+      <!-- Page title & quick actions -->
+    </header>
+    
+    <main>
+      {@render children()}
+    </main>
+  </Sidebar.Inset>
+</Sidebar.Provider>
+```
+
+#### Responsive Grid System
+
+**Dashboard Grid:**
+```svelte
+<!-- Full-width container -->
+<div class="flex flex-1 flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <!-- Stats Cards - 4 columns on large screens -->
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <!-- 4 stat cards -->
+  </div>
+  
+  <!-- Main Content - Asymmetric grid -->
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+    <!-- Primary content: 4/7 width -->
+    <Card.Root class="lg:col-span-4">
+      <!-- Today's Focus -->
+    </Card.Root>
+    
+    <!-- Secondary content: 3/7 width -->
+    <Card.Root class="lg:col-span-3">
+      <!-- Quick Stats -->
+    </Card.Root>
+  </div>
+  
+  <!-- Tabbed Content -->
+  <Tabs.Root value="analytics">
+    <Tabs.List class="grid w-full grid-cols-3 lg:w-[400px]">
+      <Tabs.Trigger value="analytics">Analytics</Tabs.Trigger>
+      <Tabs.Trigger value="insights">Insights</Tabs.Trigger>
+      <Tabs.Trigger value="community">Community</Tabs.Trigger>
+    </Tabs.List>
+    <!-- Tab content -->
+  </Tabs.Root>
+</div>
+```
+
+---
+
+### Health-Focused Design Principles
+
+#### Core Tenets
+
+1. **Encouragement over Pressure**
+   - No negative messaging ("missed days")
+   - Progress from personal baseline
+   - Positive reinforcement only
+
+2. **Progressive Disclosure**
+   - Features unlock based on engagement
+   - No overwhelming new users
+   - Gradual complexity introduction
+
+3. **Sustainable Engagement**
+   - No obsessive checking patterns
+   - Flexible pacing options
+   - "Escape hatches" always visible
+
+4. **Psychological Safety**
+   - "Pause journey" option
+   - Adjust pace anytime
+   - No judgment for inactivity
+
+#### Implementation Patterns
+
+**Language Guidelines:**
+```typescript
+// ✅ Good - Encouraging
+"Building momentum!"
+"You're making progress!"
+"When you're ready..."
+
+// ❌ Avoid - Pressuring
+"You failed to..."
+"You must complete..."
+"Behind schedule"
+```
+
+**Progressive Disclosure Example:**
+```typescript
+// utils/dashboard-config.ts
+export class DashboardConfig {
+  constructor(private metadata, private profile, private globalStats) {}
+  
+  get accountAgeDays(): number {
+    const created = new Date(this.profile?.createdAt);
+    const now = new Date(this.globalStats?.serverDate);
+    return Math.floor((now - created) / (1000 * 60 * 60 * 24));
+  }
+  
+  get engagementLevel(): number {
+    return this.metadata?.articlesCompleted || 0;
+  }
+  
+  // Show analytics after 3 days
+  get showAnalytics(): boolean {
+    return this.accountAgeDays > 3;
+  }
+  
+  // Show detailed analytics after 14 days + 10 articles
+  get showDetailedAnalytics(): boolean {
+    return this.accountAgeDays > 14 && this.engagementLevel > 10;
+  }
+  
+  // Show community features after 7 days
+  get showCommunity(): boolean {
+    return this.accountAgeDays > 7;
+  }
+}
+```
+
+**Safety Options Component:**
+```svelte
+<script>
+  let showPauseModal = $state(false);
+  let showAdjustModal = $state(false);
+</script>
+
+<div class="mt-8 border-t pt-4 opacity-70">
+  <button 
+    class="text-sm text-muted-foreground underline"
+    onclick={() => showAdjustModal = true}
+  >
+    Need to adjust your pace?
+  </button>
+  
+  <button 
+    class="ml-4 text-sm text-muted-foreground underline"
+    onclick={() => showPauseModal = true}
+  >
+    Taking a break is okay
+  </button>
+</div>
+
+<!-- Modals for pause/adjust -->
+```
+
+---
+
+### Dashboard State Management
+
+#### Store Architecture (Svelte 5)
+
+**Dashboard Store Pattern:**
+```typescript
+// stores/dashboard.svelte.ts
+import { ApiClient } from '$lib/client/api-client';
+
+class DashboardStore {
+  #metadata = $state(null);
+  #globalStats = $state(null);
+  #logs = $state([]);
+  #profile = $state(null);
+  #loading = $state(false);
+  #error = $state(null);
+  #lastFetch = $state(null);
+  
+  readonly METADATA_CACHE = 5 * 60 * 1000; // 5 minutes
+  
+  private apiClient: ApiClient;
+  
+  constructor() {
+    this.apiClient = new ApiClient('', {
+      'Content-Type': 'application/json'
+    });
+  }
+  
+  get metadata() { return this.#metadata; }
+  get globalStats() { return this.#globalStats; }
+  get logs() { return this.#logs; }
+  get profile() { return this.#profile; }
+  get loading() { return this.#loading; }
+  get error() { return this.#error; }
+  
+  async loadDashboard(force = false) {
+    const now = Date.now();
+    
+    // Use cache if fresh
+    if (!force && this.#lastFetch && 
+        (now - this.#lastFetch) < this.METADATA_CACHE) {
+      return;
+    }
+    
+    this.#loading = true;
+    this.#error = null;
+    
+    try {
+      // Parallel loading of critical data
+      const [globalStats, profile, metadata, logs] = await Promise.all([
+        this.apiClient.getGlobalStatistics(),
+        this.apiClient.getMyProfile(),
+        this.apiClient.getMyMetadata(),
+        this.apiClient.listLogs({ page: 1, limit: 7 })
+      ]);
+      
+      this.#profile = profile;
+      this.#metadata = metadata;
+      this.#globalStats = globalStats;
+      this.#logs = logs || [];
+      this.#lastFetch = now;
+    } catch (err) {
+      this.#error = err.message || 'Failed to load dashboard';
+    } finally {
+      this.#loading = false;
+    }
+  }
+  
+  async refresh() {
+    await this.loadDashboard(true);
+  }
+}
+
+export const dashboardStore = new DashboardStore();
+```
+
+**Usage in Components:**
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { dashboardStore } from './stores/dashboard.svelte';
+  
+  // Reactive derivations
+  const metadata = $derived(dashboardStore.metadata);
+  const loading = $derived(dashboardStore.loading);
+  const error = $derived(dashboardStore.error);
+  
+  onMount(() => {
+    dashboardStore.loadDashboard();
+  });
+</script>
+
+{#if loading && !metadata}
+  <Skeleton />
+{:else if error}
+  <ErrorCard {error} onRetry={() => dashboardStore.refresh()} />
+{:else if metadata}
+  <!-- Dashboard content -->
+{/if}
+```
+
+---
+
+### Component Patterns
+
+#### Stat Cards with Trends
+
+```svelte
+<script lang="ts">
+  import * as Card from '$lib/components/ui/card';
+  import { TrendingUp, BookOpen } from 'lucide-svelte';
+  
+  const statsCards = $derived([
+    {
+      title: 'Articles Read',
+      value: metadata?.articlesCompleted || 0,
+      icon: BookOpen,
+      trend: '+12%',
+      trendUp: true,
+      description: 'Keep learning!'
+    }
+    // ... more cards
+  ]);
+</script>
+
+<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+  {#each statsCards as stat}
+    <Card.Root class="hover:shadow-lg transition-shadow">
+      <Card.Header class="flex flex-row items-center justify-between pb-2">
+        <Card.Title class="text-sm font-medium text-muted-foreground">
+          {stat.title}
+        </Card.Title>
+        <stat.icon class="h-4 w-4 text-primary" />
+      </Card.Header>
+      <Card.Content>
+        <div class="text-2xl font-bold">{stat.value}</div>
+        <p class="text-xs text-muted-foreground flex items-center gap-1">
+          {#if stat.trendUp}
+            <TrendingUp class="h-3 w-3 text-primary" />
+          {/if}
+          <span class="text-primary">{stat.trend}</span>
+          <span>{stat.description}</span>
+        </p>
+      </Card.Content>
+    </Card.Root>
+  {/each}
+</div>
+```
+
+#### Weekly Activity Chart
+
+**Custom Bar Chart:**
+```svelte
+<script lang="ts">
+  const chartData = $derived(
+    weeklyHabits.map((day) => ({
+      day: day.day,
+      habits: day.habitCount
+    }))
+  );
+</script>
+
+<div class="flex items-end justify-between h-[160px] gap-2">
+  {#each chartData as day}
+    <div class="flex-1 flex flex-col items-center gap-2">
+      <div class="flex-1 w-full flex items-end justify-center">
+        <div
+          class="w-full bg-primary/20 hover:bg-primary/30 rounded-t-lg transition-all cursor-pointer relative group"
+          style="height: {(day.habits / 4) * 100}%"
+          title="{day.day}: {day.habits} habits"
+        >
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+            {day.habits} {day.habits === 1 ? 'habit' : 'habits'}
+          </div>
+        </div>
+      </div>
+      <span class="text-xs text-muted-foreground">{day.day}</span>
+    </div>
+  {/each}
+</div>
+```
+
+#### Achievement System
+
+```typescript
+// utils/achievements.svelte.ts
+export class AchievementCalculator {
+  private achievements = [
+    {
+      id: 'first_steps',
+      name: 'First Steps',
+      description: 'Complete your first article',
+      condition: (m: UserMetadata) => m.articlesCompleted >= 1,
+      progress: (m: UserMetadata) => Math.min(1, m.articlesCompleted)
+    },
+    {
+      id: 'knowledge_seeker',
+      name: 'Knowledge Seeker',
+      description: 'Complete 10 articles',
+      condition: (m: UserMetadata) => m.articlesCompleted >= 10,
+      progress: (m: UserMetadata) => m.articlesCompleted / 10
+    }
+    // ... more achievements
+  ];
+  
+  calculate(metadata: UserMetadata): Achievement[] {
+    return this.achievements
+      .filter(a => !a.hidden || a.condition(metadata))
+      .map(achievement => ({
+        ...achievement,
+        earned: achievement.condition(metadata),
+        progress: achievement.progress(metadata),
+        progressPercentage: Math.round(achievement.progress(metadata) * 100)
+      }));
+  }
+}
+```
+
+**Achievement Display:**
+```svelte
+<script lang="ts">
+  import { Trophy, Lock } from 'lucide-svelte';
+  import { Progress } from '$lib/components/ui/progress';
+  
+  let { achievements } = $props();
+  
+  const earned = $derived(achievements.filter(a => a.earned));
+  const inProgress = $derived(achievements.filter(a => !a.earned));
+</script>
+
+<Card.Root>
+  <Card.Header>
+    <Card.Title class="flex items-center gap-2">
+      <Trophy class="h-5 w-5 text-primary" />
+      Achievements
+    </Card.Title>
+  </Card.Header>
+  <Card.Content>
+    {#each earned as achievement}
+      <div class="flex items-start gap-3 rounded-lg border border-primary/20 bg-primary/5 p-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          🏆
+        </div>
+        <div class="flex-1">
+          <h4 class="font-semibold">{achievement.name}</h4>
+          <p class="text-sm text-muted-foreground">{achievement.description}</p>
+        </div>
+      </div>
+    {/each}
+    
+    {#each inProgress as achievement}
+      <div class="flex items-start gap-3 rounded-lg border p-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
+          <Lock class="h-5 w-5" />
+        </div>
+        <div class="flex-1">
+          <h4 class="font-semibold">{achievement.name}</h4>
+          <p class="text-sm text-muted-foreground">{achievement.description}</p>
+          <Progress value={achievement.progressPercentage} class="h-2 mt-2" />
+          <p class="text-xs text-muted-foreground mt-1">
+            {achievement.progressPercentage}% complete
+          </p>
+        </div>
+      </div>
+    {/each}
+  </Card.Content>
+</Card.Root>
+```
+
+---
+
+### Performance Optimization
+
+#### Loading States
+
+**Skeleton Components:**
+```svelte
+<script>
+  import { Skeleton } from '$lib/components/ui/skeleton';
+</script>
+
+{#if loading}
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    {#each [1, 2, 3, 4] as _}
+      <Card.Root>
+        <Card.Header class="space-y-2">
+          <Skeleton class="h-4 w-[100px]" />
+          <Skeleton class="h-8 w-[60px]" />
+        </Card.Header>
+      </Card.Root>
+    {/each}
+  </div>
+{/if}
+```
+
+#### Error Handling
+
+**Error Card Pattern:**
+```svelte
+{#if error}
+  <Card.Root class="border-destructive">
+    <Card.Header>
+      <Card.Title>Unable to Load Dashboard</Card.Title>
+      <Card.Description>{error}</Card.Description>
+    </Card.Header>
+    <Card.Footer>
+      <Button onclick={() => dashboardStore.refresh()}>
+        Try Again
+      </Button>
+    </Card.Footer>
+  </Card.Root>
+{/if}
+```
+
+#### Lazy Loading
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  
+  let profile = $state(null);
+  let challenges = $state(null);
+  
+  onMount(async () => {
+    // Lazy load secondary data after initial render
+    if (metadata?.articlesCompleted > 0) {
+      profile = await apiClient.getMyProfile();
+    }
+    
+    if (metadata?.challengesJoined > 0) {
+      challenges = await apiClient.listChallenges();
+    }
+  });
+</script>
+```
+
+---
+
+### Accessibility Best Practices
+
+1. **Semantic HTML**
+   ```svelte
+   <nav aria-label="Main navigation">
+     <a href="/dashboard" aria-current={$page.url.pathname === '/dashboard'}>
+       Dashboard
+     </a>
+   </nav>
+   ```
+
+2. **ARIA Labels**
+   ```svelte
+   <Button variant="ghost" size="icon" aria-label="Search">
+     <Search class="h-4 w-4" />
+   </Button>
+   ```
+
+3. **Keyboard Navigation**
+   ```svelte
+   <div 
+     role="button" 
+     tabindex="0"
+     onkeydown={(e) => e.key === 'Enter' && handleClick()}
+   >
+     <!-- Interactive element -->
+   </div>
+   ```
+
+4. **Color Contrast**
+   - Ensure text meets WCAG AA standards (4.5:1 ratio)
+   - Test with browser DevTools
+   - Use sufficient contrast between primary and background colors
+
+---
+
+### Documentation References
+
+**Dashboard Implementation:**
+- Full documentation: `/DASHBOARD_IMPLEMENTATION.md`
+- Theme customization: `/THEME_CUSTOMIZATION.md`
+- Quick reference: `/UPGRADE_SUMMARY.md`
+
+**External Resources:**
+- ShadCN Svelte: https://shadcn-svelte.com/
+- OKLCH Color Picker: https://oklch.com/
+- Lucide Icons: https://lucide.dev/
+- Dashboard Example: https://shadcn-svelte.com/examples/dashboard

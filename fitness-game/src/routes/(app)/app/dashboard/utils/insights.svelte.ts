@@ -18,9 +18,9 @@ export type Insight = {
 export class InsightGenerator {
 	generate(metadata: UserMetadata | null, logs: UserLogs | null): Insight[] {
 		const insights: Insight[] = [];
-
+		$inspect("logs", logs);
 		if (!metadata || !logs) return insights;
-		console.log('logs', logs);
+		
 
 		// Consistency insight
 		if (logs.length >= 4) {
