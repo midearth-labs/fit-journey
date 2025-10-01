@@ -16,24 +16,21 @@ export type Insight = {
  * Insight Generator - Generates smart insights from user data
  */
 export class InsightGenerator {
-	generate(metadata: UserMetadata | null, logs: UserLogs): Insight[] {
+	generate(metadata: UserMetadata | null, logs: UserLogs | null): Insight[] {
 		const insights: Insight[] = [];
 
-		if (!metadata) return insights;
+		if (!metadata || !logs) return insights;
+		console.log('logs', logs);
 
 		// Consistency insight
-		if (logs.length >= 5) {
-			const activeDays = logs.length;
-
-			if (activeDays >= 5) {
-				insights.push({
-					id: 'consistency',
-					type: 'positive',
-					title: 'Great Consistency!',
-					message: `You've been active and tracking yourself for ${activeDays} out of the last 7 days`,
-					icon: '🔥'
-				});
-			}
+		if (logs.length >= 4) {
+			insights.push({
+				id: 'consistency',
+				type: 'positive',
+				title: 'Great Consistency!',
+				message: `You've been active and tracking yourself for ${logs.length} out of the last 7 days`,
+				icon: '🔥'
+			});
 		}
 
 		// Learning progress insight

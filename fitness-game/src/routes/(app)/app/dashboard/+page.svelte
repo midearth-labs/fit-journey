@@ -39,11 +39,6 @@
 	onMount(async () => {
 		await dashboardStore.loadDashboard();
 
-		// Lazy load additional data based on engagement
-		if (metadata?.articlesCompleted && metadata.articlesCompleted > 0) {
-			await dashboardStore.loadProfile();
-		}
-
 		if (metadata?.challengesJoined && metadata.challengesJoined > 0) {
 			await dashboardStore.loadChallenges();
 		}

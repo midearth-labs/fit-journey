@@ -28,15 +28,11 @@ export const FiveStarValueSchema = z.union([
   z.literal(3),
   z.literal(4),
   z.literal(5),
-  z.null(),
-  z.undefined()
 ]);
 
 export const YesNoValueSchema = z.union([
   z.literal(0),
   z.literal(1),
-  z.null(),
-  z.undefined()
 ]);
 
 // For DailyLogPayload, only FiveStar values are allowed (1-5)

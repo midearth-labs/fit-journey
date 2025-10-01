@@ -3,11 +3,12 @@ import {
   type ListUserLogsDto,
   type UserLogResponse,
   type AuthRequestContext,
+  type DeleteUserLogDto,
+  type FindUserLogDto,
 } from '$lib/server/shared/interfaces';
 import { 
   ValidationError,
 } from '$lib/server/shared/errors';
-import { type AllLogKeysType } from '$lib/server/db/schema';
 import { type IDateTimeHelper } from '../helpers/date-time.helper';
 import { type IChallengesRepository, type IUserLogsRepository } from '$lib/server/repositories';
 import { type UserLog } from '$lib/server/db/schema';
@@ -16,6 +17,8 @@ import { type UserLog } from '$lib/server/db/schema';
 export type ILogService = {
     putUserLog(dto: PutUserLogDto): Promise<void>;
     listUserLogs(dto: ListUserLogsDto): Promise<UserLogResponse[]>;
+    deleteUserLog(dto: DeleteUserLogDto): Promise<void>;
+    findUserLog(dto: FindUserLogDto): Promise<UserLogResponse | null>;
   };
   
 export class LogService implements ILogService {
@@ -35,33 +38,22 @@ export class LogService implements ILogService {
    */
   async putUserLog(dto: PutUserLogDto): Promise<void> {
     const { requestDate, user: { id: userId } } = this.requestContext;
-    const { challengesRepository, dateTimeHelper, userLogsRepository } = this.dependencies;
+    const { dateTimeHelper, userLogsRepository } = this.dependencies;
     
-    //@TODO: Use this to generate warnings in response, if challenge tracking keys are not set, and if log date is outside all active challenge period
-    const {activeChallengeLoggingKeys, earliestStartDate, latestEndDate} = 
-      await challengesRepository.findAllActiveChallengeMetadata(userId, { requestDate });
-
-    // Validate log date is not in the future and not before start date
-    // @TODO double check this logic, and also that you cant log for a date outside the challenge period range
-    // Implement an isWithinRange method somewhere (maybe in the date-time service)
-    if (dateTimeHelper.isDateInFuture(dto.logDate)) {
+    // Validate log date is not in the future
+    if (dateTimeHelper.isDateInFuture(dto.logDate, requestDate)) {
       throw new ValidationError('Cannot log tracked values for future dates');
     }
+    //@TODO: add validation that date is not older than a week ago.
 
-    // Transform DailyLogPayload into the expected array format
-    const valuesArray = Object.entries(dto.values)
-      .map(([key, value]) => ({ 
-        // @TODO LATER: FIGURE OUT A WAY TO DO WITHOUT THE TYPE CASTING
-        key: key as AllLogKeysType, 
-        value: value
-      }));
-
-    // Upsert the log
+    // Upsert the log with the new structure
     await userLogsRepository.upsert({
         userId,
         logDate: dto.logDate,
         createdAt: requestDate,
-      }, valuesArray);
+        fiveStarValues: dto.values.fiveStar,
+        measurementValues: dto.values.measurement,
+      });
   }
 
   /**
@@ -70,7 +62,7 @@ export class LogService implements ILogService {
    */
   async listUserLogs(dto: ListUserLogsDto): Promise<UserLogResponse[]> {
     const { user: { id: userId } } = this.requestContext;
-    const { challengesRepository, userLogsRepository } = this.dependencies;
+    const { userLogsRepository } = this.dependencies;
 
     // Validate date range
     // @TODO: add this to Zod refine validation
@@ -78,60 +70,66 @@ export class LogService implements ILogService {
       throw new ValidationError('From date must be before or equal to to date');
     }
 
-    const findForUserChallenge = async (challengeId: string) => {
-      const challenge = await challengesRepository.findByIdForUser(challengeId, userId);
-      if (challenge) {
-        return userLogsRepository.findByUserChallengeAndDateRange(
-          challenge,
-          userId,
-          dto.fromDate,
-          dto.toDate
-        );
-      }
-      return [];
-    }
-
-    const findForUser = async () => {
-      return userLogsRepository.findByUserDateRange(
-        userId,
-        dto.fromDate,
-        dto.toDate
-      );
-    };
-
-    const logs = await (dto.userChallengeId ? findForUserChallenge(dto.userChallengeId) : findForUser());
+    const logs = await userLogsRepository.findByUser(
+      userId,
+      dto.page,
+      dto.limit,
+      dto.fromDate,
+      dto.toDate
+    );
 
     return this.mapToUserLogResponse(logs);
   }
 
+  /**
+   * Delete user log for a specific date
+   * DELETE /api/v1/logs/:logDate
+   */
+  async deleteUserLog(dto: DeleteUserLogDto): Promise<void> {
+    const { user: { id: userId }, requestDate } = this.requestContext;
+    const { userLogsRepository } = this.dependencies;
+
+    const deleted = await userLogsRepository.deleteLog(userId, dto.logDate, requestDate);
+    if (!deleted) {
+      throw new ValidationError('Log entry not found for the specified date');
+    }
+  }
+
+  /**
+   * Find user log for a specific date
+   * GET /api/v1/logs/:logDate
+   */
+  async findUserLog(dto: FindUserLogDto): Promise<UserLogResponse | null> {
+    const { user: { id: userId } } = this.requestContext;
+    const { userLogsRepository } = this.dependencies;
+
+    const log = await userLogsRepository.findByUserOnDate(userId, dto.logDate);
+    if (!log) {
+      return null;
+    }
+
+    return this.mapSingleLogToResponse(log);
+  }
 
   /**
    * Map database model to user log response DTO
-   * Groups logs by date and creates a values object for each date
+   * Creates a values object from the JSONB fields
    */
   private mapToUserLogResponse(logs: UserLog[]): UserLogResponse[] {
-    // Group logs by date
-    const logsByDate = logs.reduce((acc, log) => {
-      const dateKey = log.logDate;
-      if (!acc.has(dateKey)) {
-        acc.set(dateKey, {
-          logDate: log.logDate,
-          values: {},
-        });
-      }
-      
-      // Add the tracked value to the values object
-      const entry = acc.get(dateKey)!;
-      entry.values[log.logKey] = log.logValue;
-      
-      return acc;
-    }, new Map<string, UserLogResponse>());
+    return logs.map(log => this.mapSingleLogToResponse(log));
+  }
 
-    // Convert to array and format timestamps
-    return Object.values(logsByDate).map(log => ({
+  /**
+   * Map a single log to response format
+   */
+  private mapSingleLogToResponse(log: UserLog): UserLogResponse {
+    return {
       logDate: log.logDate,
-      values: log.values,
-    }));
+      values: {
+        fiveStar: log.fiveStarValues,
+        measurement: log.measurementValues,
+      },
+    };
   }
 
 }

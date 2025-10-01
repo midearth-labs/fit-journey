@@ -3,11 +3,11 @@ import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
 
 export const FiveStarLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel'] as const;
-export const AllLogKeys = [...FiveStarLogKeys] as const;
+export const MeasurementLogKeys = ['weight', 'stepsWalked', 'cardioMinutes', 'pushups'] as const;
+export const AllLogKeys = [...FiveStarLogKeys, ...MeasurementLogKeys] as const;
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
-export const allLogKeysEnum = pgEnum('all_log_keys', AllLogKeys);
 export const recentActiveSharesInterval = '48 hours';
 /**
  * Describes the structure for a single answer submitted by a user for a quiz.
@@ -52,27 +52,22 @@ export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
 export const challengeJoinTypeEnum = pgEnum('challenge_join_type', ['personal', 'public', 'invite-code']);
 
 export type AllLogKeysType = (typeof AllLogKeys)[number];
+export type FiveStarLogKeysType = (typeof FiveStarLogKeys)[number];
+export type MeasurementLogKeysType = (typeof MeasurementLogKeys)[number];
 export const FiveStarValues = [1, 2, 3, 4, 5] as const;
 export type FiveStarValuesType = (typeof FiveStarValues)[number];
 export const YesNoValues = [1, 0] as const;
 export type YesNoValuesType = (typeof YesNoValues)[number];
 
-type Satisfies<Constraint, Target extends Constraint> = Target;
-type SharedType = Record<AllLogKeysType, 
-  LogValueType<FiveStarValuesType> | 
-  LogValueType<YesNoValuesType>>;
+// New JSONB types for the updated schema
+export type FiveStarValuesPayload = Partial<Record<FiveStarLogKeysType, FiveStarValuesType>>;
+export type MeasurementValuesPayload = Partial<Record<MeasurementLogKeysType, number>>;
 
-export type LogValueType<V extends number> = V | null | undefined;
-
-// @TODO LATER: TIGHTEN THIS TYPE USING CONDITIONAL TYPES (KEYOF / NEVER ETC)
-export type DailyLogPayload = Satisfies<Partial<SharedType>, {
-  dailyMovement?: LogValueType<FiveStarValuesType>,
-  cleanEating?: LogValueType<FiveStarValuesType>,
-  sleepQuality?: LogValueType<FiveStarValuesType>,
-  hydration?: LogValueType<FiveStarValuesType>,
-  moodCheck?: LogValueType<FiveStarValuesType>,
-  energyLevel?: LogValueType<FiveStarValuesType>,
-}>;
+// Updated DailyLogPayload to use the new structure
+export type DailyLogValuePayload = {
+  fiveStar: FiveStarValuesPayload;
+  measurement: MeasurementValuesPayload;
+};
 
 export type EnabledFeatures = {
   askQuestionsEnabled?: boolean;
@@ -113,7 +108,7 @@ export const users = pgTable('users', {
 
 // UserMetadata table (which is an extension of the User table for non-user submitted information)
 export const userMetadata = pgTable('user_metadata', {
-  id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
+  id: uuid('id').primaryKey().references(() => users.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
   enabledFeatures: jsonb('enabled_features').$type<EnabledFeatures>().notNull().default({}),
   currentFitnessLevel: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
   articlesRead: integer('articles_read').notNull().default(0),
@@ -156,7 +151,7 @@ export const userMetadata = pgTable('user_metadata', {
  */
 export const userArticles = pgTable('user_articles', {
   id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
   articleId: text('article_id').notNull(), // references static JSON articles
   
   // Reading tracking
@@ -228,11 +223,12 @@ export const globalTracking = pgTable('global_tracking', {
   progressShares: bigint('progress_shares', { mode: 'number' }).notNull().default(0),
 });
 
-export const userLogs = pgTable('user_logs', {
+export const userLogs = pgTable('user_daily_logs', {
   id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  logKey: allLogKeysEnum('log_key').notNull(),
-  logValue: integer('log_value').notNull(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+  // New JSONB columns for structured log data
+  fiveStarValues: jsonb('five_star_values').$type<FiveStarValuesPayload>().notNull(),
+  measurementValues: jsonb('measurement_values').$type<MeasurementValuesPayload>().notNull(),
   // The specific date this log entry is for. CRITICAL for back-logging.
   logDate: date('log_date').notNull(),
   // logNotes: text('log_notes'),
@@ -244,7 +240,7 @@ export const userLogs = pgTable('user_logs', {
     // Ensures a user can only have ONE log entry per day per user.
     // This makes updates (UPSERTs) simple and prevents duplicate data.
     //unique is preferrable to uniqueIndex as you get the unique index for free https://www.postgresql.org/docs/current/indexes-unique.html
-    unique('user_daily_log_unique').on(table.userId, table.logDate, table.logKey),
+    unique('user_daily_log_unique').on(table.userId, table.logDate),
   ];
 });
 
@@ -253,7 +249,7 @@ export const userLogs = pgTable('user_logs', {
 // Questions table
 export const questions = pgTable('questions', {
   id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   title: text('title').notNull(),
   body: text('body').notNull(),
   isAnonymous: boolean('is_anonymous').notNull(),
@@ -273,7 +269,7 @@ export const questions = pgTable('questions', {
 
 // Question Articles junction table (many-to-many relationship)
 export const questionArticles = pgTable('question_articles', {
-  questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade' }),
+  questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
   articleId: text('article_id').notNull(),
   createdAt: timestamp('created_at').notNull(),
 }, (table) => {
@@ -287,8 +283,8 @@ export const questionArticles = pgTable('question_articles', {
 // Question Answers table
 export const questionAnswers = pgTable('question_answers', {
   id: uuid('id').primaryKey().defaultRandom(),
-  questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   answer: text('answer').notNull(),
   isAnonymous: boolean('is_anonymous').notNull(),
   status: answerStatusEnum('status').notNull(),
@@ -307,8 +303,8 @@ export const questionAnswers = pgTable('question_answers', {
 
 // Question Reactions table
 export const questionReactions = pgTable('question_reactions', {
-  questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  questionId: uuid('question_id').notNull().references(() => questions.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   reactionType: reactionTypeEnum('reaction_type').notNull(),
   createdAt: timestamp('created_at').notNull(),
 }, (table) => {
@@ -320,8 +316,8 @@ export const questionReactions = pgTable('question_reactions', {
 
 // Answer Reactions table
 export const answerReactions = pgTable('answer_reactions', {
-  answerId: uuid('answer_id').notNull().references(() => questionAnswers.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  answerId: uuid('answer_id').notNull().references(() => questionAnswers.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   reactionType: reactionTypeEnum('reaction_type').notNull(),
   createdAt: timestamp('created_at').notNull(),
 }, (table) => {
@@ -334,7 +330,7 @@ export const answerReactions = pgTable('answer_reactions', {
 // Progress Shares table
 export const progressShares = pgTable('progress_shares', {
   id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
   shareType: shareTypeEnum('share_type').notNull(),
   shareTypeId: text('share_type_id'),
   title: text('title').notNull(),
@@ -462,7 +458,7 @@ export const userLogsRelations = relations(userLogs, ({ one }) => ({
  */
 export const challenges = pgTable('challenges', {
   id: uuid('id').primaryKey().defaultRandom(),
-  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   name: text('name').notNull(),
   description: text('description').notNull(),
   status: challengeStatusEnum('status').notNull(),
@@ -501,8 +497,8 @@ export const challenges = pgTable('challenges', {
 
 export const challengeSubscribers = pgTable('challenge_subscribers', {
   id: uuid('id').primaryKey().defaultRandom(),
-  challengeId: uuid('challenge_id').notNull().references(() => challenges.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  challengeId: uuid('challenge_id').notNull().references(() => challenges.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   joinedAt: timestamp('joined_at').notNull(),
   dailyLogCount: integer('daily_log_count').notNull(),
   lastActivityDate: timestamp('last_activity_date'),

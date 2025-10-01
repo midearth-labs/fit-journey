@@ -4,6 +4,8 @@ import type {
   UpdateUserProfileOperation,
   ListUserLogsOperation,
   PutUserLogOperation,
+  DeleteUserLogOperation,
+  FindUserLogOperation,
   CreateUserChallengeOperation,
   SubmitQuestionOperation,
   ListQuestionsOperation,
@@ -55,6 +57,8 @@ export type ApiResponse = {
   getMyMetadata: GetUserMetadataOperation['response']['body'];
   listLogs: ListUserLogsOperation['response']['body'];
   putLog: PutUserLogOperation['response']['body'];
+  deleteLog: DeleteUserLogOperation['response']['body'];
+  findLog: FindUserLogOperation['response']['body'];
   listPublicChallenges: ListPublicChallengesOperation['response']['body'];
   createChallenge: CreateUserChallengeOperation['response']['body'];
   getUserChallenge: GetUserChallengeOperation['response']['body'];
@@ -284,13 +288,14 @@ export class ApiClient {
    * Supports filtering by challenge participation and date ranges for analytics.
    * 
    * Query parameters:
-   * - userChallengeId: Filter logs for a specific challenge (optional)
    * - fromDate: Start date for log retrieval (ISO date format)
    * - toDate: End date for log retrieval (ISO date format)
+   * - page: Page number for pagination (default: 1)
+   * - limit: Number of logs per page (default: 50, max: 100)
    * 
    * Returns array of log entries with:
    * - logDate: The date of the log entry
-   * - values: Object containing logged metrics (dailyMovement, cleanEating, sleepQuality, hydration)
+   * - values: Object containing logged metrics (fiveStarValues and measurementValues)
    * 
    * Features powered:
    * - Progress visualization dashboards
@@ -303,11 +308,7 @@ export class ApiClient {
    */
   async listLogs(dto: ListUserLogsOperation['request']['query']): Promise<ApiResponse['listLogs']> {
     return this.request<ApiResponse['listLogs']>('/api/v1/logs', { method: 'GET' }, {
-      query: {
-        userChallengeId: dto.userChallengeId,
-        fromDate: dto.fromDate,
-        toDate: dto.toDate
-      }
+      query: dto
     });
   }
 
@@ -321,12 +322,18 @@ export class ApiClient {
    * - logDate: The date for the log entry (ISO date format)
    * 
    * Request body contains values object with optional metrics:
-   * - dailyMovement: Physical activity tracking (15+ minutes of movement)
-   * - cleanEating: Nutrition quality assessment (nutritious food choices)
-   * - sleepQuality: Sleep tracking (7-9 hours of restorative sleep)
-   * - hydration: Water intake monitoring (adequate daily hydration)
-   * - moodCheck: Mood tracking (how the user feels)
-   * - energyLevel: Energy level tracking (how the user feels)
+   * - fiveStarValues: Object containing 1-5 star ratings for wellness habits
+   *   - dailyMovement: Physical activity tracking (1-5 stars)
+   *   - cleanEating: Nutrition quality assessment (1-5 stars)
+   *   - sleepQuality: Sleep tracking (1-5 stars)
+   *   - hydration: Hydration tracking (1-5 stars)
+   *   - moodCheck: Mood assessment (1-5 stars)
+   *   - energyLevel: Energy level tracking (1-5 stars)
+   * - measurementValues: Object containing numerical measurements
+   *   - weight: Body weight in appropriate units
+   *   - stepsWalked: Daily step count
+   *   - cardioMinutes: Minutes of cardio exercise
+   *   - pushups: Number of pushups completed
    * 
    * Features powered:
    * - Daily wellness habit tracking
@@ -340,7 +347,55 @@ export class ApiClient {
    */
   async putLog(dto: PutUserLogOperation['request']): Promise<ApiResponse['putLog']> {
     return this.request<ApiResponse['putLog']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
-      params: { logDate: dto.params.logDate }
+      params: dto.params
+    });
+  }
+
+  /** 
+   * DELETE /logs/:logDate
+   * 
+   * Deletes a daily habit log entry for a specific date. This removes all logged
+   * metrics for that date and may affect streak calculations and avatar progression.
+   * 
+   * Path parameters:
+   * - logDate: The date of the log entry to delete (ISO date format)
+   * 
+   * Features powered:
+   * - Log correction and cleanup
+   * - Streak recalculation after deletion
+   * - Avatar progression adjustment
+   * 
+   * Used in: Log management interfaces, error correction workflows
+   */
+  async deleteLog(logDate: string): Promise<ApiResponse['deleteLog']> {
+    return this.request<ApiResponse['deleteLog']>('/api/v1/logs/:logDate', { method: 'DELETE' }, {
+      params: { logDate }
+    });
+  }
+
+  /** 
+   * GET /logs/:logDate
+   * 
+   * Retrieves a specific daily habit log entry for a given date. Returns the
+   * complete log data including all five-star values and measurements.
+   * 
+   * Path parameters:
+   * - logDate: The date of the log entry to retrieve (ISO date format)
+   * 
+   * Returns log entry with:
+   * - logDate: The date of the log entry
+   * - values: Object containing all logged metrics (fiveStarValues and measurementValues)
+   * 
+   * Features powered:
+   * - Individual log viewing and editing
+   * - Historical data access
+   * - Log validation and verification
+   * 
+   * Used in: Log editing interfaces, historical data views, log verification
+   */
+  async findLog(logDate: string): Promise<ApiResponse['findLog']> {
+    return this.request<ApiResponse['findLog']>('/api/v1/logs/:logDate', { method: 'GET' }, {
+      params: { logDate }
     });
   }
 

@@ -39,7 +39,7 @@ export class DashboardConfig {
 	}
 
 	get showInsights(): boolean {
-		return this.engagementLevel > 5;
+		return true;
 	}
 
 	get showSocialFeatures(): boolean {

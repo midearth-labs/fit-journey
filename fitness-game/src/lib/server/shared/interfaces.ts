@@ -1,7 +1,7 @@
 // --- Data Structures ---
 
 import {
-  type DailyLogPayload, 
+  type DailyLogValuePayload, 
   type AllLogKeysType,
   type User,
   type ProgressShare,
@@ -84,13 +84,22 @@ export type Offsets = {
 
 export type PutUserLogDto = {
   logDate: string; // YYYY-MM-DD format
-  values: DailyLogPayload;
+  values: DailyLogValuePayload;
 };
 
 export type ListUserLogsDto = {
-  userChallengeId?: string;
+  page: number;
+  limit: number;
   fromDate?: string; // YYYY-MM-DD format
   toDate?: string; // YYYY-MM-DD format
+};
+
+export type DeleteUserLogDto = {
+  logDate: string; // YYYY-MM-DD format
+};
+
+export type FindUserLogDto = {
+  logDate: string; // YYYY-MM-DD format
 };
 // --- Challenge Response Types ---
 

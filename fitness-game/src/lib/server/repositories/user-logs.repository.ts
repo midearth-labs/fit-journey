@@ -1,19 +1,13 @@
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq, and, gte, lte, sql, inArray } from 'drizzle-orm';
-import { userLogs, userMetadata, type UserLog, type NewUserLog, type AllLogKeysType, type LogValueType, type Challenge } from '$lib/server/db/schema';
+import { eq, and, gte, lte, sql, desc } from 'drizzle-orm';
+import { userLogs, userMetadata, type UserLog, type NewUserLog } from '$lib/server/db/schema';
 import type { IDateTimeHelper } from '../helpers/date-time.helper';
-import { convertToUniqueTrackingKeys } from '../shared/utils';
-
-type ChallengeFilterDetails = Pick<Challenge, 'id' | 'startDate' | 'durationDays' | 'goals'>;
 
 export type IUserLogsRepository = {
-    upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<boolean>;
-    findByUserChallenge(challenge: ChallengeFilterDetails, userId: string): Promise<UserLog[]>;
-    findByUserChallengeAndDateRange(challenge: ChallengeFilterDetails, userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
-    findByUserChallengeAndDate(challenge: ChallengeFilterDetails, userId: string, logDate: string): Promise<UserLog[]>;
-    findByUser(userId: string): Promise<UserLog[]>;
-    findByUserDateRange(userId: string, fromDate?: string, toDate?: string): Promise<UserLog[]>;
-    findByUserDate(userId: string, logDate: string): Promise<UserLog[]>;
+    upsert(logData: NewUserLog): Promise<void>;
+    deleteLog(userId: string, logDate: string, requestDate: Date): Promise<boolean>;
+    findByUser(userId: string, page: number, limit: number, fromDate?: string, toDate?: string): Promise<UserLog[]>;
+    findByUserOnDate(userId: string, logDate: string): Promise<UserLog | null>;
   };
   
 
@@ -24,197 +18,100 @@ export class UserLogsRepository implements IUserLogsRepository {
   ) {}
 
   /**
-   * Upsert multiple user log records
-   * This handles both creating new records and updating existing ones
-   * Uses the unique constraint on (userId, logKey, logDate)
-   * Each value in the values array creates a separate row
-   * 
-   * Value handling:
-   * - defined values: upsert using current logic
-   * - null values: delete corresponding entries
-   * - undefined values: ignore them
+   * Upsert a user log record with complete overwrite of JSONB values
+   * This completely replaces the existing fiveStarValues and measurementValues
+   * Uses the unique constraint on (userId, logDate)
    */
-  async upsert<T extends number>(logData: Omit<NewUserLog, 'logKey' | 'logValue'>, values: Array<{key: AllLogKeysType, value: LogValueType<T>}>): Promise<boolean> {
-    const definedValues: Array<{key: AllLogKeysType, value: T}> = [];
-    const keysToDelete: Array<AllLogKeysType> = [];
-    
-    // Partition values into defined, null, and undefined groups
-    values.forEach(value => {
-      if (value.value === null) {
-        keysToDelete.push(value.key);
-      } else if (value.value !== undefined) {
-        definedValues.push({ key: value.key, value: value.value });
-      }
-      // undefined values are ignored
-    });
+  async upsert(
+    logData: NewUserLog
+  ): Promise<void> {
+    const result = await this.db
+      .insert(userLogs)
+      .values({
+        ...logData,
+        updatedAt: logData.createdAt,
+      })
+      .onConflictDoUpdate({
+        target: [userLogs.userId, userLogs.logDate],
+        set: {
+          fiveStarValues: sql`EXCLUDED.five_star_values`,
+          measurementValues: sql`EXCLUDED.measurement_values`,
+          updatedAt: sql`GREATEST(${userLogs.updatedAt}, EXCLUDED.updated_at)`,
+        },
+        setWhere: sql`${userLogs.userId} = EXCLUDED.userId`
+      })
+      .returning({
+        wasInserted: sql<boolean>`(xmax = 0)`,
+      });
 
-    if (keysToDelete.length === 0 && definedValues.length === 0) {
-      return false;
+    const wasInserted = result[0].wasInserted;
+
+    if (wasInserted) {
+      // Update user metadata to increment daysLogged count
+      await this.db
+        .update(userMetadata)
+        .set({
+          daysLogged: sql`${userMetadata.daysLogged} + 1`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${logData.createdAt})`,
+        })
+        .where(eq(userMetadata.id, logData.userId));
+    }
+  }
+
+  /**
+   * Delete a user log for a specific date
+   */
+  async deleteLog(userId: string, logDate: string, requestDate: Date): Promise<boolean> {
+    const result = await this.db
+      .delete(userLogs)
+      .where(and(eq(userLogs.userId, userId), eq(userLogs.logDate, logDate)));
+
+    if (result.rowCount > 0) {
+      // Update user metadata to decrement daysLogged count
+      await this.db
+        .update(userMetadata)
+        .set({
+          daysLogged: sql`${userMetadata.daysLogged} - 1`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
+        })
+        .where(eq(userMetadata.id, userId));
     }
 
-    let affectedRows = 0;
-    // Execute operations in a transaction
-    await this.db.transaction(async (tx) => {
-      // Handle defined values with upsert logic
-      if (definedValues.length > 0) {
-        const insertData = definedValues.map(value => ({
-          ...logData,
-          logKey: value.key,
-          logValue: value.value,
-          updatedAt: logData.createdAt
-        }));
-
-        const insertResult = await tx
-          .insert(userLogs)
-          .values(insertData)
-          .onConflictDoUpdate({
-            target: [userLogs.userId, userLogs.logKey, userLogs.logDate],
-            set: {
-              // Dynamically update logValue based on the conflicting row's logValue
-              logValue: sql`EXCLUDED.log_value`,
-              updatedAt: sql`GREATEST(${userLogs.updatedAt}, EXCLUDED.updated_at)`,
-            },
-            // This makes sure we only update the log for the user
-            setWhere: sql`${userLogs.userId} = EXCLUDED.userId`
-          });
-        
-        affectedRows += insertResult.rowCount;
-      }
-
-      // Handle null values by deleting corresponding entries
-      if (keysToDelete.length > 0) {
-        const deleteResult = await tx
-          .delete(userLogs)
-          .where(
-            and(
-              eq(userLogs.userId, logData.userId),
-              eq(userLogs.logDate, logData.logDate),
-              inArray(userLogs.logKey, keysToDelete)
-            )
-          );
-        
-        affectedRows += deleteResult.rowCount;
-      }
-
-      // Update user metadata to recompute daysLogged count
-      // Count distinct log dates for the user
-      if (affectedRows > 0) {
-        // @TODO: PERFORMANCE: This uses this index: user_daily_log_unique, 
-        // this query should be performant as it uses the index 
-        // but if profiling says otherwise, we will adjust
-        await tx
-          .update(userMetadata)
-          .set({
-            daysLogged: sql`(SELECT COUNT(DISTINCT ${userLogs.logDate}) FROM ${userLogs} WHERE ${userLogs.userId} = ${logData.userId})`,
-            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${logData.createdAt})`,
-          })
-          .where(eq(userMetadata.id, logData.userId));
-      }
-    });
-    
-    return affectedRows > 0;
+    return result.rowCount > 0;
   }
 
   /**
-   * Find all log records for a user
+   * Find log records for a user within optional date range with pagination
    */
-  async findByUser(userId: string): Promise<UserLog[]> {
-    return await this._findByUserDateRangeAndKeys(userId);
-  }
-
-  /**
-   * Find log records for a user challenge
-   * Uses the userChallenge's startDate as fromDate and calculates toDate as startDate + challenge.durationDays
-   * Filters by the challenge's tracking keys
-   */
-  async findByUserChallenge(challenge: ChallengeFilterDetails, userId: string): Promise<UserLog[]> {
-    return await this.findByUserChallengeAndDateRange(challenge, userId);
-  }
-
-  /**
-   * Find habit logs for a user challenge within a date range
-   */
-  async findByUserChallengeAndDateRange(
-    challenge: ChallengeFilterDetails,
+  async findByUser(
     userId: string,
-    userFromDate?: string, 
-    userEndDate?: string
-  ): Promise<UserLog[]> {
-     const {id: challengeId, startDate: challengeStartDate, durationDays, goals} = challenge;
-     // Get the challenge to access durationDays and tracking keys
-     const challengeEndDate = this.dateTimeHelper.daysOffset(challengeStartDate, durationDays);
-     const trackingKeys = convertToUniqueTrackingKeys(goals);
-
-   // If userFromDate or userEndDate is provided, they must fall within the challenge period
-     // Use the later date between userFromDate and startDate
-     const fromDate = userFromDate ? 
-       (userFromDate > challengeStartDate ? userFromDate : challengeStartDate) : 
-       challengeStartDate;
-
-     // Use the earlier date between userEndDate and challengeEndDate
-     const toDate = userEndDate ? 
-       (userEndDate < challengeEndDate ? userEndDate : challengeEndDate) : 
-       challengeEndDate;
-
-    // Both dates is out of bound
-     if (fromDate > toDate) {
-      return [];
-     }
- 
-     return await this._findByUserDateRangeAndKeys(userId, fromDate, toDate, trackingKeys);
-  }
-
-  /**
-   * Find log record for a specific date within a user challenge
-   */
-  async findByUserChallengeAndDate(
-    challenge: ChallengeFilterDetails,
-    userId: string,
-    logDate: string
-  ): Promise<UserLog[]> {
-    return await this.findByUserChallengeAndDateRange(challenge, userId, logDate, logDate);
-  }
-
-  /**
-   * Find log records for a user within a date range
-   */
-  async findByUserDateRange(
-    userId: string,
+    page: number,
+    limit: number,
     fromDate?: string, 
     toDate?: string
   ): Promise<UserLog[]> {
-    return await this._findByUserDateRangeAndKeys(userId, fromDate, toDate);
-  }
-
-  /**
-   * Find log record for a specific date within a user challenge
-   */
-  async findByUserDate( 
-    userId: string,
-    logDate: string
-  ): Promise<UserLog[]> {
-    return await this._findByUserDateRangeAndKeys(userId, logDate, logDate);
-  }
-
-  private async _findByUserDateRangeAndKeys(
-    userId: string,
-    fromDate?: string, 
-    toDate?: string,
-    keys?: AllLogKeysType[]
-  ): Promise<UserLog[]> {
+    const offset = (page - 1) * limit;
     const whereClause = [
-        eq(userLogs.userId, userId),
-        ...(fromDate ? [gte(userLogs.logDate, fromDate)] : []),
-        ...(toDate ? [lte(userLogs.logDate, toDate)] : []),
-        ...(keys ? [inArray(userLogs.logKey, keys)] : []),
+      eq(userLogs.userId, userId),
+      ...(fromDate ? [gte(userLogs.logDate, fromDate)] : []),
+      ...(toDate ? [lte(userLogs.logDate, toDate)] : []),
     ];
+
     return await this.db
       .select()
       .from(userLogs)
-      .where(
-        and(
-          ...whereClause
-        )
-      )
+      .where(and(...whereClause))
+      .orderBy(desc(userLogs.logDate))
+      .limit(limit)
+      .offset(offset);
+  }
+
+  /**
+   * Find log record for a specific date for a user
+   */
+  async findByUserOnDate(userId: string, logDate: string): Promise<UserLog | null> {
+    const [result] = await this.findByUser(userId, 1, 1, logDate, logDate);
+
+    return result || null;
   }
 }

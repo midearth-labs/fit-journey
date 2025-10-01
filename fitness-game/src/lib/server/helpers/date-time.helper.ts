@@ -13,7 +13,7 @@ export type IDateTimeHelper = {
   getTwoWeeksFromTodayUtcDateString(): string; // Returns date 2 weeks from today
   getOneMonthFromDateUtcDateString(fromDate: string): string; // Returns date 1 month from given date
   getFortyEightHoursAgoUtcTimestamp(): Date; // Returns timestamp 48 hours ago
-  isDateInFuture(dateString: string): boolean; // Check if date is in the future
+  isDateInFuture(dateString: string, requestDate: Date): boolean; // Check if date is in the future
   isDateAfterChallengeEndDate(currentDate: string, endDate: string): boolean; // Check if current date is after challenge end
   getPossibleDatesOnEarthAtInstant(instant: Date): DatesOnEarthAtInstant; // Get all possible actual dates (YYYY-MM-DD) on earth at the time of the input date
   getDatesFromInstantWithOffset(instant: Date, offsets: Offsets): DatesOnEarthAtInstant;
@@ -60,9 +60,9 @@ export class DateTimeHelper implements IDateTimeHelper {
   }
 
   // @TODO: use highest timezone time calc to compare.
-  isDateInFuture(dateString: string): boolean {
-    const today = this.getTodayUtcDateString();
-    return dateString > today;
+  isDateInFuture(dateString: string, requestDate: Date): boolean {
+    const { latest} = this.getPossibleDatesOnEarthAtInstant(requestDate);
+    return dateString > latest;
   }
 
   isDateAfterChallengeEndDate(currentDate: string, endDate: string): boolean {

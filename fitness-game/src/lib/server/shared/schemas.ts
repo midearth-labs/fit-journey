@@ -78,25 +78,39 @@ export const UserMetadataResponseSchema = z.object({
 
 // --- Log Schemas ---
 
-export const DailyLogPayloadSchema = z.object({
+export const FiveStarValuesSchema = z.object({
   dailyMovement: DailyLogValueSchema.optional(),
   cleanEating: DailyLogValueSchema.optional(),
   sleepQuality: DailyLogValueSchema.optional(),
   hydration: DailyLogValueSchema.optional(),
   moodCheck: DailyLogValueSchema.optional(),
   energyLevel: DailyLogValueSchema.optional()
+});
+
+export const MeasurementValuesSchema = z.object({
+  weight: z.number().min(0).optional(),
+  stepsWalked: z.number().min(0).optional(),
+  cardioMinutes: z.number().min(0).optional(),
+  pushups: z.number().min(0).optional()
+});
+
+export const DailyLogValuePayloadResponseSchema = z.object({
+  fiveStar: FiveStarValuesSchema,
+  measurement: MeasurementValuesSchema
+});
+
+export const DailyLogPayloadPutSchema = z.object({
+  fiveStar: DailyLogValuePayloadResponseSchema.shape.fiveStar.prefault({}).optional(),
+  measurement: DailyLogValuePayloadResponseSchema.shape.measurement.prefault({}).optional()
 }).refine(
-  (data) => Object.keys(data).length > 0,
+  (data) => Object.keys(data.fiveStar ?? {}).length > 0 || Object.keys(data.measurement ?? {}).length > 0,
   'At least one log value must be provided'
 );
 
-export const PutUserLogDtoSchema = z.object({
-  logDate: IsoDateSchema,
-  values: DailyLogPayloadSchema
-});
 
 export const ListUserLogsQuerySchema = z.object({
-  userChallengeId: UuidSchema.optional(),
+  page: z.coerce.number().int().min(1).prefault(1).optional(),
+  limit: z.coerce.number().int().min(1).max(100).prefault(50).optional(),
   fromDate: IsoDateSchema.optional(),
   toDate: IsoDateSchema.optional()
 }).refine(
@@ -111,7 +125,7 @@ export const ListUserLogsQuerySchema = z.object({
 
 export const UserLogResponseSchema = z.object({
   logDate: IsoDateSchema,
-  values: z.record(z.string(), z.union([z.number(), z.null(), z.undefined()]))
+  values: DailyLogValuePayloadResponseSchema
 });
 
 // --- Challenge Schemas (for future use) ---
@@ -375,10 +389,32 @@ export const PutUserLogOperationSchema = {
   request: {
     params: z.object({ logDate: IsoDateSchema }),
     query: z.object({}),
-    body: z.object({ values: DailyLogPayloadSchema })
+    body: z.object({ values: DailyLogPayloadPutSchema })
   },
   response: {
     body: z.void()
+  }
+};
+
+export const DeleteUserLogOperationSchema = {
+  request: {
+    params: z.object({ logDate: IsoDateSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: z.void()
+  }
+};
+
+export const FindUserLogOperationSchema = {
+  request: {
+    params: z.object({ logDate: IsoDateSchema }),
+    query: z.object({}),
+    body: z.void()
+  },
+  response: {
+    body: UserLogResponseSchema.nullable()
   }
 };
 
@@ -850,6 +886,28 @@ export type PutUserLogOperation = {
   };
   response: {
     body: z.infer<typeof PutUserLogOperationSchema.response.body>;
+  };
+};
+
+export type DeleteUserLogOperation = {
+  request: {
+    params: z.infer<typeof DeleteUserLogOperationSchema.request.params>;
+    query: z.infer<typeof DeleteUserLogOperationSchema.request.query>;
+    body: z.infer<typeof DeleteUserLogOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof DeleteUserLogOperationSchema.response.body>;
+  };
+};
+
+export type FindUserLogOperation = {
+  request: {
+    params: z.infer<typeof FindUserLogOperationSchema.request.params>;
+    query: z.infer<typeof FindUserLogOperationSchema.request.query>;
+    body: z.infer<typeof FindUserLogOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof FindUserLogOperationSchema.response.body>;
   };
 };
 

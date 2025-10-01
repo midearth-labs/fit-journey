@@ -75,19 +75,14 @@ class DashboardStore {
 		this.#error = null;
 
 		try {
-			const globalStats = await this.apiClient.getGlobalStatistics();
-			const sevenDaysAgo = new Date(globalStats.serverDate);
-			sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-			const today = new Date(globalStats.serverDate);
-
-			const [metadata, logs] = await Promise.all([
+			const [globalStats, profile, metadata, logs] = await Promise.all([
+				this.apiClient.getGlobalStatistics(),
+				this.apiClient.getMyProfile(),
 				this.apiClient.getMyMetadata(),
-				this.apiClient.listLogs({
-					fromDate: sevenDaysAgo.toISOString().split('T')[0],
-					toDate: today.toISOString().split('T')[0]
-				})
+				this.apiClient.listLogs({page: 1, limit: 7})
 			]);
 
+			this.#profile = profile;
 			this.#metadata = metadata;
 			this.#globalStats = globalStats;
 			this.#logs = logs || [];
@@ -97,19 +92,6 @@ class DashboardStore {
 			console.error('Dashboard load error:', err);
 		} finally {
 			this.#loading = false;
-		}
-	}
-
-	/**
-	 * Lazy load profile data
-	 */
-	async loadProfile() {
-		if (this.#profile) return;
-
-		try {
-			this.#profile = await this.apiClient.getMyProfile();
-		} catch (err) {
-			console.error('Profile load error:', err);
 		}
 	}
 

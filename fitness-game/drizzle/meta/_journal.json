@@ -22,6 +22,20 @@
       "when": 1759219932021,
       "tag": "0002_custom-dml",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1759289972931,
+      "tag": "0003_wonderful_maximus",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1759290025263,
+      "tag": "0004_nice_the_professor",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,1 @@
+DROP TYPE "public"."all_log_keys";
