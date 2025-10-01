@@ -59,6 +59,8 @@ UI and Styling
 - Import Shadcn components from `$lib/components/ui`.
 - Organize Tailwind classes using the `cn()` utility from `$lib/utils`.
 - Use Svelte's built-in transition and animation features.
+- Use Talwind reference: "@import "tailwindcss" reference;
+- Use latest Tailwind utility classes
 
 Shadcn Color Conventions
 - Use `background` and `foreground` convention for colors.
