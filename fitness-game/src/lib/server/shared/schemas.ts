@@ -1304,7 +1304,7 @@ export const ListUserArticlesOperationSchema = {
   request: {
     query: z.object({
       page: z.coerce.number().int().min(1).prefault(1).optional(),
-      limit: z.coerce.number().int().min(1).max(100).prefault(100).optional()
+      limit: z.coerce.number().int().min(1).max(200).prefault(200).optional()
     }),
   },
   response: {

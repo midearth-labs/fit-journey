@@ -17,7 +17,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { config } from 'dotenv';
 import { ContentLoader } from '$lib/server/content/utils/content-loader';
-import { type KnowledgeBaseList } from '$lib/server/content/types/knowledge-base';
+import { type KnowledgeBaseDetail } from '$lib/server/content/types/knowledge-base';
 
 // Load environment variables
 config({ path: '.env.local' });
@@ -102,7 +102,7 @@ class GeminiImageGenerator {
   /**
    * Extract image metadata from all knowledge base articles
    */
-  private extractImageMetadata(knowledgeBaseList: KnowledgeBaseList[]): ImageMetadata[] {
+  private extractImageMetadata(knowledgeBaseList: KnowledgeBaseDetail[]): ImageMetadata[] {
     const imageMetadata: ImageMetadata[] = [];
 
     for (const kb of knowledgeBaseList) {

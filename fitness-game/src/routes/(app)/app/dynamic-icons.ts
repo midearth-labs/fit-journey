@@ -60,7 +60,7 @@ import {
   BriefcaseMedical, // first-aid
 } from 'lucide-svelte';
 
-const DynamicIcons = {
+export const DynamicIcons = {
   "activity": Activity,
   "layers": Layers,
   "stretch-horizontal": StretchHorizontal,
@@ -121,5 +121,3 @@ const DynamicIcons = {
   "refresh-cw": RefreshCw,
   "first-aid": BriefcaseMedical,
 };
-
-export default DynamicIcons;
