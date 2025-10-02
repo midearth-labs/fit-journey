@@ -107,7 +107,7 @@ export const userMetadata = pgTable('user_metadata', {
   enabledFeatures: jsonb('enabled_features').$type<EnabledFeatures>().notNull().default({}),
   currentFitnessLevel: integer('current_fitness_level').notNull().default(0), // -5 to +5 fitness level
   articlesRead: integer('articles_read').notNull().default(0),
-  articlesCompleted: integer('articles_read').notNull().default(0),
+  articlesCompleted: integer('articles_completed').notNull().default(0),
   articlesCompletedWithPerfectScore: integer('articles_completed_with_perfect_score').notNull().default(0),
   challengesStarted: integer('challenges_started').notNull().default(0),
   challengesJoined: integer('challenges_joined').notNull().default(0),

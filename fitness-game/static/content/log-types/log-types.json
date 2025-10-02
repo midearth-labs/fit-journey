@@ -1,0 +1,352 @@
+[
+  {
+    "id": "dailyMovement",
+    "title": "Movement Hero",
+    "display_title": "Movement/Workout",
+    "type": { "type": "5star" },
+    "description": "Complete any form of intentional physical activity for at least 15 minutes",
+    "is_active": true,
+    "sort_order": 1,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Improves cardiovascular health and reduces heart disease risk",
+      "Strengthens muscles and bones, preventing age-related decline",
+      "Boosts mood and reduces symptoms of anxiety and depression",
+      "Enhances sleep quality and energy levels",
+      "Supports healthy weight management and metabolism"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Keep moving!",
+        "medium": "Every workout brings you closer to your goals!",
+        "long": "Consistency is the key to transformation. Every day you complete a workout, you're building a stronger, healthier version of yourself."
+      },
+      {
+        "short": "Motion is medicine!",
+        "medium": "Your dedication to movement is paying dividends!",
+        "long": "Regular movement is one of the most powerful medicines available. You're healing and strengthening your body from the inside out."
+      },
+      {
+        "short": "Mood booster!",
+        "medium": "Exercise releases powerful endorphins!",
+        "long": "Exercise is nature's antidepressant. The endorphins flowing through your system are improving your mood, focus, and resilience for hours to come."
+      }
+    ]
+  },
+  {
+    "id": "cleanEating",
+    "title": "Nutrition Champion",
+    "display_title": "Clean Eating",
+    "type": { "type": "5star" },
+    "description": "Make nutritious food choices and avoid highly processed foods throughout the day",
+    "is_active": true,
+    "sort_order": 2,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Provides sustained energy and reduces blood sugar spikes",
+      "Supports optimal body composition and weight management",
+      "Reduces inflammation and supports immune system function",
+      "Improves mental clarity and cognitive performance",
+      "Enhances recovery from exercise and daily stress"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Smart nutrition!",
+        "medium": "You're feeding your body what it truly needs!",
+        "long": "Real food is real medicine. Each nutrient-dense choice you make is healing inflammation, supporting recovery, and optimizing your body's systems."
+      },
+      {
+        "short": "Stable energy!",
+        "medium": "You're keeping your energy stable all day!",
+        "long": "Steady blood sugar means steady energy, mood, and focus. You're mastering the art of fueling your body for sustained peak performance."
+      },
+      {
+        "short": "Brain fuel!",
+        "medium": "Your mind is as sharp as your nutrition!",
+        "long": "The connection between nutrition and mental clarity is profound. You're feeding your brain the nutrients it needs to think clearly and stay focused."
+      }
+    ]
+  },
+  {
+    "id": "sleepQuality",
+    "title": "Sleep Master",
+    "display_title": "Quality Sleep",
+    "type": { "type": "5star" },
+    "description": "Get 7-9 hours of restorative sleep with good sleep hygiene practices",
+    "is_active": true,
+    "sort_order": 3,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Enhances muscle recovery and growth hormone production",
+      "Improves cognitive function, memory, and decision-making",
+      "Strengthens immune system and reduces illness risk",
+      "Regulates hormones that control hunger and metabolism",
+      "Reduces stress levels and improves emotional regulation"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Recovery mode!",
+        "medium": "Your muscles are rebuilding while you rest!",
+        "long": "While you sleep, your body releases growth hormone, repairs muscle tissue, and consolidates memories. You're literally growing stronger in your sleep."
+      },
+      {
+        "short": "Mental reset!",
+        "medium": "Your mind is clearing and organizing overnight!",
+        "long": "Sleep is your brain's daily maintenance mode. It's clearing toxins, organizing memories, and preparing neural pathways for peak performance tomorrow."
+      },
+      {
+        "short": "Tomorrow's performance!",
+        "medium": "You're investing in tomorrow's energy!",
+        "long": "Great sleep tonight means sustained energy, better mood, and sharper focus tomorrow. You're setting yourself up for success before the day even begins."
+      }
+    ]
+  },
+  {
+    "id": "hydration",
+    "title": "Hydration Hero",
+    "display_title": "Well Hydrated",
+    "type": { "type": "5star" },
+    "description": "Drink adequate water throughout the day to support optimal body function",
+    "is_active": true,
+    "sort_order": 4,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Maintains optimal physical performance and endurance",
+      "Supports healthy kidney function and toxin elimination",
+      "Improves skin health and appearance",
+      "Enhances cognitive function and mental clarity",
+      "Aids digestion and nutrient absorption"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Stay hydrated!",
+        "medium": "Every sip supports your body's work!",
+        "long": "Water is life's simplest performance enhancer. By staying hydrated, you're giving every cell in your body what it needs to function at its best."
+      },
+      {
+        "short": "Peak performance!",
+        "medium": "Your endurance is optimized!",
+        "long": "Even mild dehydration can drop performance by 10-15%. By staying hydrated, you're ensuring your body operates at peak efficiency all day long."
+      },
+      {
+        "short": "Mental clarity!",
+        "medium": "Your cognitive function is optimized!",
+        "long": "Your brain is 75% water, and even slight dehydration affects concentration and mood. You're feeding your mind the fluid it needs to think clearly."
+      }
+    ]
+  },
+  {
+    "id": "moodCheck",
+    "title": "Mood Master",
+    "display_title": "Mood Check-In",
+    "type": { "type": "5star" },
+    "description": "Rate your overall mood and emotional well-being for the day",
+    "is_active": true,
+    "sort_order": 5,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Increases emotional self-awareness and emotional intelligence",
+      "Helps identify patterns between activities and mood states",
+      "Supports proactive mental health management",
+      "Enables early detection of negative mood trends",
+      "Strengthens mind-body connection and self-reflection skills"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Self-awareness!",
+        "medium": "Understanding your mood helps you thrive!",
+        "long": "Self-awareness is the foundation of emotional health. By checking in with your mood daily, you're developing a skill that helps you understand what affects your well-being."
+      },
+      {
+        "short": "Emotional intelligence!",
+        "medium": "You're building emotional awareness!",
+        "long": "Every mood check-in strengthens your ability to recognize, understand, and manage your emotions. This self-knowledge is one of the most valuable tools for a fulfilling life."
+      },
+      {
+        "short": "Pattern recognition!",
+        "medium": "You're uncovering what drives your happiness!",
+        "long": "Over time, your mood tracking reveals patterns—maybe you feel better after exercise, or worse when you skip sleep. This data helps you optimize your life for better emotional health."
+      }
+    ]
+  },
+  {
+    "id": "energyLevel",
+    "title": "Energy Expert",
+    "display_title": "Energy Level",
+    "type": { "type": "5star" },
+    "description": "Rate your physical and mental energy throughout the day",
+    "is_active": true,
+    "sort_order": 6,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Identifies energy patterns and optimal performance times",
+      "Helps correlate lifestyle choices with energy levels",
+      "Supports better scheduling of demanding tasks",
+      "Reveals the impact of sleep, nutrition, and exercise on vitality",
+      "Enables optimization of daily routines for sustained energy"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Know your rhythm!",
+        "medium": "Track your vitality to maximize it!",
+        "long": "Understanding your energy patterns is key to peak performance. By tracking when you feel energized and when you're depleted, you can optimize your schedule and habits."
+      },
+      {
+        "short": "Optimize your day!",
+        "medium": "You're learning your peak hours!",
+        "long": "By understanding your energy patterns, you can schedule demanding tasks when you're at your best and save easier work for lower energy periods. Smart energy management is a game-changer."
+      },
+      {
+        "short": "Find the patterns!",
+        "medium": "You're seeing what fuels your energy!",
+        "long": "Over time, you'll notice patterns—maybe early morning workouts boost your energy, or poor sleep depletes it. This awareness empowers you to take actions that maximize your vitality."
+      }
+    ]
+  },
+  {
+    "id": "weight",
+    "title": "Weight Tracker",
+    "display_title": "Body Weight",
+    "type": { "type": "float", "min": 1, "max": 200, "unit": "kgs" },
+    "description": "Track your body weight to monitor progress toward your fitness goals",
+    "is_active": true,
+    "sort_order": 7,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Provides objective data for tracking body composition changes",
+      "Helps identify trends and effectiveness of nutrition strategies",
+      "Supports accountability and goal-setting for weight management",
+      "Enables early detection of unexpected weight changes",
+      "Complements other health metrics for comprehensive wellness tracking"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Track your progress!",
+        "medium": "Every data point tells your story!",
+        "long": "Consistent tracking gives you objective data about your journey. Remember, weight is just one metric—focus on trends over time, not daily fluctuations."
+      },
+      {
+        "short": "Data-driven results!",
+        "medium": "You're using science to guide your progress!",
+        "long": "By tracking your weight regularly, you're gathering valuable data that helps you understand how your body responds to different nutrition and exercise approaches."
+      },
+      {
+        "short": "Long-term perspective!",
+        "medium": "You're looking at the bigger picture!",
+        "long": "Daily weight fluctuates due to water retention, digestion, and other factors. By tracking consistently, you can see the real trends that matter for your health goals."
+      }
+    ]
+  },
+  {
+    "id": "stepsWalked",
+    "title": "Step Counter",
+    "display_title": "Steps Walked",
+    "type": { "type": "integer", "min": 1, "max": 50000 },
+    "description": "Track your daily step count to stay active throughout the day",
+    "is_active": true,
+    "sort_order": 8,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Reduces risk of cardiovascular disease and type 2 diabetes",
+      "Improves joint health and mobility throughout the day",
+      "Increases daily calorie expenditure for weight management",
+      "Enhances mood and reduces stress through regular movement",
+      "Supports healthy circulation and reduces sedentary time"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Every step counts!",
+        "medium": "You're building an active lifestyle!",
+        "long": "Walking is one of the most accessible forms of exercise. Every step you take is contributing to better cardiovascular health, improved mood, and increased daily energy."
+      },
+      {
+        "short": "Movement adds up!",
+        "medium": "Small movements create big results!",
+        "long": "You don't need to hit 10,000 steps to benefit—research shows that even modest increases in daily steps significantly improve health outcomes. Keep moving!"
+      },
+      {
+        "short": "Active lifestyle!",
+        "medium": "You're combating sedentary time!",
+        "long": "In our modern world, regular walking throughout the day is crucial for health. You're actively choosing movement over stillness, and your body thanks you for it."
+      }
+    ]
+  },
+  {
+    "id": "cardioMinutes",
+    "title": "Cardio Tracker",
+    "display_title": "Cardio Minutes",
+    "type": { "type": "integer", "min": 1, "max": 600 },
+    "description": "Track minutes of cardiovascular exercise like brisk walking, running, cycling, rowing, hiking or swimming",
+    "is_active": true,
+    "sort_order": 9,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Strengthens heart and improves cardiovascular efficiency",
+      "Increases lung capacity and oxygen utilization",
+      "Burns calories and supports healthy body composition",
+      "Reduces blood pressure and improves cholesterol levels",
+      "Enhances endurance and stamina for daily activities"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Heart health!",
+        "medium": "You're strengthening your cardiovascular system!",
+        "long": "Every minute of cardio makes your heart more efficient, improves circulation, and reduces your risk of heart disease. You're investing in decades of healthy living."
+      },
+      {
+        "short": "Build endurance!",
+        "medium": "Your stamina is increasing with each session!",
+        "long": "Consistent cardio training improves your body's ability to deliver oxygen to muscles and use energy efficiently. You're building the foundation for sustained physical performance."
+      },
+      {
+        "short": "Metabolic boost!",
+        "medium": "You're elevating your metabolism!",
+        "long": "Cardio exercise doesn't just burn calories during your workout—it increases your metabolic rate for hours afterward and improves your body's fat-burning efficiency."
+      }
+    ]
+  },
+  {
+    "id": "pushups",
+    "title": "Pushup Master",
+    "display_title": "Pushups",
+    "type": { "type": "integer", "min": 1, "max": 1000 },
+    "description": "Track your daily pushup count to build upper body strength",
+    "is_active": true,
+    "sort_order": 10,
+    "created_at": "2025-08-27T00:00:00Z",
+    "updated_at": "2025-08-27T00:00:00Z",
+    "health_benefits": [
+      "Builds functional upper body and core strength",
+      "Improves posture and shoulder stability",
+      "Requires no equipment and can be done anywhere",
+      "Increases muscle mass and bone density",
+      "Enhances athletic performance and daily movement capacity"
+    ],
+    "motivational_messages": [
+      {
+        "short": "Build strength!",
+        "medium": "You're getting stronger with each rep!",
+        "long": "Pushups are one of the most effective bodyweight exercises. Every pushup you complete builds chest, shoulder, tricep, and core strength that carries over to everything you do."
+      },
+      {
+        "short": "Progressive gains!",
+        "medium": "Track your strength improvements over time!",
+        "long": "By tracking your pushups, you're creating a record of your strength progression. Whether you're doing 5 or 50, consistent practice leads to steady improvement."
+      },
+      {
+        "short": "Functional fitness!",
+        "medium": "You're building real-world strength!",
+        "long": "Pushups develop functional strength that helps with daily activities—pushing doors, carrying groceries, or getting up from the ground. You're training for life, not just exercise."
+      }
+    ]
+  }
+]

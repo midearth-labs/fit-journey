@@ -44,7 +44,7 @@ export class ContentLoader {
         ContentCategory: await this.loadContentType('ContentCategory'),
         Question: await this.loadContentType('Question'),
         KnowledgeBase: await this.loadContentType('KnowledgeBase'),
-        //StreakType: await this.loadContentType('StreakType'),
+        LogType: await this.loadContentType('LogType'),
         //AvatarAsset: await this.loadContentType('AvatarAsset'),
         LearningPath: await this.loadContentType('LearningPath'),
         PersonaQuestion: await this.loadContentType('PersonaQuestion'),

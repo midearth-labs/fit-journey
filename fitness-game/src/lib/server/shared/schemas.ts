@@ -1327,7 +1327,7 @@ export const GetUserArticleOperationSchema = {
   response: {
     body: z.object({
       articleId: z.string(),
-      status: z.string(),
+      status: z.enum(articleLogStatusKeys),
       firstReadDate: z.string().nullable(),
       lastReadDate: z.string().nullable(),
       quizAttempts: z.number(),

@@ -6,7 +6,7 @@ import { type ContentType } from './constants';
 import {  ContentCategorySchema } from './content-category';
 import { type Question, QuestionSchema } from './question';
 import { type KnowledgeBaseDetail, KnowledgeBaseDetailSchema } from './knowledge-base';
-import { type StreakType, StreakTypeSchema } from './streak-type';
+import { type LogType, LogTypeSchema } from './log-type';
 import { type AvatarAsset, AvatarAssetSchema } from './avatar-asset';
 import { type LearningPath, LearningPathSchema } from './learning-paths';
 import { type PersonaQuestion, PersonaQuestionSchema } from './persona-question';
@@ -15,7 +15,7 @@ export * from './common';
 export * from './content-category';
 export * from './knowledge-base';
 export * from './question';
-export * from './streak-type';
+export * from './log-type';
 export * from './avatar-asset';
 export * from './learning-paths';
 export * from './persona-question';
@@ -25,7 +25,7 @@ export const ContentTypeToSchema = {
   ContentCategory: ContentCategorySchema,
   Question: QuestionSchema,
   KnowledgeBase: KnowledgeBaseDetailSchema,
-  // StreakType: StreakTypeSchema,
+  LogType: LogTypeSchema,
   // AvatarAsset: AvatarAssetSchema,
   //Challenge: ChallengeSchema,
   LearningPath: LearningPathSchema,

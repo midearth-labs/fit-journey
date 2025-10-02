@@ -3,7 +3,7 @@ export const ContentTypes = [
   'ContentCategory',
   'Question',
   'KnowledgeBase',
-  //'StreakType',
+  'LogType',
   //'AvatarAsset',
   'LearningPath',
   'PersonaQuestion'
@@ -19,7 +19,7 @@ export const CONTENT_DIRECTORIES = {
   ContentCategory: 'categories',
   Question: 'questions',
   KnowledgeBase: 'knowledge-base/articles',
-  //StreakType: 'streak-types',
+  LogType: 'log-types',
   //AvatarAsset: 'avatar-assets',
   LearningPath: 'learning-paths',
   PersonaQuestion: 'persona-questions',

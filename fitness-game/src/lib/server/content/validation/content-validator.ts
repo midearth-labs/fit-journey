@@ -386,7 +386,7 @@ export class ContentValidator {
         ContentCategory: this.content.ContentCategory.map.size,
         Question: this.content.Question.map.size,
         KnowledgeBase: this.content.KnowledgeBase.map.size,
-        //StreakType: this.content.StreakType.map.size,
+        LogType: this.content.LogType.map.size,
         //AvatarAsset: this.content.AvatarAsset.map.size,
         LearningPath: this.content.LearningPath.map.size,
         PersonaQuestion: this.content.PersonaQuestion.map.size,

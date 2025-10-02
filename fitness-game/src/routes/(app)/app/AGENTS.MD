@@ -1202,6 +1202,15 @@ Use ShadCN Svelte components for consistent, accessible UI:
 npx shadcn-svelte@latest add [component-name]
 ```
 
+Do not use module scripts within "filename.svelte" files, the exports wont work, rather put the exports and types in "filename.ts", and then have "filename.svelte" import what it needs from those. 
+```
+<script lang="ts" module>
+</script>
+```
+Use "bind:value" where needed as opposed to manual value/state setting via callbacks. 
+Avoid the use of "any", or unnecessary type casting and also assuming field properties, rather inspect the type structure of all APIS or static content request and responses and use those exactly.
+
+
 **Installed Components:**
 - `card` - Container components
 - `sidebar` - Navigation sidebar

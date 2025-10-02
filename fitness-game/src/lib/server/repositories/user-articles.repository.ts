@@ -131,13 +131,13 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
           articlesRead: sql`${userMetadata.articlesRead} + ${deltaRead}`,
           articlesCompleted: sql`${userMetadata.articlesCompleted} + ${deltaCompleted}`,
           articlesCompletedWithPerfectScore: sql`${userMetadata.articlesCompletedWithPerfectScore} + ${deltaPerfect}`,
-          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate.toISOString()})`,
         })
         .where(eq(userMetadata.id, userId));
 
       // Update article_tracking by articleId with atomic increments
       const articlePartitionKey = this.partitionGenerator.generateRandomForArticle();
-      const [updatedArticleTracking] = await tx
+      const updatedArticleTrackingResult = await tx
         .update(articleTracking)
         .set({
           readCount: sql`${articleTracking.readCount} + ${deltaRead}`,
@@ -149,7 +149,7 @@ export class UserArticlesRepository implements IUserArticlesRepository, IUserArt
           eq(articleTracking.partitionKey, articlePartitionKey)
         ));
 
-      if (updatedArticleTracking.rowCount === 0) {
+      if (updatedArticleTrackingResult.rowCount === 0) {
         // @TODO: Add a metric here with an alarm on one single data-point
         console.error(`Failed to update article tracking: ${articleId}, ${articlePartitionKey}`);
       }
