@@ -1,5 +1,6 @@
 import { type MaybeAuthRequestContext, type GlobalStatisticsResponse, type ArticleStatisticsResponse } from '$lib/server/shared/interfaces';
 import { type IStatisticsRepository } from '$lib/server/repositories';
+import { type IDateTimeHelper } from '$lib/server/helpers';
 
 export type IStatisticsService = {
   /**
@@ -19,17 +20,19 @@ export class StatisticsService implements IStatisticsService {
   constructor(
     private readonly dependencies: {
       readonly statisticsRepository: IStatisticsRepository;
+      readonly dateTimeHelper: IDateTimeHelper;
     },
     private readonly requestContext: MaybeAuthRequestContext
   ) {}
 
   async getGlobal(): Promise<GlobalStatisticsResponse> {
-    const { statisticsRepository } = this.dependencies;
+    const { statisticsRepository, dateTimeHelper } = this.dependencies;
     const { requestDate } = this.requestContext;
     
     return {
       ...(await statisticsRepository.getGlobalStatistics()),
       serverDate: requestDate.toISOString(),
+      serverDateRanges: dateTimeHelper.getPossibleDatesOnEarthAtInstant(requestDate)
     };
   }
 

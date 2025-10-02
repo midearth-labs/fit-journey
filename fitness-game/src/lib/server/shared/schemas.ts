@@ -1565,6 +1565,11 @@ export const GlobalStatisticsResponseSchema = z.object({
   questionsAnswered: z.number().int().min(0),
   progressShares: z.number().int().min(0),
   serverDate: IsoDateSchema,
+  serverDateRanges: z.object({
+    earliest: z.string(),
+    utc: z.string(),
+    latest: z.string(),
+  }),
 });
 
 export const ArticleStatisticsResponseSchema = z.object({

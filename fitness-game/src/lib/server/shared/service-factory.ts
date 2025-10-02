@@ -173,7 +173,7 @@ export class ServiceFactory implements IServiceFactory {
     );
     this.statisticsServiceCreator = createUnAuthServiceFromClass(
       StatisticsService,
-      { statisticsRepository: this.statisticsRepository }
+      { statisticsRepository: this.statisticsRepository, dateTimeHelper: this.dateTimeHelper }
     );
   }
   
