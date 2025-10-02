@@ -253,7 +253,7 @@ export type ProgressShareUserDetailResponse = GetUserShareOperation['response'][
 export type CreateUserChallengeDto = {
   name: string;
   description: string;
-  goals: string[];
+  logTypes: AllLogKeysType[];
   startDate: string; // YYYY-MM-DD
   durationDays: number;
   joinType: 'personal' | 'public' | 'invite-code';
@@ -262,14 +262,7 @@ export type CreateUserChallengeDto = {
 
 export type UpdateUserChallengeDto = {
   challengeId: string;
-  name: string;
-  description: string;
-  goals: string[];
-  startDate: string;
-  durationDays: number;
-  joinType: 'personal' | 'public' | 'invite-code';
-  maxMembers: number;
-};
+} & CreateUserChallengeDto;
 
 export type JoinChallengeDto = { 
   challengeId: string; 
@@ -313,6 +306,8 @@ export type GetChallengeJoinedByUserSubscriptionDto = {
 export type ListChallengesJoinedByUserDto = {
   page: number;
   limit: number;
+  fromDate?: string; // YYYY-MM-DD format
+  toDate?: string; // YYYY-MM-DD format
 };
 
 export type DeleteUserChallengeDto = {

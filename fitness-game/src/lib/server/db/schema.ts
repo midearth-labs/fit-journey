@@ -24,24 +24,19 @@ export type UserAnswer = {
  * Defines the lifecycle status of a user's participation in a challenge.
  * (Unchanged from previous design)
  */
-export const challengeStatusEnum = pgEnum('user_challenge_status', [
-  'not_started',
-  'active',
-  'completed',
-  'locked',
-  'inactive',
-]);
+export const ChallengeStatusKeys = ['not_started', 'active', 'completed', 'locked', 'inactive'] as const;
+const challengeStatusEnum = pgEnum('user_challenge_status', ChallengeStatusKeys);
 
-export const articleLogStatusKeys = ['reading_in_progress', 'knowledge_check_in_progress', 'knowledge_check_complete', 'practical_in_progress', 'completed'] as const;
-export const articleLogStatusEnum = pgEnum('article_log_status', articleLogStatusKeys);
+export const ArticleLogStatusKeys = ['reading_in_progress', 'knowledge_check_in_progress', 'knowledge_check_complete', 'practical_in_progress', 'completed'] as const;
+export const articleLogStatusEnum = pgEnum('article_log_status', ArticleLogStatusKeys);
 
 // Social Features Enums
-export const questionStatusEnum = pgEnum('question_status', ['pending', 'approved', 'rejected', 'hidden']);
-export const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 'rejected', 'hidden']);
-export const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful']);
-export const emojiReactionEnum = pgEnum('emoji_reaction_type', ['clap', 'muscle', 'party']);
-export const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
-export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
+const questionStatusEnum = pgEnum('question_status', ['pending', 'approved', 'rejected', 'hidden']);
+const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 'rejected', 'hidden']);
+const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful']);
+const emojiReactionEnum = pgEnum('emoji_reaction_type', ['clap', 'muscle', 'party']);
+const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
+const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
 
 // Challenge V2 Enums
 export const challengeJoinTypeEnum = pgEnum('challenge_join_type', ['personal', 'public', 'invite-code']);
@@ -457,8 +452,8 @@ export const challenges = pgTable('challenges', {
   name: text('name').notNull(),
   description: text('description').notNull(),
   status: challengeStatusEnum('status').notNull(),
-  // goals: array of predefined habit IDs (by string ID)
-  goals: jsonb('goals').$type<string[]>().notNull(),
+  // logTypes: array of predefined logging keys (by string ID)
+  logTypes: jsonb('log_types').$type<AllLogKeysType[]>().notNull(),
   joinType: challengeJoinTypeEnum('join_type').notNull(),
   inviteCode: uuid('invite_code').notNull().defaultRandom(), // required when joinType = invite-code; unique when present
   startDate: date('start_date').notNull(),

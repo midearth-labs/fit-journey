@@ -76,7 +76,7 @@ export class ChallengesService implements IChallengesService {
       userId: userId,
       name: dto.name,
       description: dto.description,
-      goals: dto.goals,
+      logTypes: dto.logTypes,
       joinType: dto.joinType,
       startDate: dto.startDate,
       durationDays: dto.durationDays,
@@ -273,9 +273,15 @@ export class ChallengesService implements IChallengesService {
   async listChallengesJoinedByUser(dto: ListChallengesJoinedByUserDto): Promise<ListChallengesJoinedByUserResponse[]> {
     const { challengesRepository } = this.dependencies;
     const { user: { id: userId }, requestDate } = this.requestContext;
-    const { page, limit } = dto;
+    const { page, limit, fromDate, toDate } = dto;
 
-    const challenges = await challengesRepository.listJoinedByUser(userId, page, limit);
+    // Validate date range
+    // @TODO: add this to Zod refine validation
+    if (fromDate && toDate && fromDate > toDate) {
+      throw new ValidationError('From date must be before or equal to to date');
+    }
+
+    const challenges = await challengesRepository.listJoinedByUser(userId, page, limit, fromDate, toDate);
     return challenges.map(challenge => ({
       id: challenge.id,
       name: challenge.name,
@@ -284,6 +290,7 @@ export class ChallengesService implements IChallengesService {
       startDate: challenge.startDate,
       durationDays: challenge.durationDays,
       membersCount: challenge.membersCount,
+      logTypes: challenge.logTypes,
       joinedAt: challenge.joinedAt.toISOString(),
       dailyLogCount: challenge.dailyLogCount,
       lastActivityDate: challenge.lastActivityDate?.toISOString()
@@ -320,7 +327,7 @@ export class ChallengesService implements IChallengesService {
       name: challenge.name,
       status: challenge.implicitStatus({ referenceDate }),
       description: challenge.description,
-      goals: challenge.goals,
+      logTypes: challenge.logTypes,
       startDate: challenge.startDate,
       durationDays: challenge.durationDays,
       joinType: challenge.joinType,

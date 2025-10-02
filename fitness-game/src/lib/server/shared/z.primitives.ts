@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { AllLogKeys, ArticleLogStatusKeys, ChallengeStatusKeys } from '../db/schema';
 
 // Common primitive schemas for reuse across all API schemas
 
@@ -39,7 +40,9 @@ export const YesNoValueSchema = z.union([
 export const DailyLogValueSchema = FiveStarValueSchema;
 
 // Log keys
-  export const AllLogKeysSchema = z.enum(['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel']);
+export const AllLogKeysSchema = z.enum(AllLogKeys);
+export const ArticleLogStatusKeysSchema = z.enum(ArticleLogStatusKeys);
+export const ChallengeStatusKeysSchema = z.enum(ChallengeStatusKeys);
 
 // Notification preferences schema
 export const NotificationPreferencesSchema = z.object({

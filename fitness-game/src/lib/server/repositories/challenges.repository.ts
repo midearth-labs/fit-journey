@@ -1,4 +1,4 @@
-import { and, count, eq, lte, or, sql, lt, inArray, notInArray } from 'drizzle-orm';
+import { and, count, eq, lte, or, sql, lt, inArray, notInArray, desc, gte } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { challenges, challengeSubscribers, userMetadata, type Challenge, type ChallengeSubscriber, type NewChallenge, type NewChallengeSubscriber } from '$lib/server/db/schema';
 import { ValidationError } from '../shared/errors';
@@ -6,11 +6,10 @@ import type { IChallengeSubscribersRepository } from './challenge-subscribers.re
 import type { ActiveChallengeMetadata, ActiveChallengesStatusCheckPayload, ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
 import type { IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
 import { CHALLENGE_CONSTANTS } from '../content/types/constants';
-import { convertToUniqueTrackingKeys } from '../shared/utils';
 
 export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'dailyLogCount' | 'lastActivityDate'>;
 
-type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'membersCount'> & 
+type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'membersCount' | 'logTypes'> & 
     Pick<ChallengeSubscriber, 'joinedAt' | 'dailyLogCount' | 'lastActivityDate'>;
 
 // Enriched types with implicit status
@@ -34,8 +33,7 @@ export type IChallengesRepository = {
   listOwnedByUser(userId: string, page: number, limit: number): Promise<ChallengeWithImplicitStatus[]>;
   listJoinedByUserMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Array<JoinedByUserMember>>;
   getJoinedByUserSubscription(challengeId: string, userId: string): Promise<JoinedByUserMember | null>;
-  listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUserWithImplicitStatus>>;
-  findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata>;
+  listJoinedByUser(userId: string, page: number, limit: number, fromDate?: string, toDate?: string): Promise<Array<JoinedByUserWithImplicitStatus>>;
   batchUpdateChallengeStatusesLimit(requestDate: Date, limit: number): Promise<void>;
 };
 
@@ -271,8 +269,16 @@ export class ChallengesRepository implements IChallengesRepository {
     return rows;
   }
   
-  async listJoinedByUser(userId: string, page: number, limit: number): Promise<Array<JoinedByUserWithImplicitStatus>> {
+  async listJoinedByUser(userId: string, page: number, limit: number, fromDate?: string, toDate?: string): Promise<Array<JoinedByUserWithImplicitStatus>> {
     const offset = (page - 1) * limit;
+    const whereClause = [
+      eq(challengeSubscribers.userId, userId),
+      // Overlap condition: challenge window [startDate, startDate + durationDays] intersects [fromDate, toDate]
+      // If only fromDate is provided → endDate >= fromDate
+      ...(fromDate ? [sql`(DATE ${challenges.startDate}) + (interval '1 day' * ${challenges.durationDays}) >= (DATE ${fromDate})`] : []),
+      // If only toDate is provided → startDate <= toDate
+      ...(toDate ? [lte(challenges.startDate, toDate)] : []),
+    ];
     
     const rows = await this.db
       .select({
@@ -283,14 +289,15 @@ export class ChallengesRepository implements IChallengesRepository {
         startDate: challenges.startDate,
         durationDays: challenges.durationDays,
         membersCount: challenges.membersCount,
+        logTypes: challenges.logTypes,
         joinedAt: challengeSubscribers.joinedAt,
         dailyLogCount: challengeSubscribers.dailyLogCount,
         lastActivityDate: challengeSubscribers.lastActivityDate
       })
       .from(challenges)
       .innerJoin(challengeSubscribers, eq(challenges.id, challengeSubscribers.challengeId))
-      .where(eq(challengeSubscribers.userId, userId))
-      .orderBy(challengeSubscribers.joinedAt)
+      .where(and(...whereClause))
+      .orderBy(desc(challengeSubscribers.joinedAt))
       .limit(limit)
       .offset(offset);
     
@@ -317,46 +324,6 @@ export class ChallengesRepository implements IChallengesRepository {
       .limit(1);
     
     return row ?? null;
-  }
-
-  // --- Migrated logic from UserChallengeRepository (adapted for V2 challenges) ---
-
-  async findAllActiveChallengeMetadata(userId: string, payload: ActiveChallengesStatusCheckPayload): Promise<ActiveChallengeMetadata> {
-    const { requestDate } = payload;
-    // Query challenges joined by the user with fields required for status computation and logging keys
-    const rows = await this.db
-      .select({
-        id: challenges.id,
-        status: challenges.status,
-        startDate: challenges.startDate,
-        durationDays: challenges.durationDays,
-        goals: challenges.goals,
-      })
-      .from(challenges)
-      .innerJoin(challengeSubscribers, eq(challenges.id, challengeSubscribers.challengeId))
-      .where(
-        and(
-          eq(challengeSubscribers.userId, userId), 
-          inArray(challenges.status, ['active', 'completed', 'not_started'])
-        )
-      );
-
-    // @TODO: how to make this use the ImplicitStatusCheckPayload approach?
-    const active = rows.filter((challenge) =>
-      this.isChallengeLoggable(this.createImplicitStatusCallback(challenge)({ referenceDate: requestDate }))
-    );
-
-    const activeChallengeLoggingKeys = convertToUniqueTrackingKeys(active
-      .flatMap((challenge) => challenge.goals));
-
-    const earliestStartDate = active.map((challenge) => challenge.startDate).sort()[0];
-
-    const latestEndDate = active
-      .map((challenge) => this.dateTimeHelper.daysOffset(challenge.startDate, challenge.durationDays))
-      .sort()
-      .reverse()[0];
-
-    return { activeChallengeLoggingKeys, earliestStartDate, latestEndDate };
   }
 
   private isChallengeLoggable(status: Challenge['status']): boolean {

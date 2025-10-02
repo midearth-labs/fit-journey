@@ -16,10 +16,12 @@ import {
   ReactionTypeSchema,
   EmojiReactionTypeSchema,
   ShareTypeSchema,
-  ShareStatusSchema
+  ShareStatusSchema,
+  AllLogKeysSchema,
+  ChallengeStatusKeysSchema
 } from './z.primitives';
 import { CHALLENGE_CONSTANTS } from '../content/types/constants';
-import { articleLogStatusKeys } from '../db/schema';
+import { ArticleLogStatusKeys } from '../db/schema';
 // import { ChallengeSchema } from '$lib/server/content/types/challenge'; // Old content system schema
 
 // --- User Profile Schemas ---
@@ -134,7 +136,7 @@ export const UserLogResponseSchema = z.object({
 export const CreateChallengeDtoSchema = z.object({
   name: z.string().trim().min(1).max(120),
   description: z.string().trim().max(2000),
-  goals: z.array(z.string().trim().min(1)).min(1).max(10),
+  logTypes: z.array(AllLogKeysSchema),
   startDate: IsoDateSchema,
   durationDays: z.number().int().min(1).max(CHALLENGE_CONSTANTS.MAX_CHALLENGE_DURATION_DAYS),
   joinType: z.enum(['personal', 'public', 'invite-code']),
@@ -425,15 +427,9 @@ export const GetChallengeParamsSchema = z.object({ challengeId: UuidSchema });
 export const GetUserChallengeResponseSchema = z.object({
   id: UuidSchema,
   name: z.string(),
-  status: z.enum([
-    'not_started',
-    'active',
-    'completed',
-    'locked',
-    'inactive',
-  ]),
+  status: ChallengeStatusKeysSchema,
   description: z.string().nullable().optional(),
-  goals: z.array(z.string()),
+  logTypes: z.array(AllLogKeysSchema),
   startDate: IsoDateSchema,
   durationDays: z.number().int(),
   joinType: z.enum(['personal', 'public', 'invite-code']),
@@ -599,6 +595,7 @@ export const ListChallengesJoinedByUserOperationSchema = {
       startDate: true,
       joinType: true,
       membersCount: true,
+      logTypes: true,
     }).extend({
       joinedAt: z.string(),
       dailyLogCount: z.number().int().min(0),
@@ -1311,7 +1308,7 @@ export const ListUserArticlesOperationSchema = {
   response: {
     body: z.array(z.object({
       articleId: z.string(),
-      status: z.enum(articleLogStatusKeys),
+      status: z.enum(ArticleLogStatusKeys),
       firstReadDate: z.string(),
       lastReadDate: z.string(),
       quizAttempts: z.number(),
@@ -1327,7 +1324,7 @@ export const GetUserArticleOperationSchema = {
   response: {
     body: z.object({
       articleId: z.string(),
-      status: z.enum(articleLogStatusKeys),
+      status: z.enum(ArticleLogStatusKeys),
       firstReadDate: z.string().nullable(),
       lastReadDate: z.string().nullable(),
       quizAttempts: z.number(),
