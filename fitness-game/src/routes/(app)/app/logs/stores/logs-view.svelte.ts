@@ -11,47 +11,121 @@ type UserChallenges = ApiResponse['listChallengesJoinedByUser'];
 
 // Enhanced types for computed data
 type LogStatus = {
+		// Overall logging state for the date
+		// e.g., 'logged' | 'partial' | 'missing' | 'unknown' | 'future' | 'locked'
 	status: 'logged' | 'partial' | 'missing' | 'unknown' | 'future' | 'locked';
+		// Keys logged in the five-star metrics for the date
+		// e.g., ['sleep_quality', 'energy']
 	fiveStarKeys: AllLogKeysType[];
+		// Keys logged in the measurement metrics for the date
+		// e.g., ['steps', 'water_intake']
 	measurementKeys: AllLogKeysType[];
+		// Union of all metric keys logged (five-star + measurement)
+		// e.g., ['sleep_quality', 'energy', 'steps']
 	allLoggedKeys: AllLogKeysType[];
+		// Challenges that are active on this date
+		// e.g., [{ id: 'c1', name: 'Hydration Streak', ... }]
 	activeChallenges: UserChallenges;
+		// Recommended keys (from active challenges) that are not yet logged
+		// e.g., ['water_intake'] when hydration challenge is active but missing log
     missingRecommendedKeys: AllLogKeysType[];
 }
 
 type ChallengeProgress = {
+		// Unique identifier of the challenge
+		// e.g., 'challenge_123'
 	id: string;
+		// Human-readable challenge name
+		// e.g., '30-Day Hydration'
 	name: string;
+		// Completion percentage (0–100) based on days with logs in the period
+		// e.g., 66.7
 	progress: number;
+		// Remaining days in the challenge calculated from duration and logs
+		// e.g., 10
 	daysRemaining: number;
+		// Number of days with at least one log during the challenge period
+		// e.g., 12
 	dailyLogCount: number;
+		// Total number of days the challenge runs
+		// e.g., 30
 	durationDays: number;
+		// Required log type identifiers for the challenge
+		// e.g., ['water_intake', 'sleep_quality']
 	requiredLogTypes: string[];
+		// Current status of the challenge (source of truth from API)
+		// e.g., 'active' | 'completed' | 'paused'
 	status: UserChallenges[number]['status'];
 }
 
 type LogInsights = {
+		// Current consecutive days with logs up to the reference date
+		// e.g., 5
 	currentStreak: number;
+		// Longest ever consecutive days streak found in the dataset
+		// e.g., 14
 	longestStreak: number;
+		// Total count of distinct days that have logs
+		// e.g., 47
 	totalDaysLogged: number;
+		/**
+		 * Actionable momentum per metric comparing latest 7-day window to previous 7-day window.
+		 * When data is insufficient for either window, `{ missing: true }` is recorded for that key.
+		 * Example:
+		 * Map(
+		 *   'sleep_quality' => { avg: +0.4, min: +1, max: +2 },
+		 *   'water_intake' => { missing: true }
+		 * )
+		 */
 	weeklyTrend: Map<AllLogKeysType, { avg: number; min: number; max: number } | {missing: true}>;
+		// Percentage of days with logs in the last 7 days (0–100)
+		// e.g., 71
 	lastSevenDaysCompletion: number;
 }
 
 type ChartData = {
-	trendData: Array<{
-		date: string;
-		displayDate: string;
-		metricsCount: number;
-	}>;
-	heatmapData: Array<{
-		date: string;
-		displayDate: string;
-		intensity: number;
-		challengeDay: boolean;
-		hasLog: boolean;
-	}>;
+		/**
+		 * Time-series points for trend visualization over the selected range.
+		 * Example item: { date: '2025-10-01', displayDate: 'Oct 1', metricsCount: 3 }
+		 */
+		trendData: Array<{
+			// ISO date string corresponding to the log
+			// e.g., '2025-10-01'
+			date: string;
+			// Short, human-friendly date for chart labels
+			// e.g., 'Oct 1'
+			displayDate: string;
+			// Count of metrics logged (five-star + measurement) for that date
+			// e.g., 3
+			metricsCount: number;
+		}>;
+		/**
+		 * Calendar heatmap cells derived from daily activity and challenges.
+		 * Example item:
+		 * { date: '2025-10-01', displayDate: 'Oct 1', intensity: 0.6, challengeDay: true, hasLog: true }
+		 */
+		heatmapData: Array<{
+			// ISO date string represented by the heatmap cell
+			// e.g., '2025-10-01'
+			date: string;
+			// Short label for display inside the heatmap tooltip
+			// e.g., 'Oct 1'
+			displayDate: string;
+			// Normalized activity intensity in [0, 1]
+			// e.g., 0.6
+			intensity: number;
+			// Whether any challenge is active on this date
+			// e.g., true
+			challengeDay: boolean;
+			// Whether at least one log exists for this date
+			// e.g., true
+			hasLog: boolean;
+		}>;
+		// Progress list for currently joined challenges (filtered to active where needed)
+		// e.g., [{ id: 'c1', name: 'Hydration', progress: 40, ... }]
 	challengeProgress: ChallengeProgress[];
+		// Snapshot of insights used in the analytics views
+		// e.g., { currentStreak: 3, longestStreak: 12, ... }
 	insights: LogInsights;
 }
 

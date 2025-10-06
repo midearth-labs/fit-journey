@@ -50,6 +50,13 @@
       "when": 1759401442361,
       "tag": "0006_tearful_quicksilver",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1759743542780,
+      "tag": "0007_strange_vin_gonzales",
+      "breakpoints": true
     }
   ]
 }

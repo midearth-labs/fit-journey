@@ -163,7 +163,7 @@
 	// Get metrics count for a log
 	function getMetricsCount(log: UserLogs[0]): number {
 		const logStatus = logsViewStore.getLogStatusForDate(parseISO(log.logDate));
-		return logStatus.metricsCount;
+		return logStatus.allLoggedKeys.length;
 	}
 
 	// Handle log deletion

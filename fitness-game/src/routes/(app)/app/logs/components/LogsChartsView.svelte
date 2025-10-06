@@ -29,7 +29,30 @@
 	let selectedTimeRange = $state<'7d' | '30d' | '90d'>('30d');
 
 	// Use chart data from store
-	const chartData = $derived(() => logsViewStore.chartData);
+	const chartData = $derived.by(() => logsViewStore.chartData);
+
+	// Weekly trend summary derived from Map structure
+	const weeklyTrendStats = $derived(() => {
+		const map = chartData?.insights.weeklyTrend;
+		if (!map) {
+			return { improving: 0, declining: 0, neutral: 0, best: null as null | [string, number], worst: null as null | [string, number] };
+		}
+		let improving = 0;
+		let declining = 0;
+		let neutral = 0;
+		let best: null | [string, number] = null;
+		let worst: null | [string, number] = null;
+		for (const [key, val] of map.entries()) {
+			if ('missing' in val) continue;
+			const avg = val.avg;
+			if (avg > 0) improving++;
+			else if (avg < 0) declining++;
+			else neutral++;
+			if (best === null || avg > best[1]) best = [key, avg];
+			if (worst === null || avg < worst[1]) worst = [key, avg];
+		}
+		return { improving, declining, neutral, best, worst };
+	});
 
 	// Get metric display name
 	function getMetricDisplayName(metricId: string): string {
@@ -92,7 +115,7 @@
 				<TrendingUp class="h-4 w-4 text-muted-foreground" />
 			</CardHeader>
 			<CardContent>
-				<div class="text-2xl font-bold">{chartData()?.insights.currentStreak || 0}</div>
+				<div class="text-2xl font-bold">{chartData?.insights.currentStreak || 0}</div>
 				<p class="text-xs text-muted-foreground">days in a row</p>
 			</CardContent>
 		</Card>
@@ -103,7 +126,7 @@
 				<Target class="h-4 w-4 text-muted-foreground" />
 			</CardHeader>
 			<CardContent>
-				<div class="text-2xl font-bold">{chartData()?.insights.longestStreak || 0}</div>
+				<div class="text-2xl font-bold">{chartData?.insights.longestStreak || 0}</div>
 				<p class="text-xs text-muted-foreground">personal best</p>
 			</CardContent>
 		</Card>
@@ -114,7 +137,7 @@
 				<Calendar class="h-4 w-4 text-muted-foreground" />
 			</CardHeader>
 			<CardContent>
-				<div class="text-2xl font-bold">{chartData()?.insights.totalDaysLogged || 0}</div>
+				<div class="text-2xl font-bold">{chartData?.insights.totalDaysLogged || 0}</div>
 				<p class="text-xs text-muted-foreground">logged</p>
 			</CardContent>
 		</Card>
@@ -125,12 +148,10 @@
 				<BarChart3 class="h-4 w-4 text-muted-foreground" />
 			</CardHeader>
 			<CardContent>
-		<div class="text-2xl font-bold">
-            <!-- weeklyTrend is now a Map keyed by metric; adjust UI rendering accordingly -->
-            <!-- Placeholder: show count of metrics with positive avg change if desired -->
-            {Array.from(chartData()?.insights.weeklyTrend?.values?.() ?? []).length}
-		</div>
-				<p class="text-xs text-muted-foreground">average change</p>
+				<div class="text-2xl font-bold">
+					+{weeklyTrendStats().improving} / -{weeklyTrendStats().declining}
+				</div>
+				<p class="text-xs text-muted-foreground">metrics improving vs declining (last 7d vs prev)</p>
 			</CardContent>
 		</Card>
 	</div>
@@ -144,88 +165,46 @@
 		</TabsList>
 
 		<TabsContent value="trend" class="space-y-4">
-			<Card>
-				<CardHeader>
-					<CardTitle>Daily Trend</CardTitle>
-					<CardDescription>
-						Your average wellness score and metrics count over time
-					</CardDescription>
-				</CardHeader>
-				<CardContent>
-					{#if chartData()?.trendData && chartData()!.trendData.length > 0}
-						<div class="space-y-4">
-							<!-- Simple trend visualization -->
-							<div class="h-64 flex items-end justify-between gap-1">
-								{#each chartData()!.trendData as dataPoint, index}
-									<div class="flex flex-col items-center gap-2 flex-1">
-										<!-- Average Score Bar -->
-										<div 
-											class="w-full bg-blue-200 rounded-t transition-all duration-300 hover:bg-blue-300"
-											style="height: {(dataPoint.averageScore / 5) * 100}%"
-											title="Average Score: {dataPoint.averageScore.toFixed(1)}/5"
-										></div>
-										<!-- Metrics Count Bar -->
-										<div 
-											class="w-full bg-green-200 rounded-b transition-all duration-300 hover:bg-green-300"
-											style="height: {(dataPoint.metricsCount / dataPoint.totalMetrics) * 50}%"
-											title="Metrics Count: {dataPoint.metricsCount}/{dataPoint.totalMetrics}"
-										></div>
+				<Card>
+					<CardHeader>
+						<CardTitle>Daily Trend</CardTitle>
+						<CardDescription>
+							Metrics logged over time
+						</CardDescription>
+					</CardHeader>
+					<CardContent>
+						{#if chartData?.trendData && chartData!.trendData.length > 0}
+							<div class="space-y-4">
+								<!-- Simple trend visualization (normalized by total available metrics) -->
+								<div class="h-64 flex items-end justify-between gap-1">
+									{#each chartData!.trendData as dataPoint}
+										<div class="flex flex-col items-center gap-2 flex-1">
+											<div 
+												class="w-full bg-green-200 rounded transition-all duration-300 hover:bg-green-300"
+												style="height: {(dataPoint.metricsCount / logTypes.length) * 100}%"
+												title="Metrics Logged: {dataPoint.metricsCount}"
+											></div>
+										</div>
+									{/each}
+								</div>
+								
+								<!-- Legend -->
+								<div class="flex items-center gap-4 text-sm">
+									<div class="flex items-center gap-2">
+										<div class="w-3 h-3 bg-green-200 rounded"></div>
+										<span>Metrics Logged</span>
 									</div>
-								{/each}
-							</div>
-							
-							<!-- Legend -->
-							<div class="flex items-center gap-4 text-sm">
-								<div class="flex items-center gap-2">
-									<div class="w-3 h-3 bg-blue-200 rounded"></div>
-									<span>Average Score (1-5)</span>
-								</div>
-								<div class="flex items-center gap-2">
-									<div class="w-3 h-3 bg-green-200 rounded"></div>
-									<span>Metrics Count</span>
 								</div>
 							</div>
-						</div>
-					{:else}
-						<div class="h-64 flex items-center justify-center text-muted-foreground">
-							No data available for the selected time range
-						</div>
-					{/if}
-				</CardContent>
-			</Card>
+						{:else}
+							<div class="h-64 flex items-center justify-center text-muted-foreground">
+								No data available for the selected time range
+							</div>
+						{/if}
+					</CardContent>
+				</Card>
 
-			<!-- Metric Performance -->
-			{#if chartData()?.insights.bestMetric || chartData()?.insights.worstMetric}
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<Card>
-						<CardHeader>
-							<CardTitle class="text-sm text-green-600">Best Performing Metric</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<div class="text-lg font-semibold">
-								{getMetricDisplayName(chartData()?.insights.bestMetric || '')}
-							</div>
-							<div class="text-2xl font-bold text-green-600">
-								{chartData()?.insights.bestMetricAverage?.toFixed(1) || '0.0'}/5
-							</div>
-						</CardContent>
-					</Card>
-
-					<Card>
-						<CardHeader>
-							<CardTitle class="text-sm text-orange-600">Improvement Opportunity</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<div class="text-lg font-semibold">
-								{getMetricDisplayName(chartData()?.insights.worstMetric || '')}
-							</div>
-							<div class="text-2xl font-bold text-orange-600">
-								{chartData()?.insights.worstMetricAverage?.toFixed(1) || '0.0'}/5
-							</div>
-						</CardContent>
-					</Card>
-				</div>
-			{/if}
+			<!-- Removed best/worst metric callouts per product direction -->
 		</TabsContent>
 
 		<TabsContent value="heatmap" class="space-y-4">
@@ -237,11 +216,11 @@
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					{#if chartData()?.heatmapData && chartData()!.heatmapData.length > 0}
+					{#if chartData?.heatmapData && chartData!.heatmapData.length > 0}
 						<div class="space-y-4">
 							<!-- Heatmap Grid -->
 							<div class="grid grid-cols-7 gap-1">
-								{#each chartData()!.heatmapData as dataPoint}
+								{#each chartData!.heatmapData as dataPoint}
 									<div 
 										class="h-8 w-8 rounded border-2 flex items-center justify-center text-xs cursor-pointer transition-all duration-200 hover:scale-110 {getIntensityColor(dataPoint.intensity)} {getIntensityBorderColor(dataPoint.intensity)}"
 										title="{dataPoint.displayDate}: {dataPoint.hasLog ? 'Logged' : 'No log'}"
@@ -295,9 +274,9 @@
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					{#if chartData()?.challengeProgress && chartData()!.challengeProgress.length > 0}
+					{#if chartData?.challengeProgress && chartData!.challengeProgress.length > 0}
 						<div class="space-y-4">
-							{#each chartData()!.challengeProgress as challenge}
+							{#each chartData!.challengeProgress as challenge}
 								<div class="space-y-2">
 									<div class="flex items-center justify-between">
 										<div>
