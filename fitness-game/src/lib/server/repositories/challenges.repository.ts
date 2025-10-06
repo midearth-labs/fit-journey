@@ -3,14 +3,15 @@ import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { challenges, challengeSubscribers, userMetadata, type Challenge, type ChallengeSubscriber, type NewChallenge, type NewChallengeSubscriber } from '$lib/server/db/schema';
 import { ValidationError } from '../shared/errors';
 import type { IChallengeSubscribersRepository } from './challenge-subscribers.repository';
-import type { ActiveChallengeMetadata, ActiveChallengesStatusCheckPayload, ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
+import type { ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
 import type { IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
 import { CHALLENGE_CONSTANTS } from '../content/types/constants';
 
-export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'dailyLogCount' | 'lastActivityDate'>;
+export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'lastActivityDate'>;
+type UpdateChallenge = Pick<Challenge, 'id'> & Omit<NewChallenge, 'createdAt'>;
 
-type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'membersCount' | 'logTypes'> & 
-    Pick<ChallengeSubscriber, 'joinedAt' | 'dailyLogCount' | 'lastActivityDate'>;
+type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'endDate' | 'membersCount' | 'logTypes'> & 
+    Pick<ChallengeSubscriber, 'joinedAt' | 'lastActivityDate'>;
 
 // Enriched types with implicit status
 export type ChallengeWithImplicitStatus = Challenge & {
@@ -25,7 +26,7 @@ export type IChallengesRepository = {
   create(challenge: NewChallenge): Promise<{ id: string }>;
   findById(id: string): Promise<ChallengeWithImplicitStatus | null>;
   findByIdForUser(id: string, userId: string): Promise<ChallengeWithImplicitStatus | null>;
-  update(id: string, updates: Partial<Challenge>): Promise<boolean>;
+  update(id: string, updates: UpdateChallenge, requestDate: Date): Promise<boolean>;
   delete(id: string, userId: string, requestDate: Date): Promise<boolean>;
   join(subscriber: NewChallengeSubscriber, tx?: NodePgDatabase<any>, ): Promise<{id: string}>;
   leave(challengeId: string, userId: string, requestDate: Date): Promise<boolean>;
@@ -51,7 +52,11 @@ export class ChallengesRepository implements IChallengesRepository {
       const [newChallenge] = await tx
         .insert(challenges)
         // membersCount is 1 because the owner is automatically subscribed
-        .values({ ...challenge, updatedAt: challenge.createdAt, membersCount: 0, status: 'not_started' })
+        .values({
+          ...challenge, 
+          updatedAt: challenge.createdAt, membersCount: 0, status: 'not_started', 
+          endDate: this.dateTimeHelper.daysOffsetFromDateOnly(challenge.startDate, challenge.durationDays) 
+        })
         .returning({ id: challenges.id });
 
       // Auto-subscribe owner inside the same transaction
@@ -80,13 +85,17 @@ export class ChallengesRepository implements IChallengesRepository {
     } : null;
   }
 
-  async update(id: string, updates: Partial<Challenge>): Promise<boolean> {
+  async update(id: string, updates: UpdateChallenge, requestDate: Date): Promise<boolean> {
     if (!updates.userId) {
       throw new ValidationError('Owner user ID is required');
     }
 
     const res = await this.db.update(challenges)
-    .set(updates)
+    .set({ 
+      ...updates, 
+      updatedAt: requestDate, 
+      endDate: this.dateTimeHelper.daysOffsetFromDateOnly(updates.startDate, updates.durationDays) 
+    })
     .where(
       and(
         eq(challenges.id, id), 
@@ -141,7 +150,7 @@ export class ChallengesRepository implements IChallengesRepository {
   async join(subscriber: NewChallengeSubscriber, parentTx?: NodePgDatabase<any>): Promise<{id: string}> {
     const newSubscriber = await (parentTx ?? this.db).transaction(async (tx) => {
       const [newSubscriber] = await tx.insert(challengeSubscribers)
-      .values({ ...subscriber, dailyLogCount: 0, lastActivityDate: subscriber.joinedAt })
+      .values({ ...subscriber, lastActivityDate: subscriber.joinedAt })
       .returning({ id: challengeSubscribers.id });
       
       await this.incrementMembersCountTx(tx, subscriber.challengeId);
@@ -256,7 +265,6 @@ export class ChallengesRepository implements IChallengesRepository {
       .select({
         id: challengeSubscribers.id,
         userId: challengeSubscribers.userId,
-        dailyLogCount: challengeSubscribers.dailyLogCount,
         joinedAt: challengeSubscribers.joinedAt,
         lastActivityDate: challengeSubscribers.lastActivityDate
       })
@@ -273,9 +281,9 @@ export class ChallengesRepository implements IChallengesRepository {
     const offset = (page - 1) * limit;
     const whereClause = [
       eq(challengeSubscribers.userId, userId),
-      // Overlap condition: challenge window [startDate, startDate + durationDays] intersects [fromDate, toDate]
+      // Overlap condition: challenge window [startDate, endDate] intersects [fromDate, toDate]
       // If only fromDate is provided → endDate >= fromDate
-      ...(fromDate ? [sql`(DATE ${challenges.startDate}) + (interval '1 day' * ${challenges.durationDays}) >= (DATE ${fromDate})`] : []),
+      ...(fromDate ? [lte(challenges.endDate, fromDate)] : []),
       // If only toDate is provided → startDate <= toDate
       ...(toDate ? [lte(challenges.startDate, toDate)] : []),
     ];
@@ -288,10 +296,10 @@ export class ChallengesRepository implements IChallengesRepository {
         joinType: challenges.joinType,
         startDate: challenges.startDate,
         durationDays: challenges.durationDays,
+        endDate: challenges.endDate,
         membersCount: challenges.membersCount,
         logTypes: challenges.logTypes,
         joinedAt: challengeSubscribers.joinedAt,
-        dailyLogCount: challengeSubscribers.dailyLogCount,
         lastActivityDate: challengeSubscribers.lastActivityDate
       })
       .from(challenges)
@@ -313,7 +321,6 @@ export class ChallengesRepository implements IChallengesRepository {
         id: challengeSubscribers.id,
         userId: challengeSubscribers.userId,
         joinedAt: challengeSubscribers.joinedAt,
-        dailyLogCount: challengeSubscribers.dailyLogCount,
         lastActivityDate: challengeSubscribers.lastActivityDate
       })
       .from(challengeSubscribers)
@@ -357,7 +364,7 @@ export class ChallengesRepository implements IChallengesRepository {
         // We use: start_date <= (DATE ${earliestDateOnEarth}) - (interval '1 day' * ${challenges.durationDays})
         
         // Consider a challenge completed when its end date has passed globally
-        const endDate = this.dateTimeHelper.daysOffset(earliestDateOnEarth, - challenge.durationDays);
+        const endDate = this.dateTimeHelper.daysOffsetFromDateOnly(earliestDateOnEarth, - challenge.durationDays);
         if (challenge.startDate <= endDate) {
           return 'completed';
         }

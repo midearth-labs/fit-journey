@@ -1,10 +1,8 @@
 import { pgTable, text, timestamp, boolean, integer, bigint, date, jsonb, uuid, pgEnum, index, unique, primaryKey, check } from 'drizzle-orm/pg-core';
 import { relations, sql } from 'drizzle-orm';
 import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
+import type { FiveStarValuesPayload, MeasurementValuesPayload, AllLogKeysType } from '$lib/config/constants';
 
-export const FiveStarLogKeys = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel'] as const;
-export const MeasurementLogKeys = ['weight', 'stepsWalked', 'cardioMinutes', 'pushups'] as const;
-export const AllLogKeys = [...FiveStarLogKeys, ...MeasurementLogKeys] as const;
 // Enums
 export const avatarGenderEnum = pgEnum('avatar_gender', ['male', 'female']);
 export const avatarAgeRangeEnum = pgEnum('avatar_age_range', ['child', 'teen', 'young-adult', 'middle-age', 'senior']);
@@ -25,39 +23,20 @@ export type UserAnswer = {
  * (Unchanged from previous design)
  */
 export const ChallengeStatusKeys = ['not_started', 'active', 'completed', 'locked', 'inactive'] as const;
-const challengeStatusEnum = pgEnum('user_challenge_status', ChallengeStatusKeys);
+export const challengeStatusEnum = pgEnum('user_challenge_status', ChallengeStatusKeys);
 
 export const ArticleLogStatusKeys = ['reading_in_progress', 'knowledge_check_in_progress', 'knowledge_check_complete', 'practical_in_progress', 'completed'] as const;
 export const articleLogStatusEnum = pgEnum('article_log_status', ArticleLogStatusKeys);
 
 // Social Features Enums
-const questionStatusEnum = pgEnum('question_status', ['pending', 'approved', 'rejected', 'hidden']);
-const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 'rejected', 'hidden']);
-const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful']);
-const emojiReactionEnum = pgEnum('emoji_reaction_type', ['clap', 'muscle', 'party']);
-const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
-const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
+export const questionStatusEnum = pgEnum('question_status', ['pending', 'approved', 'rejected', 'hidden']);
+export const answerStatusEnum = pgEnum('answer_status', ['pending', 'approved', 'rejected', 'hidden']);
+export const reactionTypeEnum = pgEnum('reaction_type', ['helpful', 'not_helpful']);
+export const shareTypeEnum = pgEnum('share_type', ['challenge_completion', 'avatar_progression', 'quiz_achievement', 'invitation_count']);
+export const shareStatusEnum = pgEnum('share_status', ['active', 'hidden']);
 
 // Challenge V2 Enums
 export const challengeJoinTypeEnum = pgEnum('challenge_join_type', ['personal', 'public', 'invite-code']);
-
-export type AllLogKeysType = (typeof AllLogKeys)[number];
-export type FiveStarLogKeysType = (typeof FiveStarLogKeys)[number];
-export type MeasurementLogKeysType = (typeof MeasurementLogKeys)[number];
-export const FiveStarValues = [1, 2, 3, 4, 5] as const;
-export type FiveStarValuesType = (typeof FiveStarValues)[number];
-export const YesNoValues = [1, 0] as const;
-export type YesNoValuesType = (typeof YesNoValues)[number];
-
-// New JSONB types for the updated schema
-export type FiveStarValuesPayload = Partial<Record<FiveStarLogKeysType, FiveStarValuesType>>;
-export type MeasurementValuesPayload = Partial<Record<MeasurementLogKeysType, number>>;
-
-// Updated DailyLogPayload to use the new structure
-export type DailyLogValuePayload = {
-  fiveStar: FiveStarValuesPayload;
-  measurement: MeasurementValuesPayload;
-};
 
 export type EnabledFeatures = {
   askQuestionsEnabled?: boolean;
@@ -458,6 +437,7 @@ export const challenges = pgTable('challenges', {
   inviteCode: uuid('invite_code').notNull().defaultRandom(), // required when joinType = invite-code; unique when present
   startDate: date('start_date').notNull(),
   durationDays: integer('duration_days').notNull(),
+  endDate: date('end_date').notNull(),
   maxMembers: integer('max_members').notNull(),
   membersCount: integer('members_count').notNull(),
   createdAt: timestamp('created_at').notNull(),
@@ -490,7 +470,6 @@ export const challengeSubscribers = pgTable('challenge_subscribers', {
   challengeId: uuid('challenge_id').notNull().references(() => challenges.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
   userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
   joinedAt: timestamp('joined_at').notNull(),
-  dailyLogCount: integer('daily_log_count').notNull(),
   lastActivityDate: timestamp('last_activity_date'),
 }, (table) => {
   return [
@@ -553,9 +532,9 @@ export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id
 
 // Challenges V2 Types
 export type Challenge = InferSelectModel<typeof challenges>;
-export type NewChallenge = WithNonNullableUserId<Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status'>>;
+export type NewChallenge = WithNonNullableUserId<Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status' | 'endDate'>>;
 export type ChallengeSubscriber = InferSelectModel<typeof challengeSubscribers>;
-export type NewChallengeSubscriber = WithNonNullableUserId<Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'dailyLogCount' | 'lastActivityDate'>>;
+export type NewChallengeSubscriber = WithNonNullableUserId<Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'lastActivityDate'>>;
 
 // User Articles Types
 export type UserArticle = InferSelectModel<typeof userArticles>;

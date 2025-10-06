@@ -1,11 +1,14 @@
 // --- Data Structures ---
 
 import {
-  type DailyLogValuePayload, 
-  type AllLogKeysType,
   type User,
   type ProgressShare,
 } from "$lib/server/db/schema";
+import {
+  type DailyLogValuePayload, 
+  type AllLogKeysType,
+} from "$lib/config/constants";
+
 import {
   type GetUserProfileOperation,
   type GetUserMetadataOperation,

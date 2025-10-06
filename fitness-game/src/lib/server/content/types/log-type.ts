@@ -3,9 +3,9 @@
 
 import { z } from 'zod';
 import { BaseContentSchema } from './common';
-import { AllLogKeys } from '$lib/server/db/schema';
+import { ALL_LOG_KEYS } from '$lib/config/constants';
 
-export const LoggingKeysSchema = z.enum(AllLogKeys);
+export const LoggingKeysSchema = z.enum(ALL_LOG_KEYS);
 
 export const MeasurementUnitsSchema = z.enum([
   "kgs",

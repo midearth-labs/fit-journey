@@ -345,9 +345,9 @@ export class ApiClient {
    * 
    * Used in: Daily habit logging interfaces, challenge completion tracking, streak management
    */
-  async putLog(dto: PutUserLogOperation['request']): Promise<ApiResponse['putLog']> {
-    return this.request<ApiResponse['putLog']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto.body) }, {
-      params: dto.params
+  async putLog(logDate: string, dto: PutUserLogOperation['request']['body']): Promise<ApiResponse['putLog']> {
+    return this.request<ApiResponse['putLog']>('/api/v1/logs/:logDate', { method: 'PUT', body: JSON.stringify(dto) }, {
+      params: { logDate }
     });
   }
 

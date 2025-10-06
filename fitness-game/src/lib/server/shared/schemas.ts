@@ -431,6 +431,7 @@ export const GetUserChallengeResponseSchema = z.object({
   description: z.string().nullable().optional(),
   logTypes: z.array(AllLogKeysSchema),
   startDate: IsoDateSchema,
+  endDate: IsoDateSchema,
   durationDays: z.number().int(),
   joinType: z.enum(['personal', 'public', 'invite-code']),
   maxMembers: z.number().int(),
@@ -556,7 +557,6 @@ export const ListChallengeJoinedByUserMembersOperationSchema = {
       id: UuidSchema,
       userId: UuidSchema.nullable(),
       joinedAt: z.string(),
-      dailyLogCount: z.number().int().min(0),
     }))
   }
 };
@@ -571,7 +571,6 @@ export const GetChallengeJoinedByUserSubscriptionOperationSchema = {
     body: z.object({
       id: UuidSchema,
       joinedAt: z.string(),
-      dailyLogCount: z.number().int().min(0),
       lastActivityDate: z.string().optional()
     })
   }
@@ -593,12 +592,12 @@ export const ListChallengesJoinedByUserOperationSchema = {
       status: true,
       durationDays: true,
       startDate: true,
+      endDate: true,
       joinType: true,
       membersCount: true,
       logTypes: true,
     }).extend({
       joinedAt: z.string(),
-      dailyLogCount: z.number().int().min(0),
       lastActivityDate: z.string().optional()
     }))
   }

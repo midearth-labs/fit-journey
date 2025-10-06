@@ -93,11 +93,11 @@ export class ChallengesService implements IChallengesService {
    * PATCH /api/v1/users/me/challenges/:challengeId
    */
   async updateUserChallenge(dto: UpdateUserChallengeDto): Promise<UpdateUserChallengeResponse> {
-    const { requestDate } = this.requestContext;
+    const { requestDate, user: { id: userId } } = this.requestContext;
     const { challengesRepository, dateTimeHelper } = this.dependencies;
 
     const { challengeId, ...updates } = dto;
-    const challenge = notFoundCheck(await challengesRepository.findById(dto.challengeId), 'Challenge');
+    const challenge = notFoundCheck(await challengesRepository.findByIdForUser(dto.challengeId, userId), 'Challenge');
     
     // Similar to join logic, check if challenge has already started
     if (challenge.implicitStatus({ referenceDate: requestDate }) !== 'not_started') {
@@ -119,7 +119,7 @@ export class ChallengesService implements IChallengesService {
     }
 
     // Service-level validation will be added later (lock checks, deprecated goals, etc.)
-    await this.dependencies.challengesRepository.update(challengeId, { ...updates, updatedAt: requestDate });
+    await this.dependencies.challengesRepository.update(challengeId, {...updates, id: challengeId, userId}, requestDate);
   }
 
   /**
@@ -241,7 +241,6 @@ export class ChallengesService implements IChallengesService {
       id: member.id,
       userId: member.userId,
       joinedAt: member.joinedAt.toISOString(),
-      dailyLogCount: member.dailyLogCount,
     }));
   }
 
@@ -261,7 +260,6 @@ export class ChallengesService implements IChallengesService {
     return {
       id: subscription.id,
       joinedAt: subscription.joinedAt.toISOString(),
-      dailyLogCount: subscription.dailyLogCount,
       lastActivityDate: subscription.lastActivityDate?.toISOString()
     };
   }
@@ -271,7 +269,7 @@ export class ChallengesService implements IChallengesService {
    * GET /api/v1/users/me/challenges/joined
    */
   async listChallengesJoinedByUser(dto: ListChallengesJoinedByUserDto): Promise<ListChallengesJoinedByUserResponse[]> {
-    const { challengesRepository } = this.dependencies;
+    const { challengesRepository, dateTimeHelper } = this.dependencies;
     const { user: { id: userId }, requestDate } = this.requestContext;
     const { page, limit, fromDate, toDate } = dto;
 
@@ -289,10 +287,10 @@ export class ChallengesService implements IChallengesService {
       joinType: challenge.joinType,
       startDate: challenge.startDate,
       durationDays: challenge.durationDays,
+      endDate: challenge.endDate,
       membersCount: challenge.membersCount,
       logTypes: challenge.logTypes,
       joinedAt: challenge.joinedAt.toISOString(),
-      dailyLogCount: challenge.dailyLogCount,
       lastActivityDate: challenge.lastActivityDate?.toISOString()
     }));
   }
@@ -330,6 +328,7 @@ export class ChallengesService implements IChallengesService {
       logTypes: challenge.logTypes,
       startDate: challenge.startDate,
       durationDays: challenge.durationDays,
+      endDate: challenge.endDate,
       joinType: challenge.joinType,
       maxMembers: challenge.maxMembers,
       membersCount: challenge.membersCount,

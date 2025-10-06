@@ -6,7 +6,7 @@ export type IDateTimeHelper = {
   getUtcNow(): Date; // Returns current UTC Date object
   getUnixTimestamp(date: Date): number;
   getUtcDateString(date: Date): string; // Returns YYYY-MM-DD format
-  daysOffset(date: string, offset: number): string;
+  daysOffsetFromDateOnly(dateOnly: string, offset: number): string; // Returns date with offset days from date only (no time/timezone), return the date part only in ISO format
   
   // Challenge-specific date methods
   getTodayUtcDateString(): string; // Returns today's date in YYYY-MM-DD format
@@ -109,8 +109,8 @@ export class DateTimeHelper implements IDateTimeHelper {
     };
   }
 
-  daysOffset(date: string, offset: number): string {
-    const dateObj = new Date(date);
+  daysOffsetFromDateOnly(date: string, offset: number): string {
+    const dateObj = new Date(date + "T00:00:00.000Z");
     dateObj.setDate(dateObj.getDate() + offset);
     return dateObj.toISOString().split('T')[0];
   }

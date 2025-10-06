@@ -26,7 +26,7 @@
 		{ title: 'Learn', url: '/app/learn', icon: BookOpen },
 		{ title: 'Challenges', url: '/app/challenges', icon: Trophy },
 		{ title: 'Community', url: '/app/community', icon: Users },
-		{ title: 'Goals', url: '/app/goals', icon: Target },
+		{ title: 'Tracking', url: '/app/logs', icon: Target },
 		{ title: 'Calendar', url: '/app/calendar', icon: Calendar }
 	];
 
