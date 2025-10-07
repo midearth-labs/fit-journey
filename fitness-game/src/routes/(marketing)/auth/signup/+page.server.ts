@@ -31,7 +31,7 @@ export const actions: Actions = {
     if (displayName) metadata.name = displayName
     if (inviterCode) metadata.inviter_code = inviterCode
     if (learningPaths) {
-      const helper = serviceFactory.getLearningPathHelper()
+      const helper = serviceFactory.learningPathHelper
       const validPaths = helper.filterValidLearningPaths(learningPaths.split(','))
       if (validPaths) {
         metadata.learning_paths = validPaths
@@ -58,7 +58,7 @@ export const actions: Actions = {
     const redirectUrl = new URL('/auth/callback', url.origin)
     if (inviterCode) redirectUrl.searchParams.set('inviterCode', inviterCode)
     if (learningPaths) {
-      const helper = serviceFactory.getLearningPathHelper()
+      const helper = serviceFactory.learningPathHelper
       const validPaths = helper.filterValidLearningPaths(learningPaths.split(','))
       if (validPaths) {
         redirectUrl.searchParams.set('learningPaths', validPaths.join(','))

@@ -2,10 +2,6 @@
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users CASCADE;
 DROP TRIGGER IF EXISTS on_auth_user_updated ON auth.users CASCADE;
 DROP TRIGGER IF EXISTS on_users_inviter_code_updated ON public.users CASCADE;
-DROP TRIGGER IF EXISTS trigger_increment_knowledge_base_count ON public.user_challenge_progress CASCADE;
-DROP TRIGGER IF EXISTS trigger_decrement_knowledge_base_count ON public.user_challenge_progress CASCADE;
-DROP TRIGGER IF EXISTS trigger_increment_daily_log_count ON public.user_logs CASCADE;
-DROP TRIGGER IF EXISTS trigger_decrement_daily_log_count ON public.user_logs CASCADE;
 DROP TRIGGER IF EXISTS trg_global_users_ins ON public.users CASCADE;
 DROP TRIGGER IF EXISTS trg_global_users_del ON public.users CASCADE;
 DROP TRIGGER IF EXISTS trg_global_users_upd_invite_join ON public.users CASCADE;
@@ -37,26 +33,19 @@ DROP FUNCTION IF EXISTS public.global_track_user_metadata_upd CASCADE;
 
 -- Drop Tables
 DROP TABLE IF EXISTS public.answer_reactions CASCADE;
-DROP TABLE IF EXISTS public.article_tracking CASCADE;
-DROP TABLE IF EXISTS public.challenge_subscribers CASCADE;
-DROP TABLE IF EXISTS public.challenges CASCADE;
-DROP TABLE IF EXISTS public.global_tracking CASCADE;
-DROP TABLE IF EXISTS public.progress_shares CASCADE;
-DROP TABLE IF EXISTS public.question_answers CASCADE;
-DROP TABLE IF EXISTS public.question_articles CASCADE;
 DROP TABLE IF EXISTS public.question_reactions CASCADE;
-DROP TABLE IF EXISTS public.questions CASCADE;
+DROP TABLE IF EXISTS public.question_articles CASCADE;
+DROP TABLE IF EXISTS public.question_answers CASCADE;
+DROP TABLE IF EXISTS public.progress_shares CASCADE;
+DROP TABLE IF EXISTS public.challenge_subscribers CASCADE;
 DROP TABLE IF EXISTS public.user_articles CASCADE;
-DROP TABLE IF EXISTS public.user_logs CASCADE;
+DROP TABLE IF EXISTS public.user_daily_logs CASCADE;
 DROP TABLE IF EXISTS public.user_metadata CASCADE;
+DROP TABLE IF EXISTS public.questions CASCADE;
+DROP TABLE IF EXISTS public.challenges CASCADE;
+DROP TABLE IF EXISTS public.article_tracking CASCADE;
+DROP TABLE IF EXISTS public.global_tracking CASCADE;
 DROP TABLE IF EXISTS public.users CASCADE;
-DROP TABLE IF EXISTS public.user_profiles CASCADE;
-DROP TABLE IF EXISTS public.user_habit_logs CASCADE;
-DROP TABLE IF EXISTS public.user_challenges CASCADE;
-DROP TABLE IF EXISTS public.user_challenge_progress CASCADE;
-DROP TABLE IF EXISTS public.streak_logs CASCADE;
-DROP TABLE IF EXISTS public.streak_histories CASCADE;
-DROP TABLE IF EXISTS public.fitness_level_histories CASCADE;
 
 -- Drop Types
 DROP TYPE IF EXISTS public.all_log_keys CASCADE;
@@ -72,7 +61,3 @@ DROP TYPE IF EXISTS public.reaction_type CASCADE;
 DROP TYPE IF EXISTS public.share_status CASCADE;
 DROP TYPE IF EXISTS public.share_type CASCADE;
 
-
-
-INSERT INTO "public"."users" ("id", "email", "created_at", "updated_at") VALUES ('25bab121-f6d2-4ce5-b0d1-2159e71ca63f', 'admin@midearthlabs.dev', '2025-08-29 02:48:36.579089', '2025-08-29 02:48:36.579089');
-INSERT INTO "public"."user_profiles" ("id", "current_fitness_level", "created_at", "updated_at") VALUES ('25bab121-f6d2-4ce5-b0d1-2159e71ca63f', '0', '2025-08-29 02:48:36.579089', '2025-08-29 02:48:36.579089');

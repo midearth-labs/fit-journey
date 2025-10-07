@@ -40,7 +40,7 @@ export const load: PageServerLoad = async ({ url, locals: { supabase, serviceFac
           
           // Handle learning paths
           if (learningPaths) {
-            const helper = serviceFactory.getLearningPathHelper()
+            const helper = serviceFactory.learningPathHelper
             const validPaths = helper.filterValidLearningPaths(learningPaths.split(','))
             if (validPaths) {
               updatedMetadata.learning_paths = validPaths

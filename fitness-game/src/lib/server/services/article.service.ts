@@ -24,7 +24,8 @@ import {
 import { ValidationError, notFoundCheck } from '$lib/server/shared/errors';
 import { type IUserArticlesRepository } from '$lib/server/repositories';
 import { type IKnowledgeBaseDAO, type IQuestionsDAO } from '$lib/server/content/daos';
-import { transitionTo, ARTICLE_STATE_TRANSITIONS_V2, type TransitionMapV2, type TransitionDetailsOf } from '$lib/server/helpers/article-state-machine-helper-v2';
+import { transitionTo, ARTICLE_STATE_TRANSITIONS_V2, type TransitionDetailsOf } from '$lib/server/helpers/article-state-machine-helper-v2';
+import type { UserArticle } from '../db/schema';
 
 export type IArticleService = {
   logRead(dto: LogReadDto): Promise<LogReadResponse>;
@@ -148,12 +149,6 @@ export class ArticleService implements IArticleService {
       'Article'
     );
 
-    // Check if article has practicals (assuming this is defined in the article JSON)
-    const hasPracticals = article.practicals && article.practicals.length > 0;
-    if (!hasPracticals) {
-      throw new ValidationError('This article does not have practical activities.');
-    }
-
     await this.transitionTo(dto.articleId, 'START_PRACTICAL', {});
   }
 
@@ -211,30 +206,34 @@ export class ArticleService implements IArticleService {
     return this.mapToUserArticleDetailResponse(article);
   }
 
-  private mapToUserArticleSummaryResponse(article: any): UserArticleSummaryResponse {
+  private mapToUserArticleSummaryResponse(article: UserArticle): UserArticleSummaryResponse {
     return {
       articleId: article.articleId,
       status: article.status,
-      firstReadDate: article.firstReadDate?.toISOString() || null,
-      lastReadDate: article.lastReadDate?.toISOString() || null,
+      firstReadDate: article.firstReadDate.toISOString(),
+      lastReadDate: article.lastReadDate.toISOString(),
       quizAttempts: article.quizAttempts,
       quizAllCorrectAnswers: article.quizAllCorrectAnswers,
     };
   }
 
-  private mapToUserArticleDetailResponse(article: any): UserArticleDetailResponse {
+  private mapToUserArticleDetailResponse(article: UserArticle): UserArticleDetailResponse {
     return {
       articleId: article.articleId,
       status: article.status,
-      firstReadDate: article.firstReadDate?.toISOString() || null,
-      lastReadDate: article.lastReadDate?.toISOString() || null,
+      firstReadDate: article.firstReadDate.toISOString(),
+      lastReadDate: article.lastReadDate.toISOString(),
       quizAttempts: article.quizAttempts,
       quizAllCorrectAnswers: article.quizAllCorrectAnswers,
-      quizFirstAttemptedAt: article.quizFirstAttemptedAt?.toISOString() || null,
-      quizLastAttemptedAt: article.quizLastAttemptedAt?.toISOString() || null,
+      quizFirstSubmittedAt: article.quizFirstSubmittedAt?.toISOString() || null,
       quizStartedAt: article.quizStartedAt?.toISOString() || null,
-      quizCompletedAt: article.quizCompletedAt?.toISOString() || null,
-      quizAnswers: article.quizAnswers,
+      quizSubmittedAt: article.quizSubmittedAt?.toISOString() || null,
+      quizAnswers: article.quizAnswers?.map(answer => ({
+        questionId: answer.question_id,
+        answerIndex: answer.answer_index,
+        hintUsed: answer.hint_used,
+        isCorrect: answer.is_correct,
+      })) || null,
       createdAt: article.createdAt.toISOString(),
       updatedAt: article.updatedAt.toISOString(),
     };

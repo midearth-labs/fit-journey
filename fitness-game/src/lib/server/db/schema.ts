@@ -132,10 +132,10 @@ export const userArticles = pgTable('user_articles', {
   
   // Quiz tracking
   quizAllCorrectAnswers: boolean('quiz_all_correct_answers'),
-  quizFirstAttemptedAt: timestamp('quiz_first_attempted_at'),
+  quizFirstSubmittedAt: timestamp('quiz_first_submitted_at'),
   quizAttempts: integer('quiz_attempts').notNull(),
   quizStartedAt: timestamp('quiz_started_at'),
-  quizCompletedAt: timestamp('quiz_completed_at'),
+  quizSubmittedAt: timestamp('quiz_submitted_at'),
   
   // Quiz answers storage (similar to existing logic)
   quizAnswers: jsonb('quiz_answers').$type<UserAnswer[]>(),
@@ -539,7 +539,7 @@ export type NewChallengeSubscriber = WithNonNullableUserId<Omit<InferInsertModel
 // User Articles Types
 export type UserArticle = InferSelectModel<typeof userArticles>;
 export type NewUserArticle = Omit<InferInsertModel<typeof userArticles>, 'id' | 'userId' | 'articleId' |
- 'quizAllCorrectAnswers' | 'quizFirstAttemptedAt' | 'quizStartedAt' | 'quizCompletedAt' | 'quizAnswers' | 
+ 'quizAllCorrectAnswers' | 'quizFirstSubmittedAt' | 'quizStartedAt' | 'quizSubmittedAt' | 'quizAnswers' | 
  'updatedAt' | 'createdAt'>;
 
 // Article Tracking Types

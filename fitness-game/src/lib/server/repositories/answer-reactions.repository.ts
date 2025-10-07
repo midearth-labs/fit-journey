@@ -26,13 +26,13 @@ export class AnswerReactionsRepository implements IAnswerReactionsRepository {
         .onConflictDoUpdate({
           target: [answerReactions.answerId, answerReactions.userId],
           set: {
-            reactionType: sql`EXCLUDED.reaction_type`,
-            createdAt: sql`EXCLUDED.created_at`
+            reactionType: sql`EXCLUDED.${sql.raw(answerReactions.reactionType.name)}`,
+            createdAt: sql`EXCLUDED.${sql.raw(answerReactions.createdAt.name)}`
           },
           setWhere: sql`${answerReactions.reactionType} != ${reaction.reactionType} AND ${answerReactions.createdAt} <= ${reaction.createdAt}`
         })
         .returning({
-          wasInserted: sql<boolean>`(xmax = 0)`,
+          wasInserted: sql`(xmax = 0)`.mapWith(Boolean),
         });
 
       if (upsertResult.length === 0) {

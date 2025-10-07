@@ -107,7 +107,7 @@ Guidelines:
 await db.update(entities)
   .set({
     someCount: sql`${entities.someCount} + 1`,
-    updatedAt: sql`GREATEST(${entities.updatedAt}, ${requestDate})`,
+    updatedAt: sql`GREATEST(${entities.updatedAt}, ${requestDate.toISOString()})`,
   })
   .where(eq(entities.id, id));
 
@@ -118,15 +118,14 @@ await db.insert(entities)
     target: [/* ... */],
     set: {
       /* ... other fields ... */
-      updatedAt: sql`GREATEST(${entities.updatedAt}, EXCLUDED.updated_at)`,
+      updatedAt: sql`GREATEST(${entities.updatedAt}, EXCLUDED.${sql.raw(entities.updatedAt.name)})`,
     },
   });
 
 ```
 
 Notes:
-- Prefer `GREATEST(table.updated_at, ${requestDate})` over raw assignment to avoid clock skew and retry out-of-order updates.
-- For server-generated timestamps, `NOW()` can be used as the incoming time: `GREATEST(table.updated_at, NOW())`.
+- Prefer `GREATEST(table.updated_at, ${requestDate.toISOString()})` over raw assignment to avoid clock skew and retry out-of-order updates.
 
 ### 1. Atomic Operations (CRITICAL)
 
@@ -506,7 +505,7 @@ async upsert(
         .values(insertData)
         .onConflictDoUpdate({
           target: [entities.userId, entities.key, entities.date],
-          set: { value: sql`EXCLUDED.value` }
+          set: { value: sql`EXCLUDED.${sql.raw(entities.value.name)}` }
         });
       
       affectedRows += insertResult.rowCount;

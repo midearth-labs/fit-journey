@@ -17,13 +17,13 @@ export class QuestionReactionsRepository implements IQuestionReactionsRepository
         .onConflictDoUpdate({
           target: [questionReactions.questionId, questionReactions.userId],
           set: {
-            reactionType: sql`EXCLUDED.reaction_type`,
-            createdAt: sql`EXCLUDED.created_at`
+            reactionType: sql`EXCLUDED.${sql.raw(questionReactions.reactionType.name)}`,
+            createdAt: sql`EXCLUDED.${sql.raw(questionReactions.createdAt.name)}`
           },
           setWhere: sql`${questionReactions.reactionType} != ${reaction.reactionType} AND ${questionReactions.createdAt} <= ${reaction.createdAt}`
         })
         .returning({
-          wasInserted: sql<boolean>`(xmax = 0)`,
+          wasInserted: sql`(xmax = 0)`.mapWith(Boolean),
         });
       
       if (upsertResult.length === 0) {

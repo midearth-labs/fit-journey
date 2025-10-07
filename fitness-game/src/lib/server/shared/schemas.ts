@@ -1311,7 +1311,7 @@ export const ListUserArticlesOperationSchema = {
       firstReadDate: z.string(),
       lastReadDate: z.string(),
       quizAttempts: z.number(),
-      quizAllCorrectAnswers: z.boolean(),
+      quizAllCorrectAnswers: z.boolean().nullable(),
     })),
   }
 };
@@ -1324,18 +1324,18 @@ export const GetUserArticleOperationSchema = {
     body: z.object({
       articleId: z.string(),
       status: z.enum(ArticleLogStatusKeys),
-      firstReadDate: z.string().nullable(),
-      lastReadDate: z.string().nullable(),
+      firstReadDate: z.string(),
+      lastReadDate: z.string(),
       quizAttempts: z.number(),
-      quizAllCorrectAnswers: z.boolean(),
-      quizFirstAttemptedAt: z.string().nullable(),
-      quizLastAttemptedAt: z.string().nullable(),
+      quizAllCorrectAnswers: z.boolean().nullable(),
+      quizFirstSubmittedAt: z.string().nullable(),
       quizStartedAt: z.string().nullable(),
-      quizCompletedAt: z.string().nullable(),
+      quizSubmittedAt: z.string().nullable(),
       quizAnswers: z.array(z.object({
         questionId: z.string(),
-        answer: z.string(),
-        is_correct: z.boolean()
+        answerIndex: z.number(),
+        hintUsed: z.boolean(),
+        isCorrect: z.boolean()
       })).nullable(),
       createdAt: z.string(),
       updatedAt: z.string(),

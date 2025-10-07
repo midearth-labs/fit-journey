@@ -1,6 +1,6 @@
 {
-  "id": "135f9c31-dcbb-42d0-9ef8-9adfe22f1db3",
-  "prevId": "dfca31e1-cea4-46de-bc9c-5ba1df8642ba",
+  "id": "d90eff64-bf6c-4055-982f-da8e59a349dc",
+  "prevId": "08ba17d7-1bc1-40dd-a23f-e6ec0015a89c",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -62,7 +62,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         },
         "answer_reactions_user_id_users_id_fk": {
@@ -75,7 +75,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "set null"
         }
       },
@@ -97,8 +97,8 @@
       "name": "article_tracking",
       "schema": "",
       "columns": {
-        "article_id": {
-          "name": "article_id",
+        "id": {
+          "name": "id",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -134,10 +134,10 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "article_tracking_article_id_partition_key_pk": {
-          "name": "article_tracking_article_id_partition_key_pk",
+        "article_tracking_id_partition_key_pk": {
+          "name": "article_tracking_id_partition_key_pk",
           "columns": [
-            "article_id",
+            "id",
             "partition_key"
           ]
         }
@@ -173,12 +173,6 @@
         "joined_at": {
           "name": "joined_at",
           "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "daily_log_count": {
-          "name": "daily_log_count",
-          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -223,7 +217,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         },
         "challenge_subscribers_user_id_users_id_fk": {
@@ -236,7 +230,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "set null"
         }
       },
@@ -291,8 +285,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "goals": {
-          "name": "goals",
+        "log_types": {
+          "name": "log_types",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true
@@ -320,6 +314,12 @@
         "duration_days": {
           "name": "duration_days",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_date": {
+          "name": "end_date",
+          "type": "date",
           "primaryKey": false,
           "notNull": true
         },
@@ -405,7 +405,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "set null"
         }
       },
@@ -730,7 +730,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         }
       },
@@ -872,7 +872,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         },
         "question_answers_user_id_users_id_fk": {
@@ -885,7 +885,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "set null"
         }
       },
@@ -961,7 +961,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         }
       },
@@ -1037,7 +1037,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         },
         "question_reactions_user_id_users_id_fk": {
@@ -1050,7 +1050,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "set null"
         }
       },
@@ -1200,7 +1200,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "set null"
         }
       },
@@ -1258,8 +1258,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "quiz_first_attempted_at": {
-          "name": "quiz_first_attempted_at",
+        "quiz_first_submitted_at": {
+          "name": "quiz_first_submitted_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": false
@@ -1276,8 +1276,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "quiz_completed_at": {
-          "name": "quiz_completed_at",
+        "quiz_submitted_at": {
+          "name": "quiz_submitted_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": false
@@ -1313,7 +1313,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         }
       },
@@ -1332,8 +1332,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.user_logs": {
-      "name": "user_logs",
+    "public.user_daily_logs": {
+      "name": "user_daily_logs",
       "schema": "",
       "columns": {
         "id": {
@@ -1349,16 +1349,15 @@
           "primaryKey": false,
           "notNull": true
         },
-        "log_key": {
-          "name": "log_key",
-          "type": "all_log_keys",
-          "typeSchema": "public",
+        "five_star_values": {
+          "name": "five_star_values",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
-        "log_value": {
-          "name": "log_value",
-          "type": "integer",
+        "measurement_values": {
+          "name": "measurement_values",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
@@ -1383,9 +1382,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_logs_user_id_users_id_fk": {
-          "name": "user_logs_user_id_users_id_fk",
-          "tableFrom": "user_logs",
+        "user_daily_logs_user_id_users_id_fk": {
+          "name": "user_daily_logs_user_id_users_id_fk",
+          "tableFrom": "user_daily_logs",
           "columnsFrom": [
             "user_id"
           ],
@@ -1393,7 +1392,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         }
       },
@@ -1403,8 +1402,7 @@
           "name": "user_daily_log_unique",
           "columns": [
             "user_id",
-            "log_date",
-            "log_key"
+            "log_date"
           ],
           "nullsNotDistinct": false
         }
@@ -1439,6 +1437,13 @@
         },
         "articles_read": {
           "name": "articles_read",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "articles_completed": {
+          "name": "articles_completed",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
@@ -1538,7 +1543,7 @@
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
+          "onUpdate": "cascade",
           "onDelete": "cascade"
         }
       },
@@ -1675,18 +1680,6 @@
     }
   },
   "enums": {
-    "public.all_log_keys": {
-      "name": "all_log_keys",
-      "schema": "public",
-      "values": [
-        "dailyMovement",
-        "cleanEating",
-        "sleepQuality",
-        "hydration",
-        "moodCheck",
-        "energyLevel"
-      ]
-    },
     "public.answer_status": {
       "name": "answer_status",
       "schema": "public",
@@ -1745,15 +1738,6 @@
         "completed",
         "locked",
         "inactive"
-      ]
-    },
-    "public.emoji_reaction_type": {
-      "name": "emoji_reaction_type",
-      "schema": "public",
-      "values": [
-        "clap",
-        "muscle",
-        "party"
       ]
     },
     "public.question_status": {

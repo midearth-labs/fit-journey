@@ -33,11 +33,13 @@ import { type Content } from '$lib/server/content/types';
 import { createServiceFromClass, createUnAuthServiceFromClass, type ServiceCreatorFromMaybeAuthRequestContext, type ServiceCreatorFromRequestContext } from '../services/shared';
 import type { AuthRequestContext, MaybeAuthRequestContext } from './interfaces';
 import type { IContentDAOFactory } from '../content/daos';
+import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
 
 export type IServiceFactory = {
   getAuthServices(authRequestContext: AuthRequestContext): AuthServices;
   getUnAuthServices(maybeAuthRequestContext: MaybeAuthRequestContext): UnAuthServices;
-  getLearningPathHelper(): ILearningPathHelper;
+  learningPathHelper: ILearningPathHelper;
+  contentDAOFactory: IContentDAOFactory;
 };
 
 /**
@@ -47,11 +49,11 @@ export type IServiceFactory = {
 export class ServiceFactory implements IServiceFactory {
   private static instance: IServiceFactory;
   
-  private readonly contentDAOFactory: IContentDAOFactory;
+  public readonly contentDAOFactory: IContentDAOFactory;
   private readonly dateTimeHelper: IDateTimeHelper;
   private readonly progressContentHelper: IProgressContentHelper;
   private readonly featureAccessControl: IFeatureAccessControl;
-  private readonly learningPathHelper: ILearningPathHelper;
+  public readonly learningPathHelper: ILearningPathHelper;
   private readonly partitionGenerator: IPartitionGenerator;
   
   // Repositories
@@ -85,8 +87,7 @@ export class ServiceFactory implements IServiceFactory {
   private readonly progressSharesUnAuthenticatedServiceCreator: ServiceCreatorFromMaybeAuthRequestContext<IProgressSharesUnAuthenticatedService>;
   private readonly statisticsServiceCreator: ServiceCreatorFromMaybeAuthRequestContext<IStatisticsService>;
   
-  private constructor(content: Content) {
-    const db = getDBInstance();
+  private constructor(content: Content, db: NodePgDatabase<any>) {
     this.contentDAOFactory = ContentDAOFactory.initializeDAOs(content);
     
     // Initialize helpers
@@ -181,9 +182,16 @@ export class ServiceFactory implements IServiceFactory {
    * Get singleton instance of ServiceFactory
    */
   public static async getInstance(): Promise<IServiceFactory> {
+    return ServiceFactory.getInstanceWithDB(getDBInstance());
+  }
+  
+  /**
+   * Get singleton instance of ServiceFactory
+   */
+  public static async getInstanceWithDB(db: NodePgDatabase<any>): Promise<IServiceFactory> {
     if (!ServiceFactory.instance) {
       const contentLoader = await ContentLoader.initialize();
-      ServiceFactory.instance = new ServiceFactory(contentLoader.getContent());
+      ServiceFactory.instance = new ServiceFactory(contentLoader.getContent(), db);
     }
     return ServiceFactory.instance;
   }
@@ -208,10 +216,4 @@ export class ServiceFactory implements IServiceFactory {
     };
   }
   
-  /**
-   * Get learning path helper
-   */
-  public getLearningPathHelper(): ILearningPathHelper {
-    return this.learningPathHelper;
-  }
 }

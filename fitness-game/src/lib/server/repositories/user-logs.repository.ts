@@ -34,14 +34,14 @@ export class UserLogsRepository implements IUserLogsRepository {
       .onConflictDoUpdate({
         target: [userLogs.userId, userLogs.logDate],
         set: {
-          fiveStarValues: sql`EXCLUDED.five_star_values`,
-          measurementValues: sql`EXCLUDED.measurement_values`,
-          updatedAt: sql`GREATEST(${userLogs.updatedAt}, EXCLUDED.updated_at)`,
+          fiveStarValues: sql`EXCLUDED.${sql.raw(userLogs.fiveStarValues.name)}`,
+          measurementValues: sql`EXCLUDED.${sql.raw(userLogs.measurementValues.name)}`,
+          updatedAt: sql`GREATEST(${userLogs.updatedAt}, EXCLUDED.${sql.raw(userLogs.updatedAt.name)})`,
         },
-        setWhere: sql`${userLogs.userId} = EXCLUDED.userId`
+        setWhere: sql`${userLogs.userId} = EXCLUDED.${sql.raw(userLogs.userId.name)}`
       })
       .returning({
-        wasInserted: sql<boolean>`(xmax = 0)`,
+        wasInserted: sql`(xmax = 0)`.mapWith(Boolean),
       });
 
     const wasInserted = result[0].wasInserted;
@@ -52,7 +52,7 @@ export class UserLogsRepository implements IUserLogsRepository {
         .update(userMetadata)
         .set({
           daysLogged: sql`${userMetadata.daysLogged} + 1`,
-          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${logData.createdAt})`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${logData.createdAt.toISOString()})`,
         })
         .where(eq(userMetadata.id, logData.userId));
     }
@@ -72,7 +72,7 @@ export class UserLogsRepository implements IUserLogsRepository {
         .update(userMetadata)
         .set({
           daysLogged: sql`${userMetadata.daysLogged} - 1`,
-          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate.toISOString()})`,
         })
         .where(eq(userMetadata.id, userId));
     }

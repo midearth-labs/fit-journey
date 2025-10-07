@@ -216,8 +216,8 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
         status: 'knowledge_check_complete',
         quizAllCorrectAnswers: allCorrect,
         quizAnswers,
-        quizFirstAttemptedAt: current.quizFirstAttemptedAt ?? now,
-        quizCompletedAt: now,
+        quizFirstSubmittedAt: current.quizFirstSubmittedAt ?? now,
+        quizSubmittedAt: now,
         quizAttempts: current.quizAttempts + 1,
       } satisfies PartialUpdateArticle;
     },
@@ -241,7 +241,7 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
         quizAllCorrectAnswers: false,
         quizAnswers: null,
         quizStartedAt: now,
-        quizCompletedAt: null,
+        quizSubmittedAt: null,
       } satisfies PartialUpdateArticle;
     },
   },
@@ -250,7 +250,9 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
     preconditionStates: ['knowledge_check_complete'],
     preconditionCheck: async (_, details: StateTransitionDetailsBase) => {
         if ((details.article.practicals ?? []).length === 0) {
-            throw new ValidationError('This article does not have practical activities.');
+            //@TODO: Revert or re-engineer
+            console.warn('This article does not have practical activities.');
+            //throw new ValidationError('This article does not have practical activities.');
         }
     },
     existsStateChange: () => {
@@ -281,10 +283,12 @@ export const ARTICLE_STATE_TRANSITIONS_V2 = defineTransitions({
   COMPLETE_ARTICLE: {
     preconditionStates: [
       'knowledge_check_complete',
-      'practical_in_progress'
+      'practical_in_progress',
+      'completed'
     ],
-    existsStateChange: (_, details: StateTransitionDetailsBase) => {
-      return {
+    //@TODO: Build a more generic idempotency check into all transitions
+    existsStateChange: (current, details: StateTransitionDetailsBase) => {
+      return current.status === 'completed' ? {} : {
         status: 'completed',
       } satisfies PartialUpdateArticle;
     },

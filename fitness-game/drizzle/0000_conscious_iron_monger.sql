@@ -1,11 +1,9 @@
-CREATE TYPE "public"."all_log_keys" AS ENUM('dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel');--> statement-breakpoint
 CREATE TYPE "public"."answer_status" AS ENUM('pending', 'approved', 'rejected', 'hidden');--> statement-breakpoint
 CREATE TYPE "public"."article_log_status" AS ENUM('reading_in_progress', 'knowledge_check_in_progress', 'knowledge_check_complete', 'practical_in_progress', 'completed');--> statement-breakpoint
 CREATE TYPE "public"."avatar_age_range" AS ENUM('child', 'teen', 'young-adult', 'middle-age', 'senior');--> statement-breakpoint
 CREATE TYPE "public"."avatar_gender" AS ENUM('male', 'female');--> statement-breakpoint
 CREATE TYPE "public"."challenge_join_type" AS ENUM('personal', 'public', 'invite-code');--> statement-breakpoint
 CREATE TYPE "public"."user_challenge_status" AS ENUM('not_started', 'active', 'completed', 'locked', 'inactive');--> statement-breakpoint
-CREATE TYPE "public"."emoji_reaction_type" AS ENUM('clap', 'muscle', 'party');--> statement-breakpoint
 CREATE TYPE "public"."question_status" AS ENUM('pending', 'approved', 'rejected', 'hidden');--> statement-breakpoint
 CREATE TYPE "public"."reaction_type" AS ENUM('helpful', 'not_helpful');--> statement-breakpoint
 CREATE TYPE "public"."share_status" AS ENUM('active', 'hidden');--> statement-breakpoint
@@ -32,7 +30,6 @@ CREATE TABLE "challenge_subscribers" (
 	"challenge_id" uuid NOT NULL,
 	"user_id" uuid,
 	"joined_at" timestamp NOT NULL,
-	"daily_log_count" integer NOT NULL,
 	"last_activity_date" timestamp,
 	CONSTRAINT "challenge_subscribers_unique_member" UNIQUE("challenge_id","user_id")
 );
@@ -43,11 +40,12 @@ CREATE TABLE "challenges" (
 	"name" text NOT NULL,
 	"description" text NOT NULL,
 	"status" "user_challenge_status" NOT NULL,
-	"goals" jsonb NOT NULL,
+	"log_types" jsonb NOT NULL,
 	"join_type" "challenge_join_type" NOT NULL,
 	"invite_code" uuid DEFAULT gen_random_uuid() NOT NULL,
 	"start_date" date NOT NULL,
 	"duration_days" integer NOT NULL,
+	"end_date" date NOT NULL,
 	"max_members" integer NOT NULL,
 	"members_count" integer NOT NULL,
 	"created_at" timestamp NOT NULL,
@@ -142,25 +140,25 @@ CREATE TABLE "user_articles" (
 	"last_read_date" timestamp NOT NULL,
 	"status" "article_log_status" NOT NULL,
 	"quiz_all_correct_answers" boolean,
-	"quiz_first_attempted_at" timestamp,
+	"quiz_first_submitted_at" timestamp,
 	"quiz_attempts" integer NOT NULL,
 	"quiz_started_at" timestamp,
-	"quiz_completed_at" timestamp,
+	"quiz_submitted_at" timestamp,
 	"quiz_answers" jsonb,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL,
 	CONSTRAINT "user_article_unique_index" UNIQUE("user_id","article_id")
 );
 --> statement-breakpoint
-CREATE TABLE "user_logs" (
+CREATE TABLE "user_daily_logs" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
-	"log_key" "all_log_keys" NOT NULL,
-	"log_value" integer NOT NULL,
+	"five_star_values" jsonb NOT NULL,
+	"measurement_values" jsonb NOT NULL,
 	"log_date" date NOT NULL,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL,
-	CONSTRAINT "user_daily_log_unique" UNIQUE("user_id","log_date","log_key")
+	CONSTRAINT "user_daily_log_unique" UNIQUE("user_id","log_date")
 );
 --> statement-breakpoint
 CREATE TABLE "user_metadata" (
@@ -168,6 +166,7 @@ CREATE TABLE "user_metadata" (
 	"enabled_features" jsonb DEFAULT '{}'::jsonb NOT NULL,
 	"current_fitness_level" integer DEFAULT 0 NOT NULL,
 	"articles_read" integer DEFAULT 0 NOT NULL,
+	"articles_completed" integer DEFAULT 0 NOT NULL,
 	"articles_completed_with_perfect_score" integer DEFAULT 0 NOT NULL,
 	"challenges_started" integer DEFAULT 0 NOT NULL,
 	"challenges_joined" integer DEFAULT 0 NOT NULL,
@@ -202,21 +201,21 @@ CREATE TABLE "users" (
 	CONSTRAINT "users_invitation_code_unique" UNIQUE("invitation_code")
 );
 --> statement-breakpoint
-ALTER TABLE "answer_reactions" ADD CONSTRAINT "answer_reactions_answer_id_question_answers_id_fk" FOREIGN KEY ("answer_id") REFERENCES "public"."question_answers"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "answer_reactions" ADD CONSTRAINT "answer_reactions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "challenge_subscribers" ADD CONSTRAINT "challenge_subscribers_challenge_id_challenges_id_fk" FOREIGN KEY ("challenge_id") REFERENCES "public"."challenges"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "challenge_subscribers" ADD CONSTRAINT "challenge_subscribers_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "challenges" ADD CONSTRAINT "challenges_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "progress_shares" ADD CONSTRAINT "progress_shares_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "question_answers" ADD CONSTRAINT "question_answers_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "question_answers" ADD CONSTRAINT "question_answers_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "question_articles" ADD CONSTRAINT "question_articles_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "question_reactions" ADD CONSTRAINT "question_reactions_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "question_reactions" ADD CONSTRAINT "question_reactions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "questions" ADD CONSTRAINT "questions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "user_articles" ADD CONSTRAINT "user_articles_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "user_logs" ADD CONSTRAINT "user_logs_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "user_metadata" ADD CONSTRAINT "user_metadata_id_users_id_fk" FOREIGN KEY ("id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "answer_reactions" ADD CONSTRAINT "answer_reactions_answer_id_question_answers_id_fk" FOREIGN KEY ("answer_id") REFERENCES "public"."question_answers"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "answer_reactions" ADD CONSTRAINT "answer_reactions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "challenge_subscribers" ADD CONSTRAINT "challenge_subscribers_challenge_id_challenges_id_fk" FOREIGN KEY ("challenge_id") REFERENCES "public"."challenges"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "challenge_subscribers" ADD CONSTRAINT "challenge_subscribers_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "challenges" ADD CONSTRAINT "challenges_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "progress_shares" ADD CONSTRAINT "progress_shares_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "question_answers" ADD CONSTRAINT "question_answers_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "question_answers" ADD CONSTRAINT "question_answers_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "question_articles" ADD CONSTRAINT "question_articles_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "question_reactions" ADD CONSTRAINT "question_reactions_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "question_reactions" ADD CONSTRAINT "question_reactions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "questions" ADD CONSTRAINT "questions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "user_articles" ADD CONSTRAINT "user_articles_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "user_daily_logs" ADD CONSTRAINT "user_daily_logs_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
+ALTER TABLE "user_metadata" ADD CONSTRAINT "user_metadata_id_users_id_fk" FOREIGN KEY ("id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
 CREATE INDEX "answer_reactions_answer_index" ON "answer_reactions" USING btree ("answer_id");--> statement-breakpoint
 CREATE INDEX "challenge_subscribers_user_index" ON "challenge_subscribers" USING btree ("user_id","joined_at");--> statement-breakpoint
 CREATE INDEX "challenges_public_list_index" ON "challenges" USING btree ("start_date","created_at") WHERE "challenges"."join_type" = 'public';--> statement-breakpoint

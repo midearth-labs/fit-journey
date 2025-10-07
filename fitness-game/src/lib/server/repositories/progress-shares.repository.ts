@@ -48,7 +48,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
         .update(userMetadata)
         .set({
           progressShares: sql`${userMetadata.progressShares} + 1`,
-          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${data.createdAt})`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${data.createdAt.toISOString()})`,
         })
         .where(eq(userMetadata.id, data.userId));
 
@@ -117,7 +117,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
         status: share.status,
         isPublic: share.isPublic,
         includeInviteLink: share.includeInviteLink,
-        updatedAt: sql`GREATEST(${progressShares.updatedAt}, ${share.updatedAt})`
+        updatedAt: sql`GREATEST(${progressShares.updatedAt}, ${share.updatedAt.toISOString()})`
       })
       .where(and(
         eq(progressShares.id, share.id),
@@ -139,7 +139,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
     const result = await this.db.update(progressShares)
       .set({ 
         [incrementField.name]: sql`${incrementField.field} + 1`,
-        updatedAt: sql`GREATEST(${progressShares.updatedAt}, ${requestDate})`
+        updatedAt: sql`GREATEST(${progressShares.updatedAt}, ${requestDate.toISOString()})`
       })
       .where(and(
         eq(progressShares.id, id),
@@ -163,7 +163,7 @@ export class ProgressSharesRepository implements IProgressSharesRepository {
           .update(userMetadata)
           .set({
             progressShares: sql`${userMetadata.progressShares} - 1`,
-            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
+            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate.toISOString()})`,
           })
           .where(eq(userMetadata.id, share.userId));
       }

@@ -67,7 +67,7 @@ export class ChallengesRepository implements IChallengesRepository {
         .update(userMetadata)
         .set({
           challengesStarted: sql`${userMetadata.challengesStarted} + 1`,
-          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${challenge.createdAt})`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${challenge.createdAt.toISOString()})`,
         })
         .where(eq(userMetadata.id, challenge.userId));
       
@@ -137,7 +137,7 @@ export class ChallengesRepository implements IChallengesRepository {
           .update(userMetadata)
           .set({
             challengesStarted: sql`${userMetadata.challengesStarted} - 1`,
-            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
+            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate.toISOString()})`,
           })
           .where(eq(userMetadata.id, userId));
       }
@@ -160,7 +160,7 @@ export class ChallengesRepository implements IChallengesRepository {
         .update(userMetadata)
         .set({
           challengesJoined: sql`${userMetadata.challengesJoined} + 1`,
-          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${subscriber.joinedAt})`,
+          updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${subscriber.joinedAt.toISOString()})`,
         })
         .where(eq(userMetadata.id, subscriber.userId));
 
@@ -183,7 +183,7 @@ export class ChallengesRepository implements IChallengesRepository {
           .update(userMetadata)
           .set({
             challengesJoined: sql`${userMetadata.challengesJoined} - 1`,
-            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate})`,
+            updatedAt: sql`GREATEST(${userMetadata.updatedAt}, ${requestDate.toISOString()})`,
           })
           .where(eq(userMetadata.id, userId));
 
@@ -390,7 +390,7 @@ export class ChallengesRepository implements IChallengesRepository {
      
     // 1) Lock expired challenges (outside grace period): startDate <= earliestDateOnEarthWithGrace
     await this.db.update(challenges)
-      .set({ status: 'locked', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate})` })
+      .set({ status: 'locked', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate.toISOString()})` })
       .where(and(
         // status NOT IN ('locked','inactive')
         notInArray(challenges.status, ['locked', 'inactive']),
@@ -401,7 +401,7 @@ export class ChallengesRepository implements IChallengesRepository {
 
     // 2) Activate pending challenges: not_started and startDate <= latestDateOnEarth
     await this.db.update(challenges)
-      .set({ status: 'active', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate})` })
+      .set({ status: 'active', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate.toISOString()})` })
       .where(and(
         eq(challenges.status, 'not_started'),
         lte(challenges.startDate, latestDateOnEarth)
@@ -409,7 +409,7 @@ export class ChallengesRepository implements IChallengesRepository {
 
     // 3) Complete active challenges when end date has passed globally: startDate + durationDays <= earliestDateOnEarth
     await this.db.update(challenges)
-      .set({ status: 'completed', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate})` })
+      .set({ status: 'completed', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate.toISOString()})` })
       .where(and(
         eq(challenges.status, 'active'),
         // start_date <= earliestDateOnEarth - durationDays days
@@ -440,7 +440,7 @@ export class ChallengesRepository implements IChallengesRepository {
       await this.db
         .with(toUpdate)
         .update(challenges)
-        .set({ status: 'locked', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate})` })
+        .set({ status: 'locked', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate.toISOString()})` })
         .where(sql`${challenges.id} in (select id from ${toUpdate})`);
     }
 
@@ -462,7 +462,7 @@ export class ChallengesRepository implements IChallengesRepository {
       await this.db
         .with(toUpdate)
         .update(challenges)
-        .set({ status: 'active', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate})` })
+        .set({ status: 'active', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate.toISOString()})` })
         .where(sql`${challenges.id} in (select id from ${toUpdate})`);
     }
 
@@ -484,7 +484,7 @@ export class ChallengesRepository implements IChallengesRepository {
       await this.db
         .with(toUpdate)
         .update(challenges)
-        .set({ status: 'completed', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate})` })
+        .set({ status: 'completed', updatedAt: sql`GREATEST(${challenges.updatedAt}, ${requestDate.toISOString()})` })
         .where(sql`${challenges.id} in (select id from ${toUpdate})`);
     }
   }

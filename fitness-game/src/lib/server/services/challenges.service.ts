@@ -67,7 +67,7 @@ export class ChallengesService implements IChallengesService {
     const maxMembers = dto.joinType === 'personal' ? 1 : (dto.maxMembers);
 
     // Validate startDate is not in the past anywhere in the world
-    const { latest: latestPossibleDate } = dateTimeHelper.getPossibleDatesOnEarthAtInstant(dateTimeHelper.getUtcNow());
+    const { latest: latestPossibleDate } = dateTimeHelper.getPossibleDatesOnEarthAtInstant(requestDate);
     if (dto.startDate < latestPossibleDate) {
       throw new ValidationError('Start date must be a future date');
     }
@@ -105,7 +105,7 @@ export class ChallengesService implements IChallengesService {
     }
 
     // Validate startDate is not in the past anywhere in the world
-    const { latest: latestPossibleDate } = dateTimeHelper.getPossibleDatesOnEarthAtInstant(dateTimeHelper.getUtcNow());
+    const { latest: latestPossibleDate } = dateTimeHelper.getPossibleDatesOnEarthAtInstant(requestDate);
     if (updates.startDate < latestPossibleDate) {
       throw new ValidationError('Start date must be a future date');
     }
