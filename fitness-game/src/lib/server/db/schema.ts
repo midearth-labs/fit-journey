@@ -107,7 +107,6 @@ export const userMetadata = pgTable('user_metadata', {
     quizPassed?: string;
     all?: string;
   }>().notNull().default({}), // each value is a FK to StreakHistory
-  lastActivityDate: timestamp('last_activity_date'), // update this based on completion of daily quiz or logging of habits, weight, RHR etc
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
 });
@@ -469,8 +468,8 @@ export const challengeSubscribers = pgTable('challenge_subscribers', {
   id: uuid('id').primaryKey().defaultRandom(),
   challengeId: uuid('challenge_id').notNull().references(() => challenges.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
   userId: uuid('user_id').references(() => users.id, { onDelete: 'set null', onUpdate: 'cascade' }),
+  shareLogKeys: jsonb('share_log_keys').$type<AllLogKeysType[]>().notNull(),
   joinedAt: timestamp('joined_at').notNull(),
-  lastActivityDate: timestamp('last_activity_date'),
 }, (table) => {
   return [
     // would this index satisfy queries on just challengeId?
@@ -534,7 +533,7 @@ export type NewProgressShare = Omit<InferInsertModel<typeof progressShares>, 'id
 export type Challenge = InferSelectModel<typeof challenges>;
 export type NewChallenge = WithNonNullableUserId<Omit<InferInsertModel<typeof challenges>, 'id' | 'updatedAt' | 'membersCount' | 'inviteCode' | 'status' | 'endDate'>>;
 export type ChallengeSubscriber = InferSelectModel<typeof challengeSubscribers>;
-export type NewChallengeSubscriber = WithNonNullableUserId<Omit<InferInsertModel<typeof challengeSubscribers>, 'id' | 'lastActivityDate'>>;
+export type NewChallengeSubscriber = WithNonNullableUserId<Omit<InferInsertModel<typeof challengeSubscribers>, 'id'>>;
 
 // User Articles Types
 export type UserArticle = InferSelectModel<typeof userArticles>;

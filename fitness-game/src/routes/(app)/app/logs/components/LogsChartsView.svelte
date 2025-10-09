@@ -29,10 +29,10 @@
 	let selectedTimeRange = $state<'7d' | '30d' | '90d'>('30d');
 
 	// Use chart data from store
-	const chartData = $derived.by(() => logsViewStore.chartData);
+	const chartData = $derived(logsViewStore.chartData);
 
 	// Weekly trend summary derived from Map structure
-	const weeklyTrendStats = $derived(() => {
+	const weeklyTrendStats = $derived.by(() => {
 		const map = chartData?.insights.weeklyTrend;
 		if (!map) {
 			return { improving: 0, declining: 0, neutral: 0, best: null as null | [string, number], worst: null as null | [string, number] };
@@ -149,7 +149,7 @@
 			</CardHeader>
 			<CardContent>
 				<div class="text-2xl font-bold">
-					+{weeklyTrendStats().improving} / -{weeklyTrendStats().declining}
+					+{weeklyTrendStats.improving} / -{weeklyTrendStats.declining}
 				</div>
 				<p class="text-xs text-muted-foreground">metrics improving vs declining (last 7d vs prev)</p>
 			</CardContent>

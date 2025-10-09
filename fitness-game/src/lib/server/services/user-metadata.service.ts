@@ -38,7 +38,7 @@ export class UserMetadataService implements IUserMetadataService {
       questionsAsked: userMetadata.questionsAsked,
       questionsAnswered: userMetadata.questionsAnswered,
       progressShares: userMetadata.progressShares,
-      lastActivityDate: userMetadata.lastActivityDate?.toISOString() ?? null,
+      lastActivityDate: userMetadata.updatedAt.toISOString(),
     };
   }
 }

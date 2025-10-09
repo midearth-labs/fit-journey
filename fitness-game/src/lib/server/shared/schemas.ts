@@ -76,7 +76,7 @@ export const UserMetadataResponseSchema = z.object({
   questionsAsked: z.number().int().min(0),
   questionsAnswered: z.number().int().min(0),
   progressShares: z.number().int().min(0),
-  lastActivityDate: z.string().nullable(),
+  lastActivityDate: z.string(),
 });
 
 // --- Log Schemas ---
@@ -146,12 +146,16 @@ export const CreateChallengeDtoSchema = z.object({
 export const UpdateChallengeDtoSchema = CreateChallengeDtoSchema;
 
 export const JoinChallengeDtoSchema = z.object({
-  challengeId: UuidSchema,
   inviteCode: UuidSchema.optional(),
+  shareLogKeys: z.array(AllLogKeysSchema),
 });
 
 export const LeaveChallengeDtoSchema = z.object({
   challengeId: UuidSchema,
+});
+
+export const UpdateChallengeJoinedByUserSubscriptionDtoSchema = z.object({
+  shareLogKeys: z.array(AllLogKeysSchema),
 });
 
 export const CreateUserChallengeDtoSchema = z.object({
@@ -485,7 +489,7 @@ export const JoinChallengeOperationSchema = {
   request: {
     params: z.object({ challengeId: UuidSchema }),
     query: z.object({}),
-    body: z.object({ inviteCode: UuidSchema.optional() })
+    body: JoinChallengeDtoSchema
   },
   response: {
     body: z.object({ id: UuidSchema })
@@ -571,8 +575,18 @@ export const GetChallengeJoinedByUserSubscriptionOperationSchema = {
     body: z.object({
       id: UuidSchema,
       joinedAt: z.string(),
-      lastActivityDate: z.string().optional()
     })
+  }
+};
+
+export const UpdateChallengeJoinedByUserSubscriptionOperationSchema = {
+  request: {
+    params: z.object({ challengeId: UuidSchema }),
+    query: z.object({}),
+    body: UpdateChallengeJoinedByUserSubscriptionDtoSchema
+  },
+  response: {
+    body: z.void()
   }
 };
 
@@ -598,7 +612,7 @@ export const ListChallengesJoinedByUserOperationSchema = {
       logTypes: true,
     }).extend({
       joinedAt: z.string(),
-      lastActivityDate: z.string().optional()
+      shareLogKeys: z.array(AllLogKeysSchema),
     }))
   }
 };
@@ -1191,6 +1205,17 @@ export type GetChallengeJoinedByUserSubscriptionOperation = {
   };
   response: {
     body: z.infer<typeof GetChallengeJoinedByUserSubscriptionOperationSchema.response.body>;
+  };
+};
+
+export type UpdateChallengeJoinedByUserSubscriptionOperation = {
+  request: {
+    params: z.infer<typeof UpdateChallengeJoinedByUserSubscriptionOperationSchema.request.params>;
+    query: z.infer<typeof UpdateChallengeJoinedByUserSubscriptionOperationSchema.request.query>;
+    body: z.infer<typeof UpdateChallengeJoinedByUserSubscriptionOperationSchema.request.body>;
+  };
+  response: {
+    body: z.infer<typeof UpdateChallengeJoinedByUserSubscriptionOperationSchema.response.body>;
   };
 };
 

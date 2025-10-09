@@ -49,31 +49,31 @@
 	let unitConversions = $state<Record<string, { primary: number; display: number; unit: string }>>({});
 
 	// Check if date is valid for logging
-	const isDateValid = $derived(() => logsViewStore.isDateValidForLogging(selectedDate));
+	const isDateValid = $derived.by(() => logsViewStore.isDateValidForLogging(selectedDate));
 
 	// Get existing log for selected date
-	const existingLog = $derived(() => logsViewStore.getExistingLog(selectedDate));
+	const existingLog = $derived.by(() => logsViewStore.getExistingLog(selectedDate));
 
 	// Get active challenges for selected date
-	const activeChallenges = $derived(() => {
+	const activeChallenges = $derived.by(() => {
 		const logStatus = logsViewStore.getLogStatusForDate(selectedDate);
 		return logStatus.activeChallenges;
 	});
 
 	// Get suggested log types from active challenges
-	const suggestedLogTypes = $derived(() => logsViewStore.getSuggestedLogTypes(selectedDate));
+	const suggestedLogTypes = $derived.by(() => logsViewStore.getSuggestedLogTypes(selectedDate));
 
 	// Separate log types into suggested and standard
-	const suggestedLogTypesList = $derived(() => suggestedLogTypes());
-	const standardLogTypesList = $derived(() => {
-		return logTypes.filter(logType => !suggestedLogTypes().some(suggested => suggested.id === logType.id));
+	const suggestedLogTypesList = $derived.by(() => suggestedLogTypes);
+	const standardLogTypesList = $derived.by(() => {
+		return logTypes.filter(logType => !suggestedLogTypes.some(suggested => suggested.id === logType.id));
 	});
 
 	// Initialize form with existing data
 	$effect(() => {
-		if (existingLog() && isOpen) {
-			fiveStarValues = { ...existingLog()!.values.fiveStar };
-			measurementValues = { ...existingLog()!.values.measurement };
+		if (existingLog && isOpen) {
+			fiveStarValues = { ...existingLog!.values.fiveStar };
+			measurementValues = { ...existingLog!.values.measurement };
 			
 			// Initialize unit conversions
 			Object.entries(measurementValues).forEach(([key, value]) => {
@@ -103,7 +103,7 @@
 
 	// Handle form submission
 	async function handleSubmit() {
-		if (!isDateValid()) {
+		if (!isDateValid) {
 			error = 'Cannot log for this date';
 			return;
 		}
@@ -183,7 +183,7 @@
 	}
 
 	// Check if form has any values
-	const hasValues = $derived(() => Object.keys(fiveStarValues).length > 0 || Object.keys(measurementValues).length > 0);
+	const hasValues = $derived.by(() => Object.keys(fiveStarValues).length > 0 || Object.keys(measurementValues).length > 0);
 
 	// Open popover and load data
 	async function handleOpenChange(open: boolean) {
@@ -218,7 +218,7 @@
 			{/if}
 
 			<!-- Challenge Context -->
-			{#if activeChallenges().length > 0}
+			{#if activeChallenges.length > 0}
 				<Card>
 					<CardHeader class="pb-3">
 						<CardTitle class="text-sm flex items-center gap-2">
@@ -227,7 +227,7 @@
 						</CardTitle>
 					</CardHeader>
 					<CardContent class="space-y-2">
-						{#each activeChallenges() as challenge}
+						{#each activeChallenges as challenge}
 							<div class="flex items-center justify-between text-sm">
 								<span>{challenge.name}</span>
 								<Badge variant="outline" class="text-xs">
@@ -240,7 +240,7 @@
 			{/if}
 
 			<!-- Suggested Metrics -->
-			{#if suggestedLogTypesList().length > 0}
+			{#if suggestedLogTypesList.length > 0}
 				<Card>
 					<CardHeader class="pb-3">
 						<CardTitle class="text-sm flex items-center gap-2">
@@ -252,7 +252,7 @@
 						</CardDescription>
 					</CardHeader>
 					<CardContent class="space-y-4">
-						{#each suggestedLogTypesList() as logType}
+						{#each suggestedLogTypesList as logType}
 							{#if logType.type.type === '5star'}
 								<div class="space-y-2">
 									<div class="flex items-center gap-2">
@@ -347,7 +347,7 @@
 			{/if}
 
 			<!-- Standard Metrics -->
-			{#if standardLogTypesList().length > 0}
+			{#if standardLogTypesList.length > 0}
 				<Card>
 					<CardHeader class="pb-3">
 						<CardTitle class="text-sm">Additional Metrics</CardTitle>
@@ -356,7 +356,7 @@
 						</CardDescription>
 					</CardHeader>
 					<CardContent class="space-y-4">
-						{#each standardLogTypesList() as logType}
+						{#each standardLogTypesList as logType}
 							{#if logType.type.type === '5star'}
 								<div class="space-y-2">
 									<Label for={logType.id} class="text-sm font-medium">
@@ -418,7 +418,7 @@
 				</Button>
 				<Button
 					onclick={handleSubmit}
-					disabled={!hasValues() || !isDateValid() || isLoading}
+					disabled={!hasValues || !isDateValid || isLoading}
 					class="flex-1"
 				>
 					{isLoading ? 'Saving...' : 'Save Log'}

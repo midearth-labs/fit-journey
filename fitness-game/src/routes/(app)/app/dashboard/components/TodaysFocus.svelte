@@ -22,9 +22,7 @@
 	const todaysFocus = $derived.by(() => {
 		if (!metadata) return null;
 
-		const lastActivityDate = metadata.lastActivityAt
-			? new Date(metadata.lastActivityAt)
-			: new Date();
+		const lastActivityDate = new Date(metadata.lastActivityAt);
 		const today = new Date();
 		const hoursSinceActivity =
 			(today.getTime() - lastActivityDate.getTime()) / (1000 * 60 * 60);

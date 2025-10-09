@@ -7,7 +7,7 @@ export const POST: RequestHandler = async (event) => {
     const { challengeId } = parseParams(event, JoinChallengeOperationSchema.request.params);
     const body = await parseBody(event, JoinChallengeOperationSchema.request.body);
     const { challengesService } = event.locals.authServices!;
-    const joined = await challengesService().joinChallenge({ challengeId, inviteCode: body.inviteCode });
+    const joined = await challengesService().joinChallenge({ challengeId, inviteCode: body.inviteCode, shareLogKeys: body.shareLogKeys });
     return validateAndReturn(joined, JoinChallengeOperationSchema.response.body);
   } catch (err) {
     return handleServiceError(err, event.locals.requestId);

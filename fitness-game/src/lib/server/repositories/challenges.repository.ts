@@ -6,12 +6,13 @@ import type { IChallengeSubscribersRepository } from './challenge-subscribers.re
 import type { ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
 import type { IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
 import { CHALLENGE_CONSTANTS } from '../content/types/constants';
+import type { AllLogKeysType } from '$lib/config/constants';
 
-export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'lastActivityDate'>;
+export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'shareLogKeys'>;
 type UpdateChallenge = Pick<Challenge, 'id'> & Omit<NewChallenge, 'createdAt'>;
 
 type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'endDate' | 'membersCount' | 'logTypes'> & 
-    Pick<ChallengeSubscriber, 'joinedAt' | 'lastActivityDate'>;
+    Pick<ChallengeSubscriber, 'joinedAt' | 'shareLogKeys'>;
 
 // Enriched types with implicit status
 export type ChallengeWithImplicitStatus = Challenge & {
@@ -34,6 +35,7 @@ export type IChallengesRepository = {
   listOwnedByUser(userId: string, page: number, limit: number): Promise<ChallengeWithImplicitStatus[]>;
   listJoinedByUserMembers(challengeId: string, userId: string, page: number, limit: number): Promise<Array<JoinedByUserMember>>;
   getJoinedByUserSubscription(challengeId: string, userId: string): Promise<JoinedByUserMember | null>;
+  updateJoinedByUserSubscription(challengeId: string, userId: string, shareLogKeys: AllLogKeysType[], requestDate: Date): Promise<boolean>;
   listJoinedByUser(userId: string, page: number, limit: number, fromDate?: string, toDate?: string): Promise<Array<JoinedByUserWithImplicitStatus>>;
   batchUpdateChallengeStatusesLimit(requestDate: Date, limit: number): Promise<void>;
 };
@@ -60,7 +62,7 @@ export class ChallengesRepository implements IChallengesRepository {
         .returning({ id: challenges.id });
 
       // Auto-subscribe owner inside the same transaction
-      await this.join({ challengeId: newChallenge.id, userId: challenge.userId, joinedAt: challenge.createdAt }, tx);
+      await this.join({ challengeId: newChallenge.id, userId: challenge.userId, joinedAt: challenge.createdAt, shareLogKeys: [] }, tx);
 
       // Update user metadata to increment challengesStarted counter
       await tx
@@ -150,7 +152,7 @@ export class ChallengesRepository implements IChallengesRepository {
   async join(subscriber: NewChallengeSubscriber, parentTx?: NodePgDatabase<any>): Promise<{id: string}> {
     const newSubscriber = await (parentTx ?? this.db).transaction(async (tx) => {
       const [newSubscriber] = await tx.insert(challengeSubscribers)
-      .values({ ...subscriber, lastActivityDate: subscriber.joinedAt })
+      .values({ ...subscriber })
       .returning({ id: challengeSubscribers.id });
       
       await this.incrementMembersCountTx(tx, subscriber.challengeId);
@@ -266,7 +268,7 @@ export class ChallengesRepository implements IChallengesRepository {
         id: challengeSubscribers.id,
         userId: challengeSubscribers.userId,
         joinedAt: challengeSubscribers.joinedAt,
-        lastActivityDate: challengeSubscribers.lastActivityDate
+        shareLogKeys: challengeSubscribers.shareLogKeys
       })
       .from(challengeSubscribers)
       .where(eq(challengeSubscribers.challengeId, challengeId))
@@ -300,7 +302,7 @@ export class ChallengesRepository implements IChallengesRepository {
         membersCount: challenges.membersCount,
         logTypes: challenges.logTypes,
         joinedAt: challengeSubscribers.joinedAt,
-        lastActivityDate: challengeSubscribers.lastActivityDate
+        shareLogKeys: challengeSubscribers.shareLogKeys
       })
       .from(challenges)
       .innerJoin(challengeSubscribers, eq(challenges.id, challengeSubscribers.challengeId))
@@ -321,7 +323,7 @@ export class ChallengesRepository implements IChallengesRepository {
         id: challengeSubscribers.id,
         userId: challengeSubscribers.userId,
         joinedAt: challengeSubscribers.joinedAt,
-        lastActivityDate: challengeSubscribers.lastActivityDate
+        shareLogKeys: challengeSubscribers.shareLogKeys
       })
       .from(challengeSubscribers)
       .where(and(
@@ -331,6 +333,20 @@ export class ChallengesRepository implements IChallengesRepository {
       .limit(1);
     
     return row ?? null;
+  }
+
+  async updateJoinedByUserSubscription(challengeId: string, userId: string, shareLogKeys: AllLogKeysType[], requestDate: Date): Promise<boolean> {
+    const result = await this.db
+      .update(challengeSubscribers)
+      .set({
+        shareLogKeys: shareLogKeys,
+      })
+      .where(and(
+        eq(challengeSubscribers.challengeId, challengeId),
+        eq(challengeSubscribers.userId, userId)
+      ));
+    
+    return result.rowCount > 0;
   }
 
   private isChallengeLoggable(status: Challenge['status']): boolean {

@@ -14,6 +14,7 @@ import {
   type ListChallengesOwnedByUserDto,
   type ListChallengeJoinedByUserMembersDto,
   type GetChallengeJoinedByUserSubscriptionDto,
+  type UpdateChallengeJoinedByUserSubscriptionDto,
   type ListChallengesJoinedByUserDto,
   type DeleteUserChallengeDto,
   type GetUserChallengeResponse,
@@ -24,6 +25,7 @@ import {
   type UpdateUserChallengeResponse,
   type LeaveChallengeOperationResponse,
   type DeleteUserChallengeOperationResponse,
+  type UpdateChallengeJoinedByUserSubscriptionResponse,
 } from '$lib/server/shared/interfaces';
 import { type ChallengeWithImplicitStatus, type IChallengesRepository, type IChallengeSubscribersRepository } from '$lib/server/repositories';
 import { type Challenge, type NewChallenge } from '$lib/server/db/schema';
@@ -42,6 +44,7 @@ export type IChallengesService = {
   listChallengesOwnedByUser(dto: ListChallengesOwnedByUserDto): Promise<ListChallengesOwnedByUserResponse[]>;
   listChallengeJoinedByUserMembers(dto: ListChallengeJoinedByUserMembersDto): Promise<ListChallengeJoinedByUserMembersResponse[]>;
   getChallengeJoinedByUserSubscription(dto: GetChallengeJoinedByUserSubscriptionDto): Promise<GetChallengeJoinedByUserSubscriptionResponse>;
+  updateChallengeJoinedByUserSubscription(dto: UpdateChallengeJoinedByUserSubscriptionDto): Promise<UpdateChallengeJoinedByUserSubscriptionResponse>;
   listChallengesJoinedByUser(dto: ListChallengesJoinedByUserDto): Promise<ListChallengesJoinedByUserResponse[]>;
   deleteUserChallenge(dto: DeleteUserChallengeDto): Promise<void>;
 };
@@ -147,7 +150,7 @@ export class ChallengesService implements IChallengesService {
 
     if (challenge.membersCount >= challenge.maxMembers) throw new ValidationError('Challenge is at maximum capacity');
 
-    return await challengesRepository.join({ challengeId: dto.challengeId, userId, joinedAt: requestDate });
+    return await challengesRepository.join({ challengeId: dto.challengeId, userId, shareLogKeys: dto.shareLogKeys, joinedAt: requestDate });
   }
 
   /**
@@ -260,8 +263,30 @@ export class ChallengesService implements IChallengesService {
     return {
       id: subscription.id,
       joinedAt: subscription.joinedAt.toISOString(),
-      lastActivityDate: subscription.lastActivityDate?.toISOString()
     };
+  }
+
+  /**
+   * Update user's subscription to a challenge (shareLogKeys)
+   * PATCH /api/v1/users/me/challenges/joined/:challengeId/subscription
+   */
+  async updateChallengeJoinedByUserSubscription(dto: UpdateChallengeJoinedByUserSubscriptionDto): Promise<UpdateChallengeJoinedByUserSubscriptionResponse> {
+    const { challengesRepository } = this.dependencies;
+    const { user: { id: userId }, requestDate } = this.requestContext;
+
+    // Verify the user is subscribed to this challenge
+    notFoundCheck(
+      await challengesRepository.getJoinedByUserSubscription(dto.challengeId, userId),
+      'Challenge subscription'
+    );
+
+    // Update the shareLogKeys
+    await challengesRepository.updateJoinedByUserSubscription(
+      dto.challengeId,
+      userId,
+      dto.shareLogKeys, 
+      requestDate
+    );
   }
 
   /**
@@ -291,7 +316,7 @@ export class ChallengesService implements IChallengesService {
       membersCount: challenge.membersCount,
       logTypes: challenge.logTypes,
       joinedAt: challenge.joinedAt.toISOString(),
-      lastActivityDate: challenge.lastActivityDate?.toISOString()
+      shareLogKeys: challenge.shareLogKeys,
     }));
   }
 

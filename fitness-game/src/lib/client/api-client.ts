@@ -32,6 +32,7 @@ import type {
   ListChallengesJoinedByUserOperation,
   ListChallengeJoinedByUserMembersOperation,
   GetChallengeJoinedByUserSubscriptionOperation,
+  UpdateChallengeJoinedByUserSubscriptionOperation,
   DeleteUserChallengeOperation,
   LogReadOperation,
   StartQuizOperation,
@@ -70,6 +71,7 @@ export type ApiResponse = {
   listChallengesJoinedByUser: ListChallengesJoinedByUserOperation['response']['body'];
   listChallengeJoinedByUserMembers: ListChallengeJoinedByUserMembersOperation['response']['body'];
   getChallengeJoinedByUserSubscription: GetChallengeJoinedByUserSubscriptionOperation['response']['body'];
+  updateChallengeJoinedByUserSubscription: UpdateChallengeJoinedByUserSubscriptionOperation['response']['body'];
   submitQuestion: SubmitQuestionOperation['response']['body'];
   listQuestions: ListQuestionsOperation['response']['body'];
   getQuestion: GetQuestionOperation['response']['body'];
@@ -709,6 +711,22 @@ export class ApiClient {
   async getChallengeJoinedByUserSubscription(challengeId: string): Promise<ApiResponse['getChallengeJoinedByUserSubscription']> {
     return this.request<ApiResponse['getChallengeJoinedByUserSubscription']>('/api/v1/users/me/challenges/joined/:challengeId/subscription', { method: 'GET' }, {
       params: { challengeId }
+    });
+  }
+
+  /**
+   * PATCH /api/v1/users/me/challenges/joined/:challengeId/subscription
+   * 
+   * Update user's subscription to a challenge (shareLogKeys)
+   * 
+   * Used in: Challenge subscription management, privacy settings, log sharing preferences
+   */
+  async updateChallengeJoinedByUserSubscription(dto: UpdateChallengeJoinedByUserSubscriptionOperation['request']): Promise<ApiResponse['updateChallengeJoinedByUserSubscription']> {
+    return this.request<ApiResponse['updateChallengeJoinedByUserSubscription']>('/api/v1/users/me/challenges/joined/:challengeId/subscription', { 
+      method: 'PATCH', 
+      body: JSON.stringify(dto.body) 
+    }, {
+      params: { challengeId: dto.params.challengeId }
     });
   }
 

@@ -382,7 +382,8 @@ async function seedUserData(): Promise<void> {
       
       // This should be a NO-OP and must not fail.
       await joinChallengeService.joinChallenge({
-        challengeId: challengeResponse.id
+        challengeId: challengeResponse.id,
+        shareLogKeys: ['dailyMovement', 'cleanEating', 'sleepQuality']
       });
     }
     

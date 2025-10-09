@@ -48,6 +48,7 @@ import {
   type GetUserArticleOperation,
   type GetGlobalStatisticsOperation,
   type GetArticleStatisticsOperation,
+  type UpdateChallengeJoinedByUserSubscriptionOperation,
 } from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
@@ -269,7 +270,8 @@ export type UpdateUserChallengeDto = {
 
 export type JoinChallengeDto = { 
   challengeId: string; 
-  inviteCode?: string 
+  inviteCode?: string;
+  shareLogKeys: AllLogKeysType[];
 };
 
 export type LeaveChallengeDto = { 
@@ -304,6 +306,11 @@ export type ListChallengeJoinedByUserMembersDto = {
 
 export type GetChallengeJoinedByUserSubscriptionDto = {
   challengeId: string;
+};
+
+export type UpdateChallengeJoinedByUserSubscriptionDto = {
+  challengeId: string;
+  shareLogKeys: AllLogKeysType[];
 };
 
 export type ListChallengesJoinedByUserDto = {
@@ -360,6 +367,7 @@ export type StartPracticalResponse = StartPracticalOperation['response']['body']
 export type CompletePracticalResponse = CompletePracticalOperation['response']['body'];
 export type SkipPracticalResponse = SkipPracticalOperation['response']['body'];
 export type CompleteArticleResponse = CompleteArticleOperation['response']['body'];
+export type UpdateChallengeJoinedByUserSubscriptionResponse = UpdateChallengeJoinedByUserSubscriptionOperation['response']['body'];
 
 export type ListUserArticlesResponse = ListUserArticlesOperation['response']['body'];
 export type GetUserArticleResponse = GetUserArticleOperation['response']['body'];

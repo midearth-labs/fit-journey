@@ -44,7 +44,7 @@
 	let sortOrder = $state<'asc' | 'desc'>('desc');
 
 	// Filtered and sorted logs
-	const filteredLogs = $derived(() => {
+	const filteredLogs = $derived.by(() => {
 		let filtered = [...logs];
 
 		// Apply period filter
@@ -137,14 +137,14 @@
 	});
 
 	// Paginated logs
-	const paginatedLogs = $derived(() => {
+	const paginatedLogs = $derived.by(() => {
 		const start = (currentPage - 1) * pageSize;
 		const end = start + pageSize;
-		return filteredLogs().slice(start, end);
+		return filteredLogs.slice(start, end);
 	});
 
 	// Total pages
-	const totalPages = $derived(() => Math.ceil(filteredLogs().length / pageSize));
+	const totalPages = $derived.by(() => Math.ceil(filteredLogs.length / pageSize));
 
 	// Get active challenges for a specific date
 	function getActiveChallengesForDate(dateStr: string) {
@@ -207,7 +207,7 @@
 	function exportData() {
 		const csvContent = [
 			['Date', 'Five Star Metrics', 'Measurement Metrics', 'Total Metrics', 'Active Challenges'],
-			...filteredLogs().map(log => {
+			...filteredLogs.map(log => {
 				const fiveStarCount = Object.values(log.values.fiveStar).filter(v => v !== undefined).length;
 				const measurementCount = Object.values(log.values.measurement).filter(v => v !== undefined).length;
 				const totalMetrics = fiveStarCount + measurementCount;
@@ -325,7 +325,7 @@
 
 			<!-- Results Summary -->
 			<div class="text-sm text-muted-foreground">
-				Showing {paginatedLogs().length} of {filteredLogs().length} log entries
+				Showing {paginatedLogs.length} of {filteredLogs.length} log entries
 			</div>
 		</CardContent>
 	</Card>
@@ -380,7 +380,7 @@
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{#each paginatedLogs() as log}
+					{#each paginatedLogs as log}
 						{@const activeChallenges = getActiveChallengesForDate(log.logDate)}
 						{@const logStatus = getLogStatus(log)}
 						{@const metricsCount = getMetricsCount(log)}
@@ -449,11 +449,11 @@
 	</Card>
 
 	<!-- Pagination -->
-	{#if totalPages() > 1}
+	{#if totalPages > 1}
 		<Card>
 			<CardContent class="flex items-center justify-between py-4">
 				<div class="text-sm text-muted-foreground">
-					Page {currentPage} of {totalPages()}
+					Page {currentPage} of {totalPages}
 				</div>
 				<div class="flex items-center gap-2">
 					<Button
@@ -468,7 +468,7 @@
 					<Button
 						variant="outline"
 						size="sm"
-						disabled={currentPage === totalPages()}
+						disabled={currentPage === totalPages}
 						onclick={() => handlePageChange(currentPage + 1)}
 					>
 						Next
