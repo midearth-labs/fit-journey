@@ -20,7 +20,7 @@ import {
   AllLogKeysSchema,
   ChallengeStatusKeysSchema
 } from './z.primitives';
-import { CHALLENGE_CONSTANTS } from '../content/types/constants';
+import { CHALLENGE_CONSTANTS } from '../../config/constants';
 import { ArticleLogStatusKeys } from '../db/schema';
 // import { ChallengeSchema } from '$lib/server/content/types/challenge'; // Old content system schema
 
@@ -140,7 +140,7 @@ export const CreateChallengeDtoSchema = z.object({
   startDate: IsoDateSchema,
   durationDays: z.number().int().min(1).max(CHALLENGE_CONSTANTS.MAX_CHALLENGE_DURATION_DAYS),
   joinType: z.enum(['personal', 'public', 'invite-code']),
-  maxMembers: z.number().int().min(1).max(1000).default(1),
+  maxMembers: z.number().int().min(1).max(CHALLENGE_CONSTANTS.MAX_MEMBER_COUNT).default(1),
 });
 
 export const UpdateChallengeDtoSchema = CreateChallengeDtoSchema;

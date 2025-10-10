@@ -7,7 +7,7 @@ import { QuestionDAO } from './question-dao';
 import { KnowledgeBaseDAO } from './knowledge-base-dao';
 import { AvatarAssetDAO } from './avatar-asset-dao';
 import { StreakTypeDAO } from './streak-type-dao';
-import { type ContentType } from '../types/constants';
+import { type ContentType } from '../../../config/constants-content';
 import { LearningPathDAO } from './learning-path-dao';
 import { PersonaQuestionDAO } from './persona-question-dao';
 

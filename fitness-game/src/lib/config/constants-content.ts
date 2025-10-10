@@ -25,12 +25,6 @@ export const CONTENT_DIRECTORIES = {
   PersonaQuestion: 'persona-questions',
 } as const satisfies Record<ContentType, string>;
 
-// Content Generation Constants
-export const CHALLENGE_CONSTANTS = {
-  DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS: 48,
-  MAX_CHALLENGE_DURATION_DAYS: 100,
-} as const;
-
 // Time Constants
 export const TIME_CONSTANTS = {
   SECONDS_PER_MINUTE: 60,

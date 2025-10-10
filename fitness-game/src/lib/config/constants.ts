@@ -6,6 +6,13 @@ export const DEFAULT_VALUES = {
   LOG_MUTATION_DAYS_BACK: 10,
 } as const;
 
+// Content Generation Constants
+export const CHALLENGE_CONSTANTS = {
+  DEFAULT_CHALLENGE_GRACE_PERIOD_HOURS: 48,
+  MAX_CHALLENGE_DURATION_DAYS: 100,
+  MAX_MEMBER_COUNT: 100,
+} as const;
+
 export const FIVE_STAR_LOG_KEYS = ['dailyMovement', 'cleanEating', 'sleepQuality', 'hydration', 'moodCheck', 'energyLevel'] as const;
 export const MEASUREMENT_LOG_KEYS = ['weight', 'stepsWalked', 'cardioMinutes', 'pushups'] as const;
 export const ALL_LOG_KEYS = [...FIVE_STAR_LOG_KEYS, ...MEASUREMENT_LOG_KEYS] as const;

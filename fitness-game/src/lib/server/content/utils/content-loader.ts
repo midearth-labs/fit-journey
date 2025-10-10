@@ -10,7 +10,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { type Content, ContentTypeToSchema } from '../types';
-import { CONTENT_DIRECTORIES, type ContentType } from '../types/constants';
+import { CONTENT_DIRECTORIES, type ContentType } from '../../../config/constants-content';
 import z from 'zod';
 
 export class ContentLoader {

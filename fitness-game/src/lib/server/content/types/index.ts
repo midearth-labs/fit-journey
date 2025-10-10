@@ -2,7 +2,7 @@
 // Based on entities.md and requirements.md
 
 import { z } from 'zod';
-import { type ContentType } from './constants';
+import { type ContentType } from '../../../config/constants-content';
 import {  ContentCategorySchema } from './content-category';
 import { type Question, QuestionSchema } from './question';
 import { type KnowledgeBaseDetail, KnowledgeBaseDetailSchema } from './knowledge-base';

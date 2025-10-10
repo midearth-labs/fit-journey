@@ -5,8 +5,7 @@ import { ValidationError } from '../shared/errors';
 import type { IChallengeSubscribersRepository } from './challenge-subscribers.repository';
 import type { ImplicitStatusCheckPayload } from '$lib/server/shared/interfaces';
 import type { IDateTimeHelper } from '$lib/server/helpers/date-time.helper';
-import { CHALLENGE_CONSTANTS } from '../content/types/constants';
-import type { AllLogKeysType } from '$lib/config/constants';
+import { type AllLogKeysType, CHALLENGE_CONSTANTS } from '$lib/config/constants';
 
 export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'shareLogKeys'>;
 type UpdateChallenge = Pick<Challenge, 'id'> & Omit<NewChallenge, 'createdAt'>;
