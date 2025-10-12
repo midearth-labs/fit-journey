@@ -50,8 +50,33 @@ import type {
   DownloadUserCalendarOperation,
   GetPublicCalendarOperation,
   GetGlobalStatisticsOperation,
-  GetArticleStatisticsOperation
+  GetArticleStatisticsOperation,
+  CreateUserChallengeRequest
 } from '$lib/server/shared/schemas';
+
+/**
+ * Custom error class for API client errors with typed status and body
+ */
+export class ApiError extends Error {
+  public readonly status: number;
+  public readonly body: string;
+
+  constructor(message: string, status: number, body: string) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+    this.body = body;
+    
+    // Maintains proper stack trace for where our error was thrown (only available on V8)
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ApiError);
+    }
+  }
+
+  get fullMessage() {
+    return `${this.message}: ${this.body}`;
+  }
+}
 
 export type ApiResponse = {
   getMyProfile: GetUserProfileOperation['response']['body'];
@@ -63,7 +88,7 @@ export type ApiResponse = {
   findLog: FindUserLogOperation['response']['body'];
   listPublicChallenges: ListPublicChallengesOperation['response']['body'];
   getChallenge: GetChallengeOperation['response']['body'];
-  createChallenge: CreateUserChallengeOperation['response']['body'];
+  createUserChallenge: CreateUserChallengeOperation['response']['body'];
   getUserChallenge: GetUserChallengeOperation['response']['body'];
   updateUserChallenge: UpdateUserChallengeOperation['response']['body'];
   deleteUserChallenge: DeleteUserChallengeOperation['response']['body'];
@@ -106,6 +131,10 @@ export type ApiResponse = {
   getPublicCalendar: GetPublicCalendarOperation['response']['body'];
   getGlobalStatistics: GetGlobalStatisticsOperation['response']['body'];
   getArticleStatistics: GetArticleStatisticsOperation['response']['body'];
+}
+
+export type ApiRequest = {
+  createUserChallenge: CreateUserChallengeRequest
 }
 
 /**
@@ -181,20 +210,8 @@ export class ApiClient {
 
     if (!res.ok) {
       // Try to parse JSON error body; fall back to text
-      let errorBody: unknown = undefined;
-      try {
-        errorBody = await res.clone().json();
-      } catch {
-        try {
-          errorBody = await res.text();
-        } catch {
-          // ignore
-        }
-      }
-      const err = new Error(`HTTP ${res.status} ${res.statusText}`);
-      (err as any).status = res.status;
-      (err as any).body = errorBody;
-      throw err;
+      const errorBody = await res.text();
+      throw new ApiError(`HTTP ${res.status} ${res.statusText}`, res.status, errorBody);
     }
 
     // No content
@@ -490,8 +507,8 @@ export class ApiClient {
    * 
    * Used in: Challenge creation wizards, personal journey setup, social challenge hosting
    */
-  async createChallenge(dto: CreateUserChallengeOperation['request']['body']): Promise<ApiResponse['createChallenge']> {
-    return this.request<ApiResponse['createChallenge']>('/api/v1/users/me/challenges', { method: 'POST', body: JSON.stringify(dto) });
+  async createUserChallenge(request: CreateUserChallengeRequest): Promise<ApiResponse['createUserChallenge']> {
+    return this.request<ApiResponse['createUserChallenge']>('/api/v1/users/me/challenges', { method: 'POST', body: JSON.stringify(request) });
   }
 
   /** 

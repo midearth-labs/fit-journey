@@ -1,7 +1,10 @@
+import type { ApiRequest } from "$lib/client/api-client";
+import type { AllLogKeysType } from "$lib/config/constants";
+
 /**
  * Validation error interface
  */
-export interface ValidationError {
+export type ValidationError = {
 	field: string;
 	message: string;
 }
@@ -9,7 +12,7 @@ export interface ValidationError {
 /**
  * Validation result interface
  */
-export interface ValidationResult {
+export type ValidationResult = {
 	valid: boolean;
 	errors: ValidationError[];
 }
@@ -17,15 +20,7 @@ export interface ValidationResult {
 /**
  * Challenge form data interface (inferred from API types)
  */
-export interface ChallengeFormData {
-	name: string;
-	description: string;
-	logTypes: string[];
-	startDate: string;
-	durationDays: number;
-	joinType: 'personal' | 'public' | 'invite-code';
-	maxMembers?: number;
-}
+export type ChallengeFormData = ApiRequest['createUserChallenge'];
 
 /**
  * Validate challenge name
@@ -58,7 +53,7 @@ export function validateChallengeDescription(description: string): string | null
  * @param logTypes - Array of log types
  * @returns Validation error or null
  */
-export function validateLogTypes(logTypes: string[]): string | null {
+export function validateLogTypes(logTypes: AllLogKeysType[]): string | null {
 	if (!logTypes || logTypes.length === 0) {
 		return 'At least one log type must be selected';
 	}
@@ -101,7 +96,7 @@ export function validateDuration(durationDays: number): string | null {
  * @param joinType - Join type
  * @returns Validation error or null
  */
-export function validateJoinType(joinType: string): string | null {
+export function validateJoinType(joinType: ChallengeFormData['joinType']): string | null {
 	if (!joinType) {
 		return 'Challenge join type is required';
 	}

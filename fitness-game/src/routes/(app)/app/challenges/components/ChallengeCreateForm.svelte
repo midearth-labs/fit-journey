@@ -7,10 +7,10 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import * as RadioGroup from '$lib/components/ui/radio-group';
-	import { Badge } from '$lib/components/ui/badge';
 	import { Calendar, Users, Target, Clock } from 'lucide-svelte';
 	import { validateChallengeForm, type ChallengeFormData, type ValidationError } from '../utils/challenge-validators';
-	import { contentService } from '$lib/services/content.service';
+	import { challengesStore } from '../stores/challenges.svelte';
+	import type { AllLogKeysType } from '$lib/config/constants';
 	// Constants for challenge validation
 	const CHALLENGE_CONSTANTS = {
 		MAX_CHALLENGE_DURATION_DAYS: 365,
@@ -35,13 +35,12 @@
 
 	let validationErrors = $state<ValidationError[]>([]);
 	let isSubmitting = $state(false);
-	let logTypesData = $state<any[]>([]);
+	let logTypesData = $derived(challengesStore.logTypes);
 
 	// Load log types on mount
 	onMount(async () => {
 		try {
-			const logTypes = await contentService.loadLogTypes();
-			logTypesData = logTypes;
+			await challengesStore.loadLogTypes();
 		} catch (error) {
 			console.error('Failed to load log types:', error);
 		}
@@ -69,7 +68,7 @@
 	}
 
 	// Handle log type toggle
-	function toggleLogType(logType: string) {
+	function toggleLogType(logType: AllLogKeysType) {
 		if (formData.logTypes.includes(logType)) {
 			formData.logTypes = formData.logTypes.filter(t => t !== logType);
 		} else {
@@ -312,7 +311,7 @@
 		</Button>
 		<Button
 			type="submit"
-			disabled={isSubmitting || validationErrors.length > 0}
+			disabled={isSubmitting}
 		>
 			{isSubmitting ? 'Creating...' : 'Create Challenge'}
 		</Button>

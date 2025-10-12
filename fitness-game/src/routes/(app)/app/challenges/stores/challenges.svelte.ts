@@ -1,4 +1,5 @@
 import { ApiClient, type ApiResponse } from '$lib/client/api-client';
+import { apiHandler, throwOnError } from '$lib/client/api-handler';
 import type { AllLogKeysType } from '$lib/config/constants';
 import { contentService } from '$lib/services/content.service';
 import type { LogType } from '$lib/types/content';
@@ -10,11 +11,11 @@ type JoinedChallenges = ApiResponse['listChallengesJoinedByUser'];
 type ChallengeDetail = ApiResponse['getChallenge'];
 type UserChallengeDetail = ApiResponse['getUserChallenge'];
 type ChallengeMembers = ApiResponse['listChallengeJoinedByUserMembers'];
-type CreateChallengeResponse = ApiResponse['createChallenge'];
+type CreateChallengeResponse = ApiResponse['createUserChallenge'];
 type JoinChallengeResponse = ApiResponse['joinChallenge'];
 
 // Request/Response types for operations
-type CreateChallengeRequest = Parameters<ApiClient['createChallenge']>[0];
+type CreateChallengeRequest = Parameters<ApiClient['createUserChallenge']>[0];
 type UpdateChallengeRequest = Parameters<ApiClient['updateUserChallenge']>[0];
 
 /**
@@ -38,6 +39,16 @@ class ChallengesStore {
 	constructor() {
 		this.apiClient = new ApiClient('', {
 			'Content-Type': 'application/json'
+		});
+
+		// Connect to global API handler for loading and error states
+		// Subscribe to API handler state changes
+		apiHandler.onLoadingChange((loading) => {
+			this.#loading = loading;
+		});
+		
+		apiHandler.onErrorChange((error) => {
+			this.#error = error;
 		});
 	}
 
@@ -79,36 +90,16 @@ class ChallengesStore {
 	}
 
 	/**
-	 * Set loading state and clear error
-	 */
-	private setLoading(loading: boolean) {
-		this.#loading = loading;
-		if (loading) {
-			this.#error = null;
-		}
-	}
-
-	/**
-	 * Set error state
-	 */
-	private setError(error: string) {
-		this.#error = error;
-		this.#loading = false;
-	}
-
-	/**
 	 * Load public challenges with pagination
 	 */
 	async loadPublicChallenges(query: { page?: number; limit?: number } = {}) {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.listPublicChallenges(query);
-			this.#publicChallenges = result || [];
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load public challenges';
-			this.setError(errorMessage);
-		} finally {
-			this.setLoading(false);
+		const result = await apiHandler.execute(
+			() => this.apiClient.listPublicChallenges(query),
+			{ errorMessage: 'Failed to load public challenges' }
+		);
+		
+		if ('data' in result) {
+			this.#publicChallenges = result.data || [];
 		}
 	}
 
@@ -116,15 +107,13 @@ class ChallengesStore {
 	 * Load challenges owned by the user
 	 */
 	async loadOwnedChallenges(query: { page?: number; limit?: number } = {}) {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.listChallengesOwnedByUser(query);
-			this.#ownedChallenges = result || [];
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load owned challenges';
-			this.setError(errorMessage);
-		} finally {
-			this.setLoading(false);
+		const result = await apiHandler.execute(
+			() => this.apiClient.listChallengesOwnedByUser(query),
+			{ errorMessage: 'Failed to load owned challenges' }
+		);
+		
+		if ('data' in result) {
+			this.#ownedChallenges = result.data || [];
 		}
 	}
 
@@ -132,15 +121,13 @@ class ChallengesStore {
 	 * Load challenges joined by the user
 	 */
 	async loadJoinedChallenges(query: { page?: number; limit?: number } = {}) {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.listChallengesJoinedByUser(query);
-			this.#joinedChallenges = result || [];
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load joined challenges';
-			this.setError(errorMessage);
-		} finally {
-			this.setLoading(false);
+		const result = await apiHandler.execute(
+			() => this.apiClient.listChallengesJoinedByUser(query),
+			{ errorMessage: 'Failed to load joined challenges' }
+		);
+		
+		if ('data' in result) {
+			this.#joinedChallenges = result.data || [];
 		}
 	}
 
@@ -148,15 +135,13 @@ class ChallengesStore {
 	 * Load detailed information about a specific challenge (for viewing/joining)
 	 */
 	async loadChallengeDetail(challengeId: string) {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.getChallenge(challengeId);
-			this.#currentChallenge = result;
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load challenge details';
-			this.setError(errorMessage);
-		} finally {
-			this.setLoading(false);
+		const result = await apiHandler.execute(
+			() => this.apiClient.getChallenge(challengeId),
+			{ errorMessage: 'Failed to load challenge details' }
+		);
+		
+		if ('data' in result) {
+			this.#currentChallenge = result.data;
 		}
 	}
 
@@ -164,15 +149,13 @@ class ChallengesStore {
 	 * Load detailed information about a user's owned challenge (for management)
 	 */
 	async loadUserChallengeDetail(challengeId: string) {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.getUserChallenge(challengeId);
-			this.#currentUserChallenge = result;
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load user challenge details';
-			this.setError(errorMessage);
-		} finally {
-			this.setLoading(false);
+		const result = await apiHandler.execute(
+			() => this.apiClient.getUserChallenge(challengeId),
+			{ errorMessage: 'Failed to load user challenge details' }
+		);
+		
+		if ('data' in result) {
+			this.#currentUserChallenge = result.data;
 		}
 	}
 
@@ -180,15 +163,13 @@ class ChallengesStore {
 	 * Load members for a specific challenge
 	 */
 	async loadChallengeMembers(challengeId: string, query: { page?: number; limit?: number } = {}) {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.listChallengeJoinedByUserMembers(challengeId, query);
-			this.#currentMembers = result || [];
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load challenge members';
-			this.setError(errorMessage);
-		} finally {
-			this.setLoading(false);
+		const result = await apiHandler.execute(
+			() => this.apiClient.listChallengeJoinedByUserMembers(challengeId, query),
+			{ errorMessage: 'Failed to load challenge members' }
+		);
+		
+		if ('data' in result) {
+			this.#currentMembers = result.data || [];
 		}
 	}
 
@@ -196,123 +177,101 @@ class ChallengesStore {
 	 * Create a new challenge
 	 */
 	async createChallenge(dto: CreateChallengeRequest): Promise<CreateChallengeResponse> {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.createChallenge(dto);
-			// Refresh owned challenges to include the new one
-			await this.loadOwnedChallenges();
-			return result;
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to create challenge';
-			this.setError(errorMessage);
-			throw err;
-		} finally {
-			this.setLoading(false);
-		}
+		return throwOnError(await apiHandler.execute(
+			async () => {
+				const challenge = await this.apiClient.createUserChallenge(dto);
+				// Refresh owned challenges to include the new one
+				await this.loadOwnedChallenges();
+				return challenge;
+			},
+			{ errorMessage: 'Failed to create challenge' }
+		));
 	}
 
 	/**
 	 * Update an existing challenge
 	 */
 	async updateChallenge(challengeId: string, dto: UpdateChallengeRequest['body']) {
-		this.setLoading(true);
-		try {
-			await this.apiClient.updateUserChallenge({
-				params: { challengeId },
-				query: {},
-				body: dto
-			});
-			// Refresh the current challenge and owned challenges
-			await Promise.all([
-				this.loadChallengeDetail(challengeId),
-				this.loadOwnedChallenges()
-			]);
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to update challenge';
-			this.setError(errorMessage);
-			throw err;
-		} finally {
-			this.setLoading(false);
-		}
+		throwOnError(await apiHandler.execute(
+			async () => {
+				await this.apiClient.updateUserChallenge({
+					params: { challengeId },
+					query: {},
+					body: dto
+				});
+			},
+			{ errorMessage: 'Failed to update challenge' }
+		));
+
+		// Refresh the current challenge and owned challenges
+		await Promise.all([
+			this.loadChallengeDetail(challengeId),
+			this.loadOwnedChallenges()
+		]);
 	}
 
 	/**
 	 * Delete a challenge
 	 */
 	async deleteChallenge(challengeId: string) {
-		this.setLoading(true);
-		try {
-			await this.apiClient.deleteUserChallenge(challengeId);
-			// Refresh owned challenges to remove the deleted one
-			await this.loadOwnedChallenges();
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to delete challenge';
-			this.setError(errorMessage);
-			throw err;
-		} finally {
-			this.setLoading(false);
-		}
+		throwOnError(await apiHandler.execute(
+			async () => {
+				await this.apiClient.deleteUserChallenge(challengeId);
+				// Refresh owned challenges to remove the deleted one
+				await this.loadOwnedChallenges();
+			},
+			{ errorMessage: 'Failed to delete challenge' }
+		));
 	}
 
 	/**
 	 * Join a challenge
 	 */
 	async joinChallenge(challengeId: string, shareLogKeys: AllLogKeysType[], inviteCode?: string): Promise<JoinChallengeResponse> {
-		this.setLoading(true);
-		try {
-			const result = await this.apiClient.joinChallenge({
-				params: { challengeId },
-				query: {},
-				body: { inviteCode, shareLogKeys }
-			});
-			// Refresh joined challenges to include the new one
-			await this.loadJoinedChallenges();
-			return result;
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to join challenge';
-			this.setError(errorMessage);
-			throw err;
-		} finally {
-			this.setLoading(false);
-		}
+		const result = throwOnError(await apiHandler.execute(
+			async () => {
+				return await this.apiClient.joinChallenge({
+					params: { challengeId },
+					query: {},
+					body: { inviteCode, shareLogKeys }
+				});
+			},
+			{ errorMessage: 'Failed to join challenge' }
+		));
+
+		// Refresh joined challenges to include the new one
+		await this.loadJoinedChallenges();
+
+		return result;
 	}
 
 	/**
 	 * Leave a challenge
 	 */
 	async leaveChallenge(challengeId: string) {
-		this.setLoading(true);
-		try {
-			await this.apiClient.leaveChallenge(challengeId);
-			// Refresh joined challenges to remove the left one
-			await this.loadJoinedChallenges();
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to leave challenge';
-			this.setError(errorMessage);
-			throw err;
-		} finally {
-			this.setLoading(false);
-		}
+		throwOnError(await apiHandler.execute(
+			async () => {
+				return await this.apiClient.leaveChallenge(challengeId);
+			},
+			{ errorMessage: 'Failed to leave challenge' }
+		));
+
+		// Refresh joined challenges to remove the left one
+		await this.loadJoinedChallenges();
 	}
 
 	/**
 	 * Update challenge subscription settings
 	 */
 	async updateSubscription(challengeId: string, shareLogKeys: AllLogKeysType[]) {
-		this.setLoading(true);
-		try {
-			await this.apiClient.updateChallengeJoinedByUserSubscription({
+		throwOnError(await apiHandler.execute(
+			() => this.apiClient.updateChallengeJoinedByUserSubscription({
 				params: { challengeId },
 				query: {},
 				body: { shareLogKeys }
-			});
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to update subscription';
-			this.setError(errorMessage);
-			throw err;
-		} finally {
-			this.setLoading(false);
-		}
+			}),
+			{ errorMessage: 'Failed to update subscription' }
+		));
 	}
 
 	/**
@@ -328,11 +287,13 @@ class ChallengesStore {
 	 * Load log types from content service
 	 */
 	async loadLogTypes() {
-		try {
-			this.#logTypes = await contentService.loadLogTypes();
-		} catch (err: unknown) {
-			const errorMessage = err instanceof Error ? err.message : 'Failed to load log types';
-			console.error(errorMessage);
+		const result = await apiHandler.execute(
+			() => contentService.loadLogTypes(),
+			{ errorMessage: 'Failed to load log types', showLoading: false }
+		);
+		
+		if ('data' in result) {
+			this.#logTypes = result.data;
 		}
 	}
 

@@ -453,8 +453,8 @@ export const GetChallengeResponseSchema = GetUserChallengeResponseSchema.extend(
 // Challenges V2 Operations
 export const CreateUserChallengeOperationSchema = {
   request: {
-    params: z.object({}),
-    query: z.object({}),
+    params: z.void(),
+    query: z.void(),
     body: CreateChallengeDtoSchema
   },
   response: {
@@ -945,6 +945,16 @@ export type CreateUserChallengeOperation = {
     body: z.infer<typeof CreateUserChallengeOperationSchema.response.body>;
   };
 };
+
+type MergeNonVoid<T> = 
+  [T] extends [void] ? {} : T;
+
+// Generic creator for operation request type, excluding void parts
+export type OperationRequest<T extends { params: unknown; query: unknown; body: unknown }> =
+  MergeNonVoid<T['params']> & MergeNonVoid<T['query']> & MergeNonVoid<T['body']>;
+
+// Usage for CreateUserChallengeRequest
+export type CreateUserChallengeRequest = OperationRequest<CreateUserChallengeOperation['request']>;
 
 export type UpdateUserChallengeOperation = {
   request: {

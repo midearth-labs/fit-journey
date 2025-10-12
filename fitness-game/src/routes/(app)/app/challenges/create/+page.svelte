@@ -1,15 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import * as Card from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
-	import { ArrowLeft, Plus } from 'lucide-svelte';
+	import { ArrowLeft } from 'lucide-svelte';
 	import { challengesStore } from '../stores/challenges.svelte';
 	import ChallengeCreateForm from '../components/ChallengeCreateForm.svelte';
 	import type { ChallengeFormData } from '../utils/challenge-validators';
 
-	async function handleCreate(dto: ChallengeFormData) {
+	async function handleCreate(request: ChallengeFormData) {
 		try {
-			const result = await challengesStore.createChallenge(dto as any);
+			const result = await challengesStore.createChallenge(request);
 			await goto(`/app/challenges/${result.id}`);
 		} catch (error) {
 			console.error('Failed to create challenge:', error);

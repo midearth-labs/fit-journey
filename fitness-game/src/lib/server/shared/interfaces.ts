@@ -49,6 +49,7 @@ import {
   type GetGlobalStatisticsOperation,
   type GetArticleStatisticsOperation,
   type UpdateChallengeJoinedByUserSubscriptionOperation,
+  type CreateUserChallengeRequest,
 } from './schemas';
 
 // --- Service Types (for Dependency Injection) ---
@@ -254,15 +255,7 @@ export type ProgressShareUserDetailResponse = GetUserShareOperation['response'][
 
 // --- Challenges V2 DTOs ---
 
-export type CreateUserChallengeDto = {
-  name: string;
-  description: string;
-  logTypes: AllLogKeysType[];
-  startDate: string; // YYYY-MM-DD
-  durationDays: number;
-  joinType: 'personal' | 'public' | 'invite-code';
-  maxMembers: number;
-};
+export type CreateUserChallengeDto = CreateUserChallengeRequest;
 
 export type UpdateUserChallengeDto = {
   challengeId: string;

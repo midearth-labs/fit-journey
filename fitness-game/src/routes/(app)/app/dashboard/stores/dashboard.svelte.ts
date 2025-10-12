@@ -1,4 +1,5 @@
 import { ApiClient, type ApiResponse } from '$lib/client/api-client';
+import { apiHandler } from '$lib/client/api-handler';
 
 // Type inference from ApiClient methods
 type UserMetadata = ApiResponse['getMyMetadata']
@@ -30,6 +31,19 @@ class DashboardStore {
 	constructor() {
 		this.apiClient = new ApiClient('', {
 			'Content-Type': 'application/json'
+		});
+
+		// Connect to global API handler for loading and error states
+		this.#loading = false;
+		this.#error = null;
+		
+		// Subscribe to API handler state changes
+		apiHandler.onLoadingChange((loading) => {
+			this.#loading = loading;
+		});
+		
+		apiHandler.onErrorChange((error) => {
+			this.#error = error;
 		});
 	}
 
@@ -71,27 +85,23 @@ class DashboardStore {
 			return; // Use cached data
 		}
 
-		this.#loading = true;
-		this.#error = null;
+		const result = await apiHandler.executeAll(
+			[
+				() => this.apiClient.getGlobalStatistics(),
+				() => this.apiClient.getMyProfile(),
+				() => this.apiClient.getMyMetadata(),
+				() => this.apiClient.listLogs({page: 1, limit: 7})
+			],
+			{ errorMessage: 'Failed to load dashboard data' }
+		);
 
-		try {
-			const [globalStats, profile, metadata, logs] = await Promise.all([
-				this.apiClient.getGlobalStatistics(),
-				this.apiClient.getMyProfile(),
-				this.apiClient.getMyMetadata(),
-				this.apiClient.listLogs({page: 1, limit: 7})
-			]);
-
+		if ('data' in result) {
+			const [globalStats, profile, metadata, logs] = result.data;
 			this.#profile = profile;
 			this.#metadata = metadata;
 			this.#globalStats = globalStats;
 			this.#logs = logs || [];
 			this.#lastFetch = now;
-		} catch (err: any) {
-			this.#error = err.message || 'Failed to load dashboard data';
-			console.error('Dashboard load error:', err);
-		} finally {
-			this.#loading = false;
 		}
 	}
 

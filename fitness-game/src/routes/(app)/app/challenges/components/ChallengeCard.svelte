@@ -28,10 +28,8 @@
 	} = $props();
 
 	// Load log types on mount if not already loaded
-	onMount(() => {
-		if (challengesStore.logTypes.length === 0) {
-			challengesStore.loadLogTypes();
-		}
+	onMount(async () => {
+		await challengesStore.loadLogTypes();
 	});
 
 	// Use derived to get log type details

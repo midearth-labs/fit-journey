@@ -7,7 +7,7 @@
 	import { onMount } from 'svelte';
 	import { challengesStore } from '../stores/challenges.svelte';
 	import type { ApiResponse } from '$lib/client/api-client';
-	import type { AllLogKeysType, FiveStarLogKeysType, MeasurementLogKeysType } from '$lib/config/constants';
+	import type { AllLogKeysType, MeasurementLogKeysType } from '$lib/config/constants';
 
 	// Type definitions
 	type UserLog = ApiResponse['listLogs'][number];
@@ -26,9 +26,7 @@
 
 	// Load log types on mount if not already loaded
 	onMount(async () => {
-		if (challengesStore.logTypes.length === 0) {
-			await challengesStore.loadLogTypes();
-		}
+		await challengesStore.loadLogTypes();
 	});
 
 	let filteredLogs = $derived.by(() => {
