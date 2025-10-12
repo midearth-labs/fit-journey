@@ -8,7 +8,7 @@
 	import { TrendingUp, Target, BarChart3, Activity, Calendar } from 'lucide-svelte';
 	import { logsViewStore } from '../stores/logs-view.svelte';
 	import type { ApiResponse } from '$lib/client/api-client';
-	import type { LogType } from '$lib/server/content/types/log-type';
+	import type { LogType } from '$lib/types/content';
 
 	// Types
 	type UserLogs = ApiResponse['listLogs'];

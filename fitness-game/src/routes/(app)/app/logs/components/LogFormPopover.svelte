@@ -12,7 +12,7 @@
 	import { apiClient } from '$lib/stores/api-client';
 	import { logsViewStore } from '../stores/logs-view.svelte';
 	import type { ApiResponse } from '$lib/client/api-client';
-	import type { LogType } from '$lib/server/content/types/log-type';
+	import type { LogType } from '$lib/types/content';
 	import type { FiveStarValuesPayload, MeasurementValuesPayload } from '$lib/config/constants';
 
 	// Types

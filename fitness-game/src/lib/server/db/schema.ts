@@ -433,7 +433,7 @@ export const challenges = pgTable('challenges', {
   // logTypes: array of predefined logging keys (by string ID)
   logTypes: jsonb('log_types').$type<AllLogKeysType[]>().notNull(),
   joinType: challengeJoinTypeEnum('join_type').notNull(),
-  inviteCode: uuid('invite_code').notNull().defaultRandom(), // required when joinType = invite-code; unique when present
+  inviteCode: uuid('invite_code').notNull(), // required when joinType = invite-code; unique when present
   startDate: date('start_date').notNull(),
   durationDays: integer('duration_days').notNull(),
   endDate: date('end_date').notNull(),

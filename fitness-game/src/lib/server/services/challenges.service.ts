@@ -315,6 +315,8 @@ export class ChallengesService implements IChallengesService {
       endDate: challenge.endDate,
       membersCount: challenge.membersCount,
       logTypes: challenge.logTypes,
+      maxMembers: challenge.maxMembers,
+      description: challenge.description,
       joinedAt: challenge.joinedAt.toISOString(),
       shareLogKeys: challenge.shareLogKeys,
     }));

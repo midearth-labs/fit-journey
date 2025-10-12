@@ -2,7 +2,7 @@ import { ApiClient, type ApiResponse } from '$lib/client/api-client';
 import { contentService } from '$lib/services/content.service';
 import { DEFAULT_VALUES, type AllLogKeysType } from '$lib/config/constants';
 import { format, parseISO, subDays, addDays, eachDayOfInterval } from 'date-fns';
-import type { LogType } from '$lib/server/content/types/log-type';
+import type { LogType } from '$lib/types/content';
 
 // Type inference from ApiClient methods
 type GlobalStatistics = ApiResponse['getGlobalStatistics'];

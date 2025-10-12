@@ -7,6 +7,7 @@ import type {
   DeleteUserLogOperation,
   FindUserLogOperation,
   CreateUserChallengeOperation,
+  GetChallengeOperation,
   SubmitQuestionOperation,
   ListQuestionsOperation,
   GetQuestionOperation,
@@ -61,6 +62,7 @@ export type ApiResponse = {
   deleteLog: DeleteUserLogOperation['response']['body'];
   findLog: FindUserLogOperation['response']['body'];
   listPublicChallenges: ListPublicChallengesOperation['response']['body'];
+  getChallenge: GetChallengeOperation['response']['body'];
   createChallenge: CreateUserChallengeOperation['response']['body'];
   getUserChallenge: GetUserChallengeOperation['response']['body'];
   updateUserChallenge: UpdateUserChallengeOperation['response']['body'];
@@ -430,6 +432,37 @@ export class ApiClient {
   async listPublicChallenges(query: ListPublicChallengesOperation['request']['query']): Promise<ApiResponse['listPublicChallenges']> {
     return this.request<ApiResponse['listPublicChallenges']>('/api/v1/challenges', { method: 'GET' }, {
       query
+    });
+  }
+
+  /** 
+   * GET /api/v1/challenges/:challengeId
+   * 
+   * Retrieves detailed information about a specific challenge by its ID.
+   * Provides public access to challenge details for discovery and joining.
+   * 
+   * Path parameters:
+   * - challengeId: Unique identifier for the challenge
+   * 
+   * Returns challenge object with:
+   * - Complete challenge configuration and settings
+   * - Current status (not_started, active, completed, locked, inactive)
+   * - Member count and participation metrics
+   * - Challenge timeline and scheduling info
+   * - Privacy restrictions (personal challenges only visible to owners)
+   * 
+   * Features powered:
+   * - Challenge discovery and preview
+   * - Public challenge viewing
+   * - Challenge detail pages for joining
+   * - Privacy-aware challenge access
+   * - Challenge information sharing
+   * 
+   * Used in: Challenge detail pages, challenge preview modals, joining flows, public challenge links
+   */
+  async getChallenge(challengeId: string): Promise<ApiResponse['getChallenge']> {
+    return this.request<ApiResponse['getChallenge']>('/api/v1/challenges/:challengeId', { method: 'GET' }, {
+      params: { challengeId }
     });
   }
 

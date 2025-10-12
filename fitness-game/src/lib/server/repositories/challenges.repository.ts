@@ -10,7 +10,7 @@ import { type AllLogKeysType, CHALLENGE_CONSTANTS } from '$lib/config/constants'
 export type JoinedByUserMember = Pick<ChallengeSubscriber, 'id' | 'userId' | 'joinedAt' | 'shareLogKeys'>;
 type UpdateChallenge = Pick<Challenge, 'id'> & Omit<NewChallenge, 'createdAt'>;
 
-type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'endDate' | 'membersCount' | 'logTypes'> & 
+type JoinedByUser = Pick<Challenge, 'id' | 'name' | 'status' | 'joinType' | 'startDate' | 'durationDays' | 'endDate' | 'membersCount' | 'logTypes' | 'maxMembers' | 'description'> & 
     Pick<ChallengeSubscriber, 'joinedAt' | 'shareLogKeys'>;
 
 // Enriched types with implicit status
@@ -55,6 +55,7 @@ export class ChallengesRepository implements IChallengesRepository {
         // membersCount is 1 because the owner is automatically subscribed
         .values({
           ...challenge, 
+          inviteCode: crypto.randomUUID(),
           updatedAt: challenge.createdAt, membersCount: 0, status: 'not_started', 
           endDate: this.dateTimeHelper.daysOffsetFromDateOnly(challenge.startDate, challenge.durationDays) 
         })
@@ -300,6 +301,8 @@ export class ChallengesRepository implements IChallengesRepository {
         endDate: challenges.endDate,
         membersCount: challenges.membersCount,
         logTypes: challenges.logTypes,
+        maxMembers: challenges.maxMembers,
+        description: challenges.description,
         joinedAt: challengeSubscribers.joinedAt,
         shareLogKeys: challengeSubscribers.shareLogKeys
       })

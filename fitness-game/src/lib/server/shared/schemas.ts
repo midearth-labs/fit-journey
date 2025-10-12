@@ -432,7 +432,7 @@ export const GetUserChallengeResponseSchema = z.object({
   id: UuidSchema,
   name: z.string(),
   status: ChallengeStatusKeysSchema,
-  description: z.string().nullable().optional(),
+  description: z.string(),
   logTypes: z.array(AllLogKeysSchema),
   startDate: IsoDateSchema,
   endDate: IsoDateSchema,
@@ -610,6 +610,8 @@ export const ListChallengesJoinedByUserOperationSchema = {
       joinType: true,
       membersCount: true,
       logTypes: true,
+      description: true,
+      maxMembers: true,
     }).extend({
       joinedAt: z.string(),
       shareLogKeys: z.array(AllLogKeysSchema),
