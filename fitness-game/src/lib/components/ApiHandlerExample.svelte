@@ -35,7 +35,7 @@
 	async function loadUserProfile() {
 		const result = await apiHandler.execute(
 			() => apiClient.getMyProfile(),
-			{ errorMessage: 'Failed to load user profile' }
+			{ fallbackMessage: 'Failed to load user profile' }
 		);
 
 		if (result.success && result.data) {
@@ -46,7 +46,7 @@
 	async function loadContentData() {
 		const result = await apiHandler.execute(
 			() => contentService.loadCategories(),
-			{ errorMessage: 'Failed to load content categories' }
+			{ fallbackMessage: 'Failed to load content categories' }
 		);
 
 		if (result.success && result.data) {
@@ -61,7 +61,7 @@
 				() => apiClient.getMyMetadata(),
 				() => contentService.loadCategories()
 			],
-			{ errorMessage: 'Failed to load multiple data sources' }
+			{ fallbackMessage: 'Failed to load multiple data sources' }
 		);
 
 		if (result.success && result.data) {

@@ -6,8 +6,10 @@ import { ApiError } from './api-client';
 export type ApiHandlerOptions = {
   /** Whether to show loading state during the operation */
   showLoading?: boolean;
+  /** Fallback error message to display */
+  fallbackMessage?: string;
   /** Custom error message to display */
-  errorMessage?: string;
+  customErrorMessage?: string;
   /** Whether to log errors to console */
   logErrors?: boolean;
 }
@@ -99,7 +101,8 @@ export class ApiHandler {
   ): Promise<ApiHandlerResult<T>> {
     const {
       showLoading = true,
-      errorMessage: customErrorMessage,
+      fallbackMessage,
+      customErrorMessage,
       logErrors = true
     } = options;
 
@@ -119,7 +122,7 @@ export class ApiHandler {
 
       return { data: data as unknown as T };
     } catch (err: unknown) {
-      const errorMessage = this.extractErrorMessage(err, customErrorMessage);
+      const errorMessage = this.extractErrorMessage(err, customErrorMessage, fallbackMessage);
       
       if (logErrors) {
         console.error('Parallel API operations failed:', errorMessage);
@@ -138,7 +141,7 @@ export class ApiHandler {
   /**
    * Extract meaningful error message from various error types
    */
-  private extractErrorMessage(err: unknown, customMessage?: string): string {
+  private extractErrorMessage(err: unknown, customMessage?: string, fallbackMessage?: string): string {
     if (customMessage) {
       return customMessage;
     }
@@ -156,7 +159,7 @@ export class ApiHandler {
       return err;
     }
 
-    return 'An unexpected error occurred';
+    return fallbackMessage || 'An unexpected error occurred';
   }
 
   /**

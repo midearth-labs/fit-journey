@@ -95,7 +95,7 @@ class ChallengesStore {
 	async loadPublicChallenges(query: { page?: number; limit?: number } = {}) {
 		const result = await apiHandler.execute(
 			() => this.apiClient.listPublicChallenges(query),
-			{ errorMessage: 'Failed to load public challenges' }
+			{ fallbackMessage: 'Failed to load public challenges' }
 		);
 		
 		if ('data' in result) {
@@ -109,7 +109,7 @@ class ChallengesStore {
 	async loadOwnedChallenges(query: { page?: number; limit?: number } = {}) {
 		const result = await apiHandler.execute(
 			() => this.apiClient.listChallengesOwnedByUser(query),
-			{ errorMessage: 'Failed to load owned challenges' }
+			{ fallbackMessage: 'Failed to load owned challenges' }
 		);
 		
 		if ('data' in result) {
@@ -123,7 +123,7 @@ class ChallengesStore {
 	async loadJoinedChallenges(query: { page?: number; limit?: number } = {}) {
 		const result = await apiHandler.execute(
 			() => this.apiClient.listChallengesJoinedByUser(query),
-			{ errorMessage: 'Failed to load joined challenges' }
+			{ fallbackMessage: 'Failed to load joined challenges' }
 		);
 		
 		if ('data' in result) {
@@ -137,7 +137,7 @@ class ChallengesStore {
 	async loadChallengeDetail(challengeId: string) {
 		const result = await apiHandler.execute(
 			() => this.apiClient.getChallenge(challengeId),
-			{ errorMessage: 'Failed to load challenge details' }
+			{ fallbackMessage: 'Failed to load challenge details' }
 		);
 		
 		if ('data' in result) {
@@ -151,7 +151,7 @@ class ChallengesStore {
 	async loadUserChallengeDetail(challengeId: string) {
 		const result = await apiHandler.execute(
 			() => this.apiClient.getUserChallenge(challengeId),
-			{ errorMessage: 'Failed to load user challenge details' }
+			{ fallbackMessage: 'Failed to load user challenge details' }
 		);
 		
 		if ('data' in result) {
@@ -165,7 +165,7 @@ class ChallengesStore {
 	async loadChallengeMembers(challengeId: string, query: { page?: number; limit?: number } = {}) {
 		const result = await apiHandler.execute(
 			() => this.apiClient.listChallengeJoinedByUserMembers(challengeId, query),
-			{ errorMessage: 'Failed to load challenge members' }
+			{ fallbackMessage: 'Failed to load challenge members' }
 		);
 		
 		if ('data' in result) {
@@ -184,7 +184,7 @@ class ChallengesStore {
 				await this.loadOwnedChallenges();
 				return challenge;
 			},
-			{ errorMessage: 'Failed to create challenge' }
+			{ fallbackMessage: 'Failed to create challenge' }
 		));
 	}
 
@@ -200,7 +200,7 @@ class ChallengesStore {
 					body: dto
 				});
 			},
-			{ errorMessage: 'Failed to update challenge' }
+			{ fallbackMessage: 'Failed to update challenge' }
 		));
 
 		// Refresh the current challenge and owned challenges
@@ -220,7 +220,7 @@ class ChallengesStore {
 				// Refresh owned challenges to remove the deleted one
 				await this.loadOwnedChallenges();
 			},
-			{ errorMessage: 'Failed to delete challenge' }
+			{ fallbackMessage: 'Failed to delete challenge' }
 		));
 	}
 
@@ -236,7 +236,7 @@ class ChallengesStore {
 					body: { inviteCode, shareLogKeys }
 				});
 			},
-			{ errorMessage: 'Failed to join challenge' }
+			{ fallbackMessage: 'Failed to join challenge' }
 		));
 
 		// Refresh joined challenges to include the new one
@@ -253,7 +253,7 @@ class ChallengesStore {
 			async () => {
 				return await this.apiClient.leaveChallenge(challengeId);
 			},
-			{ errorMessage: 'Failed to leave challenge' }
+			{ fallbackMessage: 'Failed to leave challenge' }
 		));
 
 		// Refresh joined challenges to remove the left one
@@ -270,7 +270,7 @@ class ChallengesStore {
 				query: {},
 				body: { shareLogKeys }
 			}),
-			{ errorMessage: 'Failed to update subscription' }
+			{ fallbackMessage: 'Failed to update subscription' }
 		));
 	}
 
@@ -289,7 +289,7 @@ class ChallengesStore {
 	async loadLogTypes() {
 		const result = await apiHandler.execute(
 			() => contentService.loadLogTypes(),
-			{ errorMessage: 'Failed to load log types', showLoading: false }
+			{ fallbackMessage: 'Failed to load log types', showLoading: false }
 		);
 		
 		if ('data' in result) {

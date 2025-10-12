@@ -210,7 +210,14 @@ export class ApiClient {
 
     if (!res.ok) {
       // Try to parse JSON error body; fall back to text
-      const errorBody = await res.text();
+      const errorBody = await (async () => {
+        try {
+          return (await res.clone().json() as { message: string }).message!;
+        } catch {
+          return await res.text();
+        }
+      })();
+
       throw new ApiError(`HTTP ${res.status} ${res.statusText}`, res.status, errorBody);
     }
 

@@ -92,7 +92,7 @@ class DashboardStore {
 				() => this.apiClient.getMyMetadata(),
 				() => this.apiClient.listLogs({page: 1, limit: 7})
 			],
-			{ errorMessage: 'Failed to load dashboard data' }
+			{ fallbackMessage: 'Failed to load dashboard data' }
 		);
 
 		if ('data' in result) {
